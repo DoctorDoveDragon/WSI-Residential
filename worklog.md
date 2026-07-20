@@ -469,3 +469,40 @@ Stage Summary:
   - /home/z/my-project/scripts/generate_sop.py — SELF_REF/DOC_TITLE_SHORT/TOC intro/subject updated
   - /home/z/my-project/scripts/sop_cover.html — Effective Date + footer updated
   - /home/z/my-project/scripts/merge_sop.py — MANUAL_VERSION = '2.5'
+
+---
+Task ID: SOP-10
+Agent: main (Super Z)
+Task: Update SOP Manual cover with a symbolic illustration evoking empowerment, growth, freedom, health, wholeness, and healing. Bump to Rev. 2.6.
+
+Work Log:
+- Loaded the `image-generation` skill and generated a 1344x768 symbolic illustration via `z-ai image` CLI: stylized tree-human figure with golden-amber leaves rising toward a sunrise over calm water; warm earthy palette (terracotta, warm brown, soft rose, cream) consistent with the existing cascade palette. First generation included unwanted text "Empowerment, Growth, Freedom" at the top — regenerated with stronger no-text directives; verified text-free via VLM check.
+- Saved image to `/home/z/my-project/scripts/sop_cover_image.png` (93 KB JPEG).
+- Updated `/home/z/my-project/scripts/sop_cover.html`:
+  - Added new `.hero-image` drawer between the kicker (top:168px) and the hero title (top:290px), positioned at top:200px with height:80px and full content-inner width (498px). Used object-fit:cover with object-position:center 35% to focus on the tree/sun band of the source image.
+  - Added subtle caption strip ("Empowerment · Growth · Freedom · Health · Wholeness · Healing") overlaid at the bottom of the image in 8.5px uppercase Inter with letter-spacing 2.5px and text-shadow for legibility against the warm illustration.
+  - Framed the image with a 1px var(--c-border) border, 4px border-radius, and a subtle 0 1px 4px box-shadow.
+  - Bumped version strings to "Version 2.6 (RMDM-Compliant)" and "Doc. WSI-SOP-001 · Rev. 2.6" in the meta block and footer respectively.
+- Updated `/home/z/my-project/scripts/generate_sop.py`:
+  - SELF_REF: Rev. 2.5 → Rev. 2.6
+  - DOC_TITLE_SHORT: Rev. 2.5 → Rev. 2.6
+  - Subject metadata: Rev. 2.5 → Rev. 2.6
+  - TOC intro paragraph: bumped "Rev. 2.5, July 2026" → "Rev. 2.6, July 2026" and added a new sentence documenting the v2.6 cover illustration: "Rev. 2.6 adds a symbolic cover illustration evoking empowerment, growth, freedom, health, wholeness, and healing — visually framing the trauma-informed, restorative mission of the program."
+- Updated `/home/z/my-project/scripts/merge_sop.py`: MANUAL_VERSION '2.5' → '2.6'.
+- Updated `/home/z/my-project/scripts/sop_content_v2_part3.py`:
+  - Added new Version History row for v2.6: "Cover redesign: Added a symbolic cover illustration (rendered banner between the kicker and the entity title) evoking empowerment, growth, freedom, health, wholeness, and healing — visually framing the trauma-informed, restorative mission of the program. The illustration depicts a stylized tree-human figure rising toward a sunrise over calm water, rendered in a warm earthy palette (terracotta, warm brown, soft rose, cream) consistent with the manual's existing cascade palette. A small caption strip below the image reads 'Empowerment · Growth · Freedom · Health · Wholeness · Healing'. No body-content changes; §1.4(b) QP Credentialing Requirements (Pathway 1 and Pathway 2) and all other SOPs, protocols, and forms remain unchanged from Rev. 2.5."
+  - Updated Form 6 (Employee SOP Acknowledgment) reference: Rev. 2.5 → Rev. 2.6.
+- Ran `cover_validate.js`: 2 minor "0px gap" warnings between meta block 3rd-row label/value and the bottom "Regulatory Framework" strong header — these are touching (not actually overlapping) elements. Verified visually via VLM (z-ai vision): "No, there are no overlapping text elements. The text is arranged in distinct blocks... with clear spacing between them." Confirmed as false-positive validator warnings; visual layout is clean.
+- Re-rendered cover PDF via `html2poster.js --width 794px`: sop_cover.pdf (310 KB, single page).
+- Regenerated body PDF via `python3 generate_sop.py`: sop_body.pdf (170 KB, 30 pages).
+- Merged cover + body via `python3 merge_sop.py`:
+  - Output: `/home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.6_RMDM-Compliant.pdf` (500.4 KB, 31 pages, Rev. 2.6 RMDM-Compliant)
+  - Latest pointer refreshed: `Well_Spring_Intervention_SOP_Manual_LATEST.pdf`
+- Ran `pdf_qa.py`: 13 PASS / 0 WARN. All checks green (metadata, page size, fonts embedded, no overflow, content fill, cover full-bleed, margin symmetry, table centering, TOC populated, punctuation rules).
+
+Stage Summary:
+- Rev. 2.6 delivers a visual refresh of the cover page only — the body content (SOPs, protocols, forms, Version History) is unchanged from Rev. 2.5 except for the new v2.6 Version History row documenting the cover update and the Form 6 reference bump.
+- The cover now opens with a symbolic tree-human-sunrise illustration rendered in a 80px-tall horizontal banner between the kicker badge and the entity title, with a small uppercase caption strip overlay ("Empowerment · Growth · Freedom · Health · Wholeness · Healing").
+- File grew from 360 KB (v2.5) to 500 KB (v2.6) due to the embedded illustration; page count grew from 30 to 31 due to the new Version History row triggering a page break.
+- All v2.0–v2.5 PDFs preserved as immutable history in `/home/z/my-project/download/`.
+- Deliverable: `/home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.6_RMDM-Compliant.pdf`

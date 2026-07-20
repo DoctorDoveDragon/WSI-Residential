@@ -123,10 +123,45 @@
     font-size: 11px;
   }
 
-  /* Drawer B — Hero Title (entity name) */
+  /* Drawer B — Hero Banner Image (empowerment / growth / freedom / health / wholeness / healing) */
+  .hero-image {
+    position: absolute;
+    top: 200px;
+    left: 0;
+    right: 0;
+    height: 80px;
+    border-radius: 4px;
+    border: 1px solid var(--c-border);
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(107, 77, 63, 0.08);
+  }
+  .hero-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+  }
+  .hero-image .caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 5px;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 8.5px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.92);
+    text-shadow: 0 1px 3px rgba(60, 30, 15, 0.7);
+    pointer-events: none;
+  }
+
+  /* Drawer C — Hero Title (entity name) */
   .hero {
     position: absolute;
-    top: 290px;            /* slightly below 0.26 * 1123 ≈ 292 */
+    top: 290px;            /* original position — image fits in the gap above */
     left: 0;
     right: 0;
     font-family: 'Playfair Display', serif;
@@ -152,7 +187,7 @@
     letter-spacing: 0.5px;
   }
 
-  /* Drawer C — Summary */
+  /* Drawer D — Summary */
   .summary {
     position: absolute;
     top: 575px;            /* 0.51 * 1123 */
@@ -166,7 +201,7 @@
     opacity: 0.88;
   }
 
-  /* Drawer D — Meta (stacked label-above-value pairs, institutional form style) */
+  /* Drawer E — Meta (stacked label-above-value pairs, institutional form style) */
   .meta {
     position: absolute;
     top: 730px;            /* 0.65 * 1123 */
@@ -264,6 +299,11 @@
         Standard Operating Procedure &amp; Operational Reference
       </div>
 
+      <div class="hero-image">
+        <img src="sop_cover_image.png" alt="Symbolic illustration of a tree-human figure rising toward a sunrise, evoking empowerment, growth, freedom, health, wholeness, and healing" />
+        <span class="caption">Empowerment &middot; Growth &middot; Freedom &middot; Health &middot; Wholeness &middot; Healing</span>
+      </div>
+
       <div class="hero">
         <span class="row1">Well Spring</span>
         <span class="row2">Intervention</span>
@@ -293,7 +333,7 @@
         </div>
         <div class="meta-row">
           <div class="meta-label">Effective Date</div>
-          <div class="meta-value">July 2026 &nbsp;&middot;&nbsp; Version 2.5 (RMDM-Compliant)</div>
+          <div class="meta-value">July 2026 &nbsp;&middot;&nbsp; Version 2.6 (RMDM-Compliant)</div>
         </div>
         <div class="meta-row">
           <div class="meta-label">Owner</div>
@@ -308,7 +348,7 @@
 
       <div class="footer">
         <span class="footer-left">Well Spring Intervention LLC</span>
-        <span class="footer-right">Doc. WSI-SOP-001 &middot; Rev. 2.5</span>
+        <span class="footer-right">Doc. WSI-SOP-001 &middot; Rev. 2.6</span>
       </div>
 
     </div>
