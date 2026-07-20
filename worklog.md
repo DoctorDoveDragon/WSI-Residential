@@ -562,3 +562,29 @@ Stage Summary:
 - Deliverables:
   - `/home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.7_RMDM-Compliant.pdf` (manual, 34 pages, 519 KB)
   - `/home/z/my-project/download/Well_Spring_Brand_Image_768x1344.png` (standalone brand image for reuse)
+
+---
+Task ID: SOP-11-correction
+Agent: main (Super Z)
+Task: User correction — restore the ORIGINAL v2.6 horizontal illustration (1344×768 tree-human-sunrise banner) on the cover, not the regenerated portrait version. The new portrait image lost the spirit of the original.
+
+Work Log:
+- Restored `/home/z/my-project/scripts/sop_cover_image.png` (the original 1344×768 horizontal image, 121 KB, generated in SOP-10) as the cover image.
+- Updated `/home/z/my-project/scripts/sop_cover.html`:
+  - Changed `<img src="well_spring_brand_image.png">` → `<img src="sop_cover_image.png">` in Layer 1.
+  - Added explanatory CSS comment documenting that the source is a horizontal 1344×768 artwork scaled up via `object-fit: cover` to fill the full 794×1123 portrait page, with `transform: scale(1.05)` for slight additional coverage and `object-position: center center` to keep the central tree-human figure and glowing sun visible.
+  - Added `background: #2a1810` on `.layer-image` as a warm fallback behind the image during cropping.
+  - Kept all other cover overlay elements unchanged (kicker badge, hero company name, subtitle, tagline, bottom document-identification panel).
+- Removed `/home/z/my-project/scripts/well_spring_brand_image.png` from active use (file remains on disk for reference but is no longer referenced by the cover).
+- Re-rendered cover via `html2poster.js`: sop_cover.pdf (296 KB, single page, full-bleed).
+- Re-merged via `python3 merge_sop.py`: overwritten v2.7 PDF at `/home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.7_RMDM-Compliant.pdf` (480.1 KB, 34 pages).
+- Ran `pdf_qa.py`: 13 PASS / 0 WARN. Full-bleed cover detection still passes.
+- Replaced the standalone brand image in `/home/z/my-project/download/`:
+  - Removed: `Well_Spring_Brand_Image_768x1344.png` (the regenerated portrait image)
+  - Added: `Well_Spring_Brand_Image_1344x768.png` (the original horizontal image, 121 KB) — this is now the canonical brand image for reuse across company websites, publications, and collateral.
+- Body content (About This Manual page, TOC, SOPs, protocols, forms, Version History) is unchanged from the prior SOP-11 run — only the cover image source has been swapped back to the original.
+
+Stage Summary:
+- v2.7 cover now correctly uses the ORIGINAL tree-human-sunrise illustration from v2.6, expanded via CSS object-fit:cover to fill the full portrait page. The original image's spirit and composition (stylized tree-human figure with golden-amber leaves, glowing sun, calm water, warm earthy palette) is preserved.
+- Final v2.7 PDF: 34 pages, 480 KB. All 13 QA checks PASS.
+- Standalone brand image for company-wide reuse: `/home/z/my-project/download/Well_Spring_Brand_Image_1344x768.png` (the original horizontal artwork).

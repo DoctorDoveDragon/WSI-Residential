@@ -46,11 +46,18 @@
   }
 
   /* ── Layer 1: full-bleed brand illustration ───────────────────── */
+  /* The source illustration is a horizontal 1344×768 artwork. We scale it
+     up via object-fit:cover so it fills the full 794×1123 portrait page,
+     and use object-position to keep the central tree-human figure and the
+     glowing sun visible. The horizontal source is taller than wide when
+     scaled to portrait width, so we crop the left/right edges and retain
+     the full vertical composition. */
   .layer-image {
     position: absolute;
     inset: 0;
     z-index: 1;
     overflow: hidden;
+    background: #2a1810;
   }
   .layer-image img {
     display: block;
@@ -58,6 +65,10 @@
     height: 100%;
     object-fit: cover;
     object-position: center center;
+    /* Slight scale-up to ensure full coverage of the portrait page when
+       cropping from a horizontal source. */
+    transform: scale(1.05);
+    transform-origin: center center;
   }
   /* Soft warm vignette to deepen top/bottom for text legibility */
   .layer-image::after {
@@ -229,9 +240,9 @@
 <body>
 <div class="poster">
 
-  <!-- Layer 1: full-bleed brand illustration -->
+  <!-- Layer 1: full-bleed brand illustration (original v2.6 artwork, scaled up) -->
   <div class="layer-image">
-    <img src="well_spring_brand_image.png" alt="Symbolic illustration of a tree-human figure rising toward a sunrise over calm water, evoking empowerment, growth, freedom, health, wholeness, and healing" />
+    <img src="sop_cover_image.png" alt="Symbolic illustration of a tree-human figure rising toward a sunrise over calm water, evoking empowerment, growth, freedom, health, wholeness, and healing" />
   </div>
 
   <!-- Layer 2: overlay content -->
