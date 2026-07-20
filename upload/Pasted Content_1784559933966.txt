@@ -1,0 +1,432 @@
+**AUDIT FINDINGS REPORT**
+**Provider:** Well Spring Intervention LLC – Level 3 Supervised Residential Group Home
+**Auditor:** Alliance MCO Quality Management / Provider Monitoring
+**Review Date:** [Current Date]
+**Authority:** NCDHHS Records Management and Documentation Manual (RMDM), Effective July 8, 2025
+**SOP Version Reviewed:** Version 1.0, January 2026
+
+---
+
+## EXECUTIVE SUMMARY
+
+Well Spring Intervention LLC has established a foundational SOP manual that addresses many operational and clinical requirements for a Level 3 Supervised Residential Group Home. The manual demonstrates awareness of key regulatory frameworks including 10A NCAC 27G, NC Medicaid CCP 8C, and Rule 108 (10A NCAC 27T). However, **substantial gaps exist** between the current SOP and the mandatory requirements of the RMDM (Effective July 8, 2025). These gaps pose significant compliance risk, potential for audit findings, and vulnerability to recoupment of Medicaid funds.
+
+**Overall Risk Rating: HIGH** – Multiple critical requirements are unaddressed or inadequately documented.
+
+---
+
+## SECTION 1: RECORDS ADMINISTRATION AND REPORTING REQUIREMENTS (RMDM Chapter 1)
+
+### 1.1 Record Retention and Disposition
+
+| RMDM Requirement | SOP Provision | Finding |
+| :--- | :--- | :--- |
+| Clinical service records of minors must be retained for **12 years after the minor has reached age 18** (until age 30)【8†L3】 | "Records retained for a minimum of **10 years** from date of discharge" (Section 10.3) | **NON-COMPLIANT.** The SOP's 10-year retention period is shorter than the RMDM's 12-year post-majority requirement. This is a critical deficiency. |
+| Clinical service records of adults retained **11 years after last encounter**【8†L3】 | Not separately addressed | **GAP.** No distinction made between adult and minor retention periods. |
+| Destruction of records not listed in a schedule requires authorization from DMH/DD/SUS and Division of Archives and Records | Not addressed | **GAP.** |
+| Record abandonment is a violation of state/federal law subject to sanctions【8†L6】 | Not addressed | **GAP.** No policy on record abandonment. |
+
+**AUDITOR RECOMMENDATION:** Revise Section 10.3 to explicitly state: *"Clinical records for minors shall be retained for 12 years after the individual reaches age 18 (i.e., until age 30). Clinical records for adults shall be retained for 11 years after the last encounter. The most stringent applicable requirement shall prevail."* Add policies on record abandonment and destruction authorization.
+
+---
+
+### 1.2 Data Reporting / Consumer Data Warehouse (CDW)
+
+| RMDM Requirement | SOP Provision | Finding |
+| :--- | :--- | :--- |
+| Entities must enroll eligible individuals in CDW and terminate after 60 consecutive days of no billable services【8†L9】 | Not addressed | **CRITICAL GAP.** No mention of CDW enrollment, updates, or termination. This is a mandatory reporting requirement for publicly funded services. |
+| Statistical data must be submitted to DHHS, General Assembly, and federally funded programs per contract【8†L8】 | Not addressed | **GAP.** |
+
+**AUDITOR RECOMMENDATION:** Add a new section or protocol addressing CDW enrollment, maintenance of enrollment logs, and termination procedures per DHHS requirements.
+
+---
+
+### 1.3 Personnel Records
+
+| RMDM Requirement | SOP Provision | Finding |
+| :--- | :--- | :--- |
+| Personnel files must contain education verification, licensure, credentials, sanctions reviews, criminal background checks, position descriptions, continuing education, and supervision documentation【8†L7】 | Section 2.2-2.4 addresses credentials, background checks, and training | **PARTIALLY COMPLIANT.** SOP addresses core elements but does not explicitly require: sanctions reviews from professional boards, North Carolina Health Care Personnel Registry checks (referenced but not detailed), or retention schedules for personnel records. |
+| Records must be retained per applicable retention schedules【8†L7】 | Not addressed | **GAP.** |
+
+**AUDITOR RECOMMENDATION:** Expand Section 2 to explicitly require sanctions reviews, documented review of the NC Health Care Personnel Registry, and retention of personnel records per DHHS schedules.
+
+---
+
+## SECTION 2: ADMINISTRATION AND MANAGEMENT OF CLINICAL SERVICE RECORDS (RMDM Chapter 2)
+
+### 2.1 Full Clinical Service Record – Required Elements
+
+| RMDM Requirement | SOP Provision | Finding |
+| :--- | :--- | :--- |
+| **Consents:** Treatment consent, PCP consent, restrictive intervention consent, emergency care consent, HIPAA notice acknowledgement, third-party release, ROI【8†L15-L16】 | Section 3.2: "QP obtains signed consents for treatment, medication administration, transportation, release of information, and photographs." | **PARTIALLY COMPLIANT.** Missing: HIPAA notice acknowledgement, third-party release, restrictive intervention consent (addressed separately in Section 5 but not as a consent document). |
+| **Demographics:** Full name, record #, MID/unique ID, DOB, race, gender, address, phone, admission/discharge dates, parent/guardian【8†L16】 | Not explicitly enumerated | **GAP.** SOP does not list required demographic elements. |
+| **Emergency Information:** Emergency contact, preferred physician, hospital preference【8†L16】 | Not addressed | **GAP.** |
+| **Advance Directives** | Not addressed | **GAP.** |
+| **Health History:** Health history, risk factors, MH/IDD/SU diagnosis per DSM-5-TR/ICD-10【8†L16】 | Section 6.1: "Medical history, including immunizations, allergies, and current prescriptions, is maintained" | **PARTIALLY COMPLIANT.** Missing explicit requirement for DSM-5-TR diagnosis documentation. |
+| **Medication Allergies:** Documentation of medication allergies, other known allergies, adverse reactions, and **absence of known allergies**【8†L16】 | Section 6.1 mentions allergies but does not require documentation of "absence of known allergies" | **GAP.** |
+| **Medications & MAR:** Medication orders, medication review/education, medication errors【8†L16】 | Section 6.2 addresses MAR documentation and medication errors | **COMPLIANT.** |
+| **Notification of Rights:** Written summary of rights per 10A NCAC 27D .0201 and documentation rights were explained【8†L16】 | Not addressed | **GAP.** |
+| **Restrictive Interventions:** Written notifications, consents, approvals per 10A NCAC 27E .0104(e)(9); documentation of rights restrictions per G.S. §122C-62(e)【8†L16-L17】 | Section 5 addresses restraint but does not address the full scope of restrictive interventions or documentation requirements | **PARTIALLY COMPLIANT.** Missing comprehensive restrictive intervention documentation. |
+| **Screening/Assessments:** CCA, clinical level of functioning, admission assessments with reason, needs/strengths, diagnosis, social/family/medical history, mental status, recommendations【8†L17】 | Section 4.1 addresses PCP development but does not explicitly require all CCA elements | **GAP.** See Section 4 analysis below. |
+| **Service Planning:** PCP (with MID), service plan, service order by approved signatory【8†L17】 | Section 4.1 addresses PCP development; service orders not addressed | **GAP.** No service order policy. |
+| **Discharge Information:** Discharge plan and discharge summary【8†L17-L18】 | Section 3.3 addresses discharge summary within 7 days | **COMPLIANT.** 7-day requirement exceeds RMDM's 30-day requirement. |
+| **Referral Information:** Sent or received | Not addressed | **GAP.** |
+| **Service Notes/Grids** | Section 10.1 and Protocol 6 | **PARTIALLY COMPLIANT.** See Section 6 analysis. |
+| **Incidents:** Description, action taken, condition following event (NOTE: completed incident reports filed separately from service record)【8†L18】 | Section 8 and Protocol 3 address incident reporting; Form 3 (Restraint Checklist) | **PARTIALLY COMPLIANT.** SOP correctly separates incident reports from clinical records but does not explicitly require incident occurrence notation in the service note. |
+| **Release/Disclosure of Information:** Including releases received from external entities【8†L18】 | Section 10.3: "Records are released only with a signed ROI" | **PARTIALLY COMPLIANT.** Missing requirement to maintain copies of releases received from external entities. |
+| **42 CFR 2.22 Summary** for substance use treatment【8†L18】 | Not addressed | **GAP.** |
+| **Accounting of Disclosures** | Not addressed | **CRITICAL GAP.** RMDM requires a minimum 6-year accounting of all disclosures. |
+| **Legal Documents:** Guardianship, healthcare power of attorney, correspondence【8†L18】 | Not addressed | **GAP.** |
+
+**AUDITOR RECOMMENDATION:** Develop a comprehensive clinical record content checklist (see recommended Form 8 in the rerendered manual) and incorporate it into the SOP. Ensure all RMDM-required elements are explicitly listed and verified upon admission and during quarterly chart audits.
+
+---
+
+### 2.2 Pending and Modified Records
+
+| RMDM Requirement | SOP Provision | Finding |
+| :--- | :--- | :--- |
+| Pending records are created when individual presents for screening but is not subsequently enrolled; must be merged into full record if enrolled【8†L15】 | Not addressed | **GAP.** |
+| Modified records are limited to specific services and must be merged into full record if additional services are provided【8†L15】 | Not addressed | **GAP.** |
+
+**AUDITOR RECOMMENDATION:** Add policy on pending and modified records, including conversion procedures.
+
+---
+
+### 2.3 Electronic Signatures
+
+| RMDM Requirement | SOP Provision | Finding |
+| :--- | :--- | :--- |
+| Electronic signatures must comply with NCGS Chapter 66, Article 40 (UETA); policies must include safeguards against unauthorized use, procedures when unavailable, procedures when author unavailable, authentication requirements【8†L14】 | Not addressed | **GAP.** |
+
+**AUDITOR RECOMMENDATION:** Add electronic signature policy.
+
+---
+
+### 2.4 Administrative Closure
+
+| RMDM Requirement | SOP Provision | Finding |
+| :--- | :--- | :--- |
+| When clinician leaves without completing discharge documentation, supervisor must complete discharge; each administratively closed record must be audited; services billed without proper documentation must be adjusted back to payor per 42 CFR 401.305【8†L20】 | Not addressed | **GAP.** |
+
+**AUDITOR RECOMMENDATION:** Add administrative closure policy.
+
+---
+
+## SECTION 3: PRIVACY, SECURITY, AND CONFIDENTIALITY (RMDM Chapter 3)
+
+### 3.1 Privacy and Security Policies
+
+| RMDM Requirement | SOP Provision | Finding |
+| :--- | :--- | :--- |
+| Policies addressing how information is recorded, stored, retrieved, disseminated, and protected against loss, theft, destruction, unauthorized access, and natural disasters【8†L21】 | Section 10.3 addresses storage (locked, climate-controlled, limited access) and backup | **PARTIALLY COMPLIANT.** Missing comprehensive policies on breach notification, electronic communication safeguards, and disaster recovery. |
+| Compliance with HIPAA Privacy and Security Rules, HITECH Act, ARRA【8†L21】 | Not explicitly referenced | **GAP.** |
+| Policies addressing electronic mail, voice messaging, SMS/text speak, EHR usage【8†L21-L22】 | Not addressed | **GAP.** |
+
+**AUDITOR RECOMMENDATION:** Add comprehensive privacy/security section referencing HIPAA, HITECH, and state confidentiality laws.
+
+---
+
+### 3.2 Confidentiality and 42 CFR Part 2
+
+| RMDM Requirement | SOP Provision | Finding |
+| :--- | :--- | :--- |
+| Compliance with NCGS §122C-51 through 122C-56; 10A NCAC 26B; **42 CFR Part 2** (Confidentiality of Alcohol and Drug Abuse Patient Records)【8†L22】 | Not explicitly referenced | **GAP.** Critical for any SUD services. |
+| Substance use information requires written authorization before disclosure to other treatment providers (absent court order or exception)【8†L23】 | Not addressed | **GAP.** |
+| Absent written consent, entities must redact all identifying information from alcohol/drug records when sharing【8†L23】 | Not addressed | **GAP.** |
+
+**AUDITOR RECOMMENDATION:** Add specific 42 CFR Part 2 compliance language, including authorization requirements and redaction procedures.
+
+---
+
+### 3.3 Accounting of Disclosures
+
+| RMDM Requirement | SOP Provision | Finding |
+| :--- | :--- | :--- |
+| Accounting of disclosures must be maintained for minimum **six years**, including: name, record #, date disclosed, recipient, purpose, description of information, disclosing party【8†L23-L24】 | Not addressed | **CRITICAL GAP.** |
+| All disclosures or re-disclosures of SUD treatment information must comply with 42 CFR Part 2【8†L24】 | Not addressed | **GAP.** |
+
+**AUDITOR RECOMMENDATION:** Implement an Accounting of Disclosures Log (see recommended Form 9 in rerendered manual) and retain for minimum 6 years.
+
+---
+
+### 3.4 Individual Access to Records
+
+| RMDM Requirement | SOP Provision | Finding |
+| :--- | :--- | :--- |
+| Individuals and LRPs have right to access records; limited access requires justification in record; appeal rights apply【8†L24】 | Not addressed | **GAP.** |
+
+**AUDITOR RECOMMENDATION:** Add individual access policy.
+
+---
+
+### 3.5 Transporting Records
+
+| RMDM Requirement | SOP Provision | Finding |
+| :--- | :--- | :--- |
+| Records only transported by designated individuals; secured in locked compartment; policy for loss/theft【8†L24】 | Not addressed | **GAP.** |
+
+**AUDITOR RECOMMENDATION:** Add transport policy.
+
+---
+
+## SECTION 4: CLINICAL ASSESSMENTS AND EVALUATIONS (RMDM Chapter 4)
+
+### 4.1 Comprehensive Clinical Assessment (CCA)
+
+| RMDM Requirement | SOP Provision | Finding |
+| :--- | :--- | :--- |
+| CCA by **licensed professional** required prior to service delivery (except crisis/emergency)【8†L26】 | Section 3.2: QP reviews referral packet including clinical assessment; Section 4.1: PCP development within 30 days | **GAP.** SOP does not explicitly require a CCA by a licensed professional prior to service delivery. The QP is referenced but the CCA itself is not mandated. |
+| CCA must include: presenting problems, health/behavioral health history, current medications, review of biological/psychological/social/developmental dimensions, beneficiary participation, case formulation with **ASAM level of care** (if SUD present), DSM-5-TR diagnoses, recommendations, dated signature【8†L26】 | Not enumerated | **GAP.** |
+| **For children/youth:** Address Child and Family Team involvement; strengths assessment; utilize IEPs【8†L27】 | Section 7 addresses IEP coordination | **PARTIALLY COMPLIANT.** Missing Child and Family Team and strengths-based assessment requirements. |
+| **Reassessment:** Required when clinically indicated; if diagnosis change, written report required; if refinement only, clinical note sufficient【8†L32】 | Not addressed | **GAP.** |
+
+**AUDITOR RECOMMENDATION:** Add explicit CCA requirement with all RMDM-specified elements. Add reassessment policy.
+
+---
+
+### 4.2 Medical Necessity
+
+| RMDM Requirement | SOP Provision | Finding |
+| :--- | :--- | :--- |
+| Medical necessity must be established by licensed/certified professional based on diagnostic criteria and best practice guidelines【8†L33】 | Not addressed | **GAP.** |
+| Services must meet medical necessity per applicable Medicaid and State-funded policies【8†L33】 | Not addressed | **GAP.** |
+
+**AUDITOR RECOMMENDATION:** Add medical necessity determination policy.
+
+---
+
+## SECTION 5: SERVICE ACCESS, MEDICAL NECESSITY, SERVICE ORDERS, AND SERVICE AUTHORIZATION (RMDM Chapter 5)
+
+### 5.1 Service Orders
+
+| RMDM Requirement | SOP Provision | Finding |
+| :--- | :--- | :--- |
+| Entities must have written policy on what constitutes a service order and validation of medical necessity【8†L33】 | Not addressed | **GAP.** |
+| Verbal orders must be documented on date given, specifying date, who gave, who received, each service ordered, and reason for verbal; countersigned within **72 hours**【8†L33】 | Not addressed | **GAP.** |
+
+**AUDITOR RECOMMENDATION:** Add service order policy including verbal order procedures.
+
+---
+
+### 5.2 Service Authorization
+
+| RMDM Requirement | SOP Provision | Finding |
+| :--- | :--- | :--- |
+| Prior authorization required for certain services; providers must notify authorizing entity when individual changes providers or ends service【8†L34】 | Not addressed | **GAP.** |
+| End-date reporting must follow entity-specified protocol【8†L34】 | Not addressed | **GAP.** |
+| Service authorizations not required in clinical record but must be available for audit【8†L34】 | Not addressed | **GAP.** |
+
+**AUDITOR RECOMMENDATION:** Add service authorization and end-date reporting policy.
+
+---
+
+### 5.3 Medical Examinations and TB Screening
+
+| RMDM Requirement | SOP Provision | Finding |
+| :--- | :--- | :--- |
+| Medical examination required for certain services; must include physician's directions; for children, immunization compliance【8†L34】 | Section 6.1: "Complete medical examination within 30 days" | **COMPLIANT.** |
+| TB screening required for individuals receiving SUD treatment funded by Block Grants; must query health history, residence, TB history, symptoms; positive responses require referral【8†L35】 | Not addressed | **GAP.** (Applicable if facility receives SAPTBG funds) |
+
+**AUDITOR RECOMMENDATION:** Add TB screening policy if applicable.
+
+---
+
+## SECTION 6: DOCUMENTATION AND SERVICE NOTES (RMDM Chapter 6)
+
+### 6.1 Timelines for Service Documentation
+
+| RMDM Requirement | SOP Provision | Finding |
+| :--- | :--- | :--- |
+| **Facility-based services** (this program): document at time of service or within **1 standard business day (not to exceed 24 hours)**【8†L37】 | Section 10.1: "completes a shift note by the end of their shift" | **COMPLIANT.** End-of-shift documentation meets the 24-hour requirement. |
+| **Late entries**: defined as entries after required timeframe; must be marked "Late Entry" with date of entry and service date; requires dated signature【8†L38】 | Not addressed | **GAP.** |
+| Entries exceeding timeline can only be billed up to **7 business days** beyond service date; after 7 days, not billable【8†L38】 | Not addressed | **GAP.** |
+
+**AUDITOR RECOMMENDATION:** Add late entry policy and 7-business-day billing limit.
+
+---
+
+### 6.2 Contents of a Full Service Note
+
+| RMDM Requirement | SOP Provision | Finding |
+| :--- | :--- | :--- |
+| **Name** of individual (on each page)【8†L38】 | Protocol 6 references youth name | **COMPLIANT.** |
+| **Service Record Number / MID / Unique Identifier**【8†L38】 | Not explicitly required | **GAP.** |
+| **Full date** (month/day/year)【8†L38】 | Implicit | **PARTIALLY COMPLIANT.** Not explicitly stated. |
+| **Name of service**【8†L38】 | Implicit | **PARTIALLY COMPLIANT.** |
+| **Type of contact** (in person, telehealth, telephonic, collateral)【8†L38】 | Not addressed | **GAP.** |
+| **Place of service**【8†L38】 | Not addressed | **GAP.** |
+| **Purpose** (tied to specific goals in plan)【8†L38】 | Protocol 6: "ISP Linkage" | **COMPLIANT.** |
+| **Description of interventions, treatment, support**【8†L38】 | Protocol 6: "Action" | **COMPLIANT.** |
+| **Duration**: total time spent (active engagement); for per diem services, time not required but interventions must reflect treatment【8†L38】 | Not addressed | **GAP.** No requirement for duration documentation. |
+| **Effectiveness and individual's response/progress**【8†L38】 | Protocol 6 does not explicitly require response/progress | **GAP.** |
+| **Authentication**: electronic signature date stamp and credentials (or handwritten signature with date and credentials); cursive font in Word document is NOT valid【8†L38】 | Section 10.1: "signed with full name, credentials, and date" | **PARTIALLY COMPLIANT.** Missing electronic signature standards. |
+| **Additional service note requirements** per Medicaid CCP or State-funded service definition【8†L38】 | Not addressed | **GAP.** |
+
+**AUDITOR RECOMMENDATION:** Adopt the Full Service Note Template (Form 7 in rerendered manual) to ensure all RMDM-required elements are consistently included.
+
+---
+
+### 6.3 Shift Notes (Twenty-Four-Hour Services)
+
+| RMDM Requirement | SOP Provision | Finding |
+| :--- | :--- | :--- |
+| Note for each shift with **coverage hours clearly identified**【8†L41】 | Not explicitly required | **GAP.** |
+| If no intervention occurs, note should reflect care, oversight, support, and non-treatment events【8†L39】 | Not addressed | **GAP.** |
+| When multiple staff on shift, only one required to document but note must **identify names of other staff present** to demonstrate ratios【8†L39】 | Not addressed | **GAP.** |
+
+**AUDITOR RECOMMENDATION:** Add shift note requirements including coverage hours and staff identification.
+
+---
+
+### 6.4 Modified Service Notes and Grids
+
+| RMDM Requirement | SOP Provision | Finding |
+| :--- | :--- | :--- |
+| Modified notes may be used only where explicitly allowed (e.g., Respite); must include: name, service record #/MID/unique ID, service, date, duration, goal addressed, full dated signature/credentials (or initials if full signature on page)【8†L42-L43】 | Not addressed | **GAP.** |
+| Grids may be used only for specified services; must include: name, service record #/MID/unique ID, service, date, duration, goals/interventions, full dated signature/credentials (or initials if full signature on page); for NC Innovations: intervention key, progress key, comment section with dated entries【8†L43-L44】 | Not addressed | **GAP.** |
+
+**AUDITOR RECOMMENDATION:** Add modified note and grid policies for applicable services.
+
+---
+
+### 6.5 Alterations to Service Documentation
+
+| RMDM Requirement | SOP Provision | Finding |
+| :--- | :--- | :--- |
+| Original entry must not be deleted or altered so it is not clearly legible【8†L44】 | Not addressed | **GAP.** |
+| Corrections by original author with explanation; if not possible, person updating must reflect change and rationale【8†L44】 | Not addressed | **GAP.** |
+| Any change must be signed and dated; revised entry in proximity to original【8†L44-L45】 | Not addressed | **GAP.** |
+| EHR tracked changes and timestamps satisfy these guidelines【8†L45】 | Not addressed | **GAP.** |
+
+**AUDITOR RECOMMENDATION:** Add documentation alteration policy.
+
+---
+
+### 6.6 Authenticating Service Documentation
+
+| RMDM Requirement | SOP Provision | Finding |
+| :--- | :--- | :--- |
+| All entries validated via signature with date, credentials, degree, licensure, title【8†L45】 | Section 10.1: "signed with full name, credentials, and date" | **COMPLIANT.** |
+| Initials only permitted for updates/corrections or on service grids (where full signature is on page)【8†L45】 | Not addressed | **GAP.** |
+| Pre- or post-dating signatures prohibited【8†L45】 | Section 10.1: "Backdating is strictly prohibited" | **COMPLIANT.** |
+| ADA accommodations for signature【8†L45】 | Not addressed | **GAP.** |
+| If original author unavailable, notation reflected in record and signed/dated by appropriate party【8†L45】 | Not addressed | **GAP.** |
+| Rubber stamps only for medical/physical reasons with ADA accommodations【8†L45】 | Not addressed | **GAP.** |
+
+**AUDITOR RECOMMENDATION:** Add comprehensive authentication policy including initials, ADA accommodations, and rubber stamp usage.
+
+---
+
+## SECTION 7: INCIDENT REPORTING (RMDM Chapter 6)
+
+### 7.1 Incident Documentation
+
+| RMDM Requirement | SOP Provision | Finding |
+| :--- | :--- | :--- |
+| Incident occurrence must be recorded in service notes; **completed incident report filed separately from clinical service record**【8†L46】 | Section 8 and Protocol 3 address incident reporting; Form 3 | **COMPLIANT.** SOP correctly separates incident reports from clinical records. |
+| Incident reports maintained per Records Retention and Disposition Schedule【8†L46】 | Not addressed | **GAP.** |
+| Death reporting, restrictive intervention documentation, incident reporting per 10A NCAC 27G, APSM 95-2, NCGS §122C-66; reports through NCIRIS【8†L47】 | Section 8 references Rule 108/IRIS | **COMPLIANT.** |
+
+**AUDITOR RECOMMENDATION:** Add retention schedule for incident reports.
+
+---
+
+### 7.2 Abuse/Neglect/Exploitation Reporting
+
+| RMDM Requirement | SOP Provision | Finding |
+| :--- | :--- | :--- |
+| Relevant facts documented in service record, including reports made by individual and actions taken【8†L46】 | Not explicitly stated | **GAP.** |
+| Reporting duties per GS §7B-301 (child abuse), GS §108A-102 (disabled adult), 10A NCAC 27G .0604【8†L46】 | Section 8.2: "DSS immediately for abuse allegations" | **COMPLIANT.** |
+
+**AUDITOR RECOMMENDATION:** Add requirement to document abuse/neglect/exploitation facts in the service record (with incident report filed separately).
+
+---
+
+## SUMMARY OF FINDINGS
+
+| Category | Compliant | Partially Compliant | Non-Compliant / Gap |
+| :--- | :--- | :--- | :--- |
+| Record Retention | | | **Critical** – 10-year vs. 12-year post-majority |
+| CDW/Data Reporting | | | **Critical** – Entirely absent |
+| Full Clinical Record Elements | | Consents, Medical History | **Multiple gaps** – Advance directives, allergies (absence of), rights notification, restrictive interventions, service orders, referral info, 42 CFR 2.22, accounting of disclosures, legal documents |
+| Pending/Modified Records | | | **Gap** – Entirely absent |
+| Electronic Signatures | | | **Gap** – Entirely absent |
+| Administrative Closure | | | **Gap** – Entirely absent |
+| Privacy/Security Policies | | Storage/backup | **Gap** – Comprehensive policies, breach notification, 42 CFR Part 2 |
+| Accounting of Disclosures | | | **Critical** – Entirely absent |
+| Individual Access | | | **Gap** – Entirely absent |
+| Transporting Records | | | **Gap** – Entirely absent |
+| CCA Requirements | | | **Gap** – No explicit CCA requirement with all elements |
+| ASAM Criteria | | | **Gap** – Not referenced |
+| Reassessment | | | **Gap** – Not addressed |
+| Medical Necessity | | | **Gap** – Not addressed |
+| Service Orders | | | **Gap** – Entirely absent |
+| Service Authorization | | | **Gap** – Entirely absent |
+| Service Note Content | Purpose, Intervention | Name, Date, Service | **Gap** – Record #/MID, contact type, place, duration, response, e-signature standards |
+| Shift Note Content | | | **Gap** – Coverage hours, staff identification |
+| Late Entries | | | **Gap** – Entirely absent |
+| Modified Notes/Grids | | | **Gap** – Entirely absent |
+| Alterations | | | **Gap** – Entirely absent |
+| Authentication | Full signature, no backdating | | **Gap** – Initials policy, ADA, rubber stamps |
+| Incident Documentation | Separate filing | | **Gap** – Occurrence notation in service record |
+
+---
+
+## PRIORITY CORRECTIVE ACTIONS
+
+### CRITICAL (Immediate Action Required – Risk of Recoupment/Fraud Findings)
+
+1. **Revise Record Retention Policy** – Change from 10 years to **12 years after minor reaches age 18** (until age 30)【8†L3】.
+2. **Add CDW Enrollment and Data Reporting** – Mandatory for all publicly funded services【8†L9】.
+3. **Implement Accounting of Disclosures Log** – Retain for minimum 6 years with all required elements【8†L23-L24】.
+4. **Add Comprehensive Clinical Record Content Checklist** – Ensure all RMDM-required elements are present【8†L15-L18】.
+5. **Add CCA Requirement** – Licensed professional CCA prior to service delivery with all RMDM-specified elements【8†L26】.
+6. **Add Service Order Policy** – Including verbal order procedures and 72-hour countersignature【8†L33】.
+7. **Add Service Authorization Policy** – Including end-date reporting requirements【8†L34】.
+8. **Enhance Service Note Requirements** – Add record #/MID, contact type, place of service, duration, and response/progress【8†L38】.
+9. **Add Late Entry Policy** – Marking requirement and 7-business-day billing limit【8†L38】.
+10. **Add Documentation Alteration Policy** – Corrections must be signed/dated with explanation【8†L44-L45】.
+
+### HIGH PRIORITY (Action Required Within 90 Days)
+
+11. **Add 42 CFR Part 2 Compliance** – Substance use confidentiality requirements【8†L22-L23】.
+12. **Add Individual Access to Records Policy**【8†L24】.
+13. **Add Administrative Closure Policy**【8†L20】.
+14. **Add Electronic Signatures Policy**【8†L14】.
+15. **Add Shift Note Requirements** – Coverage hours and staff identification【8†L39】.
+16. **Add Modified Note and Grid Policies**【8†L42-L44】.
+17. **Add Privacy/Security Policies** – Breach notification, electronic communication safeguards【8†L21】.
+18. **Add Pending Records Policy**【8†L15】.
+
+### MEDIUM PRIORITY (Action Required Within 6 Months)
+
+19. **Add TB Screening Policy** (if applicable)【8†L35】.
+20. **Add Transporting Records Policy**【8†L24】.
+21. **Add Authentication Policy** – Initials, ADA accommodations, rubber stamps【8†L45】.
+22. **Add Incident Report Retention Schedule**【8†L46】.
+
+---
+
+## CONCLUSION
+
+Well Spring Intervention LLC has established a foundational operational framework, but **the current SOP Version 1.0 is not fully compliant with the RMDM (Effective July 8, 2025)** . The identified gaps—particularly in record retention, CDW reporting, accounting of disclosures, CCA requirements, service orders, and service note content—represent significant compliance risk. Without corrective action, the provider is vulnerable to:
+
+- Audit findings and potential recoupment of Medicaid funds
+- Sanctions from LME/MCO and DHHS
+- Legal consequences under HIPAA, 42 CFR Part 2, and state law
+
+**The rerendered manual provided in the previous response (Version 2.0, July 2026) addresses all identified gaps** and should be adopted as the updated SOP effective immediately. The provider should:
+
+1. Adopt the rerendered manual as Version 2.0
+2. Train all staff on updated policies and procedures
+3. Conduct a self-audit using the Comprehensive Clinical Record Content Checklist (Form 8)
+4. Implement the Accounting of Disclosures Log (Form 9)
+5. Schedule a follow-up mock audit within 90 days
+
+---
+
+**Auditor Signature:** ___________________________________
+**Date:** ___________________________________
+
+*This report is based on review of the Well Spring Intervention LLC SOP Manual (Version 1.0, January 2026) against the NCDHHS Records Management and Documentation Manual (Effective July 8, 2025). Findings are subject to verification through on-site record review and staff interviews.*

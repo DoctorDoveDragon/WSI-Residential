@@ -106,3 +106,71 @@ Stage Summary:
 - Cover layout now has balanced 148px margins on left and right; kicker and ref-block text no longer use middot separators that could wrap to line start.
 - Persistent artifacts updated in place: `scripts/sop_cover.html`, `scripts/sop_cover.pdf`, `download/Well_Spring_Intervention_SOP_Manual.pdf`.
 - Body PDF (`scripts/sop_body.pdf`) unchanged from SOP-2 (still contains all 35 self-references).
+
+---
+Task ID: SOP-4
+Agent: main (Super Z)
+Task: Address ALL audit findings from the RMDM Audit Findings Report by upgrading the SOP Manual to Version 2.0 (RMDM-Compliant, July 2026). User uploaded both the audit report AND a v2.0 content spec — apply the v2.0 content additively to the existing manual.
+
+Work Log:
+- Read user-uploaded audit report (`Pasted Content_1784559933966.txt`) — 431 lines, 22 corrective actions identified:
+  - CRITICAL (10): record retention (10yr→12yr post-majority); CDW/data reporting; accounting of disclosures; clinical record content checklist; CCA requirements; service orders incl. verbal/72-hr; service authorization; service note content; late entries; documentation alterations.
+  - HIGH (8): 42 CFR Part 2; individual access; administrative closure; electronic signatures; shift note content; modified notes/grids; privacy/security; pending records.
+  - MEDIUM (4): TB screening; transporting records; authentication (initials/ADA/rubber stamps); incident report retention.
+- Read user-uploaded v2.0 manual template (`Pasted Content_1784558047631.txt`) — 703 lines containing the full rerendered content with 11 SOPs, 21 protocols, 9 forms, and version history.
+- Decided NOT to delete the existing v1.0 generation logic but rather to extend it to v2.0 — preserving the validated cover palette, TocDocTemplate, font registration, helpers, and header/footer.
+- Updated SELF_REF constant to "Doc. WSI-SOP-001, Rev. 2.0, Jul 2026 — RMDM-Compliant".
+- Updated DOC_TITLE_SHORT to include "Rev. 2.0 (RMDM-Compliant)" suffix.
+- Updated PDF metadata subject + added keywords field covering RMDM, HIPAA, 42 CFR Part 2.
+- Refactored content builders into three separate modules under `/home/z/my-project/scripts/`:
+  - `sop_content_v2.py` — Part 1 (11 SOP sections, ~640 lines):
+    - SOP 1 expanded with §1.5 (CDW Data Reporting) and §1.6 (Record Retention — 12yr post-majority / 11yr adults / abandonment / destruction authorization)
+    - SOP 2 expanded with §2.5 (Personnel Records — sanctions reviews, NC Health Care Personnel Registry)
+    - SOP 3 expanded with §3.2 (Pending vs. Full Records), §3.3 (Full Clinical Record Required Elements — table-anchored to Form 8), §3.5 (Administrative Closure per 42 CFR 401.305)
+    - SOP 4 rewritten as "Clinical Services, Assessments & PCP" — §4.1 CCA (10 required elements incl. ASAM, DSM-5-TR, Child & Family Team, reassessment), §4.2 Medical Necessity, §4.3 PCP (unchanged), §4.4 Service Orders (incl. verbal/72-hr countersignature), §4.5 Service Authorization
+    - SOP 5 added §5.4 Restrictive Intervention Documentation (10A NCAC 27E .0104)
+    - SOP 6 added §6.2 TB Screening (SAPTBG conditional)
+    - SOP 8 added §8.4 Separate Filing (occurrence in service note; completed report NOT in clinical record) and §8.5 Abuse/Neglect/Exploitation reporting (G.S. §7B-301, §108A-102)
+    - SOP 10 massively expanded: §10.1 General Requirements (timelines, late entries, 7-business-day billing limit), §10.2 Full Service Note Required Content (12 mandatory fields), §10.3 Shift Notes (coverage hours, multi-staff documentation), §10.4 Modified Notes & Grids, §10.5 Alterations (signed/dated, 7-day billing limit), §10.6 Authentication (initials, ADA, rubber stamps, unavailable author), §10.7 Service Authorizations & End-Date Reporting, §10.8 Billing
+    - SOP 11 NEW: Privacy, Security, Confidentiality & Access to Records — §11.1 Privacy/Security Policies (HIPAA/HITECH/ARRA), §11.2 Safeguards, §11.3 Confidentiality (42 CFR Part 2, SUD redaction, care coordination exceptions), §11.4 Disclosure Documentation & Accounting (6-year retention, 7 required elements), §11.5 Individual Access, §11.6 Transporting Records, §11.7 Storage & Maintenance
+  - `sop_content_v2_part2.py` — Part 2 (21 protocols):
+    - Protocols 1-19 preserved from v1.0 with minor RMDM updates (e.g., Protocol 1 now includes Pending Record conversion; Protocol 3 adds separate filing; Protocol 6 adds mandatory fields, late entries, alterations; Protocol 17 adds administrative closure)
+    - Protocol 20 NEW: Service Orders & Authorization (PCP-as-order, verbal/72-hr, authorization, end-date reporting)
+    - Protocol 21 NEW: Record Management, Retention, Access & Disclosure Accounting (12/11-year retention, abandonment, access, Form 9 accounting, 42 CFR Part 2, transport)
+  - `sop_content_v2_part3.py` — Part 3 (9 forms + version history):
+    - Forms 1-6 preserved (Form 2 now includes Service Record #/MID field; Form 6 acknowledgment language updated to Rev. 2.0 + RMDM)
+    - Form 7 NEW: Full Service Note Template — 13-row table with all RMDM-required fields (youth name, Service Record #/MID, date, service name, type of contact, place, shift/coverage hours, staff present for ratios, purpose/ISP goal, interventions, effectiveness/response, signature/credentials/date, late entry notation)
+    - Form 8 NEW: Comprehensive Clinical Record Content Checklist — 28-row table covering all RMDM §2.1 required elements (consents, demographics, emergency info, advance directives, allergies incl. "none", health history, DSM-5-TR/ICD-10, MAR, labs, rights notification, restrictive intervention docs, CCA, ASAM, PCP, service order, discharge, accounting of disclosures, 42 CFR 2.22, legal docs, correspondence, service notes, incident notations) + QP quarterly audit signature line
+    - Form 9 NEW: Accounting of Disclosures Log — 8-row × 6-column table (date, recipient, purpose, description, disclosing staff, authorization basis) + youth name/record# header
+    - Section 10 NEW: Version History table (2 rows: v1.0 Jan 2026 original; v2.0 Jul 2026 with full RMDM compliance summary)
+- Refactored `generate_sop.py` to defer-import the three content modules inside `build()` (avoids circular imports since the content modules need helpers/styles defined at module top of generate_sop).
+- Updated TOC intro paragraph to describe v2.0 structure (11 sections / 21 protocols / 9 forms / new RMDM compliance).
+- Updated cover (`sop_cover.html`):
+  - Effective Date: "January 2026 · Version 1.0" → "July 2026 · Version 2.0 (RMDM-Compliant)"
+  - Regulatory Framework block: appended "NCDHHS Records Management & Documentation Manual (RMDM, Eff. Jul 8 2025), HIPAA, 42 CFR Part 2, HITECH Act"
+  - Footer right: "Doc. WSI-SOP-001" → "Doc. WSI-SOP-001 · Rev. 2.0"
+  - Hero font-size reduced 62px→58px (accommodates the longer ref-block text on a single line)
+- Re-rendered cover via html2poster.js → 164.8 KB.
+- Re-ran generate_sop.py → body PDF built without error.
+- Re-merged via merge_sop.py → final PDF 27 pages, 333.8 KB (was 18 pages / 294.7 KB in v1.0; +9 pages of new RMDM content).
+- Ran pdf_qa.py: **13 PASS, 0 WARN — ALL CHECKS PASSED**.
+- Verified content via pdftotext:
+  - 42 self-references (11 SOPs + 21 protocols + 9 forms + version history = 42) ✓
+  - 70 "Rev. 2.0" mentions ✓
+  - 94 "RMDM" references ✓
+  - All 11 SOP section headings render correctly in TOC ✓
+  - All 21 protocols render correctly ✓
+  - All 9 forms render correctly ✓
+  - Version History table present on last page ✓
+
+Stage Summary:
+- Final deliverable: `/home/z/my-project/download/Well_Spring_Intervention_SOP_Manual.pdf` (27 pages, 333.8 KB, Rev. 2.0 RMDM-Compliant).
+- All 22 audit corrective actions (10 CRITICAL + 8 HIGH + 4 MEDIUM) are now addressed in the SOP content.
+- Persistent artifacts:
+  - `/home/z/my-project/scripts/generate_sop.py` — main generation script (refactored)
+  - `/home/z/my-project/scripts/sop_content_v2.py` — Part 1 content (11 SOPs)
+  - `/home/z/my-project/scripts/sop_content_v2_part2.py` — Part 2 content (21 protocols)
+  - `/home/z/my-project/scripts/sop_content_v2_part3.py` — Part 3 content (9 forms + version history)
+  - `/home/z/my-project/scripts/sop_cover.html` — updated cover (Rev. 2.0)
+  - `/home/z/my-project/scripts/merge_sop.py` — cover+body merge script (unchanged, reusable)
+- All QA checks pass. Manual is ready for adoption as Version 2.0.
