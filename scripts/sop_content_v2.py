@@ -584,7 +584,75 @@ def build_part1():
         'reasons with ADA accommodations; if unable to use stamp, the individual may '
         'authorize someone of their choosing in writing.'
     ))
-    story.append(Paragraph('<b>10.7 Service Authorizations & End-Date Reporting.</b>', s_h2))
+    story.append(Paragraph('<b>10.7 Electronic Signatures.</b>', s_h2))
+    story.append(para(
+        'Electronic signatures are permitted for authenticating service documentation, '
+        'consents, treatment plans, and other records governed by this manual, in '
+        'accordance with the <b>North Carolina Uniform Electronic Transactions Act '
+        '(NCGS Chapter 66, Article 40)</b> and the federal E-SIGN Act (15 U.S.C. '
+        '&sect; 7001 et seq.). An electronic signature is an electronic sound, symbol, '
+        'or process attached to or logically associated with a record and executed or '
+        'adopted by a person with the intent to sign the record. Where electronic '
+        'signatures are used, they carry the same legal weight and enforceability as '
+        'handwritten signatures for transactions conducted electronically. <b>Use of a '
+        'cursive font in a word-processing document does not constitute a valid '
+        'electronic signature</b>; the signature must be applied through the facility\'s '
+        'authenticated EHR/EMR system or an approved secure signing platform that '
+        'captures the signer\'s identity, timestamp, and intent. Each electronic '
+        'signature shall be uniquely linked to the signer, render any subsequent '
+        'modification detectable, and include an auditable timestamp reflecting the '
+        'date and time of execution.'
+    ))
+    story.append(Paragraph('<b>10.7(a) Safeguards.</b>', s_h2))
+    story.append(para(
+        'The facility shall implement and maintain reasonable administrative, '
+        'technical, and physical safeguards to ensure the integrity, confidentiality, '
+        'and non-repudiation of electronic signatures, consistent with the HIPAA '
+        'Security Rule (45 CFR Part 164 Subpart C), 42 CFR Part 2, and NCGS '
+        '&sect; 66-40(d). Required safeguards include: (a) <b>unique user credentials</b> '
+        'for each authorized signer, with shared logins strictly prohibited; '
+        '(b) <b>multi-factor authentication</b> where technically feasible; '
+        '(c) <b>automatic session timeout</b> after no more than 15 minutes of '
+        'inactivity; (d) <b>encrypted transmission</b> (TLS 1.2 or higher) and '
+        '<b>at-rest encryption</b> of all signed records; (e) <b>immutable audit '
+        'trails</b> capturing the signer\'s identity, date, time, IP address or device '
+        'identifier, and the document version signed; (f) <b>role-based access '
+        'controls</b> limiting signature authority to staff with appropriate '
+        'licensure, credentials, and documented training; (g) <b>immediate '
+        'revocation</b> of credentials upon termination, role change, or suspected '
+        'compromise; and (h) <b>annual review</b> by the QP and IT vendor to verify '
+        'continued compliance. Lost, stolen, or shared credentials must be reported '
+        'to the QP within one business day; the facility shall deactivate the '
+        'compromised credentials and investigate the scope of any unauthorized '
+        'signatures before reissuing access.'
+    ))
+    story.append(Paragraph('<b>10.7(b) System Unavailability Procedures.</b>', s_h2))
+    story.append(para(
+        'In the event the EHR/EMR system or approved electronic signing platform is '
+        'unavailable — whether due to planned maintenance, internet outage, vendor '
+        'outage, cyber-incident, or natural disaster — staff shall revert to '
+        'paper-based documentation and handwritten signatures with date, credentials, '
+        'and title. The QP or designee shall declare a <b>Documentation Continuity '
+        'Event</b>, notify all shifts in writing (or by phone tree if email is '
+        'unavailable), and distribute blank copies of the required forms (Shift Note, '
+        'MAR, Restraint &amp; Debriefing Checklist, Incident Report). Staff shall '
+        'legibly sign and date each paper entry in blue or black ink. When the '
+        'electronic system is restored — and in no event later than <b>72 hours</b> '
+        'after the original entry — the originating staff member (or, if unavailable, '
+        'the on-duty QP) shall transcribe the paper entry verbatim into the '
+        'electronic record, mark the entry as <i>"Late Entry &mdash; System '
+        'Unavailability (date/time of restoration)"</i>, reference the original paper '
+        'document by scan or filename, and electronically sign the transcribed entry. '
+        'The original paper document shall be scanned and attached to the electronic '
+        'record, then retained as a source document per the record retention policy '
+        '(§1.6) for the full retention period. Paper entries that cannot be '
+        'transcribed within <b>7 business days</b> must be reviewed by the QP, who '
+        'shall document the reason for delay and the corrective action taken. The QP '
+        'shall maintain a log of all Documentation Continuity Events, including the '
+        'start/end time, cause, records affected, and verification that all paper '
+        'entries were transcribed and electronically authenticated.'
+    ))
+    story.append(Paragraph('<b>10.8 Service Authorizations & End-Date Reporting.</b>', s_h2))
     story.append(para(
         'The facility shall maintain service authorizations/reauthorizations in a '
         'separate audit file (not required in clinical record but available upon '
@@ -592,7 +660,7 @@ def build_part1():
         'notify the authorizing entity per their specified protocol. End-date reporting '
         'shall follow the authorizing entity\'s requirements.'
     ))
-    story.append(Paragraph('<b>10.8 Billing.</b>', s_h2))
+    story.append(Paragraph('<b>10.9 Billing.</b>', s_h2))
     story.append(para(
         'The program bills Medicaid on a daily per diem basis. Billing is suspended for '
         'any day the youth is hospitalized, detained, or on a home pass exceeding '
