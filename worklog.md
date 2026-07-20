@@ -416,3 +416,56 @@ Stage Summary:
   - /home/z/my-project/scripts/generate_sop.py — SELF_REF/DOC_TITLE_SHORT/TOC intro/subject updated
   - /home/z/my-project/scripts/sop_cover.html — Effective Date + footer updated
   - /home/z/my-project/scripts/merge_sop.py — MANUAL_VERSION = '2.4'
+
+---
+Task ID: SOP-10
+Agent: main (Super Z)
+Task: QP credentialing correction (continued) — user pointed out that Rev. 2.4 incorrectly removed the bachelor's-degree pathway. Per 10A NCAC 27G .0104 there are TWO acceptable QP pathways: (Pathway 1) master's degree + recognized NC credential + 1 year post-master's supervised experience; AND (Pathway 2) bachelor's degree in a human services field + 2 years full-time pre- or post-bachelor's supervised MH/DD/SA experience.
+
+Work Log:
+- Acknowledged user correction — Rev. 2.4 had wrongly stated "a bachelor's degree alone is not sufficient" and removed the bachelor's pathway entirely. The actual 27G .0104 framework recognizes BOTH a master's-degree pathway and a bachelor's-degree pathway with appropriate supervised experience.
+- Restructured §1.4(b) QP Credentialing Requirements in sop_content_v2.py into four clearly-labeled sub-sections:
+  - Intro paragraph: states 27G .0104 framework, that a QP is NOT required to hold a full unrestricted clinical license, and that there are TWO acceptable pathways.
+  - **Pathway 1 — Master's Degree plus Recognized NC Credential**: master's in human services + 1 year full-time post-master's supervised MH/DD/SA experience + one of four NC credential categories (full license / associate-provisional license / certification / psychiatric nursing credential).
+  - **Pathway 2 — Bachelor's Degree plus Supervised Experience**: bachelor's in human services + 2 years full-time pre- or post-bachelor's supervised MH/DD/SA experience, documented by supervising QP. Bachelor's-pathway QPs must complete NC-DHHS QP training and practice under clinical supervision of a Pathway 1 QP or the Clinical Director until training is completed.
+  - **Common Requirements (Both Pathways)**: NC-DHHS QP training modules, active credential/supervised-experience documentation, 1-business-day lapse/sanction reporting to Clinical Director, personnel-file verification (§2.5), annual re-verification of pathway.
+- Rewrote §2.2 Staff Qualifications QP bullet to list both pathways explicitly:
+  "Meet one of two pathways per §1.4(b) and 10A NCAC 27G .0104 — Pathway 1: master's degree in a human services field plus a recognized NC credential... plus at least one year of full-time, post-master's supervised MH/DD/SA experience; OR Pathway 2: bachelor's degree in a human services field plus two years of full-time, pre- or post-bachelor's supervised MH/DD/SA experience. Both pathways require NC-DHHS QP training modules prior to independent practice."
+- Bumped manual to Rev. 2.5 across generate_sop.py:
+  - SELF_REF: "Rev. 2.4" → "Rev. 2.5"
+  - DOC_TITLE_SHORT: "Rev. 2.4" → "Rev. 2.5"
+  - PDF subject metadata: "Rev. 2.4" → "Rev. 2.5"
+  - TOC intro paragraph updated to add Rev. 2.5 note explicitly describing both Pathway 1 and Pathway 2.
+- Updated sop_cover.html:
+  - Effective Date meta-value: "Version 2.4 (RMDM-Compliant)" → "Version 2.5 (RMDM-Compliant)"
+  - Footer right: "Doc. WSI-SOP-001 · Rev. 2.4" → "Doc. WSI-SOP-001 · Rev. 2.5"
+- Updated sop_content_v2_part3.py:
+  - Added v2.5 row to Version History table — explicitly notes that Rev. 2.4 incorrectly removed the bachelor's pathway and that Rev. 2.5 restores both pathways per 27G .0104.
+  - Updated Form 6 Employee SOP Acknowledgment language to Rev. 2.5 — now reads: "I acknowledge that QP credentialing requirements are specified in §1.4(b) per 10A NCAC 27G .0104 — there are two acceptable pathways: Pathway 1 (master's degree + recognized NC credential + 1 year post-master's supervised MH/DD/SA experience) or Pathway 2 (bachelor's degree + 2 years full-time pre- or post-bachelor's supervised MH/DD/SA experience); a QP is not required to hold a full, unrestricted clinical license."
+- Bumped MANUAL_VERSION = '2.5' in merge_sop.py — new versioned filename Well_Spring_Intervention_SOP_Manual_v2.5_RMDM-Compliant.pdf (v2.0/v2.1/v2.2/v2.3/v2.4 files preserved as immutable history).
+- Re-rendered cover via html2poster.js → 167.1 KB.
+- Regenerated body via generate_sop.py — no errors.
+- Re-merged via merge_sop.py → final PDF: 31 pages, 351.6 KB (was 30 pages / 346.5 KB in v2.4; +1 page for restructured §1.4(b) dual-pathway content).
+- Ran pdf_qa.py: **13 PASS, 0 WARN — ALL CHECKS PASSED**.
+- Verified content via pdftotext:
+  - §1.4(b) QP Credentialing Requirements heading renders correctly
+  - "Pathway 1 — Master's Degree plus Recognized NC Credential." sub-heading present
+  - "Pathway 2 — Bachelor's Degree plus Supervised Experience." sub-heading present
+  - "two acceptable QP pathways" phrase present
+  - "bachelor's degree in a human services field from an accredited institution, plus two years of full-time, pre- or post-bachelor's supervised experience" — Pathway 2 language rendered correctly
+  - §2.2 QP bullet now lists both pathways
+  - Form 6 acknowledgment updated with dual-pathway acknowledgment
+  - 42 self-references (11 SOPs + 21 protocols + 9 forms + version history) ✓
+
+Stage Summary:
+- Final deliverable: /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.5_RMDM-Compliant.pdf (31 pages, 351.6 KB, Rev. 2.5 RMDM-Compliant + E-Sig + Org-Clarification + Scheduling-Refinement + QP-Credentialing-Dual-Pathway).
+- LATEST pointer updated: /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_LATEST.pdf (byte-for-byte copy of v2.5).
+- v2.0 through v2.4 files preserved as immutable history per versioning policy.
+- Correct regulatory answer is now codified: TWO QP pathways per 10A NCAC 27G .0104 — Pathway 1 (master's + credential + 1yr post-master's supervised) OR Pathway 2 (bachelor's + 2yr pre/post-bachelor's supervised MH/DD/SA). A QP is NOT required to hold a full unrestricted clinical license.
+- All QA checks pass (13 PASS / 0 WARN).
+- Persistent artifacts updated:
+  - /home/z/my-project/scripts/sop_content_v2.py — §1.4(b) restructured into Pathway 1 / Pathway 2 / Common Requirements; §2.2 QP bullet updated
+  - /home/z/my-project/scripts/sop_content_v2_part3.py — v2.5 Version History row + Form 6 acknowledgment updated
+  - /home/z/my-project/scripts/generate_sop.py — SELF_REF/DOC_TITLE_SHORT/TOC intro/subject updated
+  - /home/z/my-project/scripts/sop_cover.html — Effective Date + footer updated
+  - /home/z/my-project/scripts/merge_sop.py — MANUAL_VERSION = '2.5'

@@ -106,29 +106,49 @@ def build_part1():
     story.append(Paragraph('<b>1.4(b) QP Credentialing Requirements.</b>', s_h2))
     story.append(para(
         'The Qualified Professional (QP) for this facility must meet the credentialing '
-        'requirements of <b>10A NCAC 27G .0104</b>. <b>A QP is not required to hold a '
-        'full, unrestricted clinical license</b>; however, a bachelor\'s degree alone '
-        'is <b>not</b> sufficient. At a minimum, the QP must hold (a) a <b>master\'s '
-        'degree in a human services field</b> from an accredited institution, plus '
-        '(b) one of the following North Carolina credentials: (i) a <b>full clinical '
-        'license</b> — LCSW, LPC, LMFT, Licensed Psychologist, Licensed Psychological '
-        'Associate, or psychiatrist (MD/DO); (ii) an <b>associate or provisional '
-        'license</b> — LCSW-A (Associate), LPC-A (Associate), LMFT-A (Associate), or '
-        'LCAS-P (Provisional); (iii) a recognized <b>certification</b> — LCAS (Licensed '
-        'Clinical Addiction Specialist), CCS (Certified Clinical Supervisor) with a '
-        'master\'s degree, or CMSW (Certified Master Social Worker); or (iv) for the '
-        'nursing discipline, a <b>Clinical Nurse Specialist (CNS)</b> or <b>Nurse '
-        'Practitioner (NP)</b> with psychiatric/mental health certification. In '
-        'addition, the QP must have at least <b>one year of full-time, post-master\'s '
-        'supervised experience</b> in the delivery of mental health, developmental '
-        'disabilities, or substance abuse services to the population served. The QP '
-        'must also complete the <b>NC-DHHS-required QP training modules</b> prior to '
-        'independent practice (or be enrolled and complete them within the '
-        'probationary period). The facility shall verify and retain documentation of '
-        'the QP\'s degree, current credential, supervised-experience hours, and QP '
-        'training completion in the personnel file (§2.5). The QP is responsible for '
-        'maintaining active credential status and reporting any lapse, sanction, or '
-        'restriction to the Clinical Director within one business day.'
+        'requirements of <b>10A NCAC 27G .0104</b>. A QP is not required to hold a '
+        'full, unrestricted clinical license. There are <b>two acceptable QP pathways</b> '
+        'as set out below; either pathway satisfies the QP definition for this facility.'
+    ))
+    story.append(Paragraph('<b>Pathway 1 — Master\'s Degree plus Recognized NC Credential.</b>', s_h2))
+    story.append(para(
+        'A master\'s degree in a human services field from an accredited institution, '
+        'plus <b>at least one year of full-time, post-master\'s supervised experience</b> '
+        'in the delivery of mental health, developmental disabilities, or substance abuse '
+        'services to the population served, plus one of the following North Carolina '
+        'credentials: (i) a <b>full clinical license</b> — LCSW, LPC, LMFT, Licensed '
+        'Psychologist, Licensed Psychological Associate, or psychiatrist (MD/DO); '
+        '(ii) an <b>associate or provisional license</b> — LCSW-A (Associate), LPC-A '
+        '(Associate), LMFT-A (Associate), or LCAS-P (Provisional); (iii) a recognized '
+        '<b>certification</b> — LCAS (Licensed Clinical Addiction Specialist), CCS '
+        '(Certified Clinical Supervisor) with a master\'s degree, or CMSW (Certified '
+        'Master Social Worker); or (iv) for the nursing discipline, a <b>Clinical Nurse '
+        'Specialist (CNS)</b> or <b>Nurse Practitioner (NP)</b> with psychiatric/mental '
+        'health certification.'
+    ))
+    story.append(Paragraph('<b>Pathway 2 — Bachelor\'s Degree plus Supervised Experience.</b>', s_h2))
+    story.append(para(
+        'A <b>bachelor\'s degree in a human services field</b> from an accredited '
+        'institution, plus <b>two years of full-time, pre- or post-bachelor\'s supervised '
+        'experience in the delivery of mental health, developmental disabilities, or '
+        'substance abuse (MH/DD/SA) services</b> to the population served. The supervised '
+        'experience must be documented by the supervising QP and verifiable upon request. '
+        'A bachelor\'s-degree-level QP operating under Pathway 2 is not required to hold '
+        'an NC clinical license, but must complete the NC-DHHS-required QP training '
+        'modules and must practice under the clinical supervision of a Pathway 1 QP (or '
+        'the Clinical Director) until such training is completed.'
+    ))
+    story.append(Paragraph('<b>Common Requirements (Both Pathways).</b>', s_h2))
+    story.append(para(
+        'Regardless of pathway, every QP must: (a) complete the <b>NC-DHHS-required QP '
+        'training modules</b> prior to independent practice (or be enrolled and complete '
+        'them within the probationary period); (b) maintain active credential or '
+        'supervised-experience documentation as applicable; (c) report any lapse, '
+        'sanction, restriction, or change in supervised-experience status to the Clinical '
+        'Director within one business day; and (d) have all verification documents '
+        '(degree, credential, supervised-experience hours, QP training completion) '
+        'retained in the personnel file (§2.5). The facility shall verify and document '
+        'which pathway each QP meets at hire and re-verify annually.'
     ))
     story.append(Paragraph('<b>1.5 Data Reporting &amp; Consumer Data Warehouse (CDW).</b>', s_h2))
     story.append(para(
@@ -186,7 +206,7 @@ def build_part1():
     story.append(Spacer(1, 8))
     story.append(Paragraph('<b>2.2 Staff Qualifications.</b>', s_h2))
     story.extend(bullets([
-        '<b>QPs:</b> Master\'s degree in a human services field plus a recognized NC credential (full license, associate/provisional license, certification, or psychiatric nursing credential) and at least one year of full-time, post-master\'s supervised experience per §1.4(b) and 10A NCAC 27G .0104. A bachelor\'s degree alone is not sufficient. NC-DHHS QP training modules must be completed prior to independent practice.',
+        '<b>QPs:</b> Meet one of two pathways per §1.4(b) and 10A NCAC 27G .0104 — <b>Pathway 1:</b> master\'s degree in a human services field plus a recognized NC credential (full license, associate/provisional license, certification, or psychiatric nursing credential) plus at least one year of full-time, post-master\'s supervised MH/DD/SA experience; OR <b>Pathway 2:</b> bachelor\'s degree in a human services field plus two years of full-time, pre- or post-bachelor\'s supervised MH/DD/SA experience. Both pathways require NC-DHHS QP training modules prior to independent practice.',
         '<b>APs:</b> Bachelor\'s in human services with at least one year of relevant experience.',
         '<b>Direct Care Professionals (DCPs):</b> High school diploma or GED with at least one year of mental health experience.',
     ]))
