@@ -68,11 +68,39 @@ def build_part1():
     ))
     story.append(para(
         '<b>1.4 Organizational Structure.</b> The Executive Director holds overall authority '
-        'and accountability. The Qualified Professional (QP) serves as Clinical Director, '
-        'responsible for clinical services, assessments, PCPs, and supervision of Associate '
-        'Professionals (APs) and Direct Care Professionals (DCPs). An On-Call QP is available '
-        '24/7/365 for clinical decision-making. All staff report incidents, concerns, and '
-        'operational needs through the documented chain of command.'
+        'and accountability. The <b>Clinical Director</b> is a licensed clinical professional '
+        'with overall responsibility for the clinical program, including setting the clinical '
+        'vision, approving clinical policies, and providing direction to clinical leadership. '
+        'The <b>Qualified Professional (QP)</b> reports to the Clinical Director and is '
+        'responsible for clinical services, assessments, PCPs, and day-to-day supervision of '
+        'Associate Professionals (APs) and Direct Care Professionals (DCPs) <b>according to '
+        'the direction of the Clinical Director</b>. The QP supervises staff in accordance '
+        'with the Clinical Director\'s clinical guidance, programmatic priorities, and '
+        'performance expectations, and shall escalate clinical concerns, staffing issues, '
+        'and quality-of-care matters to the Clinical Director in a timely manner. An On-Call '
+        'QP is available 24/7/365 for clinical decision-making. All staff report incidents, '
+        'concerns, and operational needs through the documented chain of command.'
+    ))
+    story.append(Paragraph('<b>1.4(a) QP Compliance Reporting to the Clinical Director.</b>', s_h2))
+    story.append(para(
+        'In addition to clinical supervision, the QP shall provide <b>compliance reports</b> '
+        'to the Clinical Director on a recurring basis, ensuring the Clinical Director has '
+        'timely visibility into the facility\'s regulatory and documentation posture. These '
+        'reports include: (a) <b>monthly</b> summaries of service-note audit findings, late '
+        'entries, and alterations (per §10.1, §10.3, §10.5); (b) <b>monthly</b> IRIS '
+        'incident-report status including any restraint events, restrictive interventions, '
+        'and follow-up actions completed (per §5.4, §8); (c) <b>quarterly</b> Clinical Record '
+        'Content Checklist audit results using Form 8, with corrective-action plans for any '
+        'deficiencies; (d) <b>quarterly</b> Accounting of Disclosures review using Form 9, '
+        'including any 42 CFR Part 2 disclosures; (e) <b>quarterly</b> personnel-file audit '
+        'results, sanctions reviews, and training-completion rates (per §2.5); (f) '
+        '<b>annual</b> review of the electronic-signature safeguards in §10.7(a), conducted '
+        'jointly with the IT vendor; and (g) <b>ad-hoc</b> immediate reporting of any '
+        'reportable breach, complaint, licensing visit, or Medicaid audit. The Clinical '
+        'Director reviews each report, signs acknowledgment, and directs corrective action '
+        'as needed. The QP retains all compliance reports and Clinical Director '
+        'acknowledgments in the facility compliance binder for the full record-retention '
+        'period specified in §1.6.'
     ))
     story.append(Paragraph('<b>1.5 Data Reporting &amp; Consumer Data Warehouse (CDW).</b>', s_h2))
     story.append(para(

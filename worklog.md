@@ -257,3 +257,60 @@ Stage Summary:
   - /home/z/my-project/scripts/generate_sop.py — SELF_REF/DOC_TITLE_SHORT/TOC intro/subject/keywords updated
   - /home/z/my-project/scripts/sop_cover.html — Effective Date, Regulatory Framework, footer updated
   - /home/z/my-project/scripts/merge_sop.py — MANUAL_VERSION = '2.1'
+
+---
+Task ID: SOP-7
+Agent: main (Super Z)
+Task: Organizational clarification — QP supervises staff according to the direction of the Clinical Director and provides compliance reports to the Clinical Director.
+
+Work Log:
+- Reviewed §1.4 Organizational Structure in sop_content_v2.py — original text conflated QP and Clinical Director as a single role ("The Qualified Professional (QP) serves as Clinical Director, responsible for clinical services, assessments, PCPs, and supervision of Associate Professionals (APs) and Direct Care Professionals (DCPs)"). User clarification requires these to be SEPARATE roles with the QP reporting to the Clinical Director.
+- Searched all content modules for "Clinical Director" — only one occurrence (§1.4). Single-point edit; no downstream protocol/form references needed updating for the role separation.
+- Rewrote §1.4 Organizational Structure to:
+  - Introduce the Clinical Director as a separate licensed clinical professional with overall clinical-program responsibility (clinical vision, clinical policy approval, providing direction to clinical leadership).
+  - Recast the QP as reporting to the Clinical Director, retaining responsibility for clinical services, assessments, PCPs, and day-to-day AP/DCP supervision, but explicitly "according to the direction of the Clinical Director".
+  - Add escalation language: QP escalates clinical concerns, staffing issues, and quality-of-care matters to the Clinical Director in a timely manner.
+  - Preserved existing On-Call QP and chain-of-command language.
+- Added new §1.4(a) QP Compliance Reporting to the Clinical Director — seven recurring report types:
+  (a) monthly service-note audit summaries (per §10.1, §10.3, §10.5);
+  (b) monthly IRIS incident-report status including restraint events and restrictive interventions (per §5.4, §8);
+  (c) quarterly Clinical Record Content Checklist audit results using Form 8 with corrective-action plans;
+  (d) quarterly Accounting of Disclosures review using Form 9, including 42 CFR Part 2 disclosures;
+  (e) quarterly personnel-file audits, sanctions reviews, training-completion rates (per §2.5);
+  (f) annual electronic-signature safeguard review (per §10.7(a)), conducted jointly with the IT vendor;
+  (g) ad-hoc immediate reporting of reportable breaches, complaints, licensing visits, or Medicaid audits.
+  Clinical Director reviews and signs each report acknowledgment and directs corrective action. QP retains all compliance reports and Clinical Director acknowledgments in the facility compliance binder for the full §1.6 retention period.
+- Bumped manual to Rev. 2.2 across generate_sop.py:
+  - SELF_REF: "Rev. 2.1" → "Rev. 2.2"
+  - DOC_TITLE_SHORT: "Rev. 2.1" → "Rev. 2.2"
+  - PDF subject metadata: "Rev. 2.1" → "Rev. 2.2"
+  - TOC intro paragraph rewritten to mention Rev. 2.1 §10.7 history AND the Rev. 2.2 §1.4/§1.4(a) organizational clarification.
+- Updated sop_cover.html:
+  - Effective Date meta-value: "Version 2.1 (RMDM-Compliant)" → "Version 2.2 (RMDM-Compliant)"
+  - Footer right: "Doc. WSI-SOP-001 · Rev. 2.1" → "Doc. WSI-SOP-001 · Rev. 2.2"
+- Updated sop_content_v2_part3.py:
+  - Added v2.2 row to Version History table with full summary of §1.4 rewrite and §1.4(a) compliance reporting schedule (7 report types).
+  - Updated Form 6 Employee SOP Acknowledgment language to Rev. 2.2 and added explicit acknowledgment of the QP→Clinical Director supervision and compliance-reporting relationship defined in §1.4 and §1.4(a).
+- Bumped MANUAL_VERSION = '2.2' in merge_sop.py — new versioned filename Well_Spring_Intervention_SOP_Manual_v2.2_RMDM-Compliant.pdf (v2.1 file preserved as immutable history).
+- Re-rendered cover via html2poster.js → 165.4 KB.
+- Regenerated body via generate_sop.py — no errors.
+- Re-merged via merge_sop.py → final PDF: 29 pages, 343.2 KB (was 28 pages / 340.0 KB in v2.1; +1 page for §1.4(a) compliance reporting content).
+- Ran pdf_qa.py: **13 PASS, 0 WARN — ALL CHECKS PASSED**.
+- Verified content via pdftotext:
+  - §1.4 Organizational Structure, §1.4(a) QP Compliance Reporting to the Clinical Director — render correctly
+  - "QP supervises staff according to the direction of the Clinical Director" — present in body and Form 6 acknowledgment
+  - 42 self-references (11 SOPs + 21 protocols + 9 forms + version history) ✓
+  - 73 "Rev. 2.2" mentions ✓
+
+Stage Summary:
+- Final deliverable: /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.2_RMDM-Compliant.pdf (29 pages, 343.2 KB, Rev. 2.2 RMDM-Compliant + E-Sig + Org-Clarification).
+- LATEST pointer updated: /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_LATEST.pdf (byte-for-byte copy of v2.2).
+- v2.0 and v2.1 files preserved as immutable history per versioning policy.
+- §1.4 now establishes the QP as reporting to the Clinical Director, supervising staff per the Clinical Director's direction. New §1.4(a) defines a seven-type recurring compliance reporting cadence (monthly/quarterly/annual/ad-hoc) with Clinical Director sign-off and full retention-period recordkeeping.
+- All QA checks pass (13 PASS / 0 WARN).
+- Persistent artifacts updated:
+  - /home/z/my-project/scripts/sop_content_v2.py — §1.4 rewritten, §1.4(a) added
+  - /home/z/my-project/scripts/sop_content_v2_part3.py — v2.2 Version History row + Form 6 acknowledgment updated
+  - /home/z/my-project/scripts/generate_sop.py — SELF_REF/DOC_TITLE_SHORT/TOC intro/subject updated
+  - /home/z/my-project/scripts/sop_cover.html — Effective Date + footer updated
+  - /home/z/my-project/scripts/merge_sop.py — MANUAL_VERSION = '2.2'
