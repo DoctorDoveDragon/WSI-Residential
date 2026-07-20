@@ -1,0 +1,704 @@
+# WELL SPRING INTERVENTION LLC
+## STANDARD OPERATING PROCEDURES MANUAL
+### Level 3 Supervised Residential Group Home
+
+**Population Served:** Children & Adolescents — MH / Behavioral Challenges  
+**Service Type:** Level 3 Supervised Residential Group Home  
+**Effective Date:** July 2026 · Version 2.0 (RMDM Compliant)  
+**Owner:** Executive Director & Qualified Professional (QP)
+
+---
+
+## TABLE OF CONTENTS
+
+### Sections
+1. Agency Overview & Governance  
+2. Human Resources & Staffing Requirements  
+3. Admissions, Discharges, and Transition Planning  
+4. Clinical Services, Assessments & Person-Centered Planning  
+5. Behavioral Management & Restraint  
+6. Health, Medication, & Nutrition Management  
+7. Education & Vocational Support  
+8. Incident Reporting & Response (Rule 108 / IRIS)  
+9. Facility, Safety, & Environmental Management  
+10. Medicaid Billing, Documentation Compliance & Record Management  
+11. Privacy, Security, Confidentiality & Access to Records  
+
+### Actionable Workflows & Protocols
+1. Admissions & Pending Record Protocol  
+2. Daily Direct Care Protocol (DCP)  
+3. Incident Response & IRIS Protocol  
+4. Behavioral Crisis & Restraint Protocol  
+5. Medication Administration Protocol  
+6. Medicaid Service Note & Documentation Protocol  
+7. AWOL / Missing Child Response  
+8. Suicide Risk & Self-Harm Management  
+9. Contraband & Room Search Protocol  
+10. PCP Implementation & Review  
+11. Transportation & Community Outing Safety  
+12. Grievance Process for Youth  
+13. Staffing Ratio & Awake Overnight Protocols  
+14. Medical Emergencies & Acute Illness Response  
+15. Educational Coordination & School Reintegration  
+16. Family Engagement, Visitation & Home Passes  
+17. Discharge & Transition Protocol  
+18. Infectious Disease & Bloodborne Pathogen Control  
+19. Emergency & Disaster Preparedness  
+20. Service Orders & Authorization Protocol  
+21. Record Management, Retention, Access & Disclosure Accounting  
+
+### Customized Forms & Logs
+1. Shift Change & Awake Night Watch Log  
+2. Contraband & Belongings Inventory  
+3. Physical Restraint & Debriefing Checklist  
+4. Home Pass & Medicaid Billing Exclusion Tracker  
+5. Emergency Drill & Environmental Safety Log  
+6. Employee SOP Acknowledgment  
+7. Full Service Note Template (Mandatory)  
+8. Comprehensive Clinical Record Content Checklist  
+9. Accounting of Disclosures Log  
+
+---
+
+## SECTION 1: AGENCY OVERVIEW & GOVERNANCE
+*Reference: 10A NCAC 27G .0100; NC Medicaid Managed Care Tailored Plan Requirements; RMDM Chapter 1*
+
+### 1.1 Mission Statement
+Well Spring Intervention LLC is dedicated to providing trauma-informed, high-quality supervised living environments for youth with severe emotional disturbances (SED), ensuring their safety and clinical growth. All staff actions, decisions, and interventions must align with this mission.
+
+### 1.2 Licensing & Credentialing
+The facility operates under a valid NC DHSR license (Level 3 Supervised Residential Group Home) and is credentialed as an In-Network Provider with the regional LME/MCO/Tailored Plan. The Executive Director maintains the original license on site and posts a current copy in a public area.
+
+### 1.3 Corporate Compliance
+Well Spring maintains a Corporate Compliance Plan to prevent Medicaid fraud, waste, and abuse. All staff receive compliance training upon hire and annually thereafter. The Compliance Officer receives reports, investigates concerns, and coordinates with the LME/MCO and Medicaid Fraud Investigations Unit. Retaliation against good-faith reporters is strictly prohibited.
+
+### 1.4 Organizational Structure
+- **Executive Director**: Overall authority and accountability.
+- **Qualified Professional (QP)**: Clinical Director, responsible for clinical services, assessments, PCPs, and supervising APs and Direct Care Professionals.
+- **On-Call QP**: 24/7/365 availability for clinical decision-making.
+- All staff report incidents, concerns, and operational needs through the documented chain of command.
+
+### 1.5 Data Reporting & Consumer Data Warehouse (CDW)
+*Reference: RMDM Chapter 1 – Data Reporting Requirements*
+- The facility shall enroll all eligible individuals in the CDW as required by DMH/DD/SUS.
+- The QP shall ensure termination/discharge from CDW is completed after 60 consecutive dates of no billable services.
+- Statistical data required by DHHS, the General Assembly, and federally funded programs shall be submitted per contractual requirements.
+- The QP shall maintain a log of CDW enrollment, updates, and terminations.
+
+### 1.6 Record Retention and Disposition
+*Reference: RMDM Chapter 1 – Record Retention and Disposition; APSM 10-5 / 10-6; 42 CFR Part 2; HIPAA*
+- **Clinical service records of minors**: Retained for **12 years after the minor has reached the age of majority (18 years)** – i.e., until age 30, or longer if required by law or pending litigation.
+- **Clinical service records of adults**: Retained for **11 years after the date of the last encounter**, or longer if required.
+- **Personnel and administrative records**: Retained per the DHHS Records Retention and Disposition Schedule.
+- **Incident reports and investigatory files**: Retained per DNCR / Division of Archives and Records requirements.
+- **Destruction of records not listed in a schedule**: Requires prior authorization from DMH/DD/SUS and the Division of Archives and Records via the "Request for Disposal of Unscheduled Records" form.
+- **Record abandonment**: Strictly prohibited. If abandonment is suspected, the facility shall notify the payor entity, relevant accrediting organizations, and DHHS, and shall cooperate fully with any investigation. Violations are subject to legal sanctions under HIPAA, 42 CFR Part 2, and NCGS.
+
+---
+
+## SECTION 2: HUMAN RESOURCES & STAFFING REQUIREMENTS
+*Reference: 10A NCAC 27G .0203 & .5600; NC Medicaid CCP 8C; RMDM Chapter 1*
+
+### 2.1 Staffing Ratios
+| Shift | Minimum Ratio | Status | Notes |
+| :--- | :--- | :--- | :--- |
+| Day (7a-3p) | 1 : 4 | Awake / On-site | May increase per PCP acuity |
+| Evening (3p-11p) | 1 : 4 | Awake / On-site | May increase per PCP acuity |
+| Overnight (11p-7a) | 1 : 8 | Awake (No sleeping) | 15-minute visual checks required |
+
+### 2.2 Staff Qualifications
+- **QPs**: Master's or Bachelor's degree in human services with required supervised experience; licensed or license-eligible.
+- **APs**: Bachelor's in human services with at least one year of relevant experience.
+- **Direct Care Professionals (DCPs)**: High school diploma or GED with at least one year of mental health experience.
+
+### 2.3 Background Checks (Prior to Unsupervised Contact)
+- NC SBI fingerprint criminal background check.
+- Health Care Personnel Registry check.
+- DSS Child Abuse and Neglect Registry check (every state of residence in prior 5 years).
+- Motor Vehicle Record (MVR) for staff who transport residents.
+- Re-checks completed annually and upon reasonable suspicion.
+
+### 2.4 Mandatory Training (Prior to Independent Duty; Annual Refreshers)
+- CPR / First Aid (annually)
+- NCI or CPI restraint and de-escalation (annually)
+- Medication Administration (RN-delegated, annually)
+- Bloodborne Pathogens (annually)
+- Trauma-Informed Care (annually)
+- Rule 108 incident reporting (annually)
+- Adolescent development, C-SSRS suicide risk assessment, and person-centered planning (orientation + quarterly)
+
+### 2.5 Personnel Records
+*Reference: RMDM Chapter 1 – Personnel Records*
+- Personnel files shall contain: position descriptions, education verification, licensure/credentials, continuing education/training records, clinical/administrative supervision documentation, supervision plans, sanctions reviews, and criminal background check results.
+- Records shall be retained per applicable retention schedules.
+
+---
+
+## SECTION 3: ADMISSIONS, DISCHARGES, AND TRANSITION PLANNING
+*Reference: 10A NCAC 27G .5604; NC Medicaid CCP 8C; RMDM Chapters 2 & 5*
+
+### 3.1 Admission Criteria
+The program serves youth with a primary MH/behavioral diagnosis requiring supervised living, medically stable, with needs safely met at Level 3. Exclusions: active psychosis requiring IVC, medical instability, or fire-setting that cannot be safely managed.
+
+### 3.2 Admission Process – Pending vs. Full Records
+*Reference: RMDM Chapter 2 – Types of Clinical Service Records*
+- Upon initial presentation for screening, a **Pending Record** is created. This contains initial screening information, consultation/administrative coordination, and court-ordered evaluations that do not yet result in active enrollment.
+- If the individual is enrolled in active services, the Pending Record shall be converted into a **Full Clinical Service Record** using the same record number. All pending documentation shall be merged.
+- **Day of Admission**: QP obtains signed consents (treatment, medication, transportation, ROI, photographs). DCP conducts respectful property search and secures medications. QP administers C-SSRS screening and documents immediate clinical status. RN visit within 72 hours.
+- **Pre-Admission Review**: QP reviews referral packet including CCA, medications, IEP, history of aggression/elopement/self-harm.
+
+### 3.3 Full Clinical Service Record – Required Elements
+*Reference: RMDM Chapter 2 – Full Clinical Service Records*
+Upon conversion to a Full Record, the chart must contain all applicable elements:
+
+| Category | Required Elements |
+| :--- | :--- |
+| **Consents** | Treatment consent; PCP consent; restrictive intervention consent; emergency care consent; HIPAA notice acknowledgement; third-party release; research consent (if applicable); ROI. |
+| **Demographics & Emergency** | Full name, record #, MID/unique ID, DOB, race, gender, address, phone, marital status, admission date, parent/guardian, discharge date; emergency contact, preferred physician, hospital preference; advance directives. |
+| **Health History** | Health history, risk factors; MH/IDD/SU diagnosis per DSM-5-TR / ICD-10; **medication allergies, other allergies, adverse reactions, and absence of known allergies**. |
+| **Medications & Labs** | Medication orders (including self-medicate); MAR; medication review/education; medication errors; lab orders/results. |
+| **Rights & Restrictive Interventions** | Written summary of rights (10A NCAC 27D .0201); documentation rights were explained; restrictive intervention notices/consents/approvals per 10A NCAC 27E .0104; documentation of rights restrictions per G.S. §122C-62(e); protective devices documentation. |
+| **Assessments** | CCA (by licensed professional); clinical level of functioning; screening/assessments; admission/eligibility assessments with reason, needs/strengths, diagnosis, social/family/medical history, mental status, recommendations. |
+| **Planning** | PCP (with MID); service plan; service order by approved signatory. |
+| **Discharge** | Discharge plan; discharge summary (reason, course/progress, condition, recommendations, final diagnoses, dated signatures). |
+| **Referrals / Service Notes / Incidents** | Referral info; service notes/grids; **incidents (filed separately; occurrence noted in record)**. |
+| **Disclosures & Legal** | Accounting of releases/disclosures; notice per G.S. §122C-52 through 122C-56; 42 CFR 2.22 summary for SUD; guardianship/POA; incoming/outgoing correspondence. |
+
+### 3.4 Discharge & Transition
+- Transition plan initiated at admission, reviewed every 30 days.
+- Discharge may be planned or unplanned.
+- **Discharge Summary** completed within **7 calendar days** (exceeds RMDM's 30-day requirement). Includes: reason for admission, course/progress, condition at discharge, recommendations, final diagnoses, dated signatures.
+- Medications transferred to guardian with signed transfer form; belongings inventoried.
+- Discharge summary provided to guardian, receiving provider, and LME/MCO.
+
+### 3.5 Administrative Closure
+*Reference: RMDM Chapter 2 – Administrative Closure of Clinical Service Records*
+- When a QP or clinician leaves employment without completing required discharge documentation for individuals meeting discharge criteria, the **supervisor** shall process the discharge.
+- Each administratively closed record shall be audited per entity policy to ensure all billed services are properly documented.
+- If audit reveals unmet documentation requirements, all services billed without proper documentation shall be adjusted back to the payor per 42 CFR 401.305.
+- Documentation of the administrative closure shall be placed in the service record.
+
+---
+
+## SECTION 4: CLINICAL SERVICES, ASSESSMENTS & PERSON-CENTERED PLANNING
+*Reference: 10A NCAC 27E.0300; NC Medicaid CCP 8C; RMDM Chapter 4*
+
+### 4.1 Comprehensive Clinical Assessment (CCA)
+*Reference: RMDM Chapter 4 – Required Elements of a CCA*
+- A CCA performed by a licensed professional (QP) is required **prior to service delivery**, except in crisis/emergency situations or when a current CCA (with no substantive change) is on file.
+- The CCA (or collective assessments) must contain all required elements:
+  1. Description of presenting problems, source of distress, precipitating events, associated symptoms.
+  2. Chronological general health, past trauma history, behavioral health history (MH/SU including tobacco), treatment history and response.
+  3. Current medications for medical, psychiatric, and SUD treatment; identification of past ineffective medications or significant side effects.
+  4. Review of biological, psychological, familial, social, developmental, and environmental dimensions identifying strengths, needs, and risks.
+  5. Evidence of beneficiary and LRP participation in the assessment.
+  6. Analysis and interpretation with appropriate case formulation.
+  7. **ASAM level of care determination** when a substance use disorder is present.
+  8. Diagnoses using DSM-5-TR (MH, SUD, IDD, physical health conditions, functional impairment).
+  9. Recommendations for additional assessments, services, supports, or treatment.
+  10. Dated signature of the licensed professional completing the assessment.
+- **For children/youth**: Address Child and Family Team involvement; if new to services, recommend a Child and Family Team meeting; assess strengths of child/youth and family (preferably with strengths-based tool); utilize IEPs and psychological testing reports if available.
+- **Reassessment**: Required when clinically indicated (new behaviors, unmet needs, annual PCP review, or if service definition requires). If reassessment results in diagnosis change, a written report is required. If refinement only, a clinical note is sufficient.
+
+### 4.2 Medical Necessity Determination
+*Reference: RMDM Chapter 5 – Medical Necessity*
+- Medical necessity is established by the QP (or licensed/certified professional) based on diagnostic criteria and established best practice guidelines.
+- The CCA and subsequent assessments shall support medical necessity for each service delivered.
+- Medical necessity must meet applicable Medicaid and State-funded policy requirements (NC Medicaid Behavioral Health CCPs; DMH/DD/SUS State-Funded Service Definitions).
+
+### 4.3 Person-Centered Plan (PCP) Development
+- Within **30 calendar days** of admission, the QP facilitates a PCP meeting including youth, guardian, LME/MCO representative, and other supports.
+- PCP documents strengths, needs, goals, specific interventions, and crisis plan.
+- Signed by all participants.
+- **Reviewed every 90 days** thereafter; addendums for significant clinical changes (new diagnosis, medication change, major incident, living arrangement change).
+- Staff implement PCP goals daily and document progress in shift notes. QP creates a "Staff Cheat Sheet" summarizing goals, triggers, and interventions for each youth. Staff sign the PCP Acknowledgment Form.
+
+### 4.4 Service Orders
+*Reference: RMDM Chapter 5 – Service Orders*
+- Service orders are required for all Medicaid and State-funded services that require them. The service order is indicated by the appropriate professional's signature on the PCP. If a separate format is used, a separate service order is required.
+- **Verbal Orders**: Treatment may proceed based on a verbal order. The verbal order must be documented in the service record on the date given, specifying the date, who gave the order, who received the order, and each distinct service ordered. Documentation must reflect why a verbal order was obtained in lieu of a written order. The appropriate professional must countersign the order with a dated signature **within 72 hours** of the verbal order.
+- The facility maintains a written policy (this SOP) defining what constitutes a service order and validation of medical necessity.
+
+### 4.5 Service Authorization
+*Reference: RMDM Chapter 5 – Service Authorization*
+- Requests for authorization are required prior to initiation or continuation of services as per State-funded service definitions, Medicaid CCPs, or authorizing entity's UM policy.
+- The facility shall notify the authorizing entity when an individual changes providers or ends a service. End-date reporting requirements must be followed.
+- Service authorizations and reauthorizations are not required to be maintained in the clinical record but shall be available for audit purposes if requested.
+
+---
+
+## SECTION 5: BEHAVIORAL MANAGEMENT & RESTRAINT
+*Reference: 10A NCAC 27G.0209; CMS Mental Health Parity Rules; RMDM Chapters 2 & 6*
+
+### 5.1 Philosophy
+Trauma-informed, positive behavioral interventions. Behavior is communication. Corporal punishment, withholding meals/sleep, social isolation as punishment, humiliation, and degradation are strictly prohibited and constitute reportable abuse.
+
+### 5.2 Behavioral Support Plan (BSP)
+Developed by QP within 14 calendar days of admission, based on FBA. Includes proactive strategies, replacement skills, de-escalation steps, and crisis responses. All staff review and sign the BSP Acknowledgment Form.
+
+### 5.3 Restraint
+**Absolute last resort.** Used only when youth is in imminent danger of serious harm to self or others and after less restrictive de-escalation fails. Mechanical, chemical, and seclusion are prohibited. Only NCI/CPI-trained staff may apply restraint, using least restrictive hold. **Prone (face-down) positions are prohibited.** Post-restraint medical check, debriefing, and guardian notification are required. All restraints are reported in IRIS.
+
+### 5.4 Restrictive Intervention Documentation
+*Reference: RMDM Chapter 2 – Restrictive Interventions*
+- Written notifications, consents, approvals, and other documentation per 10A NCAC 27E .0104(e)(9) are required whenever a restrictive intervention is used as a planned intervention.
+- Any planned restrictive interventions must be included in the youth's service plan per 10A NCAC 27E .0104(f).
+- Documentation in the service record must meet requirements of 10A NCAC 27E .0104(g)(2) and (g)(6), including rights restrictions (G.S. §122C-62(e)) and use of protective devices.
+
+---
+
+## SECTION 6: HEALTH, MEDICATION, & NUTRITION MANAGEMENT
+*Reference: RMDM Chapter 5 – Medical Examinations; RMDM Chapter 5 – TB Screening*
+
+### 6.1 Medical Care
+- Each resident has an identified PCP and psychiatrist upon admission.
+- Complete medical examination within 30 days of admission and annually thereafter.
+- Medical history (immunizations, allergies, current prescriptions) maintained and updated at every visit.
+- **Immunization compliance** for children documented per N.C.G.S. §130A-152.
+- Physician's directions for management of any identified medical conditions must be in the record.
+
+### 6.2 Tuberculosis (TB) Screening
+*Reference: RMDM Chapter 5 – TB Screening for SUD Block Grant Funds*
+- **Applicable if the facility receives SAPTBG funds for treatment services.**
+- Screenings must query: medical treatment in past 3 months; current residence (jail, streets, shelter, etc.); history of TB tests; physical symptoms (night sweats, prolonged cough, shortness of breath, unexplained weight loss).
+- Positive responses require referral to the local county health department or medical practitioner for follow-up testing and care.
+- Completed screening and follow-up documented in the service record.
+
+### 6.3 Medication Management
+- All medications stored in double-locked cabinet/cart. Controlled substances counted and documented at every shift change.
+- Medications administered only by RN-delegated staff who completed NC Medication Administration training.
+- Staff follow the "5 Rights" and document administration on the MAR **immediately** (never retrospectively).
+- Medication errors, refusals, and adverse reactions are reported to RN and QP immediately, documented on MAR, and entered into IRIS as required.
+
+### 6.4 Nutrition
+- Meals follow USDA guidelines. Special diets accommodated with provider documentation.
+- Menus posted and retained 30 days. Food never withheld as consequence.
+- Staff preparing food maintain current food handler certifications.
+
+---
+
+## SECTION 7: EDUCATION & VOCATIONAL SUPPORT
+*Reference: NC General Statutes; IDEA; RMDM Chapter 4*
+
+### 7.1 Education Coordination
+- QP serves as Education Liaison. Within 10 calendar days of admission, QP contacts LEA McKinney-Vento liaison and EC Director (if IEP) for enrollment, transportation, and service continuity.
+- QP signs ROI for school communication, attends all IEP meetings, tracks daily school attendance.
+- School refusal is treated as clinical issue addressed through PCP, not as behavioral violation.
+
+### 7.2 Vocational Support
+- For youth age 14+, PCP includes vocational and independent-living goals aligned with transition plan.
+- QP coordinates with Vocational Rehabilitation and community-based employment programs.
+
+---
+
+## SECTION 8: INCIDENT REPORTING & RESPONSE (RULE 108 / IRIS)
+*Reference: 10A NCAC 27T (Rule 108); RMDM Chapter 6*
+
+### 8.1 Reportable Incidents
+Death, serious injury, alleged abuse/neglect, sexual abuse allegations, use of physical restraint, AWOL/missing child, medication errors, suicidal ideation/self-harm, and any other event meeting regulatory definition.
+
+### 8.2 Reporting Timeframes
+- Staff notify On-Call QP **immediately** upon discovery.
+- QP enters IRIS report **within 24 hours** of discovery.
+- Allegations of abuse/neglect and missing child trigger **immediate (within 15 minutes)** notification to DSS and law enforcement as appropriate.
+- Guardian notified **within 1 hour** of incident discovery (unless compromising investigation).
+- Verbal notifications followed by written documentation.
+
+### 8.3 Investigations
+- Internal investigation initiated within 24 hours; completed within 14 calendar days.
+- Includes interviews, video review, documentation review, written narrative.
+- Corrective Action Plan (CAP) developed for systemic/individual performance issues and uploaded to IRIS.
+
+### 8.4 Incident Documentation – Separate Filing
+*Reference: RMDM Chapter 6 – Incident Reporting*
+- The occurrence of an incident shall be recorded in the service notes.
+- **The completed incident report shall NOT be referenced or filed in the clinical service record.** It shall be filed separately in administrative files.
+- All incident reports maintained per Records Retention and Disposition Schedule.
+
+---
+
+## SECTION 9: FACILITY, SAFETY, & ENVIRONMENTAL MANAGEMENT
+*Reference: 10A NCAC 27G.0600; NC Fire Code; RMDM Chapter 3*
+
+### 9.1 Environment
+- Safe, clean, home-like environment. Max 2 youth per bedroom; individual storage.
+- Indoor temperature: 68°F – 80°F. Hot water ≤ 120°F.
+- Daily safety inspections by DCP; weekly by QP. Hazards corrected immediately or escalated.
+
+### 9.2 Drills & Inspections
+- Monthly fire drills (target evacuation < 3 minutes).
+- Quarterly tornado drills (interior safe room).
+- Smoke detectors, fire extinguishers, sprinklers, CO detectors inspected monthly (staff) and annually (licensed contractors). Inspection records maintained on Environmental Safety Log (Form 5) for minimum 3 years.
+
+### 9.3 Hazardous Materials
+- Cleaning chemicals, sharps, tools, medications stored in locked areas.
+- Safety Data Sheets (SDS) maintained.
+- No weapons permitted on grounds.
+
+---
+
+## SECTION 10: MEDICAID BILLING, DOCUMENTATION COMPLIANCE & RECORD MANAGEMENT
+*Reference: NC Medicaid CCP 8C; CMS Documentation Guidelines; RMDM Chapter 6*
+
+### 10.1 Service Notes – General Requirements
+*Reference: RMDM Chapter 6 – Contents of a Full Service Note; Timelines*
+- Service notes are the supporting evidence of individual outcomes and must be individualized.
+- **Photocopying or repeating notes verbatim from a prior date or another individual's record is strictly prohibited.**
+- **When referencing another individual**, use initials, record number, or role (e.g., "sibling") rather than full name unless clinically pertinent and reviewed prior to release.
+- **Timelines**:
+  - **Facility-based services** (this program): document at time of service or **within 1 standard business day (not to exceed 24 hours)**.
+  - **Late entries**: defined as entries after the required timeframe. Must be marked "Late Entry" with the date of entry and the date the service was provided. E.g., "Late Entry made on 7/15/26 for service provided on 7/10/26." Requires dated signature.
+  - **Billing limit**: Entries exceeding the established timeline can only be billed up to **7 business days** beyond the service date. After 7 days, the note is not billable.
+
+### 10.2 Full Service Note – Required Content
+Every shift/service note must include:
+1. **Name** of the individual receiving the service (on each page).
+2. **Service Record Number** issued by the payor along with the **Medicaid Identification Number (MID)** (as applicable), or unique identifier issued by the entity.
+3. **Full date** the service was provided (month/day/year).
+4. **Name of the service** provided.
+5. **Type of contact**: (In person, Telehealth, Telephonic, Collateral).
+6. **Place of service**.
+7. **Purpose** of the contact (tied to specific goals in the PCP/ISP).
+8. **Description of the interventions, treatment, and support provided** (must be specific and individualized).
+9. **Duration**: Total amount of time spent performing the service that must include active engagement of the individual. **For this residential per diem service**, the total time is not required for billing, but interventions must accurately reflect treatment for the event/per diem. The facility may opt to reflect time in/out but it is not required.
+10. **Effectiveness** of the intervention(s) and the **individual's response/progress** toward goal(s).
+11. **Authentication**: Electronic signature date stamp and credentials (or handwritten signature with date and credentials). **Use of cursive font in a Word document is NOT a valid electronic signature.** Pre- or post-dating signatures is prohibited.
+12. Additional requirements per Medicaid CCP or State-funded service definition.
+
+**Program, Intervention, and Evaluation (PIE) elements** are part of the full service note. All required elements must be included for billing and audit purposes.
+
+### 10.3 Shift Notes (Twenty-Four-Hour Services)
+*Reference: RMDM Chapter 6 – Twenty-Four Hour Services*
+- For 24-hour facilities, there must be a note for each shift, and **coverage hours for each shift must be clearly identified** in each note.
+- If no intervention occurs (e.g., youth asleep or at school), the shift note shall reflect the care, oversight, support, and non-treatment events during the shift.
+- When more than one staff person is providing services for a shift, **only one staff is required to document and sign the shift note**. The note must **identify the names and titles/positions of other staff persons present** to demonstrate staffing ratios are met.
+
+### 10.4 Modified Service Notes & Grids
+*Reference: RMDM Chapter 6 – Services Utilizing a Modified Service Note; Services Utilizing a Grid*
+- **Modified notes** may be used only for services where explicitly allowed in CCP/State Service Definitions (e.g., Respite). Modified notes must include: Name, Service Record #/MID/Unique ID, Service provided, Date, Duration, Goal addressed/tasks performed, Full dated signature/credentials (or initials if full signature is on the page).
+- **Grids** may be used only for specified services (e.g., Residential Supports – NC Innovations, Respite). Grids must include: Name, Service Record #/MID/Unique ID, Service, Date, Duration, Goals/Interventions, Full dated signature/credentials (or initials if full signature is on the page). For NC Innovations, grids must include intervention key, progress key, and a comment section with dated entries.
+- **This facility will primarily use full shift notes**. If using grids for Respite, the grid must meet all requirements above.
+
+### 10.5 Alterations to Service Documentation
+*Reference: RMDM Chapter 6 – Alterations to Service Documentation*
+- Original entry must not be deleted or altered so it is not clearly legible in its original context.
+- Corrections must be made by the person who initially authored the entry with an explanation of the correction. If not possible, the person updating the documentation must reflect the needed change and the rationale.
+- Any change must be **signed and dated**.
+- The revised/corrected entry must be in proximity to the original entry.
+- EHR systems with tracked changes and timestamps satisfy these guidelines.
+- **Alterations exceeding 7 business days beyond the service date are not billable.**
+
+### 10.6 Authenticating Service Documentation
+*Reference: RMDM Chapter 6 – Authenticating Service Documentation*
+- All entries validated via signature (EHR or paper) with signature date, credentials, degree, licensure, and/or title.
+- **Initials are only permitted** for updates/corrections or for notations entered on a service grid (where full signature is noted on the grid signifying appropriate initials).
+- **Pre- or post-dating signatures in any form is prohibited.**
+- **ADA Accommodations**: If an individual has a documented medical/physical reason (per ADA) for not being able to sign, another means for providing signature is acceptable. The process must be incorporated in facility policy.
+- **Unavailable Original Author**: If the original author is no longer available to sign or amend an entry, a notation reflecting this shall be documented in the record and signed/dated by the appropriate party.
+- **Rubber Stamps**: Only used for medical/physical reasons with ADA accommodations. If unable to use stamp, the individual may authorize someone of their choosing in writing.
+
+### 10.7 Service Authorizations & End-Date Reporting
+*Reference: RMDM Chapter 5 – Service Authorization*
+- The facility shall maintain service authorizations/reauthorizations in a separate audit file (not required in clinical record but available upon request).
+- When a youth changes providers or ends a service, the facility must notify the authorizing entity per their specified protocol.
+- End-date reporting shall follow the authorizing entity's requirements.
+
+### 10.8 Billing
+- The program bills Medicaid on a daily per diem.
+- Billing suspended for any day the youth is hospitalized, detained, or on a home pass exceeding **24 consecutive hours**.
+- The Home Pass & Medicaid Billing Exclusion Tracker (Form 4) documents all absences and corresponding billing action.
+- Billing errors corrected promptly and reported to LME/MCO as required.
+
+---
+
+## SECTION 11: PRIVACY, SECURITY, CONFIDENTIALITY & ACCESS TO RECORDS
+*Reference: RMDM Chapter 3; HIPAA Privacy/Security Rule; 42 CFR Part 2; HITECH Act; NCGS §122C-52 through 122C-56*
+
+### 11.1 Privacy and Security Policies
+- The facility shall maintain comprehensive policies addressing how information is recorded, stored, retrieved, disseminated, and protected against loss, theft, destruction, unauthorized access (breach), and natural disasters.
+- Compliance with HIPAA Privacy and Security Rules, Omnibus HIPAA final rule, HITECH Act, and ARRA is mandatory.
+- Policies shall address electronic communication (email, voice messaging, SMS/text speak, EHR usage).
+- Where multiple requirements exist, the **most stringent** applies, including professional code of ethics.
+
+### 11.2 Safeguards
+- Formal policies and procedures to reasonably protect against unauthorized uses/disclosures of PHI and to protect against reasonably anticipated threats/hazards (42 CFR § 2.16).
+- Secure storage: locked, climate-controlled areas with limited access; electronic records backed up daily and stored securely off-site.
+
+### 11.3 Confidentiality
+- Compliance with NCGS §122C-51 through 122C-56; 10A NCAC 26B; **42 CFR Part 2** (Confidentiality of Alcohol and Drug Abuse Patient Records); and NCGS §130A-143 (AIDS/related conditions).
+- **Substance Use Information**: Requires the individual's written authorization before disclosure to other treatment providers (unless court order or allowable exception per 42 CFR Part 2). Absent written consent, entities must redact all identifying information from alcohol/drug records when sharing.
+- **Care Coordination Exceptions**: Under HIPAA and NCGS §122C-55(a), entities may share confidential information for coordination of care/treatment without written consent (requirements of NCGS §122C-55(a)7 apply). However, 42 CFR Part 2 still requires written authorization for SUD records.
+
+### 11.4 Disclosure Documentation and Accounting
+*Reference: RMDM Chapter 3 – Documentation Requirements when Disclosing Information*
+- Authorization must be in writing, voluntary, and informed (understanding what is exchanged, with whom, and for what purpose).
+- Verify identity of person requesting PHI; obtain required documentation/representations per Omnibus HIPAA rules.
+- Apply the **minimum necessary** standard (164.502(b)).
+- **Accounting of Disclosures** must be maintained for a minimum of **six years**. The accounting must include:
+  - Name of the individual
+  - Medical record or ID number
+  - Date the information was released/disclosed
+  - Provider/entity/agency/individual to whom information was released
+  - Purpose of the release/disclosure
+  - Description of specific information released/disclosed
+  - Name of person disclosing the information (recommended)
+- All disclosures or re-disclosures of SUD treatment information must comply with 42 CFR Part 2. Re-disclosure is prohibited except per NCGS §122C-53 through 122C-56.
+- Releases/disclosures from external entities must be contained in the individual's service record.
+
+### 11.5 Individual Access to Service Records
+*Reference: RMDM Chapter 3 – Individual Access to Service Records*
+- Individuals and LRPs have the right to access information contained in their service record, per NCGS and DHHS provisions.
+- **Limited Access**: If access is restricted, proper justification for restricting access must be clearly indicated in the service record. Individuals have the right to appeal such determination.
+- Refer to Article 3, Part 1 (Client Rights), Omnibus HIPAA Final Rule, and DHHS Privacy/Security policies.
+
+### 11.6 Transporting Records
+*Reference: RMDM Chapter 3 – Transporting Records*
+- Service records shall only be transported by designated individuals (hard copy, USB, tablet, CPU, etc.).
+- When removed from premises, records shall be secured in a locked compartment and protected from unauthorized access.
+- Policy must address what occurs if information is lost or stolen during transport.
+
+### 11.7 Storage and Maintenance
+- Consistent with privacy/security principles. Electronic records self-warranty per NC State Archives guidelines. Managing Public Records Produced by Information Technology Systems guidelines apply.
+
+---
+
+## ACTIONABLE WORKFLOWS & PROTOCOLS
+
+### Protocol 1: Admissions & Pending Record Protocol
+1. **Pre-Admission**: QP reviews referral packet, verifies active Medicaid, schedules tour.
+2. **Pending Record Creation**: If individual presents for screening but not immediately enrolled, create a Pending Record with screening/consultation info.
+3. **Day of Admission**:
+   - QP obtains all signed consents (treatment, medication, transportation, ROI, photos).
+   - DCP conducts respectful property search and secures medications.
+   - QP administers C-SSRS and documents clinical status.
+   - Convert Pending Record to Full Clinical Record (merge all documentation).
+4. **Post-Admission**: RN visits within 72 hours. PCP meeting scheduled within 30 days.
+
+### Protocol 2: Daily Direct Care Protocol (DCP)
+- **Day Shift (7a-3p)**: Shift change handoff; controlled-substance count; wake youth (15-min checks); breakfast/AM meds; school transportation; chores.
+- **Evening Shift (3p-11p)**: Shift change; therapy/clinical groups; chores; dinner/PM meds; free time; hygiene; 10:00 PM bedtime.
+- **Night Shift (11p-7a)**: Shift change; med count; **15-minute line-of-sight room checks** documented on Night Watch Log; **Awake at all times – no sleeping**.
+
+### Protocol 3: Incident Response & IRIS Protocol
+1. **Immediate**: Ensure scene safety; call 911 if emergency; notify On-Call QP immediately.
+2. **Notifications**: DSS immediately for abuse allegations; Guardian within 1 hour; LME/MCO per their requirements.
+3. **Reporting**: QP enters IRIS report within 24 hours with objective narrative.
+4. **Investigation**: QP completes internal investigation within 14 days; uploads findings and CAP to IRIS.
+
+### Protocol 4: Behavioral Crisis & Restraint Protocol
+- **Tier 1 – De-escalation**: BSP coping skills (sensory, breaks, redirection, environment change).
+- **Tier 2 – Crisis**: Clear area; staff backup; NCI/CPI verbal continuum; physical distancing.
+- **Tier 3 – Restraint**: Only for imminent serious harm. Apply NCI hold; **never prone, mechanical, or chemical**. End the moment danger passes.
+- **Post-Restraint**: Medical check within 1 hour; Guardian within 1 hour; Debrief within 24 hours; File IRIS.
+
+### Protocol 5: Medication Administration Protocol
+1. **Prep**: Wash hands; unlock cart; verify 5 Rights against MAR.
+2. **Administer**: Verify identity; pour into labeled cup; observe swallowing; check mouth for "checking".
+3. **Document**: Initial MAR **immediately**. Circle "R" if refused; notify RN/QP.
+4. **Errors**: Stop; isolate remaining meds; call RN/Psych; monitor; file IRIS; notify guardian.
+
+### Protocol 6: Medicaid Service Note & Documentation Protocol
+*Reference: RMDM Chapter 6 – Contents of a Full Service Note*
+1. Write the shift note **by end of shift**. No backdating.
+2. **Mandatory Fields**:
+   - Youth Name & Service Record # / MID.
+   - Full Date & Place of Service.
+   - Name of Service & Type of Contact (in-person, collateral, etc.).
+   - Purpose (ISP Goal # referenced).
+   - Objective Description of Interventions (factual, specific).
+   - Duration (for time-based services; for per diem, indicate shift coverage hours).
+   - Effectiveness & Youth Response/Progress.
+   - Full Signature with Credentials and Date.
+3. **Shift Notes**: Identify coverage hours and names of all staff present for ratios.
+4. **Late Entries**: Mark "Late Entry made on [date] for service on [date]" if after 24 hours.
+5. **Alterations**: Correct with explanation, signed/dated; never obscure original.
+6. Billing suspended for any day youth away >24 hours.
+
+### Protocol 7: AWOL / Missing Child Response
+1. Call staff code; search immediate area; check cameras.
+2. **Notifications (within 15-30 min)**: Law enforcement; guardian; LME/MCO; DSS (if applicable).
+3. File IRIS within 24 hours.
+4. **Return**: Medical check; contraband search; trauma-informed debriefing; notify all parties.
+
+### Protocol 8: Suicide Risk & Self-Harm Management
+- **Screening**: C-SSRS at admission and immediately upon threats/self-harm.
+- **Safety**: Remove hazards (ligatures, sharps, cords); implement 1:1 line-of-sight supervision.
+- **Clinical**: QP assesses within 1 hour. If imminent: call 911 or initiate IVC. If moderate: update Safety Plan; increase supervision.
+- **Documentation**: File IRIS; staff sign updated Safety Plan; acknowledge increased supervision level.
+
+### Protocol 9: Contraband & Room Search Protocol
+- **Definition**: Weapons, drugs, unauthorized meds, lighters, frayed chargers, prohibited items.
+- **Routine**: At admission and return from passes. Youth must be present.
+- **Probable Cause**: Requires QP approval; two staff present; document basis.
+- **Execution**: Systematic search. Safe items locked in safe (returned at discharge); illegal items turned over to law enforcement.
+
+### Protocol 10: PCP Implementation & Review
+- **Development (30 Days)**: QP schedules meeting with team; drafts measurable, individualized goals.
+- **Operationalize**: QP creates "Staff Cheat Sheet" summarizing goals, triggers, interventions. Staff sign PCP Acknowledgment Form.
+- **90-Day Review**: QP tracks expirations; schedules reviews; updates progress; obtains signatures; addendums for significant changes.
+
+### Protocol 11: Transportation & Community Outing Safety
+- **Driver Prep**: Valid license, clean MVR; daily vehicle safety checklist; first-aid kit; Medicaid cards.
+- **Transport**: Headcount before leaving and upon return; if transporting one youth, staff sits in back; seatbelts on at all times; never leave youth unattended.
+- **Outings**: Tied to ISP goal; assess behavioral stability (no restraint in last 4 hours); carry agency cell phone and emergency contact list.
+
+### Protocol 12: Grievance Process for Youth
+- **Accessibility**: Explained at admission; blank forms and locked grievance box in common area; LME/MCO grievance numbers posted.
+- **Filing**: Verbal or written; staff assist immediately; place in locked box within 1 hour.
+- **Resolution**: QP opens box daily; acknowledges within 24 hours; written resolution within 7 days. Abuse allegations trigger IRIS and immediate DSS.
+
+### Protocol 13: Staffing Ratio & Awake Overnight Protocols
+- **Ratios**: 1:4 day/evening; 1:8 overnight. If call-out, on-call system activates replacement; QP covers if no replacement.
+- **Awake Overnight**: Sleeping prohibited; 15-minute visual room checks documented on Night Watch Log; hallway lights on; engage wakers quietly/briefly.
+
+### Protocol 14: Medical Emergencies & Acute Illness Response
+- **Triage**: Assess; call QP/RN. Err on side of caution.
+- **Emergency**: Call 911; staff rides ambulance; QP calls additional staff to maintain ratios.
+- **Non-Emergency**: Contact PCP for same-day appointment; take consent forms and Medicaid card.
+- **Documentation**: Guardian notified within 1 hour; IRIS filed; billing suspended if hospitalized overnight.
+
+### Protocol 15: Educational Coordination & School Reintegration
+- **Enrollment (5 Days)**: QP contacts LEA McKinney-Vento liaison or EC Director; signs ROI; coordinates transportation.
+- **IEP**: QP/AP attends IEP meetings; advocates for aligned BIP; files IEP in youth's chart.
+- **Attendance**: Morning check before transport; log daily; refusal is ISP issue; collect daily behavior reports.
+
+### Protocol 16: Family Engagement, Visitation & Home Passes
+- **Visitation**: Based on ISP/court orders; approved visitor list maintained; staff search bags; document all visits.
+- **Home Passes**: QP and guardian approve; pass medications provided in locked box with administration instructions.
+- **Billing Exclusion**: If youth away >24 consecutive hours, suspend Medicaid per diem; notify Billing Coordinator immediately.
+
+### Protocol 17: Discharge & Transition Protocol
+- **Planning**: Begins at admission; trial home visits conducted prior to discharge when possible.
+- **Step-Down**: Discharge meeting scheduled; community linkages established and confirmed before discharge.
+- **Discharge Day**: Medications handed directly to guardian with signed transfer form; belongings inventoried; discharge summary completed within 7 days.
+
+### Protocol 18: Infectious Disease & Bloodborne Pathogen Control
+- **Universal Precautions**: Treat all bodily fluids as infectious; wear appropriate PPE.
+- **Exposure**: Wash with soap/water; notify QP/RN; go to Urgent Care within 2 hours; file IRIS; offer post-exposure testing.
+- **Outbreak**: Two or more youth with identical symptoms = isolate, increase sanitation, notify County Health Department if reportable.
+
+### Protocol 19: Emergency & Disaster Preparedness
+- **Fire**: Evacuate immediately; headcount at rally point; call 911; do not re-enter; monthly drills.
+- **Tornado**: Move to interior safe room; turtle position; quarterly drills.
+- **System Failure**: Distribute flashlights; if heat loss >4 hours or water loss >8 hours, initiate Emergency Relocation Plan.
+- **Lockdown**: Secure doors/windows; hide; silence phones; do not open for anyone but law enforcement; annual drills.
+
+### Protocol 20: Service Orders & Authorization Protocol
+*Reference: RMDM Chapter 5 – Service Orders & Service Authorization*
+1. **Service Order**: The PCP shall serve as the service order when signed by the appropriate professional. If a separate format is used, ensure a separate service order is signed.
+2. **Verbal Orders**: If verbal order obtained, document in the record on the date given: date, who gave, who received, services ordered, and reason for verbal. The professional must countersign **within 72 hours**.
+3. **Authorization**: Submit authorization requests to the authorizing entity prior to initiation or continuation per their UM policy.
+4. **End-Date Reporting**: Notify authorizing entity immediately when youth changes providers or ends service. Follow entity-specified protocol.
+5. Maintain authorization/reauthorization records in an audit-ready file.
+
+### Protocol 21: Record Management, Retention, Access & Disclosure Accounting
+*Reference: RMDM Chapters 1, 2, 3*
+1. **Retention**: Minors – 12 years after age 18 (until age 30); Adults – 11 years after last encounter. Personnel/Admin – per DHHS schedule.
+2. **Access**: Youth/LRP may access records. If access is restricted, document justification in record. Appeal rights apply.
+3. **Accounting of Disclosures**: Maintain Form 9 (Accounting of Disclosures Log) for each youth. Include: Name, Record #, Date disclosed, Recipient, Purpose, Description of info, Disclosing party. Retain for **minimum 6 years**.
+4. **Confidentiality**: Comply with 42 CFR Part 2 for SUD records. Obtain written ROI for SUD disclosures. Minimum necessary standard applies.
+5. **Transport**: Only designated staff; secured in locked compartment; policies for loss/theft.
+
+---
+
+## CUSTOMIZED FORMS & LOGS
+
+### Form 1: Shift Change & Awake Night Watch Log
+*(As originally provided, with 15-minute check boxes and shift handoff verification. Ensure full name/initials and date are included.)*
+
+### Form 2: Contraband & Belongings Inventory
+*(As originally provided. Include Service Record #/MID. Youth acknowledgment signature required.)*
+
+### Form 3: Physical Restraint & Debriefing Checklist
+*(As originally provided. Include: Pre-restraint de-escalation attempts; reason; post-restraint medical check; notifications; IRIS ID; debriefing with trigger identification; youth and QP signatures.)*
+
+### Form 4: Home Pass & Medicaid Billing Exclusion Tracker
+*(As originally provided. Include date left/time, destination, date returned/time, total hours away, billing suspension days, staff initials, Billing Coordinator sign-off.)*
+
+### Form 5: Emergency Drill & Environmental Safety Log
+*(As originally provided. Monthly fire drills with evacuation time; quarterly tornado drills; inspection records.)*
+
+### Form 6: Employee SOP Acknowledgment
+*(As originally provided. Acknowledgment that staff have read, understand, and will follow SOP; failure may result in disciplinary action/termination/legal consequences.)*
+
+---
+
+### Form 7: Full Service Note Template (Mandatory)
+| Field | Content |
+| :--- | :--- |
+| **Youth Name** | [Last, First] |
+| **Service Record # / MID** | [Record # / MID] |
+| **Date of Service** | [MM/DD/YYYY] |
+| **Service Name** | [Level 3 Residential – Shift] |
+| **Type of Contact** | [ ] In-person [ ] Telehealth [ ] Telephonic [ ] Collateral |
+| **Place of Service** | [Facility Address / Location] |
+| **Shift / Coverage Hours** | [e.g., Day Shift 7a-3p] |
+| **Staff Present (for ratios)** | [List all staff names/titles on shift] |
+| **Purpose / ISP Goal Addressed** | [Reference specific ISP/PCP goal # and objective] |
+| **Interventions Provided** | [Objective, factual description of interventions, supports, activities, and de-escalation attempts if any] |
+| **Effectiveness & Youth Response** | [Specific, individualized description of youth's response and progress toward goal] |
+| **Signature / Credentials / Date** | [Full signature, credentials, and date authenticated] |
+| **Late Entry (if applicable)** | [Late Entry made on ____ for service on ____] |
+
+*Note: This template must be used for all shift notes. Backdating is prohibited.*
+
+---
+
+### Form 8: Comprehensive Clinical Record Content Checklist
+*(To be maintained in each youth's chart and reviewed quarterly by the QP)*
+
+| Element | Present? (Y/N/Date) | Notes |
+| :--- | :--- | :--- |
+| Treatment Consent | | |
+| PCP Consent | | |
+| Restrictive Intervention Consent (if applicable) | | |
+| Emergency Care Consent | | |
+| HIPAA Notice Acknowledgement | | |
+| Third-Party Release | | |
+| ROI(s) | | |
+| Demographics (name, DOB, contact, etc.) | | |
+| Emergency Contact / Preferred Physician / Hospital | | |
+| Advance Directives (or notation of none) | | |
+| Medication Allergies / Adverse Reactions / None | | |
+| Health / Behavioral Health History | | |
+| DSM-5-TR Diagnosis / ICD-10 | | |
+| Medication Orders / MAR | | |
+| Lab Results (if applicable) | | |
+| Notification of Rights / Explanation | | |
+| Restrictive Intervention Documentation (if applicable) | | |
+| CCA (by licensed professional) | | |
+| ASAM Level of Care (if SUD) | | |
+| PCP / Service Plan / Crisis Plan | | |
+| Service Order (signed) | | |
+| Discharge Plan / Summary | | |
+| Accounting of Disclosures Log | | |
+| 42 CFR 2.22 Summary (for SUD) | | |
+| Guardianship / POA / Legal Documents | | |
+| Incoming/Outgoing Correspondence | | |
+| Service Notes (per shift, compliant) | | |
+| Incident Occurrence Notations (reports filed separately) | | |
+
+---
+
+### Form 9: Accounting of Disclosures Log
+*(Maintain for minimum 6 years)*
+
+| Youth Name | Record # | Date of Disclosure | Recipient (Agency/Individual) | Purpose of Disclosure | Description of Info Disclosed | Disclosing Staff (Name/Title) | Authorization/Exception Basis |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | | | | | | | |
+| | | | | | | | |
+
+---
+
+## VERSION HISTORY
+
+| Version | Date | Summary of Changes | Author |
+| :--- | :--- | :--- | :--- |
+| 1.0 | Jan 2026 | Original SOP | Executive Director / QP |
+| 2.0 | July 2026 | Updated to full RMDM July 2025 compliance: Added CDW/data reporting; revised record retention (12 years post-majority); added CCA requirements & ASAM; added service orders/authorizations; expanded service note content (duration, place, contact type, record #); added alterations policy; added administrative closure; added accounting of disclosures; added privacy/security/42 CFR Part 2; added individual access; added grids/modified notes; added TB screening; expanded full clinical record checklist. | Executive Director / QP |
+
+---
+
+**END OF MANUAL**
+
+**All staff must read, acknowledge (Form 6), and follow these protocols exactly as written. Failure to do so may result in disciplinary action, termination, or legal consequences regarding Medicaid fraud and regulatory non-compliance.**
