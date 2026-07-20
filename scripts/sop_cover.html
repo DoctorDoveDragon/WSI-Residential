@@ -170,72 +170,44 @@
   }
 
   /* ── Bottom band content ──────────────────────────────────────── */
+  /* Versioning is private — no Doc ID, Revision, RMDM-Compliance, or Owner
+     appears on the public-facing cover. That information lives only in
+     the PDF metadata, the About This Manual inside page, body page
+     headers, the Version History table, and Form 6 — all internal. */
   .bottom-content {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    padding: 40px 64px 56px 64px;
+    padding: 44px 64px 56px 64px;
     color: #fff;
-  }
-  .bottom-content .doc-title {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    font-size: 26px;
-    line-height: 1.2;
-    color: #fff;
-    margin-bottom: 4px;
-  }
-  .bottom-content .doc-subtitle {
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--c-cream);
-    margin-bottom: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
   }
   .bottom-content .accent-rule {
     width: 60px;
     height: 2px;
     background: var(--c-accent);
-    margin-bottom: 24px;
+    margin-bottom: 22px;
   }
-  .bottom-content .doc-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    color: rgba(255, 251, 247, 0.75);
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-  }
-  .bottom-content .doc-meta .left {
-    line-height: 1.9;
-  }
-  .bottom-content .doc-meta .left strong {
-    color: var(--c-cream);
-    font-weight: 600;
-    letter-spacing: 2px;
-  }
-  .bottom-content .doc-meta .right {
-    text-align: right;
-    line-height: 1.5;
-    color: var(--c-accent2);
-    font-weight: 700;
-    letter-spacing: 2.5px;
-  }
-  .bottom-content .doc-meta .right .version-num {
-    display: block;
+  .bottom-content .doc-title {
     font-family: 'Playfair Display', serif;
-    font-size: 36px;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 1.2;
     color: #fff;
-    font-weight: 900;
-    letter-spacing: 0;
-    line-height: 1;
-    margin-top: 6px;
+    margin-bottom: 6px;
+  }
+  .bottom-content .doc-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--c-cream);
   }
 </style>
 </head>
@@ -264,23 +236,12 @@
     <img src="sop_cover_image.png" alt="Symbolic illustration of a tree-human figure rising toward a sunrise over calm water, evoking empowerment, growth, freedom, health, wholeness, and healing" />
   </div>
 
-  <!-- Bottom band: document identification -->
+  <!-- Bottom band: document title only (versioning is private) -->
   <div class="band-bottom">
     <div class="bottom-content">
+      <div class="accent-rule"></div>
       <div class="doc-title">SOP &amp; Operational Manual</div>
       <div class="doc-subtitle">Standard Operating Procedures, Protocols &amp; Forms</div>
-      <div class="accent-rule"></div>
-      <div class="doc-meta">
-        <div class="left">
-          <strong>Doc. WSI-SOP-001</strong><br>
-          Effective July 2026 &nbsp;&middot;&nbsp; RMDM-Compliant<br>
-          Owner: Executive Director &amp; Qualified Professional (QP)
-        </div>
-        <div class="right">
-          Revision
-          <span class="version-num">2.7</span>
-        </div>
-      </div>
     </div>
   </div>
 

@@ -612,3 +612,51 @@ Stage Summary:
 - Cover layout: top band (branding text) + image band (full horizontal image) + bottom band (document identification). All text remains on the cover (moved previously to inside page in SOP-11) but is now in compact bands above/below the image rather than overlaid on it.
 - Final v2.7 PDF: 34 pages, 417 KB. All 13 QA checks PASS.
 - The standalone brand image for company-wide reuse remains: `/home/z/my-project/download/Well_Spring_Brand_Image_1344x768.png` (the original horizontal artwork, unchanged).
+
+---
+Task ID: SOP-12
+Agent: main (Super Z)
+Task: User direction — "versioning is private". Remove all versioning information (Doc ID, Revision number, RMDM-Compliance designation, Owner) from the public-facing cover. Versioning remains accessible only via internal surfaces.
+
+Work Log:
+- Updated `/home/z/my-project/scripts/sop_cover.html`:
+  - Removed the entire `.doc-meta` block from the bottom band, which previously contained: "Doc. WSI-SOP-001", "Effective July 2026 · RMDM-Compliant", "Owner: Executive Director & Qualified Professional (QP)", and the large "Revision / 2.7" display (36pt Playfair number).
+  - Removed the associated CSS rules for `.doc-meta`, `.doc-meta .left`, `.doc-meta .left strong`, `.doc-meta .right`, and `.doc-meta .right .version-num`.
+  - Restructured `.bottom-content` to use flexbox (`display: flex; flex-direction: column; justify-content: center; align-items: flex-start`) so the remaining content (accent rule, doc-title, doc-subtitle) is vertically centered in the bottom band.
+  - Increased `.doc-title` font-size from 26px to 30px and `.doc-subtitle` letter-spacing from 2px to 2.5px to give the remaining bottom-band content more visual weight.
+  - Reordered bottom-band content to: accent-rule → doc-title → doc-subtitle (rule now leads, providing a cleaner visual entry point).
+  - Added CSS comment explicitly documenting the policy: "Versioning is private — no Doc ID, Revision, RMDM-Compliance, or Owner appears on the public-facing cover. That information lives only in the PDF metadata, the About This Manual inside page, body page headers, the Version History table, and Form 6 — all internal."
+  - The top band (company name, subtitle, tagline) and image band (full horizontal brand illustration) remain unchanged from Rev. 2.7.
+- Updated `/home/z/my-project/scripts/generate_sop.py`:
+  - SELF_REF: Rev. 2.7 → Rev. 2.8
+  - DOC_TITLE_SHORT: Rev. 2.7 → Rev. 2.8 (this appears in the body page FOOTER — internal, not on the cover)
+  - Subject metadata: Rev. 2.7 → Rev. 2.8 (PDF metadata — internal)
+  - About This Manual page: "Rev. 2.7, July 2026" → "Rev. 2.8, July 2026" in the opening paragraph; Document ID line updated to add explicit note: "<i>Versioning is private — this information does not appear on the public-facing cover.</i>"
+  - Revision Lineage section: added new sentence documenting v2.8 — "Rev. 2.8 removes all versioning information (Doc ID, Revision number, RMDM-Compliance designation, Owner) from the public-facing cover so the cover can serve as a clean brand asset; versioning information remains accessible internally via this About This Manual page, the body page headers, the Version History table in Part 3, Form 6, and the PDF metadata."
+  - TOC intro paragraph: bumped to Rev. 2.8 and added corresponding sentence documenting the v2.8 change.
+- Updated `/home/z/my-project/scripts/merge_sop.py`: MANUAL_VERSION '2.7' → '2.8'.
+- Updated `/home/z/my-project/scripts/sop_content_v2_part3.py`:
+  - Added new Version History row for v2.8: documents the removal of all versioning info from the public-facing cover, lists what was removed (Doc ID, Effective Date · RMDM-Compliant, Owner, Revision 2.7 display), lists what remains on the cover (company name, subtitle, tagline, brand image, document-type label with accent rule), and lists where versioning info remains accessible internally (PDF metadata, About This Manual page, body page footers, Version History table, Form 6).
+  - Updated Form 6 (Employee SOP Acknowledgment) reference: Rev. 2.7 → Rev. 2.8.
+- Re-rendered cover via `html2poster.js`: sop_cover.pdf (204 KB, single page). File size dropped from 237 KB (v2.7) to 204 KB because the large 36pt Playfair "2.7" number and several text elements were removed.
+- Regenerated body PDF via `python3 generate_sop.py`: sop_body.pdf.
+- Merged cover + body via `python3 merge_sop.py`:
+  - Output: `/home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.8_RMDM-Compliant.pdf` (388.1 KB, 34 pages, Rev. 2.8 RMDM-Compliant)
+  - Latest pointer refreshed: `Well_Spring_Intervention_SOP_Manual_LATEST.pdf`
+- Ran `pdf_qa.py`: 13 PASS / 0 WARN.
+- Verified visually via VLM (z-ai vision):
+  - Listed ALL visible text on the cover: "SOP / OPERATIONAL MANUAL", "STANDARD OPERATING PROCEDURE & OPERATIONAL REFERENCE", "Well Spring Intervention LLC", "LEVEL 3 SUPERVISED RESIDENTIAL GROUP HOME", "EMPOWERMENT • GROWTH • FREEDOM • HEALTH • WHOLENESS • HEALING", "SOP & Operational Manual", "STANDARD OPERATING PROCEDURES, PROTOCOLS & FORMS".
+  - Confirmed: "Version number: None visible. Revision number: None visible. Document ID (e.g., 'Doc. WSI-SOP-001'): None visible. 'RMDM-Compliant': None visible. 'Owner' text: None visible."
+
+Stage Summary:
+- v2.8 cover is now a clean brand asset: only company name, service-type subtitle, values tagline, the full horizontal brand illustration, and a document-type label. All versioning information (Doc ID, Revision number, RMDM-Compliance designation, Owner) has been removed from the public-facing cover per the user's direction that "versioning is private".
+- Versioning info remains fully accessible on internal surfaces only:
+  - PDF metadata: /Title, /Subject, /Keywords all embedded with Rev. 2.8
+  - About This Manual inside page (p. 2): "Document ID. Doc. WSI-SOP-001, Rev. 2.8 (RMDM-Compliant). Versioning is private — this information does not appear on the public-facing cover."
+  - Body page footers (every body page): shows DOC_TITLE_SHORT including "Rev. 2.8 (RMDM-Compliant)"
+  - Version History table in Part 3: full revision lineage from 1.0 through 2.8
+  - Form 6 (Employee SOP Acknowledgment): references "Rev. 2.8, July 2026, RMDM-Compliant"
+- The cover is now suitable for unrestricted public use across company websites, publications, and collateral materials without exposing internal versioning data.
+- Final v2.8 PDF: 34 pages, 388 KB. All 13 QA checks PASS.
+- All v2.0–v2.7 PDFs preserved as immutable history in `/home/z/my-project/download/`.
+- Deliverable: `/home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.8_RMDM-Compliant.pdf`

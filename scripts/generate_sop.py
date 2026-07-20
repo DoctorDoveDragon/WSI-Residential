@@ -98,7 +98,7 @@ AVAIL_W = PAGE_W - LEFT_M - RIGHT_M  # ~440pt
 # ────────────────────────────────────────────────────────────────────
 SELF_REF = (
     'Well Spring Intervention LLC SOP &amp; Operational Manual '
-    '(Doc. WSI-SOP-001, Rev. 2.7, Jul 2026 — RMDM-Compliant)'
+    '(Doc. WSI-SOP-001, Rev. 2.8, Jul 2026 — RMDM-Compliant)'
 )
 
 # ────────────────────────────────────────────────────────────────────
@@ -401,7 +401,7 @@ def signature_line(label, width_pct=0.46):
 # ────────────────────────────────────────────────────────────────────
 # Header / footer (drawn via onPage callback)
 # ────────────────────────────────────────────────────────────────────
-DOC_TITLE_SHORT = 'Standard Operating Procedure & Operational Manual — Rev. 2.7 (RMDM-Compliant)'
+DOC_TITLE_SHORT = 'Standard Operating Procedure & Operational Manual — Rev. 2.8 (RMDM-Compliant)'
 DOC_ORG = 'Well Spring Intervention LLC'
 
 def draw_header_footer(canvas, doc):
@@ -458,7 +458,7 @@ def build():
         title='Well Spring Intervention LLC — SOP & Operational Manual',
         author='Well Spring Intervention LLC',
         creator='Z.ai',
-        subject='Level 3 Supervised Residential Group Home — Standard Operating Procedures (Rev. 2.7 RMDM-Compliant)',
+        subject='Level 3 Supervised Residential Group Home — Standard Operating Procedures (Rev. 2.8 RMDM-Compliant)',
         keywords='SOP, residential group home, Level 3, NCAC 27G, Rule 108, Medicaid CCP 8C, IRIS, RMDM, HIPAA, 42 CFR Part 2, NCGS Ch. 66 Art. 40, E-SIGN, Electronic Signatures',
     )
 
@@ -473,7 +473,7 @@ def build():
     story.append(HRFlowable(width=80, color=ACCENT, thickness=2, spaceBefore=2, spaceAfter=14))
 
     story.append(Paragraph(
-        'This manual (Rev. 2.7, July 2026) is the official Standard Operating '
+        'This manual (Rev. 2.8, July 2026) is the official Standard Operating '
         'Procedures and Operational Reference for <b>Well Spring Intervention LLC</b>, '
         'a Level 3 Supervised Residential Group Home serving children and '
         'adolescents with mental health and behavioral challenges. It establishes '
@@ -489,7 +489,7 @@ def build():
     story.append(Paragraph('<b>Service Type.</b> Level 3 Supervised Residential Group Home.', s_body))
     story.append(Paragraph('<b>Effective Date.</b> July 2026.', s_body))
     story.append(Paragraph('<b>Document Owner.</b> Executive Director &amp; Qualified Professional (QP).', s_body))
-    story.append(Paragraph('<b>Document ID.</b> Doc. WSI-SOP-001, Rev. 2.7 (RMDM-Compliant).', s_body))
+    story.append(Paragraph('<b>Document ID.</b> Doc. WSI-SOP-001, Rev. 2.8 (RMDM-Compliant). <i>Versioning is private — this information does not appear on the public-facing cover.</i>', s_body))
     story.append(Spacer(1, 10))
 
     # Regulatory framework (moved from cover)
@@ -527,10 +527,14 @@ def build():
         '(bachelor\'s degree + 2 years full-time pre- or post-bachelor\'s '
         'supervised MH/DD/SA experience). Rev. 2.6 added a symbolic cover '
         'illustration evoking empowerment, growth, freedom, health, wholeness, '
-        'and healing. Rev. 2.7 redesigns the cover as a full-bleed brand '
-        'illustration suitable for reuse across company sites and publications, '
-        'and relocates the descriptive cover content to this About This Manual '
-        'page. A complete revision history appears in Part 3.',
+        'and healing. Rev. 2.7 redesigns the cover as a full-bleed brand illustration '
+        'suitable for reuse across company sites and publications, and relocates '
+        'the descriptive cover content to this About This Manual page. Rev. 2.8 '
+        'removes all versioning information (Doc ID, Revision number, RMDM-Compliance '
+        'designation, Owner) from the public-facing cover so the cover can serve as '
+        'a clean brand asset; versioning information remains accessible internally via '
+        'this About This Manual page, the body page headers, the Version History table '
+        'in Part 3, Form 6, and the PDF metadata. A complete revision history appears in Part 3.',
         s_body
     ))
     story.append(Spacer(1, 10))
@@ -576,7 +580,11 @@ def build():
         'trauma-informed, restorative mission of the program. Rev. 2.7 redesigns '
         'the cover as a full-bleed brand illustration suitable for reuse across '
         'company sites and publications, with descriptive cover content relocated '
-        'to the About This Manual page (p. 2). Part 2 details twenty-one '
+        'to the About This Manual page (p. 2). Rev. 2.8 removes all versioning '
+        'information from the public-facing cover (Doc ID, Revision number, '
+        'RMDM-Compliance designation, Owner); versioning remains private and is '
+        'accessible only via internal surfaces (PDF metadata, About This Manual '
+        'page, body page headers, Version History table, Form 6). Part 2 details twenty-one '
         'step-by-step workflows that govern daily operations, including protocols for '
         'service orders/authorizations and record management/disclosure accounting. '
         'Part 3 provides nine customized forms and logs, including the Full Service Note '
