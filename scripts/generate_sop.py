@@ -98,7 +98,7 @@ AVAIL_W = PAGE_W - LEFT_M - RIGHT_M  # ~440pt
 # ────────────────────────────────────────────────────────────────────
 SELF_REF = (
     'Well Spring Intervention LLC SOP &amp; Operational Manual '
-    '(Doc. WSI-SOP-001, Rev. 2.0, Jul 2026 — RMDM-Compliant)'
+    '(Doc. WSI-SOP-001, Rev. 2.1, Jul 2026 — RMDM-Compliant)'
 )
 
 # ────────────────────────────────────────────────────────────────────
@@ -400,7 +400,7 @@ def signature_line(label, width_pct=0.46):
 # ────────────────────────────────────────────────────────────────────
 # Header / footer (drawn via onPage callback)
 # ────────────────────────────────────────────────────────────────────
-DOC_TITLE_SHORT = 'Standard Operating Procedure & Operational Manual — Rev. 2.0 (RMDM-Compliant)'
+DOC_TITLE_SHORT = 'Standard Operating Procedure & Operational Manual — Rev. 2.1 (RMDM-Compliant)'
 DOC_ORG = 'Well Spring Intervention LLC'
 
 def draw_header_footer(canvas, doc):
@@ -457,8 +457,8 @@ def build():
         title='Well Spring Intervention LLC — SOP & Operational Manual',
         author='Well Spring Intervention LLC',
         creator='Z.ai',
-        subject='Level 3 Supervised Residential Group Home — Standard Operating Procedures (Rev. 2.0 RMDM-Compliant)',
-        keywords='SOP, residential group home, Level 3, NCAC 27G, Rule 108, Medicaid CCP 8C, IRIS, RMDM, HIPAA, 42 CFR Part 2',
+        subject='Level 3 Supervised Residential Group Home — Standard Operating Procedures (Rev. 2.1 RMDM-Compliant)',
+        keywords='SOP, residential group home, Level 3, NCAC 27G, Rule 108, Medicaid CCP 8C, IRIS, RMDM, HIPAA, 42 CFR Part 2, NCGS Ch. 66 Art. 40, E-SIGN, Electronic Signatures',
     )
 
     story = []
@@ -468,14 +468,17 @@ def build():
     story.append(Paragraph('Table of Contents', s_toc_title))
     story.append(HRFlowable(width=80, color=ACCENT, thickness=2, spaceBefore=2, spaceAfter=12))
     story.append(Paragraph(
-        'This manual (Rev. 2.0, July 2026) is organized into three parts and is fully '
+        'This manual (Rev. 2.1, July 2026) is organized into three parts and is fully '
         'compliant with the NCDHHS Records Management and Documentation Manual (RMDM, '
         'Effective July 8, 2025). Part 1 establishes foundational policies and compliance '
         'obligations across eleven sections, including new chapters on privacy/confidentiality '
-        'and an expanded Medicaid documentation section. Part 2 details twenty-one '
+        'and an expanded Medicaid documentation section. Section 10 has been further expanded '
+        'in Rev. 2.1 to add §10.7 Electronic Signatures (referencing NCGS Chapter 66, '
+        'Article 40 — NC UETA), with explicit safeguards and system unavailability '
+        'procedures, addressing the auditor recommendation. Part 2 details twenty-one '
         'step-by-step workflows that govern daily operations, including new protocols for '
         'service orders/authorizations and record management/disclosure accounting. Part 3 '
-        'provides nine customized forms and logs, including the new Full Service Note '
+        'provides nine customized forms and logs, including the Full Service Note '
         'Template, Comprehensive Clinical Record Content Checklist, and Accounting of '
         'Disclosures Log.',
         s_toc_intro

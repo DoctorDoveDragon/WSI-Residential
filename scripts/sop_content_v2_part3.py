@@ -232,13 +232,15 @@ def build_part3():
     story.append(Spacer(1, 8))
     story.append(Paragraph(
         'By signing below, I acknowledge that I have received, read, and understand the '
-        'SOP Manual for <b>Well Spring Intervention LLC</b> (Rev. 2.0, July 2026, '
+        'SOP Manual for <b>Well Spring Intervention LLC</b> (Rev. 2.1, July 2026, '
         'RMDM-Compliant). I understand these policies are mandated by NC DHSR (10A NCAC '
-        '27G), NC Medicaid (CCP 8C), Rule 108 (10A NCAC 27T), and the NCDHHS Records '
-        'Management and Documentation Manual (Effective July 8, 2025). I agree to follow '
-        'these protocols exactly. I understand failure to do so may result in disciplinary '
-        'action, termination, or legal consequences regarding Medicaid fraud and '
-        'regulatory non-compliance.',
+        '27G), NC Medicaid (CCP 8C), Rule 108 (10A NCAC 27T), the NCDHHS Records '
+        'Management and Documentation Manual (Effective July 8, 2025), NCGS Chapter 66 '
+        'Article 40 (NC UETA) and the federal E-SIGN Act governing electronic signatures. '
+        'I agree to follow these protocols exactly, including the electronic-signature '
+        'safeguards and system-unavailability procedures in §10.7. I understand failure '
+        'to do so may result in disciplinary action, termination, or legal consequences '
+        'regarding Medicaid fraud and regulatory non-compliance.',
         s_body
     ))
     story.append(Spacer(1, 20))
@@ -414,6 +416,9 @@ def build_part3():
         ['1.0', 'Jan 2026', 'Original SOP.', 'Executive Director / QP'],
         ['2.0', 'Jul 2026',
          'Updated to full RMDM (July 2025) compliance: Added CDW/data reporting (§1.5); revised record retention to 12 years post-majority (§1.6); added CCA requirements & ASAM (§4.1); added medical necessity (§4.2); added service orders incl. verbal/72-hour (§4.4); added service authorization (§4.5); expanded service note content (§10.1-10.4); added alterations policy (§10.5); added authentication incl. initials/ADA/rubber stamps (§10.6); added administrative closure (§3.5); added accounting of disclosures (§11.4); added privacy/security/42 CFR Part 2 (§11); added individual access (§11.5); added transporting records (§11.6); added grids/modified notes (§10.4); added TB screening (§6.2); added comprehensive clinical record checklist (Form 8); added Full Service Note Template (Form 7); added Accounting of Disclosures Log (Form 9); added Protocol 20 (Service Orders & Auth) and Protocol 21 (Record Management).',
+         'Executive Director / QP'],
+        ['2.1', 'Jul 2026',
+         'Auditor recommendation: Added §10.7 Electronic Signatures policy explicitly referencing NCGS Chapter 66, Article 40 (NC Uniform Electronic Transactions Act) and the federal E-SIGN Act (15 U.S.C. § 7001 et seq.). §10.7(a) specifies required administrative, technical, and physical safeguards (unique credentials, MFA, session timeout, TLS/encryption, immutable audit trails, RBAC, immediate revocation, annual review). §10.7(b) establishes System Unavailability Procedures, including paper-fallback handwritten signatures with date/credentials, QP-declared Documentation Continuity Event, 72-hour transcription into EHR with late-entry notation, paper source-document retention, 7-business-day QP review for delayed transcription, and a Documentation Continuity Event log. Prior §10.7 Service Authorizations and §10.8 Billing renumbered to §10.8 and §10.9 respectively.',
          'Executive Director / QP'],
     ]
     vh_th = ParagraphStyle('vhth', fontName=BODY_BOLD, fontSize=9, leading=11, textColor=colors.white, alignment=TA_LEFT)

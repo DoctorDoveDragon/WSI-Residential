@@ -491,7 +491,7 @@ def build_part1():
     # ── SOP 10 ─────────────────────────────────────────────────────
     story.append(section_heading(10, 'Medicaid Billing, Documentation Compliance & Record Management'))
     story.append(ref_line(
-        'NC Medicaid CCP 8C; CMS Documentation Guidelines; RMDM Chapter 6',
+        'NC Medicaid CCP 8C; CMS Documentation Guidelines; RMDM Chapter 6; NCGS Ch. 66 Art. 40 (NC UETA); E-SIGN Act (15 U.S.C. § 7001 et seq.)',
         '§10',
     ))
     story.append(Paragraph('<b>10.1 Service Notes — General Requirements.</b>', s_h2))

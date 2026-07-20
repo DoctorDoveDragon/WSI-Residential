@@ -207,3 +207,53 @@ Stage Summary:
   - `README.md` — explains naming convention and revision history
 - Future revisions: bump `MANUAL_VERSION` (and optionally `MANUAL_VERSION_SUFFIX`) in `merge_sop.py`, re-run, and a new immutable versioned file will be emitted alongside (not over) the existing one. The LATEST pointer is updated automatically.
 - All QA checks still pass.
+
+---
+Task ID: SOP-6
+Agent: main (Super Z)
+Task: AUDITOR RECOMMENDATION — Add a brief electronic signature policy section explicitly referencing NCGS Chapter 66, Article 40 (NC UETA) and addressing safeguards and system unavailability procedures.
+
+Work Log:
+- Read existing scripts to understand v2.0 structure: generate_sop.py (main builder, SELF_REF/DOC_TITLE_SHORT), sop_content_v2.py (Part 1 SOPs incl. SOP 10 with §10.1-10.8), sop_content_v2_part3.py (Part 3 forms + Version History table), sop_cover.html (cover), merge_sop.py (version stamping).
+- Inserted new §10.7 Electronic Signatures section into sop_content_v2.py between §10.6 Authentication and the former §10.7 Service Authorizations. Three new sub-paragraphs:
+  - §10.7 Electronic Signatures (main): cites NCGS Chapter 66, Article 40 (NC Uniform Electronic Transactions Act) and federal E-SIGN Act (15 U.S.C. § 7001 et seq.). Defines what constitutes a valid electronic signature, mandates use of authenticated EHR/EMR system or approved secure signing platform, explicitly prohibits cursive fonts in word-processing documents, requires unique signer linkage, modification detection, and auditable timestamp.
+  - §10.7(a) Safeguards: 8 required administrative/technical/physical controls — (a) unique user credentials (no shared logins), (b) multi-factor authentication where feasible, (c) automatic session timeout ≤15 min, (d) TLS 1.2+ transmission & at-rest encryption, (e) immutable audit trails (signer identity/date/time/IP/device/version), (f) role-based access controls with licensure verification, (g) immediate credential revocation on termination/role change/compromise, (h) annual QP+IT review. Also requires 1-business-day reporting of lost/stolen/shared credentials.
+  - §10.7(b) System Unavailability Procedures: defines "Documentation Continuity Event" declared by QP; paper fallback with handwritten blue/black ink signatures incl. date+credentials+title; required forms distributed (Shift Note, MAR, Restraint & Debriefing, Incident Report); 72-hour transcription deadline once EHR restored with late-entry notation "Late Entry — System Unavailability (date/time of restoration)"; original paper scanned, attached, and retained per §1.6 retention policy; 7-business-day QP review for delayed transcription; QP maintains Documentation Continuity Event log (start/end time, cause, records affected, transcription verification).
+- Renumbered former §10.7 Service Authorizations & End-Date Reporting → §10.8; former §10.8 Billing → §10.9.
+- Updated SOP 10 reference line in sop_content_v2.py to add "NCGS Ch. 66 Art. 40 (NC UETA); E-SIGN Act (15 U.S.C. § 7001 et seq.)" to the external citation list.
+- Bumped manual to Rev. 2.1 across generate_sop.py:
+  - SELF_REF: "Rev. 2.0, Jul 2026" → "Rev. 2.1, Jul 2026"
+  - DOC_TITLE_SHORT: "Rev. 2.0" → "Rev. 2.1"
+  - PDF subject metadata: "Rev. 2.0" → "Rev. 2.1"; keywords extended with "NCGS Ch. 66 Art. 40, E-SIGN, Electronic Signatures"
+  - TOC intro paragraph rewritten to describe the Rev 2.1 §10.7 addition explicitly (referencing NCGS Ch. 66 Art. 40, safeguards, system unavailability procedures, auditor recommendation).
+- Added v2.1 row to Version History table in sop_content_v2_part3.py with full summary of §10.7 additions, §10.7(a) safeguards list, §10.7(b) procedures, and §10.8/§10.9 renumbering.
+- Updated Form 6 (Employee SOP Acknowledgment) language to reference "Rev. 2.1", cite NCGS Ch. 66 Art. 40 and E-SIGN Act in the mandate list, and explicitly call out §10.7 safeguard/unavailability-procedure acknowledgment.
+- Updated sop_cover.html:
+  - Effective Date meta-value: "Version 2.0 (RMDM-Compliant)" → "Version 2.1 (RMDM-Compliant)"
+  - Regulatory Framework block: appended "NCGS Ch. 66 Art. 40 (NC UETA), E-SIGN Act"
+  - Footer right: "Doc. WSI-SOP-001 · Rev. 2.0" → "Doc. WSI-SOP-001 · Rev. 2.1"
+- Bumped MANUAL_VERSION = '2.0' → '2.1' in merge_sop.py so the versioned output filename becomes Well_Spring_Intervention_SOP_Manual_v2.1_RMDM-Compliant.pdf (the v2.0 file is preserved as immutable history).
+- Re-rendered cover via html2poster.js → 165.6 KB.
+- Regenerated body via generate_sop.py — no errors.
+- Re-merged via merge_sop.py → final PDF: 28 pages, 340.0 KB (was 27 pages / 333.9 KB in v2.0; +1 page for §10.7 content).
+- First QA pass: 12 PASS + 1 WARN — page 28 (Version History) had an em-dash "—" at line start inside the v2.1 row's summary text wrapping the phrase "paper-fallback handwritten signatures".
+- Fixed: replaced "— paper-fallback" with ", including paper-fallback" in the v2.1 Version History row.
+- Re-ran generate_sop.py + merge_sop.py + pdf_qa.py: **13 PASS, 0 WARN — ALL CHECKS PASSED**.
+- Verified content via pdftotext:
+  - §10.7 Electronic Signatures, §10.7(a) Safeguards, §10.7(b) System Unavailability Procedures, §10.8 Service Authorizations, §10.9 Billing — all render correctly
+  - 42 self-references (11 SOPs + 21 protocols + 9 forms + version history) ✓
+  - 72 "Rev. 2.1" mentions ✓
+  - 17 auditor-recommendation keyword matches (Electronic Signatures / NCGS Chapter 66 / NC UETA / E-SIGN / System Unavailability / Documentation Continuity) ✓
+
+Stage Summary:
+- Final deliverable: /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.1_RMDM-Compliant.pdf (28 pages, 340.0 KB, Rev. 2.1 RMDM-Compliant + E-Sig).
+- LATEST pointer also updated: /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_LATEST.pdf (byte-for-byte copy of v2.1).
+- v2.0 file preserved at /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.0_RMDM-Compliant.pdf (immutable history, per versioning policy).
+- Auditor recommendation fully addressed: §10.7 Electronic Signatures explicitly cites NCGS Chapter 66, Article 40 (NC UETA) + E-SIGN Act; §10.7(a) lists 8 safeguard controls; §10.7(b) defines paper-fallback system unavailability procedures with 72-hour transcription, source-document retention, and continuity-event logging.
+- All QA checks pass (13 PASS / 0 WARN).
+- Persistent artifacts updated:
+  - /home/z/my-project/scripts/sop_content_v2.py — §10.7 added, §10.8/§10.9 renumbered, SOP 10 ref line updated
+  - /home/z/my-project/scripts/sop_content_v2_part3.py — v2.1 Version History row + Form 6 acknowledgment language
+  - /home/z/my-project/scripts/generate_sop.py — SELF_REF/DOC_TITLE_SHORT/TOC intro/subject/keywords updated
+  - /home/z/my-project/scripts/sop_cover.html — Effective Date, Regulatory Framework, footer updated
+  - /home/z/my-project/scripts/merge_sop.py — MANUAL_VERSION = '2.1'
