@@ -232,18 +232,19 @@ def build_part3():
     story.append(Spacer(1, 8))
     story.append(Paragraph(
         'By signing below, I acknowledge that I have received, read, and understand the '
-        'SOP Manual for <b>Well Spring Intervention LLC</b> (Rev. 2.2, July 2026, '
+        'SOP Manual for <b>Well Spring Intervention LLC</b> (Rev. 2.3, July 2026, '
         'RMDM-Compliant). I understand these policies are mandated by NC DHSR (10A NCAC '
         '27G), NC Medicaid (CCP 8C), Rule 108 (10A NCAC 27T), the NCDHHS Records '
         'Management and Documentation Manual (Effective July 8, 2025), NCGS Chapter 66 '
         'Article 40 (NC UETA) and the federal E-SIGN Act governing electronic signatures. '
-        'I understand that the QP supervises staff according to the direction of the '
-        'Clinical Director and provides recurring compliance reports to the Clinical '
-        'Director as defined in §1.4 and §1.4(a). I agree to follow these protocols '
-        'exactly, including the electronic-signature safeguards and system-unavailability '
-        'procedures in §10.7. I understand failure to do so may result in disciplinary '
-        'action, termination, or legal consequences regarding Medicaid fraud and '
-        'regulatory non-compliance.',
+        'I understand that the QP reports to the Clinical Director and is responsible for '
+        'scheduling clinical services, assessments, PCPs, and day-to-day supervision of '
+        'APs and DCPs according to the Clinical Director\'s direction, and provides '
+        'recurring compliance reports to the Clinical Director as defined in §1.4 and '
+        '§1.4(a). I agree to follow these protocols exactly, including the '
+        'electronic-signature safeguards and system-unavailability procedures in §10.7. '
+        'I understand failure to do so may result in disciplinary action, termination, or '
+        'legal consequences regarding Medicaid fraud and regulatory non-compliance.',
         s_body
     ))
     story.append(Spacer(1, 20))
@@ -425,6 +426,9 @@ def build_part3():
          'Executive Director / QP'],
         ['2.2', 'Jul 2026',
          'Organizational clarification: §1.4 rewritten to separate the Clinical Director role (overall clinical program responsibility) from the Qualified Professional (QP) role. The QP now reports to the Clinical Director, supervises staff according to the Clinical Director\'s direction, and escalates clinical, staffing, and quality-of-care concerns. New §1.4(a) QP Compliance Reporting to the Clinical Director defines seven recurring compliance report types: monthly service-note audit summaries, monthly IRIS incident-report status, quarterly Clinical Record Content Checklist audits (Form 8), quarterly Accounting of Disclosures reviews (Form 9), quarterly personnel-file audits, annual electronic-signature safeguard review (§10.7(a)), and ad-hoc immediate reporting of breaches, complaints, licensing visits, and Medicaid audits. Clinical Director signs acknowledgment of each report and directs corrective action.',
+         'Executive Director / QP'],
+        ['2.3', 'Jul 2026',
+         'QP responsibilities clarification: §1.4 updated to explicitly include "scheduling" as a QP responsibility. The QP is now responsible for scheduling clinical services, assessments, and PCPs (in addition to clinical services, assessments, PCPs themselves and day-to-day AP/DCP supervision), according to the direction of the Clinical Director. Aligns the SOP with the operational reality that the QP coordinates and schedules all clinical appointments, assessment windows, and Person-Centered Plan meetings for each youth in care.',
          'Executive Director / QP'],
     ]
     vh_th = ParagraphStyle('vhth', fontName=BODY_BOLD, fontSize=9, leading=11, textColor=colors.white, alignment=TA_LEFT)

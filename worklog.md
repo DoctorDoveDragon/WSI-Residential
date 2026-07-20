@@ -314,3 +314,45 @@ Stage Summary:
   - /home/z/my-project/scripts/generate_sop.py — SELF_REF/DOC_TITLE_SHORT/TOC intro/subject updated
   - /home/z/my-project/scripts/sop_cover.html — Effective Date + footer updated
   - /home/z/my-project/scripts/merge_sop.py — MANUAL_VERSION = '2.2'
+
+---
+Task ID: SOP-8
+Agent: main (Super Z)
+Task: QP responsibilities refinement — QP reports to the Clinical Director and is responsible for scheduling clinical services, assessments, PCPs, and day-to-day supervision of APs and DCPs according to the direction of the Clinical Director.
+
+Work Log:
+- Reviewed §1.4 in sop_content_v2.py — current v2.2 text said the QP was "responsible for clinical services, assessments, PCPs, and day-to-day supervision". User clarification requires "scheduling" be explicitly added to the QP responsibility list (i.e., scheduling clinical services, assessments, PCPs).
+- Made the targeted edit in §1.4 — changed "responsible for clinical services, assessments, PCPs, and day-to-day supervision of Associate Professionals (APs) and Direct Care Professionals (DCPs) <b>according to the direction of the Clinical Director</b>" to "responsible for scheduling clinical services, assessments, PCPs, and day-to-day supervision of Associate Professionals (APs) and Direct Care Professionals (DCPs) <b>according to the direction of the Clinical Director</b>".
+- Bumped manual to Rev. 2.3 across generate_sop.py:
+  - SELF_REF: "Rev. 2.2" → "Rev. 2.3"
+  - DOC_TITLE_SHORT: "Rev. 2.2" → "Rev. 2.3"
+  - PDF subject metadata: "Rev. 2.2" → "Rev. 2.3"
+  - TOC intro paragraph extended with a Rev. 2.3 note: "Rev. 2.3 refines the QP responsibilities to explicitly include scheduling of clinical services, assessments, and PCPs in §1.4."
+- Updated sop_cover.html:
+  - Effective Date meta-value: "Version 2.2 (RMDM-Compliant)" → "Version 2.3 (RMDM-Compliant)"
+  - Footer right: "Doc. WSI-SOP-001 · Rev. 2.2" → "Doc. WSI-SOP-001 · Rev. 2.3"
+- Updated sop_content_v2_part3.py:
+  - Added v2.3 row to Version History table summarizing the §1.4 "scheduling" addition and its operational alignment (QP coordinates and schedules all clinical appointments, assessment windows, and PCP meetings for each youth).
+  - Updated Form 6 Employee SOP Acknowledgment language to Rev. 2.3 — now reads "the QP reports to the Clinical Director and is responsible for scheduling clinical services, assessments, PCPs, and day-to-day supervision of APs and DCPs according to the Clinical Director's direction, and provides recurring compliance reports to the Clinical Director as defined in §1.4 and §1.4(a)."
+- Bumped MANUAL_VERSION = '2.3' in merge_sop.py — new versioned filename Well_Spring_Intervention_SOP_Manual_v2.3_RMDM-Compliant.pdf (v2.0/v2.1/v2.2 files preserved as immutable history).
+- Re-rendered cover via html2poster.js → 166.5 KB.
+- Regenerated body via generate_sop.py — no errors.
+- Re-merged via merge_sop.py → final PDF: 29 pages, 365.8 KB (same page count as v2.2; small size increase from added Version History row and updated Form 6 text).
+- Ran pdf_qa.py: **13 PASS, 0 WARN — ALL CHECKS PASSED**.
+- Verified content via pdftotext:
+  - §1.4 now reads: "Professional (QP) reports to the Clinical Director and is responsible for scheduling clinical services, assessments, PCPs, and day-to-day supervision..."
+  - Form 6 acknowledgment also contains "QP reports to the Clinical Director and is responsible for scheduling clinical services, assessments, PCPs..."
+  - 42 self-references (11 SOPs + 21 protocols + 9 forms + version history) ✓
+
+Stage Summary:
+- Final deliverable: /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.3_RMDM-Compliant.pdf (29 pages, 365.8 KB, Rev. 2.3 RMDM-Compliant + E-Sig + Org-Clarification + Scheduling-Refinement).
+- LATEST pointer updated: /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_LATEST.pdf (byte-for-byte copy of v2.3).
+- v2.0, v2.1, and v2.2 files preserved as immutable history per versioning policy.
+- §1.4 QP responsibilities now explicitly include scheduling of clinical services, assessments, and PCPs. Aligns the SOP with the operational reality that the QP coordinates all clinical appointments, assessment windows, and Person-Centered Plan meetings for each youth.
+- All QA checks pass (13 PASS / 0 WARN).
+- Persistent artifacts updated:
+  - /home/z/my-project/scripts/sop_content_v2.py — §1.4 QP responsibilities updated
+  - /home/z/my-project/scripts/sop_content_v2_part3.py — v2.3 Version History row + Form 6 acknowledgment updated
+  - /home/z/my-project/scripts/generate_sop.py — SELF_REF/DOC_TITLE_SHORT/TOC intro/subject updated
+  - /home/z/my-project/scripts/sop_cover.html — Effective Date + footer updated
+  - /home/z/my-project/scripts/merge_sop.py — MANUAL_VERSION = '2.3'

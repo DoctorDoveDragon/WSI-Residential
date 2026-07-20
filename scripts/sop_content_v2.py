@@ -72,14 +72,15 @@ def build_part1():
         'with overall responsibility for the clinical program, including setting the clinical '
         'vision, approving clinical policies, and providing direction to clinical leadership. '
         'The <b>Qualified Professional (QP)</b> reports to the Clinical Director and is '
-        'responsible for clinical services, assessments, PCPs, and day-to-day supervision of '
-        'Associate Professionals (APs) and Direct Care Professionals (DCPs) <b>according to '
-        'the direction of the Clinical Director</b>. The QP supervises staff in accordance '
-        'with the Clinical Director\'s clinical guidance, programmatic priorities, and '
-        'performance expectations, and shall escalate clinical concerns, staffing issues, '
-        'and quality-of-care matters to the Clinical Director in a timely manner. An On-Call '
-        'QP is available 24/7/365 for clinical decision-making. All staff report incidents, '
-        'concerns, and operational needs through the documented chain of command.'
+        'responsible for scheduling clinical services, assessments, PCPs, and day-to-day '
+        'supervision of Associate Professionals (APs) and Direct Care Professionals (DCPs) '
+        '<b>according to the direction of the Clinical Director</b>. The QP supervises staff '
+        'in accordance with the Clinical Director\'s clinical guidance, programmatic '
+        'priorities, and performance expectations, and shall escalate clinical concerns, '
+        'staffing issues, and quality-of-care matters to the Clinical Director in a timely '
+        'manner. An On-Call QP is available 24/7/365 for clinical decision-making. All '
+        'staff report incidents, concerns, and operational needs through the documented '
+        'chain of command.'
     ))
     story.append(Paragraph('<b>1.4(a) QP Compliance Reporting to the Clinical Director.</b>', s_h2))
     story.append(para(
