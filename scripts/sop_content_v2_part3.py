@@ -232,7 +232,7 @@ def build_part3():
     story.append(Spacer(1, 8))
     story.append(Paragraph(
         'By signing below, I acknowledge that I have received, read, and understand the '
-        'SOP Manual for <b>Well Spring Intervention LLC</b> (Rev. 2.3, July 2026, '
+        'SOP Manual for <b>Well Spring Intervention LLC</b> (Rev. 2.4, July 2026, '
         'RMDM-Compliant). I understand these policies are mandated by NC DHSR (10A NCAC '
         '27G), NC Medicaid (CCP 8C), Rule 108 (10A NCAC 27T), the NCDHHS Records '
         'Management and Documentation Manual (Effective July 8, 2025), NCGS Chapter 66 '
@@ -241,10 +241,13 @@ def build_part3():
         'scheduling clinical services, assessments, PCPs, and day-to-day supervision of '
         'APs and DCPs according to the Clinical Director\'s direction, and provides '
         'recurring compliance reports to the Clinical Director as defined in §1.4 and '
-        '§1.4(a). I agree to follow these protocols exactly, including the '
-        'electronic-signature safeguards and system-unavailability procedures in §10.7. '
-        'I understand failure to do so may result in disciplinary action, termination, or '
-        'legal consequences regarding Medicaid fraud and regulatory non-compliance.',
+        '§1.4(a). I acknowledge that QP credentialing requirements are specified in '
+        '§1.4(b) per 10A NCAC 27G .0104 — a QP is not required to hold a full, '
+        'unrestricted clinical license, but a bachelor\'s degree alone is not sufficient. '
+        'I agree to follow these protocols exactly, including the electronic-signature '
+        'safeguards and system-unavailability procedures in §10.7. I understand failure '
+        'to do so may result in disciplinary action, termination, or legal consequences '
+        'regarding Medicaid fraud and regulatory non-compliance.',
         s_body
     ))
     story.append(Spacer(1, 20))
@@ -429,6 +432,9 @@ def build_part3():
          'Executive Director / QP'],
         ['2.3', 'Jul 2026',
          'QP responsibilities clarification: §1.4 updated to explicitly include "scheduling" as a QP responsibility. The QP is now responsible for scheduling clinical services, assessments, and PCPs (in addition to clinical services, assessments, PCPs themselves and day-to-day AP/DCP supervision), according to the direction of the Clinical Director. Aligns the SOP with the operational reality that the QP coordinates and schedules all clinical appointments, assessment windows, and Person-Centered Plan meetings for each youth in care.',
+         'Executive Director / QP'],
+        ['2.4', 'Jul 2026',
+         'QP credentialing correction (10A NCAC 27G .0104): New §1.4(b) QP Credentialing Requirements added — specifies that a QP is NOT required to hold a full, unrestricted clinical license, but a bachelor\'s degree alone is not sufficient. Acceptable NC credentials listed across four categories: (i) full clinical license (LCSW, LPC, LMFT, Licensed Psychologist, LPA, psychiatrist MD/DO); (ii) associate/provisional license (LCSW-A, LPC-A, LMFT-A, LCAS-P); (iii) certification (LCAS, CCS with master\'s, CMSW); or (iv) psychiatric nursing credential (CNS or NP with psychiatric/mental health certification). Plus master\'s degree in human services, plus one year of full-time post-master\'s supervised experience, plus NC-DHHS QP training modules. QP must report any lapse/sanction/restriction to the Clinical Director within one business day. §2.2 Staff Qualifications QP bullet updated to match (previous bullet incorrectly stated "Master\'s or Bachelor\'s degree... licensed or license-eligible" — a bachelor\'s degree alone is not 27G .0104-compliant).',
          'Executive Director / QP'],
     ]
     vh_th = ParagraphStyle('vhth', fontName=BODY_BOLD, fontSize=9, leading=11, textColor=colors.white, alignment=TA_LEFT)

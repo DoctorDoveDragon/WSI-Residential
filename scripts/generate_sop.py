@@ -98,7 +98,7 @@ AVAIL_W = PAGE_W - LEFT_M - RIGHT_M  # ~440pt
 # ────────────────────────────────────────────────────────────────────
 SELF_REF = (
     'Well Spring Intervention LLC SOP &amp; Operational Manual '
-    '(Doc. WSI-SOP-001, Rev. 2.3, Jul 2026 — RMDM-Compliant)'
+    '(Doc. WSI-SOP-001, Rev. 2.4, Jul 2026 — RMDM-Compliant)'
 )
 
 # ────────────────────────────────────────────────────────────────────
@@ -400,7 +400,7 @@ def signature_line(label, width_pct=0.46):
 # ────────────────────────────────────────────────────────────────────
 # Header / footer (drawn via onPage callback)
 # ────────────────────────────────────────────────────────────────────
-DOC_TITLE_SHORT = 'Standard Operating Procedure & Operational Manual — Rev. 2.3 (RMDM-Compliant)'
+DOC_TITLE_SHORT = 'Standard Operating Procedure & Operational Manual — Rev. 2.4 (RMDM-Compliant)'
 DOC_ORG = 'Well Spring Intervention LLC'
 
 def draw_header_footer(canvas, doc):
@@ -457,7 +457,7 @@ def build():
         title='Well Spring Intervention LLC — SOP & Operational Manual',
         author='Well Spring Intervention LLC',
         creator='Z.ai',
-        subject='Level 3 Supervised Residential Group Home — Standard Operating Procedures (Rev. 2.3 RMDM-Compliant)',
+        subject='Level 3 Supervised Residential Group Home — Standard Operating Procedures (Rev. 2.4 RMDM-Compliant)',
         keywords='SOP, residential group home, Level 3, NCAC 27G, Rule 108, Medicaid CCP 8C, IRIS, RMDM, HIPAA, 42 CFR Part 2, NCGS Ch. 66 Art. 40, E-SIGN, Electronic Signatures',
     )
 
@@ -468,7 +468,7 @@ def build():
     story.append(Paragraph('Table of Contents', s_toc_title))
     story.append(HRFlowable(width=80, color=ACCENT, thickness=2, spaceBefore=2, spaceAfter=12))
     story.append(Paragraph(
-        'This manual (Rev. 2.3, July 2026) is organized into three parts and is fully '
+        'This manual (Rev. 2.4, July 2026) is organized into three parts and is fully '
         'compliant with the NCDHHS Records Management and Documentation Manual (RMDM, '
         'Effective July 8, 2025). Part 1 establishes foundational policies and compliance '
         'obligations across eleven sections, including new chapters on privacy/confidentiality '
@@ -477,13 +477,19 @@ def build():
         'safeguards and system unavailability procedures. Rev. 2.2 clarified the '
         'organizational reporting structure in §1.4, establishing the QP as reporting to '
         'the Clinical Director, supervising staff per the Clinical Director\'s direction, '
-        'and providing recurring compliance reports via new §1.4(a). Rev. 2.3 refines the '
-        'QP responsibilities to explicitly include <b>scheduling</b> of clinical services, '
-        'assessments, and PCPs in §1.4. Part 2 details twenty-one step-by-step workflows '
-        'that govern daily operations, including protocols for service orders/'
-        'authorizations and record management/disclosure accounting. Part 3 provides nine '
-        'customized forms and logs, including the Full Service Note Template, '
-        'Comprehensive Clinical Record Content Checklist, and Accounting of Disclosures Log.',
+        'and providing recurring compliance reports via new §1.4(a). Rev. 2.3 refined the '
+        'QP responsibilities to explicitly include scheduling of clinical services, '
+        'assessments, and PCPs in §1.4. Rev. 2.4 corrects the QP credentialing '
+        'requirements to align with 10A NCAC 27G .0104: new §1.4(b) specifies acceptable '
+        'NC credentials (full license, associate/provisional license, certification, or '
+        'psychiatric nursing credential) and clarifies that a QP is not required to hold '
+        'a full, unrestricted clinical license, but a bachelor\'s degree alone is not '
+        'sufficient; §2.2 Staff Qualifications bullet updated to match. Part 2 details '
+        'twenty-one step-by-step workflows that govern daily operations, including '
+        'protocols for service orders/authorizations and record management/disclosure '
+        'accounting. Part 3 provides nine customized forms and logs, including the Full '
+        'Service Note Template, Comprehensive Clinical Record Content Checklist, and '
+        'Accounting of Disclosures Log.',
         s_toc_intro
     ))
 

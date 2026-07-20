@@ -356,3 +356,63 @@ Stage Summary:
   - /home/z/my-project/scripts/generate_sop.py — SELF_REF/DOC_TITLE_SHORT/TOC intro/subject updated
   - /home/z/my-project/scripts/sop_cover.html — Effective Date + footer updated
   - /home/z/my-project/scripts/merge_sop.py — MANUAL_VERSION = '2.3'
+
+---
+Task ID: SOP-9
+Agent: main (Super Z)
+Task: QP credentialing correction per 10A NCAC 27G .0104 — user asked "QP's don't have to have a license correct?". Answer: not a full unrestricted license, but a recognized NC credential (full license, associate/provisional license, certification, or psychiatric nursing credential) IS required; a bachelor's degree alone is NOT sufficient. Apply this correction to the SOP manual.
+
+Work Log:
+- Reviewed existing §2.2 Staff Qualifications QP bullet — was incorrectly stated as "Master's or Bachelor's degree in human services with required supervised experience; licensed or license-eligible." This is non-compliant: a bachelor's degree alone does not qualify anyone as a QP, and "license-eligible" is too vague per 10A NCAC 27G .0104.
+- Added new §1.4(b) QP Credentialing Requirements to sop_content_v2.py (placed between §1.4(a) and §1.5):
+  - States that QP must meet 10A NCAC 27G .0104.
+  - Explicit clarification: "A QP is NOT required to hold a full, unrestricted clinical license; however, a bachelor's degree alone is NOT sufficient."
+  - Minimum: (a) master's degree in a human services field from an accredited institution, plus (b) one of four NC credential categories:
+    (i) Full clinical license — LCSW, LPC, LMFT, Licensed Psychologist, Licensed Psychological Associate, or psychiatrist (MD/DO).
+    (ii) Associate or provisional license — LCSW-A, LPC-A, LMFT-A, or LCAS-P.
+    (iii) Certification — LCAS, CCS with master's degree, or CMSW.
+    (iv) Nursing — Clinical Nurse Specialist (CNS) or Nurse Practitioner (NP) with psychiatric/mental health certification.
+  - Plus: at least one year of full-time, post-master's supervised experience in MH/DD/SUD services to the population served.
+  - Plus: NC-DHHS-required QP training modules (completed prior to independent practice or enrolled and completed within probationary period).
+  - Verification: facility shall retain documentation of degree, current credential, supervised-experience hours, and QP training completion in personnel file (§2.5).
+  - Ongoing: QP must maintain active credential status and report any lapse, sanction, or restriction to the Clinical Director within one business day.
+- Rewrote §2.2 Staff Qualifications QP bullet to:
+  "Master's degree in a human services field plus a recognized NC credential (full license, associate/provisional license, certification, or psychiatric nursing credential) and at least one year of full-time, post-master's supervised experience per §1.4(b) and 10A NCAC 27G .0104. A bachelor's degree alone is not sufficient. NC-DHHS QP training modules must be completed prior to independent practice."
+  This removes the previous incorrect "or Bachelor's degree" and the vague "licensed or license-eligible" phrasing.
+- Bumped manual to Rev. 2.4 across generate_sop.py:
+  - SELF_REF: "Rev. 2.3" → "Rev. 2.4"
+  - DOC_TITLE_SHORT: "Rev. 2.3" → "Rev. 2.4"
+  - PDF subject metadata: "Rev. 2.3" → "Rev. 2.4"
+  - TOC intro paragraph extended with Rev. 2.4 note describing the §1.4(b) addition and the §2.2 correction.
+- Updated sop_cover.html:
+  - Effective Date meta-value: "Version 2.3 (RMDM-Compliant)" → "Version 2.4 (RMDM-Compliant)"
+  - Footer right: "Doc. WSI-SOP-001 · Rev. 2.3" → "Doc. WSI-SOP-001 · Rev. 2.4"
+- Updated sop_content_v2_part3.py:
+  - Added v2.4 row to Version History table summarizing the §1.4(b) addition (four credential categories, master's + supervised experience + QP training, lapse reporting) and the §2.2 correction (removed bachelor's-degree-alone and vague "license-eligible" language).
+  - Updated Form 6 Employee SOP Acknowledgment language to Rev. 2.4 — added explicit acknowledgment: "I acknowledge that QP credentialing requirements are specified in §1.4(b) per 10A NCAC 27G .0104 — a QP is not required to hold a full, unrestricted clinical license, but a bachelor's degree alone is not sufficient."
+- Bumped MANUAL_VERSION = '2.4' in merge_sop.py — new versioned filename Well_Spring_Intervention_SOP_Manual_v2.4_RMDM-Compliant.pdf (v2.0/v2.1/v2.2/v2.3 files preserved as immutable history).
+- Re-rendered cover via html2poster.js → 166.0 KB.
+- Regenerated body via generate_sop.py — no errors.
+- Re-merged via merge_sop.py → final PDF: 30 pages, 346.5 KB (was 29 pages / 365.8 KB in v2.3; +1 page for §1.4(b) credentialing content).
+- Ran pdf_qa.py: **13 PASS, 0 WARN — ALL CHECKS PASSED**.
+- Verified content via pdftotext:
+  - §1.4(b) QP Credentialing Requirements heading renders correctly
+  - 10A NCAC 27G .0104 cited
+  - "A QP is not required to hold a full, unrestricted clinical license; however, a bachelor's degree alone is not sufficient" — present
+  - LCSW / LPC / LMFT / LCSW-A / LPC-A / LMFT-A / LCAS-P / LCAS / CCS / CMSW / CNS / NP — all credential abbreviations render correctly
+  - §2.2 QP bullet now references §1.4(b) and 27G .0104
+  - Form 6 acknowledgment includes §1.4(b) acknowledgment language
+  - 42 self-references (11 SOPs + 21 protocols + 9 forms + version history) ✓
+
+Stage Summary:
+- Final deliverable: /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.4_RMDM-Compliant.pdf (30 pages, 346.5 KB, Rev. 2.4 RMDM-Compliant + E-Sig + Org-Clarification + Scheduling-Refinement + QP-Credentialing-Correction).
+- LATEST pointer updated: /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_LATEST.pdf (byte-for-byte copy of v2.4).
+- v2.0, v2.1, v2.2, and v2.3 files preserved as immutable history per versioning policy.
+- Direct answer to user's question is now codified in the SOP: a QP does NOT need a full unrestricted clinical license (associate/provisional licenses and certain certifications qualify), but a bachelor's degree alone is NOT sufficient — a master's degree plus a recognized NC credential plus one year of post-master's supervised experience plus NC-DHHS QP training are all required per 10A NCAC 27G .0104.
+- All QA checks pass (13 PASS / 0 WARN).
+- Persistent artifacts updated:
+  - /home/z/my-project/scripts/sop_content_v2.py — §1.4(b) added, §2.2 QP bullet corrected
+  - /home/z/my-project/scripts/sop_content_v2_part3.py — v2.4 Version History row + Form 6 acknowledgment updated
+  - /home/z/my-project/scripts/generate_sop.py — SELF_REF/DOC_TITLE_SHORT/TOC intro/subject updated
+  - /home/z/my-project/scripts/sop_cover.html — Effective Date + footer updated
+  - /home/z/my-project/scripts/merge_sop.py — MANUAL_VERSION = '2.4'
