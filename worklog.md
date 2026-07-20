@@ -174,3 +174,36 @@ Stage Summary:
   - `/home/z/my-project/scripts/sop_cover.html` — updated cover (Rev. 2.0)
   - `/home/z/my-project/scripts/merge_sop.py` — cover+body merge script (unchanged, reusable)
 - All QA checks pass. Manual is ready for adoption as Version 2.0.
+
+---
+Task ID: SOP-5
+Agent: main (Super Z)
+Task: Version the SOP manual deliverables to avoid confusion (previously, v1.0 → v1.0+self-refs → v2.0 all overwrote the same filename `Well_Spring_Intervention_SOP_Manual.pdf`).
+
+Work Log:
+- Recognized the versioning problem: the unversioned filename `Well_Spring_Intervention_SOP_Manual.pdf` was reused across four materially different builds (v1.0 → v1.0+self-refs → v1.0+self-refs+cover-fix → v2.0), making it impossible to tell which revision a cached copy represented.
+- Rewrote `/home/z/my-project/scripts/merge_sop.py` with explicit version tracking:
+  - Added `MANUAL_VERSION` constant (currently `'2.0'`) and `MANUAL_VERSION_SUFFIX` (`'RMDM-Compliant'`).
+  - Versioned output path: `download/Well_Spring_Intervention_SOP_Manual_v<VERSION>[_<SUFFIX>].pdf` — immutable, never overwritten.
+  - Latest pointer: `download/Well_Spring_Intervention_SOP_Manual_LATEST.pdf` — always a byte-for-byte copy of the most recent versioned file, for casual "give me the current manual" use.
+  - PDF /Title metadata now includes `(Rev. <VERSION>)`; /Subject includes the full version + suffix descriptor.
+  - Console output prints both paths and the version.
+- Removed the old unversioned `download/Well_Spring_Intervention_SOP_Manual.pdf`.
+- Re-ran `merge_sop.py`:
+  - Versioned: `download/Well_Spring_Intervention_SOP_Manual_v2.0_RMDM-Compliant.pdf` (333.9 KB, 27 pages)
+  - Latest pointer: `download/Well_Spring_Intervention_SOP_Manual_LATEST.pdf` (identical bytes)
+- Re-ran `pdf_qa.py` on the versioned file: 13 PASS, 0 WARN — All checks passed.
+- Wrote `/home/z/my-project/download/README.md` documenting the versioning convention:
+  - Naming pattern: `*_v<VERSION>[_<DESCRIPTOR>].pdf` (immutable archive) + `*_LATEST.pdf` (pointer)
+  - Revision table listing v2.0 (Jul 2026, 27 pages, RMDM-Compliant) as current; LATEST currently identical to v2.0
+  - Note that v1.0 is superseded and no longer distributed as a standalone file (source refactored into v2 pipeline)
+  - Brief mention of the unrelated `The_Quiet_Edge.pdf` deliverable from an earlier session
+- Considered archiving v1.0 scripts as `generate_sop_v1.py` etc., but the v1.0 inline content was already refactored OUT of `generate_sop.py` into the v2 content modules — there is no separate v1.0 source left to archive. The README documents this explicitly so a future auditor understands the lineage.
+
+Stage Summary:
+- Final deliverables in `/home/z/my-project/download/`:
+  - `Well_Spring_Intervention_SOP_Manual_v2.0_RMDM-Compliant.pdf` — immutable Rev. 2.0 archive (27 pages, 333.9 KB)
+  - `Well_Spring_Intervention_SOP_Manual_LATEST.pdf` — pointer copy (identical bytes)
+  - `README.md` — explains naming convention and revision history
+- Future revisions: bump `MANUAL_VERSION` (and optionally `MANUAL_VERSION_SUFFIX`) in `merge_sop.py`, re-run, and a new immutable versioned file will be emitted alongside (not over) the existing one. The LATEST pointer is updated automatically.
+- All QA checks still pass.
