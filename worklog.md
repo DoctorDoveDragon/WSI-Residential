@@ -48,3 +48,32 @@ Stage Summary:
 - TOC: TocDocTemplate with +1 page offset to account for merged cover
 - All QA checks pass (11 PASS + 2 cosmetic WARN on cover only)
 - Persistent scripts saved at `/home/z/my-project/scripts/{sop_cover.html, generate_sop.py, merge_sop.py}` for future edits/regeneration
+
+---
+Task ID: SOP-2
+Agent: main (Super Z)
+Task: Update the SOP manual so every section also references the manual itself (Doc. WSI-SOP-001, Rev. 1.0) in addition to existing external regulatory citations.
+
+Work Log:
+- Read existing `/home/z/my-project/scripts/generate_sop.py` to understand the `ref_line()` helper and locate all 10 Part-1 calls, the Part-2 protocol loop (19 items), and the 6 Part-3 form section headings.
+- Added a `SELF_REF` module constant just below the page-geometry block:
+  `'Well Spring Intervention LLC SOP & Operational Manual (Doc. WSI-SOP-001, Rev. 1.0, Jan 2026)'`
+  Matches the Doc ID and Rev on the cover page so internal citations trace back to the cover metadata.
+- Rewrote `ref_line(external=None, anchor=None)` so it ALWAYS inserts `SELF_REF` between any external regulatory citation and any section anchor, joined by middle-dots. Format:
+  `Reference: [<external>] · Well Spring Intervention LLC SOP & Operational Manual (Doc. WSI-SOP-001, Rev. 1.0, Jan 2026) [· <anchor>]`
+- Updated all 10 Part-1 SOPs to pass `anchor='§<N>'` (matching the visible SOP number 1–10). External regulatory citations preserved unchanged.
+- Updated the Part-2 protocol loop to emit `ref_line(anchor=f'Part 2 · Protocol {i}: {title}')` immediately after each `section_heading(i, title)`. Protocols previously had no reference line; now each cites the manual itself.
+- Added 6 `ref_line(anchor='Part 3 · Form {i}: <title>')` calls — one immediately after each Form's `section_heading` call in Part 3.
+- Regenerated `sop_body.pdf` via `python scripts/generate_sop.py` (no errors).
+- Re-merged cover + body via `python scripts/merge_sop.py` → `download/Well_Spring_Intervention_SOP_Manual.pdf` (now 18 pages, 294.6 KB — body grew by 1 page due to the 35 new reference lines).
+- Verified via `pdftotext | grep -c WSI-SOP-001` → 35 occurrences (exactly matching 10 SOPs + 19 protocols + 6 forms).
+- Spot-checked rendering: external reg → manual self-ref → section anchor chain reads correctly across all three parts.
+- Ran `pdf_qa.py`: 11 PASS + 2 cosmetic WARN (both on cover page only, same as before — Template 01 HUD anchor-line design).
+
+Stage Summary:
+- Final deliverable updated in place: `/home/z/my-project/download/Well_Spring_Intervention_SOP_Manual.pdf` (18 pages, 294.6 KB)
+- All 35 SOP sections / protocols / forms now self-reference the manual file (Doc. WSI-SOP-001, Rev. 1.0) alongside the existing external regulatory citations.
+- Part 1 SOPs: `external · SELF_REF · §N`
+- Part 2 Protocols: `SELF_REF · Part 2 · Protocol N: <title>`
+- Part 3 Forms: `SELF_REF · Part 3 · Form N: <title>`
+- Persistent script `/home/z/my-project/scripts/generate_sop.py` is the single source of truth — edit and re-run for any further revisions.

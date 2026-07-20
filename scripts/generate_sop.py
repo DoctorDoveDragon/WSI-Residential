@@ -94,6 +94,14 @@ BOTTOM_M = 0.85 * inch
 AVAIL_W = PAGE_W - LEFT_M - RIGHT_M  # ~440pt
 
 # ────────────────────────────────────────────────────────────────────
+# Self-reference — this manual cites itself alongside external regs
+# ────────────────────────────────────────────────────────────────────
+SELF_REF = (
+    'Well Spring Intervention LLC SOP &amp; Operational Manual '
+    '(Doc. WSI-SOP-001, Rev. 1.0, Jan 2026)'
+)
+
+# ────────────────────────────────────────────────────────────────────
 # Paragraph styles
 # ────────────────────────────────────────────────────────────────────
 BODY_FONT = 'FreeSerif'
@@ -281,8 +289,17 @@ def section_heading(num, title):
     return add_heading(f'{num}. {title}', s_h1, level=1)
 
 
-def ref_line(text):
-    return Paragraph(f'<i>Reference: {text}</i>', s_ref)
+def ref_line(external=None, anchor=None):
+    """Reference line. ALWAYS cites this manual itself (the SOP file).
+    Optionally prepends external regulatory citations and/or appends a
+    section anchor (e.g., '§1' or 'Part 2 · Protocol 3')."""
+    parts = []
+    if external:
+        parts.append(external)
+    parts.append(SELF_REF)
+    if anchor:
+        parts.append(anchor)
+    return Paragraph(f'<i>Reference: {" &middot; ".join(parts)}</i>', s_ref)
 
 
 def para(text, justify=False):
@@ -428,7 +445,7 @@ def build_part1():
 
     # ── SOP 1 ──────────────────────────────────────────────────────
     story.append(section_heading(1, 'Agency Overview & Governance'))
-    story.append(ref_line('10A NCAC 27G .0100; NC Medicaid Managed Care Tailored Plan Requirements'))
+    story.append(ref_line('10A NCAC 27G .0100; NC Medicaid Managed Care Tailored Plan Requirements', '§1'))
     story.append(para(
         '<b>1.1 Mission Statement.</b> Well Spring Intervention LLC is dedicated to providing '
         'trauma-informed, high-quality supervised living environments for youth with severe '
@@ -468,7 +485,7 @@ def build_part1():
 
     # ── SOP 2 ──────────────────────────────────────────────────────
     story.append(section_heading(2, 'Human Resources & Staffing Requirements'))
-    story.append(ref_line('10A NCAC 27G .0203 & .5600; NC Medicaid CCP 8C'))
+    story.append(ref_line('10A NCAC 27G .0203 & .5600; NC Medicaid CCP 8C', '§2'))
     story.append(para(
         '<b>2.1 Staffing Ratios.</b> Minimum staffing ratios are mandated at all times to '
         'ensure resident safety and adequate supervision. Day and evening shifts maintain a '
@@ -522,7 +539,7 @@ def build_part1():
 
     # ── SOP 3 ──────────────────────────────────────────────────────
     story.append(section_heading(3, 'Admissions, Discharges, and Transition Planning'))
-    story.append(ref_line('10A NCAC 27G .5604; NC Medicaid CCP 8C'))
+    story.append(ref_line('10A NCAC 27G .5604; NC Medicaid CCP 8C', '§3'))
     story.append(para(
         '<b>3.1 Admission Criteria.</b> The program serves youth with a primary mental health '
         'or behavioral diagnosis requiring supervised living, who are medically stable, and '
@@ -554,7 +571,7 @@ def build_part1():
 
     # ── SOP 4 ──────────────────────────────────────────────────────
     story.append(section_heading(4, 'Clinical Services & Person-Centered Planning'))
-    story.append(ref_line('10A NCAC 27E .0300; NC Medicaid CCP 8C'))
+    story.append(ref_line('10A NCAC 27E .0300; NC Medicaid CCP 8C', '§4'))
     story.append(para(
         '<b>4.1 PCP Development.</b> Within 30 calendar days of admission, the QP facilitates '
         'a Person-Centered Plan (PCP) meeting that includes the youth, guardian, LME/MCO '
@@ -586,7 +603,7 @@ def build_part1():
 
     # ── SOP 5 ──────────────────────────────────────────────────────
     story.append(section_heading(5, 'Behavioral Management & Restraint'))
-    story.append(ref_line('10A NCAC 27G .0209; CMS Mental Health Parity Rules'))
+    story.append(ref_line('10A NCAC 27G .0209; CMS Mental Health Parity Rules', '§5'))
     story.append(para(
         '<b>5.1 Philosophy.</b> Well Spring Intervention LLC employs a trauma-informed, '
         'positive behavioral interventions model. We recognize that behavior is communication, '
@@ -618,7 +635,7 @@ def build_part1():
 
     # ── SOP 6 ──────────────────────────────────────────────────────
     story.append(section_heading(6, 'Health, Medication, & Nutrition Management'))
-    story.append(ref_line('10A NCAC 27G .0209; NC Nursing Practice Act'))
+    story.append(ref_line('10A NCAC 27G .0209; NC Nursing Practice Act', '§6'))
     story.append(para(
         '<b>6.1 Medical Care.</b> Each resident has an identified Primary Care Physician (PCP) '
         'and psychiatrist upon admission. A complete medical examination is conducted within '
@@ -649,7 +666,7 @@ def build_part1():
 
     # ── SOP 7 ──────────────────────────────────────────────────────
     story.append(section_heading(7, 'Education & Vocational Support'))
-    story.append(ref_line('NC General Statutes (Education of Homeless Children); IDEA'))
+    story.append(ref_line('NC General Statutes (Education of Homeless Children); IDEA', '§7'))
     story.append(para(
         '<b>7.1 Education Coordination.</b> The QP serves as the Education Liaison for every '
         'youth in the program. Within 10 calendar days of admission, the QP contacts the Local '
@@ -671,7 +688,7 @@ def build_part1():
 
     # ── SOP 8 ──────────────────────────────────────────────────────
     story.append(section_heading(8, 'Incident Reporting & Response (Rule 108 / IRIS)'))
-    story.append(ref_line('10A NCAC 27T (Rule 108)'))
+    story.append(ref_line('10A NCAC 27T (Rule 108)', '§8'))
     story.append(para(
         '<b>8.1 Reportable Incidents.</b> The following events are reportable under Rule 108 '
         'and must be entered into the Incident Reporting and Investigative System (IRIS): '
@@ -701,7 +718,7 @@ def build_part1():
 
     # ── SOP 9 ──────────────────────────────────────────────────────
     story.append(section_heading(9, 'Facility, Safety, & Environmental Management'))
-    story.append(ref_line('10A NCAC 27G .0600; NC Fire Code'))
+    story.append(ref_line('10A NCAC 27G .0600; NC Fire Code', '§9'))
     story.append(para(
         '<b>9.1 Environment.</b> The facility maintains a safe, clean, and home-like '
         'environment. Maximum occupancy is two youth per bedroom, with each youth having '
@@ -730,7 +747,7 @@ def build_part1():
 
     # ── SOP 10 ─────────────────────────────────────────────────────
     story.append(section_heading(10, 'Medicaid Billing & Documentation Compliance'))
-    story.append(ref_line('NC Medicaid CCP 8C; CMS Documentation Guidelines'))
+    story.append(ref_line('NC Medicaid CCP 8C; CMS Documentation Guidelines', '§10'))
     story.append(para(
         '<b>10.1 Progress Notes.</b> Every staff member who provides direct care completes a '
         'shift note by the end of their shift. Notes must be objective, factual, and specific '
@@ -885,6 +902,7 @@ def build_part2():
 
     for i, (title, steps) in enumerate(protocols, start=1):
         story.append(section_heading(i, title))
+        story.append(ref_line(anchor=f'Part 2 &middot; Protocol {i}: {title}'))
         for j, step in enumerate(steps, start=1):
             story.append(Paragraph(f'{step}', s_bullet))
         story.append(Spacer(1, 4))
@@ -909,6 +927,7 @@ def build_part3():
 
     # ── FORM 1 ─────────────────────────────────────────────────────
     story.append(section_heading(1, 'Shift Change & Awake Night Watch Log'))
+    story.append(ref_line(anchor='Part 3 &middot; Form 1: Shift Change &amp; Awake Night Watch Log'))
     story.append(Paragraph('<b>Facility:</b> Well Spring Intervention LLC    <b>Date:</b> __________________', s_form_meta))
     story.append(Paragraph('<b>Awake Overnight Room Checks (Every 15 Minutes)</b>', s_form_section))
     story.append(Paragraph('Instructions: Initial each box to verify you visually saw the youth breathing and in their bed.', s_form_instr))
@@ -960,6 +979,7 @@ def build_part3():
     # ── FORM 2 ─────────────────────────────────────────────────────
     story.append(Spacer(1, 14))
     story.append(section_heading(2, 'Contraband & Belongings Inventory'))
+    story.append(ref_line(anchor='Part 3 &middot; Form 2: Contraband &amp; Belongings Inventory'))
     story.append(Paragraph('<b>Youth Name:</b> ____________________________    <b>Date:</b> _______________', s_form_meta))
     story.append(Paragraph('<b>Search Type:</b>   [  ] Admission    [  ] Return from Pass    [  ] Probable Cause (QP Approval: ____________________)', s_form_meta))
     story.append(Spacer(1, 6))
@@ -978,6 +998,7 @@ def build_part3():
     # ── FORM 3 ─────────────────────────────────────────────────────
     story.append(Spacer(1, 14))
     story.append(section_heading(3, 'Physical Restraint & Debriefing Checklist'))
+    story.append(ref_line(anchor='Part 3 &middot; Form 3: Physical Restraint &amp; Debriefing Checklist'))
     story.append(Paragraph('<b>Youth:</b> ____________________   <b>Date:</b> ___________   <b>Time Started:</b> ________   <b>Time Ended:</b> ________', s_form_meta))
     story.append(Paragraph('<b>Total Duration (Min):</b> _______   <b>Technique:</b> __________________________', s_form_meta))
     story.append(Spacer(1, 6))
@@ -1008,6 +1029,7 @@ def build_part3():
     # ── FORM 4 ─────────────────────────────────────────────────────
     story.append(Spacer(1, 14))
     story.append(section_heading(4, 'Home Pass & Medicaid Billing Exclusion Tracker'))
+    story.append(ref_line(anchor='Part 3 &middot; Form 4: Home Pass &amp; Medicaid Billing Exclusion Tracker'))
     story.append(Paragraph('<b>Youth:</b> ____________________________    <b>Month/Year:</b> _______________', s_form_meta))
     story.append(Spacer(1, 6))
 
@@ -1027,6 +1049,7 @@ def build_part3():
     # ── FORM 5 ─────────────────────────────────────────────────────
     story.append(Spacer(1, 14))
     story.append(section_heading(5, 'Emergency Drill & Environmental Safety Log'))
+    story.append(ref_line(anchor='Part 3 &middot; Form 5: Emergency Drill &amp; Environmental Safety Log'))
     story.append(Paragraph('<b>Facility:</b> Well Spring Intervention LLC', s_form_meta))
     story.append(Spacer(1, 6))
 
@@ -1107,6 +1130,7 @@ def build_part3():
     # ── FORM 6 ─────────────────────────────────────────────────────
     story.append(Spacer(1, 14))
     story.append(section_heading(6, 'Employee SOP Acknowledgment'))
+    story.append(ref_line(anchor='Part 3 &middot; Form 6: Employee SOP Acknowledgment'))
     story.append(Paragraph('<b>Employee Name:</b> _____________________________________________', s_form_meta))
     story.append(Paragraph('<b>Title:</b>   [  ] QP    [  ] AP    [  ] Direct Care Professional', s_form_meta))
     story.append(Spacer(1, 8))
