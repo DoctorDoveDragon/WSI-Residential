@@ -77,3 +77,32 @@ Stage Summary:
 - Part 2 Protocols: `SELF_REF · Part 2 · Protocol N: <title>`
 - Part 3 Forms: `SELF_REF · Part 3 · Form N: <title>`
 - Persistent script `/home/z/my-project/scripts/generate_sop.py` is the single source of truth — edit and re-run for any further revisions.
+
+---
+Task ID: SOP-3
+Agent: main (Super Z)
+Task: Address the 2 QA warnings on the SOP manual cover (forbidden line-start '·' + margin asymmetry).
+
+Work Log:
+- Confirmed current state: `pdf_qa.py` reported 11 PASS + 2 WARN, both on page 1 (cover):
+  1. `[Punctuation rules] Page 1 - Forbidden line-start punctuation '·': ...·   O P E R AT I O N A L  R E` — caused by the kicker text "Standard Operating Procedure &nbsp;&middot;&nbsp; Operational Reference" wrapping such that the second line began with `·`.
+  2. `[Margin symmetry] Page 1 left/right margins differ by 35pt (L 111pt, R 75pt)` — content-inner was positioned at left:148px, right:80px, making the right margin ~70px narrower than the left.
+- Inspected text bounding boxes via `pdftotext -bbox-layout -f 1 -l 1` to confirm the exact rightmost text position (xMax=443.55pt) and that no text extended to the right edge of the content area.
+- Edited `/home/z/my-project/scripts/sop_cover.html`:
+  1. `.content-inner`: changed `right: 80px` → `right: 148px` (matches `left: 148px`, balances horizontal margins).
+  2. `.ref-block`: changed `right: 80px` → `right: 148px` (keeps alignment with content-inner).
+  3. `.footer`: changed `right: 80px` → `right: 148px` (same).
+  4. Kicker text: replaced `&nbsp;&middot;&nbsp;` with `&amp;` so any line wrap begins with a normal word character (no forbidden line-start punctuation possible).
+  5. Ref-block separator: replaced all `&nbsp;&middot;&nbsp;` with `, ` (commas) — same anti-line-start protection, more standard institutional citation style.
+  6. `.summary`: replaced `width: 460px` with `right: 0` so the summary fills the full content-inner width; this allows wrapped text to extend to the right edge of the content area, balancing the measured left/right text margins.
+- Re-rendered cover via `node skills/pdf/scripts/html2poster.js scripts/sop_cover.html scripts/sop_cover.pdf --width 794px` (161.5 KB).
+- Re-merged via `python scripts/merge_sop.py` → final PDF still 18 pages, 294.7 KB.
+- Re-ran `pdf_qa.py`:
+  - **13 PASS, 0 WARN — ALL CHECKS PASSED** (was 11 PASS + 2 WARN).
+  - Two new passes added: "Punctuation placement check passed" and "Left/right margins appear symmetric".
+
+Stage Summary:
+- Final deliverable: `/home/z/my-project/download/Well_Spring_Intervention_SOP_Manual.pdf` (18 pages, 294.7 KB) — clean QA pass.
+- Cover layout now has balanced 148px margins on left and right; kicker and ref-block text no longer use middot separators that could wrap to line start.
+- Persistent artifacts updated in place: `scripts/sop_cover.html`, `scripts/sop_cover.pdf`, `download/Well_Spring_Intervention_SOP_Manual.pdf`.
+- Body PDF (`scripts/sop_body.pdf`) unchanged from SOP-2 (still contains all 35 self-references).

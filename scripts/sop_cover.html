@@ -91,7 +91,7 @@
   .content-inner {
     position: absolute;
     left: 148px;           /* 95 + 6 + 47 gap (≥40px from anchor line) */
-    right: 80px;
+    right: 148px;          /* balanced with left to satisfy margin symmetry */
     top: 0;
     bottom: 0;
   }
@@ -157,7 +157,7 @@
     position: absolute;
     top: 575px;            /* 0.51 * 1123 */
     left: 0;
-    width: 460px;          /* ≤ W * 0.6 */
+    right: 0;              /* fill content-inner width for margin symmetry */
     font-family: 'Inter', sans-serif;
     font-size: 14px;
     font-weight: 400;
@@ -198,7 +198,7 @@
     position: absolute;
     bottom: 110px;
     left: 148px;
-    right: 80px;
+    right: 148px;          /* balanced with left */
     padding-top: 22px;
     border-top: 1px solid var(--c-border);
     font-family: 'Inter', sans-serif;
@@ -222,7 +222,7 @@
     position: absolute;
     bottom: 60px;
     left: 148px;
-    right: 80px;
+    right: 148px;          /* balanced with left */
     height: 24px;
     font-family: 'Inter', sans-serif;
     font-size: 10px;
@@ -261,7 +261,7 @@
 
       <div class="kicker">
         <span class="badge">SOP / OPERATIONAL MANUAL</span>
-        Standard Operating Procedure &nbsp;&middot;&nbsp; Operational Reference
+        Standard Operating Procedure &amp; Operational Reference
       </div>
 
       <div class="hero">
@@ -303,7 +303,7 @@
 
       <div class="ref-block">
         <strong>Regulatory Framework</strong>
-        10A NCAC 27G .5600 &nbsp;&middot;&nbsp; NC Medicaid CCP 8C &nbsp;&middot;&nbsp; 10A NCAC 27T (Rule 108) &nbsp;&middot;&nbsp; NC DHSR Licensure &nbsp;&middot;&nbsp; LME/MCO Tailored Plan Requirements
+        10A NCAC 27G .5600, NC Medicaid CCP 8C, 10A NCAC 27T (Rule 108), NC DHSR Licensure, LME/MCO Tailored Plan Requirements
       </div>
 
       <div class="footer">
