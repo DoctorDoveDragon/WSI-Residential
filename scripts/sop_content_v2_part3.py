@@ -232,7 +232,7 @@ def build_part3():
     story.append(Spacer(1, 8))
     story.append(Paragraph(
         'By signing below, I acknowledge that I have received, read, and understand the '
-        'SOP Manual for <b>Well Spring Intervention LLC</b> (Rev. 2.6, July 2026, '
+        'SOP Manual for <b>Well Spring Intervention LLC</b> (Rev. 2.7, July 2026, '
         'RMDM-Compliant). I understand these policies are mandated by NC DHSR (10A NCAC '
         '27G), NC Medicaid (CCP 8C), Rule 108 (10A NCAC 27T), the NCDHHS Records '
         'Management and Documentation Manual (Effective July 8, 2025), NCGS Chapter 66 '
@@ -444,6 +444,9 @@ def build_part3():
          'Executive Director / QP'],
         ['2.6', 'Jul 2026',
          'Cover redesign: Added a symbolic cover illustration (rendered banner between the kicker and the entity title) evoking empowerment, growth, freedom, health, wholeness, and healing — visually framing the trauma-informed, restorative mission of the program. The illustration depicts a stylized tree-human figure rising toward a sunrise over calm water, rendered in a warm earthy palette (terracotta, warm brown, soft rose, cream) consistent with the manual\'s existing cascade palette. A small caption strip below the image reads "Empowerment · Growth · Freedom · Health · Wholeness · Healing". No body-content changes; §1.4(b) QP Credentialing Requirements (Pathway 1 and Pathway 2) and all other SOPs, protocols, and forms remain unchanged from Rev. 2.5.',
+         'Executive Director / QP'],
+        ['2.7', 'Jul 2026',
+         'Cover redesign (continued): Cover is now a full-bleed brand illustration suitable for reuse across company websites, publications, and collateral materials. A new high-resolution 768×1344 portrait rendering of the tree-human-sunrise image fills the entire cover page. Overlay text is reduced to the essentials: company name (Playfair Display 72pt white with text-shadow), tagline ("Empowerment · Growth · Freedom · Health · Wholeness · Healing"), subtitle ("Level 3 Supervised Residential Group Home"), and a bottom document-identification panel (Doc. WSI-SOP-001, Effective July 2026, RMDM-Compliant, Owner, Revision 2.7). All descriptive content previously on the cover (full summary paragraph, Population/Served/Service Type/Effective Date/Owner meta block, and the Regulatory Framework reference block) is relocated to a new About This Manual page (p. 2 of the body, p. 3 of the final merged PDF) immediately preceding the Table of Contents. The About This Manual page also includes a Revision Lineage summary and a Cover Artwork note describing the brand visual\'s intended reuse. TOC page-number offset increased from +1 to +2 to account for the new inside page. Body content (SOPs, protocols, forms, §1.4(b) QP Credentialing Requirements) is unchanged from Rev. 2.6.',
          'Executive Director / QP'],
     ]
     vh_th = ParagraphStyle('vhth', fontName=BODY_BOLD, fontSize=9, leading=11, textColor=colors.white, alignment=TA_LEFT)

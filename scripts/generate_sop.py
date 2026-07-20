@@ -98,7 +98,7 @@ AVAIL_W = PAGE_W - LEFT_M - RIGHT_M  # ~440pt
 # ────────────────────────────────────────────────────────────────────
 SELF_REF = (
     'Well Spring Intervention LLC SOP &amp; Operational Manual '
-    '(Doc. WSI-SOP-001, Rev. 2.6, Jul 2026 — RMDM-Compliant)'
+    '(Doc. WSI-SOP-001, Rev. 2.7, Jul 2026 — RMDM-Compliant)'
 )
 
 # ────────────────────────────────────────────────────────────────────
@@ -250,8 +250,9 @@ class TocDocTemplate(SimpleDocTemplate):
             level = getattr(flowable, 'bookmark_level', 0)
             text = getattr(flowable, 'bookmark_text', '')
             key = getattr(flowable, 'bookmark_key', '')
-            # +1 offset: cover page is page 1 after merging, body page 1 becomes page 2
-            self.notify('TOCEntry', (level, text, self.page + 1, key))
+            # +2 offset: cover is page 1, About This Manual is page 2 after merging,
+            # so body page 1 (TOC) becomes page 3 in the final PDF.
+            self.notify('TOCEntry', (level, text, self.page + 2, key))
 
 
 # ────────────────────────────────────────────────────────────────────
@@ -400,7 +401,7 @@ def signature_line(label, width_pct=0.46):
 # ────────────────────────────────────────────────────────────────────
 # Header / footer (drawn via onPage callback)
 # ────────────────────────────────────────────────────────────────────
-DOC_TITLE_SHORT = 'Standard Operating Procedure & Operational Manual — Rev. 2.6 (RMDM-Compliant)'
+DOC_TITLE_SHORT = 'Standard Operating Procedure & Operational Manual — Rev. 2.7 (RMDM-Compliant)'
 DOC_ORG = 'Well Spring Intervention LLC'
 
 def draw_header_footer(canvas, doc):
@@ -457,18 +458,103 @@ def build():
         title='Well Spring Intervention LLC — SOP & Operational Manual',
         author='Well Spring Intervention LLC',
         creator='Z.ai',
-        subject='Level 3 Supervised Residential Group Home — Standard Operating Procedures (Rev. 2.6 RMDM-Compliant)',
+        subject='Level 3 Supervised Residential Group Home — Standard Operating Procedures (Rev. 2.7 RMDM-Compliant)',
         keywords='SOP, residential group home, Level 3, NCAC 27G, Rule 108, Medicaid CCP 8C, IRIS, RMDM, HIPAA, 42 CFR Part 2, NCGS Ch. 66 Art. 40, E-SIGN, Electronic Signatures',
     )
 
     story = []
 
-    # TOC page
+    # ── About This Manual (inside cover page) ─────────────────────────
+    # The cover is now a full-bleed brand illustration with minimal overlay
+    # text only. All descriptive content (summary, meta, regulatory framework)
+    # is moved here so the cover can serve as a reusable brand asset.
+    story.append(Paragraph('ABOUT THIS MANUAL', s_toc_kicker))
+    story.append(Paragraph('Document Overview', s_toc_title))
+    story.append(HRFlowable(width=80, color=ACCENT, thickness=2, spaceBefore=2, spaceAfter=14))
+
+    story.append(Paragraph(
+        'This manual (Rev. 2.7, July 2026) is the official Standard Operating '
+        'Procedures and Operational Reference for <b>Well Spring Intervention LLC</b>, '
+        'a Level 3 Supervised Residential Group Home serving children and '
+        'adolescents with mental health and behavioral challenges. It establishes '
+        'the policies, actionable workflows, and reference forms governing the '
+        'daily operation of the program. All staff are required to read, '
+        'acknowledge, and follow these protocols exactly as written.',
+        s_body
+    ))
+    story.append(Spacer(1, 6))
+
+    # Meta block (moved from cover)
+    story.append(Paragraph('<b>Population Served.</b> Children &amp; Adolescents — Mental Health / Behavioral Challenges.', s_body))
+    story.append(Paragraph('<b>Service Type.</b> Level 3 Supervised Residential Group Home.', s_body))
+    story.append(Paragraph('<b>Effective Date.</b> July 2026.', s_body))
+    story.append(Paragraph('<b>Document Owner.</b> Executive Director &amp; Qualified Professional (QP).', s_body))
+    story.append(Paragraph('<b>Document ID.</b> Doc. WSI-SOP-001, Rev. 2.7 (RMDM-Compliant).', s_body))
+    story.append(Spacer(1, 10))
+
+    # Regulatory framework (moved from cover)
+    story.append(Paragraph('<b>Regulatory Framework.</b>', s_h2))
+    story.append(Paragraph(
+        'This manual is governed by, and operates in conformance with, the '
+        'following authorities: <b>10A NCAC 27G .5600</b> (residential facility '
+        'standards); <b>10A NCAC 27G .0104</b> (Qualified Professional credentials); '
+        '<b>NC Medicaid CCP 8C</b> (residential services); <b>10A NCAC 27T</b> '
+        '(Rule 108 — clinical record content); <b>NC DHSR</b> facility licensure; '
+        '<b>LME/MCO Tailored Plan</b> requirements; <b>NCDHHS Records Management '
+        'and Documentation Manual</b> (RMDM, Effective July 8, 2025); <b>HIPAA</b> '
+        'Privacy, Security, and Breach Notification Rules; <b>42 CFR Part 2</b> '
+        '(confidentiality of SUD records); <b>HITECH Act</b>; <b>NCGS Chapter 66, '
+        'Article 40</b> (NC Uniform Electronic Transactions Act); and the federal '
+        '<b>E-SIGN Act</b> (15 U.S.C. § 7001 et seq.).',
+        s_body
+    ))
+    story.append(Spacer(1, 10))
+
+    # Revision lineage summary (kept concise here; full Version History in Part 3)
+    story.append(Paragraph('<b>Revision Lineage.</b>', s_h2))
+    story.append(Paragraph(
+        'Rev. 2.0 (Jul 2026) reorganized the manual to full RMDM compliance. '
+        'Rev. 2.1 added §10.7 Electronic Signatures (NCGS Ch. 66 Art. 40 — NC '
+        'UETA) with safeguards and system-unavailability procedures. Rev. 2.2 '
+        'clarified the organizational reporting structure in §1.4, establishing '
+        'the QP as reporting to the Clinical Director and providing recurring '
+        'compliance reports via new §1.4(a). Rev. 2.3 refined QP responsibilities '
+        'to explicitly include scheduling of clinical services, assessments, and '
+        'PCPs in §1.4. Rev. 2.4 added §1.4(b) QP Credentialing Requirements per '
+        '10A NCAC 27G .0104. Rev. 2.5 corrected §1.4(b) to recognize BOTH acceptable '
+        'QP pathways: Pathway 1 (master\'s degree + recognized NC credential + 1 '
+        'year post-master\'s supervised MH/DD/SA experience) and Pathway 2 '
+        '(bachelor\'s degree + 2 years full-time pre- or post-bachelor\'s '
+        'supervised MH/DD/SA experience). Rev. 2.6 added a symbolic cover '
+        'illustration evoking empowerment, growth, freedom, health, wholeness, '
+        'and healing. Rev. 2.7 redesigns the cover as a full-bleed brand '
+        'illustration suitable for reuse across company sites and publications, '
+        'and relocates the descriptive cover content to this About This Manual '
+        'page. A complete revision history appears in Part 3.',
+        s_body
+    ))
+    story.append(Spacer(1, 10))
+
+    # Brand visual note
+    story.append(Paragraph('<b>Cover Artwork.</b>', s_h2))
+    story.append(Paragraph(
+        'The cover illustration is the official brand visual of Well Spring '
+        'Intervention LLC. It depicts a stylized tree-human figure rising toward '
+        'a sunrise over calm water, rendered in a warm earthy palette. The image '
+        'symbolizes the program\'s commitment to empowerment, growth, freedom, '
+        'health, wholeness, and healing, and is approved for reuse across '
+        'company websites, publications, and collateral materials. A high-resolution '
+        'copy is available alongside this manual for that purpose.',
+        s_body
+    ))
+    story.append(PageBreak())
+
+    # ── TOC page ──────────────────────────────────────────────────────
     story.append(Paragraph('CONTENTS', s_toc_kicker))
     story.append(Paragraph('Table of Contents', s_toc_title))
     story.append(HRFlowable(width=80, color=ACCENT, thickness=2, spaceBefore=2, spaceAfter=12))
     story.append(Paragraph(
-        'This manual (Rev. 2.6, July 2026) is organized into three parts and is fully '
+        'This manual (Rev. 2.7, July 2026) is organized into three parts and is fully '
         'compliant with the NCDHHS Records Management and Documentation Manual (RMDM, '
         'Effective July 8, 2025). Part 1 establishes foundational policies and compliance '
         'obligations across eleven sections, including new chapters on privacy/confidentiality '
@@ -485,9 +571,12 @@ def build():
         '(master\'s degree + recognized NC credential + 1 year post-master\'s supervised '
         'MH/DD/SA experience) and Pathway 2 (bachelor\'s degree + 2 years full-time '
         'pre- or post-bachelor\'s supervised MH/DD/SA experience); §2.2 QP bullet updated '
-        'to match. Rev. 2.6 adds a symbolic cover illustration evoking empowerment, '
+        'to match. Rev. 2.6 added a symbolic cover illustration evoking empowerment, '
         'growth, freedom, health, wholeness, and healing — visually framing the '
-        'trauma-informed, restorative mission of the program. Part 2 details twenty-one '
+        'trauma-informed, restorative mission of the program. Rev. 2.7 redesigns '
+        'the cover as a full-bleed brand illustration suitable for reuse across '
+        'company sites and publications, with descriptive cover content relocated '
+        'to the About This Manual page (p. 2). Part 2 details twenty-one '
         'step-by-step workflows that govern daily operations, including protocols for '
         'service orders/authorizations and record management/disclosure accounting. '
         'Part 3 provides nine customized forms and logs, including the Full Service Note '

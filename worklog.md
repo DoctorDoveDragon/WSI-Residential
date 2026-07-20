@@ -506,3 +506,59 @@ Stage Summary:
 - File grew from 360 KB (v2.5) to 500 KB (v2.6) due to the embedded illustration; page count grew from 30 to 31 due to the new Version History row triggering a page break.
 - All v2.0–v2.5 PDFs preserved as immutable history in `/home/z/my-project/download/`.
 - Deliverable: `/home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.6_RMDM-Compliant.pdf`
+
+---
+Task ID: SOP-11
+Agent: main (Super Z)
+Task: Redesign cover as a full-bleed brand illustration suitable for reuse across company sites and publications; move all descriptive cover text to a new inside "About This Manual" page.
+
+Work Log:
+- Loaded the `image-generation` skill and generated a new high-resolution 768×1344 portrait brand illustration via `z-ai image` CLI: stylized tree-human figure rising toward a sunrise over calm water, warm earthy palette (terracotta, warm amber, soft rose, peach, cream) consistent with the existing cascade palette, with generous empty sky space at the top for text overlay. First generation included unwanted Chinese text "行为健康组织" (meaning "behavioral health organization") — regenerated with stronger no-text directives emphasizing "ZERO text, ZERO letters, ZERO typography, ZERO words, ZERO characters of any language"; verified text-free via VLM check.
+- Saved image to `/home/z/my-project/scripts/well_spring_brand_image.png` (123 KB JPEG).
+- Completely rewrote `/home/z/my-project/scripts/sop_cover.html` as a full-bleed image cover:
+  - Removed the previous layout (kicker + horizontal image banner + hero title + summary paragraph + 4-row meta block + bottom regulatory-framework block + footer).
+  - New Layer 1: full-bleed `<img>` with object-fit:cover filling the entire 794×1123px page, plus a subtle top-and-bottom warm vignette (linear-gradient overlay) to deepen the sky and water regions for white-text legibility.
+  - New Layer 2 (overlay content) — minimal text only:
+    - Top strip (y=64px): "SOP / OPERATIONAL MANUAL" badge + tagline
+    - Hero (y=240px): "Well Spring / Intervention / LLC" in Playfair Display 72pt white with text-shadow; "Intervention" row highlighted in warm amber (#ffd9a8)
+    - Subtitle (y=510px): accent-rule + "Level 3 Supervised Residential Group Home"
+    - Tagline strip (y=560px): "Empowerment · Growth · Freedom · Health · Wholeness · Healing"
+    - Bottom panel (anchored to bottom:60px): "SOP & Operational Manual" doc-title, "Standard Operating Procedures, Protocols & Forms" doc-subtitle, and a two-column doc-meta strip — left side has Doc ID / Effective Date / Owner; right side has "Revision 2.7" with a large version-num display.
+- Updated `/home/z/my-project/scripts/generate_sop.py`:
+  - SELF_REF, DOC_TITLE_SHORT, and Subject metadata: Rev. 2.6 → Rev. 2.7
+  - TOC intro paragraph: bumped to Rev. 2.7 and added a sentence documenting the v2.7 redesign.
+  - **TocDocTemplate page offset increased from +1 to +2** — comment updated to reflect that cover is p1, About This Manual is p2, so body page 1 (TOC) becomes p3 in the final merged PDF.
+  - **Added new "About This Manual" inside page** at the start of the body story (before the TOC):
+    - "ABOUT THIS MANUAL" kicker + "Document Overview" title + accent rule
+    - Document overview paragraph (purpose, scope, mandatory acknowledgment)
+    - Meta block (Population Served, Service Type, Effective Date, Document Owner, Document ID) — moved verbatim from old cover
+    - "Regulatory Framework" section with full citation list (10A NCAC 27G .5600, 27G .0104, CCP 8C, 27T Rule 108, NC DHSR, LME/MCO, RMDM, HIPAA, 42 CFR Part 2, HITECH, NCGS Ch. 66 Art. 40, E-SIGN) — moved and expanded from old cover
+    - "Revision Lineage" summary covering Rev. 2.0 through Rev. 2.7
+    - "Cover Artwork" note describing the brand visual and its approved reuse across company websites, publications, and collateral materials
+    - PageBreak before TOC
+- Updated `/home/z/my-project/scripts/merge_sop.py`: MANUAL_VERSION '2.6' → '2.7'.
+- Updated `/home/z/my-project/scripts/sop_content_v2_part3.py`:
+  - Added new Version History row for v2.7: documents the full-bleed cover redesign, new About This Manual page relocation, TOC offset bump from +1 to +2, and confirms body content (SOPs, protocols, forms, §1.4(b) QP Credentialing Requirements) is unchanged from Rev. 2.6.
+  - Updated Form 6 (Employee SOP Acknowledgment) reference: Rev. 2.6 → Rev. 2.7.
+- Ran `cover_validate.js`: 1 minor "0px gap" warning between the subtitle's inline accent-rule decoration and the subtitle text itself — this is an intentional inline decorative element (not a true overlap). Confirmed visually via VLM: "No, there are no text overlaps or readability issues; text is well-spaced and contrasts with the background for clarity."
+- Re-rendered cover PDF via `html2poster.js --width 794px`: sop_cover.pdf (336 KB, single page, full-bleed).
+- Regenerated body PDF via `python3 generate_sop.py`: sop_body.pdf now 33 pages (was 30 in v2.6 — +3 pages for the new About This Manual content which overflowed to 2 pages, plus the TOC grew by ~1 page due to longer intro paragraph).
+- Merged cover + body via `python3 merge_sop.py`:
+  - Output: `/home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.7_RMDM-Compliant.pdf` (519.3 KB, 34 pages, Rev. 2.7 RMDM-Compliant)
+  - Latest pointer refreshed: `Well_Spring_Intervention_SOP_Manual_LATEST.pdf`
+- Ran `pdf_qa.py`: 13 PASS / 0 WARN. QA pipeline correctly detected "Cover page (p1) content extends to page edges (full-bleed) ✓" and "TOC on page 4 appears populated with entries ✓" — confirming the +2 offset worked correctly.
+- Verified visually via VLM:
+  - Cover (p1): "Yes, the image fills the entire page (full-bleed)... the company name 'Well Spring Intervention LLC' is clearly visible and readable... the layout is visually balanced and professional... no text overlaps or readability issues."
+  - About This Manual (p2): "Titled 'ABOUT THIS MANUAL'... contains Document Overview, Regulatory Framework, Revision Lineage, and Cover Artwork sections... page number at the bottom right is 'Page 2'... consistent with a properly formatted page."
+  - TOC (p4): "Part 1: Page 8, Section 1: Page 8, Section 2: Page 10, Section 3: Page 11... consistent with the document structure (cover on p1, About This Manual on p2-3, TOC starting on p4)."
+- Copied the high-resolution brand image to `/home/z/my-project/download/Well_Spring_Brand_Image_768x1344.png` for company-wide reuse across websites, publications, and collateral materials.
+
+Stage Summary:
+- Rev. 2.7 transforms the cover into a brand-defining asset: the illustration now fills the entire cover page (full-bleed), with minimal overlay text limited to the company name, document title, tagline, and document-identification panel. All descriptive content (summary, meta, regulatory framework) is relocated to a new "About This Manual" inside page (p2-3) immediately preceding the Table of Contents (now p4-7).
+- The cover illustration is approved for reuse across company websites, publications, and collateral materials. A high-resolution 768×1344 PNG copy is available at `/home/z/my-project/download/Well_Spring_Brand_Image_768x1344.png`.
+- Page count grew from 31 (v2.6) to 34 (v2.7): +1 page for cover (no change), +2 pages for the new About This Manual content, +1 page for the longer TOC intro paragraph. File size grew from 500 KB to 519 KB.
+- TOC page-number offset correctly bumped from +1 to +2 in `TocDocTemplate.afterFlowable` — all TOC entries now point to the correct final-PDF page numbers (e.g., Part 1 / Section 1 on p8).
+- All v2.0–v2.6 PDFs preserved as immutable history in `/home/z/my-project/download/`.
+- Deliverables:
+  - `/home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.7_RMDM-Compliant.pdf` (manual, 34 pages, 519 KB)
+  - `/home/z/my-project/download/Well_Spring_Brand_Image_768x1344.png` (standalone brand image for reuse)

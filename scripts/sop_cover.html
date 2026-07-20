@@ -18,6 +18,8 @@
     --c-accent2:   #d15287;
     --c-text:      #1e1c1b;
     --c-muted:     #87807d;
+    --c-overlay:   rgba(255, 251, 247, 0.96);
+    --c-overlay-border: rgba(255, 248, 240, 0.55);
   }
 
   @page {
@@ -43,315 +45,235 @@
     overflow: hidden;
   }
 
-  /* Layer 1 — Background grid */
-  .layer-bg {
+  /* ── Layer 1: full-bleed brand illustration ───────────────────── */
+  .layer-image {
     position: absolute;
     inset: 0;
     z-index: 1;
     overflow: hidden;
-    background-image:
-      linear-gradient(to right, rgba(107, 77, 63, 0.04) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(107, 77, 63, 0.04) 1px, transparent 1px);
-    background-size: 50px 50px;
   }
-
-  /* Layer 2 — Structure: thick vertical anchor line */
-  .layer-structure {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-  }
-  .anchor-line {
-    position: absolute;
-    left: 95px;            /* 0.12 * 794 ≈ 95 */
-    top: 112px;            /* 0.10 * 1123 ≈ 112 */
-    bottom: 112px;         /* 0.10 * 1123 ≈ 112 */
-    width: 6px;
-    background: var(--c-header);
-  }
-  .anchor-line::before,
-  .anchor-line::after {
-    content: '';
-    position: absolute;
-    left: -7px;
-    width: 20px;
-    height: 2px;
-    background: var(--c-accent);
-  }
-  .anchor-line::before { top: 0; }
-  .anchor-line::after  { bottom: 0; }
-
-  /* Layer 3 — Content */
-  .layer-content {
-    position: absolute;
-    inset: 0;
-    z-index: 3;
-  }
-
-  .content-inner {
-    position: absolute;
-    left: 148px;           /* 95 + 6 + 47 gap (≥40px from anchor line) */
-    right: 148px;          /* balanced with left to satisfy margin symmetry */
-    top: 0;
-    bottom: 0;
-  }
-
-  /* Drawer A — Kicker */
-  .kicker {
-    position: absolute;
-    top: 168px;            /* 0.15 * 1123 */
-    left: 0;
-    right: 0;
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--c-muted);
-    opacity: 0.85;
-  }
-  .kicker .badge {
-    display: inline-block;
-    margin-right: 14px;
-    padding: 4px 10px;
-    background: var(--c-card);
-    border: 1px solid var(--c-border);
-    border-radius: 2px;
-    color: var(--c-header);
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    font-size: 11px;
-  }
-
-  /* Drawer B — Hero Banner Image (empowerment / growth / freedom / health / wholeness / healing) */
-  .hero-image {
-    position: absolute;
-    top: 200px;
-    left: 0;
-    right: 0;
-    height: 80px;
-    border-radius: 4px;
-    border: 1px solid var(--c-border);
-    overflow: hidden;
-    box-shadow: 0 1px 4px rgba(107, 77, 63, 0.08);
-  }
-  .hero-image img {
+  .layer-image img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 35%;
+    object-position: center center;
   }
-  .hero-image .caption {
+  /* Soft warm vignette to deepen top/bottom for text legibility */
+  .layer-image::after {
+    content: '';
     position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 5px;
-    text-align: center;
-    font-family: 'Inter', sans-serif;
-    font-size: 8.5px;
-    font-weight: 600;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.92);
-    text-shadow: 0 1px 3px rgba(60, 30, 15, 0.7);
+    inset: 0;
+    background:
+      linear-gradient(to bottom,
+        rgba(60, 30, 15, 0.55) 0%,
+        rgba(60, 30, 15, 0.0)  22%,
+        rgba(60, 30, 15, 0.0)  55%,
+        rgba(60, 30, 15, 0.45) 78%,
+        rgba(50, 25, 12, 0.78) 100%);
     pointer-events: none;
   }
 
-  /* Drawer C — Hero Title (entity name) */
+  /* ── Layer 2: overlay content ─────────────────────────────────── */
+  .layer-content {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    color: #fff;
+  }
+
+  /* Top brand strip — kicker badge + tagline */
+  .top-strip {
+    position: absolute;
+    top: 64px;
+    left: 64px;
+    right: 64px;
+  }
+  .kicker {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255, 251, 247, 0.92);
+    text-shadow: 0 1px 4px rgba(40, 20, 10, 0.65);
+  }
+  .kicker .badge {
+    display: inline-block;
+    margin-right: 14px;
+    padding: 5px 12px;
+    background: rgba(171, 81, 37, 0.88);
+    border: 1px solid rgba(255, 240, 220, 0.45);
+    border-radius: 2px;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 10px;
+    text-shadow: none;
+  }
+
+  /* Mid-page hero — company name (overlay on image sky region) */
   .hero {
     position: absolute;
-    top: 290px;            /* original position — image fits in the gap above */
-    left: 0;
-    right: 0;
+    top: 240px;
+    left: 64px;
+    right: 64px;
     font-family: 'Playfair Display', serif;
     font-weight: 900;
-    font-size: 58px;
-    line-height: 1.08;
-    color: var(--c-text);
-    letter-spacing: -1px;
+    font-size: 72px;
+    line-height: 1.04;
+    color: #fff;
+    letter-spacing: -1.5px;
+    text-shadow: 0 2px 12px rgba(40, 20, 10, 0.55);
   }
   .hero .row1 { display: block; }
-  .hero .row2 { display: block; color: var(--c-header); }
+  .hero .row2 { display: block; color: #ffd9a8; }
   .hero .row3 { display: block; }
 
   .subtitle {
     position: absolute;
-    top: 525px;
-    left: 0;
-    right: 0;
+    top: 510px;
+    left: 64px;
+    right: 64px;
     font-family: 'Inter', sans-serif;
     font-size: 18px;
     font-weight: 500;
-    color: var(--c-header);
-    letter-spacing: 0.5px;
+    color: rgba(255, 251, 247, 0.94);
+    letter-spacing: 1px;
+    text-shadow: 0 1px 4px rgba(40, 20, 10, 0.55);
+  }
+  .subtitle .accent-rule {
+    display: inline-block;
+    width: 38px;
+    height: 2px;
+    background: var(--c-accent);
+    vertical-align: middle;
+    margin-right: 14px;
   }
 
-  /* Drawer D — Summary */
-  .summary {
+  /* Tagline strip — values overlay across the image mid-region */
+  .tagline {
     position: absolute;
-    top: 575px;            /* 0.51 * 1123 */
-    left: 0;
-    right: 0;              /* fill content-inner width for margin symmetry */
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.65;
-    color: var(--c-text);
-    opacity: 0.88;
-  }
-
-  /* Drawer E — Meta (stacked label-above-value pairs, institutional form style) */
-  .meta {
-    position: absolute;
-    top: 730px;            /* 0.65 * 1123 */
-    left: 0;
-    right: 0;
-    font-family: 'Inter', sans-serif;
-  }
-  .meta .meta-row {
-    margin-bottom: 12px;
-  }
-  .meta .meta-label {
-    display: block;
-    font-size: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--c-muted);
-    margin-bottom: 4px;
-  }
-  .meta .meta-value {
-    display: block;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--c-text);
-  }
-
-  /* Bottom reference block */
-  .ref-block {
-    position: absolute;
-    bottom: 110px;
-    left: 148px;
-    right: 148px;          /* balanced with left */
-    padding-top: 22px;
-    border-top: 1px solid var(--c-border);
+    top: 560px;
+    left: 64px;
+    right: 64px;
     font-family: 'Inter', sans-serif;
     font-size: 11px;
-    color: var(--c-muted);
-    line-height: 1.7;
-    letter-spacing: 0.3px;
-  }
-  .ref-block strong {
-    color: var(--c-header);
     font-weight: 600;
-    letter-spacing: 1.5px;
+    letter-spacing: 4px;
     text-transform: uppercase;
-    font-size: 10px;
-    display: block;
-    margin-bottom: 6px;
+    color: rgba(255, 251, 247, 0.85);
+    text-shadow: 0 1px 3px rgba(40, 20, 10, 0.7);
   }
 
-  /* Footer */
-  .footer {
+  /* Bottom panel — document identification block */
+  .bottom-panel {
     position: absolute;
     bottom: 60px;
-    left: 148px;
-    right: 148px;          /* balanced with left */
-    height: 24px;
+    left: 64px;
+    right: 64px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255, 248, 240, 0.45);
+    color: #fff;
     font-family: 'Inter', sans-serif;
+  }
+  .bottom-panel .doc-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.25;
+    color: #fff;
+    margin-bottom: 4px;
+    text-shadow: 0 1px 4px rgba(40, 20, 10, 0.55);
+  }
+  .bottom-panel .doc-subtitle {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255, 251, 247, 0.85);
+    margin-bottom: 14px;
+  }
+  .bottom-panel .doc-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
     font-size: 10px;
-    color: var(--c-muted);
-    letter-spacing: 2px;
+    color: rgba(255, 251, 247, 0.78);
+    letter-spacing: 1.5px;
     text-transform: uppercase;
   }
-  .footer .footer-left {
-    position: absolute;
-    left: 0;
-    top: 14px;
+  .bottom-panel .doc-meta .left {
+    line-height: 1.7;
   }
-  .footer .footer-right {
-    position: absolute;
-    right: 0;
-    top: 0;
-    color: var(--c-accent);
+  .bottom-panel .doc-meta .left strong {
+    color: #ffd9a8;
     font-weight: 600;
+    letter-spacing: 2px;
+  }
+  .bottom-panel .doc-meta .right {
+    text-align: right;
+    line-height: 1.7;
+    color: var(--c-accent2);
+    font-weight: 700;
+    letter-spacing: 2.5px;
+  }
+  .bottom-panel .doc-meta .right .version-num {
+    font-size: 14px;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 1px;
   }
 </style>
 </head>
 <body>
 <div class="poster">
 
-  <!-- Layer 1: background grid -->
-  <div class="layer-bg"></div>
-
-  <!-- Layer 2: structure (vertical anchor line) -->
-  <div class="layer-structure">
-    <div class="anchor-line"></div>
+  <!-- Layer 1: full-bleed brand illustration -->
+  <div class="layer-image">
+    <img src="well_spring_brand_image.png" alt="Symbolic illustration of a tree-human figure rising toward a sunrise over calm water, evoking empowerment, growth, freedom, health, wholeness, and healing" />
   </div>
 
-  <!-- Layer 3: content -->
+  <!-- Layer 2: overlay content -->
   <div class="layer-content">
-    <div class="content-inner">
 
+    <div class="top-strip">
       <div class="kicker">
         <span class="badge">SOP / OPERATIONAL MANUAL</span>
         Standard Operating Procedure &amp; Operational Reference
       </div>
-
-      <div class="hero-image">
-        <img src="sop_cover_image.png" alt="Symbolic illustration of a tree-human figure rising toward a sunrise, evoking empowerment, growth, freedom, health, wholeness, and healing" />
-        <span class="caption">Empowerment &middot; Growth &middot; Freedom &middot; Health &middot; Wholeness &middot; Healing</span>
-      </div>
-
-      <div class="hero">
-        <span class="row1">Well Spring</span>
-        <span class="row2">Intervention</span>
-        <span class="row3">LLC</span>
-      </div>
-
-      <div class="subtitle">
-        Level 3 Supervised Residential Group Home
-      </div>
-
-      <div class="summary">
-        This manual establishes the official Standard Operating Procedures, actionable
-        workflows, and reference forms governing the daily operation of our Level 3
-        supervised residential program for children and adolescents with mental health
-        and behavioral challenges. All staff are required to read, acknowledge, and
-        follow these protocols exactly as written.
-      </div>
-
-      <div class="meta">
-        <div class="meta-row">
-          <div class="meta-label">Population Served</div>
-          <div class="meta-value">Children &amp; Adolescents — MH / Behavioral Challenges</div>
-        </div>
-        <div class="meta-row">
-          <div class="meta-label">Service Type</div>
-          <div class="meta-value">Level 3 Supervised Residential Group Home</div>
-        </div>
-        <div class="meta-row">
-          <div class="meta-label">Effective Date</div>
-          <div class="meta-value">July 2026 &nbsp;&middot;&nbsp; Version 2.6 (RMDM-Compliant)</div>
-        </div>
-        <div class="meta-row">
-          <div class="meta-label">Owner</div>
-          <div class="meta-value">Executive Director &amp; Qualified Professional (QP)</div>
-        </div>
-      </div>
-
-      <div class="ref-block">
-        <strong>Regulatory Framework</strong>
-        10A NCAC 27G .5600, NC Medicaid CCP 8C, 10A NCAC 27T (Rule 108), NC DHSR Licensure, LME/MCO Tailored Plan Requirements, NCDHHS Records Management &amp; Documentation Manual (RMDM, Eff. Jul 8 2025), HIPAA, 42 CFR Part 2, HITECH Act, NCGS Ch. 66 Art. 40 (NC UETA), E-SIGN Act
-      </div>
-
-      <div class="footer">
-        <span class="footer-left">Well Spring Intervention LLC</span>
-        <span class="footer-right">Doc. WSI-SOP-001 &middot; Rev. 2.6</span>
-      </div>
-
     </div>
+
+    <div class="hero">
+      <span class="row1">Well Spring</span>
+      <span class="row2">Intervention</span>
+      <span class="row3">LLC</span>
+    </div>
+
+    <div class="subtitle">
+      <span class="accent-rule"></span>Level 3 Supervised Residential Group Home
+    </div>
+
+    <div class="tagline">
+      Empowerment &nbsp;&middot;&nbsp; Growth &nbsp;&middot;&nbsp; Freedom &nbsp;&middot;&nbsp; Health &nbsp;&middot;&nbsp; Wholeness &nbsp;&middot;&nbsp; Healing
+    </div>
+
+    <div class="bottom-panel">
+      <div class="doc-title">SOP &amp; Operational Manual</div>
+      <div class="doc-subtitle">Standard Operating Procedures, Protocols &amp; Forms</div>
+      <div class="doc-meta">
+        <div class="left">
+          <strong>Doc. WSI-SOP-001</strong><br>
+          Effective July 2026 &nbsp;&middot;&nbsp; RMDM-Compliant<br>
+          Owner: Executive Director &amp; Qualified Professional (QP)
+        </div>
+        <div class="right">
+          Revision<br>
+          <span class="version-num">2.7</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 
 </div>
