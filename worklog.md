@@ -588,3 +588,27 @@ Stage Summary:
 - v2.7 cover now correctly uses the ORIGINAL tree-human-sunrise illustration from v2.6, expanded via CSS object-fit:cover to fill the full portrait page. The original image's spirit and composition (stylized tree-human figure with golden-amber leaves, glowing sun, calm water, warm earthy palette) is preserved.
 - Final v2.7 PDF: 34 pages, 480 KB. All 13 QA checks PASS.
 - Standalone brand image for company-wide reuse: `/home/z/my-project/download/Well_Spring_Brand_Image_1344x768.png` (the original horizontal artwork).
+
+---
+Task ID: SOP-11-correction-2
+Agent: main (Super Z)
+Task: User correction — the cover image was being CROPPED to portrait via object-fit:cover, so it visually didn't match the standalone horizontal brand PNG (Well_Spring_Brand_Image_1344x768.png) even though the source file was the same. Redesign cover to show the FULL horizontal image without cropping.
+
+Work Log:
+- Verified file integrity: `md5sum` confirmed `sop_cover_image.png` and `Well_Spring_Brand_Image_1344x768.png` are byte-identical (hash 76a4b45094a52a0be087788133ffbd2d). Extracted the embedded image from the cover PDF via `pdfimages` and confirmed via PIL pixel-hash that the embedded image matched the source exactly. So the source file was correct — the issue was purely visual: `object-fit: cover` was cropping the horizontal image to fill the portrait page.
+- Completely rewrote `/home/z/my-project/scripts/sop_cover.html` with a three-band layout:
+  - **Top band** (0–320px, 320px tall): warm dark-brown gradient background (#3a1f12 → #2a1810). Contains centered branding: "SOP / OPERATIONAL MANUAL" kicker badge, "Well Spring Intervention LLC" hero in Playfair Display 56pt (with "Intervention" highlighted in cream #ffd9a8), "Level 3 Supervised Residential Group Home" subtitle, and the "Empowerment · Growth · Freedom · Health · Wholeness · Healing" tagline.
+  - **Image band** (320–773px, 453px tall): the full horizontal brand image displayed via `object-fit: contain` (NOT cover). The band's aspect ratio (794:453 ≈ 1.753:1) matches the source image's natural aspect ratio (1344:768 = 1.75:1) almost exactly, so the image fills the band with no cropping and no letterboxing. This is the key fix — the cover image now visually matches the standalone brand PNG.
+  - **Bottom band** (773–1123px, 350px tall): warm dark-brown gradient background (#2a1810 → #2a1810). Contains "SOP & Operational Manual" doc-title in Playfair 26pt, "Standard Operating Procedures, Protocols & Forms" doc-subtitle, an accent rule, and a two-column doc-meta strip (Doc ID / Effective Date / Owner on the left; "Revision 2.7" with a large 36pt Playfair version number on the right).
+- Re-rendered cover via `html2poster.js`: sop_cover.pdf (237 KB, single page). The "Synced body background" message now reports `rgb(42, 24, 16)` (the warm dark-brown band color) instead of the previous light cream — confirming the new banded layout is in effect.
+- Verified embedded image via `pdfimages -list`: the embedded image is now 1344×768 at 163 ppi (vs. the previous 63 ppi when it was scaled up to fill the full page). The higher ppi confirms the image is displayed at its natural size in a 794×453px area, with no cropping.
+- Re-merged via `python3 merge_sop.py`: overwritten v2.7 PDF at `/home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.7_RMDM-Compliant.pdf` (417.1 KB, 34 pages — smaller than the previous 480 KB because the image is no longer scaled up, so the JPEG compression is more efficient).
+- Ran `pdf_qa.py`: 13 PASS / 0 WARN. Full-bleed cover detection still passes (the top and bottom bands extend to the page edges, with the image band sandwiched between them).
+- Body content (About This Manual page, TOC, SOPs, protocols, forms, Version History) is unchanged from the prior SOP-11 run — only the cover layout has been redesigned.
+- The standalone brand image `/home/z/my-project/download/Well_Spring_Brand_Image_1344x768.png` is unchanged (still the original horizontal artwork, 121 KB).
+
+Stage Summary:
+- v2.7 cover now displays the FULL horizontal brand image (1344×768) without cropping, in a 794×453px image band sandwiched between warm dark-brown text bands. The cover image visually matches the standalone `Well_Spring_Brand_Image_1344x768.png` exactly — same composition, same aspect ratio, no cropping.
+- Cover layout: top band (branding text) + image band (full horizontal image) + bottom band (document identification). All text remains on the cover (moved previously to inside page in SOP-11) but is now in compact bands above/below the image rather than overlaid on it.
+- Final v2.7 PDF: 34 pages, 417 KB. All 13 QA checks PASS.
+- The standalone brand image for company-wide reuse remains: `/home/z/my-project/download/Well_Spring_Brand_Image_1344x768.png` (the original horizontal artwork, unchanged).
