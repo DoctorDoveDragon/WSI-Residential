@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    @page { size: 794px 1123px; margin: 0; }
+    :root {
+      /* Cascade palette aliases (warm cream + gold) */
+      --c-bg: #f0f0ef;
+      --c-accent: #8a7227;
+      --c-text: #232220;
+      --c-muted: #88857e;
+      --c-mid: #6d613f;
+      --c-surface: #f0efed;
+    }
+    html, body {
+      margin: 0; padding: 0;
+      width: 794px; height: 1123px;
+      background: var(--c-bg);
+      color: var(--c-text);
+      font-family: 'Inter', sans-serif;
+    }
+    @media screen {
+      html { height: auto; display: flex; justify-content: center; min-height: 100vh; background: #e0e0de; }
+      body { transform-origin: top center; scale: min(1, calc(100vw / 794), calc(100vh / 1123)); margin: 0 auto; box-shadow: 0 0 60px rgba(0,0,0,0.15); }
+    }
+    .cover {
+      width: 794px; height: 1123px;
+      position: relative;
+      box-sizing: border-box;
+      background: var(--c-bg);
+    }
+
+    /* Layer 1 — Background grid (very subtle) */
+    .layer-bg {
+      position: absolute; inset: 0; z-index: 1;
+      overflow: hidden;
+      background-image:
+        linear-gradient(to right, rgba(138, 114, 39, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(138, 114, 39, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+
+    /* Layer 2 — Structure: ultra-thick vertical anchor line */
+    .layer-structure {
+      position: absolute; inset: 0; z-index: 2;
+    }
+    .vline {
+      position: absolute;
+      left: 95px;            /* 0.12 * 794 ≈ 95 */
+      top: 112px;            /* 0.10 * 1123 ≈ 112 */
+      bottom: 112px;         /* 0.90 * 1123 → bottom 112 */
+      width: 6px;
+      background: var(--c-accent);
+    }
+    /* Small horizontal accent above the kicker */
+    .hline-top {
+      position: absolute;
+      left: 155px; top: 140px;
+      width: 60px; height: 2px;
+      background: var(--c-mid);
+    }
+
+    /* Layer 3 — Content (text). Content left edge = vline + 30pt offset */
+    .layer-content {
+      position: absolute; inset: 0; z-index: 3;
+    }
+
+    .kicker {
+      position: absolute;
+      left: 155px;           /* 95 + 60 (offset for thick line) */
+      top: 195px;            /* ~0.17 * H */
+      font-size: 11pt;
+      font-weight: 400;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--c-accent);
+      opacity: 0.85;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .title {
+      position: absolute;
+      left: 155px;
+      top: 280px;            /* ~0.25 * H */
+      max-width: 560px;
+      font-family: 'Playfair Display', serif;
+      font-size: 64pt;
+      font-weight: 900;
+      line-height: 1.05;
+      color: var(--c-text);
+      letter-spacing: -1px;
+    }
+
+    .subtitle {
+      position: absolute;
+      left: 155px;
+      top: 530px;            /* ~0.47 * H */
+      max-width: 540px;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 22pt;
+      font-weight: 400;
+      line-height: 1.35;
+      color: var(--c-mid);
+    }
+
+    .summary {
+      position: absolute;
+      left: 155px;
+      top: 660px;            /* ~0.59 * H */
+      max-width: 510px;      /* W * 0.64 */
+      font-family: 'Inter', sans-serif;
+      font-size: 13pt;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--c-text);
+      opacity: 0.78;
+    }
+
+    .author-block {
+      position: absolute;
+      left: 155px;
+      top: 920px;            /* ~0.82 * H */
+      font-family: 'Inter', sans-serif;
+    }
+    .author-label {
+      font-size: 9pt;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--c-muted);
+      margin-bottom: 8px;
+    }
+    .author-name {
+      font-size: 18pt;
+      font-weight: 500;
+      color: var(--c-text);
+    }
+
+    .footer {
+      position: absolute;
+      left: 155px;
+      bottom: 95px;          /* ~0.92 * H from top */
+      right: 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-family: 'Inter', sans-serif;
+      font-size: 10pt;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--c-muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="cover">
+    <div class="layer-bg"></div>
+    <div class="layer-structure">
+      <div class="vline"></div>
+      <div class="hline-top"></div>
+    </div>
+    <div class="layer-content">
+      <div class="kicker">A Book on Habits &amp; Quiet Mastery</div>
+      <div class="title">The Quiet<br>Edge</div>
+      <div class="subtitle">How ordinary habits create<br>extraordinary lives</div>
+      <div class="summary">A field guide to the unglamorous daily practices that compound into remarkable outcomes. Drawing on decades of research in behavior science, identity formation, and environmental design, this book makes the case that the people we admire are not luckier or more disciplined — they have simply built a quieter kind of edge, one small repeated act at a time.</div>
+      <div class="author-block">
+        <div class="author-label">Written by</div>
+        <div class="author-name">Z.ai Press</div>
+      </div>
+      <div class="footer">
+        <span>First Edition</span>
+        <span>2026</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
