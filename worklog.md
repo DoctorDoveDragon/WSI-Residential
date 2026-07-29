@@ -804,3 +804,69 @@ Stage Summary:
   - `/home/z/my-project/download/forms/Form_8_Comprehensive_Clinical_Record_Content_Checklist.pdf` (standalone, 2pp)
   - `/home/z/my-project/download/forms/Form_9_Accounting_of_Disclosures_Log.pdf` (standalone, 2pp)
   - Persistent scripts: `/home/z/my-project/scripts/{sop_cover.html, sop_cover_image.png, generate_sop.py, sop_content_v2.py, sop_content_v2_part2.py, sop_content_v2_part3.py, merge_sop.py, build_fillable_forms.py, edit_cover_image.js}`
+
+---
+Task ID: SOP-15
+Agent: main (Super Z)
+Task: User correction — "use the cover from 2.8 make the leaves green and place the wellspring (should not be wider than the tree) in the foreground." The Rev. 2.10 wellspring was a wide circular stone basin — wider than the tree itself. The user wants the cover to start from the original Rev. 2.8 cover (golden-amber foliage, no wellspring) and add: (1) green leaves, (2) a NARROW wellspring in the foreground that is NOT wider than the tree.
+
+Work Log:
+- Recovered the original Rev. 2.8 cover image by extracting images from the immutable v2.8 PDF in /download/:
+  - Source: `/home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.8_RMDM-Compliant.pdf`
+  - Extraction: `pdfimages -png v2.8_RMDM-Compliant.pdf v28_img` → `v28_img-000.png` (1344×768, RGB, 962 KB)
+  - VLM verification of the recovered v2.8 image confirmed: stylized tree-human figure with orange/amber leaves, no wellspring, no text — exactly the original Rev. 2.8 cover artwork.
+  - Saved the recovered source as `/home/z/my-project/scripts/sop_cover_image_v28_source.png` for traceability.
+- Loaded the `image-edit` skill and used the z-ai-web-dev-sdk image-edit API (image-to-image edit) on the recovered Rev. 2.8 image. Edit prompt specified ONLY two changes:
+  1. Recolor ALL foliage/leaves on the tree branches from orange/amber to fresh vivid GREEN leaves (emerald and spring green, symbolizing growth, renewal, vitality, flourishing). Same shape, density, and placement on branches — only the color changes.
+  2. Add a SMALL, NARROW wellspring in the immediate foreground, directly in front of the base of the tree-human figure. The wellspring MUST be NARROWER than the tree itself (roughly one-third to one-half the width of the tree's leaf canopy). It should appear as a small vertical fountain of clear water bubbling gently upward from a narrow crack or small stone-rimmed opening in the ground, with a few delicate water droplets catching the warm sunrise light and a small pool of rippling water at its base. Subtle and modest in scale, NOT a large circular basin or pool — a narrow vertical jet of water from the earth, evoking the literal "well spring" of the company name.
+  Everything else (tree-human silhouette, horizon line, sunrise sky, warm earthy palette, painterly style, 1344×768 horizontal aspect ratio) preserved exactly. Zero text/letters/numbers/watermarks of any language.
+- VLM verification of the edited image confirmed ALL four requirements:
+  - Leaves: "vibrant green color" (yes)
+  - Wellspring: "blue water fountain located at the very bottom center of the image, directly in front of the tree's trunk" (yes)
+  - Narrower than tree: "the width of the water fountain is significantly smaller than the full spread of the tree's branches and leaves" (yes)
+  - Text-free: "no visible text, writing, signatures, or watermarks" (yes)
+- Promoted the edited image to all canonical paths:
+  - `/home/z/my-project/scripts/sop_cover_image.png` (replaced — the v2.10 wide-basin image is overwritten)
+  - `/home/z/my-project/download/Well_Spring_Brand_Image_1344x768.png` (replaced — standalone brand asset for company-wide reuse)
+  - `/home/z/my-project/scripts/sop_cover_image_v211.png` (intermediate edit artifact, retained for traceability)
+- Updated `/home/z/my-project/scripts/sop_cover.html` `<img alt="...">` text to describe the new narrow-wellspring + green-leaves composition (HTML structure unchanged — three-band layout from Rev. 2.8 is preserved).
+- Bumped version 2.10 → 2.11 across all source scripts:
+  - `generate_sop.py`: SELF_REF, DOC_TITLE_SHORT, Subject metadata, About This Manual opening paragraph, Document ID line, Revision Lineage (added v2.11 sentence documenting the in-place image-edit iteration starting from the recovered Rev. 2.8 image with a NARROW wellspring), TOC intro paragraph (added v2.11 sentence), Cover Artwork paragraph (rewritten to describe the narrow vertical well-spring evoking the literal "well spring" of the company name).
+  - `merge_sop.py`: MANUAL_VERSION '2.10' → '2.11'.
+  - `sop_content_v2_part3.py`: Form 6 Employee SOP Acknowledgment reference Rev 2.10 → Rev 2.11; Forms intro paragraph "As of Rev. 2.10" → "As of Rev. 2.11"; added new Version History v2.11 row documenting the cover artwork iteration (explicitly noting that the user directed to "use the cover from 2.8" as the source and that the wellspring must NOT be wider than the tree).
+  - `build_fillable_forms.py`: header/footer "Rev. 2.10 (RMDM-Compliant)" → "Rev. 2.11 (RMDM-Compliant)"; Form 6 acknowledgment body reference "Rev. 2.10, July 2026" → "Rev. 2.11, July 2026".
+- Re-rendered cover via `html2poster.js`: sop_cover.pdf (204 KB, single page).
+- Regenerated body PDF via `python3 generate_sop.py`: sop_body.pdf (Body content from v2.10 — Protocol 22 daily schedules, all 9 AcroForm fillable forms, etc. — is unchanged; only version-string references were bumped to 2.11).
+- Re-merged cover + body via `python3 merge_sop.py`:
+  - Output: `/home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.11_RMDM-Compliant.pdf` (828.6 KB, 43 pages — page count grew by 1 from v2.10's 42 pages due to the additional Revision Lineage and TOC intro text documenting the v2.11 iteration. Rev. 2.11 RMDM-Compliant)
+  - Latest pointer refreshed: `Well_Spring_Intervention_SOP_Manual_LATEST.pdf`
+- Regenerated all 9 standalone fillable forms in `/home/z/my-project/download/forms/` via `python3 build_fillable_forms.py` so their header/footer now reads "Rev. 2.11 (RMDM-Compliant)" and the Form 6 acknowledgment body references Rev. 2.11. Form sizes and field counts are unchanged from v2.10.
+- Ran `pdf_qa.py` on the v2.11 PDF: 13 PASS / 0 WARN. All checks green (metadata, page size, fonts embedded, no overflow, content fill, full-bleed cover, margin symmetry, table centering, TOC populated, punctuation rules).
+- Rendered the v2.11 cover page to PNG (100 dpi) and verified via VLM (z-ai vision):
+  - Cover description: "stylized tree with green leaves and a brown trunk that incorporates the silhouette of a person with raised arms. At the base of this tree, there is a blue fountain or wellspring spraying water upwards, set against a background of rolling tan hills."
+  - Leaves verification: "Yes. The leaves on the tree are clearly depicted in a bright green color."
+  - Wellspring verification: "Yes. There is a blue wellspring (or fountain) located at the base of the tree. It appears in the foreground relative to the trunk."
+  - Narrower than tree verification: "Yes. The blue wellspring at the base is significantly narrower than the full horizontal spread of the tree's leafy canopy above it."
+  - Versioning verification: "No. None of these specific identifiers are visible anywhere on the cover page."
+  - Visible text matches expected: "SOP / OPERATIONAL MANUAL", "STANDARD OPERATING PROCEDURE & OPERATIONAL REFERENCE", "Well Spring Intervention LLC", "LEVEL 3 SUPERVISED RESIDENTIAL GROUP HOME", "EMPOWERMENT · GROWTH · FREEDOM · HEALTH · WHOLENESS · HEALING", "SOP & Operational Manual", "STANDARD OPERATING PROCEDURES, PROTOCOLS & FORMS".
+
+Stage Summary:
+- v2.11 iterates on the v2.10 cover artwork correction. The Rev. 2.10 wellspring was a wide circular stone basin — wider than the tree itself, which was not what the user intended. Per the user's explicit direction, Rev. 2.11 starts fresh from the original Rev. 2.8 cover image (recovered by extracting images from the immutable v2.8 PDF via pdfimages) and applies two targeted in-place edits: (1) the foliage is recolored from golden-amber to fresh vivid green (emerald and spring green) to embody growth, renewal, vitality, and flourishing; (2) a NARROW vertical well-spring of clear water is added in the immediate foreground directly before the tree — a small jet bubbling up from a narrow stone-rimmed opening in the ground, explicitly NARROWER than the tree itself (roughly one-third to one-half the width of the tree's leaf canopy), evoking the literal "well spring" of the company name rather than a wide circular pool. The original tree-human silhouette, horizon line, sunrise sky, warm earthy palette (terracotta, soft rose, peach, cream), painterly style, and 1344×768 horizontal aspect ratio are all preserved exactly.
+- Body content from v2.10 is unchanged: Protocol 22 (Daily Workflow Schedules for All Personnel), all 9 AcroForm fillable forms in Part 3, all 9 standalone fillable PDFs in /download/forms/, §1.4(b) QP Credentialing Requirements — all preserved as-is. Only version-string references were bumped to 2.11.
+- The cover remains version-free per the v2.8 "versioning is private" policy: only company name, service-type subtitle, values tagline, the full horizontal brand illustration, and a document-type label appear on the public-facing cover.
+- Final v2.11 PDF: 43 pages, 829 KB. All 13 QA checks PASS. VLM verification confirms green leaves, NARROW wellspring in foreground (significantly narrower than the tree's full spread), zero versioning text.
+- All v2.0–v2.10 PDFs preserved as immutable history in `/home/z/my-project/download/`.
+- Deliverables:
+  - `/home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.11_RMDM-Compliant.pdf` (manual, 43 pages, 829 KB)
+  - `/home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_LATEST.pdf` (pointer to v2.11)
+  - `/home/z/my-project/download/Well_Spring_Brand_Image_1344x768.png` (regenerated brand image with green leaves + narrow wellspring)
+  - `/home/z/my-project/download/forms/Form_1_Shift_Change_Awake_Night_Watch_Log.pdf` (standalone, 2pp)
+  - `/home/z/my-project/download/forms/Form_2_Contraband_Belongings_Inventory.pdf` (standalone, 1pp)
+  - `/home/z/my-project/download/forms/Form_3_Physical_Restraint_Debriefing_Checklist.pdf` (standalone, 2pp)
+  - `/home/z/my-project/download/forms/Form_4_Home_Pass_Medicaid_Billing_Exclusion_Tracker.pdf` (standalone, 1pp)
+  - `/home/z/my-project/download/forms/Form_5_Emergency_Drill_Environmental_Safety_Log.pdf` (standalone, 2pp)
+  - `/home/z/my-project/download/forms/Form_6_Employee_SOP_Acknowledgment.pdf` (standalone, 1pp)
+  - `/home/z/my-project/download/forms/Form_7_Full_Service_Note_Template.pdf` (standalone, 1pp)
+  - `/home/z/my-project/download/forms/Form_8_Comprehensive_Clinical_Record_Content_Checklist.pdf` (standalone, 2pp)
+  - `/home/z/my-project/download/forms/Form_9_Accounting_of_Disclosures_Log.pdf` (standalone, 2pp)
+  - Persistent scripts: `/home/z/my-project/scripts/{sop_cover.html, sop_cover_image.png, generate_sop.py, sop_content_v2.py, sop_content_v2_part2.py, sop_content_v2_part3.py, merge_sop.py, build_fillable_forms.py, edit_cover_v211.js}`

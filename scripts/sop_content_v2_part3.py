@@ -64,7 +64,7 @@ def build_part3():
         'the facility\'s operational binder as indicated. Originals are retained per the '
         'record retention policy (12 years after the minor reaches age 18; 11 years for '
         'adults). Forms 7, 8, and 9 are new in Version 2.0 to address RMDM service-note, '
-        'clinical-record-content, and disclosure-accounting requirements. As of Rev. 2.10, '
+        'clinical-record-content, and disclosure-accounting requirements. As of Rev. 2.11, '
         'all nine forms are interactive AcroForm fillable PDFs — they are printable, '
         'copyable, sharable, editable, and fillable. A Form Properties banner at the top '
         'of each form documents these capabilities, and standalone fillable copies are '
@@ -400,7 +400,7 @@ def build_part3():
     story.append(Spacer(1, 8))
     story.append(Paragraph(
         'By signing below, I acknowledge that I have received, read, and understand the '
-        'SOP Manual for <b>Well Spring Intervention LLC</b> (Rev. 2.10, July 2026, '
+        'SOP Manual for <b>Well Spring Intervention LLC</b> (Rev. 2.11, July 2026, '
         'RMDM-Compliant). I understand these policies are mandated by NC DHSR (10A NCAC '
         '27G), NC Medicaid (CCP 8C), Rule 108 (10A NCAC 27T), the NCDHHS Records '
         'Management and Documentation Manual (Effective July 8, 2025), NCGS Chapter 66 '
@@ -638,6 +638,9 @@ def build_part3():
          'Executive Director / QP'],
         ['2.10', 'Jul 2026',
          'Cover artwork correction. The Rev. 2.9 cover-artwork refresh was intended to swap the original amber-leaves tree-human-sunrise illustration for one with lush green leaves and an explicit well-spring in the foreground, but the regenerated image did not actually persist into the cover source file (sop_cover_image.png) — the v2.9 PDF was rendered with the original Rev. 2.6 amber-leaves artwork and therefore did not visually reflect the green-leaves + well-spring concept the user specified. Rev. 2.10 corrects this by performing an in-place image-edit (rather than a fresh generation from a text prompt) on the canonical Rev. 2.6 horizontal illustration: the foliage is recolored from golden-amber to fresh vivid green (emerald and spring green) to embody growth, renewal, vitality, and flourishing; and a fountain-like well-spring of clear water is added in the immediate foreground directly before the base of the tree-human figure, complete with a subtle stone rim and a few delicate droplets catching the warm sunrise light. The original tree-human silhouette, horizon line, sunrise sky, warm earthy palette (terracotta, soft rose, peach, cream), painterly style, and 1344×768 horizontal aspect ratio are all preserved exactly — only the foliage color and the addition of the well-spring are changed. VLM verification confirms the new image has green leaves, a fountain well-spring in the foreground before the tree, and zero text/letters/numbers/watermarks of any language. The standalone brand PNG (Well_Spring_Brand_Image_1344x768.png) is regenerated in lockstep. Body content (SOPs §1-§11, Protocol 22 Daily Workflow Schedules, all nine AcroForm fillable forms, §1.4(b) QP Credentialing Requirements) is unchanged from Rev. 2.9 — only the cover image is corrected.',
+         'Executive Director / QP'],
+        ['2.11', 'Jul 2026',
+         'Cover artwork iteration. Rev. 2.10 added a well-spring to the cover, but the well-spring was a wide circular stone basin — wider than the user intended. Per the user\'s direction to "use the cover from 2.8" (i.e., start from the original Rev. 2.8 cover with golden-amber foliage and no well-spring) and "make the leaves green and place the wellspring (should not be wider than the tree) in the foreground," Rev. 2.11 performs a fresh in-place image edit on the EXTRACTED ORIGINAL Rev. 2.8 cover image (recovered from the v2.8 PDF via pdfimages) rather than continuing to iterate on the Rev. 2.10 version. Two changes are applied: (1) the foliage is recolored from golden-amber to fresh vivid green (emerald and spring green) to embody growth, renewal, vitality, and flourishing; (2) a NARROW well-spring is added in the immediate foreground directly before the tree — a small vertical jet of clear water bubbling up from a small stone-rimmed opening in the ground, explicitly NARROWER than the tree itself (roughly one-third to one-half the width of the tree\'s leaf canopy), evoking the literal "well spring" of the company name rather than a wide circular pool. The original tree-human silhouette, horizon line, sunrise sky, warm earthy palette (terracotta, soft rose, peach, cream), painterly style, and 1344×768 horizontal aspect ratio are all preserved exactly. VLM verification confirms the new image has vibrant green leaves, a narrow blue water fountain in the foreground directly in front of the tree whose width is significantly smaller than the tree\'s full spread, and zero text/letters/numbers/watermarks of any language. The standalone brand PNG (Well_Spring_Brand_Image_1344x768.png) is regenerated in lockstep. Body content (SOPs §1-§11, Protocol 22 Daily Workflow Schedules, all nine AcroForm fillable forms, §1.4(b) QP Credentialing Requirements) is unchanged from Rev. 2.10 — only the cover image is iterated.',
          'Executive Director / QP'],
     ]
     vh_th = ParagraphStyle('vhth', fontName=BODY_BOLD, fontSize=9, leading=11, textColor=colors.white, alignment=TA_LEFT)
