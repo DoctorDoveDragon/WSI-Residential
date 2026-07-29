@@ -64,7 +64,7 @@ def build_part3():
         'the facility\'s operational binder as indicated. Originals are retained per the '
         'record retention policy (12 years after the minor reaches age 18; 11 years for '
         'adults). Forms 7, 8, and 9 are new in Version 2.0 to address RMDM service-note, '
-        'clinical-record-content, and disclosure-accounting requirements. As of Rev. 2.9, '
+        'clinical-record-content, and disclosure-accounting requirements. As of Rev. 2.10, '
         'all nine forms are interactive AcroForm fillable PDFs — they are printable, '
         'copyable, sharable, editable, and fillable. A Form Properties banner at the top '
         'of each form documents these capabilities, and standalone fillable copies are '
@@ -400,7 +400,7 @@ def build_part3():
     story.append(Spacer(1, 8))
     story.append(Paragraph(
         'By signing below, I acknowledge that I have received, read, and understand the '
-        'SOP Manual for <b>Well Spring Intervention LLC</b> (Rev. 2.9, July 2026, '
+        'SOP Manual for <b>Well Spring Intervention LLC</b> (Rev. 2.10, July 2026, '
         'RMDM-Compliant). I understand these policies are mandated by NC DHSR (10A NCAC '
         '27G), NC Medicaid (CCP 8C), Rule 108 (10A NCAC 27T), the NCDHHS Records '
         'Management and Documentation Manual (Effective July 8, 2025), NCGS Chapter 66 '
@@ -635,6 +635,9 @@ def build_part3():
          'Executive Director / QP'],
         ['2.9', 'Jul 2026',
          'Three-part enhancement. (1) Cover artwork refresh: the brand illustration is regenerated with lush GREEN leaves (replacing the prior amber/gold leaves) to more vividly symbolize growth, and an explicit well-spring (a circular pool of fresh water with concentric ripples) is added to the foreground directly in front of the tree-human figure, completing the symbolic narrative of wellspring, growth, health, and flourishing. The composition is otherwise unchanged: stylized tree-human figure, warm sunrise over calm water, warm earthy palette, horizontal 1344×768 aspect ratio, text-free. The standalone brand PNG (Well_Spring_Brand_Image_1344x768.png) is regenerated in lockstep. (2) New Protocol 22, Daily Workflow Schedules for All Personnel: codifies time-blocked daily routines for every personnel classification (QP, AP/PP, DCP Day Shift, DCP Evening Shift, DCP Awake Overnight, House Manager, RN, Billing Coordinator), with a master schedule summary table and explicit shift-change huddle / on-call / deviation policies. Aligns the SOP with the operational reality that the QP coordinates and schedules all clinical appointments and supervision across all shifts. (3) Forms enhancement, all nine forms in Part 3 are converted to interactive AcroForm fillable PDF fields. Each form now opens with a Form Properties banner declaring it printable, copyable, sharable, editable, and fillable. AcroTextField flowables replace underscore blanks; AcroCheckbox flowables replace bracket-checkboxes; signature and metadata lines use new fillable_meta_row / fillable_check_row / fillable_signature_row helpers. Standalone fillable PDF copies of all nine forms are also generated into /download/forms/ for use outside this manual. The Form 7 Service Name row (previously hardcoded to "Level 3 Residential, Shift") is removed in favor of fully fillable rows. Body content (SOPs §1-§11, Protocols 1-21, §1.4(b) QP Credentialing Requirements) is otherwise unchanged from Rev. 2.8.',
+         'Executive Director / QP'],
+        ['2.10', 'Jul 2026',
+         'Cover artwork correction. The Rev. 2.9 cover-artwork refresh was intended to swap the original amber-leaves tree-human-sunrise illustration for one with lush green leaves and an explicit well-spring in the foreground, but the regenerated image did not actually persist into the cover source file (sop_cover_image.png) — the v2.9 PDF was rendered with the original Rev. 2.6 amber-leaves artwork and therefore did not visually reflect the green-leaves + well-spring concept the user specified. Rev. 2.10 corrects this by performing an in-place image-edit (rather than a fresh generation from a text prompt) on the canonical Rev. 2.6 horizontal illustration: the foliage is recolored from golden-amber to fresh vivid green (emerald and spring green) to embody growth, renewal, vitality, and flourishing; and a fountain-like well-spring of clear water is added in the immediate foreground directly before the base of the tree-human figure, complete with a subtle stone rim and a few delicate droplets catching the warm sunrise light. The original tree-human silhouette, horizon line, sunrise sky, warm earthy palette (terracotta, soft rose, peach, cream), painterly style, and 1344×768 horizontal aspect ratio are all preserved exactly — only the foliage color and the addition of the well-spring are changed. VLM verification confirms the new image has green leaves, a fountain well-spring in the foreground before the tree, and zero text/letters/numbers/watermarks of any language. The standalone brand PNG (Well_Spring_Brand_Image_1344x768.png) is regenerated in lockstep. Body content (SOPs §1-§11, Protocol 22 Daily Workflow Schedules, all nine AcroForm fillable forms, §1.4(b) QP Credentialing Requirements) is unchanged from Rev. 2.9 — only the cover image is corrected.',
          'Executive Director / QP'],
     ]
     vh_th = ParagraphStyle('vhth', fontName=BODY_BOLD, fontSize=9, leading=11, textColor=colors.white, alignment=TA_LEFT)

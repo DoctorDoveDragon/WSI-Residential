@@ -98,7 +98,7 @@ AVAIL_W = PAGE_W - LEFT_M - RIGHT_M  # ~440pt
 # ────────────────────────────────────────────────────────────────────
 SELF_REF = (
     'Well Spring Intervention LLC SOP &amp; Operational Manual '
-    '(Doc. WSI-SOP-001, Rev. 2.9, Jul 2026 — RMDM-Compliant)'
+    '(Doc. WSI-SOP-001, Rev. 2.10, Jul 2026 — RMDM-Compliant)'
 )
 
 # ────────────────────────────────────────────────────────────────────
@@ -603,7 +603,7 @@ def form_usage_banner(form_number=None):
 # ────────────────────────────────────────────────────────────────────
 # Header / footer (drawn via onPage callback)
 # ────────────────────────────────────────────────────────────────────
-DOC_TITLE_SHORT = 'Standard Operating Procedure & Operational Manual — Rev. 2.9 (RMDM-Compliant)'
+DOC_TITLE_SHORT = 'Standard Operating Procedure & Operational Manual — Rev. 2.10 (RMDM-Compliant)'
 DOC_ORG = 'Well Spring Intervention LLC'
 
 def draw_header_footer(canvas, doc):
@@ -660,7 +660,7 @@ def build():
         title='Well Spring Intervention LLC — SOP & Operational Manual',
         author='Well Spring Intervention LLC',
         creator='Z.ai',
-        subject='Level 3 Supervised Residential Group Home — Standard Operating Procedures (Rev. 2.9 RMDM-Compliant)',
+        subject='Level 3 Supervised Residential Group Home — Standard Operating Procedures (Rev. 2.10 RMDM-Compliant)',
         keywords='SOP, residential group home, Level 3, NCAC 27G, Rule 108, Medicaid CCP 8C, IRIS, RMDM, HIPAA, 42 CFR Part 2, NCGS Ch. 66 Art. 40, E-SIGN, Electronic Signatures',
     )
 
@@ -675,7 +675,7 @@ def build():
     story.append(HRFlowable(width=80, color=ACCENT, thickness=2, spaceBefore=2, spaceAfter=14))
 
     story.append(Paragraph(
-        'This manual (Rev. 2.9, July 2026) is the official Standard Operating '
+        'This manual (Rev. 2.10, July 2026) is the official Standard Operating '
         'Procedures and Operational Reference for <b>Well Spring Intervention LLC</b>, '
         'a Level 3 Supervised Residential Group Home serving children and '
         'adolescents with mental health and behavioral challenges. It establishes '
@@ -691,7 +691,7 @@ def build():
     story.append(Paragraph('<b>Service Type.</b> Level 3 Supervised Residential Group Home.', s_body))
     story.append(Paragraph('<b>Effective Date.</b> July 2026.', s_body))
     story.append(Paragraph('<b>Document Owner.</b> Executive Director &amp; Qualified Professional (QP).', s_body))
-    story.append(Paragraph('<b>Document ID.</b> Doc. WSI-SOP-001, Rev. 2.9 (RMDM-Compliant). <i>Versioning is private — this information does not appear on the public-facing cover.</i>', s_body))
+    story.append(Paragraph('<b>Document ID.</b> Doc. WSI-SOP-001, Rev. 2.10 (RMDM-Compliant). <i>Versioning is private — this information does not appear on the public-facing cover.</i>', s_body))
     story.append(Spacer(1, 10))
 
     # Regulatory framework (moved from cover)
@@ -743,7 +743,12 @@ def build():
         'DCP, House Manager, Awake Overnight, RN, and Billing Coordinator shift routines; '
         'and converts all nine forms in Part 3 to interactive AcroForm fillable PDF '
         'fields with a Form Properties banner declaring each form printable, copyable, '
-        'sharable, editable, and fillable. A complete revision history appears in Part 3.',
+        'sharable, editable, and fillable. Rev. 2.10 regenerates the cover illustration '
+        'via an in-place image edit (rather than a fresh generation) so the original '
+        'tree-human-sunrise composition is preserved exactly, with the foliage recolored '
+        'to fresh vivid green and a fountain-like well-spring added in the immediate '
+        'foreground before the tree — completing the wellspring concept the user '
+        'specified. A complete revision history appears in Part 3.',
         s_body
     ))
     story.append(Spacer(1, 10))
@@ -752,16 +757,22 @@ def build():
     story.append(Paragraph('<b>Cover Artwork.</b>', s_h2))
     story.append(Paragraph(
         'The cover illustration is the official brand visual of Well Spring '
-        'Intervention LLC. It depicts a stylized tree-human figure with lush '
-        'green leaves flourishing toward a warm sunrise over calm water, with '
-        'a clear well-spring bubbling up in the foreground directly before the '
-        'tree. The composition completes the program\'s symbolic narrative: '
-        'the well-spring is the source of renewal, the green leaves embody '
-        'growth and flourishing, and the sunrise promises a new day. The image '
-        'symbolizes the program\'s commitment to empowerment, growth, freedom, '
-        'health, wholeness, and healing, and is approved for reuse across '
-        'company websites, publications, and collateral materials. A high-resolution '
-        'copy is available alongside this manual for that purpose.',
+        'Intervention LLC. It depicts a stylized tree-human figure with fresh '
+        'vivid green leaves flourishing toward a warm sunrise over calm water, '
+        'with a fountain-like well-spring of clear water bubbling up from a '
+        'stone-rimmed basin in the immediate foreground directly before the '
+        'tree. Rev. 2.10 produced this illustration through an in-place image '
+        'edit of the original Rev. 2.6 artwork (which had golden-amber foliage '
+        'and no well-spring): the foliage was recolored to lush green to '
+        'embody growth, and the well-spring was added to anchor the company '
+        'name\'s literal meaning. The composition completes the program\'s '
+        'symbolic narrative: the well-spring is the source of renewal, the '
+        'green leaves embody growth and flourishing, and the sunrise promises '
+        'a new day. The image symbolizes the program\'s commitment to '
+        'empowerment, growth, freedom, health, wholeness, and healing, and is '
+        'approved for reuse across company websites, publications, and '
+        'collateral materials. A high-resolution copy is available alongside '
+        'this manual for that purpose.',
         s_body
     ))
     story.append(PageBreak())
@@ -771,7 +782,7 @@ def build():
     story.append(Paragraph('Table of Contents', s_toc_title))
     story.append(HRFlowable(width=80, color=ACCENT, thickness=2, spaceBefore=2, spaceAfter=12))
     story.append(Paragraph(
-        'This manual (Rev. 2.9, July 2026) is organized into three parts and is fully '
+        'This manual (Rev. 2.10, July 2026) is organized into three parts and is fully '
         'compliant with the NCDHHS Records Management and Documentation Manual (RMDM, '
         'Effective July 8, 2025). Part 1 establishes foundational policies and compliance '
         'obligations across eleven sections, including new chapters on privacy/confidentiality '
@@ -805,7 +816,11 @@ def build():
         'converts all nine forms in Part 3 to interactive AcroForm fillable PDF fields with '
         'a Form Properties banner declaring each form printable, copyable, sharable, '
         'editable, and fillable. Standalone fillable copies of all forms are also available '
-        'in the /download/forms/ directory. Part 2 details twenty-two step-by-step workflows '
+        'in the /download/forms/ directory. Rev. 2.10 regenerates the cover illustration via '
+        'an in-place image edit so the original tree-human-sunrise composition is preserved '
+        'exactly, with the foliage recolored to fresh vivid green and a fountain-like '
+        'well-spring added in the immediate foreground before the tree — completing the '
+        'wellspring concept the user specified. Part 2 details twenty-two step-by-step workflows '
         'that govern daily operations, including protocols for service orders/authorizations '
         'and record management/disclosure accounting. Part 3 provides nine customized forms '
         'and logs, including the Full Service Note Template, Comprehensive Clinical Record '

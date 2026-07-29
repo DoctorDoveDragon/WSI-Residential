@@ -28,7 +28,7 @@ A4_W, A4_H = 595.28, 841.89
 # ── Version tracking ─────────────────────────────────────────────────
 # Bump this when content materially changes. The versioned filename is
 # derived from this string; it is also embedded in the PDF /Subject.
-MANUAL_VERSION = '2.9'
+MANUAL_VERSION = '2.10'
 MANUAL_VERSION_SUFFIX = 'RMDM-Compliant'   # short descriptor; "" for none
 
 # ── Source / output paths ────────────────────────────────────────────

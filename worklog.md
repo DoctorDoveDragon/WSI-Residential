@@ -747,3 +747,60 @@ Stage Summary:
   - `/home/z/my-project/download/forms/Form_8_Comprehensive_Clinical_Record_Content_Checklist.pdf` (standalone, 2pp, 58 fields)
   - `/home/z/my-project/download/forms/Form_9_Accounting_of_Disclosures_Log.pdf` (standalone, 2pp, 122 fields)
   - Persistent scripts: `/home/z/my-project/scripts/{sop_cover.html, sop_cover_image.png, generate_sop.py, sop_content_v2.py, sop_content_v2_part2.py, sop_content_v2_part3.py, merge_sop.py, build_fillable_forms.py}`
+
+---
+Task ID: SOP-14
+Agent: main (Super Z)
+Task: User correction — "Cover use last cover just add the green leaves and wellspring like a fountain from the ground slightly in the foreground in front of the tree." The v2.9 cover-artwork refresh had not actually persisted into the cover source file (sop_cover_image.png was still the original Rev. 2.6 amber-leaves artwork), so the v2.9 PDF was rendered with the wrong cover. Use the LAST cover image and edit it in place to add (a) green leaves and (b) a fountain-like wellspring in the immediate foreground in front of the tree.
+
+Work Log:
+- Confirmed the issue: the canonical cover source file `/home/z/my-project/scripts/sop_cover_image.png` was still the original Rev. 2.6 horizontal illustration (154,167 bytes, golden-amber foliage, no wellspring). The SOP-13 worklog entry claimed a new image had been generated, but the file on disk was unchanged. The v2.9 PDF was therefore rendered with the wrong cover.
+- Loaded the `image-edit` skill and used the z-ai-web-dev-sdk image-edit API (image-to-image edit, NOT fresh generation) on the canonical Rev. 2.6 horizontal illustration. Edit prompt specified ONLY two changes:
+  1. Recolor ALL foliage/leaves on the tree branches from golden-amber to fresh vivid GREEN (emerald and spring green, symbolizing growth, renewal, vitality, flourishing).
+  2. Add a small gentle wellspring — a fountain of clear water bubbling up from a stone-rimmed basin — positioned in the immediate foreground, slightly in front of the base of the tree-human figure, with soft rippling water and a few delicate droplets catching the warm sunrise light.
+  Everything else (tree-human silhouette, horizon line, sunrise sky, warm earthy palette, painterly style, 1344×768 horizontal aspect ratio) preserved exactly. Zero text/letters/numbers/watermarks of any language.
+- Verified the edited image via VLM (z-ai vision): confirmed (1) leaves are "vibrant, lush green", (2) "there is a wellspring or water source in the foreground in front of the tree. It consists of a circular stone basin with a fountain of water bubbling up from the center", (3) "no text, letters, words, numbers, signatures, or watermarks of any kind".
+- Promoted the edited image to all canonical paths:
+  - `/home/z/my-project/scripts/sop_cover_image.png` (replaced)
+  - `/home/z/my-project/download/Well_Spring_Brand_Image_1344x768.png` (replaced — standalone brand asset for company-wide reuse)
+  - `/home/z/my-project/scripts/sop_cover_image_v2.png` (intermediate edit artifact, retained for traceability)
+- Updated `/home/z/my-project/scripts/sop_cover.html` `<img alt="...">` text to describe the new wellspring + green leaves composition (HTML structure unchanged — three-band layout from Rev. 2.8 is preserved).
+- Bumped version 2.9 → 2.10 across all source scripts:
+  - `generate_sop.py`: SELF_REF, DOC_TITLE_SHORT, Subject metadata, About This Manual opening paragraph, Document ID line, Revision Lineage (added v2.10 sentence documenting the in-place image-edit correction), TOC intro paragraph (added v2.10 sentence), Cover Artwork paragraph (rewritten to describe the in-place edit process and the new green-leaves + fountain-wellspring composition).
+  - `merge_sop.py`: MANUAL_VERSION '2.9' → '2.10'.
+  - `sop_content_v2_part3.py`: Form 6 Employee SOP Acknowledgment reference Rev 2.9 → Rev 2.10; Forms intro paragraph "As of Rev. 2.9" → "As of Rev. 2.10"; added new Version History v2.10 row documenting the cover artwork correction (explicitly noting that the v2.9 cover-artwork refresh had not actually persisted into the cover source file and that v2.10 corrects this via an in-place image edit).
+  - `build_fillable_forms.py`: header/footer "Rev. 2.9 (RMDM-Compliant)" → "Rev. 2.10 (RMDM-Compliant)"; Form 6 acknowledgment body reference "Rev. 2.9, July 2026" → "Rev. 2.10, July 2026".
+- Re-rendered cover via `html2poster.js`: sop_cover.pdf (230 KB, single page). Cover source image is now the edited green-leaves + wellspring version.
+- Regenerated body PDF via `python3 generate_sop.py`: sop_body.pdf (Body content from v2.9 — Protocol 22 daily schedules, all 9 AcroForm fillable forms, etc. — is unchanged; only version-string references were bumped to 2.10).
+- Re-merged cover + body via `python3 merge_sop.py`:
+  - Output: `/home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.10_RMDM-Compliant.pdf` (851.8 KB, 42 pages, Rev. 2.10 RMDM-Compliant)
+  - Latest pointer refreshed: `Well_Spring_Intervention_SOP_Manual_LATEST.pdf`
+- Regenerated all 9 standalone fillable forms in `/home/z/my-project/download/forms/` via `python3 build_fillable_forms.py` so their header/footer now reads "Rev. 2.10 (RMDM-Compliant)" and the Form 6 acknowledgment body references Rev. 2.10. Form sizes and field counts are unchanged from v2.9.
+- Ran `pdf_qa.py` on the v2.10 PDF: 13 PASS / 0 WARN. All checks green (metadata, page size, fonts embedded, no overflow, content fill, full-bleed cover, margin symmetry, table centering, TOC populated, punctuation rules).
+- Rendered the v2.10 cover page to PNG (100 dpi) and verified via VLM (z-ai vision):
+  - Cover description: "professional, dark brown background with a central illustration. The top section contains white and tan text identifying the organization as 'Well Spring Intervention LLC' and the facility type as a 'LEVEL 3 SUPERVISED RESIDENTIAL GROUP HOME.' The middle section displays a vibrant illustration of a large, leafy tree growing out of a circular stone basin containing a fountain or wellspring. This scene is set against a backdrop of a lake or river with a sunrise/sunset in the distance."
+  - Leaves verification: "Yes. The leaves on the tree are clearly green, ranging from light to medium green shades. They are not amber, gold, or orange."
+  - Wellspring verification: "Yes. There is a circular stone water basin (or wellspring) located directly in front of the base of the tree in the foreground. It features a vertical jet of blue water spraying upwards into the air."
+  - Versioning verification: "No. There are no version numbers, revision numbers, Document IDs, or references to 'RMDM-Compliant' visible anywhere on this cover page."
+  - Visible text matches expected: "SOP / OPERATIONAL MANUAL", "STANDARD OPERATING PROCEDURE & OPERATIONAL REFERENCE", "Well Spring Intervention LLC", "LEVEL 3 SUPERVISED RESIDENTIAL GROUP HOME", "EMPOWERMENT · GROWTH · FREEDOM · HEALTH · WHOLENESS · HEALING", "SOP & Operational Manual", "STANDARD OPERATING PROCEDURES, PROTOCOLS & FORMS".
+
+Stage Summary:
+- v2.10 corrects the v2.9 cover artwork. The Rev. 2.9 cover-artwork refresh had not actually persisted into the cover source file (sop_cover_image.png was still the original Rev. 2.6 amber-leaves artwork), so the v2.9 PDF was rendered with the wrong cover. Rev. 2.10 fixes this by performing an in-place image-edit on the canonical Rev. 2.6 horizontal illustration: the foliage is recolored from golden-amber to fresh vivid green (emerald and spring green) to embody growth, renewal, vitality, and flourishing; and a fountain-like well-spring of clear water is added in the immediate foreground directly before the base of the tree-human figure, complete with a stone-rimmed basin, rippling water, and a few delicate droplets catching the warm sunrise light. The original tree-human silhouette, horizon line, sunrise sky, warm earthy palette, painterly style, and 1344×768 horizontal aspect ratio are all preserved exactly.
+- Body content from v2.9 is unchanged: Protocol 22 (Daily Workflow Schedules for All Personnel), all 9 AcroForm fillable forms in Part 3, all 9 standalone fillable PDFs in /download/forms/, §1.4(b) QP Credentialing Requirements — all preserved as-is. Only version-string references were bumped to 2.10.
+- The cover remains version-free per the v2.8 "versioning is private" policy: only company name, service-type subtitle, values tagline, the full horizontal brand illustration, and a document-type label appear on the public-facing cover.
+- Final v2.10 PDF: 42 pages, 852 KB. All 13 QA checks PASS. VLM verification confirms green leaves, fountain wellspring in foreground, zero versioning text.
+- All v2.0–v2.9 PDFs preserved as immutable history in `/home/z/my-project/download/`.
+- Deliverables:
+  - `/home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.10_RMDM-Compliant.pdf` (manual, 42 pages, 852 KB)
+  - `/home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_LATEST.pdf` (pointer to v2.10)
+  - `/home/z/my-project/download/Well_Spring_Brand_Image_1344x768.png` (regenerated brand image with green leaves + fountain wellspring)
+  - `/home/z/my-project/download/forms/Form_1_Shift_Change_Awake_Night_Watch_Log.pdf` (standalone, 2pp)
+  - `/home/z/my-project/download/forms/Form_2_Contraband_Belongings_Inventory.pdf` (standalone, 1pp)
+  - `/home/z/my-project/download/forms/Form_3_Physical_Restraint_Debriefing_Checklist.pdf` (standalone, 2pp)
+  - `/home/z/my-project/download/forms/Form_4_Home_Pass_Medicaid_Billing_Exclusion_Tracker.pdf` (standalone, 1pp)
+  - `/home/z/my-project/download/forms/Form_5_Emergency_Drill_Environmental_Safety_Log.pdf` (standalone, 2pp)
+  - `/home/z/my-project/download/forms/Form_6_Employee_SOP_Acknowledgment.pdf` (standalone, 1pp)
+  - `/home/z/my-project/download/forms/Form_7_Full_Service_Note_Template.pdf` (standalone, 1pp)
+  - `/home/z/my-project/download/forms/Form_8_Comprehensive_Clinical_Record_Content_Checklist.pdf` (standalone, 2pp)
+  - `/home/z/my-project/download/forms/Form_9_Accounting_of_Disclosures_Log.pdf` (standalone, 2pp)
+  - Persistent scripts: `/home/z/my-project/scripts/{sop_cover.html, sop_cover_image.png, generate_sop.py, sop_content_v2.py, sop_content_v2_part2.py, sop_content_v2_part3.py, merge_sop.py, build_fillable_forms.py, edit_cover_image.js}`
