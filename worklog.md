@@ -1159,3 +1159,39 @@ Stage Summary:
   4. `Well_Spring_Logo_Lockup.png` (2688×768, 354 KB) and `Well_Spring_Logo_Lockup.pdf` (140 KB) — horizontal lockup with icon + "Well Spring Intervention" wordmark + "Level 3 Supervised Residential Group Home" subtitle + values tagline. Use for: letterheads, business cards, website headers, email signatures, presentation title slides.
 - The manual remains at v2.14 (47 pages, 858 KB) — no new revision was needed for this logo refinement.
 - Persistent scripts: `/home/z/my-project/scripts/{generate_logo_icon_v2.js, generate_logo_icon_v2b.js, edit_logo_icon_v2c.js, edit_logo_icon_v2d.js, make_logo_variants.py, logo_lockup.html}`
+
+---
+Task ID: SOP-21
+Agent: main (Super Z)
+Task: User direction — "good work now the image of aquarius is on a cream rectangle. We will ad text to tree sides. The text will be safety, therapy, compassion one quality per side". Create a new brand seal composition featuring the Aquarius icon centered on a cream rectangle, with three of the four sides labeled with the brand virtues SAFETY, THERAPY, and COMPASSION (one quality per side).
+
+Work Log:
+- Designed a square 1500×1500 seal composition with the existing v2d Aquarius icon centered on the warm cream parchment background (#f5ead6 — same as the icon background, so the icon and seal background merge seamlessly into one cream rectangle). Chose the classical seal/banner arrangement of: SAFETY at TOP (horizontal), THERAPY on LEFT (vertical, reading bottom-to-top), COMPASSION on RIGHT (vertical, reading top-to-bottom), with the BOTTOM side left clean for breathing room and decorated with a small terracotta ornament trio (two short hairline rules flanking a single terracotta dot). Also added small terracotta accent dots in the four corners and a subtle inner hairline border at 32% opacity for the seal feel.
+- Typography: Cormorant Garamond serif (matching the lockup wordmark) at 72px, weight 600, with 22px letter-spacing, uppercase, in deep walnut brown #6b4d3f (matching the figure color). Text-indent of 22px compensates for the trailing letter-spacing to visually re-center each label.
+- Wrote `/home/z/my-project/scripts/logo_three_sides_seal.html` — first attempt used `transform: translateY(-50%) rotate(-90deg)` for the vertical side labels. Rendered via html2poster.js → PDF (121 KB), converted to PNG via pdftoppm at 150 DPI (2344×2344, ~1 MB). VLM verification revealed that SAFETY at the top rendered correctly, but THERAPY on the left and COMPASSION on the right were MISSING entirely. Diagnosed via PIL pixel sampling: zero dark text pixels in the left or right label zones. Root cause: `transform-origin: center center` combined with `translateY(-50%) rotate(-90deg)` caused the rotation pivot to be displaced off-canvas because the element's own box was being rotated around its post-translation center, not its visual center. The HTML2poster (Playwright/Chromium) renderer apparently handled this transform chain differently than a live browser would.
+- Rewrote the vertical label CSS to use `writing-mode: vertical-rl` (the modern CSS spec for vertical text) instead of `transform: rotate()`. For the LEFT label (THERAPY, reading bottom-to-top), combined `writing-mode: vertical-rl` with `transform: translateY(-50%) rotate(180deg)` to flip the text direction. For the RIGHT label (COMPASSION, reading top-to-bottom), used plain `writing-mode: vertical-rl` with `transform: translateY(-50%)`. This is the canonical CSS pattern for bidirectional vertical text and is rendered reliably by Chromium.
+- Re-rendered via html2poster.js → PDF (121 KB) → PNG (2344×2344, ~1 MB). PIL pixel sampling confirmed dark text pixels now present in all three label zones: LEFT zone (x<500) = 358 pixels, RIGHT zone (x>w-500) = 500 pixels, TOP zone (y<500) = 255 pixels. The X range of all dark pixels now spans 205 to 2135 (full width minus margins), confirming the vertical labels are rendering on the left and right edges.
+- VLM verification of the second render confirmed ALL requirements met:
+  - Central element: Aquarius icon (male figure bent over grey heart pouring water from terracotta vessel) ✓
+  - TOP: "SAFETY" in uppercase serif with wide letter-spacing ✓
+  - LEFT: "THERAPY" oriented vertically, reading bottom-to-top ✓
+  - RIGHT: "COMPASSION" oriented vertically, reading top-to-bottom ✓
+  - Background: warm cream/beige ✓
+  - Layout: highly balanced and perfectly centered ✓
+  - No clipping or text running off edges ✓
+  - Terracotta accent dots in all four corners ✓
+  - Bottom ornament (two hairline rules + terracotta dot) ✓
+  - Overall: "sleek, professional, therapy-centered brand seal... sophisticated and therapeutic aesthetic" ✓
+- The manual (v2.14) is unchanged — this task created a new brand asset, not a new revision.
+
+Stage Summary:
+- New brand seal asset delivered at `/home/z/my-project/download/Well_Spring_Logo_ThreeSides_Seal.png` (2344×2344 at 150 DPI, 1.0 MB) and `Well_Spring_Logo_ThreeSides_Seal.pdf` (1500×1500 px, 121 KB). The composition features the refined v2d Aquarius icon (male figure bent over grey stone heart, pouring water from vessel) centered on a warm cream parchment square, framed by three brand virtues in elegant Cormorant Garamond serif uppercase with wide letter-spacing: SAFETY at top, THERAPY on left (vertical, bottom-to-top), COMPASSION on right (vertical, top-to-bottom). The bottom is decorated with a small terracotta ornament (two hairline rules flanking a single dot). Four small terracotta accent dots sit in the corners, and a subtle walnut-brown inner hairline border frames the whole composition at 32% opacity for a refined classical seal feel.
+- This asset is suitable for use as: a brand seal on official documents and certificates, a circular/stamp-style logo for letterheads, a watermark for clinical forms, a wall-signage graphic for the residential facility, an embroidery patch design (with the text and icon converted to single-color stitching), or a cover ornament on future revisions of the SOP manual.
+- All five logo asset files now in `/home/z/my-project/download/`:
+  1. `Well_Spring_Logo_Icon.png` (1024×1024, 94 KB) — canonical icon on warm cream background
+  2. `Well_Spring_Logo_Icon_Transparent.png` (1024×1024, 703 KB) — transparent background variant
+  3. `Well_Spring_Logo_Icon_DarkBg.png` (1024×1024, 426 KB) — dark walnut background variant
+  4. `Well_Spring_Logo_Lockup.png` + `.pdf` (2688×768, 354 KB / 140 KB) — horizontal lockup with wordmark + subtitle + tagline
+  5. `Well_Spring_Logo_ThreeSides_Seal.png` + `.pdf` (2344×2344 / 1500×1500 px, 1.0 MB / 121 KB) — three-virtues seal composition with SAFETY/THERAPY/COMPASSION framing the icon
+- The manual remains at v2.14 (47 pages, 858 KB) — no new revision was needed for this seal asset.
+- Persistent scripts: `/home/z/my-project/scripts/{logo_three_sides_seal.html}`

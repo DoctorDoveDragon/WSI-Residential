@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Well Spring Intervention LLC — Three Virtues Seal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: transparent;
+    margin: 0; padding: 0;
+  }
+  .poster {
+    width: 1500px;
+    height: 1500px;
+    background: #f5ead6; /* warm cream parchment, matches icon */
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Subtle inner hairline border for the seal feel */
+  .inner-border {
+    position: absolute;
+    top: 28px; left: 28px; right: 28px; bottom: 28px;
+    border: 1.5px solid #6b4d3f;
+    opacity: 0.32;
+    pointer-events: none;
+  }
+
+  /* Centered icon */
+  .icon-wrap {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 920px;
+    height: 920px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon-wrap img {
+    width: 920px;
+    height: 920px;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* Common label style */
+  .label {
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+    font-weight: 600;
+    font-size: 72px;
+    letter-spacing: 22px;
+    text-transform: uppercase;
+    color: #6b4d3f; /* deep walnut brown */
+    text-indent: 22px; /* visually re-center after letter-spacing */
+    white-space: nowrap;
+    position: absolute;
+  }
+
+  /* TOP label: SAFETY (horizontal) */
+  .label-top {
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* LEFT label: THERAPY (vertical, reading bottom-to-top) */
+  /* Using writing-mode for reliable vertical text rendering */
+  .label-left {
+    left: 110px;
+    top: 50%;
+    writing-mode: vertical-rl;
+    transform: translateY(-50%) rotate(180deg);
+  }
+
+  /* RIGHT label: COMPASSION (vertical, reading top-to-bottom) */
+  .label-right {
+    right: 110px;
+    top: 50%;
+    transform: translateY(-50%);
+    writing-mode: vertical-rl;
+  }
+
+  /* Small terracotta accent dots in the four corners as ornament */
+  .corner-dot {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #ab5125;
+    opacity: 0.7;
+  }
+  .corner-dot.tl { top: 70px; left: 70px; }
+  .corner-dot.tr { top: 70px; right: 70px; }
+  .corner-dot.bl { bottom: 70px; left: 70px; }
+  .corner-dot.br { bottom: 70px; right: 70px; }
+
+  /* Small terracotta ornament dot trio at bottom center (the empty 4th side) */
+  .bottom-ornament {
+    position: absolute;
+    bottom: 95px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 22px;
+    align-items: center;
+  }
+  .bottom-ornament .dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: #ab5125;
+    opacity: 0.7;
+  }
+  .bottom-ornament .rule {
+    width: 80px; height: 1.5px;
+    background: #6b4d3f;
+    opacity: 0.42;
+  }
+</style>
+</head>
+<body>
+  <div class="poster">
+    <div class="inner-border"></div>
+
+    <div class="corner-dot tl"></div>
+    <div class="corner-dot tr"></div>
+    <div class="corner-dot bl"></div>
+    <div class="corner-dot br"></div>
+
+    <div class="label label-top">Safety</div>
+    <div class="label label-left">Therapy</div>
+    <div class="label label-right">Compassion</div>
+
+    <div class="icon-wrap">
+      <img src="/home/z/my-project/download/Well_Spring_Logo_Icon.png" alt="Engraved vintage logo icon: male Aquarius bent over a grey stone heart, pouring water from an ornate vessel onto the heart" />
+    </div>
+
+    <div class="bottom-ornament">
+      <span class="rule"></span>
+      <span class="dot"></span>
+      <span class="rule"></span>
+    </div>
+  </div>
+</body>
+</html>
