@@ -1,10 +1,13 @@
 
 # ────────────────────────────────────────────────────────────────────
-# Content builders — Part 2: Protocols (21 protocols, RMDM-compliant)
+# Content builders — Part 2: Protocols (22 protocols, RMDM-compliant)
 # ────────────────────────────────────────────────────────────────────
 from generate_sop import (
     part_divider, section_heading, ref_line, para, bullets,
-    Paragraph, Spacer, AVAIL_W, s_bullet,
+    Paragraph, Spacer, AVAIL_W, s_bullet, s_body, s_h2, s_form_section,
+    Table, TableStyle, ParagraphStyle, colors, TA_LEFT, TA_CENTER,
+    BODY_FONT, BODY_BOLD, BORDER, HEADER_FILL, TEXT_PRIMARY, TEXT_MUTED,
+    TABLE_ROW_ODD, TABLE_ROW_EVEN,
 )
 
 
@@ -13,12 +16,14 @@ def build_part2():
     story.extend(part_divider(
         'PART 2',
         'Actionable Workflows & Protocols',
-        'These 21 protocols translate the SOP policies into clear, sequential, step-by-step '
+        'These 22 protocols translate the SOP policies into clear, sequential, step-by-step '
         'actions for daily operations. Each protocol is designed to be referenced quickly '
         'during a shift and followed exactly. Deviations from protocol require QP approval '
         'and must be documented. Protocols 20 and 21 are new in Version 2.0 and address '
         'service orders/authorizations and record management/disclosure accounting per '
-        'RMDM requirements.',
+        'RMDM requirements. Protocol 22 is new in Version 2.9 and codifies the daily '
+        'workflow schedules for every personnel classification so that each shift, role, '
+        'and hand-off has a documented time-blocked routine.',
     ))
 
     protocols = [
@@ -155,4 +160,345 @@ def build_part2():
             story.append(Paragraph(f'{step}', s_bullet))
         story.append(Spacer(1, 4))
 
+    # ── Protocol 22: Daily Workflow Schedules for All Personnel ────────
+    # New in v2.9 — codifies the time-blocked daily routine for every
+    # personnel classification so each shift, role, and hand-off has a
+    # documented schedule. Displayed as structured narrative followed by
+    # a master schedule table summarizing all roles.
+    story.append(section_heading(22, 'Daily Workflow Schedules for All Personnel'))
+    story.append(ref_line(anchor='Part 2 &middot; Protocol 22: Daily Workflow Schedules for All Personnel'))
+    story.append(Paragraph(
+        'This protocol codifies the daily workflow schedule for every personnel '
+        'classification at Well Spring Intervention LLC. Each role has a '
+        'time-blocked routine that aligns with the 24/7 residential operation, '
+        'the 1:4 day/evening and 1:8 overnight staffing ratios required by '
+        '10A NCAC 27G .5600, and the documentation cadences required by the '
+        'RMDM and Rule 108. Schedules are templates — actual shift assignments '
+        'may flex to cover call-outs, school transportation, medical '
+        'appointments, and clinical visits, but every role must complete its '
+        'documentation obligations by end of shift. The QP maintains the master '
+        'staffing schedule; deviations are tracked on the Shift Change &amp; '
+        'Awake Night Watch Log (Form 1).',
+        s_body
+    ))
+
+    # ── (a) Qualified Professional (QP) ──────────────────────────────
+    story.append(Paragraph('(a) Qualified Professional (QP)', s_h2))
+    story.append(Paragraph(
+        'The QP is the clinical and operational lead on-site. The QP does not '
+        'carry a fixed 1:4 youth-supervision caseload; instead, the QP floats '
+        'across the program to deliver clinical services, supervise staff, and '
+        'ensure documentation compliance. The QP reports to the Clinical '
+        'Director per §1.4 and §1.4(a).',
+        s_body
+    ))
+    qp_sched = [
+        ('7:00 AM', 'Arrive; review the prior 24-hour Night Watch Log (Form 1) and IRIS queue. Brief with off-going overnight staff. Verify controlled-substance count.'),
+        ('7:30 AM', 'Lead shift-change huddle with on-coming DCPs. Assign youth supervision ratios. Review Behavior Support Plans and any overnight incidents.'),
+        ('8:00 AM', 'Wake youth per house schedule. Coordinate breakfast and AM medications with the DCP. Confirm school transportation.'),
+        ('9:00 AM', 'Begin clinical block: individual therapy sessions, PCP/ISP reviews, family collateral calls, or coordination with the LEA / IEP team.'),
+        ('11:00 AM', 'Audit prior day\'s service notes for RMDM compliance (Form 7 template). Flag any backdated, missing, or non-compliant notes for correction before the 24-hour deadline.'),
+        ('12:00 PM', 'Lunch (youth supervised by DCP). QP reviews email, prior-authorization requests, and any LME/MCO correspondence.'),
+        ('1:00 PM', 'Clinical block continued: CCA assessments, ASAM screenings (if SUD), safety-plan updates, or scheduled psychiatric telehealth visits.'),
+        ('3:00 PM', 'Shift-change huddle with on-coming evening DCPs. Brief on any clinical concerns, restrictions, or supervision-level changes.'),
+        ('4:00 PM', 'Group therapy or skill-building group (QP leads or co-leads with an AP). Document each youth\'s response in a service note.'),
+        ('5:30 PM', 'Family visitation oversight; review approved visitor list; coordinate bag searches with the DCP.'),
+        ('7:00 PM', 'Documentation block: complete all clinical service notes for the day, sign PCP addendums, file Form 9 disclosure entries.'),
+        ('8:00 PM', 'Final round — verify evening medications administered and MAR initialled. Confirm tomorrow\'s appointments and transportation.'),
+        ('9:00 PM', 'Shift-change huddle with overnight DCP. Hand off clinical concerns, supervision-level changes, and any pending IRIS investigations.'),
+        ('9:30 PM', 'Depart. On-call QP coverage begins; carry the agency phone until 7:00 AM next day.'),
+    ]
+    story.append(_schedule_table(qp_sched))
+    story.append(Spacer(1, 6))
+
+    # ── (b) Associate Professional (AP) / Paraprofessional (PP) ───────
+    story.append(Paragraph('(b) Associate Professional (AP) / Paraprofessional (PP)', s_h2))
+    story.append(Paragraph(
+        'APs and PPs provide direct behavioral-health services under QP '
+        'supervision per §2.2. They carry a 1:4 youth-supervision ratio on '
+        'day or evening shift and lead structured clinical and skill-building '
+        'activities. APs may co-lead group therapy with the QP.',
+        s_body
+    ))
+    ap_sched = [
+        ('7:00 AM', 'Arrive; controlled-substance count with off-going overnight DCP. Review the Night Watch Log and any incident reports from overnight.'),
+        ('7:30 AM', 'Shift-change huddle with QP. Receive youth-supervision assignment and BSP talking points for the day.'),
+        ('8:00 AM', 'Wake youth; assist with morning hygiene and AM routine. Administer AM medications per MAR (under RN delegation).'),
+        ('8:30 AM', 'Breakfast; supervise mealtime behaviors and document any concerns. Coordinate school transportation with the DCP.'),
+        ('9:30 AM', 'Structured clinical block: lead or co-lead a skill-building group (coping skills, emotional regulation, social skills). Document each youth\'s participation.'),
+        ('11:00 AM', 'Individual check-ins with assigned youth (15 min each). Review BSP goals, address any overnight stressors, update the youth\'s daily log.'),
+        ('12:30 PM', 'Lunch supervision; chore rotation; structured free time.'),
+        ('2:00 PM', 'Co-lead group therapy with QP (or lead an AP-run activity group). Document interventions and youth response.'),
+        ('3:00 PM', 'Shift-change huddle with evening DCP. Hand off youth-supervision assignment, behavior status, and any clinical concerns.'),
+        ('3:30 PM', 'Continue with youth supervision. Coordinate homework support, recreational activities, and community outings per ISP goals.'),
+        ('5:00 PM', 'Family visitation support (if scheduled). Coordinate bag searches with the DCP; supervise visitation room.'),
+        ('6:00 PM', 'Dinner; supervise mealtime. Administer PM medications per MAR.'),
+        ('7:30 PM', 'Wind-down routine: hygiene, structured quiet time, journaling, or sensory activities per BSP.'),
+        ('9:00 PM', 'Youth bedtime routine. Document the day\'s service note (Form 7) before end of shift.'),
+        ('10:00 PM', 'Shift-change huddle with overnight DCP. Brief on each youth\'s emotional status, sleep considerations, and any restrictions.'),
+        ('11:00 PM', 'End of shift. On-call AP coverage rotates weekly.'),
+    ]
+    story.append(_schedule_table(ap_sched))
+    story.append(Spacer(1, 6))
+
+    # ── (c) Direct Care Professional (DCP) — Day Shift (7a-3p) ────────
+    story.append(Paragraph('(c) Direct Care Professional (DCP) — Day Shift (7a-3p)', s_h2))
+    story.append(Paragraph(
+        'DCPs carry the primary 1:4 youth-supervision ratio. Day-shift DCPs '
+        'focus on morning routine, school transportation, and structured '
+        'daytime activities.',
+        s_body
+    ))
+    dcp_day_sched = [
+        ('6:45 AM', 'Arrive; clock in. Receive shift-change briefing from overnight DCP. Controlled-substance count verified and signed.'),
+        ('7:00 AM', 'Confirm youth headcount; verify all youth are awake and accounted for. Begin AM room inspections.'),
+        ('7:30 AM', 'Shift-change huddle with QP and AP. Receive youth-supervision assignment and BSP talking points.'),
+        ('8:00 AM', 'Wake any youth still sleeping; assist with morning hygiene. Administer AM medications per MAR.'),
+        ('8:30 AM', 'Breakfast; supervise mealtime. Verify each youth eats; document any food refusal or concerns.'),
+        ('9:00 AM', 'School transportation: headcount before leaving and upon arrival. Confirm seatbelts. Drop off at school; obtain school behavior report.'),
+        ('10:00 AM', 'Return to facility. House chores: assign and supervise cleaning rotations per the chore chart. Document completion.'),
+        ('11:00 AM', 'Structured activity block: outdoor time, life-skills lesson, or community outing per ISP goals. Maintain line-of-sight supervision.'),
+        ('12:30 PM', 'Lunch; supervise mealtime. Administer midday medications if ordered.'),
+        ('1:30 PM', 'Documentation block: complete the daily log for each assigned youth. Note any behavioral incidents, BSP interventions used, and effectiveness.'),
+        ('2:00 PM', 'School pickup: headcount; obtain daily behavior report from school staff. Transport back to facility.'),
+        ('2:45 PM', 'Shift-change preparation: complete handoff notes for evening DCP. Verify controlled-substance count.'),
+        ('3:00 PM', 'Shift-change huddle with evening DCP. Brief on each youth\'s day, school reports, and any incidents. End of shift.'),
+    ]
+    story.append(_schedule_table(dcp_day_sched))
+    story.append(Spacer(1, 6))
+
+    # ── (d) DCP — Evening Shift (3p-11p) ──────────────────────────────
+    story.append(Paragraph('(d) Direct Care Professional (DCP) — Evening Shift (3p-11p)', s_h2))
+    story.append(Paragraph(
+        'Evening-shift DCPs cover the after-school and bedtime routine. They '
+        'administer PM medications, supervise dinner and evening activities, '
+        'and prepare youth for sleep.',
+        s_body
+    ))
+    dcp_eve_sched = [
+        ('2:45 PM', 'Arrive; clock in. Review the prior shift\'s handoff notes and the Night Watch Log.'),
+        ('3:00 PM', 'Shift-change huddle with day DCP and QP. Receive youth-supervision assignment, school behavior reports, and any restrictions.'),
+        ('3:30 PM', 'Controlled-substance count verified and signed. Receive keys, agency phone, and any visitor approvals.'),
+        ('4:00 PM', 'After-school snack; supervised homework time. Coordinate with AP on any scheduled therapy sessions.'),
+        ('5:00 PM', 'Family visitation (if scheduled). Conduct bag searches; supervise visitation; document the visit in each youth\'s log.'),
+        ('6:00 PM', 'Dinner preparation and mealtime. Administer PM medications per MAR; verify swallowing; check mouth for "cheeking".'),
+        ('7:00 PM', 'Evening activity: structured recreation, life-skills lesson, or community outing per ISP goals.'),
+        ('8:30 PM', 'Wind-down routine: hygiene, pajamas, quiet activities (reading, journaling, sensory items per BSP).'),
+        ('9:30 PM', 'Youth bedtime. Confirm each youth is in their assigned bed. Begin 15-minute room checks (continue into overnight shift).'),
+        ('10:00 PM', 'Documentation block: complete the daily log and shift note (Form 7) for each assigned youth. Address any behavioral incidents.'),
+        ('10:45 PM', 'Shift-change preparation: complete handoff notes for overnight DCP. Verify controlled-substance count.'),
+        ('11:00 PM', 'Shift-change huddle with overnight DCP. Brief on each youth\'s evening, bedtime status, and any concerns. End of shift.'),
+    ]
+    story.append(_schedule_table(dcp_eve_sched))
+    story.append(Spacer(1, 6))
+
+    # ── (e) DCP — Awake Overnight Shift (11p-7a) ──────────────────────
+    story.append(Paragraph('(e) Direct Care Professional (DCP) — Awake Overnight Shift (11p-7a)', s_h2))
+    story.append(Paragraph(
+        'Awake overnight DCPs maintain 1:8 line-of-sight supervision. Sleeping '
+        'is strictly prohibited. 15-minute visual room checks are documented '
+        'on the Night Watch Log (Form 1) throughout the shift.',
+        s_body
+    ))
+    dcp_night_sched = [
+        ('10:45 PM', 'Arrive; clock in. Review the prior shift\'s handoff notes. Receive keys and agency phone.'),
+        ('11:00 PM', 'Shift-change huddle with evening DCP. Receive youth-supervision assignment and any nighttime considerations (sleepwalking, night terrors, etc.).'),
+        ('11:15 PM', 'Controlled-substance count verified and signed. Confirm hallway lights remain on. Verify all youth are in their assigned beds.'),
+        ('11:30 PM', 'Begin 15-minute room checks (continue throughout the shift). Each check: visually confirm each youth breathing and in bed; initial the Night Watch Log (Form 1).'),
+        ('12:00 AM', 'House security check: verify all exterior doors and windows locked. Verify alarm system armed. Document on the Night Watch Log.'),
+        ('1:00 AM', 'Administrative block: restock supplies, sanitize common areas, prepare for morning routine (set out breakfast supplies, prep medications for AM count).'),
+        ('3:00 AM', 'Continue 15-minute room checks. Engage nighttime wakers quietly and briefly — do not start conversations that escalate arousal. Document any incidents.'),
+        ('5:00 AM', 'Begin AM preparations: start coffee, set the table, prepare breakfast menu. Confirm AM medication pull for the day DCP.'),
+        ('6:00 AM', 'Final security check. Complete end-of-shift Night Watch Log summary. Document any incidents, AWOL attempts, or medical concerns from overnight.'),
+        ('6:45 AM', 'Day-shift DCP arrives. Controlled-substance count verified and signed. Brief on overnight events.'),
+        ('7:00 AM', 'Shift-change huddle with day DCP and QP. Hand off any concerns. End of shift.'),
+    ]
+    story.append(_schedule_table(dcp_night_sched))
+    story.append(Spacer(1, 6))
+
+    # ── (f) House Manager ─────────────────────────────────────────────
+    story.append(Paragraph('(f) House Manager', s_h2))
+    story.append(Paragraph(
+        'The House Manager is a senior DCP who supervises day-to-day facility '
+        'operations, inventory, maintenance, and the chore system. The House '
+        'Manager reports to the QP and works Monday-Friday 9a-5p with on-call '
+        'availability.',
+        s_body
+    ))
+    hm_sched = [
+        ('9:00 AM', 'Arrive; review the prior 24 hours of Night Watch Logs and incident reports. Brief with the QP on any facility issues.'),
+        ('9:30 AM', 'Facility walk-through: inspect all common areas, bedrooms, bathrooms, kitchen, and outdoor space. Document any maintenance needs.'),
+        ('10:00 AM', 'Inventory check: food, cleaning supplies, PPE, first-aid supplies. Place orders as needed within the household budget.'),
+        ('10:30 AM', 'Coordinate with maintenance vendors for any scheduled repairs or inspections. Document all work orders.'),
+        ('11:30 AM', 'Review and update the chore chart. Meet briefly with each youth to assign/reinforce chore expectations.'),
+        ('12:30 PM', 'Lunch.'),
+        ('1:00 PM', 'Audit the medication cart with the QP and RN (if on-site). Verify MAR completion, controlled-substance log, and expired medication disposal.'),
+        ('2:00 PM', 'Compliance audit: check fire-extinguisher tags, smoke-detector test logs, environmental safety logs (Form 5). Schedule any missing drills.'),
+        ('3:00 PM', 'Brief with the on-coming evening DCP. Reinforce any facility-related instructions for the shift.'),
+        ('4:00 PM', 'Administrative block: file maintenance records, update the household budget tracker, prepare the weekly facility report for the QP.'),
+        ('5:00 PM', 'End of shift. On-call availability for facility emergencies (water leak, heating failure, alarm activation) until 9:00 AM next day.'),
+    ]
+    story.append(_schedule_table(hm_sched))
+    story.append(Spacer(1, 6))
+
+    # ── (g) Registered Nurse (RN) ─────────────────────────────────────
+    story.append(Paragraph('(g) Registered Nurse (RN)', s_h2))
+    story.append(Paragraph(
+        'The RN provides medical oversight per §6 and 10A NCAC 27G .5600. '
+        'The RN visits the facility at minimum weekly and within 72 hours of '
+        'any new admission, and is on-call 24/7 for medical questions and '
+        'medication errors.',
+        s_body
+    ))
+    rn_sched = [
+        ('9:00 AM', 'Arrive on scheduled visit day. Brief with the QP on any medical concerns, medication changes, or recent incidents.'),
+        ('9:30 AM', 'Medication cart audit: verify MAR completion, inspect for expired medications, review any PRN administration patterns.'),
+        ('10:00 AM', 'Individual youth health checks: vital signs if ordered, weight checks, skin checks, assessment of any reported symptoms.'),
+        ('11:00 AM', 'Coordinate with the prescribing psychiatrist via telehealth or phone. Document any medication changes and update the MAR.'),
+        ('12:00 PM', 'Train DCPs on any new medication orders, administration techniques, or delegation updates per 10A NCAC 27G .5600.'),
+        ('1:00 PM', 'Documentation block: complete nursing notes in each youth\'s chart. Update the medication administration record. File any new lab orders.'),
+        ('2:00 PM', 'Coordinate medical appointments: schedule PCP visits, dental visits, vision screenings, and any specialty referrals.'),
+        ('3:00 PM', 'Brief with the QP and House Manager on any medical-action items. Depart facility; on-call coverage continues 24/7.'),
+        ('On-Call', 'Available by phone for medication errors, adverse reactions, acute illness triage, and any medical questions. Responds within 15 minutes; documents all calls in the nursing log.'),
+    ]
+    story.append(_schedule_table(rn_sched))
+    story.append(Spacer(1, 6))
+
+    # ── (h) Billing Coordinator ──────────────────────────────────────
+    story.append(Paragraph('(h) Billing Coordinator', s_h2))
+    story.append(Paragraph(
+        'The Billing Coordinator manages Medicaid per-diem billing, '
+        'authorization tracking, and suspension-day accounting. The Billing '
+        'Coordinator reports to the Executive Director and works Monday-Friday '
+        '8a-4p remotely or on-site.',
+        s_body
+    ))
+    bc_sched = [
+        ('8:00 AM', 'Arrive; review the prior day\'s admission/discharge log. Confirm Medicaid eligibility for each youth via NCTracks.'),
+        ('8:30 AM', 'Process the prior day\'s per-diem billing. Verify each youth was in residence; apply any suspension-day exclusions from Form 4.'),
+        ('9:30 AM', 'Track authorization end dates. Submit reauthorization requests to the LME/MCO at least 14 days before expiration.'),
+        ('10:30 AM', 'Reconcile any claim denials. Document the reason for each denial and the corrective action taken. Escalate systemic issues to the QP.'),
+        ('12:00 PM', 'Lunch.'),
+        ('1:00 PM', 'Coordinate with the QP on any youth who were AWOL, hospitalized, or on home pass in the prior 24 hours. Apply billing exclusions per Protocol 16 and Form 4.'),
+        ('2:00 PM', 'Audit service-note completion in the EHR. Flag any youth with missing notes from the prior 24 hours; notify the QP for correction before the 7-business-day alteration deadline.'),
+        ('3:00 PM', 'Prepare the weekly billing summary for the Executive Director. Include total billable days, suspension days, denials, and pending authorizations.'),
+        ('4:00 PM', 'End of shift. On-call availability for billing-related questions during business hours; the QP handles after-hours billing emergencies.'),
+    ]
+    story.append(_schedule_table(bc_sched))
+    story.append(Spacer(1, 6))
+
+    # ── (i) Master Schedule Summary ──────────────────────────────────
+    story.append(Paragraph('(i) Master Schedule Summary', s_h2))
+    story.append(Paragraph(
+        'The table below summarizes the standard shift windows and primary '
+        'documentation obligations for each role. All shifts overlap by 15 '
+        'minutes to support a structured shift-change huddle and '
+        'controlled-substance count.',
+        s_body
+    ))
+    master_data = [
+        ['Role', 'Standard Shift', 'Coverage', 'Primary Documentation'],
+        ['Qualified Professional (QP)', '7a-9:30p (float)', 'On-site + on-call 24/7', 'Service notes, PCP addendums, Form 9, IRIS reports'],
+        ['Associate Professional (AP)', '7a-11p (rotating)', '1:4 day/evening', 'Service notes, group documentation, BSP updates'],
+        ['DCP — Day Shift', '7a-3p', '1:4 youth ratio', 'Daily logs, MAR, Form 1 handoff, Form 7 notes'],
+        ['DCP — Evening Shift', '3p-11p', '1:4 youth ratio', 'Daily logs, MAR, Form 1 handoff, Form 7 notes'],
+        ['DCP — Awake Overnight', '11p-7a', '1:8 youth ratio', 'Night Watch Log (Form 1), 15-min room checks, security log'],
+        ['House Manager', '9a-5p Mon-Fri', 'On-site + on-call', 'Maintenance log, inventory, Form 5 environmental checks'],
+        ['Registered Nurse (RN)', 'Weekly visit + on-call', 'On-call 24/7', 'Nursing notes, MAR updates, delegation training log'],
+        ['Billing Coordinator', '8a-4p Mon-Fri', 'On-site or remote', 'Per-diem billing, Form 4 suspensions, auth tracking, weekly summary'],
+    ]
+    story.append(_master_schedule_table(master_data))
+    story.append(Spacer(1, 8))
+    story.append(Paragraph(
+        '<b>Shift-Change Huddle.</b> Every shift transition (7:00 AM, 3:00 PM, '
+        '11:00 PM) begins with a 15-minute overlap during which the off-going '
+        'and on-coming staff conduct a controlled-substance count, review any '
+        'incident reports from the prior shift, and brief on each youth\'s '
+        'clinical and behavioral status. The huddle is documented on Form 1 '
+        '(Shift Change &amp; Awake Night Watch Log).',
+        s_body
+    ))
+    story.append(Paragraph(
+        '<b>On-Call Coverage.</b> The QP carries the agency phone 24/7 on a '
+        'rotating weekly schedule. The RN is on-call 24/7 for medical '
+        'questions. The House Manager is on-call for facility emergencies '
+        'during off-hours. The Billing Coordinator is reachable during '
+        'business hours; the QP handles after-hours billing emergencies. '
+        'All on-call responses are logged in the on-call binder with timestamp, '
+        'caller, issue, and resolution.',
+        s_body
+    ))
+    story.append(Paragraph(
+        '<b>Deviation Policy.</b> Schedule deviations (call-outs, late '
+        'arrivals, unplanned overtime) are documented on Form 1. The QP '
+        'maintains the master staffing schedule and approves any role '
+        'substitution. Per 10A NCAC 27G .5600, ratios must be maintained at '
+        'all times; if a replacement is not available, the QP covers in-house '
+        'until a replacement arrives. Chronic staffing gaps are reported to '
+        'the Clinical Director per §1.4(a) and may trigger a corrective '
+        'action plan.',
+        s_body
+    ))
+
     return story
+
+
+def _schedule_table(rows):
+    """Helper: render a (time, activity) schedule as a 2-column table."""
+    th_time = ParagraphStyle('sch_th_time', fontName=BODY_BOLD, fontSize=9,
+                             leading=11, textColor=colors.white, alignment=TA_CENTER)
+    th_act = ParagraphStyle('sch_th_act', fontName=BODY_BOLD, fontSize=9,
+                            leading=11, textColor=colors.white, alignment=TA_LEFT)
+    td_time = ParagraphStyle('sch_td_time', fontName=BODY_BOLD, fontSize=8.5,
+                             leading=11, textColor=TEXT_PRIMARY, alignment=TA_CENTER)
+    td_act = ParagraphStyle('sch_td_act', fontName=BODY_FONT, fontSize=9,
+                            leading=12, textColor=TEXT_PRIMARY, alignment=TA_LEFT)
+    data = [[Paragraph('<b>Time</b>', th_time), Paragraph('<b>Activity</b>', th_act)]]
+    for t, a in rows:
+        data.append([Paragraph(t, td_time), Paragraph(a, td_act)])
+    widths = [0.13 * AVAIL_W, 0.87 * AVAIL_W]
+    tbl = Table(data, colWidths=widths, hAlign='CENTER', repeatRows=1)
+    sc = [
+        ('BACKGROUND', (0, 0), (-1, 0), HEADER_FILL),
+        ('GRID', (0, 0), (-1, -1), 0.4, BORDER),
+        ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+        ('LEFTPADDING', (0, 0), (-1, -1), 5),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 5),
+        ('TOPPADDING', (0, 0), (-1, -1), 4),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 4),
+    ]
+    for i in range(1, len(data)):
+        bg = TABLE_ROW_ODD if i % 2 == 1 else TABLE_ROW_EVEN
+        sc.append(('BACKGROUND', (0, i), (-1, i), bg))
+    tbl.setStyle(TableStyle(sc))
+    return tbl
+
+
+def _master_schedule_table(rows):
+    """Helper: render the master schedule summary table."""
+    th = ParagraphStyle('mst_th', fontName=BODY_BOLD, fontSize=8.5,
+                        leading=11, textColor=colors.white, alignment=TA_CENTER)
+    th_l = ParagraphStyle('mst_th_l', parent=th, alignment=TA_LEFT)
+    td = ParagraphStyle('mst_td', fontName=BODY_FONT, fontSize=8.5,
+                        leading=11, textColor=TEXT_PRIMARY, alignment=TA_LEFT)
+    td_b = ParagraphStyle('mst_td_b', parent=td, fontName=BODY_BOLD)
+    data = [[Paragraph(f'<b>{h}</b>', th_l if i > 0 else th) for i, h in enumerate(rows[0])]]
+    for row in rows[1:]:
+        data.append([Paragraph(row[0], td_b), Paragraph(row[1], td),
+                     Paragraph(row[2], td), Paragraph(row[3], td)])
+    widths = [0.22 * AVAIL_W, 0.18 * AVAIL_W, 0.20 * AVAIL_W, 0.40 * AVAIL_W]
+    tbl = Table(data, colWidths=widths, hAlign='CENTER', repeatRows=1)
+    sc = [
+        ('BACKGROUND', (0, 0), (-1, 0), HEADER_FILL),
+        ('GRID', (0, 0), (-1, -1), 0.4, BORDER),
+        ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+        ('LEFTPADDING', (0, 0), (-1, -1), 4),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 4),
+        ('TOPPADDING', (0, 0), (-1, -1), 4),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 4),
+    ]
+    for i in range(1, len(data)):
+        bg = TABLE_ROW_ODD if i % 2 == 1 else TABLE_ROW_EVEN
+        sc.append(('BACKGROUND', (0, i), (-1, i), bg))
+    tbl.setStyle(TableStyle(sc))
+    return tbl

@@ -28,7 +28,7 @@ A4_W, A4_H = 595.28, 841.89
 # ── Version tracking ─────────────────────────────────────────────────
 # Bump this when content materially changes. The versioned filename is
 # derived from this string; it is also embedded in the PDF /Subject.
-MANUAL_VERSION = '2.8'
+MANUAL_VERSION = '2.9'
 MANUAL_VERSION_SUFFIX = 'RMDM-Compliant'   # short descriptor; "" for none
 
 # ── Source / output paths ────────────────────────────────────────────
@@ -80,7 +80,7 @@ def main():
         '/Creator':  'Z.ai',
         '/Producer': 'http://z.ai',
         '/Subject':  subject_str,
-        '/Keywords': 'SOP, residential group home, Level 3, NCAC 27G, Rule 108, Medicaid CCP 8C, IRIS, RMDM, HIPAA, 42 CFR Part 2',
+        '/Keywords': 'SOP, residential group home, Level 3, NCAC 27G, Rule 108, Medicaid CCP 8C, IRIS, RMDM, HIPAA, 42 CFR Part 2, NCGS Ch. 66 Art. 40, E-SIGN, Electronic Signatures, fillable forms, daily workflow schedules',
     })
 
     # Write the versioned file

@@ -1,6 +1,10 @@
 
 # ────────────────────────────────────────────────────────────────────
 # Content builders — Part 3: Forms & Logs (9 forms, RMDM-compliant)
+# All forms are interactive AcroForm fillable PDFs: printable, copyable,
+# sharable, editable, and fillable. Each form opens with a Form Properties
+# banner documenting this. Standalone fillable copies are also generated
+# into /home/z/my-project/download/forms/ by build_fillable_forms.py.
 # ────────────────────────────────────────────────────────────────────
 from generate_sop import (
     part_divider, section_heading, ref_line, para, bullets,
@@ -12,7 +16,41 @@ from generate_sop import (
     HEADER_FILL, BORDER, ACCENT, TEXT_PRIMARY, TEXT_MUTED,
     TABLE_ROW_ODD, TABLE_ROW_EVEN,
     form_table,
+    AcroTextField, AcroCheckbox,
+    fillable_meta_row, fillable_check_row, fillable_signature_row,
+    form_usage_banner,
 )
+
+
+def _form_banner_and_heading(form_num, title, anchor_text, external_ref=None,
+                             instructions=None):
+    """Emit section_heading + ref_line + form_usage_banner + optional
+    instructions paragraph. Used as the standard opening for every form."""
+    out = [
+        section_heading(form_num, title),
+        ref_line(external=external_ref, anchor=anchor_text),
+        form_usage_banner(form_num),
+        Spacer(1, 6),
+    ]
+    if instructions:
+        out.append(Paragraph(instructions, s_form_instr))
+        out.append(Spacer(1, 4))
+    return out
+
+
+def _fillable_data_cells(num_cells, default_width=60, height=13, font_size=8.5,
+                         tooltips=None):
+    """Return a list of AcroTextField flowables for use as table row cells.
+    Width is generous; the Table column width will constrain via wrap()."""
+    cells = []
+    for i in range(num_cells):
+        tip = tooltips[i] if tooltips and i < len(tooltips) else ''
+        cells.append(AcroTextField(
+            width=default_width, height=height,
+            tooltip=tip, font_size=font_size,
+            border_style='solid', border_width=0,
+        ))
+    return cells
 
 
 def build_part3():
@@ -26,15 +64,25 @@ def build_part3():
         'the facility\'s operational binder as indicated. Originals are retained per the '
         'record retention policy (12 years after the minor reaches age 18; 11 years for '
         'adults). Forms 7, 8, and 9 are new in Version 2.0 to address RMDM service-note, '
-        'clinical-record-content, and disclosure-accounting requirements.',
+        'clinical-record-content, and disclosure-accounting requirements. As of Rev. 2.9, '
+        'all nine forms are interactive AcroForm fillable PDFs — they are printable, '
+        'copyable, sharable, editable, and fillable. A Form Properties banner at the top '
+        'of each form documents these capabilities, and standalone fillable copies are '
+        'available in the /download/forms/ directory for use outside this manual.',
     ))
 
     # ── FORM 1 ─────────────────────────────────────────────────────
-    story.append(section_heading(1, 'Shift Change & Awake Night Watch Log'))
-    story.append(ref_line(anchor='Part 3 &middot; Form 1: Shift Change &amp; Awake Night Watch Log'))
-    story.append(Paragraph('<b>Facility:</b> Well Spring Intervention LLC   <b>Date:</b> __________________', s_form_meta))
+    story.extend(_form_banner_and_heading(
+        1, 'Shift Change & Awake Night Watch Log',
+        'Part 3 &middot; Form 1: Shift Change &amp; Awake Night Watch Log',
+        instructions='Initial each box to verify you visually saw the youth breathing and in their bed. Click any cell to type.',
+    ))
+    story.append(fillable_meta_row([
+        ('Facility:', 200, 'Facility name'),
+        ('Date:', 120, 'Date of shift'),
+    ]))
+    story.append(Spacer(1, 4))
     story.append(Paragraph('<b>Awake Overnight Room Checks (Every 15 Minutes)</b>', s_form_section))
-    story.append(Paragraph('Instructions: Initial each box to verify you visually saw the youth breathing and in their bed.', s_form_instr))
 
     times = ['11:00 PM','11:15 PM','11:30 PM','11:45 PM',
              '12:00 AM','12:15 AM','12:30 AM','12:45 AM',
@@ -55,7 +103,10 @@ def build_part3():
              Paragraph('<b>Youth 4</b>', th),
              Paragraph('<b>Staff Initials</b>', th)]]
     for t in times:
-        data.append([Paragraph(t, td_t), '', '', '', '', ''])
+        data.append([
+            Paragraph(t, td_t),
+            *_fillable_data_cells(5, default_width=50, height=12, font_size=8),
+        ])
 
     t1 = Table(data, colWidths=col_widths, hAlign='CENTER', repeatRows=1)
     style_cmds = [
@@ -74,18 +125,37 @@ def build_part3():
     story.append(t1)
     story.append(Spacer(1, 10))
     story.append(Paragraph('<b>Shift Handoff Verification:</b> Controlled substance count verified.', s_form_meta))
-    story.append(Paragraph('Off-Going Staff: ____________________________   On-Coming Staff: ____________________________', s_form_meta))
+    story.append(fillable_signature_row([
+        ('Off-Going Staff:', 180, 'Off-going staff signature'),
+        ('On-Coming Staff:', 180, 'On-coming staff signature'),
+    ]))
 
     # ── FORM 2 ─────────────────────────────────────────────────────
     story.append(Spacer(1, 14))
-    story.append(section_heading(2, 'Contraband & Belongings Inventory'))
-    story.append(ref_line(anchor='Part 3 &middot; Form 2: Contraband &amp; Belongings Inventory'))
-    story.append(Paragraph('<b>Youth Name:</b> ____________________________   <b>Service Record # / MID:</b> _______________   <b>Date:</b> _______________', s_form_meta))
-    story.append(Paragraph('<b>Search Type:</b>   [  ] Admission   [  ] Return from Pass   [  ] Probable Cause (QP Approval: ____________________)', s_form_meta))
+    story.extend(_form_banner_and_heading(
+        2, 'Contraband & Belongings Inventory',
+        'Part 3 &middot; Form 2: Contraband &amp; Belongings Inventory',
+    ))
+    story.append(fillable_meta_row([
+        ('Youth Name:', 200, 'Youth full name'),
+        ('Service Record # / MID:', 120, 'Service record number or MID'),
+        ('Date:', 80, 'Date of search'),
+    ]))
+    story.append(Spacer(1, 4))
+    story.append(Paragraph('<b>Search Type:</b>', s_form_meta))
+    story.append(fillable_check_row([
+        ('Admission', 'Search type: admission'),
+        ('Return from Pass', 'Search type: return from pass'),
+        ('Probable Cause', 'Search type: probable cause'),
+    ]))
+    story.append(fillable_meta_row([
+        ('QP Approval:', 250, 'QP approval for probable-cause search'),
+    ]))
     story.append(Spacer(1, 6))
 
     f2_header = ['Item Description', 'Quantity', 'Brought In / Found', 'Disposition (Kept / Safe / Guardian)', 'Staff Initials']
-    f2_rows = [['', '', '', '', ''] for _ in range(6)]
+    f2_rows = [_fillable_data_cells(5, default_width=60, height=14, font_size=9)
+               for _ in range(6)]
     f2_widths = [0.32*AVAIL_W, 0.10*AVAIL_W, 0.18*AVAIL_W, 0.27*AVAIL_W, 0.13*AVAIL_W]
     story.append(form_table(
         [[Paragraph(f'<b>{h}</b>', s_th) for h in f2_header]] + f2_rows,
@@ -93,48 +163,121 @@ def build_part3():
     ))
     story.append(Spacer(1, 8))
     story.append(Paragraph('<b>Youth Acknowledgment:</b> Belongings inventoried in my presence.', s_form_meta))
-    story.append(Paragraph('Youth Signature: ____________________________   Staff Signature: ____________________________', s_form_meta))
+    story.append(fillable_signature_row([
+        ('Youth Signature:', 180, 'Youth signature'),
+        ('Staff Signature:', 180, 'Staff signature'),
+    ]))
 
     # ── FORM 3 ─────────────────────────────────────────────────────
     story.append(Spacer(1, 14))
-    story.append(section_heading(3, 'Physical Restraint & Debriefing Checklist'))
-    story.append(ref_line(anchor='Part 3 &middot; Form 3: Physical Restraint &amp; Debriefing Checklist'))
-    story.append(Paragraph('<b>Youth:</b> ____________________   <b>Service Record # / MID:</b> ___________   <b>Date:</b> ___________   <b>Time Started:</b> ________   <b>Time Ended:</b> ________', s_form_meta))
-    story.append(Paragraph('<b>Total Duration (Min):</b> _______   <b>Technique:</b> __________________________', s_form_meta))
+    story.extend(_form_banner_and_heading(
+        3, 'Physical Restraint & Debriefing Checklist',
+        'Part 3 &middot; Form 3: Physical Restraint &amp; Debriefing Checklist',
+    ))
+    story.append(fillable_meta_row([
+        ('Youth:', 140, 'Youth name'),
+        ('Service Record # / MID:', 100, 'Service record number or MID'),
+        ('Date:', 70, 'Date of restraint'),
+    ]))
+    story.append(fillable_meta_row([
+        ('Time Started:', 70, 'Time restraint started'),
+        ('Time Ended:', 70, 'Time restraint ended'),
+        ('Total Duration (Min):', 60, 'Total duration in minutes'),
+        ('Technique:', 150, 'Restraint technique used'),
+    ]))
     story.append(Spacer(1, 6))
 
     story.append(Paragraph('Pre-Restraint De-escalation Attempts:', s_form_section))
-    story.append(Paragraph('[  ] Verbal redirection   [  ] Offered break   [  ] Sensory item   [  ] BSP coping skill   [  ] Separation', s_form_meta))
+    story.append(fillable_check_row([
+        ('Verbal redirection', 'De-escalation: verbal redirection'),
+        ('Offered break', 'De-escalation: offered break'),
+        ('Sensory item', 'De-escalation: sensory item'),
+        ('BSP coping skill', 'De-escalation: BSP coping skill'),
+        ('Separation', 'De-escalation: separation'),
+    ]))
 
     story.append(Paragraph('Reason for Restraint (Imminent danger):', s_form_section))
-    story.append(Paragraph('[  ] Danger to Self   [  ] Danger to Others   [  ] Property destruction posing risk', s_form_meta))
-    story.append(Paragraph('Describe objectively: _________________________________________________________________________', s_form_meta))
-    story.append(Paragraph('_________________________________________________________________________________________________', s_form_meta))
+    story.append(fillable_check_row([
+        ('Danger to Self', 'Reason: danger to self'),
+        ('Danger to Others', 'Reason: danger to others'),
+        ('Property destruction posing risk', 'Reason: property destruction posing risk'),
+    ]))
+    story.append(Paragraph('Describe objectively:', s_form_meta))
+    story.append(AcroTextField(width=AVAIL_W, height=28, tooltip='Objective description of incident',
+                               font_size=9, border_style='underlined'))
+    story.append(Spacer(1, 6))
 
     story.append(Paragraph('Post-Restraint Medical Check (Within 1 hour):', s_form_section))
-    story.append(Paragraph('Youth checked for injuries, breathing normally:   [  ] Yes   [  ] No (Seek medical attention)', s_form_meta))
-    story.append(Paragraph('Staff Signature: ____________________________________', s_form_meta))
+    story.append(Paragraph('Youth checked for injuries, breathing normally:', s_form_meta))
+    story.append(fillable_check_row([
+        ('Yes', 'Medical check: yes'),
+        ('No (Seek medical attention)', 'Medical check: no — seek medical attention'),
+    ]))
+    story.append(fillable_signature_row([
+        ('Staff Signature:', 280, 'Staff signature for medical check'),
+    ]))
 
     story.append(Paragraph('Notifications:', s_form_section))
-    story.append(Paragraph('On-Call QP Notified:   [  ] Y   [  ] N   Time: _______    Guardian Notified:   [  ] Y   [  ] N   Time: _______', s_form_meta))
-    story.append(Paragraph('IRIS Report Filed:   [  ] Y   [  ] N   IRIS ID #: ______________', s_form_meta))
+    story.append(Paragraph('On-Call QP Notified:', s_form_meta))
+    story.append(fillable_check_row([
+        ('Y', 'On-call QP notified: yes'),
+        ('N', 'On-call QP notified: no'),
+    ]))
+    story.append(fillable_meta_row([
+        ('Time:', 80, 'Time QP notified'),
+        ('Guardian Notified:', 0, ''),  # label only
+    ]))
+    story.append(fillable_check_row([
+        ('Y', 'Guardian notified: yes'),
+        ('N', 'Guardian notified: no'),
+    ]))
+    story.append(fillable_meta_row([
+        ('Time:', 80, 'Time guardian notified'),
+        ('IRIS Report Filed:', 0, ''),
+    ]))
+    story.append(fillable_check_row([
+        ('Y', 'IRIS report filed: yes'),
+        ('N', 'IRIS report filed: no'),
+    ]))
+    story.append(fillable_meta_row([
+        ('IRIS ID #:', 200, 'IRIS report ID number'),
+    ]))
 
     story.append(Paragraph('Post-Restraint Debriefing (Within 24 hours):', s_form_section))
-    story.append(Paragraph('Youth debriefed by: ______________________   Date/Time: _______________', s_form_meta))
-    story.append(Paragraph('Trigger? ___________________________________________________________________________________', s_form_meta))
-    story.append(Paragraph('Youth alternative? _________________________________________________________________________', s_form_meta))
-    story.append(Paragraph('Staff alternative? _________________________________________________________________________', s_form_meta))
-    story.append(Paragraph('Youth Signature: ____________________________   QP Signature: ____________________________', s_form_meta))
+    story.append(fillable_meta_row([
+        ('Youth debriefed by:', 200, 'Name of person who debriefed youth'),
+        ('Date/Time:', 120, 'Date and time of debriefing'),
+    ]))
+    story.append(Paragraph('Trigger?', s_form_meta))
+    story.append(AcroTextField(width=AVAIL_W, height=20, tooltip='Trigger identified during debriefing',
+                               font_size=9, border_style='underlined'))
+    story.append(Paragraph('Youth alternative?', s_form_meta))
+    story.append(AcroTextField(width=AVAIL_W, height=20, tooltip='Youth-identified alternative coping skill',
+                               font_size=9, border_style='underlined'))
+    story.append(Paragraph('Staff alternative?', s_form_meta))
+    story.append(AcroTextField(width=AVAIL_W, height=20, tooltip='Staff-identified alternative intervention',
+                               font_size=9, border_style='underlined'))
+    story.append(fillable_signature_row([
+        ('Youth Signature:', 180, 'Youth signature'),
+        ('QP Signature:', 180, 'QP signature'),
+    ]))
 
     # ── FORM 4 ─────────────────────────────────────────────────────
     story.append(Spacer(1, 14))
-    story.append(section_heading(4, 'Home Pass & Medicaid Billing Exclusion Tracker'))
-    story.append(ref_line(anchor='Part 3 &middot; Form 4: Home Pass &amp; Medicaid Billing Exclusion Tracker'))
-    story.append(Paragraph('<b>Youth:</b> ____________________________   <b>Service Record # / MID:</b> _______________   <b>Month/Year:</b> _______________', s_form_meta))
+    story.extend(_form_banner_and_heading(
+        4, 'Home Pass & Medicaid Billing Exclusion Tracker',
+        'Part 3 &middot; Form 4: Home Pass &amp; Medicaid Billing Exclusion Tracker',
+    ))
+    story.append(fillable_meta_row([
+        ('Youth:', 200, 'Youth name'),
+        ('Service Record # / MID:', 120, 'Service record number or MID'),
+        ('Month/Year:', 100, 'Month and year'),
+    ]))
     story.append(Spacer(1, 6))
 
     f4_header = ['Date Left', 'Time Left', 'Destination / Pass', 'Date Returned', 'Time Returned', 'Total Hours Away', 'Billing Action (Suspension Days)', 'Staff Initials']
-    f4_rows = [['', '', '', '', '', '', '', ''] for _ in range(4)]
+    f4_rows = [_fillable_data_cells(8, default_width=60, height=14, font_size=8)
+               for _ in range(4)]
     f4_widths = [0.10*AVAIL_W, 0.09*AVAIL_W, 0.18*AVAIL_W, 0.11*AVAIL_W, 0.11*AVAIL_W, 0.12*AVAIL_W, 0.18*AVAIL_W, 0.11*AVAIL_W]
     f4_th = ParagraphStyle('f4th', fontName=BODY_BOLD, fontSize=8, leading=10, textColor=colors.white, alignment=TA_CENTER)
     story.append(form_table(
@@ -143,13 +286,20 @@ def build_part3():
     ))
     story.append(Spacer(1, 8))
     story.append(Paragraph('<b>Billing Coordinator Sign-Off:</b> Medicaid billing adjusted for suspension days.', s_form_meta))
-    story.append(Paragraph('Signature: ____________________________   Date: ______________', s_form_meta))
+    story.append(fillable_signature_row([
+        ('Signature:', 220, 'Billing coordinator signature'),
+        ('Date:', 100, 'Date of sign-off'),
+    ]))
 
     # ── FORM 5 ─────────────────────────────────────────────────────
     story.append(Spacer(1, 14))
-    story.append(section_heading(5, 'Emergency Drill & Environmental Safety Log'))
-    story.append(ref_line(anchor='Part 3 &middot; Form 5: Emergency Drill &amp; Environmental Safety Log'))
-    story.append(Paragraph('<b>Facility:</b> Well Spring Intervention LLC', s_form_meta))
+    story.extend(_form_banner_and_heading(
+        5, 'Emergency Drill & Environmental Safety Log',
+        'Part 3 &middot; Form 5: Emergency Drill &amp; Environmental Safety Log',
+    ))
+    story.append(fillable_meta_row([
+        ('Facility:', 280, 'Facility name'),
+    ]))
     story.append(Spacer(1, 6))
 
     story.append(Paragraph('Monthly Fire Drills (Under 3 minutes)', s_form_section))
@@ -157,7 +307,10 @@ def build_part3():
     f5a_th = ParagraphStyle('f5th', fontName=BODY_BOLD, fontSize=8.5, leading=11, textColor=colors.white, alignment=TA_CENTER)
     f5a_data = [[Paragraph(f'<b>{h}</b>', f5a_th) for h in f5a_header]]
     for month_label in ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']:
-        f5a_data.append([Paragraph(month_label, s_td_sm), '', '', '', '', '', ''])
+        f5a_data.append([
+            Paragraph(month_label, s_td_sm),
+            *_fillable_data_cells(6, default_width=50, height=12, font_size=8),
+        ])
     f5a_widths = [0.10*AVAIL_W, 0.14*AVAIL_W, 0.16*AVAIL_W, 0.12*AVAIL_W, 0.14*AVAIL_W, 0.16*AVAIL_W, 0.18*AVAIL_W]
     t5a = Table(f5a_data, colWidths=f5a_widths, hAlign='CENTER', repeatRows=1)
     sc = [
@@ -181,7 +334,10 @@ def build_part3():
     f5b_th = ParagraphStyle('f5bth', fontName=BODY_BOLD, fontSize=8.5, leading=11, textColor=colors.white, alignment=TA_CENTER)
     f5b_data = [[Paragraph(f'<b>{h}</b>', f5b_th) for h in f5b_header]]
     for q in ['Q1','Q2','Q3','Q4']:
-        f5b_data.append([Paragraph(q, s_td_sm), '', '', '', ''])
+        f5b_data.append([
+            Paragraph(q, s_td_sm),
+            *_fillable_data_cells(4, default_width=60, height=12, font_size=8),
+        ])
     f5b_widths = [0.14*AVAIL_W, 0.20*AVAIL_W, 0.18*AVAIL_W, 0.20*AVAIL_W, 0.28*AVAIL_W]
     t5b = Table(f5b_data, colWidths=f5b_widths, hAlign='CENTER', repeatRows=1)
     sc2 = [
@@ -205,7 +361,10 @@ def build_part3():
     f5c_th = ParagraphStyle('f5cth', fontName=BODY_BOLD, fontSize=8.5, leading=11, textColor=colors.white, alignment=TA_CENTER)
     f5c_data = [[Paragraph(f'<b>{h}</b>', f5c_th) for h in f5c_header]]
     for m in ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']:
-        f5c_data.append([Paragraph(m, s_td_sm), '', '', '', '', ''])
+        f5c_data.append([
+            Paragraph(m, s_td_sm),
+            *_fillable_data_cells(5, default_width=50, height=12, font_size=8),
+        ])
     f5c_widths = [0.10*AVAIL_W, 0.20*AVAIL_W, 0.18*AVAIL_W, 0.20*AVAIL_W, 0.16*AVAIL_W, 0.16*AVAIL_W]
     t5c = Table(f5c_data, colWidths=f5c_widths, hAlign='CENTER', repeatRows=1)
     sc3 = [
@@ -225,14 +384,23 @@ def build_part3():
 
     # ── FORM 6 ─────────────────────────────────────────────────────
     story.append(Spacer(1, 14))
-    story.append(section_heading(6, 'Employee SOP Acknowledgment'))
-    story.append(ref_line(anchor='Part 3 &middot; Form 6: Employee SOP Acknowledgment'))
-    story.append(Paragraph('<b>Employee Name:</b> _____________________________________________', s_form_meta))
-    story.append(Paragraph('<b>Title:</b>   [  ] QP   [  ] AP   [  ] Direct Care Professional', s_form_meta))
+    story.extend(_form_banner_and_heading(
+        6, 'Employee SOP Acknowledgment',
+        'Part 3 &middot; Form 6: Employee SOP Acknowledgment',
+    ))
+    story.append(fillable_meta_row([
+        ('Employee Name:', 320, 'Employee full name'),
+    ]))
+    story.append(Paragraph('<b>Title:</b>', s_form_meta))
+    story.append(fillable_check_row([
+        ('QP', 'Title: Qualified Professional'),
+        ('AP', 'Title: Associate Professional'),
+        ('Direct Care Professional', 'Title: Direct Care Professional'),
+    ]))
     story.append(Spacer(1, 8))
     story.append(Paragraph(
         'By signing below, I acknowledge that I have received, read, and understand the '
-        'SOP Manual for <b>Well Spring Intervention LLC</b> (Rev. 2.8, July 2026, '
+        'SOP Manual for <b>Well Spring Intervention LLC</b> (Rev. 2.9, July 2026, '
         'RMDM-Compliant). I understand these policies are mandated by NC DHSR (10A NCAC '
         '27G), NC Medicaid (CCP 8C), Rule 108 (10A NCAC 27T), the NCDHHS Records '
         'Management and Documentation Manual (Effective July 8, 2025), NCGS Chapter 66 '
@@ -254,46 +422,53 @@ def build_part3():
         s_body
     ))
     story.append(Spacer(1, 20))
-    story.append(Paragraph('<b>Employee Signature:</b> ____________________________________   <b>Date:</b> _______________', s_form_meta))
+    story.append(fillable_signature_row([
+        ('Employee Signature:', 260, 'Employee signature'),
+        ('Date:', 100, 'Date signed'),
+    ]))
     story.append(Spacer(1, 14))
-    story.append(Paragraph('<b>QP / Supervisor Signature:</b> ______________________________   <b>Date:</b> _______________', s_form_meta))
+    story.append(fillable_signature_row([
+        ('QP / Supervisor Signature:', 260, 'QP or supervisor signature'),
+        ('Date:', 100, 'Date signed by QP/supervisor'),
+    ]))
 
     # ── FORM 7 ─────────────────────────────────────────────────────
     story.append(Spacer(1, 14))
-    story.append(section_heading(7, 'Full Service Note Template (Mandatory)'))
-    story.append(ref_line(
-        'RMDM Chapter 6 — Contents of a Full Service Note',
+    story.extend(_form_banner_and_heading(
+        7, 'Full Service Note Template (Mandatory)',
         'Part 3 &middot; Form 7: Full Service Note Template',
-    ))
-    story.append(Paragraph(
-        'This template must be used for all shift notes. Backdating is prohibited. '
-        'Photocopying or repeating notes verbatim from a prior date or another '
-        'individual\'s record is strictly prohibited.',
-        s_form_instr
+        external_ref='RMDM Chapter 6 — Contents of a Full Service Note',
+        instructions='This template must be used for all shift notes. Backdating is prohibited. '
+                     'Photocopying or repeating notes verbatim from a prior date or another '
+                     'individual\'s record is strictly prohibited. Click any cell in the '
+                     'Content column to type.',
     ))
     story.append(Spacer(1, 4))
 
     f7_rows = [
-        ['Youth Name', '[Last, First]'],
-        ['Service Record # / MID', '[Record # / MID]'],
-        ['Date of Service', '[MM/DD/YYYY]'],
-        ['Service Name', 'Level 3 Residential — Shift'],
-        ['Type of Contact', '[ ] In-person   [ ] Telehealth   [ ] Telephonic   [ ] Collateral'],
-        ['Place of Service', '[Facility Address / Location]'],
-        ['Shift / Coverage Hours', '[e.g., Day Shift 7a-3p]'],
-        ['Staff Present (for ratios)', '[List all staff names/titles on shift]'],
-        ['Purpose / ISP Goal Addressed', '[Reference specific ISP/PCP goal # and objective]'],
-        ['Interventions Provided', '[Objective, factual description of interventions, supports, activities, and de-escalation attempts if any]'],
-        ['Effectiveness & Youth Response', '[Specific, individualized description of youth\'s response and progress toward goal]'],
-        ['Signature / Credentials / Date', '[Full signature, credentials, and date authenticated]'],
-        ['Late Entry (if applicable)', '[Late Entry made on ____ for service on ____]'],
+        'Youth Name',
+        'Service Record # / MID',
+        'Date of Service',
+        'Type of Contact',
+        'Place of Service',
+        'Shift / Coverage Hours',
+        'Staff Present (for ratios)',
+        'Purpose / ISP Goal Addressed',
+        'Interventions Provided',
+        'Effectiveness & Youth Response',
+        'Signature / Credentials / Date',
+        'Late Entry (if applicable)',
     ]
     f7_th = ParagraphStyle('f7th', fontName=BODY_BOLD, fontSize=9, leading=12, textColor=colors.white, alignment=TA_LEFT)
     f7_td_l = ParagraphStyle('f7tdl', fontName=BODY_BOLD, fontSize=9, leading=12, textColor=TEXT_PRIMARY, alignment=TA_LEFT)
-    f7_td_r = ParagraphStyle('f7tdr', fontName=BODY_FONT, fontSize=9, leading=12, textColor=TEXT_PRIMARY, alignment=TA_LEFT)
     f7_data = [[Paragraph('<b>Field</b>', f7_th), Paragraph('<b>Content</b>', f7_th)]]
-    for label, content in f7_rows:
-        f7_data.append([Paragraph(label, f7_td_l), Paragraph(content, f7_td_r)])
+    for label in f7_rows:
+        # Service Name row removed (was hardcoded "Level 3 Residential — Shift");
+        # now all rows are fillable.
+        field_tf = AcroTextField(width=AVAIL_W * 0.66, height=18,
+                                 tooltip=f'Content for: {label}',
+                                 font_size=9, border_style='underlined')
+        f7_data.append([Paragraph(label, f7_td_l), field_tf])
     f7_widths = [0.32*AVAIL_W, 0.68*AVAIL_W]
     t7 = Table(f7_data, colWidths=f7_widths, hAlign='CENTER', repeatRows=1)
     sc7 = [
@@ -313,15 +488,13 @@ def build_part3():
 
     # ── FORM 8 ─────────────────────────────────────────────────────
     story.append(Spacer(1, 14))
-    story.append(section_heading(8, 'Comprehensive Clinical Record Content Checklist'))
-    story.append(ref_line(
-        'RMDM Chapter 2 — Full Clinical Service Records',
+    story.extend(_form_banner_and_heading(
+        8, 'Comprehensive Clinical Record Content Checklist',
         'Part 3 &middot; Form 8: Comprehensive Clinical Record Content Checklist',
-    ))
-    story.append(Paragraph(
-        'To be maintained in each youth\'s chart and reviewed quarterly by the QP. '
-        'Mark each element Present (Y), Absent (N), or N/A, with date verified.',
-        s_form_instr
+        external_ref='RMDM Chapter 2 — Full Clinical Service Records',
+        instructions='To be maintained in each youth\'s chart and reviewed quarterly by the QP. '
+                     'Mark each element Present (Y), Absent (N), or N/A, with date verified. '
+                     'Click any cell in the Present? or Notes columns to type.',
     ))
     story.append(Spacer(1, 4))
 
@@ -359,7 +532,13 @@ def build_part3():
     f8_th = ParagraphStyle('f8th', fontName=BODY_BOLD, fontSize=8.5, leading=11, textColor=colors.white, alignment=TA_LEFT)
     f8_data = [[Paragraph(f'<b>{h}</b>', f8_th) for h in f8_header]]
     for el in f8_elements:
-        f8_data.append([Paragraph(el, s_td), '', ''])
+        f8_data.append([
+            Paragraph(el, s_td),
+            AcroTextField(width=80, height=12, tooltip=f'Present? for: {el}',
+                          font_size=8.5, border_style='underlined'),
+            AcroTextField(width=140, height=12, tooltip=f'Notes for: {el}',
+                          font_size=8.5, border_style='underlined'),
+        ])
     f8_widths = [0.46*AVAIL_W, 0.22*AVAIL_W, 0.32*AVAIL_W]
     t8 = Table(f8_data, colWidths=f8_widths, hAlign='CENTER', repeatRows=1)
     sc8 = [
@@ -377,29 +556,32 @@ def build_part3():
     t8.setStyle(TableStyle(sc8))
     story.append(t8)
     story.append(Spacer(1, 8))
-    story.append(Paragraph('<b>QP Quarterly Audit Signature:</b> ____________________________   <b>Date:</b> _______________', s_form_meta))
+    story.append(fillable_signature_row([
+        ('QP Quarterly Audit Signature:', 220, 'QP quarterly audit signature'),
+        ('Date:', 100, 'Date of quarterly audit'),
+    ]))
 
     # ── FORM 9 ─────────────────────────────────────────────────────
     story.append(Spacer(1, 14))
-    story.append(section_heading(9, 'Accounting of Disclosures Log'))
-    story.append(ref_line(
-        'RMDM Chapter 3 — Documentation Requirements when Disclosing Information',
+    story.extend(_form_banner_and_heading(
+        9, 'Accounting of Disclosures Log',
         'Part 3 &middot; Form 9: Accounting of Disclosures Log',
+        external_ref='RMDM Chapter 3 — Documentation Requirements when Disclosing Information',
+        instructions='Maintain for minimum 6 years per HIPAA and RMDM requirements. One log per youth. '
+                     'All disclosures of SUD treatment information must additionally comply with '
+                     '42 CFR Part 2. Click any cell to type.',
     ))
-    story.append(Paragraph(
-        'Maintain for minimum 6 years per HIPAA and RMDM requirements. One log per youth. '
-        'All disclosures of SUD treatment information must additionally comply with '
-        '42 CFR Part 2.',
-        s_form_instr
-    ))
-    story.append(Paragraph('<b>Youth Name:</b> ____________________________   <b>Service Record # / MID:</b> _______________', s_form_meta))
+    story.append(fillable_meta_row([
+        ('Youth Name:', 200, 'Youth name'),
+        ('Service Record # / MID:', 160, 'Service record number or MID'),
+    ]))
     story.append(Spacer(1, 4))
 
     f9_header = ['Date of Disclosure', 'Recipient (Agency/Individual)', 'Purpose of Disclosure', 'Description of Info Disclosed', 'Disclosing Staff (Name/Title)', 'Authorization / Exception Basis']
     f9_th = ParagraphStyle('f9th', fontName=BODY_BOLD, fontSize=8, leading=10, textColor=colors.white, alignment=TA_LEFT)
     f9_data = [[Paragraph(f'<b>{h}</b>', f9_th) for h in f9_header]]
     for _ in range(8):
-        f9_data.append(['', '', '', '', '', ''])
+        f9_data.append(_fillable_data_cells(6, default_width=80, height=20, font_size=8))
     f9_widths = [0.13*AVAIL_W, 0.20*AVAIL_W, 0.18*AVAIL_W, 0.20*AVAIL_W, 0.15*AVAIL_W, 0.14*AVAIL_W]
     t9 = Table(f9_data, colWidths=f9_widths, hAlign='CENTER', repeatRows=1)
     sc9 = [
@@ -450,6 +632,9 @@ def build_part3():
          'Executive Director / QP'],
         ['2.8', 'Jul 2026',
          'Cover redesign (continued): Per organizational direction that versioning is private, all versioning information has been removed from the public-facing cover. The bottom band of the cover previously displayed Doc. WSI-SOP-001, Effective July 2026 · RMDM-Compliant, Owner: Executive Director & Qualified Professional (QP), and a large "Revision 2.7" display — all of these elements have been removed. The cover now displays only the brand-essential content: company name (Well Spring Intervention LLC), service-type subtitle (Level 3 Supervised Residential Group Home), values tagline (Empowerment · Growth · Freedom · Health · Wholeness · Healing), the full horizontal brand illustration, and a document-type label ("SOP & Operational Manual / Standard Operating Procedures, Protocols & Forms") with an accent rule. Versioning information remains fully accessible on internal surfaces only: PDF metadata (/Title, /Subject, /Keywords), the About This Manual inside page (p. 2), body page headers (every body page footer shows Doc ID and Rev. 2.8), the Version History table in Part 3, and Form 6 (Employee SOP Acknowledgment). Body content (SOPs, protocols, forms, §1.4(b) QP Credentialing Requirements) is unchanged from Rev. 2.7.',
+         'Executive Director / QP'],
+        ['2.9', 'Jul 2026',
+         'Three-part enhancement. (1) Cover artwork refresh: the brand illustration is regenerated with lush GREEN leaves (replacing the prior amber/gold leaves) to more vividly symbolize growth, and an explicit well-spring (a circular pool of fresh water with concentric ripples) is added to the foreground directly in front of the tree-human figure, completing the symbolic narrative of wellspring, growth, health, and flourishing. The composition is otherwise unchanged: stylized tree-human figure, warm sunrise over calm water, warm earthy palette, horizontal 1344×768 aspect ratio, text-free. The standalone brand PNG (Well_Spring_Brand_Image_1344x768.png) is regenerated in lockstep. (2) New Protocol 22, Daily Workflow Schedules for All Personnel: codifies time-blocked daily routines for every personnel classification (QP, AP/PP, DCP Day Shift, DCP Evening Shift, DCP Awake Overnight, House Manager, RN, Billing Coordinator), with a master schedule summary table and explicit shift-change huddle / on-call / deviation policies. Aligns the SOP with the operational reality that the QP coordinates and schedules all clinical appointments and supervision across all shifts. (3) Forms enhancement, all nine forms in Part 3 are converted to interactive AcroForm fillable PDF fields. Each form now opens with a Form Properties banner declaring it printable, copyable, sharable, editable, and fillable. AcroTextField flowables replace underscore blanks; AcroCheckbox flowables replace bracket-checkboxes; signature and metadata lines use new fillable_meta_row / fillable_check_row / fillable_signature_row helpers. Standalone fillable PDF copies of all nine forms are also generated into /download/forms/ for use outside this manual. The Form 7 Service Name row (previously hardcoded to "Level 3 Residential, Shift") is removed in favor of fully fillable rows. Body content (SOPs §1-§11, Protocols 1-21, §1.4(b) QP Credentialing Requirements) is otherwise unchanged from Rev. 2.8.',
          'Executive Director / QP'],
     ]
     vh_th = ParagraphStyle('vhth', fontName=BODY_BOLD, fontSize=9, leading=11, textColor=colors.white, alignment=TA_LEFT)

@@ -660,3 +660,90 @@ Stage Summary:
 - Final v2.8 PDF: 34 pages, 388 KB. All 13 QA checks PASS.
 - All v2.0–v2.7 PDFs preserved as immutable history in `/home/z/my-project/download/`.
 - Deliverable: `/home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.8_RMDM-Compliant.pdf`
+
+---
+Task ID: SOP-13
+Agent: main (Super Z)
+Task: Three-part enhancement requested by user: (1) Cover refinement — leaves should be GREEN to demonstrate growth, and a well-spring should appear in front of the tree/person figure to complete the wellspring concept. (2) Add daily workflow schedules for all personnel. (3) Enhance documents in SOP — all forms should be printable, copyable, sharable, editable, fillable.
+
+Work Log:
+- **(1) Cover image refresh** — Generated a new 1344×768 brand illustration via `z-ai image` CLI: stylized tree-human figure with LUSH GREEN leaves (replacing the prior amber/gold leaves) flourishing toward a warm sunrise over calm water, with an explicit well-spring (circular pool of fresh water with concentric ripples) in the foreground directly in front of the tree. Warm earthy palette preserved (terracotta ground, cream sky, golden sunrise glow); the green leaves complete the symbolic narrative of growth and flourishing, and the well-spring anchors the company name's literal meaning. Verified text-free via VLM. Copied the new image to `/home/z/my-project/scripts/sop_cover_image.png` and refreshed the standalone brand asset `/home/z/my-project/download/Well_Spring_Brand_Image_1344x768.png`. The three-band cover layout (top text band + full-width image band + bottom text band) is unchanged from v2.8 — only the source image is swapped.
+- **(2) New Protocol 22 — Daily Workflow Schedules for All Personnel** — Added as Protocol 22 in Part 2 (`sop_content_v2_part2.py`). Codifies time-blocked daily routines for every personnel classification:
+  - (a) Qualified Professional (QP) — 7:00 AM to 9:30 PM float schedule with clinical blocks, audits, group therapy, documentation, and on-call handoff
+  - (b) Associate Professional (AP) / Paraprofessional (PP) — 7:00 AM to 11:00 PM with structured clinical blocks, group co-leadership, visitation support
+  - (c) DCP Day Shift (7a-3p) — morning routine, school transportation, structured activities, documentation
+  - (d) DCP Evening Shift (3p-11p) — after-school, dinner, PM medications, wind-down, bedtime
+  - (e) DCP Awake Overnight (11p-7a) — 15-min room checks, security, AM prep (sleeping prohibited)
+  - (f) House Manager — 9a-5p Mon-Fri with facility walk-throughs, inventory, compliance audits
+  - (g) Registered Nurse (RN) — weekly visit + on-call 24/7 with med-cart audit, youth checks, psychiatrist coordination
+  - (h) Billing Coordinator — 8a-4p Mon-Fri with per-diem billing, auth tracking, EHR audit
+  - (i) Master Schedule Summary table — 8-row table summarizing role / standard shift / coverage / primary documentation
+  - Plus shift-change huddle, on-call coverage, and deviation policy paragraphs
+  - Added `_schedule_table()` and `_master_schedule_table()` helpers in the same module
+  - Bumped Part 2 intro from "21 protocols" to "22 protocols"
+- **(3) Forms enhancement — all 9 forms converted to interactive AcroForm fillable PDFs** —
+  - Added new helpers to `generate_sop.py`:
+    - `AcroTextField` Flowable — renders an interactive AcroForm text field via `canvas.acroForm.textfield()` (uses Helvetica — one of the 14 standard PDF fonts required by AcroForm)
+    - `AcroCheckbox` Flowable — renders an interactive AcroForm checkbox via `canvas.acroForm.checkbox()`
+    - `fillable_meta_row(fields)` — builds a Table row of (label, field_width, tooltip) tuples as label + AcroTextField pairs; auto-scales to fit AVAIL_W if total exceeds available width; supports label-only entries (field_width=0)
+    - `fillable_check_row(items)` — builds a Table row of (label, tooltip) tuples as AcroCheckbox + label pairs
+    - `fillable_signature_row(items)` — alias for fillable_meta_row, used for signature/date lines
+    - `form_usage_banner(form_number)` — styled callout banner declaring "This form is printable, copyable, sharable, editable, and fillable" with usage instructions (click to type, save to retain, print to sign, share via secure channels, standalone copies in /download/forms/)
+  - Refactored all 9 forms in `sop_content_v2_part3.py`:
+    - Added `_form_banner_and_heading()` helper that emits section_heading + ref_line + form_usage_banner + optional instructions
+    - Form 1 (Shift Change & Awake Night Watch Log): fillable Facility/Date meta row, 32 rows × 5 fillable cells for youth initials, fillable Off-Going/On-Coming signature row
+    - Form 2 (Contraband & Belongings Inventory): fillable Youth Name/Service Record/Date meta, 3 search-type checkboxes, QP Approval field, 6 rows × 5 fillable cells, Youth/Staff signature row
+    - Form 3 (Physical Restraint & Debriefing Checklist): fillable Youth/MID/Date/Time Started/Time Ended/Duration/Technique meta rows, 5 de-escalation checkboxes, 3 reason checkboxes, multi-line description text field, medical-check Y/N checkboxes, notification Y/N checkboxes for QP/Guardian/IRIS, debriefing fields with 3 multi-line text fields, Youth/QP signature row
+    - Form 4 (Home Pass Tracker): fillable Youth/MID/Month meta, 4 rows × 8 fillable cells, Billing Coordinator signature row
+    - Form 5 (Emergency Drill Log): 3 sub-tables (12-month fire drills 6 fillable cols × 12 rows, 4-quarter tornado drills 4 × 4, 12-month environmental checks 5 × 12) all with fillable cells
+    - Form 6 (Employee SOP Acknowledgment): fillable Employee Name, 3 title checkboxes (QP/AP/DCP), Employee signature+date, QP/Supervisor signature+date; bumped Rev reference 2.8 → 2.9
+    - Form 7 (Full Service Note Template): 12 fillable content rows (removed hardcoded "Service Name" row in favor of fully fillable)
+    - Form 8 (Clinical Record Content Checklist): 28 elements × 2 fillable cells (Present? + Notes), QP Quarterly Audit signature row
+    - Form 9 (Accounting of Disclosures Log): fillable Youth Name/MID meta, 8 rows × 6 fillable cells
+  - Total: 552 interactive AcroForm fields in the main manual PDF
+- **Standalone fillable forms** — New script `/home/z/my-project/scripts/build_fillable_forms.py` generates 9 standalone fillable PDF forms in `/home/z/my-project/download/forms/`:
+  - Form_1_Shift_Change_Awake_Night_Watch_Log.pdf (2 pages, 164 fields)
+  - Form_2_Contraband_Belongings_Inventory.pdf (1 page, 49 fields)
+  - Form_3_Physical_Restraint_Debriefing_Checklist.pdf (2 pages, 35 fields)
+  - Form_4_Home_Pass_Medicaid_Billing_Exclusion_Tracker.pdf (1 page, 101 fields; 12 rows vs 4 in manual for ample capacity)
+  - Form_5_Emergency_Drill_Environmental_Safety_Log.pdf (2 pages, 149 fields)
+  - Form_6_Employee_SOP_Acknowledgment.pdf (1 page, 8 fields)
+  - Form_7_Full_Service_Note_Template.pdf (1 page, 12 fields)
+  - Form_8_Comprehensive_Clinical_Record_Content_Checklist.pdf (2 pages, 58 fields)
+  - Form_9_Accounting_of_Disclosures_Log.pdf (2 pages, 122 fields; 20 rows vs 8 in manual for ample capacity)
+  - Total: 698 interactive fields across standalone forms; 1,250 fields total (manual + standalone)
+  - Each standalone form has its own header/footer noting "Well Spring Intervention LLC — Standalone Fillable Form" and "Rev. 2.9 (RMDM-Compliant)"
+- **Version bump to 2.9** across all files:
+  - `generate_sop.py`: SELF_REF, DOC_TITLE_SHORT, Subject metadata, About This Manual opening paragraph, Document ID line, Revision Lineage (added v2.9 sentence), TOC intro paragraph (added v2.9 sentence + updated protocol count to "twenty-two"), Cover Artwork paragraph (rewritten to describe green leaves + well-spring composition)
+  - `merge_sop.py`: MANUAL_VERSION '2.8' → '2.9'; Keywords metadata updated to include "fillable forms, daily workflow schedules"
+  - `sop_content_v2_part3.py`: Form 6 reference Rev 2.8 → Rev 2.9; new Version History v2.9 row documenting all three enhancements
+  - Cover remains version-free per "versioning is private" policy from v2.8
+- **Body PDF**: 41 pages (up from 34 in v2.8 — +7 pages for Protocol 22 schedules + Form Usage banners + the more verbose fillable form layouts)
+- **Final PDF**: 42 pages (cover + 41 body), 856.7 KB
+- **QA pipeline**: 13 PASS / 0 WARN. All checks green (metadata, page size, fonts embedded, no overflow, content fill, full-bleed cover, margin symmetry, table centering, TOC populated, punctuation rules).
+- **Visual verification via VLM**:
+  - Cover (p1): Confirmed green leaves, well-spring in foreground at base of tree, no version/revision/doc ID/RMDM-Compliant text visible (versioning is private), "Well Spring Intervention LLC" prominently displayed, full-width image band sandwiched between text bands
+  - Form 3 standalone (p1): Confirmed FORM PROPERTIES banner in red declaring "printable, copyable, sharable, editable, and fillable"; visible form fields (underlined blanks) next to labels; visible checkboxes for Y/N options and de-escalation attempts; "FORM 3: Physical Restraint & Debriefing Checklist" title; clean professional layout
+  - Protocol 22 page (p25): Confirmed QP daily workflow schedule table with Time and Activity columns, time-blocked entries from 7:00 AM through 9:30 PM, alternating row shading, AP/PP schedule beginning at bottom
+
+Stage Summary:
+- Rev. 2.9 delivers three user-requested enhancements in a single revision:
+  1. **Cover artwork refresh** — brand illustration regenerated with lush GREEN leaves (symbolizing growth) and an explicit well-spring (circular pool with ripples) in the foreground, completing the symbolic narrative of wellspring, growth, health, and flourishing. Cover remains version-free per the v2.8 "versioning is private" policy.
+  2. **Protocol 22 — Daily Workflow Schedules for All Personnel** — new protocol codifying time-blocked daily routines for 8 personnel classifications (QP, AP/PP, DCP Day, DCP Evening, DCP Awake Overnight, House Manager, RN, Billing Coordinator), with a master schedule summary table and shift-change huddle / on-call / deviation policies.
+  3. **Forms enhancement** — all 9 forms in Part 3 converted to interactive AcroForm fillable PDFs with 552 fillable fields in the manual and 698 additional fields across 9 standalone fillable PDFs in `/download/forms/`. Each form opens with a Form Properties banner declaring it printable, copyable, sharable, editable, and fillable.
+- Final v2.9 PDF: 42 pages, 857 KB. All 13 QA checks PASS.
+- All v2.0–v2.8 PDFs preserved as immutable history in `/home/z/my-project/download/`.
+- Deliverables:
+  - `/home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.9_RMDM-Compliant.pdf` (manual, 42 pages, 857 KB)
+  - `/home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_LATEST.pdf` (pointer to v2.9)
+  - `/home/z/my-project/download/Well_Spring_Brand_Image_1344x768.png` (regenerated brand image with green leaves + well-spring)
+  - `/home/z/my-project/download/forms/Form_1_Shift_Change_Awake_Night_Watch_Log.pdf` (standalone, 2pp, 164 fields)
+  - `/home/z/my-project/download/forms/Form_2_Contraband_Belongings_Inventory.pdf` (standalone, 1pp, 49 fields)
+  - `/home/z/my-project/download/forms/Form_3_Physical_Restraint_Debriefing_Checklist.pdf` (standalone, 2pp, 35 fields)
+  - `/home/z/my-project/download/forms/Form_4_Home_Pass_Medicaid_Billing_Exclusion_Tracker.pdf` (standalone, 1pp, 101 fields)
+  - `/home/z/my-project/download/forms/Form_5_Emergency_Drill_Environmental_Safety_Log.pdf` (standalone, 2pp, 149 fields)
+  - `/home/z/my-project/download/forms/Form_6_Employee_SOP_Acknowledgment.pdf` (standalone, 1pp, 8 fields)
+  - `/home/z/my-project/download/forms/Form_7_Full_Service_Note_Template.pdf` (standalone, 1pp, 12 fields)
+  - `/home/z/my-project/download/forms/Form_8_Comprehensive_Clinical_Record_Content_Checklist.pdf` (standalone, 2pp, 58 fields)
+  - `/home/z/my-project/download/forms/Form_9_Accounting_of_Disclosures_Log.pdf` (standalone, 2pp, 122 fields)
+  - Persistent scripts: `/home/z/my-project/scripts/{sop_cover.html, sop_cover_image.png, generate_sop.py, sop_content_v2.py, sop_content_v2_part2.py, sop_content_v2_part3.py, merge_sop.py, build_fillable_forms.py}`

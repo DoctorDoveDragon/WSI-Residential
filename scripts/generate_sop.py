@@ -98,7 +98,7 @@ AVAIL_W = PAGE_W - LEFT_M - RIGHT_M  # ~440pt
 # ────────────────────────────────────────────────────────────────────
 SELF_REF = (
     'Well Spring Intervention LLC SOP &amp; Operational Manual '
-    '(Doc. WSI-SOP-001, Rev. 2.8, Jul 2026 — RMDM-Compliant)'
+    '(Doc. WSI-SOP-001, Rev. 2.9, Jul 2026 — RMDM-Compliant)'
 )
 
 # ────────────────────────────────────────────────────────────────────
@@ -399,9 +399,211 @@ def signature_line(label, width_pct=0.46):
 
 
 # ────────────────────────────────────────────────────────────────────
+# AcroForm fillable field helpers (printable / copyable / sharable / editable / fillable)
+# ────────────────────────────────────────────────────────────────────
+_acro_field_counter = [0]
+
+def _next_acro_name(prefix='f'):
+    """Return a unique AcroForm field name (PDF requires unique names per field)."""
+    _acro_field_counter[0] += 1
+    return f'{prefix}_{_acro_field_counter[0]:04d}'
+
+
+class AcroTextField(Flowable):
+    """A Platypus Flowable that renders an interactive AcroForm text field.
+
+    Drop into any Table cell (or use inline alongside Paragraphs) to make that
+    cell fillable. In a PDF reader that supports AcroForm (Adobe Acrobat,
+    Preview, Foxit, browsers), the user can click and type directly into the
+    field. The field can be saved, printed, copied, and shared like any PDF
+    content.
+    """
+    def __init__(self, name=None, width=120, height=14, tooltip='', value='',
+                 font_size=9, border_style='underlined', border_width=0):
+        Flowable.__init__(self)
+        self.name = name or _next_acro_name('tf')
+        self.width = width
+        self.height = height
+        self.tooltip = tooltip or self.name
+        self.value = value
+        self.font_size = font_size
+        self.border_style = border_style
+        self.border_width = border_width
+
+    def wrap(self, availWidth, availHeight):
+        # Respect requested size but never exceed available space
+        w = min(self.width, availWidth) if availWidth else self.width
+        h = min(self.height, availHeight) if availHeight else self.height
+        self._w, self._h = w, h
+        return (w, h)
+
+    def draw(self):
+        form = self.canv.acroForm
+        form.textfield(
+            name=self.name,
+            tooltip=self.tooltip,
+            x=0, y=0,
+            width=self._w, height=self._h,
+            borderStyle=self.border_style,
+            forceBorder=False,
+            borderWidth=self.border_width,
+            fontName='Helvetica',
+            fontSize=self.font_size,
+            fillColor=None,
+            textColor=colors.HexColor('#1e1c1b'),
+            fieldFlags='',
+            value=self.value,
+        )
+
+
+class AcroCheckbox(Flowable):
+    """A Platypus Flowable that renders an interactive AcroForm checkbox."""
+    def __init__(self, name=None, size=11, tooltip='', checked=False):
+        Flowable.__init__(self)
+        self.name = name or _next_acro_name('cb')
+        self.size = size
+        self.tooltip = tooltip or self.name
+        self.checked = checked
+
+    def wrap(self, availWidth, availHeight):
+        s = min(self.size, availWidth) if availWidth else self.size
+        self._s = s
+        return (s, s)
+
+    def draw(self):
+        form = self.canv.acroForm
+        form.checkbox(
+            name=self.name,
+            tooltip=self.tooltip,
+            x=0, y=0,
+            size=self._s,
+            checked=self.checked,
+            buttonStyle='check',
+            borderStyle='inset',
+            borderWidth=0.5,
+            forceBorder=True,
+            fillColor=colors.white,
+            textColor=colors.HexColor('#1e1c1b'),
+            borderColor=colors.HexColor('#87807d'),
+        )
+
+
+def fillable_meta_row(fields, col_widths=None, font_size=9.5, height=15):
+    """Build a Table row where each (label, field_width, tooltip) tuple becomes
+    a label + AcroTextField pair. Returns a Table flowable that can be appended
+    to the story.
+
+    `fields` is a list of (label, field_width_pts, tooltip) tuples. If
+    field_width is 0 or None, the label is rendered as label-only (no text
+    field) — useful for header labels that precede a checkbox row.
+    `col_widths` is optional; if omitted, columns are sized to fit labels+fields
+    and the total is auto-scaled to AVAIL_W so the row never overflows.
+    """
+    cells = []
+    widths = []
+    for label, fw, tip in fields:
+        label_p = Paragraph(f'<b>{label}</b>', s_form_meta)
+        if fw and fw > 0:
+            tf = AcroTextField(width=fw, height=height, tooltip=tip, font_size=font_size)
+            cells.extend([label_p, tf])
+            lw = max(40, len(label) * 5.5 + 8)
+            widths.extend([lw, fw])
+        else:
+            # Label-only entry (no text field)
+            cells.append(label_p)
+            lw = max(40, len(label) * 5.5 + 8)
+            widths.append(lw)
+    if col_widths:
+        widths = col_widths
+    else:
+        # Auto-scale to fit within AVAIL_W (with a small margin for padding)
+        total = sum(widths)
+        target = AVAIL_W - 8  # account for default 2+6 padding per cell pair
+        if total > target:
+            scale = target / total
+            widths = [w * scale for w in widths]
+    tbl = Table([cells], colWidths=widths, hAlign='CENTER')
+    tbl.setStyle(TableStyle([
+        ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+        ('LEFTPADDING', (0, 0), (-1, -1), 2),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 6),
+        ('TOPPADDING', (0, 0), (-1, -1), 2),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 2),
+    ]))
+    return tbl
+
+
+def fillable_check_row(items, font_size=9.5, box_size=11):
+    """Build a Table row where each item becomes a checkbox + label pair.
+
+    `items` is a list of (label, tooltip) tuples; tooltip may be ''.
+    """
+    cells = []
+    for label, tip in items:
+        cells.append(AcroCheckbox(size=box_size, tooltip=tip or label))
+        cells.append(Paragraph(label, s_form_meta))
+    tbl = Table([cells], hAlign='LEFT')
+    tbl.setStyle(TableStyle([
+        ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+        ('LEFTPADDING', (0, 0), (-1, -1), 2),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 8),
+        ('TOPPADDING', (0, 0), (-1, -1), 2),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 2),
+    ]))
+    return tbl
+
+
+def fillable_signature_row(items, height=15, font_size=9.5):
+    """Build a Table row of (label, field_width, tooltip) signature fields
+    laid out horizontally. Designed for signature/date/description lines.
+    """
+    return fillable_meta_row(items, font_size=font_size, height=height)
+
+
+def form_usage_banner(form_number=None):
+    """Styled banner declaring the form's capabilities: printable, copyable,
+    sharable, editable, fillable. Appended above each form to communicate the
+    form's interactive properties to the user.
+    """
+    s_banner_label = ParagraphStyle(
+        name='FormBannerLabel', fontName=BODY_BOLD, fontSize=8, leading=11,
+        textColor=ACCENT, alignment=TA_LEFT,
+    )
+    s_banner_body = ParagraphStyle(
+        name='FormBannerBody', fontName=BODY_FONT, fontSize=8.5, leading=11.5,
+        textColor=TEXT_PRIMARY, alignment=TA_LEFT,
+    )
+    inner = [
+        Paragraph('FORM PROPERTIES', s_banner_label),
+        Paragraph(
+            'This form is <b>printable</b>, <b>copyable</b>, <b>sharable</b>, '
+            '<b>editable</b>, and <b>fillable</b>. '
+            'Click any field to type. Save the PDF to retain entries. '
+            'Print to obtain a wet-ink signature. Share the saved or printed '
+            'copy via secure channels (encrypted email, EHR upload, or sealed '
+            'envelope). Edit existing entries by clicking the field again. '
+            'Standalone fillable copies of all forms are in the '
+            '<i>/download/forms/</i> directory.',
+            s_banner_body
+        ),
+    ]
+    tbl = Table([[inner]], colWidths=[AVAIL_W], hAlign='CENTER')
+    tbl.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, -1), CARD_BG),
+        ('LINEBEFORE', (0, 0), (0, -1), 3, ACCENT),
+        ('LEFTPADDING', (0, 0), (-1, -1), 10),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 10),
+        ('TOPPADDING', (0, 0), (-1, -1), 5),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 5),
+        ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+    ]))
+    return tbl
+
+
+# ────────────────────────────────────────────────────────────────────
 # Header / footer (drawn via onPage callback)
 # ────────────────────────────────────────────────────────────────────
-DOC_TITLE_SHORT = 'Standard Operating Procedure & Operational Manual — Rev. 2.8 (RMDM-Compliant)'
+DOC_TITLE_SHORT = 'Standard Operating Procedure & Operational Manual — Rev. 2.9 (RMDM-Compliant)'
 DOC_ORG = 'Well Spring Intervention LLC'
 
 def draw_header_footer(canvas, doc):
@@ -458,7 +660,7 @@ def build():
         title='Well Spring Intervention LLC — SOP & Operational Manual',
         author='Well Spring Intervention LLC',
         creator='Z.ai',
-        subject='Level 3 Supervised Residential Group Home — Standard Operating Procedures (Rev. 2.8 RMDM-Compliant)',
+        subject='Level 3 Supervised Residential Group Home — Standard Operating Procedures (Rev. 2.9 RMDM-Compliant)',
         keywords='SOP, residential group home, Level 3, NCAC 27G, Rule 108, Medicaid CCP 8C, IRIS, RMDM, HIPAA, 42 CFR Part 2, NCGS Ch. 66 Art. 40, E-SIGN, Electronic Signatures',
     )
 
@@ -473,7 +675,7 @@ def build():
     story.append(HRFlowable(width=80, color=ACCENT, thickness=2, spaceBefore=2, spaceAfter=14))
 
     story.append(Paragraph(
-        'This manual (Rev. 2.8, July 2026) is the official Standard Operating '
+        'This manual (Rev. 2.9, July 2026) is the official Standard Operating '
         'Procedures and Operational Reference for <b>Well Spring Intervention LLC</b>, '
         'a Level 3 Supervised Residential Group Home serving children and '
         'adolescents with mental health and behavioral challenges. It establishes '
@@ -489,7 +691,7 @@ def build():
     story.append(Paragraph('<b>Service Type.</b> Level 3 Supervised Residential Group Home.', s_body))
     story.append(Paragraph('<b>Effective Date.</b> July 2026.', s_body))
     story.append(Paragraph('<b>Document Owner.</b> Executive Director &amp; Qualified Professional (QP).', s_body))
-    story.append(Paragraph('<b>Document ID.</b> Doc. WSI-SOP-001, Rev. 2.8 (RMDM-Compliant). <i>Versioning is private — this information does not appear on the public-facing cover.</i>', s_body))
+    story.append(Paragraph('<b>Document ID.</b> Doc. WSI-SOP-001, Rev. 2.9 (RMDM-Compliant). <i>Versioning is private — this information does not appear on the public-facing cover.</i>', s_body))
     story.append(Spacer(1, 10))
 
     # Regulatory framework (moved from cover)
@@ -534,7 +736,14 @@ def build():
         'designation, Owner) from the public-facing cover so the cover can serve as '
         'a clean brand asset; versioning information remains accessible internally via '
         'this About This Manual page, the body page headers, the Version History table '
-        'in Part 3, Form 6, and the PDF metadata. A complete revision history appears in Part 3.',
+        'in Part 3, Form 6, and the PDF metadata. Rev. 2.9 refreshes the cover artwork '
+        'with lush green leaves and an explicit well-spring in the foreground to '
+        'complete the symbolic narrative of wellspring, growth, health, and flourishing; '
+        'adds Protocol 22 (Daily Workflow Schedules for All Personnel) covering QP, AP, '
+        'DCP, House Manager, Awake Overnight, RN, and Billing Coordinator shift routines; '
+        'and converts all nine forms in Part 3 to interactive AcroForm fillable PDF '
+        'fields with a Form Properties banner declaring each form printable, copyable, '
+        'sharable, editable, and fillable. A complete revision history appears in Part 3.',
         s_body
     ))
     story.append(Spacer(1, 10))
@@ -543,8 +752,12 @@ def build():
     story.append(Paragraph('<b>Cover Artwork.</b>', s_h2))
     story.append(Paragraph(
         'The cover illustration is the official brand visual of Well Spring '
-        'Intervention LLC. It depicts a stylized tree-human figure rising toward '
-        'a sunrise over calm water, rendered in a warm earthy palette. The image '
+        'Intervention LLC. It depicts a stylized tree-human figure with lush '
+        'green leaves flourishing toward a warm sunrise over calm water, with '
+        'a clear well-spring bubbling up in the foreground directly before the '
+        'tree. The composition completes the program\'s symbolic narrative: '
+        'the well-spring is the source of renewal, the green leaves embody '
+        'growth and flourishing, and the sunrise promises a new day. The image '
         'symbolizes the program\'s commitment to empowerment, growth, freedom, '
         'health, wholeness, and healing, and is approved for reuse across '
         'company websites, publications, and collateral materials. A high-resolution '
@@ -558,7 +771,7 @@ def build():
     story.append(Paragraph('Table of Contents', s_toc_title))
     story.append(HRFlowable(width=80, color=ACCENT, thickness=2, spaceBefore=2, spaceAfter=12))
     story.append(Paragraph(
-        'This manual (Rev. 2.7, July 2026) is organized into three parts and is fully '
+        'This manual (Rev. 2.9, July 2026) is organized into three parts and is fully '
         'compliant with the NCDHHS Records Management and Documentation Manual (RMDM, '
         'Effective July 8, 2025). Part 1 establishes foundational policies and compliance '
         'obligations across eleven sections, including new chapters on privacy/confidentiality '
@@ -584,12 +797,19 @@ def build():
         'information from the public-facing cover (Doc ID, Revision number, '
         'RMDM-Compliance designation, Owner); versioning remains private and is '
         'accessible only via internal surfaces (PDF metadata, About This Manual '
-        'page, body page headers, Version History table, Form 6). Part 2 details twenty-one '
-        'step-by-step workflows that govern daily operations, including protocols for '
-        'service orders/authorizations and record management/disclosure accounting. '
-        'Part 3 provides nine customized forms and logs, including the Full Service Note '
-        'Template, Comprehensive Clinical Record Content Checklist, and Accounting of '
-        'Disclosures Log.',
+        'page, body page headers, Version History table, Form 6). Rev. 2.9 refreshes the '
+        'cover artwork with lush green leaves and an explicit well-spring in the foreground '
+        'to complete the symbolic narrative of wellspring, growth, health, and flourishing; '
+        'adds Protocol 22 (Daily Workflow Schedules for All Personnel) covering QP, AP, DCP, '
+        'House Manager, Awake Overnight, RN, and Billing Coordinator shift routines; and '
+        'converts all nine forms in Part 3 to interactive AcroForm fillable PDF fields with '
+        'a Form Properties banner declaring each form printable, copyable, sharable, '
+        'editable, and fillable. Standalone fillable copies of all forms are also available '
+        'in the /download/forms/ directory. Part 2 details twenty-two step-by-step workflows '
+        'that govern daily operations, including protocols for service orders/authorizations '
+        'and record management/disclosure accounting. Part 3 provides nine customized forms '
+        'and logs, including the Full Service Note Template, Comprehensive Clinical Record '
+        'Content Checklist, and Accounting of Disclosures Log.',
         s_toc_intro
     ))
 
