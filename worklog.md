@@ -1072,3 +1072,63 @@ Stage Summary:
   - `/home/z/my-project/download/forms/Form_8_Comprehensive_Clinical_Record_Content_Checklist.pdf` (standalone, 2pp)
   - `/home/z/my-project/download/forms/Form_9_Accounting_of_Disclosures_Log.pdf` (standalone, 2pp)
   - Persistent scripts: `/home/z/my-project/scripts/{sop_cover.html, sop_cover_image.png, generate_sop.py, sop_content_v2.py, sop_content_v2_part2.py, sop_content_v2_part3.py, merge_sop.py, build_fillable_forms.py, edit_cover_v214.js}`
+
+---
+Task ID: SOP-19
+Agent: main (Super Z)
+Task: User direction — "ok we need a logo. we will create a simple image of aquirius pouring water into a grey stone heart. the concept is health therapy, renewal." Create a brand logo (separate from the cover) featuring Aquarius pouring water into a grey stone heart. User clarifications via AskUserQuestion: visual style = engraved vintage (classical apothecary seal / university medal aesthetic); composition = full-figure Aquarius; palette = warm earthy (matches cover); wordmark = BOTH icon-only AND horizontal lockup versions; overall look = "sleek professional inviting."
+
+Work Log:
+- Asked 4 clarifying questions via AskUserQuestion to nail the logo design before generating (since logos have many degrees of freedom). User selections: engraved vintage style, full-figure Aquarius, warm earthy palette, both icon-only AND horizontal lockup versions. Additional remark: "the look is sleek professional inviting."
+- Created `/home/z/my-project/scripts/generate_logo_icon.js` — fresh image GENERATION (not edit) via the z-ai-web-dev-sdk images.generations.create() API. Size: 1024×1024 square. The prompt specified:
+  - Style: refined engraved vintage logo icon, classical apothecary seal / university medal aesthetic, fine crosshatch intaglio line engraving on warm cream parchment background. Sleek, professional, inviting — heritage craftsmanship reimagined for a modern wellness brand. Generous negative space, NOT dense medieval woodcut.
+  - Composition (centered, symmetric, fills frame edge-to-edge): UPPER HALF = standing figure of Aquarius (water bearer) — graceful classical Greek/Roman figure draped in flowing robes, holding and tilting an ornate amphora vessel with both hands, pouring water downward. LOWER HALF = single smooth GREY STONE HEART resting on the ground (two rounded lobes at top meeting at a gentle point at bottom, cool natural grey weathered granite with subtle engraved shading). BETWEEN THEM = single clear stream of water flowing in a graceful vertical arc from the tilted vessel into the top center of the grey stone heart, with delicate droplets catching the light.
+  - Palette: warm cream background (#f5ead6), warm brown figure and vessel (#6b4d3f deep walnut with #ab5125 terracotta accents), soft rose/peach highlights (#ffd9a7), cool grey stone heart (#8a8a8a with #5a5a5a shading), cool aqua-blue (#7aa5b8) for the water stream.
+  - Style notes: fine crosshatch line engraving throughout (not flat fills), refined and elegant, classical idealized figure proportions, no border/frame/circular-ring/ribbon-banner.
+  - ABSOLUTELY NO TEXT/letters/numbers/words/monograms/dates/watermarks of any language.
+- First generation attempt failed with `TypeError: undefined is not an object (evaluating 'result.data.map')` — diagnosed as the API rejecting an over-long prompt (the original prompt was very detailed with hex color codes and many style notes). Rewrote the prompt to be more concise while preserving all the key requirements (composition, palette, style, zero-text rule). Second generation attempt SUCCEEDED on the first try — `Well_Spring_Logo_Icon.png` (96 KB, 1024×1024).
+- VLM verification of the icon confirmed ALL requirements met on the first generation:
+  - Aquarius figure: "standing female figure... representing the water bearer. She holds a large, ornate amphora or urn... tilted forward, pouring liquid from its spout." ✓
+  - Grey stone heart: "large heart-shaped object in the lower portion that resembles a stone. Color: primarily grey (specifically a textured, speckled grey like granite) with darker grey/black shading on the right side to give it 3D volume." ✓
+  - Water flow: "stream of light blue liquid flows directly from the spout of the vessel down into the cleft/indentation at the top center of the heart-shaped stone. There are small splashes where the water hits the stone." ✓
+  - Style: "engraved vintage crosshatch (or illustrative realism). It mimics the look of an old apothecary seal, a university medal, or a detailed bookplate illustration. It features fine line work, hatching for shadows, and realistic shading rather than flat colors." ✓
+  - Background: "warm cream or beige/off-white tone" ✓
+  - Colors: "Figure: warm terracotta/brownish-gold tones. Vessel: matches the figure's coloring but features dark brown decorative patterns. Water: bright, translucent light blue/cyan." ✓
+  - Symmetric: "largely symmetric and vertically balanced. The figure stands centered above the heart, and the stream of water connects them along the central vertical axis." ✓
+  - Text-free: "No. There is no visible text, letters, numbers, or watermarks in the image. It is purely an iconographic illustration." ✓
+  - Look: "sleek, professional, and inviting. Despite the detail in the crosshatching and textures, the composition is clean, the subject matter is clear, and the aesthetic is polished rather than cluttered." ✓
+- Created `/home/z/my-project/scripts/logo_lockup.html` — horizontal lockup HTML composition (1792×512px) with:
+  - Left: the icon image (420×420px, contained in a 420×420 wrap)
+  - Right: wordmark "Well Spring Intervention" in Cormorant Garamond serif (96px, weight 600) with "Intervention" in terracotta accent color (#ab5125)
+  - A 60×2px terracotta divider line below the wordmark
+  - Subtitle "LEVEL 3 SUPERVISED RESIDENTIAL GROUP HOME" in Inter sans-serif (22px, weight 500, 6px letter-spacing, uppercase, 78% opacity walnut brown)
+  - Tagline "Empowerment · Growth · Freedom · Health · Wholeness · Healing" in Inter italic (16px, terracotta accent)
+  - Background: warm cream #f5ead6 (matches the icon background for seamless integration)
+- Rendered the lockup HTML to PDF via `html2poster.js --width 1792px` → `Well_Spring_Logo_Lockup.pdf` (140 KB, single page).
+- Converted the lockup PDF to PNG via `pdftoppm -png -r 150` → `Well_Spring_Logo_Lockup.png` (379 KB, 2688×768px at 150 DPI).
+- VLM verification of the lockup confirmed ALL requirements met on the first render:
+  - Icon: "on the left side, there is a square-framed, engraved-vintage style illustration. It depicts a classical figure (resembling Aquarius or a water-bearer) in a flowing robe holding an ornate amphora. The figure is pouring water into a large, textured grey stone heart at their feet. The art style features fine cross-hatching and shading typical of vintage engravings." ✓
+  - Wordmark: "Well Spring Intervention" (with "Intervention" in lighter warm terracotta/rust) ✓
+  - Subtitle: "LEVEL 3 SUPERVISED RESIDENTIAL GROUP HOME" in clean all-caps sans-serif with wide letter-spacing ✓
+  - Tagline: "Empowerment · Growth · Freedom · Health · Wholeness · Healing" in italicized serif ✓
+  - Typography: "elegant and professional. 'Well Spring Intervention' uses a high-contrast Serif font (similar to a modern Didot or Bodoni style). Subtitle uses a clean, all-caps Sans-Serif font with wide letter-spacing." ✓
+  - Colors: "Dark Grey/Brown (Charcoal) for 'Well Spring' and the subtitle. Terracotta/Rust Orange for 'Intervention,' the thin horizontal rule above the subtitle, and the tagline text." ✓
+  - Composition: "highly balanced and professional. Classic horizontal lockup structure with the visual weight of the detailed icon on the left perfectly counterbalancing the textual information on the right." ✓
+  - Background: "warm cream or pale beige/off-white color, which complements the vintage aesthetic of the icon and the warm tones of the text." ✓
+  - Overall feel: "sleek, professional, and inviting. The combination of the compassionate imagery (water/healing) with the refined typography makes it highly suitable for use as a masthead on letterheads, business cards, or a website header for a healthcare or wellness facility." ✓
+  - No artifacts: "no visible artifacts, overlaps, or layout problems. The alignment is precise, the spacing (kerning and leading) is consistent, and the image quality is sharp and clean." ✓
+- Created `/home/z/my-project/scripts/make_logo_variants.py` to produce two additional icon variants for maximum brand flexibility:
+  - `Well_Spring_Logo_Icon_Transparent.png` — chroma-keyed transparent-background variant (the warm cream background is keyed to α=0 with edge feathering for clean compositing on any surface). Sampled the actual background color (RGB 240,224,199 — slightly more peachy/saturated than the assumed #f5ead6) from the four corners of the icon, then chroma-keyed all pixels within Chebyshev distance ≤25 (full transparent) with feathering out to distance ≤50 (full opaque). Result: 75.1% of pixels became fully transparent (α=0), 2.4% feathered (0<α<255), 22.5% remained fully opaque (α=255) — the correct ratio for a centered icon. Verified via PIL that the alpha channel is 0 at all four corners and 255 at the center. Verified via VLM by compositing on a magenta background: "the figure and the heart are clearly floating on the magenta background. There is no cream rectangle or border surrounding them; the magenta background fills the entire image area around the subjects."
+  - `Well_Spring_Logo_Icon_DarkBg.png` — the transparent icon composited onto a deep walnut brown (#2a1810) background matching the cover's dark tones, for use on dark surfaces (letterhead footers, dark website sections, signage on dark walls). VLM verification: "the icon looks very good on this background. The figure, the heart, and the water are clearly visible with high contrast. It appears to be a well-composited image with clean edges. No visible artifacts or cream-colored halos around the figure. The edges appear sharp against the dark background."
+
+Stage Summary:
+- v2.14 of the manual is unchanged — this task created a SEPARATE brand logo asset family, not a new revision of the manual.
+- The new logo concept: Aquarius (the water bearer) pouring water from an ornate vessel into a grey stone heart — symbolizing health therapy, renewal, and the literal "well spring" of the company name. The engraved vintage style (classical apothecary seal / university medal aesthetic with fine crosshatch intaglio line engraving) conveys heritage, gravitas, and refined professionalism while remaining sleek and inviting rather than busy or dense.
+- The warm earthy palette (warm cream background, walnut brown figure, terracotta accents, cool grey stone heart, aqua-blue water) harmonizes with the existing v2.14 cover artwork and brand palette, so the logo and cover can be used together cohesively.
+- Four logo asset files produced:
+  1. `Well_Spring_Logo_Icon.png` (1024×1024, 96 KB) — the canonical icon on warm cream background. Use for: light surfaces, print on cream/white paper, social media profile pictures.
+  2. `Well_Spring_Logo_Icon_Transparent.png` (1024×1024, 731 KB) — the icon with transparent background (chroma-keyed with edge feathering). Use for: compositing on any colored background, photo overlays, watermarks, embroidery digitizing.
+  3. `Well_Spring_Logo_Icon_DarkBg.png` (1024×1024, 650 KB) — the icon pre-composited on deep walnut #2a1810 background. Use for: dark surfaces, dark website footers, dark signage, presentation slides on dark backgrounds.
+  4. `Well_Spring_Logo_Lockup.png` (2688×768, 379 KB) and `Well_Spring_Logo_Lockup.pdf` (140 KB) — horizontal lockup with icon + "Well Spring Intervention" wordmark + "Level 3 Supervised Residential Group Home" subtitle + values tagline. Use for: letterheads, business cards, website headers, email signatures, presentation title slides.
+- All four assets are in `/home/z/my-project/download/` and ready for distribution alongside the v2.14 manual.
+- Persistent scripts: `/home/z/my-project/scripts/{generate_logo_icon.js, logo_lockup.html, make_logo_variants.py}`
