@@ -8,7 +8,7 @@ file with interactive AcroForm fields, saved to:
 Each standalone form includes:
   - A header with the form number, title, and Form Properties banner
   - All fillable fields (text fields + checkboxes) from the parent manual
-  - A footer noting the source manual (Rev. 2.13) and the form's purpose
+  - A footer noting the source manual (Rev. 2.14) and the form's purpose
 
 The standalone forms are designed for use OUTSIDE the manual — for
 printing, copying, sharing, editing, and filling by staff during daily
@@ -60,7 +60,7 @@ def _draw_header_footer(canvas, doc):
     canvas.drawString(LEFT_M, PAGE_H - TOP_M * 0.55,
                       'Well Spring Intervention LLC — Standalone Fillable Form')
     canvas.drawRightString(PAGE_W - RIGHT_M, PAGE_H - TOP_M * 0.55,
-                           'Rev. 2.13 (RMDM-Compliant)')
+                           'Rev. 2.14 (RMDM-Compliant)')
     canvas.setStrokeColor(BORDER)
     canvas.setLineWidth(0.5)
     canvas.line(LEFT_M, PAGE_H - TOP_M * 0.55 - 4,
@@ -87,7 +87,7 @@ def _standalone_form_doc(filepath, title):
         title=title,
         author='Well Spring Intervention LLC',
         creator='Z.ai',
-        subject=f'{title} — Rev. 2.13 (RMDM-Compliant)',
+        subject=f'{title} — Rev. 2.14 (RMDM-Compliant)',
     )
 
 
@@ -440,7 +440,7 @@ def build_form_6(filepath):
     story.append(Spacer(1, 8))
     story.append(Paragraph(
         'By signing below, I acknowledge that I have received, read, and understand the '
-        'SOP Manual for <b>Well Spring Intervention LLC</b> (Rev. 2.13, July 2026, '
+        'SOP Manual for <b>Well Spring Intervention LLC</b> (Rev. 2.14, July 2026, '
         'RMDM-Compliant). I understand these policies are mandated by NC DHSR (10A NCAC '
         '27G), NC Medicaid (CCP 8C), Rule 108 (10A NCAC 27T), the NCDHHS Records '
         'Management and Documentation Manual (Effective July 8, 2025), NCGS Chapter 66 '
