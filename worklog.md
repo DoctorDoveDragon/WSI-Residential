@@ -870,3 +870,70 @@ Stage Summary:
   - `/home/z/my-project/download/forms/Form_8_Comprehensive_Clinical_Record_Content_Checklist.pdf` (standalone, 2pp)
   - `/home/z/my-project/download/forms/Form_9_Accounting_of_Disclosures_Log.pdf` (standalone, 2pp)
   - Persistent scripts: `/home/z/my-project/scripts/{sop_cover.html, sop_cover_image.png, generate_sop.py, sop_content_v2.py, sop_content_v2_part2.py, sop_content_v2_part3.py, merge_sop.py, build_fillable_forms.py, edit_cover_v211.js}`
+
+---
+Task ID: SOP-16
+Agent: main (Super Z)
+Task: User refinement — "good job on the brand logo! let's change the orifice that the spring emanates from. lets make it a heart-shaped stone instead of a jagged hole. make the spring a little taller." Refine the v2.11 cover so the wellspring orifice is a smooth sculpted HEART-SHAPED STONE (no jagged edges, no facial features) and the vertical water jet is taller.
+
+Work Log:
+- Performed an in-place image edit on the canonical Rev. 2.11 cover image (`sop_cover_image_v211.png`) via the z-ai-web-dev-sdk image-edit API. Edit prompt specified ONLY two changes:
+  1. Replace the small jagged stone-rimmed opening/orifice that the water previously emanated from with a smooth sculpted HEART-SHAPED STONE — two rounded lobes at the top curving down to meet at a gentle point at the bottom, in a soft warm earth-toned color (terracotta or soft rose) matching the surrounding palette. The narrow water jet now emerges upward from the center/top of this heart-shaped stone.
+  2. Make the vertical jet/spray of water a LITTLE TALLER (roughly 30-50% taller than in Rev. 2.11) so the upward arc of clear water droplets and the slender column of water reach a bit higher into the air before falling back down. The wellspring remains NARROWER than the tree (only height increases, not width).
+  Everything else preserved exactly. Zero text/letters/numbers/watermarks of any language.
+- First edit iteration (sop_cover_image_v212.png) successfully produced the heart-shaped stone and taller jet, BUT VLM verification noted "two circular indentations on it, resembling eyes" — suggesting the model had added a face to the heart. To ensure the user gets a clean sculpted heart-shaped stone with no facial features, performed a SECOND in-place edit on the v2.12 image (sop_cover_image_v212b.png) with an explicit cleanup directive: "REMOVE those indentations completely. The heart-shaped stone should be completely SMOOTH and UNMARKED — a plain, polished, sculpted stone... No eyes, no mouth, no facial features, no carvings, no markings, no patterns, no texture lines on its surface — just a smooth plain heart-shaped stone."
+- VLM verification of the cleaned-up v2.12b image confirmed ALL six requirements:
+  - Leaves: "bright green" (yes)
+  - Wellspring: "heart-shaped stone in the foreground with water flowing from it, positioned directly in front of the tree trunk" (yes)
+  - Heart shape: "exactly a smooth heart shape with two rounded lobes at the top and a pointed bottom" (yes)
+  - No facial features: "plain smooth sculpted stone with no markings. It does not have any facial features" (yes)
+  - Tall + narrow: "tall but remains significantly narrower than the width of the tree's canopy" (yes)
+  - Text-free: "no text, letters, or visible watermarks" (yes)
+- Promoted the cleaned-up image to all canonical paths:
+  - `/home/z/my-project/scripts/sop_cover_image.png` (replaced — the v2.11 jagged-orifice image is overwritten)
+  - `/home/z/my-project/download/Well_Spring_Brand_Image_1344x768.png` (replaced — standalone brand asset for company-wide reuse)
+  - `/home/z/my-project/scripts/sop_cover_image_v212.png` and `_v212b.png` (intermediate edit artifacts, retained for traceability)
+- Updated `/home/z/my-project/scripts/sop_cover.html` `<img alt="...">` text to describe the new heart-shaped stone + taller wellspring composition (HTML structure unchanged).
+- Bumped version 2.11 → 2.12 across all source scripts:
+  - `generate_sop.py`: SELF_REF, DOC_TITLE_SHORT, Subject metadata, About This Manual opening paragraph, Document ID line, Revision Lineage (added v2.12 sentence documenting the heart-shaped stone + taller jet refinement), TOC intro paragraph (added v2.12 sentence), Cover Artwork paragraph (rewritten to describe the heart-shaped stone symbolizing love/compassion/trauma-informed care at the heart of the program, with taller water jet — and added `&nbsp;—` non-breaking-space prefix on em-dashes to prevent line-start punctuation warnings).
+  - `merge_sop.py`: MANUAL_VERSION '2.11' → '2.12'.
+  - `sop_content_v2_part3.py`: Form 6 Employee SOP Acknowledgment reference Rev 2.11 → Rev 2.12; Forms intro paragraph "As of Rev. 2.11" → "As of Rev. 2.12"; added new Version History v2.12 row documenting the cover artwork refinement (explicitly quoting the user's direction: "change the orifice that the spring emanates from — lets make it a heart-shaped stone instead of a jagged hole — and make the spring a little taller"). All em-dashes in the new Version History entry prefixed with `&nbsp;` to prevent line-start punctuation warnings.
+  - `build_fillable_forms.py`: header/footer "Rev. 2.11 (RMDM-Compliant)" → "Rev. 2.12 (RMDM-Compliant)"; Form 6 acknowledgment body reference "Rev. 2.11, July 2026" → "Rev. 2.12, July 2026".
+- Re-rendered cover via `html2poster.js`: sop_cover.pdf (193 KB, single page).
+- Regenerated body PDF via `python3 generate_sop.py`: sop_body.pdf (Body content from v2.11 — Protocol 22 daily schedules, all 9 AcroForm fillable forms, etc. — is unchanged; only version-string references were bumped to 2.12).
+- Re-merged cover + body via `python3 merge_sop.py`:
+  - Output: `/home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.12_RMDM-Compliant.pdf` (819.7 KB, 43 pages, Rev. 2.12 RMDM-Compliant)
+  - Latest pointer refreshed: `Well_Spring_Intervention_SOP_Manual_LATEST.pdf`
+- Regenerated all 9 standalone fillable forms in `/home/z/my-project/download/forms/` via `python3 build_fillable_forms.py` so their header/footer now reads "Rev. 2.12 (RMDM-Compliant)" and the Form 6 acknowledgment body references Rev. 2.12. Form sizes and field counts are unchanged from v2.11.
+- First QA pass on v2.12 PDF: 12 PASS + 2 WARN — both warnings were line-start em-dash punctuation on p4 (Revision Lineage) and p43 (Version History v2.12 row quote). Fixed both by prefixing em-dashes with `&nbsp;` in the source Python strings (forces non-breaking space before the dash, so the dash cannot start a new line).
+- Re-ran QA after the punctuation fix: 13 PASS / 0 WARN. All checks green (metadata, page size, fonts embedded, no overflow, content fill, full-bleed cover, margin symmetry, table centering, TOC populated, punctuation rules).
+- Rendered the v2.12 cover page to PNG (100 dpi) and verified via VLM (z-ai vision):
+  - Cover description: "central graphic features a large, leafy tree with brown branches, set against a peach-colored background with rolling hills at the bottom. At the base of the tree is a pink heart-shaped stone from which a tall, blue jet of water rises."
+  - Leaves verification: "Yes. The leaves on the tree are a bright, vibrant green."
+  - Wellspring verification: "Yes. There is a fountain or wellspring of water located in the foreground, positioned directly in front of the trunk of the tree."
+  - Heart-shape verification: "Yes, it is heart-shaped. The stone has two rounded lobes at the top and comes to a point at the bottom." + "No, there are no facial features or markings. The stone is a solid, smooth pink color without eyes, a mouth, or any other distinct facial details or text."
+  - Tall + narrow verification: "Yes. The water jet is tall and vertically slender. It is significantly narrower than the width of the tree's canopy."
+  - Versioning verification: "No. There is no visible text indicating a document version number, revision date, specific Document ID, or 'RMDM-Compliant' status anywhere on this cover page."
+
+Stage Summary:
+- v2.12 refines the v2.11 cover artwork per the user's direction. Two changes are applied via in-place image edit on the Rev. 2.11 cover image:
+  (1) The small jagged stone-rimmed opening/orifice that the water previously emanated from is replaced with a smooth sculpted HEART-SHAPED STONE — two rounded lobes at the top curving down to meet at a gentle point at the bottom, in a soft warm pink/terracotta color matching the surrounding palette, with a smooth plain surface and no facial features or markings. The water now emanates upward from the center/top of this heart-shaped stone. The heart-shaped stone symbolizes the love, compassion, and trauma-informed care at the heart of the program.
+  (2) The vertical jet/spray of water is made a little TALLER — roughly 30-50% taller than in Rev. 2.11 — so the upward arc of clear water droplets and the slender column of water reach a bit higher into the air before falling back down. The wellspring remains NARROWER than the tree (only HEIGHT increases, not width).
+- Body content from v2.11 is unchanged: Protocol 22 (Daily Workflow Schedules for All Personnel), all 9 AcroForm fillable forms in Part 3, all 9 standalone fillable PDFs in /download/forms/, §1.4(b) QP Credentialing Requirements — all preserved as-is. Only version-string references were bumped to 2.12.
+- The cover remains version-free per the v2.8 "versioning is private" policy: only company name, service-type subtitle, values tagline, the full horizontal brand illustration, and a document-type label appear on the public-facing cover.
+- Final v2.12 PDF: 43 pages, 820 KB. All 13 QA checks PASS. VLM verification confirms bright green leaves, smooth heart-shaped stone (no facial features/markings), tall slender water jet, wellspring still significantly narrower than the tree's canopy, zero versioning text.
+- All v2.0–v2.11 PDFs preserved as immutable history in `/home/z/my-project/download/`.
+- Deliverables:
+  - `/home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.12_RMDM-Compliant.pdf` (manual, 43 pages, 820 KB)
+  - `/home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_LATEST.pdf` (pointer to v2.12)
+  - `/home/z/my-project/download/Well_Spring_Brand_Image_1344x768.png` (regenerated brand image with green leaves + heart-shaped stone + taller wellspring)
+  - `/home/z/my-project/download/forms/Form_1_Shift_Change_Awake_Night_Watch_Log.pdf` (standalone, 2pp)
+  - `/home/z/my-project/download/forms/Form_2_Contraband_Belongings_Inventory.pdf` (standalone, 1pp)
+  - `/home/z/my-project/download/forms/Form_3_Physical_Restraint_Debriefing_Checklist.pdf` (standalone, 2pp)
+  - `/home/z/my-project/download/forms/Form_4_Home_Pass_Medicaid_Billing_Exclusion_Tracker.pdf` (standalone, 1pp)
+  - `/home/z/my-project/download/forms/Form_5_Emergency_Drill_Environmental_Safety_Log.pdf` (standalone, 2pp)
+  - `/home/z/my-project/download/forms/Form_6_Employee_SOP_Acknowledgment.pdf` (standalone, 1pp)
+  - `/home/z/my-project/download/forms/Form_7_Full_Service_Note_Template.pdf` (standalone, 1pp)
+  - `/home/z/my-project/download/forms/Form_8_Comprehensive_Clinical_Record_Content_Checklist.pdf` (standalone, 2pp)
+  - `/home/z/my-project/download/forms/Form_9_Accounting_of_Disclosures_Log.pdf` (standalone, 2pp)
+  - Persistent scripts: `/home/z/my-project/scripts/{sop_cover.html, sop_cover_image.png, generate_sop.py, sop_content_v2.py, sop_content_v2_part2.py, sop_content_v2_part3.py, merge_sop.py, build_fillable_forms.py, edit_cover_v212.js, edit_cover_v212b.js}`

@@ -98,7 +98,7 @@ AVAIL_W = PAGE_W - LEFT_M - RIGHT_M  # ~440pt
 # ────────────────────────────────────────────────────────────────────
 SELF_REF = (
     'Well Spring Intervention LLC SOP &amp; Operational Manual '
-    '(Doc. WSI-SOP-001, Rev. 2.11, Jul 2026 — RMDM-Compliant)'
+    '(Doc. WSI-SOP-001, Rev. 2.12, Jul 2026 — RMDM-Compliant)'
 )
 
 # ────────────────────────────────────────────────────────────────────
@@ -603,7 +603,7 @@ def form_usage_banner(form_number=None):
 # ────────────────────────────────────────────────────────────────────
 # Header / footer (drawn via onPage callback)
 # ────────────────────────────────────────────────────────────────────
-DOC_TITLE_SHORT = 'Standard Operating Procedure & Operational Manual — Rev. 2.11 (RMDM-Compliant)'
+DOC_TITLE_SHORT = 'Standard Operating Procedure & Operational Manual — Rev. 2.12 (RMDM-Compliant)'
 DOC_ORG = 'Well Spring Intervention LLC'
 
 def draw_header_footer(canvas, doc):
@@ -660,7 +660,7 @@ def build():
         title='Well Spring Intervention LLC — SOP & Operational Manual',
         author='Well Spring Intervention LLC',
         creator='Z.ai',
-        subject='Level 3 Supervised Residential Group Home — Standard Operating Procedures (Rev. 2.11 RMDM-Compliant)',
+        subject='Level 3 Supervised Residential Group Home — Standard Operating Procedures (Rev. 2.12 RMDM-Compliant)',
         keywords='SOP, residential group home, Level 3, NCAC 27G, Rule 108, Medicaid CCP 8C, IRIS, RMDM, HIPAA, 42 CFR Part 2, NCGS Ch. 66 Art. 40, E-SIGN, Electronic Signatures',
     )
 
@@ -675,7 +675,7 @@ def build():
     story.append(HRFlowable(width=80, color=ACCENT, thickness=2, spaceBefore=2, spaceAfter=14))
 
     story.append(Paragraph(
-        'This manual (Rev. 2.11, July 2026) is the official Standard Operating '
+        'This manual (Rev. 2.12, July 2026) is the official Standard Operating '
         'Procedures and Operational Reference for <b>Well Spring Intervention LLC</b>, '
         'a Level 3 Supervised Residential Group Home serving children and '
         'adolescents with mental health and behavioral challenges. It establishes '
@@ -691,7 +691,7 @@ def build():
     story.append(Paragraph('<b>Service Type.</b> Level 3 Supervised Residential Group Home.', s_body))
     story.append(Paragraph('<b>Effective Date.</b> July 2026.', s_body))
     story.append(Paragraph('<b>Document Owner.</b> Executive Director &amp; Qualified Professional (QP).', s_body))
-    story.append(Paragraph('<b>Document ID.</b> Doc. WSI-SOP-001, Rev. 2.11 (RMDM-Compliant). <i>Versioning is private — this information does not appear on the public-facing cover.</i>', s_body))
+    story.append(Paragraph('<b>Document ID.</b> Doc. WSI-SOP-001, Rev. 2.12 (RMDM-Compliant). <i>Versioning is private — this information does not appear on the public-facing cover.</i>', s_body))
     story.append(Spacer(1, 10))
 
     # Regulatory framework (moved from cover)
@@ -753,7 +753,14 @@ def build():
         'vertical jet of water bubbling up from a small stone-rimmed opening in the '
         'foreground directly in front of the tree — explicitly NARROWER than the tree '
         'itself, evoking the literal "well spring" of the company name rather than a wide '
-        'pool. A complete revision history appears in Part 3.',
+        'pool. Rev. 2.12 refines the wellspring orifice: the jagged stone-rimmed opening '
+        'is replaced with a smooth sculpted HEART-SHAPED STONE (two rounded lobes at the '
+        'top meeting at a gentle point at the bottom, in a soft warm earth-toned color '
+        'matching the surrounding palette) from which the water now emanates — symbolizing '
+        'the love, compassion, and trauma-informed care at the heart of the program — and '
+        'the vertical water jet is made TALLER, reaching higher into the air before '
+        'falling back, while remaining NARROWER than the tree. A complete revision history '
+        'appears in Part 3.',
         s_body
     ))
     story.append(Spacer(1, 10))
@@ -765,17 +772,17 @@ def build():
         'Intervention LLC. It depicts a stylized tree-human figure with fresh '
         'vivid green leaves flourishing toward a warm sunrise over calm water, '
         'with a NARROW well-spring of clear water bubbling up vertically from '
-        'a small stone-rimmed opening in the immediate foreground directly '
-        'before the tree — explicitly narrower than the tree itself, evoking '
-        'the literal "well spring" of the company name. Rev. 2.11 produced '
-        'this illustration through an in-place image edit of the original '
-        'Rev. 2.8 cover artwork (which had golden-amber foliage and no '
-        'well-spring): the foliage was recolored to lush green to embody '
-        'growth, and a narrow vertical well-spring was added in the '
-        'foreground to anchor the company name\'s literal meaning. The '
-        'composition completes the program\'s symbolic narrative: the '
-        'well-spring is the source of renewal, the green leaves embody '
-        'growth and flourishing, and the sunrise promises a new day. The '
+        'a smooth sculpted HEART-SHAPED STONE in the immediate foreground '
+        'directly before the tree — explicitly narrower than the tree itself, '
+        'evoking the literal "well spring" of the company name. The '
+        'heart-shaped stone (two rounded lobes meeting at a gentle point) '
+        'symbolizes the love, compassion, and trauma-informed care at the '
+        'heart of the program; the water that emanates from it embodies '
+        'renewal; the green leaves embody growth and flourishing; and the '
+        'sunrise promises a new day. Rev. 2.12 produced this illustration '
+        'through an in-place image edit of the Rev. 2.11 cover artwork: the '
+        'jagged stone-rimmed orifice was replaced with a smooth sculpted '
+        'heart-shaped stone, and the vertical water jet was made taller. The '
         'image symbolizes the program\'s commitment to empowerment, growth, '
         'freedom, health, wholeness, and healing, and is approved for reuse '
         'across company websites, publications, and collateral materials. A '
@@ -790,7 +797,7 @@ def build():
     story.append(Paragraph('Table of Contents', s_toc_title))
     story.append(HRFlowable(width=80, color=ACCENT, thickness=2, spaceBefore=2, spaceAfter=12))
     story.append(Paragraph(
-        'This manual (Rev. 2.11, July 2026) is organized into three parts and is fully '
+        'This manual (Rev. 2.12, July 2026) is organized into three parts and is fully '
         'compliant with the NCDHHS Records Management and Documentation Manual (RMDM, '
         'Effective July 8, 2025). Part 1 establishes foundational policies and compliance '
         'obligations across eleven sections, including new chapters on privacy/confidentiality '
@@ -833,7 +840,14 @@ def build():
         'wellspring is now a NARROW vertical jet of water bubbling up from a small '
         'stone-rimmed opening in the foreground directly in front of the tree — explicitly '
         'NARROWER than the tree itself, evoking the literal "well spring" of the company '
-        'name rather than a wide pool. Part 2 details twenty-two step-by-step workflows '
+        'name rather than a wide pool. Rev. 2.12 refines the wellspring orifice: the jagged '
+        'stone-rimmed opening is replaced with a smooth sculpted HEART-SHAPED STONE (two '
+        'rounded lobes at the top meeting at a gentle point at the bottom, in a soft warm '
+        'earth-toned color matching the surrounding palette) from which the water now '
+        'emanates — symbolizing the love, compassion, and trauma-informed care at the heart '
+        'of the program&nbsp;— and the vertical water jet is made TALLER, reaching higher into '
+        'the air before falling back, while remaining NARROWER than the tree. Part 2 details '
+        'twenty-two step-by-step workflows '
         'that govern daily operations, including protocols for service orders/authorizations '
         'and record management/disclosure accounting. Part 3 provides nine customized forms '
         'and logs, including the Full Service Note Template, Comprehensive Clinical Record '
