@@ -3,8 +3,8 @@
 Create a transparent-background variant of the Well Spring logo icon
 by chroma-keying the warm peachy-cream background to transparent.
 
-The actual background color is approximately RGB(240, 224, 199) — a warm
-peachy cream. We chroma-key pixels close to this reference, with edge
+The actual background color is approximately RGB(247, 240, 228) — a warm
+cream parchment. We chroma-key pixels close to this reference, with edge
 feathering for clean edges.
 """
 from PIL import Image
@@ -13,8 +13,8 @@ ICON_PATH = '/home/z/my-project/download/Well_Spring_Logo_Icon.png'
 TRANSPARENT_OUT = '/home/z/my-project/download/Well_Spring_Logo_Icon_Transparent.png'
 DARKBG_OUT = '/home/z/my-project/download/Well_Spring_Logo_Icon_DarkBg.png'
 
-# Actual background color (sampled from corners)
-BG_REF = (240, 224, 199)
+# Actual background color (sampled from corners of v2d icon)
+BG_REF = (247, 240, 228)
 
 def main():
     print(f'Loading icon: {ICON_PATH}')
