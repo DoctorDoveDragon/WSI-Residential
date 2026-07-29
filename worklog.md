@@ -1237,3 +1237,54 @@ Stage Summary:
   5. `Well_Spring_Logo_ThreeSides_Seal.png` (2344×2344, 2.0 MB) + `.pdf` (183 KB) — three-virtues seal composition with SAFETY/THERAPY/COMPASSION framing the new icon.
 - The manual remains at v2.14 (47 pages, 858 KB) — no new revision was needed for this icon refinement.
 - Persistent scripts: `/home/z/my-project/scripts/{generate_logo_icon_v3.js, make_logo_variants.py, logo_lockup.html, logo_three_sides_seal.html}`
+
+---
+Task ID: SOP-23
+Agent: main (Super Z)
+Task: User refinement on the logo — "this image is too literal lets render the same plan but in an abstract style. Also the name is Well Spring intervention LLC (level 3 residential group home as you have, but add outpatient therapy, case management, psychosocial rehabilitation." Two changes: (1) re-render the same conceptual plan (male Aquarius bent over pouring from visible vessel into stone heart-shaped vase with 3 plant stems bearing PEACE/HONOR/FIDELITY virtue ribbons) in an ABSTRACT MODERN GEOMETRIC style instead of the literal engraved vintage illustration style; (2) update the lockup wordmark subtitle to include the three additional services the company offers: Outpatient Therapy, Case Management, Psychosocial Rehabilitation (alongside the existing "Level 3 Supervised Residential Group Home").
+
+Work Log:
+- Created `/home/z/my-project/scripts/generate_logo_icon_v4.js` — fresh image GENERATION via z-ai-web-dev-sdk images.generations.create(). 1024×1024 square. The prompt was rewritten to specify an ABSTRACT MODERN GEOMETRIC style instead of the previous engraved vintage style. Key style language: "modern wellness brand mark, Bauhaus-inspired clean geometric forms, mid-century pictogram aesthetic. Solid color shapes with clean edges. Generous negative space." Explicit anti-style language: "NOT a literal engraved illustration, NOT a vintage woodcut, NOT a classical painting. NOT literal engraving, NOT vintage crosshatch, NOT classical illustration." The conceptual plan is preserved exactly:
+  - UPPER: Abstract stylized figure of Aquarius as simple geometric shapes (curved arc for bent-over torso, small circle for head, simple rectangular/trapezoidal forms for limbs and robe). Bent over forward and downward. Holds an abstract vessel form (simple trapezoid or curved goblet shape) tipped forward, pouring water downward. Vessel clearly identifiable as vase/jug, prominently depicted, NOT hidden.
+  - CENTER: Short vertical stream of water as simple vertical line or three small teardrop/droplet shapes.
+  - LOWER CENTER: STONE HEART-SHAPED VASE — abstract geometric heart form (two semicircles meeting at a point at bottom, flat or slightly recessed top opening). Solid cool grey shape suggesting stone planter/vase with hollow opening. NOT anatomical.
+  - RISING FROM VASE OPENING: Three slender vertical green stems (thin vertical lines or tapered shapes) each bearing a small abstract ribbon banner (small horizontal curved-rectangle) with single virtue word in clean modern sans-serif uppercase: PEACE left, HONOR center, FIDELITY right. Stems have a few simple leaf shapes (small ovals/teardrops).
+  - PALETTE preserved: warm cream bg, walnut brown figure/vessel, terracotta accent, cool grey granite heart vase, cool aqua-blue water, soft natural green stems/leaves, subtle gold or terracotta ribbon banners with dark uppercase sans-serif lettering.
+- v4 generation SUCCEEDED on the FIRST attempt. VLM verification confirmed ALL requirements met on the first pass:
+  - Art style is ABSTRACT/MODERN/GEOMETRIC ✓ — clean solid shapes, minimalist, modern wellness brand feel
+  - Stylized Aquarius figure bent over forward ✓
+  - Vessel clearly visible and identifiable as vase/jug ✓
+  - Heart on ground is abstract stone heart-shaped VASE/planter (geometric heart form with hollow opening at top, NOT anatomical) ✓
+  - Three plant stems growing upward from vase opening ✓
+  - Each stem bears a virtue ribbon — focused VLM verification confirmed all three words clearly legible: LEFT=PEACE, CENTER=HONOR, RIGHT=FIDELITY ✓
+  - Water pouring from vessel into vase ✓
+  - Off-white/cream background ✓
+  - Sleek professional modern therapy-centered feel ✓
+  - No unintended text or watermarks ✓
+- Updated `/home/z/my-project/scripts/logo_lockup.html` to add the three additional services as a SECOND subtitle line. Changes:
+  - Increased poster height from 512px to 560px to accommodate the additional subtitle line without crowding.
+  - First subtitle "LEVEL 3 SUPERVISED RESIDENTIAL GROUP HOME" preserved (Inter 20px, weight 500, 5px letter-spacing, uppercase, 78% opacity walnut brown).
+  - Added second subtitle "OUTPATIENT THERAPY · CASE MANAGEMENT · PSYCHOSOCIAL REHABILITATION" (Inter 16px, weight 500, 3px letter-spacing, uppercase, 62% opacity walnut brown — slightly smaller and lighter to establish hierarchy below the primary service category). The middle dots (·) are tinted terracotta at 90% opacity to match the brand accent and visually separate the three secondary services.
+  - Values tagline "Empowerment · Growth · Freedom · Health · Wholeness · Healing" preserved (Inter italic 16px, terracotta).
+  - Updated alt text on the icon image to describe the new abstract composition.
+- Updated `/home/z/my-project/scripts/logo_three_sides_seal.html` alt text to describe the new abstract composition (the seal layout itself was unchanged — the icon was simply refreshed).
+- Sampled the v4 icon's actual background color: TL=(237,222,191), TR=(230,215,184), BL=(230,213,183), BR=(234,218,185) — averaged to BG_REF=(235,220,190), nearly identical to v3's (235,218,190). Updated `make_logo_variants.py` accordingly and re-ran. Result: 55.6% of pixels fully transparent (α=0), 26.9% feathered (0<α<255), 17.5% fully opaque (α=255) — the much larger feathered percentage (26.9% vs v3's 7.5%) reflects the abstract style's softer edges and the solid color shapes blending more gradually into the cream background. Verified via PIL that alpha=0 at all four corners. Verified via VLM on magenta composite: "clean transparent cutout of the abstract Aquarius icon on magenta background, NO cream/cream-rectangle border, NO cream halos or border artifacts, icon's edges cleanly defined."
+- Re-rendered the horizontal lockup via html2poster.js → `Well_Spring_Logo_Lockup.pdf` (168 KB, 1792×560px), then converted to PNG via pdftoppm at 150 DPI → `Well_Spring_Logo_Lockup.png` (519 KB, 2688×840px). VLM verification confirmed: icon is abstract/modern/geometric with all elements (figure, vessel, heart vase, 3 virtue stems) ✓; wordmark "Well Spring Intervention" with "Intervention" in terracotta ✓; FIRST subtitle "LEVEL 3 SUPERVISED RESIDENTIAL GROUP HOME" ✓; SECOND subtitle "OUTPATIENT THERAPY · CASE MANAGEMENT · PSYCHOSOCIAL REHABILITATION" ✓; values tagline ✓; no layout/overlap problems ✓; overall "sleek, professional, and modern... grounded, nurturing, and established" ✓.
+- Re-rendered the three-sides seal via html2poster.js → `Well_Spring_Logo_ThreeSides_Seal.pdf` (136 KB, 1500×1500px), then converted to PNG via pdftoppm at 150 DPI → `Well_Spring_Logo_ThreeSides_Seal.png` (1.3 MB, 2344×2344px). VLM verification confirmed: central icon is abstract/modern/geometric with all elements (figure, vessel, heart vase, 3 virtue stems with PEACE/HONOR/FIDELITY) ✓; SAFETY at top ✓; THERAPY on left (vertical) ✓; COMPASSION on right (vertical) ✓; no layout/overlap problems ✓.
+- Dark-bg variant verified: "abstract Aquarius icon cleanly composited on dark walnut brown background, no cream halos or border artifacts, all elements including brown figure, heart-shaped vase, green plant stems, blue water droplets, and three ribbons (PEACE, HONOR, FIDELITY) clearly visible and well-defined, edges crisp, no unwanted fringing or color bleeding."
+- The manual (v2.14) is unchanged — this task refined the brand logo asset family only.
+
+Stage Summary:
+- Refined logo icon delivered at `/home/z/my-project/download/Well_Spring_Logo_Icon.png` (1024×1024, 106 KB) — abstract modern geometric rendering of male Aquarius (simple geometric shapes: curved arc torso, small circle head, trapezoidal robe) bent over forward, holding a clearly visible abstract vessel form tipped forward pouring water downward. Water stream (simple vertical line or three small droplets) falls into the hollow opening of an abstract stone heart-shaped vase (two semicircles meeting at a point at bottom, solid cool grey granite shape, NOT anatomical). Three slender green plant stems rise from the vase opening — each bearing a small abstract ribbon banner with a virtue word in clean modern sans-serif uppercase: PEACE (left), HONOR (center), FIDELITY (right) — all three words clearly legible. Each stem has a few simple leaf shapes. Warm cream background. Warm earthy palette preserved (walnut brown figure, terracotta accents, cool grey granite vase, aqua-blue water, soft green stems, subtle gold/terracotta ribbons with dark lettering). Sleek modern abstract aesthetic, NOT literal engraved vintage illustration.
+- Lockup wordmark updated to reflect the full range of services offered by Well Spring Intervention LLC:
+  - PRIMARY SERVICE: "Level 3 Supervised Residential Group Home" (existing, larger primary subtitle)
+  - ADDITIONAL SERVICES: "Outpatient Therapy · Case Management · Psychosocial Rehabilitation" (new second subtitle line, smaller and lighter to establish hierarchy, with terracotta-tinted middle dots as separators)
+  - This accurately reflects the company's broader service continuum: a Level 3 supervised residential group home PLUS three additional outpatient/community-based services.
+- All five logo asset files refreshed in `/home/z/my-project/download/`:
+  1. `Well_Spring_Logo_Icon.png` (1024×1024, 106 KB) — abstract icon on warm cream background.
+  2. `Well_Spring_Logo_Icon_Transparent.png` (1024×1024, 1.0 MB) — transparent background variant.
+  3. `Well_Spring_Logo_Icon_DarkBg.png` (1024×1024, 652 KB) — dark walnut background variant.
+  4. `Well_Spring_Logo_Lockup.png` (2688×840, 519 KB) + `.pdf` (168 KB) — horizontal lockup with icon + "Well Spring Intervention" wordmark + Level 3 Residential Group Home + Outpatient Therapy/Case Management/Psychosocial Rehabilitation + values tagline.
+  5. `Well_Spring_Logo_ThreeSides_Seal.png` (2344×2344, 1.3 MB) + `.pdf` (136 KB) — three-virtues seal composition with SAFETY/THERAPY/COMPASSION framing the new abstract icon.
+- The manual remains at v2.14 (47 pages, 858 KB) — no new revision was needed for this logo refinement.
+- Persistent scripts: `/home/z/my-project/scripts/{generate_logo_icon_v4.js, make_logo_variants.py, logo_lockup.html, logo_three_sides_seal.html}`

@@ -14,7 +14,7 @@
   }
   .poster {
     width: 1792px;
-    height: 512px;
+    height: 560px; /* grew from 512px to accommodate second subtitle line */
     background: #f5ead6; /* warm cream parchment, matches icon */
     display: flex;
     align-items: center;
@@ -56,12 +56,29 @@
   .wordmark-sub {
     font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
     font-weight: 500;
-    font-size: 22px;
-    letter-spacing: 6px;
+    font-size: 20px;
+    letter-spacing: 5px;
     text-transform: uppercase;
     color: #6b4d3f;
-    margin-top: 18px;
+    margin-top: 16px;
     opacity: 0.78;
+    line-height: 1.4;
+  }
+  .wordmark-sub-2 {
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #6b4d3f;
+    margin-top: 8px;
+    opacity: 0.62;
+    line-height: 1.4;
+  }
+  .wordmark-sub-2 .dot {
+    color: #ab5125;
+    margin: 0 8px;
+    opacity: 0.9;
   }
   .wordmark-tag {
     font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
@@ -84,12 +101,13 @@
 <body>
   <div class="poster">
     <div class="icon-wrap">
-      <img src="/home/z/my-project/download/Well_Spring_Logo_Icon.png" alt="Engraved vintage logo icon: Aquarius pouring water from an ornate vessel into a grey stone heart" />
+      <img src="/home/z/my-project/download/Well_Spring_Logo_Icon.png" alt="Abstract modern logo icon: Aquarius bent over pouring water from a visible vessel into a stone heart-shaped vase, with three plant stems growing from the vase bearing the virtues Peace, Honor, and Fidelity" />
     </div>
     <div class="wordmark">
       <div class="wordmark-main">Well Spring <span class="accent">Intervention</span></div>
       <div class="divider"></div>
       <div class="wordmark-sub">Level 3 Supervised Residential Group Home</div>
+      <div class="wordmark-sub-2">Outpatient Therapy <span class="dot">&middot;</span> Case Management <span class="dot">&middot;</span> Psychosocial Rehabilitation</div>
       <div class="wordmark-tag">Empowerment &middot; Growth &middot; Freedom &middot; Health &middot; Wholeness &middot; Healing</div>
     </div>
   </div>
