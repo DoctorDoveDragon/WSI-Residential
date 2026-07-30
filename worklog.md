@@ -1527,3 +1527,49 @@ Stage Summary:
   7. `Well_Spring_Logo_URL_Bottom.png` (1722×2344, 1.1 MB) + `.pdf` (114 KB) — URL-below-logo portrait.
 - The manual remains at v2.14 (47 pages, 858 KB) — no new revision was needed for this logo refinement.
 - Persistent scripts: `/home/z/my-project/scripts/{edit_logo_icon_v6e.js, edit_logo_icon_v6e_pass2.js, edit_logo_icon_v6e_pass3.js, edit_logo_icon_v6e_pass4.js, make_logo_variants.py, logo_lockup.html, logo_three_sides_seal.html, logo_circular_seal.html, logo_url_bottom.html}`
+
+---
+Task ID: SOP-29
+Agent: main (Super Z)
+Task: User gave the v6e icon a Grade A and requested two minor adjustments: (1) "One of the adults is not a woman but should be" — the family icon should clearly include a woman, but one of the adult figures didn't read as feminine; (2) "Add the referral@wellspringintervention.com to the lock up png" — add the referral email address to the horizontal lockup composition.
+
+Work Log:
+- Backed up the current canonical v6e icon family to immutable preserved files:
+  - `Well_Spring_Logo_Icon_v6e_behind.png` (96 KB)
+  - `Well_Spring_Logo_Icon_v6e_behind_Transparent.png` (724 KB)
+  - `Well_Spring_Logo_Icon_v6e_behind_DarkBg.png` (484 KB)
+- VLM-diagnosed the gender reading of the two adult figures in the v6e icon. Result: BOTH adults currently read as MASCULINE/ANDEROUS (short circular hair cap, broad squared shoulders, rectangular pants silhouette with two straight vertical lines for legs). Neither figure had clear feminine cues (no dress/A-line silhouette, no longer hair, no waist curve). The user's perception that "one should be a woman" was correct — the original v6d spec was "adult woman, adult man, child" but the model had rendered both adults with masculine iconography.
+- DECISION: Make the LEFT adult figure clearly feminine (preserving the original "adult woman on left, adult man on right, child in center" family structure). Feminine iconography cues to apply: (a) dress/A-line silhouette (triangular lower body instead of two pant legs), (b) longer hair (shoulder-length or ponytail instead of short cap), (c) narrower shoulders with subtle waist curve.
+- **Pass 1** (`edit_logo_icon_v6f.js`): Edit prompt specified making ONLY the left adult feminine — dress/A-line silhouette, longer hair (shoulder-length or ponytail), narrower shoulders, waist curve — while keeping the right adult and child unchanged. VLM verification: SUCCESS on the left figure (ponytail + A-line dress + narrower shoulders + waist curve = clearly feminine) BUT a regression — the model ALSO applied the same feminine cues to the RIGHT adult (long hair + dress), so both adults now read as women. The model has a strong prior toward symmetry and applied the feminine treatment to both figures despite explicit "only the left" language.
+- **Pass 2** (`edit_logo_icon_v6f_pass2.js`): Targeted edit to revert the RIGHT adult back to clearly MASCULINE. Prompt specified: replace the right figure's triangular dress with TWO SEPARATE STRAIGHT PANT LEGS (rectangular lower body), replace long hair with SHORT hair (rounded cap or short-cropped), make shoulders broader/more squared with no waist curve (straight rectangular torso). Keep the LEFT adult (woman) and CENTER child unchanged. VLM verification: SUCCESS — left adult reads as woman (bob/shoulder-length hair + A-line dress + narrow shoulders + waist curve), right adult reads as man (short hair cap + two pant legs + broad squared shoulders + straight rectangular torso). Family now clearly reads as WOMAN + CHILD + MAN.
+- Sampled the v6f icon's actual background color: TL=(250,237,220), TR=(250,237,221), BL=(252,239,220), BR=(250,237,221) — averaged to BG_REF=(250,237,220) = #faeddc. Updated `make_logo_variants.py` and re-ran to regenerate transparent + dark-bg variants. Result: 74.1% of pixels fully transparent (α=0), 1.0% feathered, 24.9% fully opaque.
+- **Lockup email addition**: Updated `/home/z/my-project/scripts/logo_lockup.html`:
+  - Added a new `.wordmark-email` CSS class: Cormorant Garamond serif, weight 500, font-size 22px, walnut-brown (#6b4d3f), margin-top 18px (below the values tagline), letter-spacing 0.5px. The `@` symbol is wrapped in a `.at` span with terracotta (#ab5125) color for a subtle brand accent.
+  - Added the email line `<div class="wordmark-email">referral<span class="at">@</span>wellspringintervention.com</div>` directly below the values tagline in the wordmark stack.
+  - Updated background color from #fcefdc (v6e cream) to #faeddc (v6f cream) to match the new icon's background.
+- Re-rendered the horizontal lockup via html2poster.js → `Well_Spring_Logo_Lockup.pdf` (178 KB, 1792×560px) → PNG at 150 DPI → `Well_Spring_Logo_Lockup.png` (401 KB, 2688×840px). VLM verification confirmed: wordmark "Well Spring Intervention" with "Intervention" in terracotta ✓; both subtitles visible ✓; values tagline visible ✓; email "referral@wellspringintervention.com" visible below the tagline, reads verbatim ✓; icon figures clearly read as woman (left, dress + longer hair) + child (center, small) + man (right, pants + short hair) ✓; no rendering issues, overflow, or overlap ✓.
+- Updated the HTML background color in the other three composition files from #fcefdc to #faeddc: `logo_three_sides_seal.html`, `logo_circular_seal.html`, `logo_url_bottom.html`.
+- Re-rendered all three compositions via html2poster.js → PDF → PNG at 150 DPI:
+  1. `Well_Spring_Logo_ThreeSides_Seal.pdf` (125 KB) → PNG (1.1 MB, 2344×2344px)
+  2. `Well_Spring_Logo_Circular_Seal.pdf` (126 KB) → PNG (1.2 MB, 2344×2344px)
+  3. `Well_Spring_Logo_URL_Bottom.pdf` (116 KB) → PNG (1.2 MB, 1722×2344px)
+- VLM verification on all three re-rendered compositions confirmed:
+  - **Circular Seal** ✓: "three terracotta figures are clearly readable as a woman (left, wearing a dress with longer hair), a child (center, noticeably smaller), and a man (right, wearing pants/shorts with short hair)... image is clean, the lines are crisp, colors are consistent, and all elements are well-defined and properly aligned"
+  - **URL-Bottom** ✓: "three figures are clearly readable as a woman (left, wearing a dress with longer hair), a child (center, smaller figure), and a man (right, wearing pants/shorts with short hair)... image is clean, the vector-style lines are crisp, colors are consistent, and all elements are properly composed without artifacts or distortion"
+  - **Three-Sides Seal** ✓: "all three text elements are clearly visible: SAFETY is centered at the top, THERAPY runs vertically along the left side, and COMPASSION runs vertically along the right side... three figures are clearly identifiable as a woman (left, in a dress), a child (center, smaller figure), and a man (right, in pants/shirt)... clean with crisp lines, proper alignment of all text and graphic elements, consistent coloring, and no visible artifacts or distortions"
+- The SOP manual (v2.14) is unchanged — this task refined the brand logo asset family only.
+
+Stage Summary:
+- Refined icon delivered at `/home/z/my-project/download/Well_Spring_Logo_Icon.png` (1024×1024, 98 KB) — the LEFT adult figure is now clearly FEMININE: shoulder-length/bob hair, A-line dress silhouette (triangular lower body), narrower shoulders, subtle waist curve. The RIGHT adult figure remains clearly MASCULINE: short hair cap, two separate pant legs (rectangular lower body), broader squared shoulders, straight rectangular torso. The CENTER child figure is unchanged (small, terracotta, between the two adults). The family now unambiguously reads as WOMAN (left) + CHILD (center) + MAN (right), all holding hands behind the wellspring. All other elements preserved: wellspring in foreground, brown tree trunk, heart-shaped canopy with green leaves, warm cream background, multi-color palette, minimalist contour aesthetic.
+- The previous v6e icon (with both adults reading as masculine/androgynous) is PRESERVED as `Well_Spring_Logo_Icon_v6e_behind.png` (+ transparent + dark-bg variants) in `/home/z/my-project/download/` for historical reference.
+- Horizontal lockup updated with referral email: `Well_Spring_Logo_Lockup.png` (2688×840, 401 KB) + `.pdf` (178 KB). The email "referral@wellspringintervention.com" appears in Cormorant Garamond serif (22px, walnut-brown) below the values tagline, with the `@` symbol highlighted in terracotta as a subtle brand accent.
+- All seven active logo asset files refreshed in `/home/z/my-project/download/`:
+  1. `Well_Spring_Logo_Icon.png` (1024×1024, 98 KB) — v6f icon with woman (left) + child (center) + man (right).
+  2. `Well_Spring_Logo_Icon_Transparent.png` (1024×1024) — transparent background variant (74.1% transparent).
+  3. `Well_Spring_Logo_Icon_DarkBg.png` (1024×1024) — dark walnut background variant.
+  4. `Well_Spring_Logo_Lockup.png` (2688×840, 401 KB) + `.pdf` (178 KB) — horizontal lockup NOW WITH REFERRAL EMAIL.
+  5. `Well_Spring_Logo_ThreeSides_Seal.png` (2344×2344, 1.1 MB) + `.pdf` (125 KB) — three-virtues seal.
+  6. `Well_Spring_Logo_Circular_Seal.png` (2344×2344, 1.2 MB) + `.pdf` (126 KB) — circular URL seal.
+  7. `Well_Spring_Logo_URL_Bottom.png` (1722×2344, 1.2 MB) + `.pdf` (116 KB) — URL-below-logo portrait.
+- The manual remains at v2.14 (47 pages, 858 KB) — no new revision was needed for this logo refinement.
+- Persistent scripts: `/home/z/my-project/scripts/{edit_logo_icon_v6f.js, edit_logo_icon_v6f_pass2.js, make_logo_variants.py, logo_lockup.html, logo_three_sides_seal.html, logo_circular_seal.html, logo_url_bottom.html}`

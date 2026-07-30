@@ -13,8 +13,8 @@ ICON_PATH = '/home/z/my-project/download/Well_Spring_Logo_Icon.png'
 TRANSPARENT_OUT = '/home/z/my-project/download/Well_Spring_Logo_Icon_Transparent.png'
 DARKBG_OUT = '/home/z/my-project/download/Well_Spring_Logo_Icon_DarkBg.png'
 
-# Actual background color (sampled from corners of v6e icon)
-BG_REF = (252, 239, 220)
+# Actual background color (sampled from corners of v6f icon)
+BG_REF = (250, 237, 220)
 
 def main():
     print(f'Loading icon: {ICON_PATH}')
