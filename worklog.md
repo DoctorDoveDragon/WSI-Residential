@@ -1709,3 +1709,48 @@ Stage Summary:
 - The previous v3 circular seal (with URL inside the house) is PRESERVED as `Well_Spring_Logo_Circular_Seal_v3_url_inside_house.png` + `.pdf` + `/home/z/my-project/scripts/logo_circular_seal_v3_url_inside_house.html` for historical reference.
 - The SOP manual remains at v2.14 (47 pages, 858 KB) — no new revision was needed for this brand asset refinement.
 - Persistent scripts: `/home/z/my-project/scripts/{logo_circular_seal.html, logo_circular_seal_v1.html, logo_circular_seal_v2_thin_house.html, logo_circular_seal_v3_url_inside_house.html}`
+
+---
+Task ID: SOP-33
+Agent: main (Super Z)
+Task: User requested "house should be snug around the logo" for the circular seal. The previous v4 seal (from SOP-32) had the correct layering (URL outside, house around logo only) but the house was much larger than the visible logo content — 190-220px gaps on sides/bottom — because the house was sized to the 760×760 icon FRAME, not the actual visible content (which fills only ~74% of the frame width due to asymmetric padding).
+
+Work Log:
+- Backed up the v4 seal (URL outside, house oversized) to immutable preserved files: `Well_Spring_Logo_Circular_Seal_v4_url_outside_house_oversized.png` (1.0 MB) + `.pdf` (129 KB) + `/home/z/my-project/scripts/logo_circular_seal_v4_url_outside_house_oversized.html`.
+- **Root cause analysis** (Python/PIL): Analyzed the icon PNG (`Well_Spring_Logo_Icon.png`, 1024×1024) to find the actual visible content bounding box. The content (tree + family + wellspring) spans cols 167-927 (761px) and rows 108-979 (872px) — filling only 74.3% of frame width and 85.2% of frame height. Critically, the content is **asymmetrically padded**: content center is at (547, 543) while the frame center is at (512, 512) — an offset of (+35, +31)px. At 920×920 display scale (0.8984), this offset is (31, 28)px. The v4 house was sized to the icon FRAME (920×920 → walls at ±510px from center), but the visible CONTENT was only ±342px wide — leaving 168px of apparent empty space on each side.
+- **Geometry redesign for true snugness**:
+  - Canvas: 1900×1900 (unchanged from v4), center (950, 950).
+  - Icon: enlarged back to 920×920 (from v4's 760×760) for maximum detail — now that the house is snug, the larger icon fits comfortably inside the URL ring.
+  - **Icon content-shift**: Shifted the icon frame by (-31, -28)px via CSS `transform: translate(calc(-50% - 31px), calc(-50% - 28px))` so the VISIBLE CONTENT (not the frame) is centered at (950, 950). This allows the house to be symmetric and truly snug.
+  - After shift, visible content (684×783) spans: x=(608, 1292), y=(558.5, 1341.5).
+  - House pentagon (20px margin to visible content — SNUG):
+    - Floor: (588, 1362) → (1312, 1362) — 20px below content bottom
+    - Left wall: (588, 1362) → (588, 538) — 20px left of content
+    - Left roof: (588, 538) → (950, 380) — peak 158px above wall tops
+    - Right roof: (950, 380) → (1312, 538)
+    - Right wall: (1312, 538) → (1312, 1362)
+  - Roof angle: atan(158/362) ≈ 23.6° — classic house roof pitch.
+  - All house vertices inside inner hairline (r=860): corner dist=548, roof peak dist=570. ✓
+- **Critical rendering fix — house drawn ON TOP of icon**: The v4 layout had the house in a single SVG BENEATH the icon `<img>`. Since the icon PNG is an opaque rectangle (cream background), it COVERED the house walls and floor — only the roof (above the icon frame) was visible. The VLM confirmed this bug: "the house consists only of a floating roof line at the top with no floor or side walls drawn."
+  - Fix: Split the SVG into two layers:
+    1. **Bottom SVG** (beneath icon): outer hairline, URL text, inner hairline, accent dots, bottom ornament — all outside the icon's opaque rectangle, so not covered.
+    2. **Top SVG** (above icon): house pentagon (5 lines) — drawn ON TOP of the icon so walls and floor are visible even where they cross the icon's opaque cream background. The house lines sit in the icon's padding area (20px outside the visible content), so they don't overlap the actual tree/family/wellspring.
+- Geometry verified via Python: all clearances snug (20px), all vertices inside r=860, roof angle 23.6°, stroke (12.5px) inner edge to content = 13.75px (no overlap).
+- Rendered via html2poster.js → `Well_Spring_Logo_Circular_Seal.pdf` (126 KB, 1900×1900px) → PNG at 200 DPI → `Well_Spring_Logo_Circular_Seal.png` (1.96 MB, 3959×3959px).
+- **VLM verification** (3 iterative passes):
+  - Pass 1 (30px margin, house beneath icon): VLM reported "house consists only of a floating roof line at the top with no floor or side walls" — confirmed the opaque-icon-covers-house bug.
+  - Pass 2 (30px margin, house on top of icon): VLM confirmed all 5 lines visible, but still said "loose" — 15-20% of icon width, 60-80px margin. The 200px roof rise created too much visual emptiness above the graphic.
+  - Pass 3 (20px margin, roof lowered to 158px rise, house on top): VLM confirmed **SNUG** (~10% gap), all 5 lines visible, logo centered, reads as home, URL outside house, no issues. ✓
+- All other elements preserved from v4 (URL text 66px, two hairline circles, terracotta accent dots, bottom ornament, 12.5px bold house stroke at full opacity) — only the house geometry was tightened and the rendering layering was fixed.
+- The SOP manual (v2.14) is unchanged — this task refined the brand logo asset family only.
+
+Stage Summary:
+- Refined circular seal delivered at `/home/z/my-project/download/Well_Spring_Logo_Circular_Seal.png` (1.96 MB, 3959×3959px) + `.pdf` (126 KB, 1900×1900px). The house is now **truly snug** around the logo:
+  - **Icon enlarged** back to 920×920 (from v4's 760×760) for maximum detail.
+  - **Icon content-shifted** by (-31, -28)px to center the VISIBLE CONTENT (not just the frame) at (950, 950) — compensating for the icon PNG's asymmetric padding (content center at (547,543) in a 1024 frame centered at (512,512)).
+  - **House tightened** to 20px margin around the visible content (down from v4's ~190-220px margin to the frame). House walls at x=588/1312, floor at y=1362, wall tops at y=538, roof peak at (950, 380). Roof angle 23.6°.
+  - **Rendering fix**: House pentagon moved to a TOP SVG layer (above the icon) so the walls and floor are visible — the previous single-SVG-beneath-icon layout let the opaque icon rectangle cover the house lines.
+- VLM-verified: snug (~10% gap), all 5 house lines visible, logo centered, reads as home, URL outside house, no rendering issues.
+- The previous v4 seal (URL outside, house oversized ~190px gaps) is PRESERVED as `Well_Spring_Logo_Circular_Seal_v4_url_outside_house_oversized.png` + `.pdf` + `.html` for historical reference.
+- The SOP manual remains at v2.14 (47 pages, 858 KB) — no new revision was needed for this brand asset refinement.
+- Persistent scripts: `/home/z/my-project/scripts/{logo_circular_seal.html, logo_circular_seal_v1.html, logo_circular_seal_v2_thin_house.html, logo_circular_seal_v3_url_inside_house.html, logo_circular_seal_v4_url_outside_house_oversized.html, verify_snug_geometry.py, analyze_icon_padding.py}`

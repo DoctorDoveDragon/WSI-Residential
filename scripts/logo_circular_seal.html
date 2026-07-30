@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Well Spring Intervention LLC — Circular Seal: URL outside, House around Logo</title>
+<title>Well Spring Intervention LLC — Circular Seal: URL outside, House snug around Logo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -20,7 +20,10 @@
     overflow: hidden;
   }
 
-  /* SVG layer holds: outer hairline, URL textPath, inner hairline, house pentagon, ornaments */
+  /* SVG layers — two of them:
+     - seal-svg-bottom: URL ring + hairlines + ornaments (BENEATH icon)
+     - seal-svg-top:    house pentagon (ON TOP of icon, so walls/floor
+                        are not hidden by the icon's opaque background) */
   .seal-svg {
     position: absolute;
     top: 0; left: 0;
@@ -29,20 +32,30 @@
     pointer-events: none;
   }
 
-  /* Centered icon — INSIDE the house, innermost layer */
+  /* Centered icon — between the two SVG layers.
+     Enlarged to 920×920 (original detail-rich size).
+
+     CONTENT-SHIFT: The icon PNG (1024×1024) has asymmetric padding —
+     the visible content (tree + family + wellspring) is offset
+     (+35, +31)px right/down from the frame center (content center at
+     (547,543) in a 1024 frame whose center is (512,512)).
+     At 920×920 display (scale 0.8984), this offset is (31, 28)px.
+     We shift the icon frame by (-31, -28)px so the VISIBLE CONTENT
+     is centered at (950, 950) — this lets the house be symmetric
+     and truly snug around the logo. */
   .icon-wrap {
     position: absolute;
     top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 760px;
-    height: 760px;
+    transform: translate(calc(-50% - 31px), calc(-50% - 28px));
+    width: 920px;
+    height: 920px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
   .icon-wrap img {
-    width: 760px;
-    height: 760px;
+    width: 920px;
+    height: 920px;
     object-fit: contain;
     display: block;
   }
@@ -60,6 +73,12 @@
 <body>
   <div class="poster">
 
+    <!-- ====================================================== -->
+    <!-- BOTTOM SVG: URL ring + hairlines + ornaments            -->
+    <!-- (drawn BENEATH the icon — these elements are all        -->
+    <!--  outside the icon's opaque rectangle, so they're not    -->
+    <!--  covered by it)                                         -->
+    <!-- ====================================================== -->
     <svg class="seal-svg" viewBox="0 0 1900 1900" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <!-- URL textPath circle: center (950,950), radius 890.
@@ -71,34 +90,22 @@
               fill="none" />
       </defs>
 
-      <!-- ====================================================== -->
-      <!-- LAYER 1 (OUTERMOST): Outer hairline circle r=920        -->
-      <!-- Frames the URL text from outside                        -->
-      <!-- ====================================================== -->
+      <!-- LAYER 1 (OUTERMOST): Outer hairline circle r=920 -->
       <circle cx="950" cy="950" r="920"
               fill="none" stroke="#6b4d3f" stroke-width="1.5" opacity="0.34" />
 
-      <!-- ====================================================== -->
-      <!-- LAYER 2: URL text on circle r=890                       -->
-      <!-- The website URL is NOT part of the logo — it sits       -->
-      <!-- OUTSIDE the house, as the outermost text ring.           -->
-      <!-- ====================================================== -->
+      <!-- LAYER 2: URL text on circle r=890 (OUTSIDE the house) -->
       <text class="url-text" x="0" y="0">
         <textPath href="#url-circle" startOffset="25%" text-anchor="middle">
           www.wellspringintervention.com
         </textPath>
       </text>
 
-      <!-- ====================================================== -->
-      <!-- LAYER 3: Inner hairline circle r=860                    -->
-      <!-- Frames the URL text from inside (still OUTSIDE house)   -->
-      <!-- ====================================================== -->
+      <!-- LAYER 3: Inner hairline circle r=860 (frames URL from inside, still OUTSIDE house) -->
       <circle cx="950" cy="950" r="860"
               fill="none" stroke="#6b4d3f" stroke-width="1.5" opacity="0.34" />
 
-      <!-- ====================================================== -->
-      <!-- ORNAMENTS on URL circle (r=890), between the hairlines  -->
-      <!-- ====================================================== -->
+      <!-- ORNAMENTS on URL circle (r=890), between the hairlines -->
       <!-- Two small terracotta accent dots at 9:00 and 3:00 -->
       <circle cx="60" cy="950" r="8" fill="#ab5125" opacity="0.85" />
       <circle cx="1840" cy="950" r="8" fill="#ab5125" opacity="0.85" />
@@ -111,38 +118,56 @@
             stroke="#6b4d3f" stroke-width="1.5" opacity="0.42" />
       <circle cx="695" cy="1840" r="5" fill="#ab5125" opacity="0.65" />
       <circle cx="1205" cy="1840" r="5" fill="#ab5125" opacity="0.65" />
-
-      <!-- ====================================================== -->
-      <!-- LAYER 4: HOUSE OUTLINE (5 lines) — implies "home"       -->
-      <!-- The house is UNDER the website URL (inside the URL      -->
-      <!-- ring) but AROUND the logo icon only.                     -->
-      <!-- 12.5px stroke (5x thicker, web-icon weight), full opacity -->
-      <!-- ====================================================== -->
-      <g stroke="#6b4d3f" stroke-width="12.5" opacity="1.0" fill="none"
-         stroke-linecap="round" stroke-linejoin="round">
-        <!-- Line 1: FLOOR (bottom horizontal) -->
-        <line x1="380" y1="1550" x2="1520" y2="1550" />
-        <!-- Line 2: LEFT WALL (vertical) -->
-        <line x1="380" y1="1550" x2="380" y2="650" />
-        <!-- Line 3: LEFT ROOF (diagonal up to peak) -->
-        <line x1="380" y1="650" x2="950" y2="350" />
-        <!-- Line 4: RIGHT ROOF (diagonal down from peak) -->
-        <line x1="950" y1="350" x2="1520" y2="650" />
-        <!-- Line 5: RIGHT WALL (vertical) -->
-        <line x1="1520" y1="650" x2="1520" y2="1550" />
-      </g>
-
     </svg>
 
     <!-- ====================================================== -->
-    <!-- LAYER 5 (INNERMOST): Centered multi-color logo icon     -->
-    <!-- The logo icon sits INSIDE the house. The house is        -->
-    <!-- around the logo only — the URL is outside the house.     -->
+    <!-- MIDDLE LAYER: Centered multi-color logo icon            -->
+    <!-- (opaque PNG — sits on top of bottom SVG, beneath house) -->
     <!-- ====================================================== -->
     <div class="icon-wrap">
       <img src="/home/z/my-project/download/Well_Spring_Logo_Icon.png"
            alt="Multi-color minimalist logo icon: a tree of life rises from a stone basin wellspring at the base with aqua-blue water bubbling up, its canopy forms a heart shape with green leaves, and three terracotta family figures (adult woman in dress, adult man in pants, child) stand behind the wellspring holding hands — warm cream background" />
     </div>
+
+    <!-- ====================================================== -->
+    <!-- TOP SVG: HOUSE OUTLINE (5 lines) — implies "home"       -->
+    <!-- Drawn ON TOP of the icon so the walls and floor are     -->
+    <!-- visible even where they cross the icon's opaque cream   -->
+    <!-- background (the house lines sit in the icon's padding   -->
+    <!-- area, 20px outside the visible logo content, so they    -->
+    <!-- don't overlap the actual tree/family/wellspring).       -->
+    <!--                                                          -->
+    <!-- The house is UNDER the website URL (inside the URL      -->
+    <!-- ring) but AROUND the logo icon only — SNUG fit.          -->
+    <!--                                                          -->
+    <!-- Geometry (snug around VISIBLE content, centered at       -->
+    <!-- 950,950 after icon content-shift):                       -->
+    <!--   Visible content (684×783) spans:                       -->
+    <!--     x: 608–1292, y: 558.5–1341.5                        -->
+    <!--   House walls at x=588, x=1312  → 20px clearance sides  -->
+    <!--   House floor at y=1362         → 20px clearance bottom -->
+    <!--   House wall tops at y=538      → 20px clearance top    -->
+    <!--   Roof peak at (950, 380)       → 158px rise, ~23.6°   -->
+    <!--   House corner dist from center = 548 (inside r=860)   -->
+    <!--   Roof peak dist from center    = 570 (inside r=860)   -->
+    <!--                                                          -->
+    <!-- 12.5px stroke (5x thicker, web-icon weight), full opacity -->
+    <!-- ====================================================== -->
+    <svg class="seal-svg" viewBox="0 0 1900 1900" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#6b4d3f" stroke-width="12.5" opacity="1.0" fill="none"
+         stroke-linecap="round" stroke-linejoin="round">
+        <!-- Line 1: FLOOR (bottom horizontal) -->
+        <line x1="588" y1="1362" x2="1312" y2="1362" />
+        <!-- Line 2: LEFT WALL (vertical) -->
+        <line x1="588" y1="1362" x2="588" y2="538" />
+        <!-- Line 3: LEFT ROOF (diagonal up to peak) -->
+        <line x1="588" y1="538" x2="950" y2="380" />
+        <!-- Line 4: RIGHT ROOF (diagonal down from peak) -->
+        <line x1="950" y1="380" x2="1312" y2="538" />
+        <!-- Line 5: RIGHT WALL (vertical) -->
+        <line x1="1312" y1="538" x2="1312" y2="1362" />
+      </g>
+    </svg>
 
   </div>
 </body>
