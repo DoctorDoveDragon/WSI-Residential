@@ -1573,3 +1573,50 @@ Stage Summary:
   7. `Well_Spring_Logo_URL_Bottom.png` (1722×2344, 1.2 MB) + `.pdf` (116 KB) — URL-below-logo portrait.
 - The manual remains at v2.14 (47 pages, 858 KB) — no new revision was needed for this logo refinement.
 - Persistent scripts: `/home/z/my-project/scripts/{edit_logo_icon_v6f.js, edit_logo_icon_v6f_pass2.js, make_logo_variants.py, logo_lockup.html, logo_three_sides_seal.html, logo_circular_seal.html, logo_url_bottom.html}`
+
+---
+Task ID: SOP-30
+Agent: main (Super Z)
+Task: User requested two adjustments to the Well_Spring_Logo_Circular_Seal.png: (1) "Website address should be slightly larger" — enlarge the URL text; (2) "imply home by drawing a house outline (five lines) around logo. additive approach only" — add a 5-line pentagonal house outline (floor + 2 walls + 2 roof diagonals) around the circular seal as an outermost frame, without removing any existing elements.
+
+Work Log:
+- Backed up the current circular seal (v1) to immutable preserved files: `Well_Spring_Logo_Circular_Seal_v1.png` (1.2 MB), `Well_Spring_Logo_Circular_Seal_v1.pdf` (129 KB), `/home/z/my-project/scripts/logo_circular_seal_v1.html`.
+- **Geometry verification** (Python): The existing v1 circular seal used a 1500×1500 canvas with outer circle r=700 (nearly touching canvas edges). A house pentagon drawn around this circle at 1500×1500 would intersect the circle (the wide r=700 circle pokes through the inward-sloping roof lines at upper-left and upper-right). Two options considered: (a) shrink the circle to fit inside a 1500×1500 house — but this would violate "additive only" by modifying existing elements; (b) enlarge the canvas to accommodate the house frame around the existing r=700 circle. Chose option (b) as the true additive approach — no elements removed or shrunk, only the canvas grows and the house is added.
+- **Final geometry** (verified via Python containment check at 9 y-values):
+  - Canvas: 1700×1700px
+  - Center: (850, 850)
+  - Outer hairline circle: r=700 (spans x=150-1550, y=150-1550)
+  - Inner hairline circle: r=580
+  - URL textPath circle: r=640
+  - Icon: 920×920 centered (slightly enlarged from 880×880 to fill the larger canvas proportionally)
+  - **House pentagon (5 lines)**, stroke walnut-brown #6b4d3f, 2.5px, 58% opacity:
+    - Line 1 (floor): (50, 1600) → (1650, 1600) — 50px below circle bottom (1550)
+    - Line 2 (left wall): (50, 1600) → (50, 450) — 100px left of circle left edge (150)
+    - Line 3 (left roof): (50, 450) → (850, 50) — peak 100px above circle top (150)
+    - Line 4 (right roof): (850, 50) → (1650, 450)
+    - Line 5 (right wall): (1650, 450) → (1650, 1600) — 100px right of circle right edge (1550)
+  - Containment margins verified: at y=200 (tightest roof zone), circle x=[590,1110] vs house x=[550,1150] = 40px margin each side. At all other y-values, margins are 67px or more. Circle fully contained.
+- **URL enlargement**: font-size increased from 58px to 66px (14% larger, "slightly larger" per user request). Letter-spacing kept at 14px. URL arc length: ~1410px on r=640 circle (circumference 4021px), occupying 35.1% of the circle (126°), centered at 12 o'clock, spanning from ~9:54 to ~2:06 on the clock face.
+- **Accent dot repositioning**: The enlarged URL now spans ~9:54 to ~2:06 (previously ~10:05 to ~1:55 at 58px). The original accent dots at 10:00 and 2:00 would now overlap the URL text. Moved the two terracotta accent dots to 9:00 and 3:00 (the equator: (210, 850) and (1490, 850)) to frame the URL cleanly without overlap. Dot radius increased from 7 to 8 for better balance on the larger canvas.
+- **Bottom ornament repositioned** to 6:00 on the new r=640 circle: center dot at (850, 1490), flanking rules from x=610-750 and x=950-1090, endpoint dots at (595, 1490) and (1105, 1490). Ornament dot radius increased from 9 to 10; endpoint dots from 4 to 5 — proportional scaling for the larger canvas.
+- Rewrote `/home/z/my-project/scripts/logo_circular_seal.html` with the 1700×1700 layout. All existing elements preserved (two hairline circles, URL textPath, terracotta accent dots, bottom ornament, centered icon) — only repositioned to the new center and the house pentagon added as the outermost frame. The house stroke (2.5px, 58% opacity) is intentionally more prominent than the hairline circles (1.5px, 34% opacity) so the house reads clearly as a deliberate frame.
+- Rendered via html2poster.js → `Well_Spring_Logo_Circular_Seal.pdf` (127 KB, 1700×1700px) → PNG at 150 DPI → `Well_Spring_Logo_Circular_Seal.png` (1.3 MB, 3542×3542px).
+- VLM verification confirmed all requirements met:
+  - **House outline** ✓: "a house outline drawn as the outermost frame. It consists of a pentagon shape with a horizontal base (floor), two vertical side lines (walls), and two diagonal lines that meet at a point at the top (peaked roof). It encloses the entire circular design"
+  - **URL larger** ✓: "the text 'www.wellspringintervention.com' is clearly visible, wrapping around the upper arc of the inner circle. The text size is large enough to be read clearly without strain"
+  - **Icon centered** ✓: "the central icon is centered and fully visible inside the circles. It features a tree with a heart-shaped canopy containing green leaves and colored dots, a family of three figures (two adults and a child) holding hands, and a wellspring/fountain at the base"
+  - **All existing elements preserved** ✓: outer hairline circle, inner hairline circle, URL text, terracotta accent dots, bottom ornament, and house outline all present
+  - **House reads as "home"** ✓: "the outline reads very clearly as a 'home' shape. The peaked roof and straight walls are distinct, creating an unambiguous house silhouette around the circular emblem"
+  - **No rendering issues** ✓: "no rendering issues, overlaps, or elements that look wrong. All components are well-spaced, cleanly drawn, and properly aligned"
+  - **Aesthetic** ✓: "warm, professional, and nurturing... The 'house' frame reinforces themes of safety and home-based care"
+- The SOP manual (v2.14) is unchanged — this task refined the brand logo asset family only.
+
+Stage Summary:
+- Refined circular seal delivered at `/home/z/my-project/download/Well_Spring_Logo_Circular_Seal.png` (1.3 MB, 3542×3542px) + `.pdf` (127 KB, 1700×1700px). Two changes applied per user request:
+  1. **URL enlarged** from 58px to 66px font-size (14% larger, "slightly larger" as requested). URL "www.wellspringintervention.com" in Cormorant Garamond lowercase walnut-brown serif, wrapping the top of the circle, fully legible.
+  2. **House outline (5 lines) added** as the outermost frame: a pentagonal house silhouette drawn in 5 line segments (floor + left wall + left roof + right roof + right wall) in walnut-brown (#6b4d3f, 2.5px stroke, 58% opacity). The house frame encloses the entire circular seal composition and reads clearly as a "home" shape, reinforcing the residential group home mission. Additive approach: all existing elements (two hairline circles, URL text, terracotta accent dots, bottom ornament, centered multi-color icon) preserved without removal — only repositioned to the new 1700×1700 canvas center and the house added on top.
+- Canvas enlarged from 1500×1500 to 1700×1700 to accommodate the house frame outside the existing r=700 circle without shrinking any existing elements (true additive approach). Icon slightly enlarged from 880×880 to 920×920 to fill the larger canvas proportionally.
+- Accent dots repositioned from 10:00/2:00 to 9:00/3:00 (equator) to clear the enlarged URL text without overlap.
+- The previous v1 circular seal (without house frame, 1500×1500) is PRESERVED as `Well_Spring_Logo_Circular_Seal_v1.png` + `.pdf` + `/home/z/my-project/scripts/logo_circular_seal_v1.html` for historical reference.
+- The SOP manual remains at v2.14 (47 pages, 858 KB) — no new revision was needed for this brand asset refinement.
+- Persistent scripts: `/home/z/my-project/scripts/{logo_circular_seal.html, logo_circular_seal_v1.html}`

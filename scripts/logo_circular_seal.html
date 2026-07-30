@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Well Spring Intervention LLC — Circular Seal with Website URL</title>
+<title>Well Spring Intervention LLC — Circular Seal with House Frame & Website URL</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -13,19 +13,19 @@
     margin: 0; padding: 0;
   }
   .poster {
-    width: 1500px;
-    height: 1500px;
+    width: 1700px;
+    height: 1700px;
     background: #faeddc; /* warm cream parchment, matches v6f icon */
     position: relative;
     overflow: hidden;
   }
 
-  /* SVG layer holds the two hairline circles + the URL textPath */
+  /* SVG layer holds: house pentagon, two hairline circles, URL textPath, ornaments */
   .seal-svg {
     position: absolute;
     top: 0; left: 0;
-    width: 1500px;
-    height: 1500px;
+    width: 1700px;
+    height: 1700px;
     pointer-events: none;
   }
 
@@ -34,24 +34,24 @@
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    width: 880px;
-    height: 880px;
+    width: 920px;
+    height: 920px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
   .icon-wrap img {
-    width: 880px;
-    height: 880px;
+    width: 920px;
+    height: 920px;
     object-fit: contain;
     display: block;
   }
 
-  /* URL text style — applied to the <text> element inside SVG */
+  /* URL text style — slightly larger (66px, up from 58px) per user request */
   .url-text {
     font-family: 'Cormorant Garamond', 'Times New Roman', serif;
     font-weight: 500;
-    font-size: 58px;
+    font-size: 66px;
     letter-spacing: 14px;
     fill: #6b4d3f; /* deep walnut brown */
   }
@@ -60,23 +60,41 @@
 <body>
   <div class="poster">
 
-    <!-- SVG layer: outer border, inner border, URL textPath along a circle -->
-    <svg class="seal-svg" viewBox="0 0 1500 1500" xmlns="http://www.w3.org/2000/svg">
+    <svg class="seal-svg" viewBox="0 0 1700 1700" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <!-- Full circle path: center (750,750), radius 640.
-             Starts at 9 o'clock (110,750), goes CLOCKWISE through 12, 3, 6, back to 9.
+        <!-- Full circle path: center (850,850), radius 640.
+             Starts at 9 o'clock (210,850), goes CLOCKWISE through 12, 3, 6, back to 9.
              startOffset 25% = top (12 o'clock) for centered text. -->
         <path id="url-circle"
-              d="M 110,750 a 640,640 0 1,1 1280,0 a 640,640 0 1,1 -1280,0"
+              d="M 210,850 a 640,640 0 1,1 1280,0 a 640,640 0 1,1 -1280,0"
               fill="none" />
       </defs>
 
+      <!-- ============================================ -->
+      <!-- HOUSE OUTLINE (5 lines) — implies "home"     -->
+      <!-- Additive only: drawn as outermost frame      -->
+      <!-- ============================================ -->
+      <!-- Stroke: walnut-brown, 2.5px, 58% opacity (more prominent than hairline circles) -->
+      <g stroke="#6b4d3f" stroke-width="2.5" opacity="0.58" fill="none"
+         stroke-linecap="round" stroke-linejoin="round">
+        <!-- Line 1: FLOOR (bottom horizontal) -->
+        <line x1="50" y1="1600" x2="1650" y2="1600" />
+        <!-- Line 2: LEFT WALL (vertical) -->
+        <line x1="50" y1="1600" x2="50" y2="450" />
+        <!-- Line 3: LEFT ROOF (diagonal up to peak) -->
+        <line x1="50" y1="450" x2="850" y2="50" />
+        <!-- Line 4: RIGHT ROOF (diagonal down from peak) -->
+        <line x1="850" y1="50" x2="1650" y2="450" />
+        <!-- Line 5: RIGHT WALL (vertical) -->
+        <line x1="1650" y1="450" x2="1650" y2="1600" />
+      </g>
+
       <!-- Outer hairline circle border (r=700) -->
-      <circle cx="750" cy="750" r="700"
+      <circle cx="850" cy="850" r="700"
               fill="none" stroke="#6b4d3f" stroke-width="1.5" opacity="0.34" />
 
       <!-- Inner hairline circle border (r=580) -->
-      <circle cx="750" cy="750" r="580"
+      <circle cx="850" cy="850" r="580"
               fill="none" stroke="#6b4d3f" stroke-width="1.5" opacity="0.34" />
 
       <!-- URL text along the circle path, centered at top (12 o'clock) -->
@@ -86,55 +104,26 @@
         </textPath>
       </text>
 
-      <!-- Two small terracotta accent dots at 8 o'clock and 4 o'clock
-           (roughly where URL ends/starts) -->
-      <!-- 8 o'clock position from center (750,750) at radius 640:
-           angle = 240deg from 3 o'clock = -150deg from x-axis
-           x = 750 + 640*cos(240deg) = 750 + 640*(-0.5) = 430
-           y = 750 + 640*sin(240deg) = 750 + 640*(-0.866) = 750 - 554 = 196... wait
-           Actually for SVG, y increases downward. Let me recompute.
-           In standard math: 12 o'clock = 90deg, 3 o'clock = 0deg, 6 o'clock = 270deg (or -90deg), 9 o'clock = 180deg
-           8 o'clock ≈ 195deg, 4 o'clock ≈ 345deg (or -15deg)
-           Position at angle θ from center (cx,cy) at radius r:
-           x = cx + r*cos(θ)
-           y = cy - r*sin(θ)  (negative because SVG y is downward, but we want positive y going down on screen, so we use cy + r*sin with θ measured clockwise from 3 o'clock... this is getting confusing)
-           Let me just use direct coordinates:
-           - 12 o'clock (top): (750, 110)
-           - 3 o'clock (right): (1390, 750)
-           - 6 o'clock (bottom): (750, 1390)
-           - 9 o'clock (left): (110, 750)
-           - 1:30 (upper right): (750+640*0.707, 750-640*0.707) = (1203, 297)
-           - 4:30 (lower right): (1203, 1203)
-           - 7:30 (lower left): (297, 1203)
-           - 10:30 (upper left): (297, 297)
-           URL centered at top spans roughly 10:30 to 1:30 (about 30% of circle)
-           So URL endpoints are around 10:30 (upper-left) and 1:30 (upper-right).
-           Place accent dots just past URL endpoints at ~10:00 and ~2:00.
-           10:00 ≈ angle -60deg from 12 o'clock → (750-640*sin(60), 750-640*cos(60)) = (750-554, 750-320) = (196, 430)
-           2:00 ≈ angle +60deg from 12 o'clock → (750+554, 430) = (1304, 430)
-           Place a small ornament trio at bottom (6 o'clock) as closure.
-      -->
+      <!-- Two small terracotta accent dots at 9:00 and 3:00 (equator)
+           (moved from 10:00/2:00 to clear the enlarged URL which now spans ~9:54 to ~2:06) -->
+      <circle cx="210" cy="850" r="8" fill="#ab5125" opacity="0.85" />
+      <circle cx="1490" cy="850" r="8" fill="#ab5125" opacity="0.85" />
 
-      <!-- Small terracotta diamonds flanking URL endpoints at ~10:00 and ~2:00 -->
-      <circle cx="196" cy="430" r="7" fill="#ab5125" opacity="0.85" />
-      <circle cx="1304" cy="430" r="7" fill="#ab5125" opacity="0.85" />
-
-      <!-- Bottom closure ornament at 6 o'clock: small dot flanked by two hairline rules -->
-      <circle cx="750" cy="1390" r="9" fill="#ab5125" opacity="0.85" />
-      <line x1="660" y1="1390" x2="540" y2="1390"
+      <!-- Bottom closure ornament at 6 o'clock (r=640): dot flanked by two hairline rules -->
+      <circle cx="850" cy="1490" r="10" fill="#ab5125" opacity="0.85" />
+      <line x1="750" y1="1490" x2="610" y2="1490"
             stroke="#6b4d3f" stroke-width="1.5" opacity="0.42" />
-      <line x1="840" y1="1390" x2="960" y2="1390"
+      <line x1="950" y1="1490" x2="1090" y2="1490"
             stroke="#6b4d3f" stroke-width="1.5" opacity="0.42" />
-      <!-- Tiny dots at the inner ends of the rules -->
-      <circle cx="525" cy="1390" r="4" fill="#ab5125" opacity="0.65" />
-      <circle cx="975" cy="1390" r="4" fill="#ab5125" opacity="0.65" />
+      <circle cx="595" cy="1490" r="5" fill="#ab5125" opacity="0.65" />
+      <circle cx="1105" cy="1490" r="5" fill="#ab5125" opacity="0.65" />
 
     </svg>
 
     <!-- Centered multi-color icon -->
     <div class="icon-wrap">
       <img src="/home/z/my-project/download/Well_Spring_Logo_Icon.png"
-           alt="Multi-color minimalist logo icon: a tree of life rises from a stone basin wellspring at the base with aqua-blue water bubbling up, its canopy forms a heart shape with green leaves, and three terracotta family figures (adult woman, adult man, child) stand beneath holding hands — warm cream background" />
+           alt="Multi-color minimalist logo icon: a tree of life rises from a stone basin wellspring at the base with aqua-blue water bubbling up, its canopy forms a heart shape with green leaves, and three terracotta family figures (adult woman in dress, adult man in pants, child) stand behind the wellspring holding hands — warm cream background" />
     </div>
 
   </div>
