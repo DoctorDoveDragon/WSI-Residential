@@ -1620,3 +1620,36 @@ Stage Summary:
 - The previous v1 circular seal (without house frame, 1500×1500) is PRESERVED as `Well_Spring_Logo_Circular_Seal_v1.png` + `.pdf` + `/home/z/my-project/scripts/logo_circular_seal_v1.html` for historical reference.
 - The SOP manual remains at v2.14 (47 pages, 858 KB) — no new revision was needed for this brand asset refinement.
 - Persistent scripts: `/home/z/my-project/scripts/{logo_circular_seal.html, logo_circular_seal_v1.html}`
+
+---
+Task ID: SOP-31
+Agent: main (Super Z)
+Task: User requested two refinements to the Well_Spring_Logo_Circular_Seal.png (the v2 seal with the house frame from SOP-30): (1) "the lines should be 5x thicker" — make the 5 house outline lines 5x thicker; (2) "but only around the logo" — the thickening applies only to the house frame (the lines around the logo), not to the URL text, hairline circles, or other elements. Parenthetical rationale: "(this is gonna be our web icon" — the composition will be used as a web icon, which needs bolder lines to remain recognizable at small display sizes (favicons, browser tabs, app icons).
+
+Work Log:
+- Backed up the current v2 circular seal (with thin 2.5px house frame) to immutable preserved files: `Well_Spring_Logo_Circular_Seal_v2_thin_house.png` (1.3 MB), `Well_Spring_Logo_Circular_Seal_v2_thin_house.pdf` (130 KB), `/home/z/my-project/scripts/logo_circular_seal_v2_thin_house.html`.
+- Edited `/home/z/my-project/scripts/logo_circular_seal.html` — changed ONLY the house pentagon `<g>` element's stroke properties:
+  - `stroke-width`: 2.5px → **12.5px** (exactly 5x thicker, per user spec)
+  - `opacity`: 0.58 → **1.0** (full strength for maximum small-size visibility as a web icon)
+  - Stroke color (#6b4d3f walnut-brown), stroke-linecap="round", stroke-linejoin="round" — all preserved (rounded corners and peak will look clean at the bolder weight).
+- All other elements in the composition remain UNCHANGED (additive approach continues — no elements removed or modified):
+  - Two hairline circles (1.5px stroke, 34% opacity) — preserved
+  - URL text "www.wellspringintervention.com" (Cormorant Garamond 66px, walnut-brown, letter-spacing 14px) — preserved
+  - Two terracotta accent dots at 9:00 and 3:00 (r=8, 85% opacity) — preserved
+  - Bottom ornament (terracotta center dot r=10 + two hairline rules + two endpoint dots) — preserved
+  - Central multi-color v6f icon (920×920) — preserved
+- Geometry safety check: at 12.5px stroke (centered on the path), the stroke extends 6.25px on each side of the path line. House paths are at x=50, x=1650 (walls), y=1600 (floor), and roof peak at (850, 50). Stroke extents: walls x=43.75-56.25 and x=1643.75-1656.25 (43.75px clearance to canvas edge); floor y=1593.75-1606.25 (93.75px clearance to canvas bottom); roof peak y=43.75-56.25 (43.75px clearance to canvas top). All within the 1700×1700 canvas — no clipping.
+- Rendered via html2poster.js → `Well_Spring_Logo_Circular_Seal.pdf` (126 KB, 1700×1700px) → PNG at 150 DPI → `Well_Spring_Logo_Circular_Seal.png` (1.3 MB, 3542×3542px).
+- VLM verification confirmed all requirements met:
+  - **House lines 5x thicker** ✓: "the 5 house lines are roughly 5x thicker (or more) than the delicate hairline circles inside. The contrast is stark; the house frame looks heavy and structural, while the inner circles remain thin and elegant"
+  - **Only around the logo** ✓: URL text, hairline circles, accent dots, bottom ornament, and central icon all confirmed present and unchanged
+  - **House reads as "home"** ✓: "the frame reads immediately as a 'home' shape. The peaked roof and rectangular body create a clear 'house' silhouette that contains the circular seal"
+  - **Web icon suitability** ✓: "the composition feels bold enough for a web icon. The thick outer house frame provides strong visual weight that will hold up well when scaled down to small sizes (like a favicon), ensuring the logo remains recognizable even at low resolutions. The contrast between the heavy border and the detailed interior works effectively to define the brand mark"
+  - **No rendering issues** ✓: "no rendering errors or awkward overlaps. The composition is clean"
+- The SOP manual (v2.14) is unchanged — this task refined the brand logo asset family only.
+
+Stage Summary:
+- Refined circular seal delivered at `/home/z/my-project/download/Well_Spring_Logo_Circular_Seal.png` (1.3 MB, 3542×3542px) + `.pdf` (126 KB, 1700×1700px). Single change: the 5-line house pentagon frame stroke increased from 2.5px to 12.5px (exactly 5x thicker per user spec) and opacity increased from 58% to 100% (full strength for web-icon visibility). The bolder house frame creates a strong "home" silhouette that will hold up well at small display sizes (favicons, browser tabs, app icons). All other elements — URL text, two hairline circles, terracotta accent dots, bottom ornament, and the centered multi-color v6f icon — remain unchanged, preserving the additive approach established in SOP-30.
+- The previous v2 circular seal (with thin 2.5px house frame at 58% opacity) is PRESERVED as `Well_Spring_Logo_Circular_Seal_v2_thin_house.png` + `.pdf` + `/home/z/my-project/scripts/logo_circular_seal_v2_thin_house.html` for historical reference.
+- The SOP manual remains at v2.14 (47 pages, 858 KB) — no new revision was needed for this brand asset refinement.
+- Persistent scripts: `/home/z/my-project/scripts/{logo_circular_seal.html, logo_circular_seal_v1.html, logo_circular_seal_v2_thin_house.html}`
