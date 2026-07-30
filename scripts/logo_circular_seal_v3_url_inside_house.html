@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Well Spring Intervention LLC — Circular Seal with House Frame & Website URL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: transparent;
+    margin: 0; padding: 0;
+  }
+  .poster {
+    width: 1700px;
+    height: 1700px;
+    background: #faeddc; /* warm cream parchment, matches v6f icon */
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* SVG layer holds: house pentagon, two hairline circles, URL textPath, ornaments */
+  .seal-svg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 1700px;
+    height: 1700px;
+    pointer-events: none;
+  }
+
+  /* Centered icon */
+  .icon-wrap {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 920px;
+    height: 920px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon-wrap img {
+    width: 920px;
+    height: 920px;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* URL text style — slightly larger (66px, up from 58px) per user request */
+  .url-text {
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+    font-weight: 500;
+    font-size: 66px;
+    letter-spacing: 14px;
+    fill: #6b4d3f; /* deep walnut brown */
+  }
+</style>
+</head>
+<body>
+  <div class="poster">
+
+    <svg class="seal-svg" viewBox="0 0 1700 1700" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Full circle path: center (850,850), radius 640.
+             Starts at 9 o'clock (210,850), goes CLOCKWISE through 12, 3, 6, back to 9.
+             startOffset 25% = top (12 o'clock) for centered text. -->
+        <path id="url-circle"
+              d="M 210,850 a 640,640 0 1,1 1280,0 a 640,640 0 1,1 -1280,0"
+              fill="none" />
+      </defs>
+
+      <!-- ============================================ -->
+      <!-- HOUSE OUTLINE (5 lines) — implies "home"     -->
+      <!-- Additive only: drawn as outermost frame      -->
+      <!-- Web-icon weight: 12.5px (5x thicker than v2)  -->
+      <!-- Full opacity for bold small-size visibility  -->
+      <!-- ============================================ -->
+      <g stroke="#6b4d3f" stroke-width="12.5" opacity="1.0" fill="none"
+         stroke-linecap="round" stroke-linejoin="round">
+        <!-- Line 1: FLOOR (bottom horizontal) -->
+        <line x1="50" y1="1600" x2="1650" y2="1600" />
+        <!-- Line 2: LEFT WALL (vertical) -->
+        <line x1="50" y1="1600" x2="50" y2="450" />
+        <!-- Line 3: LEFT ROOF (diagonal up to peak) -->
+        <line x1="50" y1="450" x2="850" y2="50" />
+        <!-- Line 4: RIGHT ROOF (diagonal down from peak) -->
+        <line x1="850" y1="50" x2="1650" y2="450" />
+        <!-- Line 5: RIGHT WALL (vertical) -->
+        <line x1="1650" y1="450" x2="1650" y2="1600" />
+      </g>
+
+      <!-- Outer hairline circle border (r=700) -->
+      <circle cx="850" cy="850" r="700"
+              fill="none" stroke="#6b4d3f" stroke-width="1.5" opacity="0.34" />
+
+      <!-- Inner hairline circle border (r=580) -->
+      <circle cx="850" cy="850" r="580"
+              fill="none" stroke="#6b4d3f" stroke-width="1.5" opacity="0.34" />
+
+      <!-- URL text along the circle path, centered at top (12 o'clock) -->
+      <text class="url-text" x="0" y="0">
+        <textPath href="#url-circle" startOffset="25%" text-anchor="middle">
+          www.wellspringintervention.com
+        </textPath>
+      </text>
+
+      <!-- Two small terracotta accent dots at 9:00 and 3:00 (equator)
+           (moved from 10:00/2:00 to clear the enlarged URL which now spans ~9:54 to ~2:06) -->
+      <circle cx="210" cy="850" r="8" fill="#ab5125" opacity="0.85" />
+      <circle cx="1490" cy="850" r="8" fill="#ab5125" opacity="0.85" />
+
+      <!-- Bottom closure ornament at 6 o'clock (r=640): dot flanked by two hairline rules -->
+      <circle cx="850" cy="1490" r="10" fill="#ab5125" opacity="0.85" />
+      <line x1="750" y1="1490" x2="610" y2="1490"
+            stroke="#6b4d3f" stroke-width="1.5" opacity="0.42" />
+      <line x1="950" y1="1490" x2="1090" y2="1490"
+            stroke="#6b4d3f" stroke-width="1.5" opacity="0.42" />
+      <circle cx="595" cy="1490" r="5" fill="#ab5125" opacity="0.65" />
+      <circle cx="1105" cy="1490" r="5" fill="#ab5125" opacity="0.65" />
+
+    </svg>
+
+    <!-- Centered multi-color icon -->
+    <div class="icon-wrap">
+      <img src="/home/z/my-project/download/Well_Spring_Logo_Icon.png"
+           alt="Multi-color minimalist logo icon: a tree of life rises from a stone basin wellspring at the base with aqua-blue water bubbling up, its canopy forms a heart shape with green leaves, and three terracotta family figures (adult woman in dress, adult man in pants, child) stand behind the wellspring holding hands — warm cream background" />
+    </div>
+
+  </div>
+</body>
+</html>

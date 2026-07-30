@@ -1653,3 +1653,59 @@ Stage Summary:
 - The previous v2 circular seal (with thin 2.5px house frame at 58% opacity) is PRESERVED as `Well_Spring_Logo_Circular_Seal_v2_thin_house.png` + `.pdf` + `/home/z/my-project/scripts/logo_circular_seal_v2_thin_house.html` for historical reference.
 - The SOP manual remains at v2.14 (47 pages, 858 KB) — no new revision was needed for this brand asset refinement.
 - Persistent scripts: `/home/z/my-project/scripts/{logo_circular_seal.html, logo_circular_seal_v1.html, logo_circular_seal_v2_thin_house.html}`
+
+---
+Task ID: SOP-32
+Agent: main (Super Z)
+Task: User correction on the circular seal layering: "remember that the website is not the logo, so the house is under the website url but around the logo." The v3 seal (from SOP-30/SOP-31) had the URL wrapping a circle INSIDE the house — so the house enclosed both the URL and the logo. The user clarified that the website URL is NOT part of the logo, so the house should NOT enclose the URL. The correct layering: URL OUTSIDE the house (outermost), house AROUND only the logo (middle), logo icon INSIDE the house (innermost).
+
+Work Log:
+- Backed up the current v3 circular seal (URL inside house) to immutable preserved files: `Well_Spring_Logo_Circular_Seal_v3_url_inside_house.png` (1.3 MB), `Well_Spring_Logo_Circular_Seal_v3_url_inside_house.pdf` (129 KB), `/home/z/my-project/scripts/logo_circular_seal_v3_url_inside_house.html`.
+- **Geometry redesign**: The v3 layout had the URL circle (r=640) inside the house (full 1700×1700 canvas). To swap the layering (URL outside, house inside), I needed to enlarge the URL circle to be outside the house and shrink the house to be inside the URL circle. This required a larger canvas.
+  - New canvas: 1900×1900px (enlarged from 1700×1700 to accommodate the URL ring outside the house).
+  - Center: (950, 950).
+  - URL textPath circle: r=890 (URL text wraps this, OUTERMOST text layer).
+  - Outer hairline circle: r=920 (frames URL text from outside).
+  - Inner hairline circle: r=860 (frames URL text from inside, still OUTSIDE the house).
+  - House pentagon: INSIDE r=860, AROUND the icon.
+    - Floor: (380, 1550) → (1520, 1550)
+    - Left wall: (380, 1550) → (380, 650)
+    - Left roof: (380, 650) → (950, 350)
+    - Right roof: (950, 350) → (1520, 650)
+    - Right wall: (1520, 650) → (1520, 1550)
+  - Icon: 760×760, centered (950, 950).
+- **Layer verification** (Python): All five layers verified clean:
+  1. House vertices all inside inner hairline circle (r=860): floor corners at dist=828 (32px margin), roof peak at dist=600 (260px margin). ✓
+  2. Icon (760×760) corners all inside house: top corners at y=570 (roof zone, house x=[532,1368], icon x=[570,1330], 38px margin); bottom corners at y=1330 (wall zone, house x=[380,1520], 190px margin). ✓
+  3. Accent dots at 9:00 and 3:00 on URL circle (60,950) and (1840,950) — between the two hairline circles (r=860 and r=920), outside the house. ✓
+  4. Bottom ornament at 6:00 on URL circle (950,1840) — below the house floor (y=1550), outside the house. ✓
+  5. URL text occupies 25.2% of the r=890 circle (90.8°), centered at 12:00, spanning from ~10:29 to ~1:31. Accent dots at 9:00 and 3:00 are clear of URL text. ✓
+- **Key design decision — hairline circles repositioned**: In v3, the two hairline circles were INSIDE the house, framing the URL text. In the new layout, the hairline circles are OUTSIDE the house, still framing the URL text (which is now also outside the house). This preserves the original "URL framed by two hairline circles" aesthetic while moving the entire URL+hairlines assembly outside the house. The house now contains ONLY the logo icon — no hairline circles, no URL text inside it.
+- Rewrote `/home/z/my-project/scripts/logo_circular_seal.html` with the 1900×1900 layout and correct layering order (SVG draw order = outermost first):
+  1. Outer hairline circle (r=920)
+  2. URL text on textPath circle (r=890)
+  3. Inner hairline circle (r=860)
+  4. Terracotta accent dots + bottom ornament (on r=890, between hairlines)
+  5. House pentagon (5 lines, 12.5px stroke, full opacity — preserved from SOP-31)
+  6. Centered icon (760×760) — rendered as HTML `<img>` on top of the SVG
+- Rendered via html2poster.js → `Well_Spring_Logo_Circular_Seal.pdf` (126 KB, 1900×1900px) → PNG at 150 DPI → `Well_Spring_Logo_Circular_Seal.png` (1.0 MB, 3542×3542px).
+- VLM verification confirmed all requirements met:
+  - **URL outside house** ✓: "the website URL wraps around the very top of the composition in an arc. It is framed by two thin, light-gray hairline circles (one outer, one inner). The text and these circles are positioned outside the house shape"
+  - **House around logo only** ✓: "The multi-color icon... is centered perfectly inside the house frame. The house encloses only this logo graphic"
+  - **Key question confirmed** ✓: "The website URL is clearly outside the house boundary, and the house functions as a frame around only the central logo, not the text"
+  - **House reads as home** ✓: "the shape reads immediately as a classic 'home' or 'house' icon with a clear peaked roof"
+  - **Bold web-icon weight preserved** ✓: "bold, thick dark brown lines that are significantly heavier than the hairline circles"
+  - **Accents + ornament on URL circle (outside house)** ✓: "small terracotta/orange accent dots visible on the horizontal axis (left and right sides) and at the bottom center of the outer ring... positioned on or near the outer URL circle, outside the house"
+  - **No rendering issues** ✓: "no major rendering errors or unintentional overlaps. The layering is clean: Outer Circles/Text -> House Frame -> Inner Logo"
+  - **Web icon suitability** ✓: "The composition works effectively as a bold web icon. The contrast between the delicate outer text ring and the heavy, protective 'house' border creates a strong visual hierarchy that draws the eye to the central family/wellness imagery"
+- The SOP manual (v2.14) is unchanged — this task refined the brand logo asset family only.
+
+Stage Summary:
+- Refined circular seal delivered at `/home/z/my-project/download/Well_Spring_Logo_Circular_Seal.png` (1.0 MB, 3542×3542px) + `.pdf` (126 KB, 1900×1900px). The layering has been corrected per the user's clarification that "the website is not the logo":
+  - **OUTERMOST**: Website URL "www.wellspringintervention.com" (Cormorant Garamond 66px, walnut-brown) wraps the top of a circle (r=890), framed by two hairline circles (r=920 outer, r=860 inner). Terracotta accent dots at 9:00 and 3:00, plus a bottom ornament at 6:00, all sit on the URL circle between the two hairlines.
+  - **MIDDLE**: House pentagon (5 lines: floor + 2 walls + 2 roof diagonals, 12.5px stroke at full opacity — the 5x-thickened bold weight from SOP-31) sits INSIDE the URL ring, enclosing ONLY the logo icon. The house does NOT enclose the URL.
+  - **INNERMOST**: Multi-color v6f logo icon (760×760, tree of life + wellspring + heart canopy + woman/child/man family figures) centered inside the house.
+- Canvas enlarged from 1700×1700 to 1900×1900 to accommodate the URL ring outside the house without shrinking any existing elements. All elements preserved from v3 (URL text, two hairline circles, terracotta accent dots, bottom ornament, bold house frame, centered icon) — only repositioned to achieve the correct layering.
+- The previous v3 circular seal (with URL inside the house) is PRESERVED as `Well_Spring_Logo_Circular_Seal_v3_url_inside_house.png` + `.pdf` + `/home/z/my-project/scripts/logo_circular_seal_v3_url_inside_house.html` for historical reference.
+- The SOP manual remains at v2.14 (47 pages, 858 KB) — no new revision was needed for this brand asset refinement.
+- Persistent scripts: `/home/z/my-project/scripts/{logo_circular_seal.html, logo_circular_seal_v1.html, logo_circular_seal_v2_thin_house.html, logo_circular_seal_v3_url_inside_house.html}`
