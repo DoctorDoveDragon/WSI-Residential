@@ -1445,3 +1445,42 @@ Stage Summary:
   5. `Well_Spring_Logo_ThreeSides_Seal.png` (2344×2344, 1.0 MB) + `.pdf` (120 KB) — three-virtues seal composition with SAFETY/THERAPY/COMPASSION framing the new multi-color emblem.
 - The manual remains at v2.14 (47 pages, 858 KB) — no new revision was needed for this logo refinement.
 - Persistent scripts: `/home/z/my-project/scripts/{edit_logo_icon_v6c.js, edit_logo_icon_v6d.js, make_logo_variants.py, logo_lockup.html, logo_three_sides_seal.html}`
+
+---
+Task ID: SOP-27
+Agent: main (Super Z)
+Task: User requested two new logo iterations featuring the website URL: (1) "add our website as a circle around the logo" — circular seal with URL wrapping around the centered icon; (2) "another iteration with the website on the bottom of the logo" — icon on top, URL text below. Clarification batch asked for URL value, seal style, and URL typography. User selections: Seal Style = "URL only — full circle" (URL wraps the entire circumference, icon centered alone, no other text on the ring); URL Style = "Lowercase serif" (Cormorant Garamond lowercase, walnut-brown); Custom remark = "Add www. to url". The user did not explicitly pick a URL domain option, so the recommended default `wellspringintervention.com` was used, prefixed with `www.` per the user's remark → final URL = **www.wellspringintervention.com**.
+
+Work Log:
+- Reviewed the existing brand asset family in `/home/z/my-project/download/`: canonical icon is `Well_Spring_Logo_Icon.png` (v6d multi-color wellspring + tree of life + heart canopy + three terracotta family figures, 1024×1024 on warm cream). Existing supporting compositions: horizontal lockup + three-sides seal (SAFETY/THERAPY/COMPASSION). The brand palette is walnut-brown (#6b4d3f) primary + terracotta (#ab5125) accent on warm cream (#fdeed9), with Cormorant Garamond serif + Inter sans typography.
+- Read `/home/z/my-project/scripts/logo_three_sides_seal.html` and `/home/z/my-project/scripts/logo_lockup.html` as style references to ensure the two new iterations match the established brand language.
+- **Iteration 1 — Circular Seal (`logo_circular_seal.html`)**:
+  - Canvas: 1500×1500px, background #fdeed9 (matching v6d icon cream for seamless blending).
+  - SVG layer with three concentric elements: outer hairline circle border at r=700 (walnut-brown 1.5px stroke, 34% opacity), inner hairline circle border at r=580 (same style), and the URL textPath along a circle at r=640 between the two borders.
+  - SVG `<path id="url-circle">` defined as a full circle (M 110,750 a 640,640 0 1,1 1280,0 a 640,640 0 1,1 -1280,0) starting at 9 o'clock going clockwise. Used `<textPath href="#url-circle" startOffset="25%" text-anchor="middle">` to center the URL text at the top (12 o'clock).
+  - URL styling: Cormorant Garamond weight 500, font-size 58px, letter-spacing 14px, fill walnut-brown #6b4d3f. Lowercase per user spec.
+  - Centered icon: 880×880px (slightly smaller than the three-sides seal's 920×920 to leave more breathing room inside the URL ring).
+  - Decorative ornaments: two small terracotta dots (r=7) at ~10:00 and ~2:00 positions (just past URL endpoints) to visually anchor the URL band; a bottom closure ornament at 6 o'clock consisting of a small terracotta dot (r=9) flanked by two hairline rules (120px each) with tiny terracotta endpoint dots — mirrors the bottom ornament from the three-sides seal for visual consistency.
+  - Used SVG `textPath` rather than CSS `transform: rotate()` because prior experience (SOP-21) established that `transform: rotate()` causes elements to disappear in the html2poster/Chromium rendering pipeline. SVG `textPath` is the W3C-standard approach for circular text and renders reliably.
+- **Iteration 2 — URL Below Logo (`logo_url_bottom.html`)**:
+  - Canvas: 1100×1500px (portrait orientation), background #fdeed9.
+  - Flex column layout: 90px top padding → icon (980×980 centered) → 56px margin → decorative divider → 36px margin → URL text → 110px bottom padding.
+  - Icon: full 980×980px, centered horizontally, positioned at top.
+  - Decorative divider between icon and URL: two 120px hairline rules (walnut-brown, 42% opacity) flanking a 10px terracotta dot (85% opacity) — matches the divider ornament from the horizontal lockup.
+  - URL styling: Cormorant Garamond weight 500, font-size 56px, letter-spacing 4px, walnut-brown #6b4d3f, text-align center, text-indent 4px to visually re-center after letter-spacing.
+  - Initial render at font-size 64px / letter-spacing 8px caused horizontal overflow (1151px vs 1100px target) because the 30-character URL exceeded the canvas width. Reduced to font-size 56px / letter-spacing 4px → measured canvas exactly 1100×1500px, no overflow.
+- Rendered both HTML compositions via `html2poster.js`:
+  - `Well_Spring_Logo_Circular_Seal.pdf` (120 KB, 1500×1500px) → PNG at 150 DPI → `Well_Spring_Logo_Circular_Seal.png` (1.0 MB, 2344×2344px).
+  - `Well_Spring_Logo_URL_Bottom.pdf` (108 KB, 1100×1500px) → PNG at 150 DPI → `Well_Spring_Logo_URL_Bottom.png` (1.0 MB, 1722×2344px).
+- VLM verification via `z-ai vision` CLI on both PNGs:
+  - **Circular Seal** ✓: URL "www.wellspringintervention.com" reads verbatim, fully visible and not cut off, wraps around the top half of the centered icon following the curve perfectly. Icon (tree of life + heart canopy + wellspring + three family figures) centered and fully visible. Decorative elements (two side dots, bottom dot + flanking rules + endpoint dots) symmetrically placed. No overflow/overlap/rendering issues. Aesthetic: "warm, nurturing, and professional... healing, growth, and family support".
+  - **URL Below Logo** ✓: Icon centered horizontally at the top, fully visible (tree of life / heart canopy / wellspring / three terracotta family figures). URL "www.wellspringintervention.com" placed below the icon, reads verbatim, fully visible (not cut off), centered horizontally. Decorative divider present (small terracotta dot flanked by two thin grey hairlines). No overflow/overlap/rendering issues. Aesthetic: "warm, wholesome, and therapeutic... care, growth, healing, and support".
+- The SOP manual (v2.14) is unchanged — this task added two new brand asset variants only.
+
+Stage Summary:
+- Two new logo iterations delivered, both featuring the website URL `www.wellspringintervention.com` in lowercase Cormorant Garamond walnut-brown:
+  1. **`/home/z/my-project/download/Well_Spring_Logo_Circular_Seal.png`** (1.0 MB, 2344×2344px) + `.pdf` (120 KB, 1500×1500px) — circular seal composition. The URL text wraps around the top of the centered multi-color v6d icon (between two hairline circle borders), with small terracotta accent dots flanking the URL endpoints at ~10:00 and ~2:00 positions, and a closure ornament (terracotta dot + flanking hairline rules + endpoint dots) at the 6 o'clock position. Classic emblem-seal feel.
+  2. **`/home/z/my-project/download/Well_Spring_Logo_URL_Bottom.png`** (1.0 MB, 1722×2344px) + `.pdf` (108 KB, 1100×1500px) — portrait composition with the multi-color v6d icon centered at the top (980×980px) and the URL text placed below, separated by a small terracotta-dot-and-hairlines divider. Cleaner / more modern alternative to the circular seal for uses where horizontal placement isn't possible.
+- Both compositions use the existing brand palette (warm cream #fdeed9 background, walnut-brown #6b4d3f text, terracotta #ab5125 accents) and typography (Cormorant Garamond serif for the URL) so they integrate seamlessly with the existing logo asset family (canonical icon, transparent/dark-bg variants, horizontal lockup, three-sides seal).
+- Persistent scripts: `/home/z/my-project/scripts/{logo_circular_seal.html, logo_url_bottom.html}` — both re-renderable via `node /home/z/my-project/skills/pdf/scripts/html2poster.js <html> <pdf> --width <px>` followed by `pdftoppm -r 150 -png <pdf> <out>`.
+- The SOP manual remains at v2.14 (47 pages, 858 KB) — no new revision was needed for this brand asset expansion.
