@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Well Spring Intervention LLC — Circular Seal: URL outside, House around enlarged Logo</title>
+<title>Well Spring Intervention LLC — Circular Seal: Bold circles, large URL font</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -13,39 +13,29 @@
     margin: 0; padding: 0;
   }
   .poster {
-    width: 1900px;
-    height: 1900px;
-    background: #faeddc; /* warm cream parchment, matches v6f icon */
+    width: 2600px;
+    height: 2600px;
+    background: #faeddc; /* warm cream parchment */
     position: relative;
     overflow: hidden;
   }
 
   /* SVG layers — two of them:
      - seal-svg-bottom: URL ring + hairlines + ornaments (BENEATH icon)
-     - seal-svg-top:    house pentagon (ON TOP of icon, so walls/floor
-                        are not hidden by the icon's opaque background) */
+     - seal-svg-top:    house pentagon (ON TOP of icon) */
   .seal-svg {
     position: absolute;
     top: 0; left: 0;
-    width: 1900px;
-    height: 1900px;
+    width: 2600px;
+    height: 2600px;
     pointer-events: none;
   }
 
   /* Centered CROPPED icon — between the two SVG layers.
      Uses Well_Spring_Logo_Icon_Cropped.png (791×902, content centered
-     with only 15px symmetric padding — 96% content fill).
-
-     Displayed at 1070×1220px (enlarged from 1035×1180 per VLM feedback).
-     Content is 1029×1180, spanning (436,360) to (1464,1540).
-     - Side margin: 56px (5.4% of content width — SNUG)
-     - Bottom margin: 10px (very snug)
-     - Top: 10px below roof peak (very snug)
-
-     The canopy extends into the roof zone. The roof lines (drawn ON TOP)
-     cross the canopy edges — reads as house "sheltering" the tree.
-
-     No content-shift needed: cropped icon has content centered in frame. */
+     with 15px symmetric padding — 96% content fill).
+     Displayed at 1070×1220px. Content 1029×1180, centered at (1300,1300).
+     House contains logo with 25px margins, roof above canopy. */
   .icon-wrap {
     position: absolute;
     top: 50%; left: 50%;
@@ -63,12 +53,12 @@
     display: block;
   }
 
-  /* URL text style — 66px (enlarged in SOP-30), walnut-brown */
+  /* URL text style — 132px (2x enlarged from 66px), walnut-brown */
   .url-text {
     font-family: 'Cormorant Garamond', 'Times New Roman', serif;
     font-weight: 500;
-    font-size: 66px;
-    letter-spacing: 14px;
+    font-size: 132px;
+    letter-spacing: 28px;
     fill: #6b4d3f; /* deep walnut brown */
   }
 </style>
@@ -78,46 +68,58 @@
 
     <!-- ====================================================== -->
     <!-- BOTTOM SVG: URL ring + hairlines + ornaments            -->
+    <!-- Canvas 2600×2600, center (1300,1300)                    -->
+    <!--                                                          -->
+    <!-- Circular lines: stroke 15px (10x from 1.5px),           -->
+    <!-- opacity 1.0 (darkened from 0.34)                         -->
+    <!-- URL font: 132px (2x from 66px), letter-spacing 28px     -->
     <!-- ====================================================== -->
-    <svg class="seal-svg" viewBox="0 0 1900 1900" xmlns="http://www.w3.org/2000/svg">
+    <svg class="seal-svg" viewBox="0 0 2600 2600" xmlns="http://www.w3.org/2000/svg">
       <defs>
+        <!-- URL textPath circle: center (1300,1300), radius 1100.
+             Starts at 9 o'clock (200,1300), goes CLOCKWISE.
+             startOffset 25% = top (12 o'clock) for centered text.
+             Text spans ~43.5% of circle (9:23 to 2:37), clears accent dots at 9:00/3:00. -->
         <path id="url-circle"
-              d="M 60,950 a 890,890 0 1,1 1780,0 a 890,890 0 1,1 -1780,0"
+              d="M 200,1300 a 1100,1100 0 1,1 2200,0 a 1100,1100 0 1,1 -2200,0"
               fill="none" />
       </defs>
 
-      <!-- Outer hairline circle r=920 -->
-      <circle cx="950" cy="950" r="920"
-              fill="none" stroke="#6b4d3f" stroke-width="1.5" opacity="0.34" />
+      <!-- LAYER 1 (OUTERMOST): Outer hairline circle r=1225
+           stroke 15px (10x), opacity 1.0 (darkened) -->
+      <circle cx="1300" cy="1300" r="1225"
+              fill="none" stroke="#6b4d3f" stroke-width="15" opacity="1.0" />
 
-      <!-- URL text on circle r=890 (OUTSIDE the house) -->
+      <!-- LAYER 2: URL text on circle r=1100 (OUTSIDE the house)
+           Font 132px (2x enlarged), letter-spacing 28px -->
       <text class="url-text" x="0" y="0">
         <textPath href="#url-circle" startOffset="25%" text-anchor="middle">
           www.wellspringintervention.com
         </textPath>
       </text>
 
-      <!-- Inner hairline circle r=860 -->
-      <circle cx="950" cy="950" r="860"
-              fill="none" stroke="#6b4d3f" stroke-width="1.5" opacity="0.34" />
+      <!-- LAYER 3: Inner hairline circle r=1040
+           stroke 15px (10x), opacity 1.0 (darkened) -->
+      <circle cx="1300" cy="1300" r="1040"
+              fill="none" stroke="#6b4d3f" stroke-width="15" opacity="1.0" />
 
-      <!-- Terracotta accent dots at 9:00 and 3:00 -->
-      <circle cx="60" cy="950" r="8" fill="#ab5125" opacity="0.85" />
-      <circle cx="1840" cy="950" r="8" fill="#ab5125" opacity="0.85" />
+      <!-- ORNAMENTS on URL circle (r=1100), between the hairlines -->
+      <!-- Two terracotta accent dots at 9:00 and 3:00 (r=16, 2x from 8) -->
+      <circle cx="200" cy="1300" r="16" fill="#ab5125" opacity="0.85" />
+      <circle cx="2400" cy="1300" r="16" fill="#ab5125" opacity="0.85" />
 
-      <!-- Bottom ornament at 6:00 -->
-      <circle cx="950" cy="1840" r="10" fill="#ab5125" opacity="0.85" />
-      <line x1="850" y1="1840" x2="710" y2="1840"
-            stroke="#6b4d3f" stroke-width="1.5" opacity="0.42" />
-      <line x1="1050" y1="1840" x2="1190" y2="1840"
-            stroke="#6b4d3f" stroke-width="1.5" opacity="0.42" />
-      <circle cx="695" cy="1840" r="5" fill="#ab5125" opacity="0.65" />
-      <circle cx="1205" cy="1840" r="5" fill="#ab5125" opacity="0.65" />
+      <!-- Bottom closure ornament at 6:00 (1300, 2400) -->
+      <circle cx="1300" cy="2400" r="20" fill="#ab5125" opacity="0.85" />
+      <line x1="1150" y1="2400" x2="950" y2="2400"
+            stroke="#6b4d3f" stroke-width="8" opacity="0.55" />
+      <line x1="1450" y1="2400" x2="1650" y2="2400"
+            stroke="#6b4d3f" stroke-width="8" opacity="0.55" />
+      <circle cx="935" cy="2400" r="10" fill="#ab5125" opacity="0.65" />
+      <circle cx="1665" cy="2400" r="10" fill="#ab5125" opacity="0.65" />
     </svg>
 
     <!-- ====================================================== -->
-    <!-- MIDDLE LAYER: Cropped + enlarged logo icon              -->
-    <!-- (1035×1180px, content fills 96% of frame)               -->
+    <!-- MIDDLE LAYER: Cropped logo icon (1070×1220)             -->
     <!-- ====================================================== -->
     <div class="icon-wrap">
       <img src="/home/z/my-project/download/Well_Spring_Logo_Icon_Cropped.png"
@@ -125,33 +127,24 @@
     </div>
 
     <!-- ====================================================== -->
-    <!-- TOP SVG: HOUSE OUTLINE (5 lines) — ENLARGED to contain  -->
-    <!-- the logo with canopy in the body (roof above canopy).    -->
-    <!--                                                          -->
-    <!-- Geometry (25px margin around logo content):              -->
-    <!--   Walls: x=411, x=1489 (width 1078)                     -->
-    <!--   Floor: y=1565                                          -->
-    <!--   Wall tops: y=335 (above canopy top 360 → canopy in body) -->
-    <!--   Roof peak: (950, 135), rise 200px, angle ~20.4°       -->
-    <!--   All vertices inside inner hairline r=860 (42px clear)  -->
-    <!--                                                          -->
-    <!-- The roof sits ABOVE the tree canopy — no overlap. The    -->
-    <!-- house fully contains the logo with a small margin.       -->
-    <!-- 12.5px stroke, full opacity                              -->
+    <!-- TOP SVG: HOUSE OUTLINE (5 lines) — contains the logo    -->
+    <!-- Walls x=761/1839, floor y=1915, wall tops y=685         -->
+    <!-- Roof peak (1300, 485), rise 200px, angle ~20.4°         -->
+    <!-- 12.5px stroke, full opacity                             -->
     <!-- ====================================================== -->
-    <svg class="seal-svg" viewBox="0 0 1900 1900" xmlns="http://www.w3.org/2000/svg">
+    <svg class="seal-svg" viewBox="0 0 2600 2600" xmlns="http://www.w3.org/2000/svg">
       <g stroke="#6b4d3f" stroke-width="12.5" opacity="1.0" fill="none"
          stroke-linecap="round" stroke-linejoin="round">
         <!-- Line 1: FLOOR -->
-        <line x1="411" y1="1565" x2="1489" y2="1565" />
+        <line x1="761" y1="1915" x2="1839" y2="1915" />
         <!-- Line 2: LEFT WALL -->
-        <line x1="411" y1="1565" x2="411" y2="335" />
+        <line x1="761" y1="1915" x2="761" y2="685" />
         <!-- Line 3: LEFT ROOF -->
-        <line x1="411" y1="335" x2="950" y2="135" />
+        <line x1="761" y1="685" x2="1300" y2="485" />
         <!-- Line 4: RIGHT ROOF -->
-        <line x1="950" y1="135" x2="1489" y2="335" />
+        <line x1="1300" y1="485" x2="1839" y2="685" />
         <!-- Line 5: RIGHT WALL -->
-        <line x1="1489" y1="335" x2="1489" y2="1565" />
+        <line x1="1839" y1="685" x2="1839" y2="1915" />
       </g>
     </svg>
 

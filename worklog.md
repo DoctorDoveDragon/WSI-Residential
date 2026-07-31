@@ -1837,3 +1837,50 @@ Stage Summary:
 - The SOP manual remains at v2.14 (47 pages, 858 KB).
 - Persistent scripts: `/home/z/my-project/scripts/{logo_circular_seal.html, logo_circular_seal_v4_url_outside_house_oversized.html, logo_circular_seal_v5_snug_house.html, crop_icon_content.py, compute_v4_snug_icon_size.py, analyze_icon_padding.py}`
 - New asset: `/home/z/my-project/download/Well_Spring_Logo_Icon_Cropped.png` (791×902, cropped to content bbox with 15px margin)
+
+---
+Task ID: SOP-36
+Agent: main (Super Z)
+Task: User requested "darken circular lines and widen to 10x. enlarge font 2x" for the circular seal. This means: (1) the two hairline circles go from stroke 1.5px → 15px (10x wider) and opacity 0.34 → 1.0 (darkened to full strength), and (2) the URL font goes from 66px → 132px (2x larger).
+
+Work Log:
+- **Geometry recomputation**: The 2x font enlargement (66→132px) made the URL text too large for the previous r=890 circle (text would span 54% of the circle, overlapping the 9:00/3:00 accent dots). The 10x wider stroke (15px) also needed more clearance between the text and the hairlines. A full canvas enlargement was required.
+- **New canvas**: Enlarged from 1900×1900 to **2600×2600**, center moved from (950,950) to (1300,1300).
+- **New circle geometry**:
+  - Outer hairline: r=1225 (was r=920), stroke **15px** (was 1.5px — 10x), opacity **1.0** (was 0.34 — darkened to full)
+  - URL text circle (textPath baseline): r=1100 (was r=890)
+  - Inner hairline: r=1040 (was r=860), stroke **15px** (was 1.5px — 10x), opacity **1.0** (was 0.34 — darkened to full)
+  - Text extends from r=1070 (descenders) to r=1195 (ascenders) — hairlines frame with ~20px clearance on each side.
+- **URL text**: Font **132px** (was 66px — 2x), letter-spacing **28px** (was 14px — 2x). Text width ~3008px, spans 43.5% of the r=1100 circle = 157°. Centered at 12:00, spans from 9:23 to 2:37 — clears the accent dots at 9:00 and 3:00. ✓
+- **House repositioned**: Same relative geometry (25px margin around logo content, roof above canopy), recentered to (1300,1300):
+  - Walls: x=761, x=1839 (width 1078)
+  - Floor: y=1915
+  - Wall tops: y=685 (above canopy top y=710 → canopy in body)
+  - Roof peak: (1300, 485), rise 200px, angle ~20.4°
+  - All vertices inside inner hairline r=1040: dist=818, clearance=222px ✓
+- **Logo**: Cropped icon at 1070×1220 (content 1029×1180), centered at (1300,1300). Unchanged from SOP-35.
+- **Ornaments scaled 2x** (proportional to the larger font):
+  - Accent dots at 9:00/3:00: r=16 (was 8), at (200,1300) and (2400,1300)
+  - Bottom ornament center dot: r=20 (was 10), at (1300,2400)
+  - Bottom rules: stroke 8px (was 1.5px), 200px long (was 140px), opacity 0.55 (was 0.42)
+  - Endpoint dots: r=10 (was 5)
+- **Two-SVG-layer rendering** preserved: bottom SVG (URL ring + bold hairlines + ornaments) beneath icon; top SVG (house pentagon) above icon. House stroke remains 12.5px (unchanged — user only specified circular lines and font).
+- Rendered via html2poster.js at --width 2600 → `Well_Spring_Logo_Circular_Seal.pdf` (846 KB, 2600×2600px) → PNG at 150 DPI → `Well_Spring_Logo_Circular_Seal.png` (2.3 MB, 4063×4063px).
+- **VLM verification** confirmed all requirements:
+  - **Circular lines bold** ✓: "the two circular border lines are bold and clearly visible. They are thick and substantial, creating a strong, defined frame for the seal"
+  - **URL font large** ✓: "The URL text is large and prominent. It occupies a significant portion of the upper arc, making it a major visual element"
+  - **URL readable** ✓: "The full URL is completely readable and not cut off. It fits nicely within the top arc of the circle, following the curvature cleanly between the two border lines"
+  - **House contains logo** ✓: "the house outline fully contains the logo icon. The roof peak is positioned clearly above the top of the tree canopy and heart shape, with no overlap"
+  - **Accents don't interfere** ✓: "These accents do not interfere with the URL text; they are placed in the empty space below the text and to the sides"
+  - **Overall balanced** ✓: "The composition looks balanced and professional. The bolder circles provide a solid structure, and the larger font ensures the web address is easily legible"
+- The SOP manual (v2.14) is unchanged.
+
+Stage Summary:
+- Refined circular seal delivered at `/home/z/my-project/download/Well_Spring_Logo_Circular_Seal.png` (2.3 MB, 4063×4063px) + `.pdf` (846 KB, 2600×2600px). Per user request:
+  - **Circular lines 10x wider + darkened**: Both hairline circles now have stroke 15px (was 1.5px) and opacity 1.0 (was 0.34). They are now bold, solid, clearly visible rings framing the URL text.
+  - **URL font 2x larger**: URL text now at 132px (was 66px) with letter-spacing 28px (was 14px). The web address is now a prominent, highly legible visual element.
+- Canvas enlarged from 1900×1900 to 2600×2600 to accommodate the larger font (text would have overlapped accent dots on the smaller circle) and the bolder strokes (needed more clearance between text and hairlines).
+- All other elements preserved: house geometry (contains logo, roof above canopy), logo size (1070×1220 cropped icon), ornaments (scaled 2x proportionally), URL content ("www.wellspringintervention.com"), color palette (walnut-brown #6b4d3f, terracotta #ab5125, cream #faeddc).
+- VLM-verified: bold circles, large legible font, house contains logo, balanced composition, no issues.
+- The SOP manual remains at v2.14 (47 pages, 858 KB).
+- Persistent scripts: `/home/z/my-project/scripts/{logo_circular_seal.html, logo_circular_seal_v4_url_outside_house_oversized.html, logo_circular_seal_v5_snug_house.html, crop_icon_content.py, compute_v4_snug_icon_size.py, analyze_icon_padding.py}`
