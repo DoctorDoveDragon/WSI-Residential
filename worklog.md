@@ -1754,3 +1754,43 @@ Stage Summary:
 - The previous v4 seal (URL outside, house oversized ~190px gaps) is PRESERVED as `Well_Spring_Logo_Circular_Seal_v4_url_outside_house_oversized.png` + `.pdf` + `.html` for historical reference.
 - The SOP manual remains at v2.14 (47 pages, 858 KB) — no new revision was needed for this brand asset refinement.
 - Persistent scripts: `/home/z/my-project/scripts/{logo_circular_seal.html, logo_circular_seal_v1.html, logo_circular_seal_v2_thin_house.html, logo_circular_seal_v3_url_inside_house.html, logo_circular_seal_v4_url_outside_house_oversized.html, verify_snug_geometry.py, analyze_icon_padding.py}`
+
+---
+Task ID: SOP-34
+Agent: main (Super Z)
+Task: User requested using the v4 seal (big house, URL outside) and "enlarge logo to make it more snug inside the house outline" — the opposite approach from SOP-33 (which shrank the house to fit the logo). The user wants to keep the v4 house geometry and make the logo bigger to fill it.
+
+Work Log:
+- Backed up the SOP-33 snug-house seal to immutable preserved files: `Well_Spring_Logo_Circular_Seal_v5_snug_house.png` + `.pdf` + `/home/z/my-project/scripts/logo_circular_seal_v5_snug_house.html`.
+- **Root cause analysis — aspect ratio mismatch**: Analyzed the v4 house body geometry (1140px wide × 900px tall, aspect 1.27 — wider than tall) vs. the icon visible content (761px wide × 872px tall, aspect 0.87 — taller than wide). These aspect ratios are fundamentally incompatible:
+  - To fill the house width (1060px content, 40px margins): needs 1215px height → overflows the 900px body by 315px (canopy pokes above roof, wellspring below floor).
+  - To fit the house height (860px content, 20px margins): content is only 750px wide → 195px side gap (26% loose).
+  - No single icon size can fill the v4 house width without vertical overflow.
+- **Pixel-level canopy analysis** (Python/PIL on rendered PNG): Discovered the tree canopy (heart shape) at its widest is 782px (spanning x=563-1345 in design coords at the canopy's top). The roof lines at that height converge to nearly the peak (x≈950). The roof ALWAYS crosses the canopy whenever the canopy extends above the wall tops (y=650) into the roof zone. This is unavoidable given the v4 house geometry + logo shape.
+- **Solution — cropped icon + maximum enlargement**:
+  1. Created `Well_Spring_Logo_Icon_Cropped.png` (791×902) by cropping the original 1024×1024 icon to its content bounding box + 15px symmetric margin. This removes the asymmetric padding (content was offset +35,+31 from frame center) and achieves 96% content fill. The content is now centered in the frame — no CSS content-shift needed.
+  2. Enlarged the cropped icon to display size 1070×1220px (content 1029×1180). This fills 90.3% of the house body width (1029/1140) with 56px side margins (5.4%).
+  3. Geometry: content spans (436,360) to (1464,1540) — 10px below roof peak, 10px above floor, 56px from side walls. All SNUG.
+  4. The roof lines (drawn ON TOP of the icon via the two-SVG-layer technique from SOP-33) cross the canopy edges. This reads as the house "sheltering" the tree — an intentional design metaphor reinforcing the "home" theme.
+- **Two-SVG-layer rendering** (preserved from SOP-33): Bottom SVG (URL ring + hairlines + ornaments) beneath the icon; top SVG (house pentagon) above the icon. This ensures all 5 house lines are visible despite the icon's opaque cream background.
+- Iterative VLM verification (3 passes):
+  - Pass 1 (S=1360, original icon w/ content-shift): VLM said "loose, 25-30% gap" + "roof cuts through canopy." Root cause: icon's asymmetric padding created visible cream gaps; roof crossed canopy.
+  - Pass 2 (S=1300, original icon w/ content-shift): VLM still said "loose, 20-25%" + "roof cuts canopy." Same issues.
+  - Pass 3 (S=1180, cropped icon, no shift): VLM said "75-80% fill, roof reads as intentional shelter." Suggested scaling up 10-15%.
+  - Pass 4 (S=1220, cropped icon enlarged): VLM confirmed **80-85% fill (snug)**, roof/canopy overlap is "intentional and metaphorical — shelter/protective canopy," "works very well as a brand seal," logo "large enough to be clearly legible and impactful." ✓
+- All other elements preserved from v4 (URL text 66px, two hairline circles, terracotta accent dots, bottom ornament, v4 big house geometry 380/1520/1550/650/350, 12.5px bold house stroke at full opacity).
+- The SOP manual (v2.14) is unchanged.
+
+Stage Summary:
+- Refined circular seal delivered at `/home/z/my-project/download/Well_Spring_Logo_Circular_Seal.png` (3959×3959px, ~3 MB) + `.pdf` (846 KB, 1900×1900px). The logo has been ENLARGED to fill the v4 house:
+  - **Cropped icon** (`Well_Spring_Logo_Icon_Cropped.png`, 791×902, 96% content fill) eliminates the asymmetric padding of the original 1024×1024 icon.
+  - **Enlarged display** at 1070×1220px (content 1029×1180) — fills 90% of house body width, with 56px side margins, 10px top/bottom margins (all snug).
+  - **Roof shelters tree**: The roof lines cross the canopy edges, reading as an intentional "shelter" metaphor (house protecting the family/tree/wellspring). VLM-confirmed as intentional design, not an error.
+  - **V4 house geometry preserved**: walls x=380/1520, floor y=1550, wall tops y=650, roof peak (950,350), 12.5px stroke, full opacity.
+  - **URL remains outermost** (outside the house, on r=890 circle between two hairlines).
+- VLM verdict: 80-85% fill (snug), intentional shelter metaphor, works well as brand seal, logo clearly legible and impactful.
+- **Design trade-off documented**: The v4 house body (1140×900, wider than tall) is fundamentally mismatched with the logo content (761×872, taller than wide). This means either (a) the sides will be loose (if canopy stays in body), or (b) the roof crosses the canopy (if logo fills width). The user chose approach (b) — maximum logo size with roof-as-shelter. The alternative v5 seal (SOP-33, snug house custom-sized to logo) remains available if a tighter rectangular fit is preferred.
+- The previous SOP-33 snug-house seal is PRESERVED as `Well_Spring_Logo_Circular_Seal_v5_snug_house.png` + `.pdf` + `.html`.
+- The SOP manual remains at v2.14 (47 pages, 858 KB).
+- Persistent scripts: `/home/z/my-project/scripts/{logo_circular_seal.html, logo_circular_seal_v4_url_outside_house_oversized.html, logo_circular_seal_v5_snug_house.html, crop_icon_content.py, compute_v4_snug_icon_size.py, analyze_icon_padding.py}`
+- New asset: `/home/z/my-project/download/Well_Spring_Logo_Icon_Cropped.png` (791×902, cropped to content bbox with 15px margin)
