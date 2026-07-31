@@ -1913,3 +1913,52 @@ Stage Summary:
 - VLM-verified: font is bold/heavy, roof peak slightly above heart lobes, house contains logo, house still reads as a home shape.
 - The SOP manual remains at v2.14 (47 pages, 858 KB).
 - Persistent scripts: `/home/z/my-project/scripts/{logo_circular_seal.html, logo_circular_seal_v4_url_outside_house_oversized.html, logo_circular_seal_v5_snug_house.html, crop_icon_content.py, compute_v4_snug_icon_size.py, analyze_icon_padding.py, find_heart_lobes.py}`
+
+---
+Task ID: SOP-38
+Agent: main (Super Z)
+Task: User requested "we have to get the house and logo proportioned for best fit inside the circle." The previous seal (SOP-37) had the house undersized relative to the inner circle — wall corners at r=818 of available r=1040 (only 79% utilization), leaving 222px of unused clearance. The roof peak had 385px of unused clearance above it. Both house and logo needed to be scaled up together (preserving their relative proportions) to fill the circle properly.
+
+Work Log:
+- **Geometry analysis** (`/home/z/my-project/scripts/compute_v6_proportions.py`): Computed scale factors from 1.15 to 1.26 and their effects on:
+  - Wall corner clearance from inner hairline (r=1040)
+  - Roof peak clearance from inner hairline
+  - Wall-top to heart-lobe vertical gap (heart must stay in body, not roof zone)
+  - Roof-peak to heart-lobe vertical gap ("slightly above" per SOP-37 spec)
+  - Logo display dimensions
+- **Chose scale factor 1.22** as the balanced optimum:
+  - Wall corner clearance: 42.3px (comfortable, not cramped — well above the 15px stroke width so they don't visually merge)
+  - Roof peak clearance: 240.9px (peak comfortably inside circle)
+  - Wall tops to heart lobes: 32.9px (heart fully in body) ✓
+  - Roof peak to heart lobes: 81.7px (still "slightly above" — was 67px, only 15px more) ✓
+  - Margins between logo content and house walls: ~30px all sides (was 25px — slightly more generous)
+- **New house geometry** (scaled 1.22x about center (1300,1300)):
+  - Walls: x=642, x=1958 (width 1316, was 1078)
+  - Floor: y=2050 (was 1915)
+  - Wall tops: y=550 (was 685)
+  - Roof peak: (1300, 501) — rise 49px above wall tops, angle 4.26° (was peak y=645, rise 40px)
+  - House stroke: 15px (was 12.5px — scaled with house to match the 15px hairlines for visual consistency)
+- **New logo size**: 1305×1488 (was 1070×1220 — 22% larger)
+  - Content: 1255×1440 (was 1029×1180)
+  - Aspect ratio preserved: 0.877 (matches source image 791×902)
+- All other elements unchanged: canvas 2600×2600, URL text 132px Playfair Display 900 with 28px letter-spacing, two hairline circles r=1225/1040 at 15px stroke full opacity, accent dots (r=16) at 9:00/3:00, bottom ornament at 6:00.
+- **Rendering**: Updated `logo_circular_seal.html` with new coordinates → html2poster.js at --width 2600 → PDF (841 KB) → pdf2image at 150 DPI → PNG (4063×4063, 2.9 MB).
+- **VLM verification** confirmed all 6 requirements:
+  - **House proportions** ✓: "well-proportioned and fills the inner circle effectively. It occupies approximately 70-75% of the circle's width and height. It does not look too small or squished."
+  - **House vs logo proportions** ✓: "well-proportioned inside the house body. The elements fill the interior space nicely with appropriate margins on all sides."
+  - **Roof position** ✓: "roof peak is positioned correctly. It sits visibly above the highest point of the red heart-shaped tree canopy. There is a clear gap between the roof line and the heart shape; they do not touch or overlap."
+  - **House containment** ✓: "house outline fully contains all parts of the logo... Nothing extends beyond the boundary lines of the house."
+  - **URL text** ✓: "bold and highly readable. It follows the top arc of the circle perfectly and is positioned neatly between the two bold concentric circular lines."
+  - **Overall balance** ✓: "balanced and professional... no areas that look excessively empty or crowded; the spacing between the inner graphic and the outer text ring creates a clean, polished 'seal' aesthetic."
+- The SOP manual (v2.14) is unchanged.
+
+Stage Summary:
+- Refined circular seal delivered at `/home/z/my-project/download/Well_Spring_Logo_Circular_Seal.png` (2.9 MB, 4063×4063px) + `.pdf` (841 KB, 2600×2600px). House and logo scaled 1.22x together for best fit inside the inner circle:
+  - **House body**: 1316×1500 (walls x=642/1958, floor y=2050, wall tops y=550) — was 1078×1230. Wall corners at r=998 of available r=1040 (96% utilization, 42px clearance).
+  - **Roof**: peak at (1300, 501), 49px rise, 4.26° pitch — still "slightly above the lobes of the heart" (82px clearance to heart lobes, was 67px).
+  - **Logo**: cropped icon at 1305×1488 (content 1255×1440) — was 1070×1220. 22% larger. Margins to house walls ~30px all sides.
+  - **House stroke**: 15px (was 12.5px) — now matches the 15px hairlines for visual consistency.
+- VLM-verified: house fills 70-75% of circle (was 52%), logo well-proportioned inside house, roof above heart, all elements contained, URL bold and readable, balanced composition.
+- This resolves the under-utilization of the circle from SOP-37 by scaling the entire house + logo composition together, preserving all prior refinements (bold URL font from SOP-37, lowered roof from SOP-37, bold hairlines from SOP-36, snug house from SOP-35).
+- The SOP manual remains at v2.14 (47 pages, 858 KB).
+- Persistent scripts: `/home/z/my-project/scripts/{logo_circular_seal.html, compute_v6_proportions.py, find_heart_lobes.py, crop_icon_content.py, compute_v4_snug_icon_size.py, analyze_icon_padding.py}`

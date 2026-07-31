@@ -34,21 +34,22 @@
   /* Centered CROPPED icon — between the two SVG layers.
      Uses Well_Spring_Logo_Icon_Cropped.png (791×902, content centered
      with 15px symmetric padding — 96% content fill).
-     Displayed at 1070×1220px. Content 1029×1180, centered at (1300,1300).
-     House contains logo with 25px margins, roof above canopy. */
+     Displayed at 1305×1488px (scaled 1.22x from 1070×1220 for best fit
+     inside the inner circle). Content 1255×1440, centered at (1300,1300).
+     House contains logo with ~30px margins, roof above canopy. */
   .icon-wrap {
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    width: 1070px;
-    height: 1220px;
+    width: 1305px;
+    height: 1488px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
   .icon-wrap img {
-    width: 1070px;
-    height: 1220px;
+    width: 1305px;
+    height: 1488px;
     object-fit: contain;
     display: block;
   }
@@ -119,7 +120,8 @@
     </svg>
 
     <!-- ====================================================== -->
-    <!-- MIDDLE LAYER: Cropped logo icon (1070×1220)             -->
+    <!-- MIDDLE LAYER: Cropped logo icon (1305×1488)             -->
+    <!-- Scaled 1.22x for best fit inside the inner circle       -->
     <!-- ====================================================== -->
     <div class="icon-wrap">
       <img src="/home/z/my-project/download/Well_Spring_Logo_Icon_Cropped.png"
@@ -128,25 +130,27 @@
 
     <!-- ====================================================== -->
     <!-- TOP SVG: HOUSE OUTLINE (5 lines) — contains the logo    -->
-    <!-- Walls x=761/1839, floor y=1915, wall tops y=685         -->
-    <!-- Roof peak (1300, 645), rise 40px (REDUCED from 200px),  -->
-    <!-- angle ~4.2°. Peak is 67px above heart lobes (y=712) —   -->
+    <!-- SCALED 1.22x for best fit inside inner circle r=1040    -->
+    <!-- Walls x=642/1958 (width 1316), floor y=2050,            -->
+    <!-- wall tops y=550. Roof peak (1300, 501), rise 49px,      -->
+    <!-- angle ~4.3°. Peak is 82px above heart lobes (y=583) —   -->
     <!-- "slightly above the lobes of the heart."                -->
-    <!-- 12.5px stroke, full opacity                             -->
+    <!-- Wall corners at r=998 (clearance 42px from inner r=1040)-->
+    <!-- 15px stroke (scaled with house, matches hairlines)      -->
     <!-- ====================================================== -->
     <svg class="seal-svg" viewBox="0 0 2600 2600" xmlns="http://www.w3.org/2000/svg">
-      <g stroke="#6b4d3f" stroke-width="12.5" opacity="1.0" fill="none"
+      <g stroke="#6b4d3f" stroke-width="15" opacity="1.0" fill="none"
          stroke-linecap="round" stroke-linejoin="round">
         <!-- Line 1: FLOOR -->
-        <line x1="761" y1="1915" x2="1839" y2="1915" />
+        <line x1="642" y1="2050" x2="1958" y2="2050" />
         <!-- Line 2: LEFT WALL -->
-        <line x1="761" y1="1915" x2="761" y2="685" />
+        <line x1="642" y1="2050" x2="642" y2="550" />
         <!-- Line 3: LEFT ROOF -->
-        <line x1="761" y1="685" x2="1300" y2="645" />
+        <line x1="642" y1="550" x2="1300" y2="501" />
         <!-- Line 4: RIGHT ROOF -->
-        <line x1="1300" y1="645" x2="1839" y2="685" />
+        <line x1="1300" y1="501" x2="1958" y2="550" />
         <!-- Line 5: RIGHT WALL -->
-        <line x1="1839" y1="685" x2="1839" y2="1915" />
+        <line x1="1958" y1="550" x2="1958" y2="2050" />
       </g>
     </svg>
 
