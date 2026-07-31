@@ -1884,3 +1884,32 @@ Stage Summary:
 - VLM-verified: bold circles, large legible font, house contains logo, balanced composition, no issues.
 - The SOP manual remains at v2.14 (47 pages, 858 KB).
 - Persistent scripts: `/home/z/my-project/scripts/{logo_circular_seal.html, logo_circular_seal_v4_url_outside_house_oversized.html, logo_circular_seal_v5_snug_house.html, crop_icon_content.py, compute_v4_snug_icon_size.py, analyze_icon_padding.py}`
+
+---
+Task ID: SOP-37
+Agent: main (Super Z)
+Task: User requested two changes to the circular seal: (1) "put the font in bold" — make the URL text bold weight, and (2) "reduce the peak of the house to slightly above the lobes of the heart" — lower the roof peak so it hovers just above the tree's heart-shaped canopy.
+
+Work Log:
+- **Heart lobes detection** (Python/PIL on rendered PNG): Used a tight terracotta color filter (R>140, G<110, B<90, R-G>40) to isolate the heart from the walnut-brown elements. Found the heart lobes top at design y=712 (the topmost terracotta pixels in the central column band). The heart widens from 431px at y=712 to 795px at y=826.
+- **Roof peak reduction**: The previous roof peak was at y=485 (227px above heart lobes at y=712, roof rise 200px from wall tops at y=685). Lowered the peak to y=645 (67px above heart lobes, roof rise 40px from wall tops at y=685).
+  - New roof angle: atan(40/539) ≈ 4.2° (was 20.4° — much shallower but still visibly peaked)
+  - Roof line clearance: at x=1091 (leftmost heart edge), roof y = 685 - (40/539)*(1091-761) = 660.5, heart at y=712 → 52px clearance (no overlap). ✓
+  - Wall tops unchanged at y=685 (27px above heart lobes — house still contains the logo). ✓
+  - VLM confirmed: "roof peak sits slightly above the red heart lobes with a small gap between them" and "house still reads as a home shape with a peaked roof."
+- **Bold font — three iterative attempts**:
+  - Attempt 1 (Cormorant Garamond font-weight 700): VLM said "Regular or Light weight, definitely not bold." Cormorant Garamond is an elegant serif whose 700 weight is still relatively delicate.
+  - Attempt 2 (CG 700 + SVG stroke-width 2, paint-order="stroke fill"): VLM still said "regular weight, significantly thinner than circular border lines." The 2px stroke was insufficient.
+  - Attempt 3 (CG 700 + SVG stroke-width 4, paint-order="stroke fill"): VLM STILL said "thin and delicate, significantly thinner than border lines." The SVG text stroke + paint-order technique was not rendering reliably in html2poster's Chromium (paint-order may not be supported, causing the stroke to render on top of the fill and be invisible since it's the same color).
+  - **Attempt 4 (switched font to Playfair Display 900/Black)**: Switched from Cormorant Garamond to Playfair Display (a display serif with a naturally heavy 900/Black weight). Added Playfair Display to the Google Fonts import. VLM confirmed: "The URL text is bold/heavy. Its stroke thickness is very similar to the thick circular border lines." ✓
+  - **Design decision**: Playfair Display is still an elegant serif (consistent with the brand's serif typography), but its 900 weight is naturally much heavier than Cormorant Garamond's 700. This was the most reliable way to achieve true bold rendering in html2poster without relying on SVG stroke tricks that don't work consistently.
+- All other elements preserved from SOP-36: canvas 2600×2600, bold 15px circular lines at full opacity, 132px font with 28px letter-spacing, accent dots (r=16), bottom ornament, house geometry (walls x=761/1839, floor y=1915, wall tops y=685, 12.5px stroke), cropped logo at 1070×1220.
+- The SOP manual (v2.14) is unchanged.
+
+Stage Summary:
+- Refined circular seal delivered at `/home/z/my-project/download/Well_Spring_Logo_Circular_Seal.png` (4063×4063px) + `.pdf` (841 KB, 2600×2600px). Two changes per user request:
+  - **URL font is now BOLD**: Switched from Cormorant Garamond 500 to Playfair Display 900 (Black). The URL text stroke thickness now matches the bold 15px circular border lines. VLM-confirmed as "bold/heavy."
+  - **Roof peak lowered**: Peak reduced from y=485 to y=645 (roof rise from 200px to 40px). The peak now hovers 67px above the heart lobes (y=712) — "slightly above the lobes of the heart" per user spec. The roof angle is 4.2° (shallow but still visibly peaked). No roof/canopy overlap (52px clearance at the heart's widest point).
+- VLM-verified: font is bold/heavy, roof peak slightly above heart lobes, house contains logo, house still reads as a home shape.
+- The SOP manual remains at v2.14 (47 pages, 858 KB).
+- Persistent scripts: `/home/z/my-project/scripts/{logo_circular_seal.html, logo_circular_seal_v4_url_outside_house_oversized.html, logo_circular_seal_v5_snug_house.html, crop_icon_content.py, compute_v4_snug_icon_size.py, analyze_icon_padding.py, find_heart_lobes.py}`

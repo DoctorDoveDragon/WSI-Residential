@@ -5,7 +5,7 @@
 <title>Well Spring Intervention LLC — Circular Seal: Bold circles, large URL font</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body {
@@ -53,10 +53,10 @@
     display: block;
   }
 
-  /* URL text style — 132px (2x enlarged from 66px), walnut-brown */
+  /* URL text style — 132px, BOLD (Playfair Display 900/Black — naturally heavy serif) */
   .url-text {
-    font-family: 'Cormorant Garamond', 'Times New Roman', serif;
-    font-weight: 500;
+    font-family: 'Playfair Display', 'Times New Roman', serif;
+    font-weight: 900;
     font-size: 132px;
     letter-spacing: 28px;
     fill: #6b4d3f; /* deep walnut brown */
@@ -91,8 +91,8 @@
               fill="none" stroke="#6b4d3f" stroke-width="15" opacity="1.0" />
 
       <!-- LAYER 2: URL text on circle r=1100 (OUTSIDE the house)
-           Font 132px (2x enlarged), letter-spacing 28px -->
-      <text class="url-text" x="0" y="0">
+           Font 132px, BOLD (Playfair Display 900/Black) -->
+      <text class="url-text" x="0" y="0" font-weight="900">
         <textPath href="#url-circle" startOffset="25%" text-anchor="middle">
           www.wellspringintervention.com
         </textPath>
@@ -129,7 +129,9 @@
     <!-- ====================================================== -->
     <!-- TOP SVG: HOUSE OUTLINE (5 lines) — contains the logo    -->
     <!-- Walls x=761/1839, floor y=1915, wall tops y=685         -->
-    <!-- Roof peak (1300, 485), rise 200px, angle ~20.4°         -->
+    <!-- Roof peak (1300, 645), rise 40px (REDUCED from 200px),  -->
+    <!-- angle ~4.2°. Peak is 67px above heart lobes (y=712) —   -->
+    <!-- "slightly above the lobes of the heart."                -->
     <!-- 12.5px stroke, full opacity                             -->
     <!-- ====================================================== -->
     <svg class="seal-svg" viewBox="0 0 2600 2600" xmlns="http://www.w3.org/2000/svg">
@@ -140,9 +142,9 @@
         <!-- Line 2: LEFT WALL -->
         <line x1="761" y1="1915" x2="761" y2="685" />
         <!-- Line 3: LEFT ROOF -->
-        <line x1="761" y1="685" x2="1300" y2="485" />
+        <line x1="761" y1="685" x2="1300" y2="645" />
         <!-- Line 4: RIGHT ROOF -->
-        <line x1="1300" y1="485" x2="1839" y2="685" />
+        <line x1="1300" y1="645" x2="1839" y2="685" />
         <!-- Line 5: RIGHT WALL -->
         <line x1="1839" y1="685" x2="1839" y2="1915" />
       </g>
