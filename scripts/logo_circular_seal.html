@@ -125,26 +125,33 @@
     </div>
 
     <!-- ====================================================== -->
-    <!-- TOP SVG: HOUSE OUTLINE (5 lines) — v4 geometry          -->
-    <!-- Walls x=380/1520, floor y=1550, wall tops y=650         -->
-    <!-- Roof peak (950, 350), rise 300px, angle ~27.8°          -->
-    <!-- Drawn ON TOP of icon. Roof lines cross canopy edges —   -->
-    <!-- reads as house "sheltering" the tree (home metaphor).   -->
-    <!-- 12.5px stroke, full opacity                             -->
+    <!-- TOP SVG: HOUSE OUTLINE (5 lines) — ENLARGED to contain  -->
+    <!-- the logo with canopy in the body (roof above canopy).    -->
+    <!--                                                          -->
+    <!-- Geometry (25px margin around logo content):              -->
+    <!--   Walls: x=411, x=1489 (width 1078)                     -->
+    <!--   Floor: y=1565                                          -->
+    <!--   Wall tops: y=335 (above canopy top 360 → canopy in body) -->
+    <!--   Roof peak: (950, 135), rise 200px, angle ~20.4°       -->
+    <!--   All vertices inside inner hairline r=860 (42px clear)  -->
+    <!--                                                          -->
+    <!-- The roof sits ABOVE the tree canopy — no overlap. The    -->
+    <!-- house fully contains the logo with a small margin.       -->
+    <!-- 12.5px stroke, full opacity                              -->
     <!-- ====================================================== -->
     <svg class="seal-svg" viewBox="0 0 1900 1900" xmlns="http://www.w3.org/2000/svg">
       <g stroke="#6b4d3f" stroke-width="12.5" opacity="1.0" fill="none"
          stroke-linecap="round" stroke-linejoin="round">
         <!-- Line 1: FLOOR -->
-        <line x1="380" y1="1550" x2="1520" y2="1550" />
+        <line x1="411" y1="1565" x2="1489" y2="1565" />
         <!-- Line 2: LEFT WALL -->
-        <line x1="380" y1="1550" x2="380" y2="650" />
+        <line x1="411" y1="1565" x2="411" y2="335" />
         <!-- Line 3: LEFT ROOF -->
-        <line x1="380" y1="650" x2="950" y2="350" />
+        <line x1="411" y1="335" x2="950" y2="135" />
         <!-- Line 4: RIGHT ROOF -->
-        <line x1="950" y1="350" x2="1520" y2="650" />
+        <line x1="950" y1="135" x2="1489" y2="335" />
         <!-- Line 5: RIGHT WALL -->
-        <line x1="1520" y1="650" x2="1520" y2="1550" />
+        <line x1="1489" y1="335" x2="1489" y2="1565" />
       </g>
     </svg>
 

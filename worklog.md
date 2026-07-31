@@ -1794,3 +1794,46 @@ Stage Summary:
 - The SOP manual remains at v2.14 (47 pages, 858 KB).
 - Persistent scripts: `/home/z/my-project/scripts/{logo_circular_seal.html, logo_circular_seal_v4_url_outside_house_oversized.html, logo_circular_seal_v5_snug_house.html, crop_icon_content.py, compute_v4_snug_icon_size.py, analyze_icon_padding.py}`
 - New asset: `/home/z/my-project/download/Well_Spring_Logo_Icon_Cropped.png` (791×902, cropped to content bbox with 15px margin)
+
+---
+Task ID: SOP-35
+Agent: main (Super Z)
+Task: User observed "house is slightly smaller than the logo image" on the SOP-34 seal. In SOP-34, the logo was enlarged to 1070×1220px to fill the v4 house, but the canopy extended into the roof zone and the roof lines crossed the canopy (the "shelter" overlap). The user wants the house to be slightly BIGGER than the logo so the logo fits entirely inside.
+
+Work Log:
+- Root cause: The v4 house body (1140×900, walls x=380/1520, floor y=1550, wall tops y=650, roof peak y=350) was too SHORT for the enlarged logo (content 1029×1180, content top y=360). The canopy top (y=360) was above the wall tops (y=650), placing the canopy in the roof zone where the roof lines naturally converge and cross it.
+- **Solution — enlarge the house to contain the logo**: Kept the logo at its current enlarged size (1070×1220 display, content 1029×1180 spanning (436,360) to (1464,1540)) and enlarged the house so the canopy sits in the BODY (below the wall tops), with the roof cleanly above.
+- **New house geometry** (25px margin around logo content):
+  - Walls: x=411, x=1489 (width 1078) — 25px outside content left/right
+  - Floor: y=1565 — 25px below content bottom (1540)
+  - Wall tops: y=335 — 25px ABOVE content top (360), so canopy is in the body
+  - Roof peak: (950, 135) — 200px rise from wall tops
+  - Roof angle: atan(200/539) ≈ 20.4° — classic house roof pitch
+  - Body: 1078w × 1230h (taller than wide, matching the logo's aspect)
+- **Geometry verification** (Python):
+  - All 5 vertices inside inner hairline circle (r=860): wall corners at dist=818 (42px clearance), roof peak at dist=815 (45px clearance). ✓
+  - Canopy top (y=360) is 25px below wall tops (y=335) → canopy fully in body. ✓
+  - Roof lines at canopy top (y=360): roof x=943/957 (near peak), canopy x=436/1464 → roof is far above canopy, no overlap. ✓
+- **Rendering**: Two-SVG-layer technique preserved (bottom SVG: URL ring + ornaments beneath icon; top SVG: house pentagon above icon). Logo at 1070×1220 (cropped icon, 96% content fill). House drawn ON TOP with 12.5px stroke, full opacity.
+- Rendered via html2poster.js → `Well_Spring_Logo_Circular_Seal.pdf` (846 KB, 1900×1900px) → PNG at 200 DPI → `Well_Spring_Logo_Circular_Seal.png` (3959×3959px).
+- **VLM verification** confirmed all requirements:
+  - **House fully contains logo** ✓: "The entire composition—including the red heart-shaped tree canopy, the green leaves, the family figures, the tree trunk, and the wellspring—is located inside the house outline. No part of the logo extends beyond the walls, floor, or roof lines."
+  - **Roof above canopy (no overlap)** ✓: "The roof sits ABOVE the tree canopy. The two diagonal roof lines form a peak that is visibly higher than the top curve of the red heart-shaped canopy. The canopy is fully positioned below the roof lines without any intersection."
+  - **Snug with moderate margins** ✓: "The house outline is sized to be slightly larger than the logo elements. There is a small, consistent margin of empty space between the logo and the inner walls of the house, but it is not excessively loose."
+  - **All 5 house lines visible** ✓
+  - **URL outside house** ✓: "URL text is located in the outermost ring, curving along the top edge outside of the house outline."
+  - **Overall** ✓: "The house properly frames and contains the logo. It acts as a distinct border that neatly encapsulates the family/tree/well imagery, creating a cohesive home metaphor."
+- All other elements preserved (URL text 66px, two hairline circles, terracotta accent dots, bottom ornament, 12.5px bold house stroke, cropped icon at 1070×1220).
+- The SOP manual (v2.14) is unchanged.
+
+Stage Summary:
+- Refined circular seal delivered at `/home/z/my-project/download/Well_Spring_Logo_Circular_Seal.png` (3959×3959px) + `.pdf` (846 KB, 1900×1900px). The house has been ENLARGED to fully contain the logo:
+  - **House body**: 1078×1230 (walls x=411/1489, floor y=1565, wall tops y=335) — taller than wide, matching the logo's aspect ratio.
+  - **Roof**: peak at (950, 135), 200px rise, 20.4° pitch — sits cleanly ABOVE the tree canopy with no overlap.
+  - **Logo**: cropped icon at 1070×1220 (content 1029×1180), centered, fills the house body with 25px margins on all sides.
+  - **Containment**: The entire logo (canopy, family, wellspring) is INSIDE the house. No part extends beyond the walls, floor, or roof.
+- VLM-verified: house fully contains logo, roof above canopy (no overlap), snug with moderate margins, all 5 lines visible, URL outermost.
+- This resolves the aspect-ratio mismatch from SOP-34 by enlarging the house body to match the logo's taller-than-wide aspect, rather than forcing the logo into the v4 house's wider-than-tall body.
+- The SOP manual remains at v2.14 (47 pages, 858 KB).
+- Persistent scripts: `/home/z/my-project/scripts/{logo_circular_seal.html, logo_circular_seal_v4_url_outside_house_oversized.html, logo_circular_seal_v5_snug_house.html, crop_icon_content.py, compute_v4_snug_icon_size.py, analyze_icon_padding.py}`
+- New asset: `/home/z/my-project/download/Well_Spring_Logo_Icon_Cropped.png` (791×902, cropped to content bbox with 15px margin)
