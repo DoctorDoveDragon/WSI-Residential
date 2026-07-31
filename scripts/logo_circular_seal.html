@@ -14,15 +14,16 @@
   }
   .poster {
     width: 2600px;
-    height: 2600px;
+    height: 2800px; /* +200px at bottom for URL below circle */
     background: #faeddc; /* warm cream parchment */
     position: relative;
     overflow: hidden;
   }
 
   /* SVG layers — two of them:
-     - seal-svg-bottom: URL ring + hairlines + ornaments (BENEATH icon)
-     - seal-svg-top:    house pentagon (ON TOP of icon) */
+     - seal-svg-bottom: company-name ring + hairlines + ornaments + Residential (BENEATH icon)
+     - seal-svg-top:    house pentagon (ON TOP of icon)
+     Both cover the 2600×2600 seal area (top-aligned in the 2600×2800 canvas). */
   .seal-svg {
     position: absolute;
     top: 0; left: 0;
@@ -39,7 +40,7 @@
      House contains logo with ~30px margins, roof above canopy. */
   .icon-wrap {
     position: absolute;
-    top: 50%; left: 50%;
+    top: 1300px; left: 1300px; /* absolute center on seal center, since canvas is now 2600×2800 */
     transform: translate(-50%, -50%);
     width: 1305px;
     height: 1488px;
@@ -54,7 +55,7 @@
     display: block;
   }
 
-  /* URL text style — 132px, BOLD (Playfair Display 900/Black — naturally heavy serif) */
+  /* Company name text style — 132px, BOLD (Playfair Display 900/Black — naturally heavy serif) */
   .url-text {
     font-family: 'Playfair Display', 'Times New Roman', serif;
     font-weight: 900;
@@ -71,6 +72,32 @@
     letter-spacing: 22px;
     fill: #6b4d3f; /* deep walnut brown */
   }
+
+  /* Website URL below the circle — 90px, Playfair Display 700 (lighter than company name on top) */
+  .bottom-url {
+    position: absolute;
+    top: 2617px; /* cap top y (baseline 2680 - cap height 63) */
+    left: 0;
+    width: 2600px;
+    height: 100px;
+    text-align: center;
+    font-family: 'Playfair Display', 'Times New Roman', serif;
+    font-weight: 700;
+    font-size: 90px;
+    letter-spacing: 10px;
+    color: #6b4d3f; /* deep walnut brown */
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  /* Flanking ornament for bottom URL (small rules + endpoint dots) */
+  .bottom-ornament-svg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 2600px;
+    height: 2800px;
+    pointer-events: none;
+  }
 </style>
 </head>
 <body>
@@ -86,10 +113,11 @@
     <!-- ====================================================== -->
     <svg class="seal-svg" viewBox="0 0 2600 2600" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <!-- URL textPath circle: center (1300,1300), radius 1100.
+        <!-- Company name textPath circle: center (1300,1300), radius 1100.
              Starts at 9 o'clock (200,1300), goes CLOCKWISE.
              startOffset 25% = top (12 o'clock) for centered text.
-             Text spans ~43.5% of circle (9:23 to 2:37), clears accent dots at 9:00/3:00. -->
+             Text 'Well Spring Intervention LLC' spans ~40.8% of circle (9:33 to 2:27),
+             clears accent dots at 9:00/3:00. -->
         <path id="url-circle"
               d="M 200,1300 a 1100,1100 0 1,1 2200,0 a 1100,1100 0 1,1 -2200,0"
               fill="none" />
@@ -110,11 +138,12 @@
       <circle cx="1300" cy="1300" r="1225"
               fill="none" stroke="#6b4d3f" stroke-width="15" opacity="1.0" />
 
-      <!-- LAYER 2: URL text on circle r=1100 (OUTSIDE the house)
+      <!-- LAYER 2: COMPANY NAME on circle r=1100 (OUTSIDE the house)
+           Text: 'Well Spring Intervention LLC' (replaces URL, which moved below circle)
            Font 132px, BOLD (Playfair Display 900/Black) -->
       <text class="url-text" x="0" y="0" font-weight="900">
         <textPath href="#url-circle" startOffset="25%" text-anchor="middle">
-          www.wellspringintervention.com
+          Well Spring Intervention LLC
         </textPath>
       </text>
 
@@ -182,6 +211,26 @@
         <!-- Line 6: CEILING (connects the two top corner vertices) -->
         <line x1="642" y1="550" x2="1958" y2="550" />
       </g>
+    </svg>
+
+    <!-- ====================================================== -->
+    <!-- BOTTOM URL — website address below the circle           -->
+    <!-- Outside the outer hairline (r=1225), centered at bottom -->
+    <!-- Canvas 2600×2800, outer circle bottom y=2525, URL at y=2680 -->
+    <!-- ====================================================== -->
+    <div class="bottom-url">www.wellspringintervention.com</div>
+
+    <!-- Flanking ornament for bottom URL: two short rules + endpoint dots -->
+    <svg class="bottom-ornament-svg" viewBox="0 0 2600 2800" xmlns="http://www.w3.org/2000/svg">
+      <!-- Left flanking rule (vertical center of URL text at y=2648) -->
+      <line x1="200" y1="2648" x2="400" y2="2648"
+            stroke="#6b4d3f" stroke-width="4" opacity="0.5" />
+      <circle cx="200" cy="2648" r="8" fill="#ab5125" opacity="0.7" />
+
+      <!-- Right flanking rule -->
+      <line x1="2200" y1="2648" x2="2400" y2="2648"
+            stroke="#6b4d3f" stroke-width="4" opacity="0.5" />
+      <circle cx="2400" cy="2648" r="8" fill="#ab5125" opacity="0.7" />
     </svg>
 
   </div>

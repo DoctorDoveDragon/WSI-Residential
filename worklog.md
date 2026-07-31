@@ -1998,3 +1998,49 @@ Stage Summary:
 - VLM-verified: peak matches wall corners, ceiling line present, "Residential" upright and centered at bottom, house contains logo, roof above heart, URL bold and readable, overall balanced.
 - The SOP manual remains at v2.14 (47 pages, 858 KB).
 - Persistent scripts: `/home/z/my-project/scripts/{logo_circular_seal.html, compute_v7_peak_residential.py, compute_v6_proportions.py, find_heart_lobes.py, crop_icon_content.py, compute_v4_snug_icon_size.py, analyze_icon_padding.py}`
+
+---
+Task ID: SOP-40
+Agent: main (Super Z)
+Task: User requested two changes to the circular seal: (1) "change the website text to the company name 'Well Spring Intervention LLC'" — replace the URL on the top arc with the company name, and (2) "put the website under the circle" — move the website URL to below the circle, outside it.
+
+Work Log:
+- **Geometry computation** (`/home/z/my-project/scripts/compute_v8_company_name.py`): Verified both changes.
+- **Canvas enlarged** from 2600×2600 to **2600×2800** (+200px at bottom) to accommodate the website URL below the outer circle. The seal itself (center at (1300,1300), outer hairline r=1225, bottom y=2525) stays unchanged — only the canvas grew downward, leaving 275px of new space below the circle for the URL.
+- **Change 1 — Company name on top arc**: Replaced textPath content from "www.wellspringintervention.com" (30 chars) to "Well Spring Intervention LLC" (28 chars). Same r=1100 circle, same 132px Playfair Display 900 bold, same 28px letter-spacing, same startOffset=25% (centered at 12:00). Text spans ~40.8% of circle (~147°, from 9:33 to 2:27), still clears accent dots at 9:00/3:00. Slightly shorter than the URL was, so it fits even more comfortably.
+- **Change 2 — Website URL below the circle**: Added new `<div class="bottom-url">` element with text "www.wellspringintervention.com" positioned absolutely below the outer circle:
+  - Font: 90px Playfair Display **700** (lighter weight than the 900 on top — visually distinguishes the secondary URL from the primary company name)
+  - Letter-spacing: 10px (tighter than 28px on top)
+  - Color: walnut-brown #6b4d3f (same as company name)
+  - Position: centered horizontally at x=1300, cap-top y=2617, baseline y=2680
+  - 92px below outer circle bottom (y=2525) ✓
+  - 97px above canvas bottom (y=2800) ✓
+  - Text width ~1785px, margins ~407px from canvas edges ✓
+- **Flanking ornament for bottom URL**: Added small decorative rules + endpoint dots to balance the composition:
+  - Left rule: x=200 to x=400 at y=2648 (vertical center of text), 4px stroke walnut-brown opacity 0.5
+  - Right rule: x=2200 to x=2400 at y=2648, same style
+  - Endpoint terracotta dots at (200, 2648) and (2400, 2648), r=8, opacity 0.7
+- **HTML structure changes**: 
+  - .poster height: 2600 → 2800
+  - .seal-svg kept at 2600×2600 (top-aligned, covers seal area only)
+  - .icon-wrap changed from top:50%/left:50% to absolute top:1300/left:1300 (so icon stays centered on (1300,1300) matching seal SVGs, since canvas is no longer square)
+  - Added new .bottom-url div + .bottom-ornament-svg (full 2600×2800) for the URL and flanking ornament
+- All other elements preserved from SOP-39: bold 15px circular hairlines (r=1225/1040) at full opacity, "Residential" text 110px on r=950 inside inner hairline, accent dots (r=16) at 9:00/3:00, bottom ornament at 6:00 (r=1100) inside the circle, cropped logo at 1305×1488 centered, house with 6 lines (walls x=642/1958, floor y=2050, wall tops y=550, roof peak (1300, 302), ceiling line at y=550, 15px stroke).
+- **Rendering**: Updated `logo_circular_seal.html` with both changes → html2poster.js at --width 2600 → PDF (866 KB, 2600×2800px) → pdf2image at 150 DPI → PNG (4063×4375, 2.98 MB).
+- **VLM verification** confirmed all 7 requirements:
+  - **Top arc text** ✓: "the text 'Well Spring Intervention LLC' appears on the top arc between the two bold circular lines. It is in a serif font, clearly readable, and follows the curve of the circle."
+  - **Bottom URL text** ✓: "the website URL 'www.wellspringintervention.com' is visible at the very bottom of the image. It is readable, horizontal/straight (not curved), and centered."
+  - **URL position** ✓: "the website URL is positioned below the outer circle border. There is clear space between the bottom of the outer circle and the URL text; it is definitely outside the seal."
+  - **'Residential' text** ✓: "the word 'Residential' is visible inside the inner circle at the bottom. It is curved to follow the inner circle's path, upright (readable), and centered at the 6 o'clock position."
+  - **House structure** ✓: "the house outline contains all the requested lines: a floor line, two vertical wall lines, two roof slopes meeting at a peak, and a horizontal ceiling line connecting the top corners of the walls. The roof peak is raised above the ceiling line, forming a proper peaked roof shape."
+  - **House contains logo** ✓: "the house outline fully contains the central logo elements..."
+  - **Overall** ✓: "The composition is balanced. The company name anchors the top of the seal, while the URL provides a solid base at the bottom. There are no visual overlaps or imbalances. The design looks clean and professional."
+- The SOP manual (v2.14) is unchanged.
+
+Stage Summary:
+- Refined circular seal delivered at `/home/z/my-project/download/Well_Spring_Logo_Circular_Seal.png` (2.98 MB, 4063×4375px) + `.pdf` (866 KB, 2600×2800px). Two changes per user request:
+  - **Company name on top arc**: Top arc text changed from "www.wellspringintervention.com" to "Well Spring Intervention LLC". Same 132px Playfair Display 900 bold, same r=1100 circle, same letter-spacing. The company name is now the prominent branding element on top.
+  - **Website URL below the circle**: "www.wellspringintervention.com" moved to BELOW the outer circle, outside the seal. 90px Playfair Display 700 (lighter weight, secondary info), centered horizontally, with small flanking ornament (rules + endpoint dots) for visual balance. Canvas enlarged from 2600×2600 to 2600×2800 to accommodate the new text.
+- VLM-verified: company name on top arc, URL below circle (outside seal), "Residential" still inside at 6:00, house structure intact with 6 lines, logo contained, overall balanced.
+- The SOP manual remains at v2.14 (47 pages, 858 KB).
+- Persistent scripts: `/home/z/my-project/scripts/{logo_circular_seal.html, compute_v8_company_name.py, compute_v7_peak_residential.py, compute_v6_proportions.py, find_heart_lobes.py, crop_icon_content.py, compute_v4_snug_icon_size.py, analyze_icon_padding.py}`
