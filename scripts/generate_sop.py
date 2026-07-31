@@ -98,7 +98,7 @@ AVAIL_W = PAGE_W - LEFT_M - RIGHT_M  # ~440pt
 # ────────────────────────────────────────────────────────────────────
 SELF_REF = (
     'Well Spring Intervention LLC SOP &amp; Operational Manual '
-    '(Doc. WSI-SOP-001, Rev. 2.14, Jul 2026 — RMDM-Compliant)'
+    '(Doc. WSI-SOP-001, Rev. 2.16, Jul 2026 — RMDM-Compliant)'
 )
 
 # ────────────────────────────────────────────────────────────────────
@@ -603,7 +603,7 @@ def form_usage_banner(form_number=None):
 # ────────────────────────────────────────────────────────────────────
 # Header / footer (drawn via onPage callback)
 # ────────────────────────────────────────────────────────────────────
-DOC_TITLE_SHORT = 'Standard Operating Procedure & Operational Manual — Rev. 2.14 (RMDM-Compliant)'
+DOC_TITLE_SHORT = 'Standard Operating Procedure & Operational Manual — Rev. 2.16 (RMDM-Compliant)'
 DOC_ORG = 'Well Spring Intervention LLC'
 
 def draw_header_footer(canvas, doc):
@@ -660,7 +660,7 @@ def build():
         title='Well Spring Intervention LLC — SOP & Operational Manual',
         author='Well Spring Intervention LLC',
         creator='Z.ai',
-        subject='Level 3 Supervised Residential Group Home — Standard Operating Procedures (Rev. 2.14 RMDM-Compliant)',
+        subject='Level 3 Supervised Residential Group Home — Standard Operating Procedures (Rev. 2.16 RMDM-Compliant)',
         keywords='SOP, residential group home, Level 3, NCAC 27G, Rule 108, Medicaid CCP 8C, IRIS, RMDM, HIPAA, 42 CFR Part 2, NCGS Ch. 66 Art. 40, E-SIGN, Electronic Signatures',
     )
 
@@ -675,7 +675,7 @@ def build():
     story.append(HRFlowable(width=80, color=ACCENT, thickness=2, spaceBefore=2, spaceAfter=14))
 
     story.append(Paragraph(
-        'This manual (Rev. 2.14, July 2026) is the official Standard Operating '
+        'This manual (Rev. 2.16, July 2026) is the official Standard Operating '
         'Procedures and Operational Reference for <b>Well Spring Intervention LLC</b>, '
         'a Level 3 Supervised Residential Group Home serving children and '
         'adolescents with mental health and behavioral challenges. It establishes '
@@ -691,7 +691,7 @@ def build():
     story.append(Paragraph('<b>Service Type.</b> Level 3 Supervised Residential Group Home.', s_body))
     story.append(Paragraph('<b>Effective Date.</b> July 2026.', s_body))
     story.append(Paragraph('<b>Document Owner.</b> Executive Director &amp; Qualified Professional (QP).', s_body))
-    story.append(Paragraph('<b>Document ID.</b> Doc. WSI-SOP-001, Rev. 2.14 (RMDM-Compliant). <i>Versioning is private — this information does not appear on the public-facing cover.</i>', s_body))
+    story.append(Paragraph('<b>Document ID.</b> Doc. WSI-SOP-001, Rev. 2.16 (RMDM-Compliant). <i>Versioning is private — this information does not appear on the public-facing cover.</i>', s_body))
     story.append(Spacer(1, 10))
 
     # Regulatory framework (moved from cover)
@@ -712,119 +712,40 @@ def build():
     ))
     story.append(Spacer(1, 10))
 
-    # Revision lineage summary (kept concise here; full Version History in Part 3)
-    story.append(Paragraph('<b>Revision Lineage.</b>', s_h2))
-    story.append(Paragraph(
-        'Rev. 2.0 (Jul 2026) reorganized the manual to full RMDM compliance. '
-        'Rev. 2.1 added §10.7 Electronic Signatures (NCGS Ch. 66 Art. 40 — NC '
-        'UETA) with safeguards and system-unavailability procedures. Rev. 2.2 '
-        'clarified the organizational reporting structure in §1.4, establishing '
-        'the QP as reporting to the Clinical Director and providing recurring '
-        'compliance reports via new §1.4(a). Rev. 2.3 refined QP responsibilities '
-        'to explicitly include scheduling of clinical services, assessments, and '
-        'PCPs in §1.4. Rev. 2.4 added §1.4(b) QP Credentialing Requirements per '
-        '10A NCAC 27G .0104. Rev. 2.5 corrected §1.4(b) to recognize BOTH acceptable '
-        'QP pathways: Pathway 1 (master\'s degree + recognized NC credential + 1 '
-        'year post-master\'s supervised MH/DD/SA experience) and Pathway 2 '
-        '(bachelor\'s degree + 2 years full-time pre- or post-bachelor\'s '
-        'supervised MH/DD/SA experience). Rev. 2.6 added a symbolic cover '
-        'illustration evoking empowerment, growth, freedom, health, wholeness, '
-        'and healing. Rev. 2.7 redesigns the cover as a full-bleed brand illustration '
-        'suitable for reuse across company sites and publications, and relocates '
-        'the descriptive cover content to this About This Manual page. Rev. 2.8 '
-        'removes all versioning information (Doc ID, Revision number, RMDM-Compliance '
-        'designation, Owner) from the public-facing cover so the cover can serve as '
-        'a clean brand asset; versioning information remains accessible internally via '
-        'this About This Manual page, the body page headers, the Version History table '
-        'in Part 3, Form 6, and the PDF metadata. Rev. 2.9 refreshes the cover artwork '
-        'with lush green leaves and an explicit well-spring in the foreground to '
-        'complete the symbolic narrative of wellspring, growth, health, and flourishing; '
-        'adds Protocol 22 (Daily Workflow Schedules for All Personnel) covering QP, AP, '
-        'DCP, House Manager, Awake Overnight, RN, and Billing Coordinator shift routines; '
-        'and converts all nine forms in Part 3 to interactive AcroForm fillable PDF '
-        'fields with a Form Properties banner declaring each form printable, copyable, '
-        'sharable, editable, and fillable. Rev. 2.10 regenerates the cover illustration '
-        'via an in-place image edit (rather than a fresh generation) so the original '
-        'tree-human-sunrise composition is preserved exactly, with the foliage recolored '
-        'to fresh vivid green and a fountain-like well-spring added in the immediate '
-        'foreground before the tree — completing the wellspring concept the user '
-        'specified. Rev. 2.11 iterates on that cover edit: the source is now the original '
-        'Rev. 2.8 cover (the user\'s preferred reference), the wellspring is now a NARROW '
-        'vertical jet of water bubbling up from a small stone-rimmed opening in the '
-        'foreground directly in front of the tree — explicitly NARROWER than the tree '
-        'itself, evoking the literal "well spring" of the company name rather than a wide '
-        'pool. Rev. 2.12 refines the wellspring orifice: the jagged stone-rimmed opening '
-        'is replaced with a smooth sculpted HEART-SHAPED STONE (two rounded lobes at the '
-        'top meeting at a gentle point at the bottom, in a soft warm earth-toned color '
-        'matching the surrounding palette) from which the water now emanates — symbolizing '
-        'the love, compassion, and trauma-informed care at the heart of the program — and '
-        'the vertical water jet is made TALLER, reaching higher into the air before '
-        'falling back, while remaining NARROWER than the tree. Rev. 2.13 refines the '
-        'wellspring further per the user\'s feedback that "the fountain is too tall on '
-        'this one" and "the pool is still there as well": the vertical water jet is '
-        'significantly SHORTENED to a modest, gentle natural spring (roughly one-quarter '
-        'to one-third the height of the heart-shaped stone itself, no longer a tall '
-        'fountain plume) bubbling up just above the smooth sculpted heart-shaped stone, '
-        'and the pool of water at the base is REMOVED so the heart-shaped stone sits '
-        'directly on dry warm earthy terrain with no pooling or rippling water around '
-        'it. The smooth heart-shaped stone, green leaves, tree-human silhouette, sunrise '
-        'sky, warm color palette, painterly style, and 1344×768 horizontal aspect ratio '
-        'are all preserved exactly. Rev. 2.14 restarts the wellspring design from the '
-        'original Rev. 2.10 cover image (recovered by extracting images from the immutable '
-        'v2.10 PDF via pdfimages) per the user\'s direction: "we are starting with 2.10 '
-        'again. the heart stone has a grey stone look. A small crack in the stone has the '
-        'spring rising about belly high to the tree in the back ground. there is no hole or '
-        'pool." The Rev. 2.10 wide circular stone basin, tall narrow vertical water jet, '
-        'and circular pool of water at the base are all REMOVED and replaced with a single '
-        'GREY heart-shaped stone (natural cool grey granite/river-stone color, NOT pink or '
-        'terracotta) sitting on dry earthy ground in the foreground before the tree. A '
-        'small natural CRACK runs down the surface of the grey heart-shaped stone, and a '
-        'clear water spring rises VERTICALLY from the crack to about BELLY-HIGH of the '
-        'tree in the background (roughly the lower third of the tree trunk, just below where '
-        'the branches begin)&nbsp;— significantly TALLER than the heart-shaped stone itself '
-        'but shorter than the tree\'s full height. There is NO hole on the ground (the water '
-        'comes only from the crack in the stone, not from any opening in the earth) and NO '
-        'pool at the base (the stone sits on dry warm earthy terrain with no pooling or '
-        'rippling water around it). The fresh vivid green leaves, stylized tree-human '
-        'silhouette, horizon line, sunrise sky, warm color palette, painterly style, and '
-        '1344×768 horizontal aspect ratio are all preserved exactly. A complete revision '
-        'history appears in Part 3.',
-        s_body
-    ))
-    story.append(Spacer(1, 10))
-
     # Brand visual note
     story.append(Paragraph('<b>Cover Artwork.</b>', s_h2))
     story.append(Paragraph(
-        'The cover illustration is the official brand visual of Well Spring '
-        'Intervention LLC. It depicts a stylized tree-human figure with fresh '
-        'vivid green leaves flourishing toward a warm sunrise over calm water, '
-        'with a NARROW well-spring of clear water bubbling up vertically from '
-        'a smooth sculpted HEART-SHAPED STONE in the immediate foreground '
-        'directly before the tree — explicitly narrower than the tree itself, '
-        'evoking the literal "well spring" of the company name. The '
-        'heart-shaped stone (two rounded lobes meeting at a gentle point) '
-        'symbolizes the love, compassion, and trauma-informed care at the '
-        'heart of the program; the water that emanates from it embodies '
-        'renewal; the green leaves embody growth and flourishing; and the '
-        'sunrise promises a new day. Rev. 2.14 produced this illustration '
-        'through a major in-place image edit on the recovered Rev. 2.10 cover '
-        'artwork: the entire Rev. 2.10 wide circular stone basin, tall narrow '
-        'vertical water jet, and circular pool of water at the base were REMOVED '
-        'and replaced with a single GREY heart-shaped stone (natural cool grey '
-        'granite/river-stone color) sitting on dry earthy ground in the foreground '
-        'before the tree; a small natural CRACK runs down the surface of the grey '
-        'heart-shaped stone, and a clear water spring rises VERTICALLY from the '
-        'crack to about BELLY-HIGH of the tree in the background (roughly the lower '
-        'third of the tree trunk, just below where the branches begin). There is '
-        'no hole on the ground and no pool at the base&nbsp;— the heart-shaped stone '
-        'sits directly on dry warm earthy terrain, and the water that rises from '
-        'the crack falls back down naturally without accumulating. The '
-        'image symbolizes the program\'s commitment to empowerment, growth, '
-        'freedom, health, wholeness, and healing, and is approved for reuse '
-        'across company websites, publications, and collateral materials. A '
-        'high-resolution copy is available alongside this manual for that '
-        'purpose.',
+        'The cover features the official circular brand seal of Well Spring '
+        'Intervention LLC as its centerpiece. The seal is composed of a '
+        'pentagonal house outline (with a floor, two vertical walls, two roof '
+        'slopes meeting at a raised peak, and a horizontal ceiling line '
+        'connecting the two top corner vertices) drawn in deep walnut-brown '
+        'on a warm cream parchment background. Inside the house outline sits '
+        'the company\'s multi-color logo imagery: a red heart-shaped tree '
+        'canopy with green leaves above a brown tree trunk, family figures '
+        '(two adults and one child) standing before the tree, and a blue '
+        'wellspring fountain at the base. The full company name '
+        '"Well Spring Intervention LLC" curves along the top arc between '
+        'two bold concentric circular hairlines; the descriptor '
+        '"Residential" curves along the bottom arc inside the inner '
+        'hairline; and small terracotta accent dots and a closure ornament '
+        'frame the composition. The house roof peak is set at the same '
+        'radial distance from the seal center as the wall corners, so all '
+        'three top vertices touch the same imaginary circle. The cover '
+        'layout is a clean three-band composition: a compact top band '
+        'carrying the "SOP / OPERATIONAL MANUAL" badge and the values '
+        'tagline (Empowerment · Growth · Freedom · Health · Wholeness · '
+        'Healing); a large middle band in which the cream seal square pops '
+        'against the dark brown background as the clear focal point; and a '
+        'bottom band carrying the document title "SOP & Operational '
+        'Manual", the subtitle "Standard Operating Procedures, Protocols '
+        '& Forms", and the website URL. The seal symbolizes the program\'s '
+        'commitment to empowerment, growth, freedom, health, wholeness, and '
+        'healing, and is approved for reuse across company websites, '
+        'publications, and collateral materials. High-resolution copies of '
+        'the seal (in both a square variant for avatar/profile-pic use and '
+        'a variant with the website URL below the circle) are available '
+        'alongside this manual for that purpose.',
         s_body
     ))
     story.append(PageBreak())
@@ -834,87 +755,17 @@ def build():
     story.append(Paragraph('Table of Contents', s_toc_title))
     story.append(HRFlowable(width=80, color=ACCENT, thickness=2, spaceBefore=2, spaceAfter=12))
     story.append(Paragraph(
-        'This manual (Rev. 2.14, July 2026) is organized into three parts and is fully '
+        'This manual (Rev. 2.16, July 2026) is organized into three parts and is fully '
         'compliant with the NCDHHS Records Management and Documentation Manual (RMDM, '
         'Effective July 8, 2025). Part 1 establishes foundational policies and compliance '
-        'obligations across eleven sections, including new chapters on privacy/confidentiality '
-        'and an expanded Medicaid documentation section. Rev. 2.1 added §10.7 Electronic '
-        'Signatures (referencing NCGS Chapter 66, Article 40 — NC UETA) with explicit '
-        'safeguards and system unavailability procedures. Rev. 2.2 clarified the '
-        'organizational reporting structure in §1.4, establishing the QP as reporting to '
-        'the Clinical Director, supervising staff per the Clinical Director\'s direction, '
-        'and providing recurring compliance reports via new §1.4(a). Rev. 2.3 refined the '
-        'QP responsibilities to explicitly include scheduling of clinical services, '
-        'assessments, and PCPs in §1.4. Rev. 2.4 added §1.4(b) QP Credentialing '
-        'Requirements per 10A NCAC 27G .0104. Rev. 2.5 corrects the §1.4(b) QP '
-        'credentialing framework to recognize BOTH acceptable pathways: Pathway 1 '
-        '(master\'s degree + recognized NC credential + 1 year post-master\'s supervised '
-        'MH/DD/SA experience) and Pathway 2 (bachelor\'s degree + 2 years full-time '
-        'pre- or post-bachelor\'s supervised MH/DD/SA experience); §2.2 QP bullet updated '
-        'to match. Rev. 2.6 added a symbolic cover illustration evoking empowerment, '
-        'growth, freedom, health, wholeness, and healing — visually framing the '
-        'trauma-informed, restorative mission of the program. Rev. 2.7 redesigns '
-        'the cover as a full-bleed brand illustration suitable for reuse across '
-        'company sites and publications, with descriptive cover content relocated '
-        'to the About This Manual page (p. 2). Rev. 2.8 removes all versioning '
-        'information from the public-facing cover (Doc ID, Revision number, '
-        'RMDM-Compliance designation, Owner); versioning remains private and is '
-        'accessible only via internal surfaces (PDF metadata, About This Manual '
-        'page, body page headers, Version History table, Form 6). Rev. 2.9 refreshes the '
-        'cover artwork with lush green leaves and an explicit well-spring in the foreground '
-        'to complete the symbolic narrative of wellspring, growth, health, and flourishing; '
-        'adds Protocol 22 (Daily Workflow Schedules for All Personnel) covering QP, AP, DCP, '
-        'House Manager, Awake Overnight, RN, and Billing Coordinator shift routines; and '
-        'converts all nine forms in Part 3 to interactive AcroForm fillable PDF fields with '
-        'a Form Properties banner declaring each form printable, copyable, sharable, '
-        'editable, and fillable. Standalone fillable copies of all forms are also available '
-        'in the /download/forms/ directory. Rev. 2.10 regenerates the cover illustration via '
-        'an in-place image edit so the original tree-human-sunrise composition is preserved '
-        'exactly, with the foliage recolored to fresh vivid green and a fountain-like '
-        'well-spring added in the immediate foreground before the tree — completing the '
-        'wellspring concept the user specified. Rev. 2.11 iterates on that cover edit: the '
-        'source is now the original Rev. 2.8 cover (the user\'s preferred reference), and the '
-        'wellspring is now a NARROW vertical jet of water bubbling up from a small '
-        'stone-rimmed opening in the foreground directly in front of the tree — explicitly '
-        'NARROWER than the tree itself, evoking the literal "well spring" of the company '
-        'name rather than a wide pool. Rev. 2.12 refines the wellspring orifice: the jagged '
-        'stone-rimmed opening is replaced with a smooth sculpted HEART-SHAPED STONE (two '
-        'rounded lobes at the top meeting at a gentle point at the bottom, in a soft warm '
-        'earth-toned color matching the surrounding palette) from which the water now '
-        'emanates — symbolizing the love, compassion, and trauma-informed care at the heart '
-        'of the program&nbsp;— and the vertical water jet is made TALLER, reaching higher into '
-        'the air before falling back, while remaining NARROWER than the tree. Rev. 2.13 '
-        'refines the wellspring further per the user\'s feedback that "the fountain is too '
-        'tall on this one" and "the pool is still there as well": the vertical water jet is '
-        'significantly SHORTENED to a modest, gentle natural spring (roughly one-quarter to '
-        'one-third the height of the heart-shaped stone itself) bubbling up just above the '
-        'smooth sculpted heart-shaped stone, and the pool of water at the base is REMOVED so '
-        'the heart-shaped stone sits directly on dry warm earthy terrain with no pooling or '
-        'rippling water around it&nbsp;— preserving the smooth heart-shaped stone, green leaves, '
-        'tree-human silhouette, sunrise sky, warm color palette, painterly style, and 1344×768 '
-        'horizontal aspect ratio exactly. Rev. 2.14 restarts the wellspring design from '
-        'the original Rev. 2.10 cover image (recovered by extracting images from the '
-        'immutable v2.10 PDF via pdfimages) per the user\'s direction: "we are starting '
-        'with 2.10 again. the heart stone has a grey stone look. A small crack in the '
-        'stone has the spring rising about belly high to the tree in the back ground. '
-        'there is no hole or pool." The Rev. 2.10 wide circular stone basin, tall narrow '
-        'vertical water jet, and circular pool of water at the base are all REMOVED and '
-        'replaced with a single GREY heart-shaped stone (natural cool grey granite/river-'
-        'stone color, NOT pink or terracotta) sitting on dry earthy ground in the '
-        'foreground before the tree. A small natural CRACK runs down the surface of the '
-        'grey heart-shaped stone, and a clear water spring rises VERTICALLY from the crack '
-        'to about BELLY-HIGH of the tree in the background (roughly the lower third of the '
-        'tree trunk, just below where the branches begin)&nbsp;— significantly TALLER than '
-        'the heart-shaped stone itself but shorter than the tree\'s full height. There is '
-        'NO hole on the ground and NO pool at the base&nbsp;— the stone sits directly on dry '
-        'warm earthy terrain. The fresh vivid green leaves, stylized tree-human silhouette, '
-        'horizon line, sunrise sky, warm color palette, painterly style, and 1344×768 '
-        'horizontal aspect ratio are all preserved exactly. Part 2 details '
-        'twenty-two step-by-step workflows '
-        'that govern daily operations, including protocols for service orders/authorizations '
-        'and record management/disclosure accounting. Part 3 provides nine customized forms '
-        'and logs, including the Full Service Note Template, Comprehensive Clinical Record '
-        'Content Checklist, and Accounting of Disclosures Log.',
+        'obligations across eleven sections, including dedicated chapters on '
+        'privacy/confidentiality and an expanded Medicaid documentation section. '
+        'Part 2 details twenty-two step-by-step workflows that govern daily operations, '
+        'including protocols for service orders/authorizations and record '
+        'management/disclosure accounting. Part 3 provides nine customized forms '
+        'and logs, including the Full Service Note Template, Comprehensive Clinical '
+        'Record Content Checklist, and Accounting of Disclosures Log. A complete '
+        'revision history appears in the Version History table at the end of Part 3.',
         s_toc_intro
     ))
 
