@@ -2154,3 +2154,101 @@ Stage Summary:
 - Content added: §9.4 Two-Story & Multi-Level Facility Requirements (8 sub-subsections) with 14 cited web sources; Form 1 per-floor walk-through certification sub-table; Form 5 per-floor two-story safety check sub-table.
 - Source scripts modified: sop_content_v2.py (§9.4 insertion), sop_content_v2_part3.py (Form 1 + Form 5 addenda, Form 6 version bump, Version History v2.17 row), merge_sop.py (MANUAL_VERSION = '2.17').
 - All other body content (SOPs §1-§8, §10-§11, Protocol 22, §1.4(b) QP Credentialing Requirements, Forms 2-4, 6-9) is unchanged from Rev. 2.16.
+
+---
+Task ID: SOP-44
+Agent: main (Super Z)
+Task: Major license-category correction + full compliance upgrade to Level III Residential Treatment Facility (Staff-Secure for Children/Adolescents) under 10A NCAC 27G .2600. Replaces prior "Level 3 Supervised Residential Group Home" / 27G .5600 designation throughout the SOP. Brings the manual into compliance with the 7-phase NC Level III RTF Staff-Secure checklist provided by the user.
+
+Work Log:
+- AUDIT (prior turn): ran automated gap analysis of v2.17 SOP against the 7-phase checklist. Confirmed: license category was wrong throughout; §2.1 staffing ratio (1:4 day / 1:8 overnight) was non-compliant with the Level III Staff-Secure 2:4 rule; §3 admission physical exam timing was reversed (30 days after, not 90 days prior); accreditation (COA/TJC/CARF/CQL), LME Letter of Support (NCGS §122C-23.1), CON, zoning, infection-control program, staff-secure physical-plant measures, hurricane/power-outage disaster plan, 14-hour weekly activities program, Resident Rights section, CEU tracking, Leave & Time-Off policy, facility-based school determination, financial/org foundations (Articles of Incorporation, governing body, liability insurance), and Alliance Health named as the LME/MCO were all missing. User confirmed: license = Level III RTF Staff-Secure under 27G .2600.
+
+- §1 AGENCY OVERVIEW & GOVERNANCE (sop_content_v2.py):
+  * §1 ref_line updated to include 10A NCAC 27G .2600 and NCGS §122C-23.1 & §122C-51 et seq.
+  * §1.2 Licensing & Credentialing rewritten to: state the correct license category (Level III RTF Staff-Secure under 27G .2600); name DHSR MHLC as the licensing authority (not DSS); name Alliance Health as the LME/MCO (serving Cumberland, Durham, Johnston, Mecklenburg, Orange, Wake counties).
+  * NEW §1.2(a) Accreditation Prerequisite — COA/TJC/CARF/CQL per NCGS §122C-26 & 27G .0205; self-study, on-site survey, accreditation-maintenance calendar, adverse-finding reporting to DHSR MHLC (5 business days) and Alliance Health (10 business days).
+  * NEW §1.2(b) LME/MCO Letter of Support per NCGS §122C-23.1 — Alliance Health evaluates bed-need; Letter of Support valid ~12 months; retained in compliance binder.
+  * NEW §1.2(c) Certificate of Need (CON) Determination per NCGS Ch. 131E Art. 9 — written CON inquiry to DHHS; 4-9 month timeline if required; CON determination letter accompanies license application.
+  * NEW §1.2(d) Alliance Health Provider Network Application — Provider Application + Self-Assessment + Mission/Vision + license + accreditation + insurance + governing-body roster + org formation docs + policies + QP/QMHP credentialing; Alliance Health site review + Medical Director credentialing approval.
+  * §1.4 Organizational Structure updated to clarify that "QP" and "QMHP" (the 27G .2600 term) are used interchangeably; §1.4(b) credentialing pathways satisfy both definitions.
+  * NEW §1.7 Resident Rights & Dignity per NCGS §122C-51 through §122C-57 and 27G .0203 — 15 statutory youth rights; posted notice in English + Spanish 14-point font; grievance procedure (1-day ack, 5-day investigation, 15-day response, quarterly aggregate reporting).
+  * NEW §1.8 Organizational & Financial Foundations — Articles of Incorporation, Operating Agreement, Governing Body Roster, EIN/tax docs, Liability Insurance (general/professional/auto/workers-comp/cyber with $1M/$3M limits, Alliance Health and DHSR MHLC as additional insureds), Facility Lease/Deed, Financial Solvency Documentation.
+
+- §2 HUMAN RESOURCES & STAFFING (sop_content_v2.py):
+  * §2 ref_line updated: 27G .5600 → 27G .2600.
+  * §2.1 STAFFING RATIO CRITICAL FIX — replaced 1:4 day / 1:8 overnight with "minimum of two (2) staff members on duty and awake at all times for every one to four (1–4) children in residence" per 27G .2600; ratio table expanded to three census columns (1-4 / 5-8 / 9 youth) with scaling to 4 staff and 5 staff; explicit prohibition on single-staffing; on-call QP personally covers if no replacement.
+  * NEW §2.5(a) Continuing Education Units (CEUs) for licensed clinical staff — LCSW/LPC 40 hrs/2yr, LMFT 20 hrs/1yr, LCAS 40 hrs/2yr, RN 30 hrs/2yr (with ethics hours); CEU Tracking Log reviewed monthly by QP; 60-day pre-expiry performance-improvement plan; lapsed-license reporting to Clinical Director (1 day) and Alliance Health (5 days).
+  * NEW §2.6 Staff Leave & Time-Off Policy per 27G .0203(e) — 2 days off per 14-day pay period for 12-hr shift staff; PTO accrual 10/15/20 days/year by tenure; 8-hr protected rest periods; meal breaks with second-staff coverage to maintain 2:4 minimum; sick/bereavement/FMLA/religious-observance leave; 14-day advance schedule posting; 16-consecutive-hour max.
+
+- §3 ADMISSIONS (sop_content_v2.py):
+  * §3 ref_line updated: 27G .5604 → 27G .2600 & .5604.
+  * §3.1 license category updated to "Level III Staff-Secure setting".
+  * §6.1 Medical Care (the admission-exam paragraph is here): ADMISSION PHYSICAL EXAM CRITICAL FIX — replaced "within 30 days of admission" with "Per 10A NCAC 27G .2600, a complete medical (physical) examination must be conducted within 90 days PRIOR to admission"; QP and RN review the pre-admission exam report before move-in; pre-admission exam includes vision/hearing/immunization/TB/labs; 7-day post-admission contingency only if pre-admission exam is missing (does NOT replace the 90-day pre-admission requirement); annual exams thereafter.
+
+- §5 BEHAVIORAL MANAGEMENT (sop_content_v2.py):
+  * NEW §5.5 Activities Program — Minimum 14 Hours/Week Planned Group Activities per 27G .2600(c); 4 categories: physical (4 hrs/wk), creative expression (3 hrs/wk), socialization/life-skills (4 hrs/wk), community integration (3 hrs/wk); Weekly Activities Calendar posted 7 days in advance; Activities Log in daily shift note; weekly totals reported at Monday huddle; coordination with Protocol 22.
+
+- §6 HEALTH (sop_content_v2.py):
+  * NEW §6.5 Infection Control Program per CDC guidelines, 27G .0209, OSHA Bloodborne Pathogens (29 CFR 1910.1030) — written infection-control plan, cleaning/disinfection schedules, blood/body-fluid precautions with OSHA exposure-control plan, hand-hygiene protocols, outbreak response (2+ youth in 72 hrs), immunization compliance, PPE inventory, annual Bloodborne Pathogens training.
+
+- §7 EDUCATION (sop_content_v2.py):
+  * NEW §7.3 Facility-Based School Determination — clarifies that facility-based school is required for PRTFs (42 CFR 483.350-483.376) but NOT for Level III RTF Staff-Secure (27G .2600); this facility does not operate a facility-based school; youth attend community school per §7.1; documents the future PRTF pathway if the facility ever elects to pursue PRTF designation.
+
+- §9 FACILITY, SAFETY, ENVIRONMENT (sop_content_v2.py):
+  * §9.4(c) sprinkler reference: "Level 3 residential group homes" → "Level III residential treatment facilities".
+  * NEW §9.5 Staff-Secure Physical-Plant Measures — controlled-access entry with video-intercom; delayed-egress hardware per NFPA 101 §7.2.1.6.1 (15-sec delay); line-of-sight supervision; CCTV common-areas-only (never bedrooms/bathrooms); window restrictors; fenced perimeter; visitor management with photo-ID + authorized-visitor-list; contraband search protocol (same-gender staff, witness, private area, no clothing removal, no body-cavity searches).
+  * NEW §9.6 Zoning Compliance — written zoning-approval confirmation required at operation and any relocation; Fair Housing Act Amendments (42 U.S.C. §3604(f)) + NC Group Homes Act (NCGS §160D-906); 1,000-ft minimum separation between group homes; off-street parking minimums; conditional-use permit requirements; QP retains zoning approval + CUP in compliance binder.
+  * NEW §9.7 Disaster & Emergency Plan — fire, tornado, HURRICANE (NEW: Atlantic season Jun 1-Nov 30, NHC monitoring, Tropical Storm Warning/Hurricane Watch/Warning protocols, 7-day food/water/meds stock, host-facility evacuation, post-storm damage assessment), POWER OUTAGE (NEW: flashlights, battery-backup life-safety, FDA 4-hour food rule, 65°F/80°F indoor-temperature trigger for relocation, generator), system failure, lockdown (Run/Hide/Fight), Emergency Relocation Plan (primary + secondary host facility, locked-medication-box transport by RN/QP, youth ID packets, guardian notification within 1 hr, DHSR/LME-MCO notification within 24 hrs).
+
+- PART 2 — PROTOCOLS (sop_content_v2_part2.py):
+  * Protocol 19 (Emergency & Disaster Preparedness) expanded — added Hurricane bullet, Power Outage bullet, Emergency Relocation bullet; System Failure bullet clarified (heat >4hrs, water >8hrs, sewer, gas leak all trigger relocation).
+  * Staffing Ratio & Awake Overnight Protocols (in protocols section) — Ratios bullet updated: "1:4 day and evening. 1:8 overnight" → "2 staff minimum for 1-4 youth (Level III Staff-Secure, per 10A NCAC 27G .2600). Ratios scale with census: 4 staff for 5-8 youth; 5 staff for 9 youth. The 2:4 minimum applies 24/7 including overnight... Single-staffing is prohibited at all times." Awake Overnight bullet: "Two (2) awake staff on duty at all times for 1–4 youth".
+  * All .5600 references updated to .2600: protocol intro paragraph, RN delegation training, RN oversight, deviation policy, master schedule summary table.
+  * Master Schedule Summary table — AP "1:4 day/evening" → "2:4 staff minimum (Level III Staff-Secure)"; DCP Day "1:4 youth ratio" → "2:4 staff minimum"; DCP Evening "1:4 youth ratio" → "2:4 staff minimum"; DCP Awake Overnight "1:8 youth ratio" → "2:4 staff minimum (awake, no sleeping)".
+  * §(e) DCP Awake Overnight narrative: "1:8 line-of-sight supervision" → "2:4 Level III Staff-Secure ratio (two awake staff for 1–4 youth, per 10A NCAC 27G .2600)".
+
+- PART 3 — FORMS (sop_content_v2_part3.py):
+  * Form 6 (Employee SOP Acknowledgment) Rev. reference: 2.17 → 2.18.
+  * Version History table — NEW v2.18 entry summarizing all the above changes (initial entry was too long and triggered a ReportLab LayoutError on p.55; trimmed to a more compact 16-point summary that fits in one table cell).
+
+- COVER (sop_cover.html):
+  * Doc-subtitle: "Standard Operating Procedures, Protocols & Forms" → "Level III Residential Treatment Facility (Staff-Secure) · Standard Operating Procedures, Protocols & Forms".
+  * Cover re-rendered via `node /home/z/my-project/skills/pdf/scripts/html2poster.js sop_cover.html sop_cover.pdf` → 5003.5 KB.
+  * Seal artwork (Rev. 2.15) unchanged.
+
+- MERGE (merge_sop.py):
+  * MANUAL_VERSION: '2.17' → '2.18'.
+  * Regenerated body PDF: 58 pages (was 49 in v2.17 — substantial content added).
+  * Re-merged: /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.18_RMDM-Compliant.pdf (5708.1 KB, 58 pages).
+  * LATEST pointer refreshed.
+
+- VLM VERIFICATION (z-ai vision):
+  * p.1 (Cover): "LEVEL III RESIDENTIAL TREATMENT FACILITY (STAFF-SECURE)" subtitle CONFIRMED.
+  * p.7 (§1.2): "Level III Residential Treatment Facility — Staff Secure for Children and Adolescents" + "Alliance Health" as LME/MCO CONFIRMED.
+  * p.8 (§1.2(b)/(c)/(d)): Letter of Support from Alliance Health + CON Determination + Alliance Health Provider Network Application CONFIRMED.
+  * p.10 (§1.7): Resident Rights & Dignity per NCGS §122C-51 et seq. CONFIRMED.
+  * p.11 (§2.1): "minimum of two (2) staff members on duty and awake at all times for every one to four (1-4) children in residence" per 27G .2600 CONFIRMED.
+  * p.12 (§2.1 table): "2 staff" in Minimum Staff (1-4 youth) column for Day, Evening, and Overnight rows CONFIRMED.
+  * p.13 (§2.6): Staff Leave & Time-Off Policy CONFIRMED.
+  * p.17 (§6.1): "Per 10A NCAC 27G .2600, a complete medical (physical) examination must be conducted within 90 days PRIOR to admission" CONFIRMED.
+  * p.22 (§9.5 + §9.6): Staff-Secure Physical-Plant Measures + Zoning Compliance CONFIRMED.
+  * p.23 (§9.7): Disaster & Emergency Plan (Fire, Tornado, Hurricane, Power Outage) CONFIRMED.
+  * p.24: "Web sources for §9.4-§9.7 regulatory citations (verified July 2026)" — all 14 cited URLs CONFIRMED visible.
+
+Stage Summary:
+- New deliverable: /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.18_RMDM-Compliant.pdf (58 pages, 5.58 MB) — supersedes v2.17.
+- LATEST pointer refreshed: /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_LATEST.pdf
+- License category corrected from "Level 3 Supervised Residential Group Home" (27G .5600) to "Level III Residential Treatment Facility — Staff Secure for Children and Adolescents" (27G .2600) throughout the SOP, the cover, the protocols, and the version history.
+- Two CRITICAL compliance fixes verified by VLM:
+  (1) §2.1 staffing ratio: 1:4 day / 1:8 overnight → 2 staff minimum for 1-4 youth 24/7 (Level III Staff-Secure).
+  (2) §6.1 admission physical exam: "within 30 days of admission" → "within 90 days PRIOR to admission" per 27G .2600.
+- All 7 checklist phases now addressed in the SOP:
+  P1 Licensing Foundation: ✓ License category corrected; ✓ DHSR MHLC named; ✓ Accreditation (COA/TJC/CARF/CQL); ✓ LME Letter of Support (NCGS §122C-23.1); ✓ CON determination.
+  P2 Physical Plant: ✓ Group-home capacity note (≤9 youth per NCGS §122C-3(14)); ✓ NC Fire Code; ✓ Group R-4 implicit (NC Building Code §425 cited); ✓ Zoning compliance; ✓ Life-safety systems incl. hurricane + power outage; ✓ Infection-control program; ✓ Staff-secure physical-plant measures.
+  P3 Staffing: ✓ 2:4 ratio; ✓ QMHP/QP terminology; ✓ CEU tracking (20-40 hrs/renewal cycle per license type); ✓ Background checks; ✓ CPR/First Aid.
+  P4 Policies: ✓ Admission physical exam timing (90 days prior); ✓ NEW §1.7 Resident Rights per NCGS §122C-51 et seq.; ✓ Restraints policy; ✓ Incident reporting (Rule 108 / IRIS); ✓ Medication administration (MAR); ✓ NEW §2.6 Leave & Time-Off policy.
+  P5 Clinical: ✓ ISP/PCP; ✓ NEW §5.5 Activities Program (14 hrs/week); ✓ §7.3 Facility-based school determination (not required for Level III RTF; only required for PRTF).
+  P6 Financial: ✓ §1.8 Organizational & Financial Foundations (Articles of Incorporation, governing body, liability insurance).
+  P7 Alliance Health Application: ✓ §1.2(d) Alliance Health Provider Network Application (Provider Application, Self-Assessment, Mission/Vision, site review, credentialing approval).
+- Source scripts modified: sop_content_v2.py (§1.2, §1.4, §1.7, §1.8, §2.1, §2.5(a), §2.6, §3.1, §5.5, §6.1, §6.5, §7.3, §9.4(c), §9.5, §9.6, §9.7), sop_content_v2_part2.py (Protocol 19, staffing protocols, .5600 → .2600, master schedule), sop_content_v2_part3.py (Form 6 Rev ref, Version History v2.18 row), sop_cover.html (subtitle), merge_sop.py (MANUAL_VERSION = '2.18').
+- Cover seal artwork (introduced Rev. 2.15) unchanged.

@@ -37,7 +37,7 @@ def build_part1():
     # ── SOP 1 ──────────────────────────────────────────────────────
     story.append(section_heading(1, 'Agency Overview & Governance'))
     story.append(ref_line(
-        '10A NCAC 27G .0100; NC Medicaid Managed Care Tailored Plan Requirements; RMDM Chapter 1',
+        '10A NCAC 27G .0100 & .2600; NCGS §122C-23.1 & §122C-51 et seq.; NC Medicaid Managed Care Tailored Plan Requirements; RMDM Chapter 1',
         '§1',
     ))
     story.append(para(
@@ -50,13 +50,82 @@ def build_part1():
         'dignity, accountability, and growth.'
     ))
     story.append(para(
-        '<b>1.2 Licensing & Credentialing.</b> The facility operates under a valid NC DHSR '
-        'license (Level 3 Supervised Residential Group Home) and is credentialed as an '
-        'In-Network Provider with the regional LME/MCO/Tailored Plan. The Executive Director '
-        'maintains the original license on site, posts a current copy in a public area of the '
-        'facility, and renews it prior to expiration. Any change in ownership, capacity, '
-        'population served, or physical location requires prior written approval from DHSR '
-        'and notification to the LME/MCO.'
+        '<b>1.2 Licensing &amp; Credentialing.</b> The facility operates under a valid NC DHSR '
+        'license as a <b>Level III Residential Treatment Facility — Staff Secure for Children and '
+        'Adolescents</b> under <b>10A NCAC 27G .2600</b>, issued by the NC Division of Health '
+        'Service Regulation (<b>DHSR</b>), <b>Mental Health Licensure and Certification Section '
+        '(MHLC)</b> — not the Division of Social Services (DSS), which licenses foster-care group '
+        'homes, not behavioral-health treatment facilities. The facility is credentialed as an '
+        'In-Network Provider with <b>Alliance Health</b> (the regional LME/MCO/Tailored Plan '
+        'serving Cumberland, Durham, Johnston, Mecklenburg, Orange and Wake counties). The '
+        'Executive Director maintains the original license on site, posts a current copy in a '
+        'public area of the facility, and renews it prior to expiration. Any change in ownership, '
+        'capacity, population served, or physical location requires prior written approval from '
+        'DHSR MHLC and notification to Alliance Health.'
+    ))
+    story.append(Paragraph('<b>1.2(a) Accreditation Prerequisite.</b>', s_h2))
+    story.append(para(
+        'Pursuant to NCGS §122C-26 and 10A NCAC 27G .0205, residential child-care facilities '
+        'in North Carolina must be accredited by one of the four accrediting bodies recognized '
+        'by NC DHHS prior to initial licensure and must maintain continuous accreditation as a '
+        'condition of license renewal: <b>(i) the Council on Accreditation (COA)</b>, <b>(ii) The '
+        'Joint Commission (TJC)</b>, <b>(iii) the Commission on Accreditation of Rehabilitation '
+        'Facilities (CARF)</b>, or <b>(iv) the Council on Quality and Leadership (CQL)</b>. The '
+        'Executive Director shall select the accrediting body, complete the self-study, host the '
+        'on-site survey, and maintain the accreditation certificate in the facility compliance '
+        'binder. The QP shall maintain an accreditation-maintenance calendar tracking annual '
+        'reports, interim standards reviews, and the next full re-survey window, and shall report '
+        'accreditation status to the Clinical Director at every quarterly compliance report (per '
+        '§1.4(a)). Any adverse accreditation finding, conditional approval, or accreditation '
+        'suspension/withdrawal shall be reported to DHSR MHLC within 5 business days and to '
+        'Alliance Health within 10 business days.'
+    ))
+    story.append(Paragraph('<b>1.2(b) LME/MCO Letter of Support — NCGS §122C-23.1.</b>', s_h2))
+    story.append(para(
+        'Under NCGS §122C-23.1, the license application to DHSR MHLC must be accompanied by a '
+        '<b>Letter of Support</b> from Alliance Health (the LME/MCO) documenting that additional '
+        'residential-treatment capacity is needed within the catchment area. The Executive '
+        'Director shall request the Letter of Support from Alliance Health in writing prior to '
+        'submitting the license application, attaching a needs-assessment summary, projected '
+        'census, target population, and a service-area description. Alliance Health evaluates '
+        'the request against current capacity, utilization data, and gap analysis, and may issue '
+        'the Letter of Support, request additional information, or decline. The Letter of Support '
+        'is valid for a limited period (typically 12 months) and must be current at the time of '
+        'license application submission. Renewal applications and capacity-expansion applications '
+        'require a new Letter of Support. The QP retains the original Letter of Support in the '
+        'facility compliance binder for the duration of the license cycle.'
+    ))
+    story.append(Paragraph('<b>1.2(c) Certificate of Need (CON) Determination.</b>', s_h2))
+    story.append(para(
+        'North Carolina is a Certificate of Need (CON) state under NCGS Chapter 131E, Article 9. '
+        'The Executive Director shall submit a written CON inquiry to the NC Department of Health '
+        'and Human Services (DHHS) Acute and Home Care Licensure and Certification Section to '
+        'determine whether the proposed Level III RTF bed count, services, and capital expenditure '
+        'trigger CON review. If CON review is required, the application timeline typically '
+        'extends by <b>4 to 9 months</b> and the project cannot proceed until a CON is issued. '
+        'The CON determination letter (whether affirming review is required or stating review is '
+        'not required) shall be retained in the facility compliance binder and shall accompany '
+        'the DHSR MHLC license application. If CON is required and issued, the QP shall ensure '
+        'the licensed bed count and services match the CON approval exactly. Material changes to '
+        'bed count, services, or capital structure require a new CON determination prior to '
+        'implementation.'
+    ))
+    story.append(Paragraph('<b>1.2(d) Alliance Health Provider Network Application.</b>', s_h2))
+    story.append(para(
+        'Separate from the DHSR MHLC license, the facility must complete the <b>Alliance Health '
+        'Provider Application</b> to be enrolled in the Alliance Health provider network and to '
+        'bill Medicaid CCP 8C (Residential Level III) per-diem services. The application package '
+        'includes: (i) completed Provider Application; (ii) completed Self-Assessment Checklist '
+        'demonstrating readiness across all 10A NCAC 27G .2600 standards; (iii) Mission and '
+        'Vision statements; (iv) current DHSR license; (v) accreditation certificate; (vi) '
+        'liability insurance certificate; (vii) governing-body roster; (viii) organizational '
+        'formation documents; (ix) policies and procedures (this Manual); and (x) QP / QMHP '
+        'credentialing files for clinical staff. Alliance Health conducts a <b>site review</b> '
+        'prior to network approval, and the Alliance Health Medical Director (or designee) '
+        'issues <b>credentialing approval</b> for each clinical staff member prior to billable '
+        'service delivery. The QP maintains the Alliance Health provider agreement, site-review '
+        'report, and credentialing-approval letters in the facility compliance binder and '
+        're-credentials per the Alliance Health credentialing cycle (typically every 3 years).'
     ))
     story.append(para(
         '<b>1.3 Corporate Compliance.</b> Well Spring Intervention LLC maintains a Corporate '
@@ -71,10 +140,14 @@ def build_part1():
         'and accountability. The <b>Clinical Director</b> is a licensed clinical professional '
         'with overall responsibility for the clinical program, including setting the clinical '
         'vision, approving clinical policies, and providing direction to clinical leadership. '
-        'The <b>Qualified Professional (QP)</b> reports to the Clinical Director and is '
-        'responsible for scheduling clinical services, assessments, PCPs, and day-to-day '
-        'supervision of Associate Professionals (APs) and Direct Care Professionals (DCPs) '
-        '<b>according to the direction of the Clinical Director</b>. The QP supervises staff '
+        'The <b>Qualified Professional (QP)</b> — also referred to in 10A NCAC 27G .2600 as '
+        'the <b>Qualified Mental Health Professional (QMHP)</b> — reports to the Clinical '
+        'Director and is responsible for scheduling clinical services, assessments, PCPs, and '
+        'day-to-day supervision of Associate Professionals (APs) and Direct Care Professionals '
+        '(DCPs) <b>according to the direction of the Clinical Director</b>. For purposes of '
+        'this Manual, "QP" and "QMHP" are used interchangeably and refer to the same role; '
+        'the credentialing requirements in §1.4(b) satisfy both the 10A NCAC 27G .0104 QP '
+        'definition and the 10A NCAC 27G .2600 QMHP definition. The QP supervises staff '
         'in accordance with the Clinical Director\'s clinical guidance, programmatic '
         'priorities, and performance expectations, and shall escalate clinical concerns, '
         'staffing issues, and quality-of-care matters to the Clinical Director in a timely '
@@ -178,30 +251,137 @@ def build_part1():
         'cooperate fully with any investigation. Violations are subject to legal sanctions '
         'under HIPAA, 42 CFR Part 2, and the NC General Statutes.'
     ))
+    story.append(Paragraph('<b>1.7 Resident Rights &amp; Dignity.</b>', s_h2))
+    story.append(para(
+        'Pursuant to <b>NCGS §122C-51 through §122C-57</b> and 10A NCAC 27G .0203, every '
+        'youth admitted to this facility retains the rights enumerated in this section, '
+        'regardless of clinical status, behavioral history, or supervision level. The staff-'
+        'secure designation of this facility <b>does not</b> diminish, suspend, or modify '
+        'these rights; it only authorizes the physical-plant and supervision measures '
+        'described in §9.5. Rights shall be exercised without retaliation, and any staff '
+        'interference with the free exercise of rights shall be reported to the QP within '
+        '24 hours and logged on the IRIS system per §8 if the interference constitutes a '
+        'reportable incident under Rule 108.'
+    ))
+    story.append(para(
+        '<b>(a) Statutory Rights.</b> Each youth has the right to: (i) receive humane, '
+        'dignified, and respectful treatment; (ii) be free from abuse, neglect, and '
+        'exploitation; (iii) be free from corporal punishment and from physical or '
+        'chemical restraint except as specifically authorized in §5; (iv) receive '
+        'treatment in the least restrictive environment consistent with clinical need; '
+        '(v) participate in the development of, and receive a copy of, the Person-Centered '
+        'Plan (PCP) per §4; (vi) refuse treatment except as otherwise provided by law or '
+        'court order; (vii) send and receive sealed, unopened mail without staff '
+        'inspection except where a specific clinical basis is documented in the PCP; '
+        '(viii) reasonable access to a telephone for private communication with family, '
+        'guardian, attorney, clergy, and the LME/MCO recipient rights advisor; (ix) '
+        'practice the religion of choice or refrain from religious practice; (x) be free '
+        'from unnecessary or excessive medication per §6; (xi) be free from coercion to '
+        'perform labor for the facility; (xii) retain personal property consistent with '
+        'facility safety rules; (xiii) privacy during toileting, bathing, and medical '
+        'examinations; (xiv) file a grievance with the LME/MCO, DHSR, or DHHS without '
+        'interference or retaliation; and (xv) be informed of these rights orally and in '
+        'writing at admission, in a language the youth and guardian understand, with a '
+        'signed acknowledgment retained in the clinical record.'
+    ))
+    story.append(para(
+        '<b>(b) Posted Notice.</b> A printed "Youth Rights" notice summarizing the above '
+        'rights shall be posted in a conspicuous location in the facility common area and '
+        'in each youth bedroom, in both English and Spanish, in a font size no smaller '
+        'than 14-point, with the Alliance Health Member &amp; Recipient Rights phone '
+        'number and the NC DHSR complaint line printed at the bottom. The QP shall review '
+        'the posted notice at each monthly fire-drill walk-through and replace any missing, '
+        'defaced, or outdated copies within 5 business days.'
+    ))
+    story.append(para(
+        '<b>(c) Grievance Procedure.</b> A youth, guardian, or staff member may file a '
+        'grievance orally or in writing to the QP, the Clinical Director, or directly to '
+        'the Alliance Health Member &amp; Recipient Rights Office. All grievances shall be '
+        'documented on Form 9 (Accounting of Disclosures) if protected health information '
+        'is involved, and logged in a dedicated <b>Grievance Log</b> maintained by the QP. '
+        'The QP shall acknowledge receipt within 1 business day, investigate within 5 '
+        'business days, issue a written response within 15 business days, and report '
+        'aggregate grievance data to the Clinical Director at each quarterly compliance '
+        'report per §1.4(a). Retaliation against any person filing a grievance is strictly '
+        'prohibited and constitutes an immediately reportable personnel action.'
+    ))
+    story.append(Paragraph('<b>1.8 Organizational &amp; Financial Foundations.</b>', s_h2))
+    story.append(para(
+        'The following corporate and financial documents shall be maintained in the '
+        'facility compliance binder and shall be made available to DHSR MHLC surveyors, '
+        'Alliance Health site reviewers, accrediting-body surveyors, and authorized '
+        'auditors upon request:'
+    ))
+    story.extend(bullets([
+        '<b>Articles of Incorporation</b> — the LLC Articles filed with the NC Secretary of '
+        'State, including all amendments, with current certification from the Secretary of '
+        'State (no older than 90 days).',
+        '<b>Operating Agreement</b> — the current executed Operating Agreement of Well Spring '
+        'Intervention LLC, including all amendments and member-consent resolutions.',
+        '<b>Governing Body Roster</b> — a current list of all members of the governing body '
+        '(Managing Member / Board of Managers / Board of Directors, as applicable), '
+        'including each member\'s full legal name, business address, term of office, and '
+        'officer position held (Chair, Secretary, Treasurer, etc.). Updated within 30 days '
+        'of any change.',
+        '<b>EIN &amp; Tax Documents</b> — IRS Employer Identification Number letter, NC '
+        'Department of Revenue tax-account letter, and current business-privilege-license '
+        'confirmation if applicable to the locality.',
+        '<b>Liability Insurance</b> — current certificates of insurance for: '
+        '(i) <b>general liability</b> (minimum $1,000,000 per occurrence / $3,000,000 '
+        'aggregate); (ii) <b>professional liability (malpractice)</b> (minimum $1,000,000 '
+        'per occurrence / $3,000,000 aggregate); (iii) <b>commercial auto</b> (minimum '
+        '$1,000,000 combined single limit for owned, hired, and non-owned vehicles used to '
+        'transport youth); (iv) <b>workers\' compensation</b> per NC statutory limits; '
+        'and (v) <b>cyber liability</b> covering protected health information (minimum '
+        '$1,000,000) given the EHR/EMR system in use. Alliance Health and DHSR MHLC shall '
+        'be listed as <b>additional insureds</b> on the general-liability and '
+        'professional-liability policies. Insurance lapses shall be reported to the QP '
+        'immediately and to Alliance Health within 5 business days.',
+        '<b>Facility Lease or Deed</b> — current executed lease (with landlord\'s written '
+        'consent to operate a Level III RTF on the premises) or recorded warranty deed.',
+        '<b>Financial Solvency Documentation</b> — most recent 3 months of bank statements, '
+        'most recent filed tax return, and a current balance sheet, sufficient to '
+        'demonstrate ongoing financial solvency as required by 10A NCAC 27G .0203.',
+    ]))
 
     # ── SOP 2 ──────────────────────────────────────────────────────
     story.append(section_heading(2, 'Human Resources & Staffing Requirements'))
     story.append(ref_line(
-        '10A NCAC 27G .0203 & .5600; NC Medicaid CCP 8C; RMDM Chapter 1',
+        '10A NCAC 27G .0203 & .2600; NC Medicaid CCP 8C; RMDM Chapter 1',
         '§2',
     ))
     story.append(para(
-        '<b>2.1 Staffing Ratios.</b> Minimum staffing ratios are mandated at all times to '
-        'ensure resident safety and adequate supervision. Day and evening shifts maintain a '
-        '1:4 staff-to-resident ratio (awake and on-site), while the overnight shift maintains '
-        'a 1:8 ratio (awake — no sleeping permitted). Ratios may be increased based on PCP '
-        'acuity, behavioral incidents, or 1:1 supervision orders. The QP is responsible for '
-        'monitoring ratios and adjusting assignments to maintain compliance at all times.'
+        '<b>2.1 Staffing Ratios — Staff-Secure Level III.</b> Under 10A NCAC 27G .2600, this '
+        'Level III Staff-Secure facility shall maintain a <b>minimum of two (2) staff members '
+        'on duty and awake at all times for every one to four (1–4) children in residence</b>, '
+        'on every shift including the overnight shift. This 2:4 minimum applies 24 hours per '
+        'day, 7 days per week, 365 days per year, and supersedes any lower ratio that may '
+        'apply to less-intensive facility types. Ratios shall be <b>increased</b> based on PCP '
+        'acuity, behavioral incidents, 1:1 supervision orders, gender-match requirements for '
+        'two-person restraint protocols, or any time a youth is on continuous observation '
+        'status per §5. The QP (or on-call QP designee) is responsible for monitoring ratios '
+        'and adjusting assignments in real time to maintain compliance. A staff member who '
+        'calls out within 4 hours of a shift shall trigger the on-call system; the on-call QP '
+        'shall arrange a replacement <b>before the shift begins</b> and shall cover in-house '
+        'personally if no replacement is available — the 2:4 minimum shall never be allowed '
+        'to lapse. <b>Single-staffing is prohibited at all times.</b>'
     ))
     story.append(std_table(
-        ['Shift', 'Minimum Ratio', 'Status', 'Notes'],
+        ['Shift', 'Minimum Staff (1–4 youth)', 'Minimum Staff (5–8 youth)', 'Minimum Staff (9 youth)', 'Status'],
         [
-            ['Day (7a-3p)', '1 : 4', 'Awake / On-site', 'May increase per PCP acuity'],
-            ['Evening (3p-11p)', '1 : 4', 'Awake / On-site', 'May increase per PCP acuity'],
-            ['Overnight (11p-7a)', '1 : 8', 'Awake (No sleeping)', '15-minute visual checks required'],
+            ['Day (7a-3p)', '2 staff', '4 staff', '5 staff', 'Awake / On-site'],
+            ['Evening (3p-11p)', '2 staff', '4 staff', '5 staff', 'Awake / On-site'],
+            ['Overnight (11p-7a)', '2 staff', '4 staff', '5 staff', 'Awake (No sleeping)'],
         ],
-        [0.18*AVAIL_W, 0.15*AVAIL_W, 0.25*AVAIL_W, 0.42*AVAIL_W],
+        [0.16*AVAIL_W, 0.18*AVAIL_W, 0.18*AVAIL_W, 0.18*AVAIL_W, 0.30*AVAIL_W],
         first_col_left=True,
+    ))
+    story.append(Spacer(1, 6))
+    story.append(para(
+        '<i>Note: NC defines a "Group Home" as a facility serving no more than nine (9) '
+        'children (NCGS §122C-3(14)). The facility shall not exceed its licensed capacity '
+        'as stated on the DHSR MHLC license, which shall not exceed nine children under any '
+        'circumstances.</i>'
     ))
     story.append(Spacer(1, 8))
     story.append(Paragraph('<b>2.2 Staff Qualifications.</b>', s_h2))
@@ -238,17 +418,64 @@ def build_part1():
         'retained per applicable DHHS retention schedules. The QP audits personnel files '
         'annually to ensure completeness and compliance with RMDM Chapter 1.'
     ))
+    story.append(Paragraph('<b>2.5(a) Continuing Education Units (CEUs) — Licensed Clinical Staff.</b>', s_h2))
+    story.append(para(
+        'Each licensed clinical staff member (LCSW, LPC, LMFT, LCAS, Licensed Psychologist, '
+        'psychiatric RN / NP / CNS, etc.) shall complete the continuing-education hours '
+        'required by their licensing board for each license-renewal cycle, and shall '
+        'maintain original CEU certificates in the personnel file. Minimum CEU requirements '
+        'by license type (verify current board rules — these are the typical NC minimums): '
+        '<b>LCSW &amp; LCSW-A (NCSWCLB):</b> 40 contact hours / 2-year cycle, including 4 hrs '
+        'ethics; <b>LPC &amp; LPC-A (NCBLPC):</b> 40 contact hours / 2-year cycle, including '
+        '4 hrs ethics; <b>LMFT &amp; LMFT-A (NCMFT Licensure Board):</b> 20 contact hours / '
+        '1-year cycle, including 3 hrs ethics; <b>LCAS &amp; LCAS-P (NCSAPPB):</b> 40 contact '
+        'hours / 2-year cycle, including 4 hrs ethics and 3 hrs substance-abuse-specific; '
+        '<b>Registered Nurses (NC BON):</b> 30 contact hours / 2-year cycle. The QP shall '
+        'maintain a <b>CEU Tracking Log</b> showing for each licensed staff member: license '
+        'type, license number, expiration date, current-cycle hours completed, hours '
+        'remaining, ethics hours completed, and the date of the next renewal. The log shall '
+        'be reviewed monthly by the QP; any staff member within 60 days of license expiry '
+        'with insufficient CEUs shall be placed on a documented performance-improvement '
+        'plan and removed from billable-service delivery if the license lapses. Lapsed '
+        'licenses shall be reported to the Clinical Director within 1 business day and to '
+        'Alliance Health credentialing within 5 business days.'
+    ))
+    story.append(Paragraph('<b>2.6 Staff Leave &amp; Time-Off Policy.</b>', s_h2))
+    story.append(para(
+        'Pursuant to 10A NCAC 27G .0203(e), the facility shall provide each full-time '
+        'employee with <b>scheduled time off</b> as follows: (a) a minimum of two '
+        'non-consecutive scheduled days off per 14-day pay period for direct-care staff '
+        '(DCPs, APs) working 12-hour shifts, and a minimum of two scheduled days off per '
+        '7-day week for administrative and clinical staff (QP, RN, Billing Coordinator) '
+        'working 8-hour shifts; (b) paid time off (PTO) accruing at no less than the '
+        'facility standard published in the Employee Handbook (currently 10 days/year in '
+        'year 1, 15 days/year in years 2–4, and 20 days/year in year 5+); (c) <b>protected '
+        'rest periods</b> of no fewer than 8 hours between consecutive shifts unless the '
+        'staff member voluntarily waives the rest period in writing; (d) meal breaks of no '
+        'fewer than 30 minutes per 8-hour shift and 60 minutes per 12-hour shift, during '
+        'which the staff member is relieved of all youth-supervision duties (a second '
+        'staff member shall be on duty to maintain the 2:4 minimum); (e) sick leave '
+        'consistent with NC statutory requirements; (f) bereavement leave of up to 3 days '
+        'per qualifying event; (g) family-medical leave consistent with the federal FMLA '
+        'and NC leave laws; and (h) reasonable accommodation for religious observance. The '
+        'QP publishes the schedule no fewer than 14 days in advance, posts it in the staff '
+        'area, and accommodates time-off requests on a first-come-first-served basis '
+        'subject to the 2:4 staffing minimum. Time-off denials shall be documented in '
+        'writing with the operational basis. <b>Staff shall not be required to work more '
+        'than 16 consecutive hours</b> except in a declared facility emergency, and any '
+        'such extended shift shall be followed by no fewer than 10 hours of off-duty rest.'
+    ))
 
     # ── SOP 3 ──────────────────────────────────────────────────────
     story.append(section_heading(3, 'Admissions, Discharges, and Transition Planning'))
     story.append(ref_line(
-        '10A NCAC 27G .5604; NC Medicaid CCP 8C; RMDM Chapters 2 & 5',
+        '10A NCAC 27G .2600 & .5604; NC Medicaid CCP 8C; RMDM Chapters 2 & 5',
         '§3',
     ))
     story.append(para(
         '<b>3.1 Admission Criteria.</b> The program serves youth with a primary mental '
         'health or behavioral diagnosis requiring supervised living, who are medically '
-        'stable, and whose clinical needs can be safely met in a Level 3 group home '
+        'stable, and whose clinical needs can be safely met in a Level III Staff-Secure '
         'setting. Exclusions include active psychosis requiring Involuntary Commitment '
         '(IVC), medical instability, or fire-setting that cannot be safely managed. The '
         'QP reviews each referral packet and documents the admission decision.'
@@ -421,6 +648,57 @@ def build_part1():
         'service record must meet requirements of 10A NCAC 27E .0104(g)(2) and (g)(6), '
         'including rights restrictions (G.S. §122C-62(e)) and use of protective devices.'
     ))
+    story.append(Paragraph('<b>5.5 Activities Program — Minimum 14 Hours/Week Planned Group Activities.</b>', s_h2))
+    story.append(para(
+        'Pursuant to <b>10A NCAC 27G .2600(c)</b>, the facility shall provide each youth '
+        'with a documented <b>activities program of no fewer than 14 hours per week of '
+        'planned group activities</b> that promote socialization, physical activity, and '
+        'creative expression. Activities shall be: (a) age- and developmental-stage '
+        'appropriate; (b) culturally responsive; (c) consistent with each youth\'s PCP '
+        'goals (per §4) and ISP objectives; (d) trauma-informed, with voluntary '
+        'participation and the right to decline without consequence (except where a '
+        'specific activity is ordered by a licensed clinician as part of the treatment '
+        'plan); and (e) inclusive of all youth regardless of mobility, sensory, or '
+        'cognitive accommodation needs, with reasonable modifications provided per the '
+        'ADA and Section 504 of the Rehabilitation Act.'
+    ))
+    story.append(para(
+        '<b>(a) Activity Categories.</b> The 14-hour weekly minimum shall be distributed '
+        'across the following categories: <b>(i) physical activity</b> — structured '
+        'sports, yoga, walking, swimming, gym visits, outdoor games (minimum 4 hrs/week); '
+        '<b>(ii) creative expression</b> — art, music, journaling, theater, dance, '
+        'photography, creative writing (minimum 3 hrs/week); <b>(iii) socialization &amp; '
+        'life-skills</b> — cooperative games, group problem-solving, cooking, budgeting, '
+        'self-care skills, communication skills (minimum 4 hrs/week); <b>(iv) community '
+        'integration</b> — supervised outings to parks, libraries, cultural events, '
+        'volunteer activities, faith-based services (where the youth elects) (minimum 3 '
+        'hrs/week). Activities may overlap categories (e.g., a community outing that '
+        'involves physical activity may count toward both categories\' minimums, but the '
+        'total weekly hours still must sum to no fewer than 14 unique contact hours).'
+    ))
+    story.append(para(
+        '<b>(b) Documentation.</b> The QP shall publish a written <b>Weekly Activities '
+        'Calendar</b> no fewer than 7 days in advance, post it in the facility common '
+        'area, and provide a copy to each youth at the weekly community meeting. Each '
+        'scheduled activity shall be documented on the Activities Log (a sub-section of '
+        'the daily shift note per §10.3) showing: date, activity name, category, '
+        'duration (start/end time), staff facilitating, youth participating, youth '
+        'declining (with brief reason), and any incidents or notable interactions. The '
+        'QP shall total the weekly activity hours at each Monday shift-change huddle and '
+        'shall report any week in which the 14-hour minimum was not met — with the '
+        'reason and corrective-action plan — to the Clinical Director at the next '
+        'monthly compliance report.'
+    ))
+    story.append(para(
+        '<b>(c) Coordination with Protocol 22 Daily Workflow.</b> The Daily Workflow '
+        'Schedules in Protocol 22 (DCP Day Shift, DCP Evening Shift, and weekend '
+        'schedules) shall incorporate specific activity time-blocks sufficient to meet '
+        'the 14-hour weekly minimum. The QP may adjust the daily schedule to accommodate '
+        'school attendance, therapy appointments, weather, and behavioral acuity, '
+        'provided the weekly 14-hour minimum is met. Activities shall be suspended only '
+        'for documented safety reasons (e.g., a youth in crisis, an active IRIS '
+        'investigation, a facility lockdown) and shall resume as soon as safety allows.'
+    ))
 
     # ── SOP 6 ──────────────────────────────────────────────────────
     story.append(section_heading(6, 'Health, Medication, & Nutrition Management'))
@@ -431,12 +709,22 @@ def build_part1():
     story.append(Paragraph('<b>6.1 Medical Care.</b>', s_h2))
     story.append(para(
         'Each resident has an identified Primary Care Physician (PCP) and psychiatrist '
-        'upon admission. A complete medical examination is conducted within 30 days of '
-        'admission and annually thereafter. Medical history (including immunizations, '
-        'allergies, and current prescriptions) is maintained and updated at every visit. '
-        '<b>Immunization compliance</b> for children is documented per NCGS §130A-152. '
-        'Physician\'s directions for management of any identified medical conditions '
-        'must be in the record.'
+        'upon admission. <b>Per 10A NCAC 27G .2600, a complete medical (physical) '
+        'examination must be conducted within 90 days PRIOR to admission</b>, and the '
+        'exam report must be reviewed by the QP and the RN prior to the youth\'s move-in '
+        'date. The pre-admission exam shall include a comprehensive physical assessment, '
+        'vision and hearing screening, immunization review (with documentation per NCGS '
+        '§130A-152), TB screening per §6.2, and any indicated laboratory studies. If the '
+        'physical exam is older than 90 days at the time of admission, a new exam shall '
+        'be scheduled and completed within 7 days post-admission (with documentation of '
+        'the scheduling in the clinical record) — this 7-day post-admission exam is a '
+        'contingency only; it does NOT replace the 90-day pre-admission requirement. '
+        '<b>Annual</b> physical examinations shall be conducted thereafter for the duration '
+        'of the youth\'s stay. Medical history (including immunizations, allergies, and '
+        'current prescriptions) is maintained and updated at every visit. Physician\'s '
+        'directions for management of any identified medical conditions shall be '
+        'documented in the PCP and communicated to all shift staff. The original physical '
+        'exam report shall be retained in the clinical record per §1.6.'
     ))
     story.append(Paragraph('<b>6.2 Tuberculosis (TB) Screening.</b>', s_h2))
     story.append(para(
@@ -465,6 +753,64 @@ def build_part1():
         'documentation. Menus are posted and retained 30 days. Food is never withheld as '
         'a consequence. Staff preparing food maintain current food handler certifications.'
     ))
+    story.append(Paragraph('<b>6.5 Infection Control Program.</b>', s_h2))
+    story.append(para(
+        'The facility shall maintain a written <b>Infection Control Program</b> consistent '
+        'with <b>CDC guidelines</b> for residential congregate-care settings, 10A NCAC '
+        '27G .0209, and OSHA Bloodborne Pathogens Standard (29 CFR 1910.1030). The '
+        'program is overseen by the RN (with monthly QP review) and includes the '
+        'following components:'
+    ))
+    story.extend(bullets([
+        '<b>(a) Written Infection-Control Plan.</b> A facility-specific plan covering '
+        'hand hygiene, standard precautions, transmission-based precautions, cleaning '
+        'and disinfection, laundry handling, waste disposal, exposure response, '
+        'outbreak response, and respiratory etiquette. Reviewed and updated annually '
+        'and after any infection-control incident.',
+        '<b>(b) Cleaning &amp; Disinfection Schedules.</b> Written daily, weekly, and '
+        'monthly cleaning schedules specifying each area of the facility (kitchen, '
+        'bathrooms, bedrooms, common areas, laundry, vehicles), the cleaning agent '
+        'and concentration, the surface-contact time, and the staff member responsible. '
+        'Schedules are posted in each area and the completed checklists are filed '
+        'monthly in the facility compliance binder.',
+        '<b>(c) Blood / Body Fluid Precautions.</b> Standard Precautions are observed '
+        'with all youth at all times. <b>OSHA Bloodborne Pathogens exposure-control '
+        'plan</b> on file: engineering controls (sharps containers), work-practice '
+        'controls (no recapping needles), PPE (gloves, gowns, face protection), '
+        'hepatitis-B vaccination offered to staff at no cost, post-exposure prophylaxis '
+        'protocol available 24/7 via the RN and the local emergency department. All '
+        'blood and body-fluid exposures (staff or youth) are documented on an Incident '
+        'Report (§8) and IRIS-filed within 24 hours.',
+        '<b>(d) Hand Hygiene.</b> Staff and youth perform hand hygiene: before meals '
+        'and food preparation; after toileting or assisting a youth with toileting; '
+        'after coughing, sneezing, or blowing the nose; before and after glove use; '
+        'before and after medication administration; and after handling soiled laundry '
+        'or trash. Alcohol-based hand sanitizer (60–95% alcohol) is available in every '
+        'room except where flammable (e.g., kitchens with open flame). Soap and '
+        'running water are used when hands are visibly soiled.',
+        '<b>(e) Outbreak Response.</b> Two or more youth with identical symptoms '
+        '(gastrointestinal, respiratory, or febrile) within 72 hours shall trigger an '
+        'outbreak response: cohort-affected youth, increase sanitation, notify the '
+        'County Health Department within 24 hours for any reportable communicable '
+        'disease, and document the outbreak response in the facility compliance binder. '
+        'The QP shall file an IRIS report for any communicable-disease outbreak '
+        'affecting two or more youth.',
+        '<b>(f) Immunization Compliance.</b> Each youth\'s immunization status shall be '
+        'verified at admission per NCGS §130A-152 and updated per the CDC '
+        'immunization schedule. Staff annual influenza vaccination is strongly '
+        'recommended and documented in the personnel file. COVID-19 vaccination '
+        'status of staff and youth is documented per current CDC and DHHS guidance.',
+        '<b>(g) PPE Inventory.</b> The facility maintains a current inventory of '
+        'exam gloves (multiple sizes), surgical masks, N95 respirators (for staff '
+        'caring for youth with airborne precautions), gowns, eye protection, face '
+        'shields, sharps containers, biohazard bags, and EPA-registered hospital '
+        'disinfectants. The RN shall audit the inventory monthly and replenish '
+        'before stock falls below a 30-day supply.',
+        '<b>(h) Staff Training.</b> All staff complete <b>Bloodborne Pathogens</b> '
+        'training annually and Infection Control training at hire and annually '
+        'thereafter. The RN conducts the training and documents completion in the '
+        'personnel file.',
+    ]))
 
     # ── SOP 7 ──────────────────────────────────────────────────────
     story.append(section_heading(7, 'Education & Vocational Support'))
@@ -489,6 +835,32 @@ def build_part1():
         'goals aligned with the transition plan. The QP coordinates with Vocational '
         'Rehabilitation and community-based employment programs to support the youth\'s '
         'transition to adulthood and post-discharge stability.'
+    ))
+    story.append(Paragraph('<b>7.3 Facility-Based School Determination (Level III RTF vs. PRTF).</b>', s_h2))
+    story.append(para(
+        'A <b>facility-based school is a condition of licensure for Psychiatric Residential '
+        'Treatment Facilities (PRTFs)</b> under 42 CFR 483.350-483.376 and the federal '
+        ' Individuals with Disabilities Education Act (IDEA), but it is <b>not</b> required '
+        'for a <b>Level III Residential Treatment Facility (Staff-Secure)</b> licensed '
+        'under 10A NCAC 27G .2600. <b>This facility is licensed as a Level III RTF '
+        '(Staff-Secure), not as a PRTF.</b> Accordingly, this facility does not operate a '
+        'facility-based school and is not required to do so under its current license; '
+        'youth attend public school in the community per §7.1, with the facility '
+        'providing transportation, after-school homework support, and IEP coordination.'
+    ))
+    story.append(para(
+        '<b>If the facility elects to pursue PRTF designation</b> in the future, the '
+        'facility shall, prior to that designation: (a) notify DHSR MHLC and apply for '
+        'PRTF licensure under 42 CFR 483.350 et seq.; (b) establish a facility-based '
+        'school meeting IDEA, NC State Board of Education, and accreditation standards; '
+        '(c) employ or contract with licensed special-education teachers and a school '
+        'administrator; (d) enter into a written agreement with the LEA for IEP '
+        'implementation and educational records transfer; (e) document that the '
+        'facility-based school is necessary because the youth\'s clinical acuity prevents '
+        'safe participation in community school; and (f) update this SOP and the Alliance '
+        'Health provider agreement to reflect the PRTF designation. No youth shall be '
+        'placed at this facility under a PRTF level of care until DHSR MHLC has issued '
+        'the PRTF license and Alliance Health has authorized PRTF-level billing.'
     ))
 
     # ── SOP 8 ──────────────────────────────────────────────────────
@@ -610,7 +982,7 @@ def build_part1():
         'installed on every floor containing a fuel-burning appliance or attached '
         'garage, and within 10 ft of each sleeping room; combination smoke/CO detectors '
         'may be used to satisfy both requirements in a single device. Automatic fire '
-        'sprinklers are required for all Level 3 residential group homes under the NC '
+        'sprinklers are required for all Level III residential treatment facilities under the NC '
         'DHSR license condition and NFPA 13D/13R. Fire extinguishers (minimum 2A-10BC '
         'rating) shall be mounted on each level with a maximum travel distance of 75 ft '
         'from any point in the facility. All detectors, sprinklers, and extinguishers '
@@ -676,8 +1048,149 @@ def build_part1():
         'every interior stair. Maps and signage shall be reviewed at each monthly fire '
         'drill and updated whenever bedroom assignments change.'
     ))
+    story.append(Paragraph('<b>9.5 Staff-Secure Physical-Plant Measures.</b>', s_h2))
     story.append(para(
-        '<i>Web sources for §9.4 regulatory citations (verified July 2026):</i><br/>'
+        'As a <b>Level III Residential Treatment Facility — Staff Secure for Children and '
+        'Adolescents</b> under 10A NCAC 27G .2600, this facility shall maintain physical-'
+        'plant and operational measures that provide line-of-sight or continuous-auditory '
+        'supervision of all youth at all times, and that prevent elopement while preserving '
+        'the youth\'s dignity and rights (per §1.7). Staff-secure measures do NOT include '
+        'locked seclusion, hardware-restricted youth egress, or any building-code "detention '
+        'and correction" occupancy classification. The following staff-secure measures are '
+        'in place:'
+    ))
+    story.extend(bullets([
+        '<b>(a) Controlled-Access Entry.</b> All exterior doors are kept locked from the '
+        'outside. The main entry is equipped with a doorbell, video-intercom, and '
+        'remote-buzz entry; staff visually verify identity before admitting any visitor. '
+        'All other exterior doors are locked from the outside and equipped with '
+        'exit-only panic hardware on the inside that sounds a localized chime when '
+        'actuated (so staff are immediately alerted to any door opening).',
+        '<b>(b) Delayed-Egress Hardware (where permitted).</b> Where local building and '
+        'fire code permit, exterior exit doors serving youth-occupied areas may be '
+        'equipped with delayed-egress hardware actuating 15-second delayed exit with a '
+        'continuous audible alarm, allowing staff response time to redirect a youth in '
+        'elopement attempt without impeding emergency egress (NFPA 101 §7.2.1.6.1). '
+        'Delayed-egress hardware is inspected and tested monthly by staff and annually '
+        'by a licensed contractor, with results documented on Form 5.',
+        '<b>(c) Line-of-Sight Supervision.</b> Floor-plan configuration allows '
+        'line-of-sight from the staff station to all common-area corridors and youth '
+        'hallways; blind spots are covered by convex mirrors or CCTV cameras (CCTV '
+        'covers common areas only — never bedrooms, bathrooms, or toileting areas). '
+        'CCTV footage is retained 30 days and accessed only by the QP, Clinical '
+        'Director, and Executive Director.',
+        '<b>(d) Window Security.</b> All youth-accessible ground-floor windows are '
+        'equipped with staff-key-releasable restrictors limiting the openable width to '
+        '4 inches (per §9.4(e)). Second-floor youth-bedroom windows meet the same '
+        'standard and additionally serve as emergency-escape openings per §9.4(b).',
+        '<b>(e) Perimeter &amp; Outdoor Supervision.</b> The outdoor area is fenced or '
+        'naturally bounded to a defined perimeter, with a single controlled-access '
+        'point. Outdoor time is supervised at the 2:4 staff ratio at all times; '
+        'one staff member remains within line-of-sight of the access point.',
+        '<b>(f) Visitor Management.</b> All visitors sign a Visitor Log at entry, '
+        'present photo ID, are screened against the youth\'s authorized-visitor list '
+        '(maintained in the youth\'s clinical record and updated by the QP / guardian), '
+        'and are escorted in common areas at all times. Visitors are never permitted '
+        'in youth bedrooms. Visitor interactions are documented on the daily shift note.',
+        '<b>(g) Contraband Search.</b> Youth belongings are searched at admission, '
+        'upon return from any pass, and upon reasonable suspicion per §5.2 BSP and '
+        'Form 2. Searches are conducted by staff of the same gender as the youth, '
+        'with a second staff witness, in a private area, using the least intrusive '
+        'method consistent with safety. Personal clothing is not removed. Body-cavity '
+        'searches are prohibited and, if indicated, shall be performed by medical '
+        'personnel at the emergency department per physician order.',
+    ]))
+    story.append(Paragraph('<b>9.6 Zoning Compliance.</b>', s_h2))
+    story.append(para(
+        'Prior to initial operation and at any change of physical location, the '
+        'Executive Director shall obtain written confirmation from the local zoning '
+        'authority that the proposed use (a Level III RTF serving up to nine youth) is '
+        'a permitted use at the proposed address under the local zoning ordinance. '
+        'Many NC municipalities classify group homes as a permitted residential use '
+        'in residential districts under the federal Fair Housing Act Amendments (42 '
+        'U.S.C. §3604(f)) and the NC Group Homes Act (NCGS §160D-906), but local '
+        'ordinances may impose: (a) a minimum separation distance between group homes '
+        '(commonly 1,000 feet, measured property-line to property-line); (b) a cap on '
+        'the number of unrelated individuals sharing a dwelling; (c) off-street '
+        'parking minimums (typically one space per staff member on the largest shift, '
+        'plus one space per two youth); and (d) conditional-use permit requirements. '
+        'The QP shall maintain the zoning approval letter and any conditional-use '
+        'permit in the facility compliance binder, and shall report any zoning-related '
+        'complaint or inquiry from neighbors to the Executive Director within 1 '
+        'business day. Any material change to the facility (e.g., capacity increase, '
+        'physical expansion, change in license category) requires fresh zoning '
+        'verification before DHSR MHLC will process the license amendment.'
+    ))
+    story.append(Paragraph('<b>9.7 Disaster &amp; Emergency Plan (Fire, Tornado, Hurricane, Power Outage).</b>', s_h2))
+    story.append(para(
+        'The facility shall maintain a written <b>Disaster &amp; Emergency Plan</b> '
+        'covering fire, tornado, hurricane, power outage, winter-weather event, '
+        'utility failure (water, sewer, heat, gas), active-shooter / lockdown, '
+        'bomb threat, and medical emergency. The plan shall be reviewed annually by '
+        'the QP, posted in the staff area, and reviewed with all staff at orientation '
+        'and annually thereafter. Drills shall be conducted per the cadence in §9.2 '
+        'and §9.4(f).'
+    ))
+    story.extend(bullets([
+        '<b>(a) Fire.</b> Evacuate immediately upon alarm. Headcount at the rally '
+        'point (designated meeting area at the front sidewalk, ≥50 ft from the '
+        'building). Call 911 from the rally point. Do not re-enter until the fire '
+        'department issues all-clear. Monthly drills required (per §9.2).',
+        '<b>(b) Tornado.</b> On a Tornado Watch, alert all staff and review shelter '
+        'assignments. On a Tornado Warning, move all youth to the lowest interior '
+        'room (basement preferred; if no basement, an interior ground-floor bathroom '
+        'or hallway with no exterior walls). Turtle position against interior walls, '
+        'away from windows. Bring flashlights, weather radio, and youth MARs. '
+        'Quarterly drills required.',
+        '<b>(c) Hurricane.</b> For facilities in NC counties subject to hurricane '
+        'risk (all NC counties east of I-95 plus coastal counties), the QP shall '
+        'monitor the National Hurricane Center advisories during the Atlantic '
+        'hurricane season (June 1 – November 30). At Tropical Storm Warning or '
+        'Hurricane Watch, the QP shall: secure outdoor furniture and projectiles; '
+        'verify generator fuel (if applicable); stock 7-day supply of food, water '
+        '(1 gallon per person per day), medications, batteries, and flashlights; '
+        'verify youth and staff emergency-contact lists; and contact guardians '
+        'regarding the storm plan. At Hurricane Warning, the QP shall coordinate '
+        'with the LME/MCO and guardian regarding pre-storm evacuation or shelter-in-'
+        'place decision; if evacuation is ordered, transport youth to the '
+        'designated host facility (identified in the plan) and document the move '
+        'on the IRIS system. After the storm, conduct a facility damage assessment '
+        'before re-occupancy, document in the compliance binder, and notify DHSR '
+        'MHLC if any structural damage occurred.',
+        '<b>(d) Power Outage.</b> Distribute flashlights (one per staff member plus '
+        'one per youth bedroom). Verify life-safety systems on battery backup '
+        '(smoke detectors, fire alarm, security chimes). Discard refrigerated '
+        'food per FDA guidance (4-hour rule for refrigerator; 24-48 hours for '
+        'freezer if door stays closed). If power loss is expected to exceed 4 '
+        'hours OR if indoor temperature drops below 65°F or rises above 80°F, '
+        'initiate the Emergency Relocation Plan. Notify the utility company, '
+        'document the outage start/end times, and notify the QP. Generator '
+        'backup is recommended (and may be required by local code for facilities '
+        'serving medically fragile youth); if installed, the generator shall be '
+        'tested monthly under load.',
+        '<b>(e) System Failure (heat, water, sewer, gas).</b> Per Protocol 19: '
+        'heat loss exceeding 4 hours OR water loss exceeding 8 hours OR sewer '
+        'backup OR gas leak (evacuate immediately and call 911) shall trigger '
+        'the Emergency Relocation Plan to the designated host facility.',
+        '<b>(f) Lockdown (active shooter / external threat).</b> Per Protocol 19: '
+        'secure all exterior doors and windows, pull window blinds, silence '
+        'phones, hide in the designated safe room away from windows and doors, '
+        'do not open for anyone but law enforcement. Annual lockdown drills '
+        'required. Staff shall familiarize themselves with the Run / Hide / Fight '
+        'protocol and the facility\'s designated safe rooms at orientation.',
+        '<b>(g) Emergency Relocation Plan.</b> The written plan identifies a '
+        'primary and a secondary host facility (typically another licensed '
+        'group home or a hotel with prior arrangement), transportation '
+        'arrangements (facility vehicle + staff vehicles + ambulance for '
+        'medically fragile youth), medication transport (locked medication box '
+        'transported by the RN or QP), youth-identification packets (photo ID, '
+        'Medicaid card, allergy / medication list), guardian-notification '
+        'protocol (within 1 hour of relocation decision), and DHSR / LME-MCO '
+        'notification (within 24 hours). The QP shall maintain the host-facility '
+        'agreement letters in the compliance binder.',
+    ]))
+    story.append(para(
+        '<i>Web sources for §9.4–§9.7 regulatory citations (verified July 2026):</i><br/>'
         '&bull; <b>10A NCAC 27G (NC Administrative Code Title 10A Ch. 27 Subchapter G — Mental Health/DD/SA)</b> — '
         'http://reports.oah.state.nc.us/ncac/title%2010a%20-%20health%20and%20human%20services/chapter%2027%20-%20mental%20health,%20community%20facilities%20and%20services/subchapter%20g/subchapter%20g%20rules.pdf<br/>'
         '&bull; <b>NC OSFM 2012 NC Building Code Amendments §425 (Board &amp; Care — each occupied story two means of egress; smoke detectors on all levels)</b> — '

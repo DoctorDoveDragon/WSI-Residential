@@ -100,8 +100,8 @@ def build_part2():
             '<b>Resolution.</b> QP opens the box daily. Acknowledges within 24 hours. Provides written resolution within 7 days. Abuse allegations trigger an IRIS report and immediate DSS notification.',
         ]),
         ('Staffing Ratio & Awake Overnight Protocols', [
-            '<b>Ratios.</b> 1:4 day and evening. 1:8 overnight. If a staff member calls out, the on-call system activates a replacement; the QP covers in-house if no replacement is available.',
-            '<b>Awake Overnight.</b> Sleeping is prohibited. 15-minute visual room checks are documented on the Night Watch Log. Hallway lights remain on. Engage nighttime wakers quietly and briefly — do not start conversations that escalate arousal.',
+            '<b>Ratios.</b> 2 staff minimum for 1–4 youth (Level III Staff-Secure, per 10A NCAC 27G .2600). Ratios scale with census: 4 staff for 5–8 youth; 5 staff for 9 youth. The 2:4 minimum applies 24/7 including overnight. If a staff member calls out, the on-call system activates a replacement before the shift begins; the on-call QP covers in-house personally if no replacement is available. Single-staffing is prohibited at all times.',
+            '<b>Awake Overnight.</b> Two (2) awake staff on duty at all times for 1–4 youth. Sleeping is prohibited. 15-minute visual room checks are documented on the Night Watch Log (Form 1), including the Per-Floor Walk-Through Certification sub-table for two-story facilities. Hallway lights remain on. Engage nighttime wakers quietly and briefly — do not start conversations that escalate arousal.',
         ]),
         ('Medical Emergencies & Acute Illness Response', [
             '<b>Triage.</b> Assess the situation. Call QP and/or RN. Err on the side of caution — when in doubt, transport.',
@@ -133,8 +133,11 @@ def build_part2():
         ('Emergency & Disaster Preparedness', [
             '<b>Fire.</b> Evacuate immediately. Headcount at the rally point. Call 911. Do not re-enter. Monthly drills required.',
             '<b>Tornado.</b> Move to the interior safe room. Turtle position. Quarterly drills required.',
-            '<b>System Failure.</b> Distribute flashlights. If heat loss exceeds 4 hours or water loss exceeds 8 hours, initiate the Emergency Relocation Plan.',
+            '<b>Hurricane.</b> Monitor NHC advisories during Atlantic season (Jun 1 – Nov 30). At Tropical Storm Warning or Hurricane Watch: secure outdoor projectiles, verify generator fuel, stock 7-day food/water/medications, verify emergency-contact lists, contact guardians re storm plan. At Hurricane Warning: coordinate with LME/MCO and guardian re evacuation vs shelter-in-place; if evacuating, transport to designated host facility, document on IRIS. Post-storm: facility damage assessment before re-occupancy; notify DHSR MHLC if structural damage.',
+            '<b>Power Outage.</b> Distribute flashlights. Verify battery-backup life-safety systems (smoke detectors, fire alarm, security chimes). Discard refrigerated food per FDA 4-hour rule (24-48 hrs for freezer if door stays closed). If power loss expected to exceed 4 hours OR indoor temp drops below 65°F or rises above 80°F, initiate Emergency Relocation Plan. Notify utility, document outage start/end, notify QP. If generator is installed, test monthly under load.',
+            '<b>System Failure.</b> Heat loss > 4 hours, water loss > 8 hours, sewer backup, or gas leak (evacuate immediately, call 911) all trigger the Emergency Relocation Plan to the designated host facility.',
             '<b>Lockdown.</b> Secure doors and windows. Hide. Silence phones. Do not open for anyone but law enforcement. Annual drills required.',
+            '<b>Emergency Relocation.</b> Primary and secondary host facility identified in writing. Transportation: facility vehicle + staff vehicles + ambulance for medically fragile youth. Locked medication box transported by RN or QP. Youth ID packets (photo, Medicaid card, allergy/med list). Guardian notification within 1 hour. DHSR / LME-MCO notification within 24 hours. Host-facility agreement letters maintained in compliance binder.',
         ]),
         ('Service Orders & Authorization Protocol', [
             '<b>Service Order.</b> The PCP shall serve as the service order when signed by the appropriate professional. If a separate format is used, ensure a separate service order is signed.',
@@ -171,8 +174,8 @@ def build_part2():
         'This protocol codifies the daily workflow schedule for every personnel '
         'classification at Well Spring Intervention LLC. Each role has a '
         'time-blocked routine that aligns with the 24/7 residential operation, '
-        'the 1:4 day/evening and 1:8 overnight staffing ratios required by '
-        '10A NCAC 27G .5600, and the documentation cadences required by the '
+        'the 2:4 day/evening/overnight staffing ratios required by 10A NCAC 27G .2600, '
+        'and the documentation cadences required by the '
         'RMDM and Rule 108. Schedules are templates — actual shift assignments '
         'may flex to cover call-outs, school transportation, medical '
         'appointments, and clinical visits, but every role must complete its '
@@ -295,7 +298,7 @@ def build_part2():
     # ── (e) DCP — Awake Overnight Shift (11p-7a) ──────────────────────
     story.append(Paragraph('(e) Direct Care Professional (DCP) — Awake Overnight Shift (11p-7a)', s_h2))
     story.append(Paragraph(
-        'Awake overnight DCPs maintain 1:8 line-of-sight supervision. Sleeping '
+        'Awake overnight DCPs maintain the 2:4 Level III Staff-Secure ratio (two awake staff for 1–4 youth, per 10A NCAC 27G .2600). Sleeping '
         'is strictly prohibited. 15-minute visual room checks are documented '
         'on the Night Watch Log (Form 1) throughout the shift.',
         s_body
@@ -344,7 +347,7 @@ def build_part2():
     # ── (g) Registered Nurse (RN) ─────────────────────────────────────
     story.append(Paragraph('(g) Registered Nurse (RN)', s_h2))
     story.append(Paragraph(
-        'The RN provides medical oversight per §6 and 10A NCAC 27G .5600. '
+        'The RN provides medical oversight per §6 and 10A NCAC 27G .2600. '
         'The RN visits the facility at minimum weekly and within 72 hours of '
         'any new admission, and is on-call 24/7 for medical questions and '
         'medication errors.',
@@ -355,7 +358,7 @@ def build_part2():
         ('9:30 AM', 'Medication cart audit: verify MAR completion, inspect for expired medications, review any PRN administration patterns.'),
         ('10:00 AM', 'Individual youth health checks: vital signs if ordered, weight checks, skin checks, assessment of any reported symptoms.'),
         ('11:00 AM', 'Coordinate with the prescribing psychiatrist via telehealth or phone. Document any medication changes and update the MAR.'),
-        ('12:00 PM', 'Train DCPs on any new medication orders, administration techniques, or delegation updates per 10A NCAC 27G .5600.'),
+        ('12:00 PM', 'Train DCPs on any new medication orders, administration techniques, or delegation updates per 10A NCAC 27G .2600.'),
         ('1:00 PM', 'Documentation block: complete nursing notes in each youth\'s chart. Update the medication administration record. File any new lab orders.'),
         ('2:00 PM', 'Coordinate medical appointments: schedule PCP visits, dental visits, vision screenings, and any specialty referrals.'),
         ('3:00 PM', 'Brief with the QP and House Manager on any medical-action items. Depart facility; on-call coverage continues 24/7.'),
@@ -399,10 +402,10 @@ def build_part2():
     master_data = [
         ['Role', 'Standard Shift', 'Coverage', 'Primary Documentation'],
         ['Qualified Professional (QP)', '7a-9:30p (float)', 'On-site + on-call 24/7', 'Service notes, PCP addendums, Form 9, IRIS reports'],
-        ['Associate Professional (AP)', '7a-11p (rotating)', '1:4 day/evening', 'Service notes, group documentation, BSP updates'],
-        ['DCP — Day Shift', '7a-3p', '1:4 youth ratio', 'Daily logs, MAR, Form 1 handoff, Form 7 notes'],
-        ['DCP — Evening Shift', '3p-11p', '1:4 youth ratio', 'Daily logs, MAR, Form 1 handoff, Form 7 notes'],
-        ['DCP — Awake Overnight', '11p-7a', '1:8 youth ratio', 'Night Watch Log (Form 1), 15-min room checks, security log'],
+        ['Associate Professional (AP)', '7a-11p (rotating)', '2:4 staff minimum (Level III Staff-Secure)', 'Service notes, group documentation, BSP updates'],
+        ['DCP — Day Shift', '7a-3p', '2:4 staff minimum', 'Daily logs, MAR, Form 1 handoff, Form 7 notes'],
+        ['DCP — Evening Shift', '3p-11p', '2:4 staff minimum', 'Daily logs, MAR, Form 1 handoff, Form 7 notes'],
+        ['DCP — Awake Overnight', '11p-7a', '2:4 staff minimum (awake, no sleeping)', 'Night Watch Log (Form 1), 15-min room checks, security log'],
         ['House Manager', '9a-5p Mon-Fri', 'On-site + on-call', 'Maintenance log, inventory, Form 5 environmental checks'],
         ['Registered Nurse (RN)', 'Weekly visit + on-call', 'On-call 24/7', 'Nursing notes, MAR updates, delegation training log'],
         ['Billing Coordinator', '8a-4p Mon-Fri', 'On-site or remote', 'Per-diem billing, Form 4 suspensions, auth tracking, weekly summary'],
@@ -432,7 +435,7 @@ def build_part2():
         '<b>Deviation Policy.</b> Schedule deviations (call-outs, late '
         'arrivals, unplanned overtime) are documented on Form 1. The QP '
         'maintains the master staffing schedule and approves any role '
-        'substitution. Per 10A NCAC 27G .5600, ratios must be maintained at '
+        'substitution. Per 10A NCAC 27G .2600, ratios must be maintained at '
         'all times; if a replacement is not available, the QP covers in-house '
         'until a replacement arrives. Chronic staffing gaps are reported to '
         'the Clinical Director per §1.4(a) and may trigger a corrective '
