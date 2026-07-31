@@ -2305,3 +2305,59 @@ Stage Summary:
 - Critical timelines confirmed: 90-day HCP Registry check (§2.3); 180-day criminal background check (§2.3); 6-month MHLC application review from first Licensure & Training Consultant meeting (§1.2(e)).
 - Source scripts modified: sop_content_v2.py (§1.2(e), §1.2(f), §1.9, §2.3, §2.4, §2.7, §9.7(0), §10.10), sop_content_v2_part3.py (Form 6 Rev ref + Version History v2.19 row), merge_sop.py (MANUAL_VERSION = '2.19').
 - Cover artwork unchanged (Rev. 2.15 seal). Cover subtitle "Level III Residential Treatment Facility (Staff-Secure)" retained from v2.18.
+
+---
+Task ID: SOP-46
+Agent: main (Super Z)
+Task: User asked to confirm three specific items about NC Medicaid's Residential Treatment Services taxonomy for Level III (Residential Treatment High): (1) Setting type = "Program setting only (not a family home)"; (2) Structure/supervision = "Highly structured and highly supervised"; (3) Room and board excluded from the Medicaid RTS coverage category itself. Audit identified that v2.19 did NOT explicitly state any of these three items in NC Medicaid taxonomy language. Subagent research confirmed all three items via NC Medicaid Clinical Coverage Policy 8D-2 (Amended January 1, 2025) §1.0(c) and Attachment D, AND surfaced two critical citation discrepancies: (a) 10A NCAC 27G .2600 is "Reserved for Future Codification" per NC OAH — operative section appears to be .1700; (b) "CCP 8C" is wrong policy code (CCP 8C is outpatient BH); correct RTS policy is CCP 8D-2.
+
+Work Log:
+- Audited v2.19 PDF text via pdftotext + grep for the three user-stated items: "program setting" = 0 matches; "highly structured" = 0 matches; "highly supervised" = 0 matches; "room and board" = 0 matches. Confirmed v2.19 did not yet explicitly state any of the three items in NC Medicaid taxonomy language.
+- Launched general-purpose subagent to verify the three claims via web search against authoritative NC Medicaid sources.
+- Subagent confirmed all three claims via NC Medicaid Clinical Coverage Policy 8D-2 (Amended January 1, 2025), §1.0(c) — verbatim quote: "Residential Treatment Level III Service (Residential Treatment High) has a highly structured and supervised environment in a program setting only, excluding room and board."
+- Subagent also flagged: (a) 10A NCAC 27G .2600 is "Reserved for Future Codification" per NC OAH publication — operative Level III Staff-Secure section appears to be 10A NCAC 27G .1700 (.1701 SCOPE); (b) "CCP 8C" is wrong NC Medicaid policy code (CCP 8C = Outpatient Behavioral Health Services); correct RTS policy is CCP 8D-2; (c) PRTF distinction — 42 CFR Part 483, Subpart G / CCP 8D-1 PRTFs have DIFFERENT room-and-board rules (inpatient benefit, per-diem includes room-and-board-equivalent); the 8D-2 exclusion does NOT apply to PRTFs.
+- Decision: Patch the SOP v2.19 → v2.20 to add the three confirmed items + CCP 8D-2 citations + PRTF distinction, AND transparently flag the two citation discrepancies via a new §1.2(h) "Regulatory Citation Verification Note (Compliance Flag)" subsection rather than silently making sweeping citation changes (which would overreach the user's direction without confirmation from their licensing consultant).
+- Patched sop_content_v2.py:
+  * NEW §1.2(g) NC Medicaid Residential Treatment Services Taxonomy — Setting Type, Supervision Intensity & Coverage Scope — three bullets (i)/(ii)/(iii) explicitly stating all three user-confirmed items with verbatim CCP 8D-2 §1.0(c) quotes; operational implementation cross-references (2:4 ratio per §2.1, line-of-sight per §9.5, 14-hr activities per §5.5, BSP per §5.3, awake overnight per Protocol 22); PRTF distinction paragraph; hyperlink citations to CCP 8D-2, NC Medicaid Managed Care Health Plan Billing Guide v31, 42 CFR Part 483 Subpart G, and CCP 8D-1.
+  * NEW §1.2(h) Regulatory Citation Verification Note (Compliance Flag) — transparent flag for review by Executive Director, QP, licensing consultant, DHSR MHLC, and Alliance Health; (a) flags .2600 vs .1700 with NC OAH source URL, notes Manual continues to cite .2600 per organization direction pending Licensure & Training Consultant written confirmation, resolution to be documented in v2.21; (b) flags CCP 8C vs CCP 8D-2 with NC DHHS NCDHB policy library source, notes Manual continues to cite CCP 8C in legacy reference lines pending Alliance Health/NCTracks enrollment confirmation, §1.2(g)/§1.9/§10.9 control in event of inconsistency; (c) explicitly states no operational impact — license category, staffing ratios, admission exam timing, resident rights, Medicaid taxonomy, and room-and-board exclusion all unchanged.
+  * §1.9 Medicaid Enrollment — first paragraph updated to explicitly state enrollment under CCP 8D-2 (not 8C or 8D-1), cross-reference to §1.2(g) for room-and-board exclusion, verification of non-Medicaid room-and-board funding source.
+  * §10.9 Billing — first paragraph rewritten with explicit CCP 8D-2 citation, Medicaid RTS per-diem covers ONLY clinical/treatment/milieu component, room and board EXCLUDED per CCP 8D-2 §1.0(c) and §1.2(g), non-Medicaid funding sources enumerated (state/local social-services funds, Title IV-E foster care maintenance, SSI/ISS, third-party resources), under no circumstances shall room-and-board costs be billed to Medicaid/Alliance Health/NCTracks, suspected improper billing reported to Compliance Officer per §1.3 and corrected via NCTracks claim adjustment within 30 days.
+  * §3.1 Admission Criteria — adds verbatim "highly structured and supervised environment in a program setting only, excluding room and board" language per CCP 8D-2 §1.0(c); QP verification of non-Medicaid room-and-board funding source at admission.
+  * §7.3 Facility-Based School Determination — adds NEW second paragraph "Medicaid benefit distinction — CCP 8D-2 (RTS) vs CCP 8D-1 (PRTF)" noting PRTF per-diem includes room-and-board-equivalent (inpatient benefit), 8D-1 and 8D-2 mutually exclusive for same youth same day, QP/Billing Coordinator verification at admission; future PRTF pathway adds step (g) update NCTracks enrollment from 8D-2 to 8D-1.
+- Patched sop_content_v2_part3.py: Form 6 Rev ref 2.19 → 2.20; added v2.20 row to Version History table summarizing all changes.
+- Updated merge_sop.py: MANUAL_VERSION 2.19 → 2.20.
+- Regenerated body PDF via generate_sop.py — successful (no errors).
+- Re-merged final v2.20 PDF via merge_sop.py — /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.20_RMDM-Compliant.pdf (5734.1 KB, 66 pages, Rev. 2.20 RMDM-Compliant). +4 pages from v2.19 reflecting the new §1.2(g) + §1.2(h) content.
+- LATEST pointer refreshed: /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_LATEST.pdf → v2.20.
+- VLM verification (z-ai vision at 120 DPI):
+  * p.9: §1.2(f) MH Licensure P&P Worksheet + §1.2(g) NC Medicaid Residential Treatment Services Taxonomy — Setting Type, Supervision Intensity & Coverage Scope — confirmed rendered; all three search terms ("program setting only", "highly structured", "room and board") found in subsection (i) of §1.2(g).
+  * p.10: §1.2(h) Regulatory Citation Verification Note (Compliance Flag) — confirmed rendered; "NC Medicaid Residential Treatment Services Taxonomy", "Regulatory Citation Verification", "program setting only", "highly structured", "room and board" all confirmed present; no rendering issues; URLs in "Primary source" section complete and unbroken.
+  * p.11: §1.2(h) continuation (subsections (b) and (c)) + §1.3 Corporate Compliance + §1.4 Organizational Structure — clean rendering.
+- Text-extracted grep verification (all matches confirmed in v2.20):
+  * "program setting only" — 10+ matches across §1.2(g), §3.1, and Version History
+  * "highly structured" — 8+ matches across §1.2(g), §3.1, and Version History
+  * "highly supervised" — 1+ matches (subsection (ii) header)
+  * "room and board" / "excluding room and board" — 15+ matches across §1.2(g), §1.9, §3.1, §7.3, §10.9, and Version History
+  * "CCP 8D-2" — 10+ matches across §1.2(g), §1.2(h), §1.9, §3.1, §7.3, §10.9, and Version History
+  * "CCP 8D-1" — 5+ matches across §1.2(g), §1.2(h), §1.9, §7.3, and Version History
+  * "§1.2(g)" header — confirmed present at line 360
+  * "§1.2(h)" header — confirmed present at line 427
+  * "PRTF" — 10+ matches across §1.2(g), §1.2(h), §1.9, §7.3, and Version History
+
+Stage Summary:
+- New deliverable: /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.20_RMDM-Compliant.pdf (66 pages, 5.60 MB) — supersedes v2.19.
+- LATEST pointer refreshed: /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_LATEST.pdf
+- All three user-confirmed NC Medicaid RTS taxonomy items now explicitly stated in the SOP, sourced verbatim from NC Medicaid Clinical Coverage Policy 8D-2 (Amended January 1, 2025) §1.0(c):
+  (1) Setting type = "program setting only" (not a family home) — §1.2(g)(i)
+  (2) Structure/supervision = "highly structured and supervised" — §1.2(g)(ii)
+  (3) Coverage scope = room and board EXCLUDED from the Medicaid RTS benefit category — §1.2(g)(iii)
+- Two citation discrepancies transparently flagged in NEW §1.2(h) for QP resolution with DHSR MHLC and Alliance Health before initial licensure submission:
+  (a) 10A NCAC 27G .2600 (currently cited throughout SOP per user direction) vs 10A NCAC 27G .1700 (operative section per NC OAH publication) — Manual continues to cite .2600 pending Licensure & Training Consultant written confirmation; resolution to be documented in v2.21.
+  (b) NC Medicaid "CCP 8C" (currently cited in legacy reference lines per user direction) vs "CCP 8D-2" (correct RTS policy per NC DHHS NCDHB policy library) — Manual continues to cite CCP 8C in legacy reference lines pending Alliance Health/NCTracks enrollment confirmation; §1.2(g)/§1.9/§10.9 control in event of inconsistency; resolution to be documented in v2.21.
+- PRTF distinction (CCP 8D-2 RTS vs CCP 8D-1 PRTF) explicitly documented in §1.2(g) closing paragraph + §7.3 second paragraph — prevents future billing-compliance confusion between the two Medicaid benefit categories.
+- §10.9 Billing now contains explicit Medicaid billing-compliance language: per-diem covers ONLY clinical/treatment/milieu component; room and board EXCLUDED; non-Medicaid funding sources enumerated; under no circumstances shall room-and-board costs be billed to Medicaid/Alliance Health/NCTracks; suspected improper billing reported to Compliance Officer and corrected via NCTracks claim adjustment within 30 days.
+- §3.1 Admission Criteria now requires QP to verify non-Medicaid room-and-board funding source is in place at admission (and re-verified at each PCP review per §10.9).
+- No operational policies changed by §1.2(h) — license category, staffing ratios, admission exam timing, resident rights, Medicaid taxonomy, and room-and-board exclusion all remain as established in v2.18/v2.19.
+- Source scripts modified: sop_content_v2.py (§1.2(g), §1.2(h), §1.9, §3.1, §7.3, §10.9), sop_content_v2_part3.py (Form 6 Rev ref + Version History v2.20 row), merge_sop.py (MANUAL_VERSION = '2.20').
+- Cover artwork unchanged (Rev. 2.15 seal). Cover subtitle "Level III Residential Treatment Facility (Staff-Secure)" retained from v2.18.
+- IMPORTANT NOTE FOR USER: The two flagged citation discrepancies (.2600 vs .1700; CCP 8C vs CCP 8D-2) require confirmation from the user's licensing consultant or directly from DHSR MHLC and Alliance Health before initial licensure submission. The SOP v2.20 documents these as open questions in §1.2(h) rather than silently making sweeping citation changes that would overreach the user's stated direction. Resolution should be documented in a v2.21 revision.
