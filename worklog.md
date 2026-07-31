@@ -2044,3 +2044,44 @@ Stage Summary:
 - VLM-verified: company name on top arc, URL below circle (outside seal), "Residential" still inside at 6:00, house structure intact with 6 lines, logo contained, overall balanced.
 - The SOP manual remains at v2.14 (47 pages, 858 KB).
 - Persistent scripts: `/home/z/my-project/scripts/{logo_circular_seal.html, compute_v8_company_name.py, compute_v7_peak_residential.py, compute_v6_proportions.py, find_heart_lobes.py, crop_icon_content.py, compute_v4_snug_icon_size.py, analyze_icon_padding.py}`
+
+---
+Task ID: SOP-41
+Agent: main (Super Z)
+Task: User approved the final seal ("this is it!") and requested: (1) a square variant (no bottom URL — for avatars/profile pics), and (2) add the seal to the SOP manual cover as the new branding image ("this is our branding image!").
+
+Work Log:
+- **Square variant created** (`/home/z/my-project/scripts/logo_circular_seal_square.html`): Copied the main seal HTML and removed the bottom URL elements (the `<div class="bottom-url">` and `<svg class="bottom-ornament-svg">` with flanking rules). Canvas restored from 2600×2800 to **2600×2600** (square). The .icon-wrap centering reverted from absolute top:1300/left:1300 back to top:50%/left:50% (works because canvas is square again). All other elements preserved: company name on top arc (r=1100), "Residential" inside bottom arc (r=950), house with 6 lines (walls, roof peak, ceiling), logo, accent dots, bottom ornament inside circle at 6:00, bold 15px hairlines.
+- **Square variant rendered**: html2poster.js at --width 2600 → PDF (849 KB, 2600×2600px) → pdf2image at 150 DPI → PNG (4063×4063, 2.95 MB). Also generated a **1024×1024 avatar-sized PNG** (477 KB) for social media / profile pictures.
+- **SOP cover redesigned** (`/home/z/my-project/scripts/sop_cover.html`): Restructured the cover to feature the seal as the centerpiece. New 3-band layout:
+  - **Top band (0–150px, 150px tall)**: Compact dark band with just the orange "SOP / OPERATIONAL MANUAL" badge + "Standard Operating Procedure & Operational Reference" + tagline "Empowerment · Growth · Freedom · Health · Wholeness · Healing". Removed the hero "Well Spring Intervention LLC" text (the company name is now on the seal's top arc — no need to repeat it).
+  - **Seal band (150–870px, 720px tall)**: Dark band with the square seal PNG at 680×680px centered. The cream parchment square pops dramatically against the dark brown background, making the seal the clear focal point.
+  - **Bottom band (870–1123px, 253px tall)**: Dark band with accent rule, doc title "SOP & Operational Manual" (30px Playfair Display 700), subtitle "Standard Operating Procedures, Protocols & Forms" (11px Inter uppercase), and URL "www.wellspringintervention.com" (10px Inter, lighter opacity — secondary info).
+- **Seal image asset for cover**: Copied the high-res square seal PNG to `/home/z/my-project/scripts/sop_cover_image_v9_seal.png` (4063×4063, 2.95 MB) so the cover HTML can reference it locally.
+- **Cover rendered**: html2poster.js at --width 794 → PDF (5.0 MB, 794×1123px A4). The PDF grew from ~700 KB to 5 MB because it now embeds the high-res 4063×4063 seal PNG instead of a smaller brand image.
+- **VLM verification of new cover** confirmed all 7 requirements:
+  - **Seal presence** ✓: "the circular brand seal is prominently displayed in the center of the cover. It occupies a significant portion of the middle section"
+  - **Seal readability** ✓: "the seal is large enough for all text and imagery to be clearly legible. The company name 'Well Spring Intervention LLC' on the top arc and 'Residential' at the bottom are easily readable. The internal imagery... are all distinct and well-defined"
+  - **Cover layout** ✓: "clean, three-band structure: a top text band, a large central seal band, and a bottom text band. The layout is highly balanced and symmetrical"
+  - **Top band** ✓: "orange rectangular badge with the text 'SOP / OPERATIONAL MANUAL'" + "STANDARD OPERATING PROCEDURE & OPERATIONAL REFERENCE" + tagline all confirmed
+  - **Bottom band** ✓: "'SOP & Operational Manual' in a large serif font" + subtitle + URL all confirmed
+  - **Color contrast** ✓: "the cream-colored seal stands out sharply against the dark brown background. The contrast is very appealing and professional"
+  - **Overall** ✓: "extremely professional and polished... no visible issues with cropping, overlap, or alignment"
+- **SOP manual re-merged** (`/home/z/my-project/scripts/merge_sop.py`): Bumped version from v2.14 to **v2.15** (cover materially changed). Ran merge_sop.py → 47-page PDF (5.6 MB). New cover (page 1) + unchanged 46-page body. Files emitted:
+  - `/home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.15_RMDM-Compliant.pdf` (5.6 MB, 47 pages, immutable archive)
+  - `/home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_LATEST.pdf` (5.6 MB, "latest" pointer copy)
+- **Final cover VLM verification** on the merged PDF page 1 confirmed: "seal clearly visible as the centerpiece", "well-proportioned", "all 3 bands present", "professional, balanced, and ready for distribution. **Status: Approved for distribution.**"
+
+Stage Summary:
+- Two deliverables shipped:
+  1. **Square seal variant** (no bottom URL):
+     - `/home/z/my-project/download/Well_Spring_Logo_Circular_Seal_Square.pdf` (849 KB, 2600×2600px, vector)
+     - `/home/z/my-project/download/Well_Spring_Logo_Circular_Seal_Square.png` (2.95 MB, 4063×4063px, print-quality)
+     - `/home/z/my-project/download/Well_Spring_Logo_Circular_Seal_Square_1024.png` (477 KB, 1024×1024px, avatar/social-media size)
+  2. **SOP manual v2.15** with new seal cover:
+     - `/home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.15_RMDM-Compliant.pdf` (5.6 MB, 47 pages)
+     - `/home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_LATEST.pdf` (5.6 MB, "latest" pointer)
+- Cover redesign: 3-band layout (top kicker / middle seal at 680×680 / bottom doc title + URL). Removed the redundant "Well Spring Intervention LLC" hero text from the top band — the company name now lives on the seal's top arc. URL moved from below the seal (in the seal PNG) to the bottom band of the cover (so the square seal stays clean for avatar use).
+- The previous SOP-40 seal (with URL below the circle, 2600×2800 canvas) is preserved as the primary "with URL" branding image. The new square variant (this task) is for avatar/profile-pic use. The cover uses the square variant.
+- VLM-verified: cover approved for distribution.
+- Persistent scripts: `/home/z/my-project/scripts/{logo_circular_seal.html, logo_circular_seal_square.html, sop_cover.html, merge_sop.py, compute_v8_company_name.py, compute_v7_peak_residential.py, compute_v6_proportions.py}`

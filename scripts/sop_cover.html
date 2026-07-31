@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Well Spring Intervention LLC — SOP Manual Cover</title>
+<title>Well Spring Intervention LLC — SOP Manual Cover (v9, seal)</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -48,22 +48,22 @@
     overflow: hidden;
   }
 
-  /* ── Layout regions ─────────────────────────────────────────────
+  /* ── Layout regions (v9 — seal as centerpiece) ──────────────────
      The cover is divided into three vertical regions:
-       1. Top band    (0 → 320px, 320px tall)    — branding text
-       2. Image band  (320 → 773px, 453px tall)  — full horizontal brand image
-       3. Bottom band (773 → 1123px, 350px tall) — document identification
-     The image band height (453px) is computed from the source image's
-     natural aspect ratio (1344:768 = 1.75:1) at 794px page width:
-     794 × (768/1344) = 453px. This ensures the image is shown in FULL
-     with no cropping, exactly matching the standalone brand PNG. */
+       1. Top band    (0 → 150px,  150px tall)  — document kicker only
+       2. Seal band   (150 → 870px, 720px tall) — square brand seal, centered
+       3. Bottom band (870 → 1123px, 253px tall) — document title + tagline
+     The seal (2600×2600 source PNG) is rendered at ~680×680px centered
+     in the 720px-tall seal band, with the cream parchment square popping
+     against the dark background. The company name "Well Spring Intervention
+     LLC" appears on the seal's top arc — no need to repeat it as text. */
 
   .band-top {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 320px;
+    height: 150px;
     background:
       linear-gradient(to bottom,
         var(--c-band-top) 0%,
@@ -72,33 +72,34 @@
     z-index: 2;
   }
 
-  .band-image {
+  .band-seal {
     position: absolute;
-    top: 320px;
+    top: 150px;
     left: 0;
     right: 0;
-    height: 453px;
-    background: #2a1810;
+    height: 720px;
+    background: var(--c-band-bot);
     z-index: 1;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  .band-image img {
+  .band-seal img {
     display: block;
-    width: 100%;
-    height: 100%;
-    /* object-fit:contain ensures the FULL image is visible (no cropping).
-       The image fills the band exactly because the band's aspect ratio
-       matches the image's natural aspect ratio (794:453 ≈ 1344:768). */
+    width: 680px;
+    height: 680px;
+    /* object-fit:contain keeps the full square seal visible */
     object-fit: contain;
     object-position: center center;
   }
 
   .band-bottom {
     position: absolute;
-    top: 773px;
+    top: 870px;
     left: 0;
     right: 0;
-    height: 350px;
+    height: 253px;
     background:
       linear-gradient(to bottom,
         #2a1810 0%,
@@ -114,9 +115,13 @@
     left: 0;
     right: 0;
     bottom: 0;
-    padding: 56px 64px 24px 64px;
+    padding: 38px 64px 18px 64px;
     color: #fff;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   .top-content .kicker {
     font-family: 'Inter', sans-serif;
@@ -125,7 +130,7 @@
     letter-spacing: 5px;
     text-transform: uppercase;
     color: var(--c-cream);
-    margin-bottom: 28px;
+    margin-bottom: 14px;
   }
   .top-content .kicker .badge {
     display: inline-block;
@@ -138,35 +143,14 @@
     letter-spacing: 2px;
     font-size: 9.5px;
   }
-  .top-content .hero {
-    font-family: 'Playfair Display', serif;
-    font-weight: 900;
-    font-size: 56px;
-    line-height: 1.05;
-    color: #fff;
-    letter-spacing: -1px;
-    margin-bottom: 6px;
-  }
-  .top-content .hero .row2 {
-    color: var(--c-cream);
-  }
-  .top-content .subtitle {
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--c-cream-soft);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-top: 10px;
-  }
   .top-content .tagline {
     font-family: 'Inter', sans-serif;
-    font-size: 10px;
+    font-size: 9.5px;
     font-weight: 600;
     letter-spacing: 4px;
     text-transform: uppercase;
-    color: rgba(255, 251, 247, 0.7);
-    margin-top: 16px;
+    color: rgba(255, 251, 247, 0.62);
+    margin-top: 0;
   }
 
   /* ── Bottom band content ──────────────────────────────────────── */
@@ -180,7 +164,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    padding: 44px 64px 56px 64px;
+    padding: 38px 64px 44px 64px;
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -191,7 +175,7 @@
     width: 60px;
     height: 2px;
     background: var(--c-accent);
-    margin-bottom: 22px;
+    margin-bottom: 18px;
   }
   .bottom-content .doc-title {
     font-family: 'Playfair Display', serif;
@@ -208,40 +192,46 @@
     letter-spacing: 2.5px;
     text-transform: uppercase;
     color: var(--c-cream);
+    margin-bottom: 14px;
+  }
+  .bottom-content .url-line {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: rgba(255, 251, 247, 0.55);
+    margin-top: 4px;
   }
 </style>
 </head>
 <body>
 <div class="poster">
 
-  <!-- Top band: branding -->
+  <!-- Top band: document kicker (company name is on the seal itself) -->
   <div class="band-top">
     <div class="top-content">
       <div class="kicker">
         <span class="badge">SOP / OPERATIONAL MANUAL</span>
         Standard Operating Procedure &amp; Operational Reference
       </div>
-      <div class="hero">
-        Well Spring <span class="row2">Intervention</span> LLC
-      </div>
-      <div class="subtitle">Level 3 Supervised Residential Group Home</div>
       <div class="tagline">
         Empowerment &nbsp;&middot;&nbsp; Growth &nbsp;&middot;&nbsp; Freedom &nbsp;&middot;&nbsp; Health &nbsp;&middot;&nbsp; Wholeness &nbsp;&middot;&nbsp; Healing
       </div>
     </div>
   </div>
 
-  <!-- Image band: FULL horizontal brand image (no cropping, matches standalone PNG exactly) -->
-  <div class="band-image">
-    <img src="sop_cover_image.png" alt="Symbolic illustration of a tree-human figure with green leaves rising toward a sunrise over calm water, with a grey heart-shaped stone in the foreground directly in front of the tree bearing a small natural crack on its surface from which a clear water spring rises vertically to about belly-high of the tree — evoking wellspring, growth, health, flourishing, empowerment, freedom, wholeness, healing, love, and compassion" />
+  <!-- Seal band: SQUARE brand seal as the centerpiece (replaces horizontal brand image) -->
+  <div class="band-seal">
+    <img src="sop_cover_image_v9_seal.png" alt="Well Spring Intervention LLC circular brand seal — house outline enclosing tree of life, wellspring, and family figures, with the company name on the top arc and 'Residential' on the bottom arc inside the circle" />
   </div>
 
-  <!-- Bottom band: document title only (versioning is private) -->
+  <!-- Bottom band: document title (versioning is private) -->
   <div class="band-bottom">
     <div class="bottom-content">
       <div class="accent-rule"></div>
       <div class="doc-title">SOP &amp; Operational Manual</div>
       <div class="doc-subtitle">Standard Operating Procedures, Protocols &amp; Forms</div>
+      <div class="url-line">www.wellspringintervention.com</div>
     </div>
   </div>
 

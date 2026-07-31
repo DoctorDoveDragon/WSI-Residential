@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Well Spring Intervention LLC — Circular Seal: Bold circles, large URL font</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: transparent;
+    margin: 0; padding: 0;
+  }
+  .poster {
+    width: 2600px;
+    height: 2600px; /* SQUARE variant — no bottom URL */
+    background: #faeddc; /* warm cream parchment */
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* SVG layers — two of them:
+     - seal-svg-bottom: company-name ring + hairlines + ornaments + Residential (BENEATH icon)
+     - seal-svg-top:    house pentagon (ON TOP of icon)
+     Both cover the 2600×2600 seal area. */
+  .seal-svg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 2600px;
+    height: 2600px;
+    pointer-events: none;
+  }
+
+  /* Centered CROPPED icon — between the two SVG layers.
+     Uses Well_Spring_Logo_Icon_Cropped.png (791×902, content centered
+     with 15px symmetric padding — 96% content fill).
+     Displayed at 1305×1488px (scaled 1.22x from 1070×1220 for best fit
+     inside the inner circle). Content 1255×1440, centered at (1300,1300).
+     House contains logo with ~30px margins, roof above canopy. */
+  .icon-wrap {
+    position: absolute;
+    top: 50%; left: 50%; /* square canvas — center via 50%/50% */
+    transform: translate(-50%, -50%);
+    width: 1305px;
+    height: 1488px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon-wrap img {
+    width: 1305px;
+    height: 1488px;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* Company name text style — 132px, BOLD (Playfair Display 900/Black — naturally heavy serif) */
+  .url-text {
+    font-family: 'Playfair Display', 'Times New Roman', serif;
+    font-weight: 900;
+    font-size: 132px;
+    letter-spacing: 28px;
+    fill: #6b4d3f; /* deep walnut brown */
+  }
+
+  /* 'Residential' descriptor text — 110px BOLD, inside inner hairline on bottom arc */
+  .residential-text {
+    font-family: 'Playfair Display', 'Times New Roman', serif;
+    font-weight: 900;
+    font-size: 110px;
+    letter-spacing: 22px;
+    fill: #6b4d3f; /* deep walnut brown */
+  }
+
+  /* Website URL below the circle — NOT used in square variant */
+  /* (removed; square variant has no URL below circle) */
+</style>
+</head>
+<body>
+  <div class="poster">
+
+    <!-- ====================================================== -->
+    <!-- BOTTOM SVG: URL ring + hairlines + ornaments            -->
+    <!-- Canvas 2600×2600, center (1300,1300)                    -->
+    <!--                                                          -->
+    <!-- Circular lines: stroke 15px (10x from 1.5px),           -->
+    <!-- opacity 1.0 (darkened from 0.34)                         -->
+    <!-- URL font: 132px (2x from 66px), letter-spacing 28px     -->
+    <!-- ====================================================== -->
+    <svg class="seal-svg" viewBox="0 0 2600 2600" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Company name textPath circle: center (1300,1300), radius 1100.
+             Starts at 9 o'clock (200,1300), goes CLOCKWISE.
+             startOffset 25% = top (12 o'clock) for centered text.
+             Text 'Well Spring Intervention LLC' spans ~40.8% of circle (9:33 to 2:27),
+             clears accent dots at 9:00/3:00. -->
+        <path id="url-circle"
+              d="M 200,1300 a 1100,1100 0 1,1 2200,0 a 1100,1100 0 1,1 -2200,0"
+              fill="none" />
+
+        <!-- 'Residential' textPath circle: center (1300,1300), radius 950.
+             INSIDE the inner hairline (r=1040). Starts at 9 o'clock (350,1300),
+             goes COUNTER-CLOCKWISE through 6 o'clock to 3 o'clock.
+             startOffset 50% = bottom (6 o'clock) for centered text.
+             Text reads LEFT-TO-RIGHT (upright) at 6:00.
+             Spans ~15% of circle (4:11 to 7:49), clears accent dots at 9:00/3:00. -->
+        <path id="residential-circle"
+              d="M 350,1300 A 950,950 0 0,0 2250,1300"
+              fill="none" />
+      </defs>
+
+      <!-- LAYER 1 (OUTERMOST): Outer hairline circle r=1225
+           stroke 15px (10x), opacity 1.0 (darkened) -->
+      <circle cx="1300" cy="1300" r="1225"
+              fill="none" stroke="#6b4d3f" stroke-width="15" opacity="1.0" />
+
+      <!-- LAYER 2: COMPANY NAME on circle r=1100 (OUTSIDE the house)
+           Text: 'Well Spring Intervention LLC' (replaces URL, which moved below circle)
+           Font 132px, BOLD (Playfair Display 900/Black) -->
+      <text class="url-text" x="0" y="0" font-weight="900">
+        <textPath href="#url-circle" startOffset="25%" text-anchor="middle">
+          Well Spring Intervention LLC
+        </textPath>
+      </text>
+
+      <!-- LAYER 3: Inner hairline circle r=1040
+           stroke 15px (10x), opacity 1.0 (darkened) -->
+      <circle cx="1300" cy="1300" r="1040"
+              fill="none" stroke="#6b4d3f" stroke-width="15" opacity="1.0" />
+
+      <!-- LAYER 4: 'Residential' text on circle r=950 (INSIDE inner hairline)
+           Font 110px, BOLD (Playfair Display 900/Black), bottom arc centered at 6:00 -->
+      <text class="residential-text" x="0" y="0" font-weight="900">
+        <textPath href="#residential-circle" startOffset="50%" text-anchor="middle">
+          Residential
+        </textPath>
+      </text>
+
+      <!-- ORNAMENTS on URL circle (r=1100), between the hairlines -->
+      <!-- Two terracotta accent dots at 9:00 and 3:00 (r=16, 2x from 8) -->
+      <circle cx="200" cy="1300" r="16" fill="#ab5125" opacity="0.85" />
+      <circle cx="2400" cy="1300" r="16" fill="#ab5125" opacity="0.85" />
+
+      <!-- Bottom closure ornament at 6:00 (1300, 2400) -->
+      <circle cx="1300" cy="2400" r="20" fill="#ab5125" opacity="0.85" />
+      <line x1="1150" y1="2400" x2="950" y2="2400"
+            stroke="#6b4d3f" stroke-width="8" opacity="0.55" />
+      <line x1="1450" y1="2400" x2="1650" y2="2400"
+            stroke="#6b4d3f" stroke-width="8" opacity="0.55" />
+      <circle cx="935" cy="2400" r="10" fill="#ab5125" opacity="0.65" />
+      <circle cx="1665" cy="2400" r="10" fill="#ab5125" opacity="0.65" />
+    </svg>
+
+    <!-- ====================================================== -->
+    <!-- MIDDLE LAYER: Cropped logo icon (1305×1488)             -->
+    <!-- Scaled 1.22x for best fit inside the inner circle       -->
+    <!-- ====================================================== -->
+    <div class="icon-wrap">
+      <img src="/home/z/my-project/download/Well_Spring_Logo_Icon_Cropped.png"
+           alt="Multi-color logo icon (cropped to content): tree of life, wellspring, family figures" />
+    </div>
+
+    <!-- ====================================================== -->
+    <!-- TOP SVG: HOUSE OUTLINE (6 lines) — contains the logo    -->
+    <!-- SCALED 1.22x for best fit inside inner circle r=1040    -->
+    <!-- Walls x=642/1958 (width 1316), floor y=2050,            -->
+    <!-- wall tops y=550. Roof peak (1300, 302), rise 248px,     -->
+    <!-- angle ~20.7°. Peak at r=998 (SAME as wall corners).     -->
+    <!-- Ceiling line at y=550 connects the two top corner      -->
+    <!-- vertices (separates triangular roof from rectangular   -->
+    <!-- body). Wall corners at r=998 (clearance 42px from      -->
+    <!-- inner r=1040). 15px stroke (matches hairlines).        -->
+    <!-- ====================================================== -->
+    <svg class="seal-svg" viewBox="0 0 2600 2600" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#6b4d3f" stroke-width="15" opacity="1.0" fill="none"
+         stroke-linecap="round" stroke-linejoin="round">
+        <!-- Line 1: FLOOR -->
+        <line x1="642" y1="2050" x2="1958" y2="2050" />
+        <!-- Line 2: LEFT WALL -->
+        <line x1="642" y1="2050" x2="642" y2="550" />
+        <!-- Line 3: LEFT ROOF -->
+        <line x1="642" y1="550" x2="1300" y2="302" />
+        <!-- Line 4: RIGHT ROOF -->
+        <line x1="1300" y1="302" x2="1958" y2="550" />
+        <!-- Line 5: RIGHT WALL -->
+        <line x1="1958" y1="550" x2="1958" y2="2050" />
+        <!-- Line 6: CEILING (connects the two top corner vertices) -->
+        <line x1="642" y1="550" x2="1958" y2="550" />
+      </g>
+    </svg>
+
+    <!-- ====================================================== -->
+    <!-- SQUARE VARIANT: No bottom URL (removed)                  -->
+    <!-- The seal is complete with company name on top arc +     -->
+    <!-- 'Residential' inside at bottom + house + logo.           -->
+    <!-- ====================================================== -->
+
+  </div>
+</body>
+</html>
