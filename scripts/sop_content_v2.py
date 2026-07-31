@@ -127,6 +127,53 @@ def build_part1():
         'report, and credentialing-approval letters in the facility compliance binder and '
         're-credentials per the Alliance Health credentialing cycle (typically every 3 years).'
     ))
+    story.append(Paragraph('<b>1.2(e) DHSR MHLC License Application Procedure.</b>', s_h2))
+    story.append(para(
+        'The DHSR MHLC license-application package shall be assembled by the QP and submitted '
+        'as a single, complete packet containing: (i) the completed <b>Initial Licensure '
+        'Application Form (DHHS/DHSR/MHL 5001)</b> — available from the DHSR MHLC website at '
+        'https://info.ncdhhs.gov/dhsr/mhlcforms/index.html; (ii) a <b>Cover Letter</b> on '
+        'company letterhead, signed by the Executive Director, briefly describing the proposed '
+        'facility, license category (Level III RTF — Staff Secure, 10A NCAC 27G .2600), '
+        'catchment area, target population, projected census, and requested effective date; '
+        '(iii) the accreditation certificate or letter of pending accreditation from one of the '
+        'four approved accrediting bodies per §1.2(a); (iv) the Letter of Support from Alliance '
+        'Health per §1.2(b); (v) the CON determination letter per §1.2(c); (vi) local approvals '
+        '— zoning compliance letter per §9.6, building-code approval, fire-marshal approval, '
+        'and sanitation approval; (vii) the facility floor plan and site diagram; (viii) '
+        'corporate documents per §1.8 (Articles of Incorporation, Operating Agreement, '
+        'governing-body roster, EIN, liability-insurance certificates, lease/deed); (ix) the '
+        'Policies &amp; Procedures Manual (this document) with the MH Licensure P&amp;P '
+        'Worksheet attached per §1.2(f); and (x) the non-refundable license-application fee '
+        'per the current DHSR fee schedule. Upon receipt of a complete application, DHSR MHLC '
+        'assigns a <b>Licensure &amp; Training Consultant</b> who serves as the facility\'s '
+        'primary point of contact throughout the licensing process. <b>The six (6) month '
+        'application-review period begins on the date of the first in-person meeting with the '
+        'assigned Licensure &amp; Training Consultant.</b> The QP shall calendar the '
+        'six-month deadline and provide monthly status updates to the Executive Director; any '
+        'deficiencies identified by the Consultant shall be corrected within 30 calendar days '
+        'whenever practicable. A license shall not be issued until the Licensure &amp; Training '
+        'Consultant has confirmed that all application items are complete, all local approvals '
+        'are current, and the facility has passed the on-site licensure survey per §10.10.'
+    ))
+    story.append(Paragraph('<b>1.2(f) MH Licensure Policies &amp; Procedures Worksheet.</b>', s_h2))
+    story.append(para(
+        'The <b>MH Licensure Policies &amp; Procedures Worksheet</b> is a DHSR MHLC-issued '
+        'checklist that maps each 10A NCAC 27G rule to a corresponding section of the facility\'s '
+        'Policies &amp; Procedures Manual. The Worksheet is <b>not a substitute for the rules</b> '
+        'and is <b>not a stand-alone document</b>; rather, it functions as a crosswalk that '
+        'allows the Licensure &amp; Training Consultant to verify, at a glance, that every '
+        'applicable 27G requirement is addressed somewhere in the P&amp;P Manual. The QP shall '
+        'complete the Worksheet in full, attach it to the front of this Manual behind the cover '
+        'letter, and update it any time a Manual section is substantively revised or a new '
+        'section is added. The Worksheet shall reference the specific SOP section number '
+        '(e.g., §2.1 for staffing ratios, §6.1 for admission physical examination, §9.5 for '
+        'staff-secure physical-plant measures) where each rule is addressed. The completed '
+        'Worksheet shall be retained in the facility compliance binder and made available to '
+        'DHSR MHLC surveyors, Alliance Health site reviewers, and accrediting-body surveyors '
+        'upon request. The current Worksheet is available from the DHSR MHLC website at '
+        'https://info.ncdhhs.gov/dhsr/mhlcforms/index.html.'
+    ))
     story.append(para(
         '<b>1.3 Corporate Compliance.</b> Well Spring Intervention LLC maintains a Corporate '
         'Compliance Plan to prevent Medicaid fraud, waste, and abuse. All staff receive '
@@ -343,6 +390,63 @@ def build_part1():
         'most recent filed tax return, and a current balance sheet, sufficient to '
         'demonstrate ongoing financial solvency as required by 10A NCAC 27G .0203.',
     ]))
+    story.append(Paragraph('<b>1.9 Medicaid Enrollment &amp; NCTracks (Post-Licensure).</b>', s_h2))
+    story.append(para(
+        'Upon issuance of the DHSR MHLC license and completion of the Alliance Health '
+        'Provider Network Application per §1.2(d), the facility shall complete <b>Medicaid '
+        'enrollment</b> through <b>NCTracks</b> — the State of North Carolina\'s Medicaid '
+        'Management Information System (MMIS). Medicaid enrollment is a <b>post-licensure</b> '
+        'step and is required before the facility may bill Medicaid for any covered service. '
+        'The QP (or designated Billing Coordinator) shall complete the following steps in '
+        'sequence:'
+    ))
+    story.extend(bullets([
+        '<b>Obtain a National Provider Identifier (NPI)</b> for the organization (Type 2 '
+        'NPI) from the National Plan &amp; Provider Enumeration System (NPPES) at '
+        'https://nppes.cms.hhs.gov. Each individual billing clinician shall also obtain a '
+        'Type 1 NPI. The NPI is a 10-digit numeric identifier required for all HIPAA-'
+        'covered transactions.',
+        '<b>Enroll in NCTracks</b> as a Medicaid provider at https://www.nctracks.osbm.nc.gov. '
+        'Submit the completed NCTracks Provider Enrollment Application, current DHSR '
+        'license, accreditation certificate, NPI confirmation letter, IRS letter confirming '
+        'EIN, and the Alliance Health provider-agreement letter. NCTracks assigns the '
+        'facility a permanent Medicaid Provider ID after enrollment approval.',
+        '<b>Select the correct Medicaid service(s) via the Provider Permission Matrix (PPM)</b>. '
+        'For a Level III RTF serving children/adolescents, the applicable taxonomy is '
+        '<b>320800000X — Residential Treatment Facility, Children</b> (alternatively '
+        '320900000X — Residential Treatment Facility, Physically Impaired, if dual-diagnosis '
+        'population is served). The QP shall confirm the current applicable taxonomy code '
+        'with Alliance Health and NCTracks at the time of enrollment, as NC Medicaid '
+        'covered-service definitions and taxonomy mappings are periodically updated. The '
+        'PPM is accessed through the NCTracks provider portal and identifies the specific '
+        'service(s) the facility is approved to deliver and bill.',
+        '<b>Complete the post-enrollment accreditation timeline.</b> Per NCGS §122C-26 and '
+        'NC Medicaid policy, residential child-care facilities must achieve full national '
+        'accreditation within <b>one (1) year</b> of Medicaid enrollment for most services, '
+        'or within <b>three (3) years</b> for services with an extended accreditation '
+        'timeline. Because accreditation is a pre-licensure requirement under §1.2(a), this '
+        'facility shall enter Medicaid enrollment with current accreditation already in '
+        'place; the post-enrollment timeline therefore operates as a re-affirmation of '
+        'continuous accreditation maintenance, not as a new deadline.',
+        '<b>Maintain enrollment in good standing.</b> Re-attest the NCTracks enrollment '
+        'information at least every 12 months (or per the current NCTracks re-attestation '
+        'cycle); report any change of address, ownership, licensing capacity, or '
+        'accreditation status to NCTracks and to Alliance Health within 30 days; and '
+        'respond to all NCTracks and Alliance Health provider inquiries within the '
+        'timeframe specified in the inquiry.',
+    ]))
+    story.append(para(
+        'The QP shall retain the NPI confirmation letter, NCTracks enrollment-approval '
+        'letter, current PPM, and the most recent NCTracks re-attestation in the facility '
+        'compliance binder. Reference links: <b>NPPES NPI Registry</b> '
+        'https://nppes.cms.hhs.gov; <b>NCTracks Provider Enrollment</b> '
+        'https://www.nctracks.osbm.nc.gov; <b>NCTracks Provider Permission Matrix (PPM) '
+        'Help</b> https://www.nctracks.osbm.nc.gov/content/html/providers/provider-permission-'
+        'matrix.html; <b>NC Medicaid Tailored Plan Provider Manual</b> '
+        'https://medicaid.nc.gov/providers/provider-manuals; <b>NPI Taxonomy — '
+        'Residential Treatment Facility codes (NUCC)</b> '
+        'https://nucc.org/code-sets.'
+    ))
 
     # ── SOP 2 ──────────────────────────────────────────────────────
     story.append(section_heading(2, 'Human Resources & Staffing Requirements'))
@@ -392,21 +496,42 @@ def build_part1():
     ]))
     story.append(Paragraph('<b>2.3 Background Checks (Prior to Unsupervised Contact).</b>', s_h2))
     story.extend(bullets([
-        'NC SBI fingerprint criminal background check.',
-        'Health Care Personnel Registry check.',
-        'DSS Child Abuse and Neglect Registry check (every state of residence in prior 5 years).',
-        'Motor Vehicle Record (MVR) for staff who transport residents.',
+        '<b>NC SBI fingerprint criminal background check</b> — must be completed within <b>180 days prior to initial licensure review</b> and re-checked annually thereafter and upon reasonable suspicion.',
+        '<b>Health Care Personnel Registry check</b> — must be completed within <b>90 days prior to licensure review</b> (initial and renewal) and re-checked annually thereafter.',
+        '<b>DSS Child Abuse and Neglect Registry check</b> (every state of residence in prior 5 years) — within 90 days prior to licensure review and annually thereafter.',
+        '<b>Motor Vehicle Record (MVR)</b> for staff who transport residents — annually.',
         'Re-checks completed annually and upon reasonable suspicion.',
     ]))
+    story.append(para(
+        'No staff member shall have unsupervised contact with any youth until all four background-screening '
+        'items above are complete, current, and on file in the personnel record. The QP shall maintain a '
+        '<b>Background Check Expiration Tracking Log</b> showing for each staff member the date of the most '
+        'recent criminal-background check, HCP-Registry check, DSS-CAN-Registry check, and MVR check, with '
+        'automatic 30-day advance-notice alerts prior to each annual expiration. Any staff member whose '
+        'background check has expired shall be removed from the schedule until the re-check is complete and '
+        'on file.'
+    ))
     story.append(Paragraph('<b>2.4 Mandatory Training (Prior to Independent Duty; Annual Refreshers).</b>', s_h2))
     story.extend(bullets([
-        'CPR / First Aid (annually)',
-        'NCI or CPI restraint and de-escalation (annually)',
-        'Medication Administration (RN-delegated, annually)',
-        'Bloodborne Pathogens (annually)',
-        'Trauma-Informed Care (annually)',
-        'Rule 108 incident reporting (annually)',
-        'Adolescent development, C-SSRS suicide risk assessment, and person-centered planning (orientation + quarterly)',
+        '<b>CPR with Heimlich Maneuver / First Aid</b> (annually; <b>in-person only</b> — no online-only certification accepted)',
+        '<b>NCI or CPI restraint and de-escalation</b> (annually; <b>in-person only</b> for the physical-restraint module)',
+        '<b>Medication Administration</b> (RN-delegated, annually; <b>in-person only</b>)',
+        '<b>Bloodborne Pathogens</b> (annually)',
+        '<b>Trauma-Informed Care</b> (annually)',
+        '<b>Rule 108 incident reporting</b> (annually)',
+        '<b>Population-Specific Training</b> — children/adolescents with serious emotional disturbance (SED), '
+        'co-occurring disorders, trauma history, and the developmental, cognitive, and clinical '
+        'characteristics of the population served by this facility (orientation + annual refresher)',
+        '<b>Adolescent development, C-SSRS suicide risk assessment, and person-centered planning</b> '
+        '(orientation + quarterly)',
+        '<b>Alternatives to Restrictive Interventions (De-Escalation Training)</b> — verbal de-escalation, '
+        'environmental modification, sensory regulation, and trauma-informed redirection (orientation + annual refresher)',
+        '<b>Seclusion, Physical Restraint &amp; Isolation Time-Out</b> — physical-restraint techniques, '
+        'release criteria, post-restraint medical/clinical monitoring, and documentation (annually; '
+        '<b>in-person only</b>)',
+        '<b>Client Rights &amp; Confidentiality</b> — NCGS §122C-51 et seq. and HIPAA (orientation + annual refresher)',
+        '<b>General Organization Orientation</b> — mission, policies, chain of command, emergency '
+        'procedures (orientation)',
     ]))
     story.append(Paragraph('<b>2.5 Personnel Records.</b>', s_h2))
     story.append(para(
@@ -464,6 +589,30 @@ def build_part1():
         'writing with the operational basis. <b>Staff shall not be required to work more '
         'than 16 consecutive hours</b> except in a declared facility emergency, and any '
         'such extended shift shall be followed by no fewer than 10 hours of off-duty rest.'
+    ))
+    story.append(Paragraph('<b>2.7 Instructor Credentials &amp; Trainer Certifications.</b>', s_h2))
+    story.append(para(
+        'For each mandatory training topic listed in §2.4, the facility shall retain documentation '
+        'of the instructor\'s qualifications and current instructor-level certification in the '
+        'facility compliance binder (separate from individual staff personnel files). At a minimum, '
+        'instructor credentials shall be maintained for: (a) <b>CPR with Heimlich Maneuver / First '
+        'Aid</b> — current American Heart Association (AHA) Basic Life Support (BLS) Instructor '
+        'certification or American Red Cross First Aid/CPR/AED Instructor certification; (b) '
+        '<b>NCI or CPI restraint and de-escalation</b> — current NCI Instructor certification '
+        'or CPI Certified Instructor credential; (c) <b>Medication Administration</b> — '
+        'RN with current, unrestricted NC license who has completed the NC-DHHS-approved '
+        'Medication Administration Trainer course (or equivalent) and is authorized by the '
+        'facility\'s Clinical Director to delegate and train; (d) <b>Bloodborne Pathogens</b> — '
+        'RN or qualified designee trained on the OSHA Bloodborne Pathogens Standard (29 CFR '
+        '1910.1030); (e) <b>Seclusion, Physical Restraint &amp; Isolation Time-Out</b> — same '
+        'instructor credentials as (b) above. For each instructor, the QP shall maintain: '
+        'instructor name; certification body; certification number; issue date; expiration '
+        'date; copy of the instructor certificate; and a list of all training sessions '
+        'delivered (date, topic, attendee roster). Instructor certifications shall be '
+        're-verified annually; expired instructor certifications shall be renewed before '
+        'the instructor delivers any further training. Training delivered by an uncertified '
+        'or expired-certified instructor is invalid and shall be re-delivered by a '
+        'properly-certified instructor.'
     ))
 
     # ── SOP 3 ──────────────────────────────────────────────────────
@@ -1131,6 +1280,24 @@ def build_part1():
         'and annually thereafter. Drills shall be conducted per the cadence in §9.2 '
         'and §9.4(f).'
     ))
+    story.append(para(
+        '<b>9.7(0) Coordination with Local Emergency Management (OEM).</b> The QP shall '
+        'coordinate the written Disaster &amp; Emergency Plan with the <b>local Office of '
+        'Emergency Management (OEM)</b> for the county in which the facility is located '
+        '(e.g., Wake County Emergency Management, Cumberland County Emergency Services, '
+        'Durham County Emergency Management). Prior to initial licensure and annually '
+        'thereafter, the QP shall: (a) submit a current copy of the facility Disaster &amp; '
+        'Emergency Plan to the local OEM; (b) request and retain written verification '
+        'from the local OEM acknowledging receipt and confirming coordination; (c) confirm '
+        'the facility\'s 9-1-1 dispatch address, emergency-contact roster, and any '
+        'special-needs registry enrollment for youth with mobility, sensory, or medical '
+        'vulnerabilities; and (d) confirm the local OEM\'s role in the event of a '
+        'community-wide evacuation order. The local OEM\'s written acknowledgment shall '
+        'be retained in the facility compliance binder and made available to the DHSR '
+        'MHLC Licensure &amp; Training Consultant and surveyors upon request. The North '
+        'Carolina Emergency Management directory is available at '
+        'https://www.ncdps.gov/our-organization/emergency-management.'
+    ))
     story.extend(bullets([
         '<b>(a) Fire.</b> Evacuate immediately upon alarm. Headcount at the rally '
         'point (designated meeting area at the front sidewalk, ≥50 ft from the '
@@ -1402,6 +1569,71 @@ def build_part1():
         'errors are corrected promptly and reported to the LME/MCO as required. Records '
         'are released only with a signed ROI or as required by law, court order, or '
         'regulatory audit.'
+    ))
+    story.append(Paragraph('<b>10.10 Mock Client Chart &amp; Licensure Survey Readiness.</b>', s_h2))
+    story.append(para(
+        'Prior to the on-site <b>DHSR MHLC Licensure Survey</b> (and prior to any '
+        're-licensure or accreditation survey), the QP shall prepare and assemble a '
+        'complete <b>Mock Client Chart</b> representative of a typical youth served by '
+        'the facility. The Mock Client Chart shall be made available to the surveyor on '
+        'the first day of the on-site survey and shall demonstrate the facility\'s '
+        'documentation practices across the full continuum of care. The Mock Client '
+        'Chart shall include the following elements (cross-referenced to the applicable '
+        'SOP section and Form number in this Manual):'
+    ))
+    story.extend(bullets([
+        '<b>Identification Face Sheet</b> — youth name, DOB, Medicaid ID, address, '
+        'guardian name and contact, primary language, admission date, assigned QP and '
+        'psychiatrist (per §3.2, §3.3).',
+        '<b>Emergency Information Sheet</b> — emergency contacts, allergies, primary '
+        'physician, preferred hospital, pharmacy, and code-status (if applicable).',
+        '<b>Consent for Treatment</b> — signed by guardian (and youth if age-appropriate), '
+        'including consent for medication, transportation, photography, and Release of '
+        'Information (ROI) (per §3.2).',
+        '<b>Comprehensive Clinical Assessment (CCA)</b> — completed by a licensed '
+        'professional within the required timeframe, including DSM-5-TR/ICD-10 diagnoses, '
+        'clinical formulation, and recommended level of care (per §4.1).',
+        '<b>Person-Centered Plan (PCP)</b> — signed by all participants, with measurable '
+        'goals, objectives, interventions, and assigned responsible staff; reviewed every '
+        '90 days (per §4.2, §4.3).',
+        '<b>Progress Notes / Service Notes</b> — daily shift notes, weekly clinical '
+        'progress notes, group notes, and any 1:1 service notes (per §10.1, §10.2, §10.3).',
+        '<b>Medication Orders &amp; Medication Administration Record (MAR)</b> — signed '
+        'physician medication orders, current MAR showing all PRN and scheduled '
+        'administrations, and any medication-incident reports (per §6.3, §6.4).',
+        '<b>Behavior Support Plan (BSP)</b> — if applicable, with proactive strategies, '
+        'replacement skills, de-escalation steps, and crisis responses (per §5.3).',
+        '<b>Restrictive-Intervention Records</b> — if applicable, all restraint, seclusion, '
+        'and isolation time-out documentation with post-incident medical monitoring, '
+        'guardian notification, and IRIS reports (per §5.4, §8).',
+        '<b>Health Records</b> — pre-admission physical exam report (within 90 days prior '
+        'to admission per §6.1), immunization record, TB screening, dental and vision '
+        'records, and annual exam documentation.',
+        '<b>Activities Log</b> — weekly group activities participation showing the '
+        '14-hours-per-week minimum per §5.5.',
+        '<b>Grievance Records</b> — if applicable, any grievances filed by or on behalf of '
+        'the youth, with documentation of acknowledgement, investigation, response, and '
+        'resolution per §1.7(c).',
+        '<b>Disclosures &amp; Accounting of Disclosures</b> — Form 9 completed for any '
+        'PHI disclosures during the chart period (per §11.4).',
+        '<b>Discharge / Transition Plan</b> — initiated at admission, reviewed every 30 '
+        'days, with projected discharge date and identified next placement (per §3.4).',
+    ]))
+    story.append(para(
+        'In addition to the Mock Client Chart, the QP shall prepare and make available to '
+        'the surveyor: (a) <b>Facility Photographs</b> — labeled photographs of each room '
+        'in the facility (exterior, common areas, kitchen, youth bedrooms, staff sleeping '
+        'areas if applicable, bathrooms, medication storage area, time-out room if '
+        'applicable, exits, fire-safety equipment, and outdoor recreation area), with each '
+        'photograph labeled to identify the room; (b) <b>all policies and procedures '
+        'referenced in this Manual</b>; (c) <b>all personnel files</b> for current staff '
+        'with background-check, training, CEU, and instructor-credential documentation per '
+        '§2; (d) <b>all disaster and emergency plans</b> including OEM coordination per '
+        '§9.7; (e) <b>the MH Licensure P&amp;P Worksheet</b> per §1.2(f); and (f) <b>the '
+        'compliance binder</b> containing all corporate, financial, insurance, and '
+        'licensing documents per §1.8. The QP shall conduct a <b>mock survey</b> no fewer '
+        'than 30 days prior to the scheduled DHSR MHLC survey, identify and correct any '
+        'deficiencies, and document the mock-survey findings and corrective actions.'
     ))
 
     # ── SOP 11 ─────────────────────────────────────────────────────

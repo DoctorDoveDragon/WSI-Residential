@@ -2252,3 +2252,56 @@ Stage Summary:
   P7 Alliance Health Application: ✓ §1.2(d) Alliance Health Provider Network Application (Provider Application, Self-Assessment, Mission/Vision, site review, credentialing approval).
 - Source scripts modified: sop_content_v2.py (§1.2, §1.4, §1.7, §1.8, §2.1, §2.5(a), §2.6, §3.1, §5.5, §6.1, §6.5, §7.3, §9.4(c), §9.5, §9.6, §9.7), sop_content_v2_part2.py (Protocol 19, staffing protocols, .5600 → .2600, master schedule), sop_content_v2_part3.py (Form 6 Rev ref, Version History v2.18 row), sop_cover.html (subtitle), merge_sop.py (MANUAL_VERSION = '2.18').
 - Cover seal artwork (introduced Rev. 2.15) unchanged.
+
+---
+Task ID: SOP-45
+Agent: main (Super Z)
+Task: User confirmed the comprehensive 7-phase Level III RTF opening checklist (Phase 0 Foundational → Phase 7 Medicaid Enrollment) and asked for confirmation that the SOP v2.18 manual addressed every checklist item. Audit identified 6 specific items that v2.18 had missed; SOP was patched to v2.19 to address them.
+
+Work Log:
+- Read /home/z/my-project/worklog.md to confirm SOP-44 (v2.18) was completed in the previous session — 58 pages, 5.58 MB, all 7 phases addressed at the section level.
+- Extracted v2.18 PDF text via pdftotext and ran targeted greps for every specific item in the user's checklist.
+- Confirmed v2.18 already addressed: DHSR MHLC named; Alliance Health as LME/MCO; §1.2(b) Letter of Support (NCGS §122C-23.1); §1.2(c) CON determination; §1.2(a) accreditation (COA/TJC/CARF/CQL); §1.2(d) Alliance Health Provider Network Application; §9.6 zoning compliance; §9.4 building/fire codes; §9.5 staff-secure physical-plant measures; §9.7 disaster plan; §6.5 infection control; §2.1 2:4 staffing ratio; §2.5(a) CEU tracking; §2.3 background checks (without explicit 90/180-day windows); §2.4 training (without explicit Heimlich/population-specific/in-person-only); §1.7 resident rights; §6.1 admission physical exam 90 days prior; §5.5 activities program (14 hrs/wk); §1.8 organizational & financial foundations; Form 6 acknowledgment.
+- Identified 6 specific items that v2.18 had NOT made explicit:
+  * Phase 3 — DHHS/DHSR/MHL 5001 form number; cover letter requirement; six (6) month application-review clock from first Licensure & Training Consultant meeting; MH Licensure P&P Worksheet
+  * Phase 4 — explicit 90-day HCP Registry / 180-day criminal-background windows; "CPR with Heimlich Maneuver" specifically; Population-Specific Training; Alternatives to Restrictive Interventions (De-Escalation); Seclusion/Physical Restraint & Isolation Time-Out (in-person only); Client Rights & Confidentiality; General Organization Orientation; Instructor Credentials/Trainer Certifications documentation
+  * Phase 5 — coordination with local Office of Emergency Management (OEM)
+  * Phase 6 — Mock Client Chart with specific elements (Face Sheet, Emergency Info, Consent for Treatment, CCA, PCP, Progress Notes, Medication Orders/MAR); labeled facility photographs; mock survey 30 days prior
+  * Phase 7 — NPI (National Provider Identifier) via NPPES; NCTracks Provider Enrollment; Provider Permission Matrix (PPM); taxonomy 320800000X (Residential Treatment Facility, Children); post-enrollment accreditation timeline (1 or 3 years); 12-month re-attestation
+- Patched sop_content_v2.py with all missing items:
+  * NEW §1.2(e) DHSR MHLC License Application Procedure — names MHL 5001 form #, cover letter, complete application packet contents, assignment of Licensure & Training Consultant, six (6) month review clock from first in-person meeting, link to DHSR MHLC forms page.
+  * NEW §1.2(f) MH Licensure Policies & Procedures Worksheet — clarifies it's a crosswalk (not a substitute for the rules), must be attached to front of Manual, updated whenever any section is revised.
+  * §2.3 Background Checks updated — explicit "within 180 days prior to initial licensure review" for NC SBI fingerprint check; "within 90 days prior to licensure review" for HCP Registry check and DSS-CAN Registry check; new Background Check Expiration Tracking Log; staff removed from schedule if any background check expires.
+  * §2.4 Mandatory Training expanded — added "CPR with Heimlich Maneuver" (in-person only); Population-Specific Training (children/adolescents with SED); Alternatives to Restrictive Interventions (De-Escalation); Seclusion/Physical Restraint & Isolation Time-Out (in-person only); Client Rights & Confidentiality (NCGS §122C-51 et seq. + HIPAA); General Organization Orientation; all in-person-only training items so marked.
+  * NEW §2.7 Instructor Credentials & Trainer Certifications — AHA BLS Instructor or Red Cross Instructor for CPR/First Aid; NCI Instructor or CPI Certified Instructor for restraint/de-escalation; RN with NC-DHHS Medication Administration Trainer course for med admin; per-instructor documentation (name, certification body, number, issue/expiry dates, training sessions delivered); expired-instructor training is invalid and must be re-delivered.
+  * NEW §9.7(0) Coordination with Local Office of Emergency Management (OEM) — submit Disaster Plan to local OEM; obtain written acknowledgment; confirm 9-1-1 dispatch address; enroll youth in special-needs registry if applicable; link to NC Emergency Management directory at ncdps.gov.
+  * NEW §10.10 Mock Client Chart & Licensure Survey Readiness — 14-element Mock Client Chart (Identification Face Sheet, Emergency Information Sheet, Consent for Treatment, CCA, PCP, Progress Notes/Service Notes, Medication Orders & MAR, BSP, Restrictive-Intervention Records, Health Records, Activities Log, Grievance Records, Disclosures & Accounting of Disclosures, Discharge/Transition Plan); labeled facility photographs; full document assembly for surveyor review (policies, personnel files, disaster plans, MH Licensure P&P Worksheet, compliance binder); mandatory mock survey 30 days prior to DHSR MHLC survey.
+  * NEW §1.9 Medicaid Enrollment & NCTracks (Post-Licensure) — Type 2 NPI for organization via NPPES (https://nppes.cms.hhs.gov); Type 1 NPI for individual billing clinicians; NCTracks Provider Enrollment (https://www.nctracks.osbm.nc.gov) with submission packet; Provider Permission Matrix (PPM) selection; taxonomy 320800000X — Residential Treatment Facility, Children (or 320900000X for dual-diagnosis); post-enrollment accreditation timeline (1 year most services, 3 years extended); 12-month re-attestation; reference links to NPPES, NCTracks, PPM Help, NC Medicaid Tailored Plan Provider Manual, NUCC taxonomy code set.
+- Patched sop_content_v2_part3.py: Form 6 Employee SOP Acknowledgment Rev. reference 2.18 → 2.19; added v2.19 row to Version History table summarizing all changes.
+- Updated merge_sop.py: MANUAL_VERSION '2.18' → '2.19'.
+- Regenerated body PDF via generate_sop.py — successful (no errors).
+- Re-merged final v2.19 PDF via merge_sop.py — /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.19_RMDM-Compliant.pdf (5719.2 KB, 62 pages, Rev. 2.19 RMDM-Compliant). +4 pages from v2.18 reflecting the new sections.
+- LATEST pointer refreshed: /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_LATEST.pdf → v2.19.
+- VLM verification (z-ai vision at 120 DPI):
+  * p.9: §1.2(f) MH Licensure P&P Worksheet + §1.3 Corporate Compliance + §1.4 Organizational Structure + §1.4(a) QP Compliance Reporting — clean rendering, no overflow.
+  * p.13: §1.9 Medicaid Enrollment & NCTracks — NCTracks, NPI, PPM all confirmed visible; taxonomy 320800000X confirmed visible on preceding page (text-extracted line 551).
+  * p.15: §2.5(a) CEU tracking + §2.6 Staff Leave & Time-Off Policy + §2.7 Instructor Credentials & Trainer Certifications — confirmed rendered.
+  * p.30: §10.9 Billing + §10.10 Mock Client Chart & Licensure Survey Readiness — all 14 Mock Client Chart elements rendered as bullet list (Face Sheet, Emergency Info, Consents, CCA, PCP, Progress Notes, Med Orders/MAR, BSP, Restrictive-Intervention Records, Health Records, Activities Log, Grievance Records, Disclosures, Discharge Plan).
+  * p.31: §11.1-§11.4 (SOP 11 begins) + continuation of §10.10 paragraph about labeled facility photographs + mock survey 30 days prior.
+  * p.62: Version History table — v2.19 row rendered with full APPLICATION-PROCEDURE & SURVEY-READINESS PATCH summary covering all 7 phases.
+
+Stage Summary:
+- New deliverable: /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.19_RMDM-Compliant.pdf (62 pages, 5.59 MB) — supersedes v2.18.
+- LATEST pointer refreshed: /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_LATEST.pdf
+- v2.19 confirms the user's 7-phase Level III RTF opening checklist is fully addressed at the section + specific-item level:
+  Phase 0 Foundational: ✓ DHSR MHLC named (not DSS); ✓ Alliance Health as LME/MCO; ✓ Letter of Support §1.2(b); ✓ Physical Location throughout §9.
+  Phase 1 Physical Plant: ✓ §9.6 Zoning Compliance (Fair Housing Act, NC Group Homes Act NCGS §160D-906); ✓ §9.4 Building Code Approval (NC OSFM §425); ✓ §9.4 Fire Marshal Approval; ✓ §6.5 Sanitation (Infection Control Program).
+  Phase 2 Accreditation: ✓ §1.2(a) Accreditation Prerequisite (COA/TJC/CARF/CQL per NCGS §122C-26); ✓ self-study + on-site survey + accreditation certificate retained.
+  Phase 3 License Application: ✓ §1.2(e) DHSR MHLC License Application Procedure — MHL 5001 form, cover letter, complete packet, Licensure & Training Consultant, six (6) month review clock; ✓ §1.2(f) MH Licensure P&P Worksheet.
+  Phase 4 Policies/Procedures/Personnel: ✓ §2.3 Background Checks with explicit 90/180-day windows; ✓ §2.4 Mandatory Training with CPR+Heimlich (in-person only), Population-Specific, De-Escalation, Restraint (in-person only), Client Rights, General Orientation; ✓ §2.5 Personnel Records; ✓ §2.5(a) CEU tracking; ✓ §2.7 Instructor Credentials documentation; ✓ §2.6 Staff Leave & Time-Off Policy.
+  Phase 5 Emergency & Disaster: ✓ §9.7 Disaster Plan; ✓ §9.7(0) Local OEM Coordination; ✓ §9.7(a) Fire Evacuation Plan; §9.4(f) Drill schedule (monthly fire + quarterly tornado).
+  Phase 6 Licensure Survey: ✓ §10.10 Mock Client Chart (14 elements) + labeled facility photographs + mock survey 30 days prior; ✓ §1.2(f) MH Licensure P&P Worksheet for surveyor crosswalk.
+  Phase 7 Medicaid Enrollment: ✓ §1.9 Medicaid Enrollment & NCTracks — NPI (NPPES), NCTracks enrollment, PPM, taxonomy 320800000X, accreditation timeline, 12-month re-attestation; ✓ §1.2(d) Alliance Health Provider Network Application.
+- Critical timelines confirmed: 90-day HCP Registry check (§2.3); 180-day criminal background check (§2.3); 6-month MHLC application review from first Licensure & Training Consultant meeting (§1.2(e)).
+- Source scripts modified: sop_content_v2.py (§1.2(e), §1.2(f), §1.9, §2.3, §2.4, §2.7, §9.7(0), §10.10), sop_content_v2_part3.py (Form 6 Rev ref + Version History v2.19 row), merge_sop.py (MANUAL_VERSION = '2.19').
+- Cover artwork unchanged (Rev. 2.15 seal). Cover subtitle "Level III Residential Treatment Facility (Staff-Secure)" retained from v2.18.
