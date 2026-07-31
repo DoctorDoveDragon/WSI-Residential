@@ -1962,3 +1962,39 @@ Stage Summary:
 - This resolves the under-utilization of the circle from SOP-37 by scaling the entire house + logo composition together, preserving all prior refinements (bold URL font from SOP-37, lowered roof from SOP-37, bold hairlines from SOP-36, snug house from SOP-35).
 - The SOP manual remains at v2.14 (47 pages, 858 KB).
 - Persistent scripts: `/home/z/my-project/scripts/{logo_circular_seal.html, compute_v6_proportions.py, find_heart_lobes.py, crop_icon_content.py, compute_v4_snug_icon_size.py, analyze_icon_padding.py}`
+
+---
+Task ID: SOP-39
+Agent: main (Super Z)
+Task: User requested three changes to the circular seal: (1) "raise peak to same distance from circle as other vertices" — raise the roof peak so it's at the same radial distance from center as the wall corners, (2) "add extra line connecting the two corner vertices at the top (not the peak)" — add a horizontal ceiling line between the two top wall corners, and (3) "Add 'Residential' to bottom half inside the circle" — add "Residential" text in the lower half, inside the inner hairline circle.
+
+Work Log:
+- **Geometry computation** (`/home/z/my-project/scripts/compute_v7_peak_residential.py`): Verified all three changes with exact coordinates.
+- **Change 1 — Roof peak raised**: Peak moved from (1300, 501) to (1300, 302). New peak distance from center = 998 (exactly matches wall corner distance 997.7). Roof rise increased from 49px to 248px above wall tops. Roof angle increased from 4.26° to 20.65° (a proper house roof pitch). Peak clearance from inner hairline r=1040: 42px (same as wall corners — symmetric). Peak is 70px below URL text descenders (y=232), so no overlap with URL. Heart canopy (y=583) is 33px below wall tops (y=550), so still in body, not roof zone.
+- **Change 2 — Ceiling line added**: New horizontal line at y=550 from (642, 550) to (1958, 550), connecting the two top corner vertices. Stroke 15px walnut-brown (matches house walls). This creates a triangular attic (roof) above the line and a rectangular body below it. The house now has 6 lines: floor, left wall, left roof, right roof, right wall, ceiling.
+- **Change 3 — 'Residential' text added**: Placed on a new textPath circle at r=950 (INSIDE the inner hairline r=1040), centered at 6:00 (bottom). Font 110px Playfair Display 900 (bold, matching URL font family), letter-spacing 22px, walnut-brown #6b4d3f. Path: M 350,1300 A 950,950 0 0,0 2250,1300 (from 9:00 to 3:00 through 6:00, counter-clockwise in screen coords so text reads left-to-right upright at 6:00). startOffset=50% centers "Residential" at 6:00. Text spans ~55° of the r=950 circle (from 4:11 to 7:49), clearing accent dots at 9:00 and 3:00.
+- **Geometry verification for 'Residential' text** (110px font on r=950):
+  - Baseline at y=2250 (r=950 at 6:00)
+  - Cap top at y=2173 (r=873) — 129px below icon bottom (y=2044) ✓
+  - Descenders at y=2278 (r=978) — 62px above inner hairline (y=2340) ✓
+  - Bottom ornament at y=2400 (r=1100) — 122px below descenders ✓ (no conflict)
+- All other elements preserved from SOP-38: canvas 2600×2600, bold 15px circular hairlines (r=1225/1040) at full opacity, URL text 132px Playfair Display 900 with 28px letter-spacing on r=1100 top arc, accent dots (r=16) at 9:00/3:00, bottom ornament at 6:00 (r=1100), cropped logo at 1305×1488 centered, house walls/floor at 15px stroke.
+- **Rendering**: Updated `logo_circular_seal.html` with all three changes → html2poster.js at --width 2600 → PDF (849 KB) → pdf2image at 150 DPI → PNG (4063×4063, 2.96 MB).
+- **VLM verification** confirmed all 7 requirements:
+  - **Roof peak height** ✓: "The roof peak appears to be positioned at the same radial distance from the center of the seal as the two upper corners of the rectangular house body. All three points seem to touch the same imaginary inner circle boundary."
+  - **Ceiling line** ✓: "There is a distinct horizontal line connecting the two top vertices of the house walls. This line clearly separates the triangular roof section from the rectangular body section below it."
+  - **'Residential' text** ✓: "The word 'Residential' is visible in the bottom half of the seal, positioned inside the inner circular border. It is upright (readable), centered horizontally at the bottom, and follows a slight upward curve."
+  - **House contains logo** ✓: "The entire logo graphic... is fully contained within the boundaries of the house outline. No elements extend beyond these lines."
+  - **Roof vs heart** ✓: "The roof structure is positioned clearly above the red heart canopy. There is a visible gap of negative space between the peak/rafters of the roof and the top curve of the heart; they do not overlap."
+  - **URL text** ✓: "The URL 'www.wellspringintervention.com' is displayed along the top arc. It is bold, legible, and situated in the space between the outer bold circle and the inner bold circle."
+  - **Overall** ✓: "The design looks balanced and clean. The elements are well-proportioned within the circular frame. There are no unintended visual overlaps or clipping issues."
+- The SOP manual (v2.14) is unchanged.
+
+Stage Summary:
+- Refined circular seal delivered at `/home/z/my-project/download/Well_Spring_Logo_Circular_Seal.png` (2.96 MB, 4063×4063px) + `.pdf` (849 KB, 2600×2600px). Three changes per user request:
+  - **Roof peak raised to match wall corners**: Peak moved from (1300, 501) to (1300, 302). Peak now at r=998 from center, EXACTLY matching wall corner distance (r=998). Roof rise 248px (was 49px), angle 20.65° (was 4.26°) — a proper house roof pitch. All three top points (peak + 2 wall corners) now touch the same imaginary circle at r=998.
+  - **Ceiling line added**: New horizontal line at y=550 from (642, 550) to (1958, 550), connecting the two top corner vertices. Creates a triangular attic (roof) above and rectangular body below. House now has 6 lines.
+  - **'Residential' text added**: Word "Residential" on r=950 circle (inside inner hairline r=1040), bottom arc centered at 6:00. 110px Playfair Display 900 (bold), letter-spacing 22px, walnut-brown. Upright, readable, spans ~55° (4:11 to 7:49), clears accent dots and bottom ornament.
+- VLM-verified: peak matches wall corners, ceiling line present, "Residential" upright and centered at bottom, house contains logo, roof above heart, URL bold and readable, overall balanced.
+- The SOP manual remains at v2.14 (47 pages, 858 KB).
+- Persistent scripts: `/home/z/my-project/scripts/{logo_circular_seal.html, compute_v7_peak_residential.py, compute_v6_proportions.py, find_heart_lobes.py, crop_icon_content.py, compute_v4_snug_icon_size.py, analyze_icon_padding.py}`
