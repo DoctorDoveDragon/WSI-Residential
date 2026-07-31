@@ -130,6 +130,51 @@ def build_part3():
         ('On-Coming Staff:', 180, 'On-coming staff signature'),
     ]))
 
+    # ── Form 1 addendum: Per-Floor Walk-Through Certification (two-story facilities) ──
+    story.append(Spacer(1, 12))
+    story.append(Paragraph(
+        '<b>Per-Floor Walk-Through Certification (Required for Two-Story / Multi-Level Facilities — §9.4(d))</b>',
+        s_form_section,
+    ))
+    story.append(Paragraph(
+        '<i>In addition to the 15-minute youth-by-youth visual checks above, the awake '
+        'overnight DCP shall physically walk every floor on which youth are sleeping and '
+        'initial the corresponding block. Single-story facilities write "N/A" across '
+        'the Floor 2 row.</i>',
+        s_form_meta,
+    ))
+    story.append(Spacer(1, 4))
+    f1b_header = ['Time Block', 'Floor 1 — Walked (Initials)', 'Floor 2 — Walked (Initials)', 'Basement — Walked (Initials)', 'Notes / Anomalies']
+    f1b_th = ParagraphStyle('f1bth', fontName=BODY_BOLD, fontSize=8.5, leading=11, textColor=colors.white, alignment=TA_CENTER)
+    f1b_data = [[Paragraph(f'<b>{h}</b>', f1b_th) for h in f1b_header]]
+    f1b_blocks = [
+        ('11:00 PM – 1:00 AM',),
+        ('1:00 AM – 3:00 AM',),
+        ('3:00 AM – 5:00 AM',),
+        ('5:00 AM – 7:00 AM',),
+    ]
+    for (tb,) in f1b_blocks:
+        f1b_data.append([
+            Paragraph(tb, s_td_sm),
+            *_fillable_data_cells(4, default_width=80, height=18, font_size=8),
+        ])
+    f1b_widths = [0.20*AVAIL_W, 0.18*AVAIL_W, 0.18*AVAIL_W, 0.18*AVAIL_W, 0.26*AVAIL_W]
+    t1b = Table(f1b_data, colWidths=f1b_widths, hAlign='CENTER', repeatRows=1)
+    sc1b = [
+        ('BACKGROUND', (0, 0), (-1, 0), HEADER_FILL),
+        ('GRID',       (0, 0), (-1, -1), 0.4, BORDER),
+        ('VALIGN',     (0, 0), (-1, -1), 'MIDDLE'),
+        ('LEFTPADDING',  (0, 0), (-1, -1), 4),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 4),
+        ('TOPPADDING',   (0, 0), (-1, -1), 5),
+        ('BOTTOMPADDING',(0, 0), (-1, -1), 5),
+    ]
+    for i in range(1, len(f1b_data)):
+        bg = TABLE_ROW_ODD if i % 2 == 1 else TABLE_ROW_EVEN
+        sc1b.append(('BACKGROUND', (0, i), (-1, i), bg))
+    t1b.setStyle(TableStyle(sc1b))
+    story.append(t1b)
+
     # ── FORM 2 ─────────────────────────────────────────────────────
     story.append(Spacer(1, 14))
     story.extend(_form_banner_and_heading(
@@ -382,6 +427,59 @@ def build_part3():
     t5c.setStyle(TableStyle(sc3))
     story.append(t5c)
 
+    # ── Form 5 addendum: Two-Story / Multi-Level Per-Floor Safety Checks (§9.4) ──
+    story.append(Spacer(1, 10))
+    story.append(Paragraph(
+        '<b>Two-Story / Multi-Level Per-Floor Safety Checks (§9.4 — Required Monthly for Two-Story Facilities)</b>',
+        s_form_section,
+    ))
+    story.append(Paragraph(
+        '<i>Complete this sub-table each month for every facility with two or more '
+        'stories. Single-story facilities write "N/A" across the Floor 2 / Basement '
+        'rows. All checks must be Y (pass) or N (fail); any N requires immediate '
+        'corrective action and escalation to the QP per §9.1.</i>',
+        s_form_meta,
+    ))
+    story.append(Spacer(1, 4))
+    f5d_header = [
+        'Floor', 'Smoke Detectors (Y/N)', 'CO Detectors (Y/N)',
+        'Extinguisher (Y/N)', 'Egress Window / Escape Ladder (Y/N)',
+        'Window Restrictor ≤4 in (Y/N)', 'Stair Gate (Y/N)',
+        'Staff Initials',
+    ]
+    f5d_th = ParagraphStyle('f5dth', fontName=BODY_BOLD, fontSize=8, leading=10, textColor=colors.white, alignment=TA_CENTER)
+    f5d_data = [[Paragraph(f'<b>{h}</b>', f5d_th) for h in f5d_header]]
+    for floor_label in ['Floor 1 (Ground)', 'Floor 2 (Upper)', 'Basement (if any)']:
+        f5d_data.append([
+            Paragraph(floor_label, s_td_sm),
+            *_fillable_data_cells(7, default_width=42, height=14, font_size=8),
+        ])
+    f5d_widths = [
+        0.14*AVAIL_W,  # Floor
+        0.12*AVAIL_W,  # Smoke
+        0.11*AVAIL_W,  # CO
+        0.11*AVAIL_W,  # Extinguisher
+        0.15*AVAIL_W,  # Egress
+        0.14*AVAIL_W,  # Restrictor
+        0.10*AVAIL_W,  # Stair gate
+        0.13*AVAIL_W,  # Staff
+    ]
+    t5d = Table(f5d_data, colWidths=f5d_widths, hAlign='CENTER', repeatRows=1)
+    sc4 = [
+        ('BACKGROUND', (0, 0), (-1, 0), HEADER_FILL),
+        ('GRID',       (0, 0), (-1, -1), 0.4, BORDER),
+        ('VALIGN',     (0, 0), (-1, -1), 'MIDDLE'),
+        ('LEFTPADDING',  (0, 0), (-1, -1), 3),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 3),
+        ('TOPPADDING',   (0, 0), (-1, -1), 5),
+        ('BOTTOMPADDING',(0, 0), (-1, -1), 5),
+    ]
+    for i in range(1, len(f5d_data)):
+        bg = TABLE_ROW_ODD if i % 2 == 1 else TABLE_ROW_EVEN
+        sc4.append(('BACKGROUND', (0, i), (-1, i), bg))
+    t5d.setStyle(TableStyle(sc4))
+    story.append(t5d)
+
     # ── FORM 6 ─────────────────────────────────────────────────────
     story.append(Spacer(1, 14))
     story.extend(_form_banner_and_heading(
@@ -400,7 +498,7 @@ def build_part3():
     story.append(Spacer(1, 8))
     story.append(Paragraph(
         'By signing below, I acknowledge that I have received, read, and understand the '
-        'SOP Manual for <b>Well Spring Intervention LLC</b> (Rev. 2.16, July 2026, '
+        'SOP Manual for <b>Well Spring Intervention LLC</b> (Rev. 2.17, July 2026, '
         'RMDM-Compliant). I understand these policies are mandated by NC DHSR (10A NCAC '
         '27G), NC Medicaid (CCP 8C), Rule 108 (10A NCAC 27T), the NCDHHS Records '
         'Management and Documentation Manual (Effective July 8, 2025), NCGS Chapter 66 '
@@ -656,6 +754,9 @@ def build_part3():
          'Executive Director / QP'],
         ['2.16', 'Jul 2026',
          'About This Manual page cleanup. (1) Removed the redundant "Revision Lineage" narrative paragraph from the About This Manual inside page&nbsp;— the authoritative Version History table in Part 3 (this section) already serves that purpose, so the duplicate narrative was unnecessary. (2) Corrected the "Cover Artwork" description on the same inside page to accurately describe the new seal-based cover introduced in Rev. 2.15, replacing the now-outdated tree-human-sunrise-heart-stone description from Rev. 2.14. Body content (SOPs §1-§11, Protocol 22 Daily Workflow Schedules, all nine AcroForm fillable forms, §1.4(b) QP Credentialing Requirements) is unchanged from Rev. 2.15&nbsp;— only the About This Manual inside page is edited.',
+         'Executive Director / QP'],
+        ['2.17', 'Jul 2026',
+         'New §9.4 Two-Story &amp; Multi-Level Facility Requirements added to SOP 9 (Facility, Safety, &amp; Environmental Management). New subsection codifies the regulatory requirements specific to two-story group homes: §9.4(a) applicability and DHSR licensing-notification triggers (relocating youth bedrooms upstairs, increasing upper-floor capacity, converting single-story to two-story, housing non-ambulatory youth upstairs); §9.4(b) means of egress per NC OSFM Building Code §425, NC Fire Code Ch. 10, and IBC 2021 §1030 (5.7 sq ft / 24 in / 20 in / 44 in sill emergency-escape openings, two remotely-located means of egress per occupied story, stair geometry, emergency-backup stair lighting, chain-style fire-escape ladders in each second-floor youth bedroom); §9.4(c) per-floor fire detection, suppression, and alarm (interconnected smoke detectors on all levels per NFPA 72, CO detectors on every floor with fuel-burning appliances and within 10 ft of sleeping rooms, automatic sprinklers per NFPA 13D/13R, 2A-10BC extinguishers per level with 75-ft max travel); §9.4(d) per-floor staff supervision (awake overnight DCP positioned to cover upper-floor hallway, 15-minute room checks physically performed on every sleeping floor and documented on Form 1, stair safety gates at top and bottom for youth under 12 or with elopement/suicidality risk, baby-monitor/intercom option with documented 60-second response time); §9.4(e) window fall protection (restrictors limiting opening to ≤4 in. where second-floor sill is &lt;24 in. above floor, staff-key releasable, monthly function check on Form 5); §9.4(f) vertical-evacuation drills (monthly fire drills must include full evacuation from all second-floor sleeping rooms to grade, quarterly tornado drills use lowest interior level only — no second-floor bathrooms); §9.4(g) bedroom placement policy (lower-acuity/lower-mobility/younger youth on ground floor; no attic/basement bedrooms; placement documented in PCP); §9.4(h) posted evacuation maps and stair hazard signage on each floor. Each requirement carries inline hyperlinked web-source citations to the underlying NC Administrative Code (10A NCAC 27G, 13F .0309, 13G .0316), NC OSFM Building Code §425, NC Fire Code 2024 Ch. 10, NC IFC 2021 Ch. 4, IBC 2021 §1030, NC DHSR ACLS Family Care Home licensing and Fire Safety training PDFs, NFPA 101 Life Safety Code (Board &amp; Care §32/33), Durham NC and Orange County NC smoke/CO alarm summaries, NCSL CO Detector Statutes, and the NC Family Care Home structure rule (no more than 2 stories; second-floor residents require two direct exterior egress). Form 1 (Shift Change &amp; Awake Night Watch Log) is extended with a new "Per-Floor Walk-Through Certification" sub-table requiring the awake overnight DCP to initial Floor 1, Floor 2, and Basement walk-throughs every 2 hours (4 time blocks: 11p-1a, 1a-3a, 3a-5a, 5a-7a) — single-story facilities mark N/A. Form 5 (Environmental Safety Log) is extended with a new "Two-Story / Multi-Level Per-Floor Safety Checks" sub-table with three floor rows (Floor 1 / Floor 2 / Basement) and eight check columns (Smoke Detectors, CO Detectors, Extinguisher, Egress Window / Escape Ladder, Window Restrictor ≤4 in., Stair Gate, plus Staff Initials) completed monthly. Form 6 (Employee SOP Acknowledgment) Rev. reference updated from 2.16 to 2.17. All other body content (SOPs §1-§8, §10-§11, Protocol 22 Daily Workflow Schedules, §1.4(b) QP Credentialing Requirements, and all other forms) is unchanged from Rev. 2.16.',
          'Executive Director / QP'],
     ]
     vh_th = ParagraphStyle('vhth', fontName=BODY_BOLD, fontSize=9, leading=11, textColor=colors.white, alignment=TA_LEFT)

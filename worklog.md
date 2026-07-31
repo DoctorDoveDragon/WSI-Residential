@@ -2125,3 +2125,32 @@ Stage Summary:
 - VLM-verified: About page has no Revision Lineage section and the new Cover Artwork description; TOC page has a concise intro with no revision narrative; Version History table contains both v2.15 and v2.16 rows.
 - The seal assets from SOP-41 are unchanged (square variant + with-URL variant + cover seal PNG).
 - Persistent scripts: `/home/z/my-project/scripts/{generate_sop.py, sop_content_v2_part3.py, sop_cover.html, merge_sop.py}` all updated.
+
+---
+Task ID: SOP-43
+Agent: main (Super Z)
+Task: Add a new §9.4 "Two-Story & Multi-Level Facility Requirements" subsection to the SOP Manual with cited web sources for each regulation. Also extend Form 1 (Night Watch Log) with a per-floor walk-through certification block, and extend Form 5 (Environmental Safety Log) with a per-floor two-story safety check table.
+
+Work Log:
+- Ran 8 web searches via z-ai web_search CLI for authoritative NC and national regulatory sources covering: 10A NCAC 27G, NC Fire Code 2024 Ch. 10, NC OSFM 2012 NC Building Code §425 (board & care), IBC 2021 §1030 emergency escape openings, 10A NCAC 13F .0309 and 13G .0316 fire safety rules, NC DHSR ACLS Family Care Home licensing procedure and Fire Safety training PDF, NFPA 101 Life Safety Code board & care, NCSL CO detector statutes, Durham and Orange County NC smoke/CO alarm summaries, and the NC Family Care Home structure rule (no more than 2 stories; second-floor residents require two direct exterior egress). Results saved to /home/z/my-project/scripts/research/*.json.
+- Drafted §9.4 "Two-Story & Multi-Level Facility Requirements" with 8 sub-subsections (a-h): (a) Applicability & DHSR licensing notification triggers; (b) Means of egress per NC OSFM §425 / NC Fire Code Ch. 10 / IBC 2021 §1030 with the 5.7 sq ft / 24 in / 20 in / 44 in sill dimensions; (c) Per-floor fire detection, suppression & alarm per NFPA 72 / NFPA 13D-13R / NCSL CO detector statutes; (d) Per-floor staff supervision (15-min walk-through on every sleeping floor, stair gates for youth under 12 / elopement risk, baby-monitor option with 60-sec response); (e) Window fall protection (≤4 in restrictors where sill <24 in above floor); (f) Vertical-evacuation drills (full second-floor-to-grade evacuation, lowest-interior-level tornado shelter); (g) Bedroom placement policy (no attic/basement bedrooms, lower-acuity youth on ground floor); (h) Posted evacuation maps & stair hazard signage. Final paragraph carries 14 hyperlinked web-source citations (URLs visible in print) to the underlying NC Administrative Code, NC OSFM, NC Fire Code, IFC, IBC, NC DHSR ACLS, NFPA 101, NCSL, Durham NC, Orange County NC, and the NC Family Care Home structure rule.
+- Extended Form 1 (Shift Change & Awake Night Watch Log) with a new "Per-Floor Walk-Through Certification (Required for Two-Story / Multi-Level Facilities — §9.4(d))" sub-table: 5 columns (Time Block, Floor 1 Walked, Floor 2 Walked, Basement Walked, Notes/Anomalies) × 4 time-block rows (11p-1a, 1a-3a, 3a-5a, 5a-7a). Single-story facilities mark N/A across the Floor 2 row.
+- Extended Form 5 (Environmental Safety Log) with a new "Two-Story / Multi-Level Per-Floor Safety Checks (§9.4 — Required Monthly for Two-Story Facilities)" sub-table: 8 columns (Floor, Smoke Detectors, CO Detectors, Extinguisher, Egress Window/Escape Ladder, Window Restrictor ≤4 in, Stair Gate, Staff Initials) × 3 floor rows (Floor 1 Ground, Floor 2 Upper, Basement if any). All Y/N, any N triggers QP escalation per §9.1.
+- Updated Form 6 (Employee SOP Acknowledgment) Rev. reference from 2.16 → 2.17.
+- Added v2.17 entry to the Version History table in Part 3 describing all the above changes.
+- Bumped MANUAL_VERSION in merge_sop.py from '2.16' to '2.17'.
+- Regenerated body PDF via `python3 generate_sop.py` → 49 pages (was 48 in v2.16; new §9.4 and form addenda added one page).
+- Re-merged final PDF via `python3 merge_sop.py` → /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.17_RMDM-Compliant.pdf (49 pages, 5.54 MB) and refreshed the LATEST pointer.
+- VLM verification (z-ai vision) of rendered pages confirmed:
+  * p.15: §9.4 heading + §9.4(a)-(d)
+  * p.16: §9.4(e)-(h) + start of web sources citation list with visible URLs
+  * p.17: continuation of web sources list with visible https URLs to NC DHSR ACLS, Durham NC, Orange County NC, NFPA 101, NCSL, and NC Family Care Home structure rule
+  * p.34: Form 1 "Per-Floor Walk-Through Certification" sub-table with 4 time-block rows × 5 cols as designed
+  * p.38: Form 5 "Two-Story / Multi-Level Per-Floor Safety Checks" sub-table with 3 floor rows × 8 cols as designed
+
+Stage Summary:
+- New deliverable: /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.17_RMDM-Compliant.pdf (49 pages, 5.54 MB) — supersedes v2.16.
+- LATEST pointer refreshed: /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_LATEST.pdf
+- Content added: §9.4 Two-Story & Multi-Level Facility Requirements (8 sub-subsections) with 14 cited web sources; Form 1 per-floor walk-through certification sub-table; Form 5 per-floor two-story safety check sub-table.
+- Source scripts modified: sop_content_v2.py (§9.4 insertion), sop_content_v2_part3.py (Form 1 + Form 5 addenda, Form 6 version bump, Version History v2.17 row), merge_sop.py (MANUAL_VERSION = '2.17').
+- All other body content (SOPs §1-§8, §10-§11, Protocol 22, §1.4(b) QP Credentialing Requirements, Forms 2-4, 6-9) is unchanged from Rev. 2.16.
