@@ -2929,3 +2929,42 @@ RECOMMENDATIONS FOR ADAPTATION TO WELL SPRING INTERVENTION LLC
 14. For court hearings: Reference NC G.S. 122C-224 (Judicial Review of Voluntary Admissions of Minors) — court hearing required within 15 days of admission; attorney appointed at no cost.
 
 ================================================================================
+
+---
+Task ID: SOP-49
+Agent: main (Super Z)
+Task: User asked to (1) put correct residential service text on existing Well_Spring_Logo_Lockup.png (the lockup previously said "Level 3 Supervised Residential Group Home" — the corrected-out v2.17 license category), and (2) create another logo_lockup.png using the residential logo (circular seal WITH house) instead of the general company logo (icon WITHOUT house). User is building the website.
+
+Work Log:
+- Examined existing logo assets in /home/z/my-project/download/:
+  * Well_Spring_Logo_Icon.png (1024x1024) — general company logo, NO house outline (just the tree-of-life wellspring with three family figures and tiled ground)
+  * Well_Spring_Logo_Circular_Seal.png (4063x4375) — residential logo, CIRCULAR SEAL with HOUSE-shaped frame containing the tree-of-life wellspring; outer ring reads "Well Spring Intervention LLC" (top arc) and "Residential" (bottom arc); website URL below
+  * Well_Spring_Logo_Lockup.png (2800x875) — existing horizontal lockup using the general icon (no house); WRONG residential text "Level 3 Supervised Residential Group Home"
+- Examined existing render pipeline:
+  * scripts/logo_lockup.html — HTML source for the lockup (.poster = 1792x560, .icon-wrap = 420x420, .wordmark with Cormorant Garamond 96px main + Inter 20px uppercase subtitle + Inter 16px sub-2 + Inter italic tagline + Cormorant Garamond 22px email)
+  * Skills/pdf/scripts/html2poster.js renders HTML→PDF (not PNG); no existing PNG render script
+  * Playwright available at /home/z/.npm-global/lib/node_modules/playwright; chromium browser available
+- Patched scripts/logo_lockup.html line 120: changed "Level 3 Supervised Residential Group Home" → "Level III Residential Treatment Facility · Staff-Secure" (matches SOP v2.21 cover subtitle and §1.2 license category statement under 10A NCAC 27G .1700/.1701).
+- Created scripts/logo_lockup_residential.html — identical composition but icon src changed from Well_Spring_Logo_Icon.png → Well_Spring_Logo_Circular_Seal.png; alt text updated to describe the residential seal ("Circular residential seal: house-shaped frame containing the tree-of-life wellspring with three family figures, surrounded by an outer ring reading 'Well Spring Intervention LLC' (top arc) and 'Residential' (bottom arc), with website URL below"); same corrected residential subtitle.
+- Created scripts/render_logo_lockups.js — Playwright script that:
+  * Loads both HTML files via file:// protocol
+  * Uses viewport 1792x560 + deviceScaleFactor 1.5625 to produce final PNG 2800x875 (matches existing dimensions exactly)
+  * Waits for web fonts (Cormorant Garamond + Inter) to load via document.fonts.ready
+  * Screenshots the .poster element directly (avoids any body margin/padding issues)
+  * Outputs to /home/z/my-project/download/
+- Ran the script via NODE_PATH=/home/z/.npm-global/lib/node_modules node scripts/render_logo_lockups.js — both PNGs rendered successfully:
+  * Well_Spring_Logo_Lockup.png — 437.1 KB, 2800x875 (overwrote existing 400.8 KB file)
+  * Well_Spring_Logo_Lockup_Residential.png — 307.5 KB, 2800x875 (new file)
+- VLM verification (z-ai vision on both final PNGs):
+  * Well_Spring_Logo_Lockup.png — confirmed: (1) icon = NO house (general company logo, tree-of-life wellspring only); (2) wordmark "Well Spring Intervention"; (3) FIRST subtitle line verbatim: "LEVEL III RESIDENTIAL TREATMENT FACILITY · STAFF-SECURE"; (4) secondary services line + tagline + email all rendered correctly; (5) no rendering issues.
+  * Well_Spring_Logo_Lockup_Residential.png — confirmed: (1) icon = HOUSE-shaped frame inside CIRCULAR SEAL with "Well Spring Intervention LLC" on top arc and "Residential" on bottom arc + website URL below; (2) wordmark "Well Spring Intervention"; (3) FIRST subtitle line verbatim: "LEVEL III RESIDENTIAL TREATMENT FACILITY · STAFF-SECURE"; (4) secondary services line + tagline + email all rendered correctly; (5) no rendering issues, no blurriness.
+
+Stage Summary:
+- Two PNG deliverables in /home/z/my-project/download/:
+  * Well_Spring_Logo_Lockup.png — UPDATED (general company logo, no house, with corrected residential text)
+  * Well_Spring_Logo_Lockup_Residential.png — NEW (residential circular seal with house, with corrected residential text)
+- Both 2800x875 PNG, 8-bit RGB, warm cream (#faeddc) background matching brand palette.
+- Both now display "LEVEL III RESIDENTIAL TREATMENT FACILITY · STAFF-SECURE" as the primary residential service line (replacing the wrong "Level 3 Supervised Residential Group Home" text from v2.17 era).
+- Both retain the secondary services line ("Outpatient Therapy · Case Management · Psychosocial Rehabilitation"), tagline ("Empowerment · Growth · Freedom · Health · Wholeness · Healing"), and email (referral@wellspringintervention.com).
+- Source scripts modified/created: scripts/logo_lockup.html (line 120 text fix), scripts/logo_lockup_residential.html (new file), scripts/render_logo_lockups.js (new file — Playwright PNG renderer).
+- Ready for website use. Recommend transparent-background variants (PNG with alpha) for overlay on colored website sections — can be produced by removing background:#faeddc from .poster and using omitBackground:true in screenshot options. User can request if needed.
