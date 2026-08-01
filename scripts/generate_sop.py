@@ -98,7 +98,7 @@ AVAIL_W = PAGE_W - LEFT_M - RIGHT_M  # ~440pt
 # ────────────────────────────────────────────────────────────────────
 SELF_REF = (
     'Well Spring Intervention LLC SOP &amp; Operational Manual '
-    '(Doc. WSI-SOP-001, Rev. 2.16, Jul 2026 — RMDM-Compliant)'
+    '(Doc. WSI-SOP-001, Rev. 2.22, Aug 2026 — Legislation-Free Public Edition)'
 )
 
 # ────────────────────────────────────────────────────────────────────
@@ -603,7 +603,7 @@ def form_usage_banner(form_number=None):
 # ────────────────────────────────────────────────────────────────────
 # Header / footer (drawn via onPage callback)
 # ────────────────────────────────────────────────────────────────────
-DOC_TITLE_SHORT = 'Standard Operating Procedure & Operational Manual — Rev. 2.16 (RMDM-Compliant)'
+DOC_TITLE_SHORT = 'Standard Operating Procedure & Operational Manual — Rev. 2.22 (Public Edition)'
 DOC_ORG = 'Well Spring Intervention LLC'
 
 def draw_header_footer(canvas, doc):
@@ -648,9 +648,9 @@ OUTPUT_BODY = '/home/z/my-project/scripts/sop_body.pdf'
 def build():
     # Deferred imports — content modules need access to the helpers/styles
     # defined above, so we import them here (after all symbols exist).
-    from sop_content_v2 import build_part1
-    from sop_content_v2_part2 import build_part2
-    from sop_content_v2_part3 import build_part3
+    from sop_content_v3 import build_part1
+    from sop_content_v3_part2 import build_part2
+    from sop_content_v3_part3 import build_part3
 
     doc = TocDocTemplate(
         OUTPUT_BODY,
@@ -660,8 +660,8 @@ def build():
         title='Well Spring Intervention LLC — SOP & Operational Manual',
         author='Well Spring Intervention LLC',
         creator='Z.ai',
-        subject='Level 3 Supervised Residential Group Home — Standard Operating Procedures (Rev. 2.16 RMDM-Compliant)',
-        keywords='SOP, residential group home, Level 3, NCAC 27G, Rule 108, Medicaid CCP 8C, IRIS, RMDM, HIPAA, 42 CFR Part 2, NCGS Ch. 66 Art. 40, E-SIGN, Electronic Signatures',
+        subject='Level 3 Supervised Residential Group Home — Standard Operating Procedures (Rev. 2.22 Legislation-Free Public Edition)',
+        keywords='SOP, residential group home, Level 3, operations manual, trauma-informed care, RMDM, HIPAA',
     )
 
     story = []
@@ -675,7 +675,7 @@ def build():
     story.append(HRFlowable(width=80, color=ACCENT, thickness=2, spaceBefore=2, spaceAfter=14))
 
     story.append(Paragraph(
-        'This manual (Rev. 2.16, July 2026) is the official Standard Operating '
+        'This manual (Rev. 2.22, August 2026) is the official Standard Operating '
         'Procedures and Operational Reference for <b>Well Spring Intervention LLC</b>, '
         'a Level 3 Supervised Residential Group Home serving children and '
         'adolescents with mental health and behavioral challenges. It establishes '
@@ -691,23 +691,25 @@ def build():
     story.append(Paragraph('<b>Service Type.</b> Level 3 Supervised Residential Group Home.', s_body))
     story.append(Paragraph('<b>Effective Date.</b> July 2026.', s_body))
     story.append(Paragraph('<b>Document Owner.</b> Executive Director &amp; Qualified Professional (QP).', s_body))
-    story.append(Paragraph('<b>Document ID.</b> Doc. WSI-SOP-001, Rev. 2.16 (RMDM-Compliant). <i>Versioning is private — this information does not appear on the public-facing cover.</i>', s_body))
+    story.append(Paragraph('<b>Document ID.</b> Doc. WSI-SOP-001, Rev. 2.22 (Legislation-Free Public Edition). <i>The companion compliance master (Doc. WSI-SOP-001-LEG, Rev. 2.21) retains all statutory and regulatory citations for QA and audit reference.</i>', s_body))
     story.append(Spacer(1, 10))
 
-    # Regulatory framework (moved from cover)
-    story.append(Paragraph('<b>Regulatory Framework.</b>', s_h2))
+    # Regulatory framework (operational language — legislation retained in compliance master)
+    story.append(Paragraph('<b>Operating Framework.</b>', s_h2))
     story.append(Paragraph(
-        'This manual is governed by, and operates in conformance with, the '
-        'following authorities: <b>10A NCAC 27G .5600</b> (residential facility '
-        'standards); <b>10A NCAC 27G .0104</b> (Qualified Professional credentials); '
-        '<b>NC Medicaid CCP 8C</b> (residential services); <b>10A NCAC 27T</b> '
-        '(Rule 108 — clinical record content); <b>NC DHSR</b> facility licensure; '
-        '<b>LME/MCO Tailored Plan</b> requirements; <b>NCDHHS Records Management '
+        'This manual is governed by, and operates in conformance with, the following '
+        'authorities: <b>NC DHSR</b> facility licensure as a Level III Residential '
+        'Treatment Facility (Staff-Secure); <b>NC Medicaid</b> managed care requirements '
+        'through our regional LME/MCO/Tailored Plan partner (Alliance Health); <b>NC '
+        'DHSR</b> Mental Health Licensure and Certification Section standards; '
+        '<b>LME/MCO Tailored Plan</b> requirements; the <b>NCDHHS Records Management '
         'and Documentation Manual</b> (RMDM, Effective July 8, 2025); <b>HIPAA</b> '
         'Privacy, Security, and Breach Notification Rules; <b>42 CFR Part 2</b> '
-        '(confidentiality of SUD records); <b>HITECH Act</b>; <b>NCGS Chapter 66, '
-        'Article 40</b> (NC Uniform Electronic Transactions Act); and the federal '
-        '<b>E-SIGN Act</b> (15 U.S.C. § 7001 et seq.).',
+        '(confidentiality of SUD records); <b>HITECH Act</b>; state law on electronic '
+        'transactions (NC UETA); and the federal <b>E-SIGN Act</b> governing electronic '
+        'signatures. The full statutory and regulatory citation list is retained in the '
+        'compliance master copy (Doc. WSI-SOP-001-LEG, Rev. 2.21) for QA and audit '
+        'reference.',
         s_body
     ))
     story.append(Spacer(1, 10))
@@ -755,7 +757,7 @@ def build():
     story.append(Paragraph('Table of Contents', s_toc_title))
     story.append(HRFlowable(width=80, color=ACCENT, thickness=2, spaceBefore=2, spaceAfter=12))
     story.append(Paragraph(
-        'This manual (Rev. 2.16, July 2026) is organized into three parts and is fully '
+        'This manual (Rev. 2.22, August 2026) is organized into three parts and is fully '
         'compliant with the NCDHHS Records Management and Documentation Manual (RMDM, '
         'Effective July 8, 2025). Part 1 establishes foundational policies and compliance '
         'obligations across eleven sections, including dedicated chapters on '

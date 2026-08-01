@@ -3122,3 +3122,57 @@ Stage Summary:
 - Visual style matches SOP Manual v2.21 exactly (same color palette, same typography, same design language) — reads as "official companion volume" to the SOP
 - PDF QA passed all critical checks (7 passed); 20 warnings are non-blocking (smart-quote line-start CJK rules don't apply to English; content fill ratio warnings from intentional page-breaks between major sections)
 - Ready for staff review and resident distribution. Recommended next steps: (1) have NC-licensed attorney review the legal citations in "For Families" sidebars; (2) have a youth advocate / former resident review the youth-facing text for developmental appropriateness; (3) produce Spanish translation v1.0-ES as follow-up; (4) print double-sided on letter-size paper for resident binders (current size 720x1020px = ~7.5"x10.6" — close to half-letter, good for binder storage)
+
+---
+Task ID: SOP-52
+Agent: Main (Super Z)
+Task: (1) Sign Resident Handbook Welcome Letter as "T. Thompson, Well Spring Intervention LLC". (2) Remove legislation references (NCGS, NCAC, G.S., 10A NCAC, 122C-XX) from BOTH the Resident Handbook AND the SOP Manual. User retains the legislated v2.21 as a compliance/QA reference; the public-facing editions should be legislation-free with engagement-rich replacement content where gaps would otherwise appear.
+
+Work Log:
+- Updated Resident Handbook HTML signature block: "The Program Director" → "T. Thompson" (Welcome Letter, p2)
+- Inventoried legislation references in Resident Handbook: 12 NCGS/NCAC citations across 9 "For Families" sidebars + 3 body paragraphs + 1 glossary entry
+- Rewrote all 9 "For Families" sidebars in Resident Handbook with engagement-rich replacement content:
+  * "The Legal Basis for Our Promise" → "Why We Made This Promise" (values-driven, no statute citations)
+  * "Your Child's Right to Uncensored Communication" — kept title, replaced statutory body with relational/operational language
+  * "How Cardinal Rules Translate the Law for Youth" → "How Cardinal Rules Protect Your Child" (focus on protection, not legislation)
+  * "Why We Don't Use Points and Levels" — kept research citations (AACAP, Building Bridges Initiative, Healing Lodge) but removed 10A NCAC 27G .1701(e)(1) reference
+  * "Searches — Legal Basis and Our Higher Standard" → "Searches — Our Higher Standard" (kept New Haven CA model attribution; removed NCGS §122C-54 citation)
+  * "Court Hearings & How to Reach Your Child's Team" — kept practical content (15-day hearing, attorney appointed, Alliance Health 1-800-510-9132); removed NCGS §122C-224 citation
+  * "Our Commitment to Trauma-Informed Response" — kept Healing Lodge + Ukeru references; removed NCGS §122C-55 citation
+- Removed "(NCGS §122C-55)" parenthetical from Core Principle body paragraph
+- Removed "Under North Carolina law (NCGS §122C-52)" opener from Communication & Visitation section
+- Removed "required by state rule (.1701(e))" parenthetical from Daily Schedule section
+- Removed "NCGS" entry from Glossary
+- Regenerated Resident Handbook PDF as v1.1 (29 pages, 5.88 MB) — clean of all legislation references; verified via pdftotext scan (0 NCGS / 0 NCAC / 0 G.S. / 0 10A NCAC / 0 122C-XX occurrences)
+- Inventoried legislation references in SOP Manual source: 211 occurrences across 3 Python content modules (sop_content_v2.py: 169, _part2.py: 33, _part3.py: 9) plus ~15 in generate_sop.py
+- Wrote /home/z/my-project/scripts/strip_sop_legislation.py — conservative regex-based stripper that:
+  * Removes `external=` first arg from ref_line() calls when external contains legislation keywords (NCGS, NCAC, G.S., 10A NCAC, RMDM, HIPAA, CFR, E-SIGN, NC Medicaid, CCP, Rule 108)
+  * Replaces bare "NCGS §122C-XX" → "the Resident Rights framework" or "state law"
+  * Replaces "10A NCAC 27G .XXXX" → "our operating standards" or "our staff-secure operating standards"
+  * Replaces "10A NCAC 27E .XXXX" → "our service planning standards"
+  * Replaces "10A NCAC 27T" → "our clinical record standards"
+  * Replaces "G.S. XXX-XX" → "state law"
+  * Strips citation-style parentheticals: "(NCGS §...)", "(per 10A NCAC...)", "(Authority G.S. ...)"
+  * Replaces "Pursuant to <legislation>," / "Under <legislation>," / "Consistent with <legislation>," openers with operational language
+  * Conservative: does NOT collapse whitespace globally (would break Python indentation); does NOT remove empty parens (would break `def f():`); does NOT match across newlines in parentheticals (would eat multi-line tuples)
+- Generated v3 content modules: sop_content_v3.py, sop_content_v3_part2.py, sop_content_v3_part3.py
+- Manually patched 8 remaining legislation references in sop_content_v3.py that the regex couldn't safely handle (multi-line ref_line calls, complex paragraphs)
+- Manually patched 1 remaining reference in sop_content_v3_part3.py (staff acknowledgment paragraph)
+- Updated generate_sop.py: import v3 modules; bumped SELF_REF to Rev. 2.22; updated DOC_TITLE_SHORT to "Rev. 2.22 (Public Edition)"; rewrote "Regulatory Framework" section as "Operating Framework" with operational language + note that statutory citations are retained in compliance master (Doc. WSI-SOP-001-LEG, Rev. 2.21); updated About This Manual and TOC intro paragraphs to Rev. 2.22; updated PDF metadata keywords to remove legislation references
+- Updated merge_sop.py: bumped MANUAL_VERSION to '2.22' with suffix 'Public-Edition'; updated keywords metadata
+- Generated final SOP Manual v2.22 PDF (68 pages, 5.74 MB)
+- Verified via pdftotext scan: 0 NCGS / 2 NCAC (only in URL strings pointing to NC DHSR rule PDFs — acceptable, not citations) / 0 G.S. / 0 122C-XX / 0 10A NCAC / 0 §122C. The 292 "§X" matches are internal SOP section anchors (§1, §1.4(a), §11, etc.) — NOT legislation citations.
+- v2.21 legislated copy RETAINED at /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.21_RMDM-Compliant.pdf — user can use this as compliance/QA reference
+
+Stage Summary:
+- Resident Handbook v1.1 delivered: /home/z/my-project/download/Well_Spring_Resident_Handbook_v1.1.pdf (29 pages, 5.88 MB) — signed by T. Thompson, legislation-free, with engagement-rich "For Families" sidebars
+- Resident Handbook LATEST pointer updated: /home/z/my-project/download/Well_Spring_Resident_Handbook_LATEST.pdf
+- SOP Manual v2.22 Public Edition delivered: /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.22_Public-Edition.pdf (68 pages, 5.74 MB) — legislation-free, operational language throughout
+- SOP Manual LATEST pointer updated: /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_LATEST.pdf (now points to v2.22)
+- SOP Manual v2.21 RMDM-Compliant RETAINED as legislated compliance master: /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.21_RMDM-Compliant.pdf (use for QA/audit reference)
+- Source scripts persisted: scripts/strip_sop_legislation.py, scripts/sop_content_v3*.py, scripts/resident_handbook.html
+- User-specified content elements PRESERVED in Resident Handbook: 4-stage Recovery Journey, On/Near/Off the Mark behavior tiers, Core Principle verbatim, New Haven CA strip-search prohibition, KidsPeace 5 Cardinal Rules, Disability Rights NC + Joint Commission hotlines, residential logo, Welcome page
+- Model attributions PRESERVED (not legislation): Healing Lodge of the Seven Nations, Ukeru, AACAP/Building Bridges Initiative, KidsPeace framework, New Haven CA model
+- Advocacy org hotlines PRESERVED (not legislation): Disability Rights NC 1-877-235-4210, Joint Commission 1-800-994-6610, 988 Crisis Lifeline, NC DHSR 1-800-624-3004, Alliance Health 1-800-510-9132
+- Partner/org references PRESERVED: Alliance Health (LME/MCO), accrediting bodies (COA, TJC, CARF, CQL), NC DHSR, NCDHHS, NCTracks
+- Federal frameworks PRESERVED where they are operational standards (not state legislation): HIPAA, 42 CFR Part 2, HITECH, E-SIGN Act, OSHA Bloodborne Pathogens, CDC guidelines
