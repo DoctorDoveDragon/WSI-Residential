@@ -2361,3 +2361,73 @@ Stage Summary:
 - Source scripts modified: sop_content_v2.py (§1.2(g), §1.2(h), §1.9, §3.1, §7.3, §10.9), sop_content_v2_part3.py (Form 6 Rev ref + Version History v2.20 row), merge_sop.py (MANUAL_VERSION = '2.20').
 - Cover artwork unchanged (Rev. 2.15 seal). Cover subtitle "Level III Residential Treatment Facility (Staff-Secure)" retained from v2.18.
 - IMPORTANT NOTE FOR USER: The two flagged citation discrepancies (.2600 vs .1700; CCP 8C vs CCP 8D-2) require confirmation from the user's licensing consultant or directly from DHSR MHLC and Alliance Health before initial licensure submission. The SOP v2.20 documents these as open questions in §1.2(h) rather than silently making sweeping citation changes that would overreach the user's stated direction. Resolution should be documented in a v2.21 revision.
+
+---
+Task ID: SOP-47
+Agent: main (Super Z)
+Task: User provided the verbatim text of 10A NCAC 27G .1701 SCOPE (Authority G.S. 122C-26; 143B-147; Eff. April 3, 2006) for "Residential Treatment Staff Secure for Children or Adolescents" — directly confirming that .1700 (not .2600) is the operative NC Administrative Code section. Patch v2.20 → v2.21 to (1) replace all .2600 citations with .1700 throughout the operational sections of the SOP, (2) resolve the §1.2(h)(a) compliance flag from OPEN to RESOLVED, (3) add explicit cross-references between .1701 rule text and the three NC Medicaid RTS taxonomy characteristics (program setting only / highly structured + supervised / room and board excluded).
+
+Work Log:
+- Audited v2.20 PDF text via pdftotext + grep to enumerate all .2600 references. Identified operational-section .2600 references in sop_content_v2.py (12 occurrences across §1.2, §1.4, §2.1, §3 ref line, §5.5, §6.1, §7.3, §9.5) and sop_content_v2_part2.py (6 occurrences in Protocols 1, 17, 21, 22, 23, 24).
+- Patched sop_content_v2.py via MultiEdit (11 distinct edits):
+  * §1 reference line: ".0100 & .2600" → ".0100 & .1700"
+  * §1.2 license-category statement: "under 10A NCAC 27G .2600" → "under 10A NCAC 27G .1700"
+  * §1.2(d) Alliance Health app packet: "across all 10A NCAC 27G .2600 standards" → ".1700 standards"
+  * §1.2(e) Initial Licensure Application packet: "Level III RTF — Staff Secure, 10A NCAC 27G .2600" → ".1700"
+  * NEW §1.2(g) cross-reference paragraph inserted before (i)/(ii)/(iii) bullets — explicitly maps each of the three NC Medicaid RTS taxonomy items to its .1701 rule-text basis: (i) "program setting only" flows from .1701(a) ("free-standing residential facility... shall not be the primary residence of an individual who is not a client"); (ii) "highly structured and highly supervised" flows from .1701(b) (awake overnight + continuous supervision per Rule .1704) and .1701(e)(1) ("individualized supervision and structure of daily living"); (iii) room-and-board exclusion is a Medicaid RTS benefit-category feature under CCP 8D-2 §1.0(c), not a licensure-side rule. Notes that the full text of .1701 SCOPE is retained in the facility compliance binder.
+  * §1.2(h)(a) REWRITTEN from OPEN flag to RESOLVED — documents .1701 SCOPE rule text as the resolution basis; quotes .1701(a) "free-standing residential facility... shall not be the primary residence", .1701(b) "staff are required to be awake during client sleep hours and supervision shall be continuous as set forth in Rule .1704", .1701(c)-(d) population criteria, .1701(e) service-design requirements, .1701(f) system-of-care coordination; states all .2600 citations updated to .1700 in v2.21; requires QP to retain printed copy of .1701 SCOPE in compliance binder; notes L&C Consultant written confirmation no longer necessary for citation-number resolution but still recommended for confirming operational subsections (.1702-.1709) at first in-person meeting per §1.2(e).
+  * §1.2(h)(c) updated — (a) resolved in v2.21; (b) CCP 8C vs CCP 8D-2 remains OPEN and deferred to v2.22 following Alliance Health/NCTracks enrollment confirmation per §1.9; license-category summary updated "Level III RTF — Staff Secure under 10A NCAC 27G .1700"; §1.2(g), §1.9, §10.9 continue to control in event of inconsistency with legacy "CCP 8C" reference lines.
+  * §1.4 QP/QMHP references: "in 10A NCAC 27G .2600 as the QMHP" → ".1700 as the QMHP"; "the 10A NCAC 27G .2600 QMHP definition" → ".1700 QMHP definition"
+  * §2 reference line + §2.1 staffing-ratio authority: ".0203 & .2600" → ".0203 & .1700"; "Under 10A NCAC 27G .2600, this Level III Staff-Secure facility" → "Under 10A NCAC 27G .1700"
+  * §3 reference line: ".2600 & .5604" → ".1700 & .5604"
+  * §5.5 activities-program authority: "Pursuant to 10A NCAC 27G .2600(c)" → "Pursuant to 10A NCAC 27G .1700 (and the service-design requirements of .1701(e), including 'individualized supervision and structure of daily living' and acquisition of 'social and recreational skills')"
+  * §6.1 admission physical-exam timing: "Per 10A NCAC 27G .2600, a complete medical (physical) examination" → "Per 10A NCAC 27G .1700"
+  * §7.3 facility-based school determination: "under 10A NCAC 27G .2600. This facility is licensed as a Level III RTF" → "under 10A NCAC 27G .1700"
+  * §9.5 staff-secure physical-plant measures: "under 10A NCAC 27G .2600, this facility shall maintain physical-" → "under 10A NCAC 27G .1700"
+- Patched sop_content_v2_part2.py via MultiEdit (6 distinct edits):
+  * Protocol 1 (Staffing Ratio & Awake Overnight): "per 10A NCAC 27G .2600" → "per 10A NCAC 27G .1700"
+  * Protocol 17 (Daily Workflow Schedules) intro: "required by 10A NCAC 27G .2600" → "required by 10A NCAC 27G .1700"
+  * Protocol 21 (DCP Awake Overnight Shift): "per 10A NCAC 27G .2600" → "per 10A NCAC 27G .1700"
+  * Protocol 22 (RN Schedule) intro + 12:00 PM task: "per §6 and 10A NCAC 27G .2600" → "per §6 and 10A NCAC 27G .1700"; "delegation updates per 10A NCAC 27G .2600" → ".1700"
+  * Protocol 23 (Deviation Policy): "Per 10A NCAC 27G .2600, ratios must be maintained" → "Per 10A NCAC 27G .1700"
+  * Fixed a stray double-comma syntax error introduced during MultiEdit on Protocol 1 (line 103): "...prohibited at all times.',," → "...prohibited at all times.',"
+- Patched sop_content_v2_part3.py via MultiEdit:
+  * Form 6 Rev. reference: "Rev. 2.20, July 2026" → "Rev. 2.21, July 2026"
+  * Added v2.21 row to Version History table — ".2600 → .1700 CITATION RESOLUTION PATCH" — summarizes the resolution basis (.1701 SCOPE rule text), enumerates all 12+ operational-section .2600→.1700 updates, describes the NEW §1.2(g) cross-reference paragraph mapping the three Medicaid RTS taxonomy items to .1701(a)/(b)/(e), notes §1.2(h)(a) rewritten from OPEN to RESOLVED, §1.2(h)(c) updated to defer (b) to v2.22, Form 6 Rev. updated 2.20→2.21.
+- Updated merge_sop.py: MANUAL_VERSION '2.20' → '2.21'.
+- Regenerated body PDF via generate_sop.py — successful (no errors after syntax fix).
+- Re-merged final v2.21 PDF via merge_sop.py — /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.21_RMDM-Compliant.pdf (5743.7 KB, 68 pages, Rev. 2.21 RMDM-Compliant). +2 pages from v2.20 reflecting the new §1.2(g) cross-reference paragraph and the expanded §1.2(h)(a) RESOLVED content.
+- LATEST pointer refreshed: /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_LATEST.pdf → v2.21.
+- Text-extracted grep verification (all matches confirmed in v2.21):
+  * "program setting only" — 9 matches
+  * "highly structured" — 9 matches
+  * "highly supervised" — 3 matches
+  * "room and board" — 11 matches
+  * "CCP 8D-2" — 24 matches
+  * "PRTF" — 29 matches
+  * "free-standing residential facility" — 4 matches
+  * "shall not be the primary residence" — 3 matches
+  * "awake during client sleep hours" — 3 matches
+  * "individualized supervision and structure of daily living" — 4 matches
+  * "RESOLVED in v2.21" — 1 match (in §1.2(h)(a) heading)
+  * Remaining .2600 references: 13 total, ALL confined to §1.2(h)(a)/(c) RESOLVED documentation text (4 matches) and Version History historical entries for v2.18 row (7 matches) and v2.20 row (3 matches) — these are intentional historical records.
+- VLM verification (z-ai vision at 120 DPI):
+  * p.9: §1.2(g) cross-reference paragraph for 10A NCAC 27G .1701 SCOPE — confirmed rendered. All key phrases visible: "Cross-reference to licensure rule — 10A NCAC 27G .1701 SCOPE", "program setting only", "highly structured", "highly supervised", "room and board", "free-standing residential facility", "shall not be the primary residence", "awake during client sleep hours", "individualized supervision and structure of daily living". Bullet (i) begins at bottom of page.
+  * p.10: §1.2(g)(i)/(ii) bullets and §1.2(h) heading at bottom — confirmed rendered. (No rendering issues.)
+  * p.11: §1.2(h)(a) "10A NCAC 27G .2600 vs .1700 — RESOLVED in v2.21" subsection — confirmed rendered. All key phrases visible: "RESOLVED in v2.21", ".1700", "free-standing residential facility", "awake during client sleep hours", "individualized supervision and structure of daily living", "shall not be the primary residence". Subsections (b) CCP 8C vs CCP 8D-2 (still OPEN) and (c) No operational impact also confirmed present. No rendering issues.
+  * p.68: Version History table v2.21 row — confirmed rendered. Row labeled "2.21" dated "Aug 2026" begins with ".2600 → .1700 CITATION RESOLUTION PATCH". Phrases "RESOLVED", ".1700", ".1701 SCOPE", and "free-standing residential facility" all visible in the row. No rendering issues.
+
+Stage Summary:
+- New deliverable: /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.21_RMDM-Compliant.pdf (68 pages, 5.60 MB) — supersedes v2.20.
+- LATEST pointer refreshed: /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_LATEST.pdf
+- The compliance flag raised in v2.20 §1.2(h)(a) regarding .2600 vs .1700 has been RESOLVED in favor of .1700, based on the user-provided verbatim text of 10A NCAC 27G .1701 SCOPE (Authority G.S. 122C-26; 143B-147; Eff. April 3, 2006).
+- All .2600 citations updated to .1700 throughout the operational sections of the SOP (18+ replacements across sop_content_v2.py, sop_content_v2_part2.py, and merge_sop.py).
+- Historical Version History entries for v2.18 and v2.20 retain .2600 references as accurate historical records of what those revisions did; the new v2.21 row documents the .2600 → .1700 transition.
+- NEW §1.2(g) cross-reference paragraph explicitly maps each of the three NC Medicaid RTS taxonomy items to its .1701 rule-text basis:
+  (1) "program setting only" (not a family home) → flows from .1701(a) ("free-standing residential facility... shall not be the primary residence of an individual who is not a client of the facility")
+  (2) "highly structured and highly supervised" → flows from .1701(b) ("staff are required to be awake during client sleep hours and supervision shall be continuous as set forth in Rule .1704") and .1701(e)(1) ("individualized supervision and structure of daily living")
+  (3) "room and board excluded" → Medicaid RTS benefit-category feature under CCP 8D-2 §1.0(c), not a licensure-side rule
+- §1.2(h)(b) CCP 8C vs CCP 8D-2 flag remains OPEN and is deferred to v2.22 following Alliance Health/NCTracks enrollment confirmation per §1.9.
+- Source scripts modified: sop_content_v2.py (12 .2600→.1700 replacements + NEW §1.2(g) cross-reference paragraph + §1.2(h)(a) RESOLVED rewrite + §1.2(h)(c) update), sop_content_v2_part2.py (6 .2600→.1700 replacements + syntax fix), sop_content_v2_part3.py (Form 6 Rev ref 2.20→2.21 + v2.21 Version History row), merge_sop.py (MANUAL_VERSION = '2.21').
+- Cover artwork unchanged (Rev. 2.15 seal). Cover subtitle "Level III Residential Treatment Facility (Staff-Secure)" retained from v2.18.
+- IMPORTANT NOTE FOR USER: §1.2(h)(a) (.2600 vs .1700) is RESOLVED. §1.2(h)(b) (CCP 8C vs CCP 8D-2) remains OPEN — needs Alliance Health/NCTracks enrollment confirmation per §1.9 before that flag can be closed in v2.22.

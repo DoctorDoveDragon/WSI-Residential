@@ -100,7 +100,7 @@ def build_part2():
             '<b>Resolution.</b> QP opens the box daily. Acknowledges within 24 hours. Provides written resolution within 7 days. Abuse allegations trigger an IRIS report and immediate DSS notification.',
         ]),
         ('Staffing Ratio & Awake Overnight Protocols', [
-            '<b>Ratios.</b> 2 staff minimum for 1–4 youth (Level III Staff-Secure, per 10A NCAC 27G .2600). Ratios scale with census: 4 staff for 5–8 youth; 5 staff for 9 youth. The 2:4 minimum applies 24/7 including overnight. If a staff member calls out, the on-call system activates a replacement before the shift begins; the on-call QP covers in-house personally if no replacement is available. Single-staffing is prohibited at all times.',
+            '<b>Ratios.</b> 2 staff minimum for 1–4 youth (Level III Staff-Secure, per 10A NCAC 27G .1700). Ratios scale with census: 4 staff for 5–8 youth; 5 staff for 9 youth. The 2:4 minimum applies 24/7 including overnight. If a staff member calls out, the on-call system activates a replacement before the shift begins; the on-call QP covers in-house personally if no replacement is available. Single-staffing is prohibited at all times.',
             '<b>Awake Overnight.</b> Two (2) awake staff on duty at all times for 1–4 youth. Sleeping is prohibited. 15-minute visual room checks are documented on the Night Watch Log (Form 1), including the Per-Floor Walk-Through Certification sub-table for two-story facilities. Hallway lights remain on. Engage nighttime wakers quietly and briefly — do not start conversations that escalate arousal.',
         ]),
         ('Medical Emergencies & Acute Illness Response', [
@@ -174,7 +174,7 @@ def build_part2():
         'This protocol codifies the daily workflow schedule for every personnel '
         'classification at Well Spring Intervention LLC. Each role has a '
         'time-blocked routine that aligns with the 24/7 residential operation, '
-        'the 2:4 day/evening/overnight staffing ratios required by 10A NCAC 27G .2600, '
+        'the 2:4 day/evening/overnight staffing ratios required by 10A NCAC 27G .1700, '
         'and the documentation cadences required by the '
         'RMDM and Rule 108. Schedules are templates — actual shift assignments '
         'may flex to cover call-outs, school transportation, medical '
@@ -298,7 +298,7 @@ def build_part2():
     # ── (e) DCP — Awake Overnight Shift (11p-7a) ──────────────────────
     story.append(Paragraph('(e) Direct Care Professional (DCP) — Awake Overnight Shift (11p-7a)', s_h2))
     story.append(Paragraph(
-        'Awake overnight DCPs maintain the 2:4 Level III Staff-Secure ratio (two awake staff for 1–4 youth, per 10A NCAC 27G .2600). Sleeping '
+        'Awake overnight DCPs maintain the 2:4 Level III Staff-Secure ratio (two awake staff for 1–4 youth, per 10A NCAC 27G .1700). Sleeping '
         'is strictly prohibited. 15-minute visual room checks are documented '
         'on the Night Watch Log (Form 1) throughout the shift.',
         s_body
@@ -347,7 +347,7 @@ def build_part2():
     # ── (g) Registered Nurse (RN) ─────────────────────────────────────
     story.append(Paragraph('(g) Registered Nurse (RN)', s_h2))
     story.append(Paragraph(
-        'The RN provides medical oversight per §6 and 10A NCAC 27G .2600. '
+        'The RN provides medical oversight per §6 and 10A NCAC 27G .1700. '
         'The RN visits the facility at minimum weekly and within 72 hours of '
         'any new admission, and is on-call 24/7 for medical questions and '
         'medication errors.',
@@ -358,7 +358,7 @@ def build_part2():
         ('9:30 AM', 'Medication cart audit: verify MAR completion, inspect for expired medications, review any PRN administration patterns.'),
         ('10:00 AM', 'Individual youth health checks: vital signs if ordered, weight checks, skin checks, assessment of any reported symptoms.'),
         ('11:00 AM', 'Coordinate with the prescribing psychiatrist via telehealth or phone. Document any medication changes and update the MAR.'),
-        ('12:00 PM', 'Train DCPs on any new medication orders, administration techniques, or delegation updates per 10A NCAC 27G .2600.'),
+        ('12:00 PM', 'Train DCPs on any new medication orders, administration techniques, or delegation updates per 10A NCAC 27G .1700.'),
         ('1:00 PM', 'Documentation block: complete nursing notes in each youth\'s chart. Update the medication administration record. File any new lab orders.'),
         ('2:00 PM', 'Coordinate medical appointments: schedule PCP visits, dental visits, vision screenings, and any specialty referrals.'),
         ('3:00 PM', 'Brief with the QP and House Manager on any medical-action items. Depart facility; on-call coverage continues 24/7.'),
@@ -435,7 +435,7 @@ def build_part2():
         '<b>Deviation Policy.</b> Schedule deviations (call-outs, late '
         'arrivals, unplanned overtime) are documented on Form 1. The QP '
         'maintains the master staffing schedule and approves any role '
-        'substitution. Per 10A NCAC 27G .2600, ratios must be maintained at '
+        'substitution. Per 10A NCAC 27G .1700, ratios must be maintained at '
         'all times; if a replacement is not available, the QP covers in-house '
         'until a replacement arrives. Chronic staffing gaps are reported to '
         'the Clinical Director per §1.4(a) and may trigger a corrective '

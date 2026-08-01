@@ -37,7 +37,7 @@ def build_part1():
     # ── SOP 1 ──────────────────────────────────────────────────────
     story.append(section_heading(1, 'Agency Overview & Governance'))
     story.append(ref_line(
-        '10A NCAC 27G .0100 & .2600; NCGS §122C-23.1 & §122C-51 et seq.; NC Medicaid Managed Care Tailored Plan Requirements; RMDM Chapter 1',
+        '10A NCAC 27G .0100 & .1700; NCGS §122C-23.1 & §122C-51 et seq.; NC Medicaid Managed Care Tailored Plan Requirements; RMDM Chapter 1',
         '§1',
     ))
     story.append(para(
@@ -52,7 +52,7 @@ def build_part1():
     story.append(para(
         '<b>1.2 Licensing &amp; Credentialing.</b> The facility operates under a valid NC DHSR '
         'license as a <b>Level III Residential Treatment Facility — Staff Secure for Children and '
-        'Adolescents</b> under <b>10A NCAC 27G .2600</b>, issued by the NC Division of Health '
+        'Adolescents</b> under <b>10A NCAC 27G .1700</b>, issued by the NC Division of Health '
         'Service Regulation (<b>DHSR</b>), <b>Mental Health Licensure and Certification Section '
         '(MHLC)</b> — not the Division of Social Services (DSS), which licenses foster-care group '
         'homes, not behavioral-health treatment facilities. The facility is credentialed as an '
@@ -116,7 +116,7 @@ def build_part1():
         'Provider Application</b> to be enrolled in the Alliance Health provider network and to '
         'bill Medicaid CCP 8C (Residential Level III) per-diem services. The application package '
         'includes: (i) completed Provider Application; (ii) completed Self-Assessment Checklist '
-        'demonstrating readiness across all 10A NCAC 27G .2600 standards; (iii) Mission and '
+        'demonstrating readiness across all 10A NCAC 27G .1700 standards; (iii) Mission and '
         'Vision statements; (iv) current DHSR license; (v) accreditation certificate; (vi) '
         'liability insurance certificate; (vii) governing-body roster; (viii) organizational '
         'formation documents; (ix) policies and procedures (this Manual); and (x) QP / QMHP '
@@ -134,7 +134,7 @@ def build_part1():
         'Application Form (DHHS/DHSR/MHL 5001)</b> — available from the DHSR MHLC website at '
         'https://info.ncdhhs.gov/dhsr/mhlcforms/index.html; (ii) a <b>Cover Letter</b> on '
         'company letterhead, signed by the Executive Director, briefly describing the proposed '
-        'facility, license category (Level III RTF — Staff Secure, 10A NCAC 27G .2600), '
+        'facility, license category (Level III RTF — Staff Secure, 10A NCAC 27G .1700), '
         'catchment area, target population, projected census, and requested effective date; '
         '(iii) the accreditation certificate or letter of pending accreditation from one of the '
         'four approved accrediting bodies per §1.2(a); (iv) the Letter of Support from Alliance '
@@ -182,6 +182,26 @@ def build_part1():
         'children/adolescents under age 21 — is characterized by NC Medicaid in three '
         'controlling respects that govern the program model, the supervision intensity, and '
         'the scope of Medicaid reimbursement:'
+    ))
+    story.append(para(
+        '<b>Cross-reference to licensure rule — 10A NCAC 27G .1701 SCOPE.</b> The three '
+        'Medicaid taxonomy items below are consistent with, and operationally implemented '
+        'through, the facility\'s licensure under <b>10A NCAC 27G .1700</b> — specifically '
+        '<b>10A NCAC 27G .1701 SCOPE</b> (Authority G.S. 122C-26; 143B-147; Eff. April 3, '
+        '2006), which provides the regulatory basis for each item: (i) the "program setting '
+        'only" limitation flows from .1701(a), which defines the facility as "a free-'
+        'standing residential facility that provides intensive, active therapeutic treatment '
+        'and interventions within a system of care approach" and provides that the facility '
+        '"shall not be the primary residence of an individual who is not a client of the '
+        'facility" — i.e., a family-home placement is structurally excluded at the licensure '
+        'tier; (ii) the "highly structured and highly supervised" requirement flows from '
+        '.1701(b) ("Staff secure means staff are required to be awake during client sleep '
+        'hours and supervision shall be continuous as set forth in Rule .1704 of this '
+        'Section") and .1701(e)(1) (services shall "include individualized supervision and '
+        'structure of daily living"); and (iii) the room-and-board exclusion is a feature of '
+        'the Medicaid RTS benefit category under CCP 8D-2 §1.0(c) and is not a licensure-'
+        'side rule. The full text of .1701 SCOPE is retained in the facility compliance '
+        'binder as documentation of the licensure framework governing this facility.'
     ))
     story.extend(bullets([
         '<b>(i) Setting type — Program setting only (not a family home).</b> '
@@ -263,37 +283,38 @@ def build_part1():
         'before initial licensure submission.</b>'
     ))
     story.append(para(
-        '<b>(a) 10A NCAC 27G .2600 vs .1700.</b> This Manual currently cites <b>10A NCAC '
-        '27G .2600</b> as the operative NC Administrative Code section for a Level III '
-        'Residential Treatment Facility — Staff Secure for Children or Adolescents, '
-        'consistent with the organization\'s stated license-category direction. A '
-        'verification review conducted against the <b>NC Office of Administrative Hearings '
-        '(OAH) official NCAC publication</b> '
-        '(http://reports.oah.state.nc.us/ncac/title%2010a%20-%20health%20and%20human%20'
-        'services/chapter%2027%20-%20mental%20health,%20community%20facilities%20and%20'
-        'services/subchapter%20g/) indicates that <b>10A NCAC 27G .2600 is currently '
-        'marked "Reserved for Future Codification"</b> and therefore is not, by itself, an '
-        'operative rule section. The NCAC sections that <i>are</i> operative for '
-        'residential treatment facilities serving children/adolescents appear to be: '
-        '<b>10A NCAC 27G .1300</b> ("Residential Treatment Facility for Children and '
-        'Adolescents" — Level II) and <b>10A NCAC 27G .1700</b> ("Residential Treatment '
-        'Staff Secure Facility for Children or Adolescents" — Level III Staff-Secure). '
-        'See 10A NCAC 27G .1701 SCOPE at '
-        'http://reports.oah.state.nc.us/ncac/title%2010a.../10a%20ncac%2027g%20.1701.pdf. '
-        'It is possible that (i) the NCAC has been renumbered since the organization\'s '
-        'initial licensing-direction determination, (ii) ".2600" is an informal or legacy '
-        'shorthand that does not precisely match the current codified section number, or '
-        '(iii) the organization\'s licensing consultant has confirmed ".2600" through a '
-        'channel not yet reflected in the OAH publication. The QP shall, prior to initial '
-        'licensure submission: (1) contact the assigned DHSR MHLC <b>Licensure &amp; '
-        'Training Consultant</b> per §1.2(e) and obtain written confirmation of the '
-        'correct operative NCAC section number for the Level III Staff-Secure license '
-        'category; (2) if the correct section is .1700 (or any section other than .2600), '
-        'update all citations in this Manual accordingly via a v2.21 revision; and '
-        '(3) retain the Licensure &amp; Training Consultant\'s written confirmation in the '
-        'facility compliance binder. <b>Until that confirmation is obtained, this Manual '
-        'will continue to cite ".2600" as the organization has directed, and this '
-        'subsection documents the open question.</b>'
+        '<b>(a) 10A NCAC 27G .2600 vs .1700 — RESOLVED in v2.21.</b> The open question '
+        'flagged in v2.20 — whether the operative NC Administrative Code section for a '
+        'Level III Residential Treatment Facility — Staff Secure for Children or '
+        'Adolescents is <b>10A NCAC 27G .2600</b> or <b>10A NCAC 27G .1700</b> — has been '
+        '<b>resolved in favor of .1700</b>. The text of <b>10A NCAC 27G .1701 SCOPE</b> '
+        '(Authority G.S. 122C-26; 143B-147; Eff. April 3, 2006) directly confirms that '
+        '<b>.1700 is the codified section governing "Residential Treatment Staff Secure for '
+        'Children or Adolescents."</b> Subsection .1701(a) defines the facility as "a free-'
+        'standing residential facility that provides intensive, active therapeutic '
+        'treatment and interventions within a system of care approach" and provides that '
+        'the facility "shall not be the primary residence of an individual who is not a '
+        'client of the facility"; .1701(b) defines "staff secure" as requiring that '
+        '"staff are required to be awake during client sleep hours and supervision shall '
+        'be continuous as set forth in Rule .1704 of this Section"; .1701(c)–(d) specify '
+        'the population served and the clinical criteria (primary diagnosis of mental '
+        'illness, emotional disturbance or substance-related disorders; not meeting '
+        'criteria for inpatient psychiatric services; requiring removal from home and '
+        'treatment in a staff secure setting); .1701(e) requires services to include '
+        '"individualized supervision and structure of daily living," minimize behaviors '
+        'related to functional deficits, ensure safety and de-escalate out-of-control '
+        'behaviors, assist with adaptive functioning, and support step-down to a less '
+        'intensive setting; .1701(f) requires coordination with other individuals and '
+        'agencies within the child\'s system of care. Accordingly, <b>all ".2600" '
+        'citations throughout this Manual have been updated to ".1700" in this v2.21 '
+        'revision</b>. The QP shall retain a printed copy of the .1701 SCOPE rule text '
+        '(as provided by the organization) in the facility compliance binder as '
+        'documentation of this resolution. No further action is required on this '
+        'subsection (a); the Licensure &amp; Training Consultant written confirmation '
+        'referenced in v2.20 §1.2(h)(a) is no longer necessary to resolve the citation '
+        'number, although the QP should still confirm operational rule subsections '
+        '(.1702–.1709) with the assigned Licensure &amp; Training Consultant per §1.2(e) at '
+        'the first in-person meeting.'
     ))
     story.append(para(
         '<b>(b) NC Medicaid "CCP 8C" vs "CCP 8D-2".</b> This Manual currently cites '
@@ -323,14 +344,19 @@ def build_part1():
     ))
     story.append(para(
         '<b>(c) No operational impact.</b> Nothing in this §1.2(h) changes the facility\'s '
-        'license category (Level III RTF — Staff Secure), its staffing ratios (2:4 minimum '
-        'per §2.1), its admission physical-exam timing (90 days prior per §6.1), its '
-        'resident-rights obligations (NCGS §122C-51 et seq. per §1.7), its Medicaid '
-        'taxonomy (320800000X per §1.9), or its room-and-board exclusion (per §1.2(g) and '
-        '§10.9). This subsection solely flags two citation-verification items for the QP '
-        'to resolve with DHSR MHLC and Alliance Health prior to initial licensure '
-        'submission. Resolution of either item shall be documented in a v2.21 revision '
-        'entry in the Version History table in Part 3.'
+        'license category (Level III RTF — Staff Secure under <b>10A NCAC 27G .1700</b>), '
+        'its staffing ratios (2:4 minimum per §2.1), its admission physical-exam timing '
+        '(90 days prior per §6.1), its resident-rights obligations (NCGS §122C-51 et seq. '
+        'per §1.7), its Medicaid taxonomy (320800000X per §1.9), or its room-and-board '
+        'exclusion (per §1.2(g) and §10.9). <b>The .2600 → .1700 citation question '
+        '(subsection (a) above) has been resolved in v2.21;</b> the CCP 8C vs CCP 8D-2 '
+        'citation question (subsection (b) above) remains open and shall be resolved in a '
+        '<b>v2.22 revision</b> entry in the Version History table in Part 3 following '
+        'Alliance Health / NCTracks enrollment confirmation per §1.9. In the interim, '
+        '§1.2(g), §1.9, and §10.9 already cite CCP 8D-2 as the operative authority for '
+        'the RTS benefit and the room-and-board exclusion; those subsections control in '
+        'the event of any inconsistency with the legacy "CCP 8C" reference lines elsewhere '
+        'in this Manual.'
     ))
     story.append(para(
         '<b>1.3 Corporate Compliance.</b> Well Spring Intervention LLC maintains a Corporate '
@@ -345,14 +371,14 @@ def build_part1():
         'and accountability. The <b>Clinical Director</b> is a licensed clinical professional '
         'with overall responsibility for the clinical program, including setting the clinical '
         'vision, approving clinical policies, and providing direction to clinical leadership. '
-        'The <b>Qualified Professional (QP)</b> — also referred to in 10A NCAC 27G .2600 as '
+        'The <b>Qualified Professional (QP)</b> — also referred to in 10A NCAC 27G .1700 as '
         'the <b>Qualified Mental Health Professional (QMHP)</b> — reports to the Clinical '
         'Director and is responsible for scheduling clinical services, assessments, PCPs, and '
         'day-to-day supervision of Associate Professionals (APs) and Direct Care Professionals '
         '(DCPs) <b>according to the direction of the Clinical Director</b>. For purposes of '
         'this Manual, "QP" and "QMHP" are used interchangeably and refer to the same role; '
         'the credentialing requirements in §1.4(b) satisfy both the 10A NCAC 27G .0104 QP '
-        'definition and the 10A NCAC 27G .2600 QMHP definition. The QP supervises staff '
+        'definition and the 10A NCAC 27G .1700 QMHP definition. The QP supervises staff '
         'in accordance with the Clinical Director\'s clinical guidance, programmatic '
         'priorities, and performance expectations, and shall escalate clinical concerns, '
         'staffing issues, and quality-of-care matters to the Clinical Director in a timely '
@@ -615,11 +641,11 @@ def build_part1():
     # ── SOP 2 ──────────────────────────────────────────────────────
     story.append(section_heading(2, 'Human Resources & Staffing Requirements'))
     story.append(ref_line(
-        '10A NCAC 27G .0203 & .2600; NC Medicaid CCP 8C; RMDM Chapter 1',
+        '10A NCAC 27G .0203 & .1700; NC Medicaid CCP 8C; RMDM Chapter 1',
         '§2',
     ))
     story.append(para(
-        '<b>2.1 Staffing Ratios — Staff-Secure Level III.</b> Under 10A NCAC 27G .2600, this '
+        '<b>2.1 Staffing Ratios — Staff-Secure Level III.</b> Under 10A NCAC 27G .1700, this '
         'Level III Staff-Secure facility shall maintain a <b>minimum of two (2) staff members '
         'on duty and awake at all times for every one to four (1–4) children in residence</b>, '
         'on every shift including the overnight shift. This 2:4 minimum applies 24 hours per '
@@ -782,7 +808,7 @@ def build_part1():
     # ── SOP 3 ──────────────────────────────────────────────────────
     story.append(section_heading(3, 'Admissions, Discharges, and Transition Planning'))
     story.append(ref_line(
-        '10A NCAC 27G .2600 & .5604; NC Medicaid CCP 8C; RMDM Chapters 2 & 5',
+        '10A NCAC 27G .1700 & .5604; NC Medicaid CCP 8C; RMDM Chapters 2 & 5',
         '§3',
     ))
     story.append(para(
@@ -972,7 +998,10 @@ def build_part1():
     ))
     story.append(Paragraph('<b>5.5 Activities Program — Minimum 14 Hours/Week Planned Group Activities.</b>', s_h2))
     story.append(para(
-        'Pursuant to <b>10A NCAC 27G .2600(c)</b>, the facility shall provide each youth '
+        'Pursuant to <b>10A NCAC 27G .1700</b> (and the service-design requirements of '
+        '.1701(e), including "individualized supervision and structure of daily living" '
+        'and acquisition of "social and recreational skills"), the facility shall provide '
+        'each youth '
         'with a documented <b>activities program of no fewer than 14 hours per week of '
         'planned group activities</b> that promote socialization, physical activity, and '
         'creative expression. Activities shall be: (a) age- and developmental-stage '
@@ -1031,7 +1060,7 @@ def build_part1():
     story.append(Paragraph('<b>6.1 Medical Care.</b>', s_h2))
     story.append(para(
         'Each resident has an identified Primary Care Physician (PCP) and psychiatrist '
-        'upon admission. <b>Per 10A NCAC 27G .2600, a complete medical (physical) '
+        'upon admission. <b>Per 10A NCAC 27G .1700, a complete medical (physical) '
         'examination must be conducted within 90 days PRIOR to admission</b>, and the '
         'exam report must be reviewed by the QP and the RN prior to the youth\'s move-in '
         'date. The pre-admission exam shall include a comprehensive physical assessment, '
@@ -1164,7 +1193,7 @@ def build_part1():
         'Treatment Facilities (PRTFs)</b> under 42 CFR 483.350-483.376 and the federal '
         ' Individuals with Disabilities Education Act (IDEA), but it is <b>not</b> required '
         'for a <b>Level III Residential Treatment Facility (Staff-Secure)</b> licensed '
-        'under 10A NCAC 27G .2600. <b>This facility is licensed as a Level III RTF '
+        'under 10A NCAC 27G .1700. <b>This facility is licensed as a Level III RTF '
         '(Staff-Secure), not as a PRTF.</b> Accordingly, this facility does not operate a '
         'facility-based school and is not required to do so under its current license; '
         'youth attend public school in the community per §7.1, with the facility '
@@ -1393,7 +1422,7 @@ def build_part1():
     story.append(Paragraph('<b>9.5 Staff-Secure Physical-Plant Measures.</b>', s_h2))
     story.append(para(
         'As a <b>Level III Residential Treatment Facility — Staff Secure for Children and '
-        'Adolescents</b> under 10A NCAC 27G .2600, this facility shall maintain physical-'
+        'Adolescents</b> under 10A NCAC 27G .1700, this facility shall maintain physical-'
         'plant and operational measures that provide line-of-sight or continuous-auditory '
         'supervision of all youth at all times, and that prevent elopement while preserving '
         'the youth\'s dignity and rights (per §1.7). Staff-secure measures do NOT include '
