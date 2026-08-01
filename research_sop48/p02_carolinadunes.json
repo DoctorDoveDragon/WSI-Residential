@@ -1,0 +1,41 @@
+{
+  "code": 200,
+  "data": {
+    "description": "",
+    "html": "",
+    "httpStatus": 200,
+    "httpStatusText": "",
+    "metadata": {
+      "Author": "Morgan White",
+      "CreationDate": "D:20240502111730-05'00'",
+      "Creator": "Acrobat PDFMaker 24 for Word",
+      "Custom": {
+        "Company": "Microsoft",
+        "SourceModified": "D:20240502161708"
+      },
+      "EncryptFilterName": null,
+      "IsAcroFormPresent": false,
+      "IsCollectionPresent": false,
+      "IsLinearized": true,
+      "IsSignaturesPresent": false,
+      "IsXFAPresent": false,
+      "Language": "EN-US",
+      "ModDate": "D:20240502111812-05'00'",
+      "PDFFormatVersion": "1.6",
+      "Producer": "Adobe PDF Library 24.2.207",
+      "Title": ""
+    },
+    "publishedTime": "Mon, 24 Jun 2024 21:18:59 GMT",
+    "title": "Residential-Handbook-12.28.2020.pdf",
+    "url": "https://carolinadunesbh.com/wp-content/uploads/2024/05/Residential-Handbook-12.28.2020.pdf",
+    "usage": {
+      "tokens": 0
+    }
+  },
+  "meta": {
+    "usage": {
+      "tokens": 0
+    }
+  },
+  "status": 20000
+}

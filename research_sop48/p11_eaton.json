@@ -1,0 +1,22 @@
+{
+  "code": 200,
+  "data": {
+    "description": "",
+    "external": {},
+    "html": "<html><head>\n    <link rel=\"stylesheet\" href=\"chrome-extension://mhjfbmdgcfjbbpaeojofohoefgiehjai/pdf_embedder.css\">\n  </head>\n  <body>\n    \n  \n\n</body></html>",
+    "httpStatus": 200,
+    "httpStatusText": "",
+    "metadata": {},
+    "title": "",
+    "url": "https://www.eatoncounty.org/DocumentCenter/View/1093/RT-Parent-Handbook",
+    "usage": {
+      "tokens": 55
+    }
+  },
+  "meta": {
+    "usage": {
+      "tokens": 55
+    }
+  },
+  "status": 20000
+}

@@ -1999,4 +1999,4 @@
   1999→- The SOP manual remains at v2.14 (47 pages, 858 KB).
   2000→- Persistent scripts: `/home/z/my-project/scripts/{logo_circular_seal.html, compute_v7_peak_residential.py, compute_v6_proportions.py, find_heart_lobes.py, crop_icon_content.py, compute_v4_snug_icon_size.py, analyze_icon_padding.py}`
 
-[showing lines 1-2000 of 2364; use offset=2001 with limit to continue reading]
+[showing lines 1-2000 of 2434; use offset=2001 with limit to continue reading]

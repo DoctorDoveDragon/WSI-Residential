@@ -1,0 +1,35 @@
+{
+  "code": 200,
+  "data": {
+    "description": "",
+    "html": "",
+    "httpStatus": 200,
+    "httpStatusText": "OK",
+    "metadata": {
+      "CreationDate": "D:20260501141538Z00'00'",
+      "Creator": "Microsoft® Word 2019",
+      "EncryptFilterName": null,
+      "IsAcroFormPresent": false,
+      "IsCollectionPresent": false,
+      "IsLinearized": false,
+      "IsSignaturesPresent": false,
+      "IsXFAPresent": false,
+      "Language": null,
+      "ModDate": "D:20260501141538Z00'00'",
+      "PDFFormatVersion": "1.4",
+      "Producer": "GPL Ghostscript 9.55.0"
+    },
+    "publishedTime": "Fri, 01 May 2026 14:18:12 GMT",
+    "title": "Student-Handbook.pdf",
+    "url": "https://www.mooseheart.org/wp-content/uploads/Student-Handbook.pdf",
+    "usage": {
+      "tokens": 0
+    }
+  },
+  "meta": {
+    "usage": {
+      "tokens": 0
+    }
+  },
+  "status": 20000
+}

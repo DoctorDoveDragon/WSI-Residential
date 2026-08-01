@@ -1,0 +1,23 @@
+{
+  "code": 200,
+  "data": {
+    "description": "",
+    "external": {},
+    "html": "<html><head>\n    <link rel=\"stylesheet\" href=\"chrome-extension://mhjfbmdgcfjbbpaeojofohoefgiehjai/pdf_embedder.css\">\n  </head>\n  <body>\n    \n  \n\n</body></html>",
+    "httpStatus": 200,
+    "httpStatusText": "OK",
+    "metadata": {},
+    "publishedTime": "Thu, 02 Feb 2023 17:27:28 GMT",
+    "title": "",
+    "url": "https://www.mcjcohio.org/wp-content/uploads/2022/06/NRTC-Youth-Handbook.pdf",
+    "usage": {
+      "tokens": 55
+    }
+  },
+  "meta": {
+    "usage": {
+      "tokens": 55
+    }
+  },
+  "status": 20000
+}

@@ -1,0 +1,30 @@
+{
+  "code": 200,
+  "data": {
+    "description": "",
+    "external": {
+      "apple-touch-icon-precomposed": {
+        "http://www.starcjc.com/templates/megastar/apple_touch_icon.png": {}
+      }
+    },
+    "html": "<html lang=\"en-gb\" dir=\"ltr\" class=\"uk-height-1-1 tm-error\"><head>\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>0 - Error: 0</title>\n<link rel=\"apple-touch-icon-precomposed\" href=\"/templates/megastar/apple_touch_icon.png\">\n<link rel=\"stylesheet\" href=\"/templates/megastar/css/bootstrap.css\">\n<link rel=\"stylesheet\" href=\"/templates/megastar/css/theme.css\">\n</head>\n\n<body class=\"uk-height-1-1 uk-vertical-align uk-text-center\">\n\n\t<div class=\"uk-vertical-align-middle uk-container-center\">\n\n\t\t<i class=\"tm-error-icon uk-icon-frown-o\"></i>\n\n\t\t<h1 class=\"tm-error-headline\">0</h1>\n\n\t\t<h2 class=\"uk-h3 uk-text-muted\">Error: 0</h2>\n\n\t\t<p>Invalid controller: name='images', format=''</p>\n\n\t</div>\n\n\n</body></html>",
+    "httpStatus": 500,
+    "httpStatusText": "Internal Server Error",
+    "metadata": {
+      "lang": "en-gb",
+      "viewport": "width=device-width, initial-scale=1"
+    },
+    "title": "0 - Error: 0",
+    "url": "http://www.starcjc.com/images/pdfs/RESIDENT-HANDBOOK-9-30-23S.pdf",
+    "usage": {
+      "tokens": 226
+    },
+    "warning": "Target URL returned error 500: Internal Server Error"
+  },
+  "meta": {
+    "usage": {
+      "tokens": 226
+    }
+  },
+  "status": 20000
+}

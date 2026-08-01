@@ -1,0 +1,36 @@
+{
+  "code": 200,
+  "data": {
+    "description": "",
+    "html": "",
+    "httpStatus": 200,
+    "httpStatusText": "",
+    "metadata": {
+      "Author": "J. McFarlane",
+      "CreationDate": "D:20220726110706-04'00'",
+      "Creator": "Microsoft® Word 2016",
+      "EncryptFilterName": null,
+      "IsAcroFormPresent": false,
+      "IsCollectionPresent": false,
+      "IsLinearized": false,
+      "IsSignaturesPresent": false,
+      "IsXFAPresent": false,
+      "Language": "en-US",
+      "ModDate": "D:20220726110706-04'00'",
+      "PDFFormatVersion": "1.5",
+      "Producer": "Microsoft® Word 2016"
+    },
+    "publishedTime": "Wed, 06 Mar 2024 17:16:20 GMT",
+    "title": "Resident-Handbook-072022.pdf",
+    "url": "https://sandypineshospital.com/wp-content/uploads/2024/03/Resident-Handbook-072022.pdf",
+    "usage": {
+      "tokens": 0
+    }
+  },
+  "meta": {
+    "usage": {
+      "tokens": 0
+    }
+  },
+  "status": 20000
+}

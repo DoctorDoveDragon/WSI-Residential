@@ -1,0 +1,36 @@
+{
+  "code": 200,
+  "data": {
+    "description": "",
+    "html": "",
+    "httpStatus": 200,
+    "httpStatusText": "",
+    "metadata": {
+      "CreationDate": "D:20260528112718-05'00'",
+      "Creator": "KM_751i",
+      "EncryptFilterName": null,
+      "IsAcroFormPresent": false,
+      "IsCollectionPresent": false,
+      "IsLinearized": false,
+      "IsSignaturesPresent": false,
+      "IsXFAPresent": false,
+      "Language": null,
+      "ModDate": "D:20260528112718-05'00'",
+      "PDFFormatVersion": "1.4",
+      "Producer": "KONICA MINOLTA bizhub 751i",
+      "Title": "SKM_751i26052811270"
+    },
+    "publishedTime": "Tue, 02 Jun 2026 14:37:21 GMT",
+    "title": "SKM_751i26052811270",
+    "url": "https://www.northtampabehavioralhealth.com/wp-content/uploads/sites/48/2026/06/Adolescent-Patient-Handbook.pdf",
+    "usage": {
+      "tokens": 0
+    }
+  },
+  "meta": {
+    "usage": {
+      "tokens": 0
+    }
+  },
+  "status": 20000
+}

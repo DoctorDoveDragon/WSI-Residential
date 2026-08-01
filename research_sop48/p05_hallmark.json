@@ -1,0 +1,41 @@
+{
+  "code": 200,
+  "data": {
+    "description": "",
+    "html": "",
+    "httpStatus": 200,
+    "httpStatusText": "",
+    "metadata": {
+      "Author": "Valued Sony Customer",
+      "CreationDate": "D:20190701130836-04'00'",
+      "Creator": "Acrobat PDFMaker 19 for Word",
+      "Custom": {
+        "Company": "Sony",
+        "SourceModified": "D:20190701170806"
+      },
+      "EncryptFilterName": null,
+      "IsAcroFormPresent": false,
+      "IsCollectionPresent": false,
+      "IsLinearized": true,
+      "IsSignaturesPresent": false,
+      "IsXFAPresent": false,
+      "Language": "EN-US",
+      "ModDate": "D:20190701130841-04'00'",
+      "PDFFormatVersion": "1.6",
+      "Producer": "Adobe PDF Library 19.12.66",
+      "Title": "Program Overview"
+    },
+    "publishedTime": "Fri, 06 Feb 2026 02:29:47 GMT",
+    "title": "Program Overview",
+    "url": "https://www.hallmarkyouthcare.org/wp-content/uploads/2019/07/Parent-Guardian-Resident-Handbook-5-22-19.pdf",
+    "usage": {
+      "tokens": 0
+    }
+  },
+  "meta": {
+    "usage": {
+      "tokens": 0
+    }
+  },
+  "status": 20000
+}

@@ -1,0 +1,36 @@
+{
+  "code": 200,
+  "data": {
+    "description": "",
+    "html": "",
+    "httpStatus": 200,
+    "httpStatusText": "",
+    "metadata": {
+      "Author": "Arsenault, Stephanie;Jen Leverton",
+      "CreationDate": "D:20191022091321-05'00'",
+      "Creator": "Microsoft® Word 2016",
+      "EncryptFilterName": null,
+      "IsAcroFormPresent": false,
+      "IsCollectionPresent": false,
+      "IsLinearized": false,
+      "IsSignaturesPresent": false,
+      "IsXFAPresent": false,
+      "Language": "en-US",
+      "ModDate": "D:20191022091321-05'00'",
+      "PDFFormatVersion": "1.5",
+      "Producer": "Microsoft® Word 2016"
+    },
+    "publishedTime": "Wed, 23 Oct 2019 20:22:05 GMT",
+    "title": "RTC-Handbook-rev-10-19.pdf",
+    "url": "https://meridell.com/wp-content/uploads/2019/10/RTC-Handbook-rev-10-19.pdf",
+    "usage": {
+      "tokens": 0
+    }
+  },
+  "meta": {
+    "usage": {
+      "tokens": 0
+    }
+  },
+  "status": 20000
+}
