@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 1792 560" width="1792" height="560" role="img"
+     aria-label="Well Spring Intervention LLC — Level III Residential Treatment Facility, Staff-Secure">
+
+  <!-- Background: transparent (overlay on any color) -->
+  <rect x="0" y="0" width="1792" height="560" fill="none"/>
+
+  <!-- Icon (transparent PNG, 420x420, vertically centered) -->
+  <image x="64" y="70"
+         width="420" height="420"
+         preserveAspectRatio="xMidYMid meet"
+         xlink:href="Well_Spring_Logo_Icon_Transparent.png"/>
+
+  <!-- Wordmark block -->
+  <g font-family="'Cormorant Garamond','Playfair Display','Tinos','Times New Roman',serif">
+
+    <!-- Main: "Well Spring Intervention" — 96px, weight 600, walnut brown -->
+    <text x="540" y="240"
+          font-size="96" font-weight="600" fill="#6b4d3f"
+          letter-spacing="0.5" text-rendering="geometricPrecision">
+      Well Spring <tspan fill="#ab5125">Intervention</tspan>
+    </text>
+
+    <!-- Divider: 60x2 terracotta rule -->
+    <rect x="540" y="258" width="60" height="2" fill="#ab5125"/>
+
+    <!-- Subtitle 1: "LEVEL III RESIDENTIAL TREATMENT FACILITY · STAFF-SECURE" -->
+    <text x="540" y="295"
+          font-family="'Inter','Helvetica Neue','Arial',sans-serif"
+          font-size="20" font-weight="500" fill="#6b4d3f"
+          letter-spacing="5" opacity="0.78"
+          text-rendering="geometricPrecision">
+      LEVEL III RESIDENTIAL TREATMENT FACILITY · STAFF-SECURE
+    </text>
+
+    <!-- Subtitle 2: services line -->
+    <text x="540" y="318"
+          font-family="'Inter','Helvetica Neue','Arial',sans-serif"
+          font-size="16" font-weight="500" fill="#6b4d3f"
+          letter-spacing="3" opacity="0.62"
+          text-rendering="geometricPrecision">
+      OUTPATIENT THERAPY <tspan fill="#ab5125" opacity="0.9"> · </tspan> CASE MANAGEMENT <tspan fill="#ab5125" opacity="0.9"> · </tspan> PSYCHOSOCIAL REHABILITATION
+    </text>
+
+    <!-- Tagline (italic terracotta) -->
+    <text x="540" y="348"
+          font-family="'Inter','Helvetica Neue','Arial',sans-serif"
+          font-size="16" font-weight="400" font-style="italic" fill="#ab5125"
+          letter-spacing="1"
+          text-rendering="geometricPrecision">
+      Empowerment · Growth · Freedom · Health · Wholeness · Healing
+    </text>
+
+    <!-- Email -->
+    <text x="540" y="385"
+          font-size="22" font-weight="500" fill="#6b4d3f"
+          letter-spacing="0.5"
+          text-rendering="geometricPrecision">
+      referral<tspan fill="#ab5125">@</tspan>wellspringintervention.com
+    </text>
+
+  </g>
+
+  <title>Well Spring Intervention LLC — Level III Residential Treatment Facility (Staff-Secure)</title>
+  <desc>Horizontal logo lockup: transparent icon at left, wordmark with services descriptor, tagline, and referral email at right. Transparent background for overlay on any color.</desc>
+</svg>

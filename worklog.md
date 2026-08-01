@@ -2968,3 +2968,65 @@ Stage Summary:
 - Both retain the secondary services line ("Outpatient Therapy · Case Management · Psychosocial Rehabilitation"), tagline ("Empowerment · Growth · Freedom · Health · Wholeness · Healing"), and email (referral@wellspringintervention.com).
 - Source scripts modified/created: scripts/logo_lockup.html (line 120 text fix), scripts/logo_lockup_residential.html (new file), scripts/render_logo_lockups.js (new file — Playwright PNG renderer).
 - Ready for website use. Recommend transparent-background variants (PNG with alpha) for overlay on colored website sections — can be produced by removing background:#faeddc from .poster and using omitBackground:true in screenshot options. User can request if needed.
+
+---
+Task ID: SOP-50
+Agent: main (Super Z)
+Task: Produce 5 website-ready asset bundles for the Well Spring Intervention LLC website build, expanding on the SOP-49 logo lockups: (1) transparent-background variants of both lockups for overlay on colored website sections (hero banners, footers); (2) web-optimized sizes (1200/600/300 wide) for all 4 lockup variants; (3) SVG versions of both lockups (vector text + embedded raster icon); (4) favicon set (16/32/48/180/192/512 + .ico + .webmanifest) from the residential seal; (5) homepage hero banner combining the residential transparent lockup with the brand cover illustration (tree-of-life rising toward sunrise) for the homepage hero section.
+
+Work Log:
+- Inspected existing logo assets and discovered:
+  * Well_Spring_Logo_Icon_Transparent.png (1024x1024 RGBA, 74% transparent) — already exists, used for transparent general lockup
+  * Well_Spring_Logo_Circular_Seal_Square.png (4063x4063 RGB, cream/white background) — needed background knockout for transparent variant
+  * Well_Spring_Brand_Image_1344x768.png (1344x768 JPEG) — VLM-verified: tree-of-life with magical blue water flowing from trunk, stone platform foreground, water body midground, distant treeline, rising/setting sun on left horizon, warm earth tones — perfect hero background with open sky on left for text overlay
+- Created /home/z/my-project/scripts/make_seal_transparent.py — Python script using PIL+numpy to knock out the cream/white background from the residential seal:
+  * Two-target knockout: pure white (#FFFFFF) for the corners + cream parchment (#FAEDDC) for the inner seal area
+  * HARD_TOL=12.0 for fully-transparent mask + SOFT_RANGE=18.0 for anti-aliasing falloff
+  * Result: 81.7% fully transparent (background), 17.5% fully opaque (drawing), 0.8% partial alpha (AA edges)
+  * Output: Well_Spring_Logo_Circular_Seal_Transparent.png (4063x4063 RGBA, ~3.4 MB)
+- Created two transparent-background HTML lockups (logo_lockup_transparent.html + logo_lockup_residential_transparent.html) — identical layout to existing lockups but with .poster { background: transparent } and using the transparent icon/seal PNGs
+- Created /home/z/my-project/scripts/render_logo_lockups_transparent.js — Playwright script using omitBackground:true in screenshot options to produce RGBA PNGs with alpha channel
+  * Both transparent lockups rendered at 2800x875 RGBA, ~400 KB each
+  * VLM-verified: transparent backgrounds confirmed, icons and text render correctly, "LEVEL III RESIDENTIAL TREATMENT FACILITY · STAFF-SECURE" subtitle visible on both
+- Created /home/z/my-project/scripts/make_web_variants.py — Python script producing:
+  * Web-optimized sizes (1200/600/300 wide) for all 4 lockup variants (12 PNGs total, using LANCZOS resampling)
+  * Favicons from residential seal (4063x4063 source): favicon-16x16.png, favicon-32x32.png, favicon-48x48.png, apple-touch-icon.png (180x180), android-chrome-192x192.png, android-chrome-512x512.png — all rendered on white background for browser tab contrast
+  * Multi-resolution favicon.ico (16/32/48 embedded, 8 KB)
+  * site.webmanifest (JSON with name, short_name, description, theme_color #6b4d3f, background_color #faeddc, icons array)
+  * Bonus favicons from general icon (Well_Spring_Logo_Icon_16/32/180/512.png)
+- Created /home/z/my-project/scripts/make_logo_svgs.py — Python script producing 4 SVG files (2 self-contained with embedded base64 PNG + 2 linked with relative URL):
+  * Self-contained: ~992 KB (general icon) and ~4.5 MB (residential seal — larger because seal source is 4063x4063); embeds the transparent PNG variant as data:image/png;base64
+  * Linked: ~3 KB each; references the transparent PNG via relative URL (must sit alongside the SVG)
+  * All 4 SVGs use vector <text> elements with font-family chains ('Cormorant Garamond','Playfair Display','Tinos','Times New Roman',serif for the wordmark and 'Inter','Helvetica Neue','Arial',sans-serif for subtitles); text is real text (selectable, crisp at any size, SEO-friendly); layout matches the HTML lockup exactly (icon 420x420 at x=64 y=70; wordmark block starting at x=540; main text baseline at y=240; divider at y=258; subtitle at y=295; sub-2 at y=318; tagline at y=348; email at y=385)
+  * Validated all 4 SVGs as well-formed XML with 5 text elements + 1 image + 2 rect/divider each
+- Created /home/z/my-project/scripts/hero_banner.html — homepage hero banner composition:
+  * Dimensions: 1920x800 (modern 12:5 hero aspect, ~2x retina-quality at SCALE=1.0 since already 1920 wide)
+  * Background: brand image (Well_Spring_Brand_Image_1344x768.png) with cover positioning, preserving the tree (right side) as the focal element
+  * Dark overlay: linear-gradient(rgba(26,14,8,0.82) at 0%, fading to 0.0 at 75%, then 0.30 at 100%) — ensures text legibility on left while preserving tree visibility on right
+  * Radial vignette overlay for visual focus
+  * Lockup content (left-aligned, max-width 1100px to avoid overlapping tree):
+    - Residential seal (transparent variant, 260x260) with drop-shadow for depth
+    - "Well Spring Intervention" in cream serif (84px Cormorant Garamond 600) with text-shadow — "Intervention" in lighter terracotta (#e89060, tuned for dark bg)
+    - 60x2 terracotta divider
+    - "LEVEL III RESIDENTIAL TREATMENT FACILITY · STAFF-SECURE" (18px Inter 600, cream, 5px letter-spacing)
+    - Services line (14px Inter 500, cream opacity 0.78)
+    - Tagline (15px Inter italic, lighter terracotta)
+    - Email (20px Cormorant Garamond, cream)
+  - URL corner: "www.wellspringintervention.com" bottom-right (12px Inter, cream opacity 0.55)
+- Created /home/z/my-project/scripts/render_hero_banner.js — Playwright renderer with comprehensive load waiting (document.fonts.ready + CSS background image + <img> load events + 800ms settle)
+- Ran render script: hero banner produced at 1920x800, 1762 KB
+- VLM-verified hero banner: (1) brand image visible as background with tree/magical water/stone platform/water body/distant treeline/rising sun ✓; (2) circular residential seal on left with house-shaped frame, "Residential" at bottom ✓; (3) wordmark text "Well Spring" in cream + "Intervention" in peachy-orange/terracotta ✓; (4) subtitle line verbatim: "LEVEL III RESIDENTIAL TREATMENT FACILITY · STAFF-SECURE" ✓; (5) layout balanced, text legible due to darker shadowed area on left
+- Produced web-optimized hero banner sizes: 1600x666 (1216 KB), 1200x500 (731 KB), 800x333 (352 KB) for desktop/tablet/mobile
+- Produced web-optimized transparent seal sizes (1024/512/256/180/128) for use as standalone transparent seal at various website locations
+
+Stage Summary:
+- Total new deliverables: 35 files in /home/z/my-project/download/
+  * Transparent lockups: Well_Spring_Logo_Lockup_Transparent.png + Well_Spring_Logo_Lockup_Residential_Transparent.png (2800x875 RGBA)
+  * Transparent seal: Well_Spring_Logo_Circular_Seal_Transparent.png (4063x4063 RGBA) + 5 web sizes (1024/512/256/180/128)
+  * Web-optimized lockups: 12 PNGs at 1200/600/300 wide for all 4 lockup variants (general/residential × cream-bg/transparent)
+  * SVG lockups: 4 files (2 self-contained + 2 linked) for both general and residential variants
+  * Favicons: 8 files (favicon-16/32/48.png, apple-touch-icon.png, android-chrome-192/512.png, favicon.ico, site.webmanifest) + 4 bonus Well_Spring_Logo_Icon_16/32/180/512.png
+  * Hero banner: Well_Spring_Hero_Banner.png (1920x800) + 3 web sizes (1600/1200/800)
+- Source scripts created (all under /home/z/my-project/scripts/): make_seal_transparent.py, logo_lockup_transparent.html, logo_lockup_residential_transparent.html, render_logo_lockups_transparent.js, make_web_variants.py, make_logo_svgs.py, hero_banner.html, render_hero_banner.js
+- All assets use the existing brand palette (walnut brown #6b4d3f, terracotta #ab5125, cream #faeddc) with hero banner adding cream-on-dark variants (#fff8ec text, #e89060 lighter terracotta accent) for legibility on dark backgrounds
+- Ready for website use. Hero banner suitable for homepage top section; transparent lockups for footer/colored section overlay; web sizes for responsive <img srcset>; favicons + webmanifest for browser tab/PWA install; SVGs for crisp scaling and SEO-friendly text

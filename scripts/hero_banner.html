@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Well Spring Intervention LLC — Homepage Hero Banner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: #1a0e08;
+    margin: 0; padding: 0;
+  }
+  .poster {
+    width: 1920px;
+    height: 800px;
+    position: relative;
+    overflow: hidden;
+    /* Brand image as background — covers full 1920x800 (will crop sides since
+       source is 1344x768 = 16:9, target is 1920x800 = 12:5). Background
+       positioning keeps tree (right side) visible. */
+    background-image:
+      linear-gradient(
+        to right,
+        rgba(26, 14, 8, 0.82) 0%,
+        rgba(26, 14, 8, 0.65) 30%,
+        rgba(26, 14, 8, 0.20) 55%,
+        rgba(26, 14, 8, 0.00) 75%,
+        rgba(26, 14, 8, 0.30) 100%
+      ),
+      url('/home/z/my-project/download/Well_Spring_Brand_Image_1344x768.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    padding: 0 100px;
+  }
+
+  /* Subtle vignette around edges to keep eye on center */
+  .poster::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse at center,
+      transparent 50%,
+      rgba(26, 14, 8, 0.35) 100%
+    );
+  }
+
+  /* Lockup content — horizontal: seal on left, wordmark block to its right */
+  .lockup {
+    display: flex;
+    align-items: center;
+    gap: 56px;
+    position: relative;
+    z-index: 2;
+    /* Constrain width so wordmark doesn't run into the tree on the right */
+    max-width: 1100px;
+  }
+
+  .seal-wrap {
+    width: 260px;
+    height: 260px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 6px 24px rgba(0, 0, 0, 0.55));
+  }
+  .seal-wrap img {
+    width: 260px;
+    height: 260px;
+    object-fit: contain;
+    display: block;
+  }
+
+  .wordmark {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Cream text colors tuned for dark overlay background */
+    color: #fff8ec;
+  }
+  .wordmark-main {
+    font-family: 'Cormorant Garamond', 'Playfair Display', 'Times New Roman', serif;
+    font-weight: 600;
+    font-size: 84px;
+    line-height: 1.0;
+    letter-spacing: 0.5px;
+    color: #fff8ec; /* warm cream */
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+  }
+  .wordmark-main .accent {
+    color: #e89060; /* lighter terracotta — readable on dark */
+  }
+  .divider {
+    width: 60px;
+    height: 2px;
+    background: #e89060;
+    margin-top: 22px;
+    margin-bottom: 0;
+  }
+  .wordmark-sub {
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #fff8ec;
+    margin-top: 16px;
+    opacity: 0.95;
+    line-height: 1.4;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+  }
+  .wordmark-sub-2 {
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #fff8ec;
+    margin-top: 8px;
+    opacity: 0.78;
+    line-height: 1.4;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+  }
+  .wordmark-sub-2 .dot {
+    color: #e89060;
+    margin: 0 8px;
+    opacity: 1.0;
+  }
+  .wordmark-tag {
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    font-style: italic;
+    color: #e89060;
+    margin-top: 14px;
+    letter-spacing: 1px;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+  }
+  .wordmark-email {
+    font-family: 'Cormorant Garamond', 'Playfair Display', 'Times New Roman', serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: #fff8ec;
+    margin-top: 18px;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+  }
+  .wordmark-email .at {
+    color: #e89060;
+  }
+
+  /* URL bottom-right (subtle, secondary) */
+  .url-corner {
+    position: absolute;
+    bottom: 36px;
+    right: 56px;
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    color: rgba(255, 248, 236, 0.55);
+    text-transform: uppercase;
+    z-index: 2;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+  }
+</style>
+</head>
+<body>
+  <div class="poster">
+    <div class="lockup">
+      <div class="seal-wrap">
+        <img src="/home/z/my-project/download/Well_Spring_Logo_Circular_Seal_Transparent.png"
+             alt="Residential seal: circular ring with house-shaped frame containing the tree-of-life wellspring with three family figures" />
+      </div>
+      <div class="wordmark">
+        <div class="wordmark-main">Well Spring <span class="accent">Intervention</span></div>
+        <div class="divider"></div>
+        <div class="wordmark-sub">Level III Residential Treatment Facility &middot; Staff-Secure</div>
+        <div class="wordmark-sub-2">Outpatient Therapy <span class="dot">&middot;</span> Case Management <span class="dot">&middot;</span> Psychosocial Rehabilitation</div>
+        <div class="wordmark-tag">Empowerment &middot; Growth &middot; Freedom &middot; Health &middot; Wholeness &middot; Healing</div>
+        <div class="wordmark-email">referral<span class="at">@</span>wellspringintervention.com</div>
+      </div>
+    </div>
+    <div class="url-corner">www.wellspringintervention.com</div>
+  </div>
+</body>
+</html>
