@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Well Spring Intervention LLC — Resident Handbook v1.0</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ─────────────────────────────────────────────────────────
+   WELL SPRING INTERVENTION LLC — RESIDENT HANDBOOK v1.0
+   Visual style: matches SOP Manual v2.21
+     - Walnut #6b4d3f / #3d2a1f (text + headings)
+     - Terracotta #ab5125 (accents, rules, callouts)
+     - Cream #faeddc (parchment background)
+     - Cormorant Garamond (wordmark + titles)
+     - Inter (body, subtitles, callouts)
+   Page size: 720x1020 (creative-flow standard, ~A4-ish aspect)
+   ───────────────────────────────────────────────────────── */
+
+@page {
+  size: 720px 1020px;
+  margin: 0;
+}
+
+:root {
+  --c-bg:           #faeddc;  /* warm cream parchment */
+  --c-bg-deep:      #f4e1c5;  /* slightly deeper cream for sidebars */
+  --c-walnut:       #6b4d3f;  /* walnut brown — headings */
+  --c-walnut-deep:  #3d2a1f;  /* deep walnut — body text */
+  --c-terracotta:   #ab5125;  /* terracotta — accents */
+  --c-terracotta-d: #8a3d1c;  /* deep terracotta — warnings */
+  --c-cream-soft:   #fff8ec;  /* soft cream — cover highlights */
+  --c-line:         #d8c4a8;  /* hairline rules */
+  --c-forbid-bg:    #f5d9c9;  /* soft brick for forbidden callout */
+  --c-forbid-bd:    #8a3d1c;  /* deep terracotta border */
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 720px;
+  background: var(--c-bg);
+  color: var(--c-walnut-deep);
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 11.5pt;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+@media screen {
+  html {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    background: #2a1810;
+  }
+  body {
+    transform-origin: top center;
+    margin: 20px auto;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────
+   COVER PAGE — fixed height, standalone
+   ───────────────────────────────────────────────────────── */
+.cover {
+  width: 720px;
+  height: 1020px;
+  box-sizing: border-box;
+  break-after: page;
+  overflow: hidden;
+  background: var(--c-bg);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 56px 56px 44px 56px;
+}
+
+/* Top kicker band — narrow */
+.cover-kicker {
+  width: 100%;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 9pt;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--c-walnut);
+  opacity: 0.7;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--c-line);
+}
+.cover-kicker .badge {
+  display: inline-block;
+  background: var(--c-terracotta);
+  color: var(--c-cream-soft);
+  padding: 4px 10px;
+  margin-right: 10px;
+  border-radius: 1px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  font-size: 8.5pt;
+}
+
+/* Seal — centered, large */
+.cover-seal-wrap {
+  margin-top: 56px;
+  width: 360px;
+  height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cover-seal-wrap img {
+  width: 360px;
+  height: 360px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Title block */
+.cover-title-block {
+  margin-top: 44px;
+  text-align: center;
+  color: var(--c-walnut);
+}
+.cover-title {
+  font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+  font-weight: 600;
+  font-size: 64pt;
+  line-height: 1.0;
+  letter-spacing: 0.5px;
+  color: var(--c-walnut);
+}
+.cover-accent-rule {
+  width: 60px;
+  height: 2px;
+  background: var(--c-terracotta);
+  margin: 44px auto 44px auto;
+}
+.cover-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 13pt;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--c-walnut);
+  opacity: 0.82;
+  line-height: 1.4;
+}
+.cover-tagline {
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-size: 11pt;
+  color: var(--c-terracotta);
+  margin-top: 18px;
+  letter-spacing: 1px;
+}
+
+/* Hotlines callout — bottom */
+.cover-hotlines {
+  position: absolute;
+  bottom: 44px;
+  left: 56px;
+  right: 56px;
+  background: var(--c-cream-soft);
+  border: 2px solid var(--c-terracotta);
+  padding: 18px 22px 20px 22px;
+  text-align: center;
+}
+.cover-hotlines-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 8.5pt;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--c-terracotta);
+  margin-bottom: 10px;
+}
+.cover-hotlines-grid {
+  display: flex;
+  justify-content: space-around;
+  gap: 16px;
+}
+.cover-hotline {
+  flex: 1;
+}
+.cover-hotline-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 9pt;
+  font-weight: 600;
+  color: var(--c-walnut-deep);
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+.cover-hotline-number {
+  font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+  font-size: 17pt;
+  font-weight: 600;
+  color: var(--c-terracotta);
+  letter-spacing: 0.5px;
+  line-height: 1.1;
+}
+
+/* URL corner */
+.cover-url {
+  position: absolute;
+  bottom: 16px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 8pt;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: var(--c-walnut);
+  opacity: 0.5;
+  text-transform: uppercase;
+}
+
+/* ─────────────────────────────────────────────────────────
+   MAIN CONTENT — flowing, no fixed height
+   ───────────────────────────────────────────────────────── */
+.main-content {
+  padding: 52px 60px 40px 60px;
+}
+
+/* Chapter header (used at top of each new section) */
+.chapter-header {
+  break-after: avoid;
+  break-inside: avoid;
+  margin-top: 24px;
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--c-terracotta);
+}
+.chapter-header:first-child {
+  margin-top: 0;
+}
+.chapter-tag {
+  font-family: 'Inter', sans-serif;
+  font-size: 9pt;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--c-terracotta);
+  margin-bottom: 8px;
+}
+.chapter-title {
+  font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+  font-weight: 600;
+  font-size: 26pt;
+  line-height: 1.1;
+  color: var(--c-walnut);
+  letter-spacing: 0.3px;
+  margin-bottom: 6px;
+}
+
+/* Body text */
+.body-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 11.5pt;
+  line-height: 1.65;
+  color: var(--c-walnut-deep);
+  margin-bottom: 12px;
+  text-align: left;
+  overflow-wrap: break-word;
+}
+.body-text + .body-text {
+  margin-top: 0;
+}
+
+/* Subsection title (within a chapter) */
+.subsection-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 13pt;
+  color: var(--c-walnut);
+  margin-top: 18px;
+  margin-bottom: 8px;
+  break-after: avoid;
+}
+
+/* Pull-quote (for Our Promise) */
+.pull-quote {
+  break-inside: avoid;
+  background: var(--c-cream-soft);
+  border-left: 4px solid var(--c-terracotta);
+  padding: 20px 24px;
+  margin: 16px 0 22px 0;
+  font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+  font-size: 17pt;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--c-walnut);
+  text-align: center;
+}
+.pull-quote-attr {
+  display: block;
+  margin-top: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 9pt;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--c-terracotta);
+  font-style: normal;
+}
+
+/* Numbered/bulleted lists */
+ol.bullet, ul.bullet {
+  margin: 8px 0 16px 0;
+  padding-left: 22px;
+}
+ol.bullet li, ul.bullet li {
+  font-family: 'Inter', sans-serif;
+  font-size: 11.5pt;
+  line-height: 1.6;
+  color: var(--c-walnut-deep);
+  margin-bottom: 6px;
+  break-inside: avoid;
+}
+ol.bullet li strong, ul.bullet li strong {
+  color: var(--c-walnut);
+  font-weight: 600;
+}
+
+/* Cardinal Rule / Stage / Behavior cards */
+.rule-card {
+  break-inside: avoid;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: var(--c-cream-soft);
+  border: 1px solid var(--c-line);
+  border-left: 4px solid var(--c-terracotta);
+  padding: 14px 18px;
+  margin-bottom: 12px;
+}
+.rule-card .num {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--c-terracotta);
+  color: var(--c-cream-soft);
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: 18pt;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.rule-card .body {
+  flex: 1;
+}
+.rule-card .rule-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 12pt;
+  color: var(--c-walnut);
+  margin-bottom: 4px;
+}
+.rule-card .rule-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.5;
+  color: var(--c-walnut-deep);
+}
+
+/* Stage cards (Recovery Journey) */
+.stage-card {
+  break-inside: avoid;
+  background: var(--c-cream-soft);
+  border: 1px solid var(--c-line);
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  position: relative;
+}
+.stage-card .stage-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+.stage-card .stage-num {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 9pt;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--c-terracotta);
+}
+.stage-card .stage-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 17pt;
+  color: var(--c-walnut);
+  line-height: 1.1;
+}
+.stage-card .stage-def {
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-size: 10pt;
+  color: var(--c-walnut);
+  opacity: 0.78;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+.stage-card .stage-explain {
+  font-family: 'Inter', sans-serif;
+  font-size: 11pt;
+  line-height: 1.55;
+  color: var(--c-walnut-deep);
+  margin-bottom: 8px;
+}
+.stage-card .stage-look {
+  font-family: 'Inter', sans-serif;
+  font-size: 10pt;
+  color: var(--c-walnut);
+}
+.stage-card .stage-look strong {
+  color: var(--c-terracotta);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 8.5pt;
+}
+
+/* Behavior tier cards (On/Near/Off the mark) */
+.tier-card {
+  break-inside: avoid;
+  background: var(--c-cream-soft);
+  border: 1px solid var(--c-line);
+  padding: 14px 18px;
+  margin-bottom: 12px;
+}
+.tier-card.on    { border-left: 5px solid #5d7a4a; }  /* sage green */
+.tier-card.near  { border-left: 5px solid #d49a4a; }  /* amber */
+.tier-card.off   { border-left: 5px solid #9c4f3a; }  /* brick */
+.tier-card .tier-header {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.tier-card .tier-mark {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 9pt;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  color: var(--c-cream-soft);
+}
+.tier-card.on    .tier-mark { background: #5d7a4a; }
+.tier-card.near  .tier-mark { background: #d49a4a; }
+.tier-card.off   .tier-mark { background: #9c4f3a; }
+.tier-card .tier-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 16pt;
+  color: var(--c-walnut);
+}
+.tier-card .tier-body {
+  font-family: 'Inter', sans-serif;
+  font-size: 11pt;
+  line-height: 1.55;
+  color: var(--c-walnut-deep);
+  margin-bottom: 8px;
+}
+.tier-card .tier-examples {
+  font-family: 'Inter', sans-serif;
+  font-size: 10pt;
+  color: var(--c-walnut);
+  margin-bottom: 6px;
+}
+.tier-card .tier-examples strong {
+  font-weight: 600;
+  color: var(--c-walnut-deep);
+}
+.tier-card .tier-response {
+  font-family: 'Inter', sans-serif;
+  font-size: 10pt;
+  color: var(--c-walnut);
+}
+.tier-card .tier-response strong {
+  color: var(--c-terracotta);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 8.5pt;
+}
+
+/* For Families sidebar */
+.for-families {
+  break-inside: avoid;
+  background: var(--c-bg-deep);
+  border-left: 4px solid var(--c-walnut);
+  padding: 14px 18px;
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+.for-families .ff-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 8pt;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--c-walnut);
+  margin-bottom: 6px;
+}
+.for-families .ff-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 13pt;
+  color: var(--c-walnut);
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+.for-families .ff-body {
+  font-family: 'Inter', sans-serif;
+  font-size: 9.5pt;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--c-walnut-deep);
+}
+
+/* Forbidden callout (red-ish block) */
+.forbidden-callout {
+  break-inside: avoid;
+  background: var(--c-forbid-bg);
+  border: 2px solid var(--c-forbid-bd);
+  padding: 16px 20px;
+  margin: 16px 0 18px 0;
+}
+.forbidden-callout .fc-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 9pt;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--c-forbid-bd);
+  margin-bottom: 8px;
+}
+.forbidden-callout .fc-list {
+  font-family: 'Inter', sans-serif;
+  font-size: 10pt;
+  line-height: 1.55;
+  color: var(--c-walnut-deep);
+}
+.forbidden-callout .fc-list strong {
+  color: var(--c-forbid-bd);
+  font-weight: 700;
+}
+
+/* Schedule table */
+.schedule-table {
+  break-inside: avoid;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0 18px 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 10pt;
+}
+.schedule-table th {
+  background: var(--c-walnut);
+  color: var(--c-cream-soft);
+  font-weight: 600;
+  text-align: left;
+  padding: 8px 10px;
+  font-size: 9pt;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.schedule-table td {
+  border-bottom: 1px solid var(--c-line);
+  padding: 7px 10px;
+  color: var(--c-walnut-deep);
+  vertical-align: top;
+}
+.schedule-table td.time {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  color: var(--c-terracotta);
+  font-size: 11pt;
+  white-space: nowrap;
+  width: 80px;
+}
+
+/* Contact table */
+.contact-table {
+  break-inside: avoid;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 8px 0 12px 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 10pt;
+}
+.contact-table th {
+  background: var(--c-walnut);
+  color: var(--c-cream-soft);
+  font-weight: 600;
+  text-align: left;
+  padding: 6px 10px;
+  font-size: 8.5pt;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.contact-table td {
+  border-bottom: 1px solid var(--c-line);
+  padding: 6px 10px;
+  color: var(--c-walnut-deep);
+  vertical-align: top;
+}
+.contact-table td.role {
+  font-weight: 600;
+  color: var(--c-walnut);
+  width: 40%;
+}
+.contact-table td.number {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  color: var(--c-terracotta);
+  font-size: 11pt;
+  white-space: nowrap;
+}
+
+/* Bring/Don't-bring two-column list */
+.bring-lists {
+  break-inside: avoid;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 12px 0 18px 0;
+}
+.bring-col {
+  padding: 12px 14px;
+  border: 1px solid var(--c-line);
+}
+.bring-col.bring    { background: #f0ebd9; border-left: 4px solid #5d7a4a; }
+.bring-col.nobring  { background: #f5d9c9; border-left: 4px solid #9c4f3a; }
+.bring-col .bc-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 8.5pt;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.bring-col.bring   .bc-label { color: #5d7a4a; }
+.bring-col.nobring .bc-label { color: #9c4f3a; }
+.bring-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 9.5pt;
+  line-height: 1.5;
+}
+.bring-col ul li {
+  padding: 2px 0 2px 12px;
+  position: relative;
+  color: var(--c-walnut-deep);
+}
+.bring-col.bring ul li::before {
+  content: '+';
+  position: absolute;
+  left: 0;
+  color: #5d7a4a;
+  font-weight: 700;
+}
+.bring-col.nobring ul li::before {
+  content: '\2212';  /* minus sign */
+  position: absolute;
+  left: 0;
+  color: #9c4f3a;
+  font-weight: 700;
+}
+
+/* Who-to-tell-if table (quick ref) */
+.tell-table {
+  break-inside: avoid;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0 14px 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 10pt;
+}
+.tell-table td {
+  border-bottom: 1px solid var(--c-line);
+  padding: 7px 10px;
+  vertical-align: top;
+  color: var(--c-walnut-deep);
+}
+.tell-table td.situation {
+  font-weight: 600;
+  color: var(--c-walnut);
+  width: 42%;
+  font-style: italic;
+}
+.tell-table td.action {
+  color: var(--c-walnut-deep);
+}
+.tell-table td.action strong {
+  color: var(--c-terracotta);
+  font-weight: 600;
+}
+
+/* Hotlines block (Quick Ref) */
+.hotlines-block {
+  break-inside: avoid;
+  background: var(--c-cream-soft);
+  border: 2px solid var(--c-terracotta);
+  padding: 14px 18px;
+  margin: 10px 0 14px 0;
+}
+.hotlines-block .hb-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 8.5pt;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--c-terracotta);
+  margin-bottom: 8px;
+  text-align: center;
+}
+.hotlines-block .hb-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 16px;
+}
+.hotlines-block .hb-item {
+  text-align: center;
+}
+.hotlines-block .hb-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 8.5pt;
+  font-weight: 600;
+  color: var(--c-walnut-deep);
+  line-height: 1.3;
+  margin-bottom: 2px;
+}
+.hotlines-block .hb-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13pt;
+  font-weight: 600;
+  color: var(--c-terracotta);
+  letter-spacing: 0.5px;
+}
+
+/* Glossary — two-column */
+.glossary {
+  break-inside: auto;
+  column-count: 2;
+  column-gap: 18px;
+  column-rule: 1px solid var(--c-line);
+  margin-top: 10px;
+}
+.glossary .g-item {
+  break-inside: avoid;
+  margin-bottom: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 9.5pt;
+  line-height: 1.45;
+  color: var(--c-walnut-deep);
+}
+.glossary .g-term {
+  font-weight: 600;
+  color: var(--c-walnut);
+}
+
+/* Signature page */
+.signature-block {
+  break-inside: avoid;
+  margin: 24px 0 18px 0;
+  padding: 16px 0 8px 0;
+  border-top: 1px solid var(--c-walnut);
+}
+.signature-block .sb-role {
+  font-family: 'Inter', sans-serif;
+  font-size: 9pt;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--c-walnut);
+  margin-bottom: 18px;
+}
+.signature-block .sb-line {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 14px;
+}
+.signature-block .sb-field {
+  flex: 1;
+}
+.signature-block .sb-field-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 8pt;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--c-walnut);
+  opacity: 0.7;
+  border-top: 1px solid var(--c-walnut-deep);
+  padding-top: 4px;
+}
+
+.ack-intro {
+  font-family: 'Inter', sans-serif;
+  font-size: 11pt;
+  line-height: 1.6;
+  color: var(--c-walnut-deep);
+  margin: 12px 0 8px 0;
+}
+
+.footer-note {
+  break-inside: avoid;
+  margin-top: 22px;
+  padding-top: 12px;
+  border-top: 1px solid var(--c-line);
+  font-family: 'Inter', sans-serif;
+  font-size: 8.5pt;
+  font-style: italic;
+  color: var(--c-walnut);
+  opacity: 0.7;
+  text-align: center;
+}
+
+/* Section page-break helper for major section dividers */
+.page-break {
+  break-before: page;
+}
+
+/* Letter signature */
+.letter-sig {
+  break-inside: avoid;
+  margin-top: 26px;
+}
+.letter-sig .ls-sig {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 16pt;
+  color: var(--c-walnut);
+  line-height: 1.2;
+  margin-bottom: 2px;
+}
+.letter-sig .ls-name {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 11pt;
+  color: var(--c-walnut);
+  letter-spacing: 0.3px;
+}
+.letter-sig .ls-role {
+  font-family: 'Inter', sans-serif;
+  font-size: 9.5pt;
+  color: var(--c-walnut);
+  opacity: 0.78;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     COVER PAGE
+     ═══════════════════════════════════════════════════════ -->
+<div class="cover">
+
+  <div class="cover-kicker">
+    <span class="badge">RESIDENT HANDBOOK</span>
+    For Youth &amp; Families
+  </div>
+
+  <div class="cover-seal-wrap">
+    <img src="../download/Well_Spring_Logo_Circular_Seal_Square.png"
+         alt="Residential circular seal of Well Spring Intervention LLC: pentagonal house outline enclosing the tree-of-life wellspring with three family figures, surrounded by an outer ring reading 'Well Spring Intervention LLC' (top) and 'Residential' (bottom).">
+  </div>
+
+  <div class="cover-title-block">
+    <div class="cover-title">Resident<br>Handbook</div>
+    <div class="cover-accent-rule"></div>
+    <div class="cover-subtitle">Well Spring Intervention LLC</div>
+    <div class="cover-tagline">Empowerment &middot; Growth &middot; Freedom &middot; Health &middot; Wholeness &middot; Healing</div>
+  </div>
+
+  <div class="cover-hotlines">
+    <div class="cover-hotlines-label">Independent Advocacy &mdash; Call Anytime</div>
+    <div class="cover-hotlines-grid">
+      <div class="cover-hotline">
+        <div class="cover-hotline-name">Disability Rights NC<br>NC Protection &amp; Advocacy</div>
+        <div class="cover-hotline-number">1-877-235-4210</div>
+      </div>
+      <div class="cover-hotline">
+        <div class="cover-hotline-name">The Joint Commission<br>Complaint Hotline</div>
+        <div class="cover-hotline-number">1-800-994-6610</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cover-url">www.wellspringintervention.com</div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     MAIN CONTENT — flows continuously
+     ═══════════════════════════════════════════════════════ -->
+<div class="main-content">
+
+<!-- ─── SECTION 2: WELCOME LETTER ─────────────────────── -->
+<div class="chapter-header">
+  <div class="chapter-tag">A Note to You</div>
+  <div class="chapter-title">Welcome</div>
+</div>
+
+<p class="body-text">Dear Youth and Family,</p>
+
+<p class="body-text">You are reading this because something hard has happened, and someone decided that coming here might help. We want you to know, before anything else, that we understand how heavy that is. Being away from home, away from the people you love, in a place with rules you didn't choose &mdash; that is a lot to carry. We see you carrying it.</p>
+
+<p class="body-text">This handbook is yours. It belongs to you while you are here, and you can take it with you when you leave. It explains your rights, the rules of the house, and what to expect each day. It also explains the work we hope to do together &mdash; what we call your Recovery Journey. The journey has four parts: <strong>Recognition</strong> (noticing where you are), <strong>Making Peace</strong> (letting go of the story that you are broken), <strong>Commitment</strong> (choosing to do the work), and <strong>Proper Action</strong> (practicing new ways, a little at a time, in real life).</p>
+
+<p class="body-text">We want to be clear about something: the journey is yours, not ours. We are not ranking you. We are not giving you points. We are not moving you up or down. You move through these stages at your own pace, in your own way. Sometimes you will be in Stage 1 for one part of your life and Stage 3 for another. That is normal. Our job is to walk with you, not to grade you.</p>
+
+<p class="body-text">Please read this handbook with a staff member in your first few days. Ask questions. If something does not make sense, ask again. If something feels wrong, tell us &mdash; or tell one of the independent advocacy organizations listed on the cover. You have the right to be safe here. You have the right to be heard. You have the right to do the hard work of growing up without being harmed in the process.</p>
+
+<p class="body-text">We are honored that you and your family have trusted us with this time. We will not take that trust lightly.</p>
+
+<div class="letter-sig">
+  <div class="ls-sig">With warmth,</div>
+  <div class="ls-name">The Program Director</div>
+  <div class="ls-role">Well Spring Intervention LLC</div>
+</div>
+
+
+<!-- ─── SECTION 3: OUR PROMISE ─────────────────────── -->
+<div class="chapter-header page-break">
+  <div class="chapter-tag">Our Promise to You</div>
+  <div class="chapter-title">The Core Principle</div>
+</div>
+
+<div class="pull-quote">
+  &ldquo;We honor the trust of our children and families, thus we shall not harm during treatment or the use of and consequences.&rdquo;
+  <span class="pull-quote-attr">&mdash; Well Spring Intervention LLC</span>
+</div>
+
+<p class="body-text">This is the promise we make to every youth and family who comes through our doors. It is not a slogan. It is the rule we measure every other rule against. If a policy, a consequence, or a staff action would cause you harm, it is wrong &mdash; even if it is technically allowed. We will choose your safety over our convenience, every time.</p>
+
+<p class="body-text">In practical terms, this means we will <strong>never</strong> use cruel, unusual, or corporal punishment. We will never hit you, spank you, or threaten your body. We will never take away food, sleep, clothing, or shelter to teach you a lesson. We will never deny you school, religious practice, or contact with your family as a consequence for behavior. These are not just our policies &mdash; they are your rights under North Carolina law (NCGS &sect;122C-55), and we take them seriously.</p>
+
+<p class="body-text">We also will not use seclusion (locking you in a room alone) or physical restraint (holding you down) except in true emergencies &mdash; when there is imminent danger to you or someone else, and only for as long as that danger lasts. Even then, it is not a punishment. It is a safety measure, used by trained staff, with a doctor's order, and reviewed afterwards by your treatment team. We are working toward a model called <em>Ukeru</em> &mdash; a trauma-informed approach that uses comfort and redirection instead of restraint. North Carolina began piloting this in PRTFs in August 2025, and we are committed to that direction.</p>
+
+<p class="body-text">If a staff member ever does something that feels like harm &mdash; physical, emotional, or sexual &mdash; you have the right to tell anyone, including the independent advocacy organizations on the cover of this handbook. You will not get in trouble for telling. We mean that.</p>
+
+<div class="for-families">
+  <div class="ff-label">For Families</div>
+  <div class="ff-title">The Legal Basis for Our Promise</div>
+  <div class="ff-body">
+    Our core principle is grounded in the North Carolina Resident Rights Act, NCGS &sect;122C-51 through &sect;122C-57, and the operating rules for Level III Residential Treatment Facilities (Staff-Secure) at 10A NCAC 27G .1700/.1701. Specifically, &sect;122C-55 prohibits cruel or unusual punishment, corporal punishment, deprivation of food/sleep/clothing/shelter as punishment, denial of education or religious practice, and the use of seclusion or restraint except under strict emergency conditions with physician order, time limits, face-to-face monitoring, and treatment-team review. Our &ldquo;no harm&rdquo; principle exceeds the state minimum by also committing to the Ukeru/comfort-based model and by treating family contact as a right, not a privilege.
+  </div>
+</div>
+
+
+<!-- ─── SECTION 4: RIGHTS & GRIEVANCES ─────────────────────── -->
+<div class="chapter-header page-break">
+  <div class="chapter-tag">Section 1</div>
+  <div class="chapter-title">Your Rights &amp; How to File a Grievance</div>
+</div>
+
+<p class="body-text">You keep your rights when you come here. Being in treatment does not make you less of a person. The State of North Carolina guarantees certain rights to every resident of a licensed facility, and we add a few of our own on top. Here are the most important ones, in plain language.</p>
+
+<div class="subsection-title">Your 12 Core Rights</div>
+
+<ul class="bullet">
+  <li><strong>Dignity and respect.</strong> Staff must call you by your preferred name, speak to you respectfully, and respect your privacy.</li>
+  <li><strong>A humane environment.</strong> Clean, safe, comfortable living space. Heating, cooling, lighting, and ventilation that work.</li>
+  <li><strong>Uncensored communication.</strong> You may send and receive mail and make phone calls to family, attorneys, courts, DHHS, and Disability Rights NC without staff listening in or reading your mail (we may open mail <em>in your presence</em> for contraband inspection only).</li>
+  <li><strong>Religious practice.</strong> You may practice the religion of your choice &mdash; or no religion at all. No one may pressure you to participate in religious activities.</li>
+  <li><strong>Education.</strong> You have the right to attend school and continue your education. We will work with your home school district to keep you on track.</li>
+  <li><strong>Refusal of medication.</strong> You have the right to refuse medication to the extent permitted by law. If you refuse, your treatment team will talk with you and your guardian about what that means for your care.</li>
+  <li><strong>Attorney access.</strong> You may speak with an attorney at any time, privately, at your own expense or through court-appointed counsel.</li>
+  <li><strong>Private physician.</strong> You may see a private physician of your choice at your own expense, with reasonable notice.</li>
+  <li><strong>Personal possessions.</strong> You may keep reasonable personal items, including clothing, photos, religious items, and money (held securely for you).</li>
+  <li><strong>Visitation.</strong> You may receive visits from family and approved visitors at scheduled times. Family contact is a right, not a privilege to be earned.</li>
+  <li><strong>File a grievance.</strong> You may complain about anything &mdash; staff, food, rules, other residents, your treatment &mdash; without fear of retaliation.</li>
+  <li><strong>Contact advocacy organizations.</strong> You may contact Disability Rights NC and The Joint Commission at any time. Staff must let you use the phone privately to call them.</li>
+</ul>
+
+<div class="subsection-title">How to File a Grievance &mdash; 5 Steps</div>
+
+<ol class="bullet">
+  <li><strong>Tell a staff member.</strong> Any staff member. Start with whoever you feel safest with. They will listen and try to help fix it informally first.</li>
+  <li><strong>Write it down.</strong> If talking doesn't solve it (or if you'd rather start on paper), ask for a grievance form. Staff will help you fill it out if you want help. You can also just write a note.</li>
+  <li><strong>Submit it.</strong> Give it to any staff member, or drop it in the locked grievance box (located in the common area). Anonymous grievances are accepted, though we may not be able to respond without a name.</li>
+  <li><strong>Get a response.</strong> You will receive a written response, usually within 5 business days. If the grievance is against a specific staff member, you can ask to speak with their supervisor instead.</li>
+  <li><strong>Escalate if needed.</strong> If you're not satisfied, you can ask for the Program Director, then the Clinical Director, then the Executive Director. At any step, you can also contact the independent organizations below.</li>
+</ol>
+
+<div class="hotlines-block">
+  <div class="hb-label">Independent Advocacy &mdash; You Can Call Anytime</div>
+  <div class="hb-grid">
+    <div class="hb-item">
+      <div class="hb-name">Disability Rights NC<br>(NC Protection &amp; Advocacy)</div>
+      <div class="hb-num">1-877-235-4210</div>
+    </div>
+    <div class="hb-item">
+      <div class="hb-name">The Joint Commission<br>(Complaint Hotline)</div>
+      <div class="hb-num">1-800-994-6610</div>
+    </div>
+    <div class="hb-item">
+      <div class="hb-name">988 Suicide &amp;<br>Crisis Lifeline</div>
+      <div class="hb-num">988</div>
+    </div>
+    <div class="hb-item">
+      <div class="hb-name">NC DHSR<br>Complaint Line</div>
+      <div class="hb-num">1-800-624-3004</div>
+    </div>
+  </div>
+</div>
+
+<p class="body-text">These organizations are <strong>not part of our facility</strong>. They are independent. Staff will give you privacy to call them, and we will never retaliate against you for contacting them. Their phone numbers are also posted in every resident area and on the cover of this handbook.</p>
+
+<div class="for-families">
+  <div class="ff-label">For Families</div>
+  <div class="ff-title">Your Child's Right to Uncensored Communication</div>
+  <div class="ff-body">
+    NCGS &sect;122C-52 guarantees your child the right to uncensored communication by mail and telephone with family, attorneys, courts, the Department of Health and Human Services, and the Protection &amp; Advocacy System (Disability Rights NC). Opening mail in front of staff for contraband inspection only is permissible; <strong>reading mail without consent or a documented safety/court order is not</strong>. Reading your child's mail without their consent violates &sect;122C-52. Limiting phone calls by phase/level also likely violates &sect;122C-52. If you suspect your child's communication rights are being restricted improperly, you may file a grievance internally or contact Disability Rights NC directly.
+  </div>
+</div>
+
+
+<!-- ─── SECTION 5: 5 CARDINAL RULES ─────────────────────── -->
+<div class="chapter-header page-break">
+  <div class="chapter-tag">Section 2</div>
+  <div class="chapter-title">The 5 Cardinal Rules</div>
+</div>
+
+<p class="body-text">These are the five non-negotiable safety rules of our community. They apply to everyone &mdash; youth and staff. Breaking a Cardinal Rule doesn't mean you're bad. It means we need to talk about what's underneath the behavior, and we need to make a plan together to keep everyone safe.</p>
+
+<div class="rule-card">
+  <div class="num">1</div>
+  <div class="body">
+    <div class="rule-title">No Physical Aggression</div>
+    <div class="rule-text">No hitting, pushing, kicking, biting, grabbing, throwing things at people, or threatening to hurt someone. If you feel like you might hurt someone, tell staff immediately &mdash; we will help you cool down before anything happens. You will not get in trouble for asking for help.</div>
+  </div>
+</div>
+
+<div class="rule-card">
+  <div class="num">2</div>
+  <div class="body">
+    <div class="rule-title">No Sexual Contact</div>
+    <div class="rule-text">No sexual behavior with other residents or anyone else &mdash; including touching, exposure, suggestive language, or asking others for sexual contact. This protects everyone's safety and dignity. If someone touches you or makes you uncomfortable, tell any staff member right away.</div>
+  </div>
+</div>
+
+<div class="rule-card">
+  <div class="num">3</div>
+  <div class="body">
+    <div class="rule-title">No Absconding (Running Away)</div>
+    <div class="rule-text">Do not leave the facility or a supervised activity without staff permission. If you feel like running, tell a staff member &mdash; we will listen to what's making you feel that way and help you figure out a safer option. Running away puts you in real danger, and we care about your safety.</div>
+  </div>
+</div>
+
+<div class="rule-card">
+  <div class="num">4</div>
+  <div class="body">
+    <div class="rule-title">No Gang Activity</div>
+    <div class="rule-text">No gang signs, gang colors, recruiting, intimidation, or gang-related writing. This keeps the community focused on treatment and keeps you safe from outside pressures. If gang affiliation is part of your history, we will talk about it in therapy &mdash; not punish you for it.</div>
+  </div>
+</div>
+
+<div class="rule-card">
+  <div class="num">5</div>
+  <div class="body">
+    <div class="rule-title">No Name-Calling Based on Identity</div>
+    <div class="rule-text">No slurs or name-calling based on race, ethnicity, religion, gender, sexual orientation, disability, or body size. Everyone here deserves to be treated with basic respect. Disagreeing is okay; demeaning someone for who they are is not.</div>
+  </div>
+</div>
+
+<p class="body-text">If you break a Cardinal Rule, staff will talk with you, your treatment team will meet to make a safety plan, and there may be increased supervision or temporary precautions (like a sharps precaution if you've hurt yourself). These are <strong>safety measures, not punishments</strong>. They end as soon as it's safe for them to end. Your family contact, meals, sleep, school, and therapy continue regardless.</p>
+
+<div class="for-families">
+  <div class="ff-label">For Families</div>
+  <div class="ff-title">How Cardinal Rules Translate the Law for Youth</div>
+  <div class="ff-body">
+    NCGS &sect;122C-55 prohibits cruel or unusual punishment, corporal punishment, deprivation of basic needs, denial of education/religion/communication, and the use of seclusion or restraint except in emergencies. The 5 Cardinal Rules translate these legal protections into youth-friendly, memorable language. They are based on the KidsPeace framework used at many residential treatment facilities nationwide. Our &ldquo;safety not punishment&rdquo; response model is consistent with the 2014 AACAP and Building Bridges Initiative position papers, which caution against point-and-level systems that restrict family contact or delay discharge.
+  </div>
+</div>
+
+
+<!-- ─── SECTION 6: RECOVERY JOURNEY ─────────────────────── -->
+<div class="chapter-header page-break">
+  <div class="chapter-tag">Section 3</div>
+  <div class="chapter-title">Your Recovery Journey</div>
+</div>
+
+<p class="body-text">This is the heart of how we think about your time here. We do not use a level system. We do not give you points. We do not move you up or demote you. Instead, we use a four-stage framework &mdash; a Recovery Journey &mdash; to describe the personal work of healing. You move through these stages at your own pace. Sometimes you'll be in one stage for one part of your life and a different stage for another. That is normal. Staff are not ranking you &mdash; we are walking with you.</p>
+
+<div class="stage-card">
+  <div class="stage-header">
+    <span class="stage-num">Stage 1</span>
+    <span class="stage-name">Recognition</span>
+  </div>
+  <div class="stage-def">&ldquo;State of life&rdquo; &mdash; noticing where you are right now, honestly, without judgment.</div>
+  <div class="stage-explain">This is the beginning. It's not about admitting you were wrong or accepting a label. It's about looking at your life &mdash; the patterns, the things that have happened to you, the things you've done, the things you've been carrying &mdash; and saying, &ldquo;This is where I am.&rdquo; Without shame. Without denial. Just honesty.</div>
+  <div class="stage-look"><strong>What this can look like:</strong> Talking honestly in therapy. Naming what's hard. Letting staff help. Noticing your own patterns. Showing up to groups even when you don't feel like it.</div>
+</div>
+
+<div class="stage-card">
+  <div class="stage-header">
+    <span class="stage-num">Stage 2</span>
+    <span class="stage-name">Making Peace</span>
+  </div>
+  <div class="stage-def">&ldquo;Separation from negative self-view and becoming self-positive via normalization of struggle.&rdquo;</div>
+  <div class="stage-explain">A lot of us grow up believing we are broken, bad, or unlovable because of what happened to us or what we did. Making peace means learning to separate who you are from what happened to you. Struggle is human. You are not broken. You are not your worst moment. This stage is about learning to be on your own side.</div>
+  <div class="stage-look"><strong>What this can look like:</strong> Stopping negative self-talk. Being kind to yourself when you mess up. Talking back to the voice that says you're not enough. Letting yourself feel proud of small things. Accepting that hard feelings are part of being human.</div>
+</div>
+
+<div class="stage-card">
+  <div class="stage-header">
+    <span class="stage-num">Stage 3</span>
+    <span class="stage-name">Commitment</span>
+  </div>
+  <div class="stage-def">&ldquo;To the work of self-realization.&rdquo;</div>
+  <div class="stage-explain">At some point, healing stops being something other people want for you and becomes something you want for yourself. That's commitment. It doesn't mean you're suddenly motivated all the time. It means you've decided &mdash; even on the hard days, even when you're tired &mdash; that this work matters. You keep showing up.</div>
+  <div class="stage-look"><strong>What this can look like:</strong> Setting your own treatment goals. Engaging in therapy instead of just attending. Trying new coping skills even when the old ones feel easier. Talking about hard things without being prompted.</div>
+</div>
+
+<div class="stage-card">
+  <div class="stage-header">
+    <span class="stage-num">Stage 4</span>
+    <span class="stage-name">Proper Action</span>
+  </div>
+  <div class="stage-def">&ldquo;Maintaining a realistic adjustment in behavior and perspective.&rdquo;</div>
+  <div class="stage-explain">This is where the work meets real life. Proper action isn't about being perfect. It's about practicing new ways of handling things &mdash; at the dinner table, in a disagreement with a peer, when you feel overwhelmed, when someone disappoints you. Small, realistic changes, sustained over time. Not a transformed person. A practicing one.</div>
+  <div class="stage-look"><strong>What this can look like:</strong> Using a coping skill before things escalate. Repairing a relationship after a conflict. Speaking up for yourself respectfully. Trying again after a setback. Planning for what comes next.</div>
+</div>
+
+<p class="body-text">You will notice we did not assign time frames to these stages. That is intentional. Some youth move through Recognition in a week; others take months. Some skip back and forth between Making Peace and Commitment for a long time. That is not failure &mdash; that is what healing actually looks like. Your treatment team will talk with you about which stage you feel you're in, and what would help you take the next step <em>when you're ready</em>.</p>
+
+
+<!-- ─── SECTION 7: BEHAVIOR (ON/NEAR/OFF THE MARK) ─────────────────────── -->
+<div class="chapter-header page-break">
+  <div class="chapter-tag">Section 4</div>
+  <div class="chapter-title">Behavior &mdash; On the Mark, Near the Mark, Off the Mark</div>
+</div>
+
+<p class="body-text">Instead of green/yellow/red lights or points and levels, we use three simple categories to talk about behavior: <strong>On the Mark</strong>, <strong>Near the Mark</strong>, and <strong>Off the Mark</strong>. Think of it like archery &mdash; you're aiming for something, and your behavior either hits the target, gets close, or misses. The point isn't to be perfect. The point is to notice where you are and adjust.</p>
+
+<div class="tier-card on">
+  <div class="tier-header">
+    <span class="tier-mark">On</span>
+    <span class="tier-name">On the Mark</span>
+  </div>
+  <div class="tier-body">Behavior that lines up with your treatment goals and the community's safety. You're using skills, participating, treating people with respect, and following the daily structure.</div>
+  <div class="tier-examples"><strong>Examples:</strong> Using a coping skill when upset. Attending groups. Speaking respectfully even when frustrated. Following the schedule. Helping a peer. Completing chores without being reminded.</div>
+  <div class="tier-response"><strong>Staff response:</strong> Acknowledgment, encouragement, natural privileges continue. We notice. We don't make a big deal out of it &mdash; this is just how things work when they're working.</div>
+</div>
+
+<div class="tier-card near">
+  <div class="tier-header">
+    <span class="tier-mark">Near</span>
+    <span class="tier-name">Near the Mark</span>
+  </div>
+  <div class="tier-body">Behavior that's starting to drift but isn't unsafe. You're not breaking Cardinal Rules, but you're also not at your best. This is the early-warning zone &mdash; a chance to adjust before things escalate.</div>
+  <div class="tier-examples"><strong>Examples:</strong> Avoiding a group. Snapping at a peer. Skipping a chore. Rolling your eyes. Withdrawing from conversation. Being short with staff.</div>
+  <div class="tier-response"><strong>Staff response:</strong> Verbal redirection. &ldquo;Take 5&rdquo; offered (you can ask for time away to reset). A conversation about what's underneath the behavior. No formal consequence &mdash; just a check-in.</div>
+</div>
+
+<div class="tier-card off">
+  <div class="tier-header">
+    <span class="tier-mark">Off</span>
+    <span class="tier-name">Off the Mark</span>
+  </div>
+  <div class="tier-body">Behavior that is unsafe, breaks a Cardinal Rule, or seriously disrupts the community. This is when we need to act &mdash; not to punish you, but to keep everyone safe and help you get back on track.</div>
+  <div class="tier-examples"><strong>Examples:</strong> Physical aggression. Running away. Refusing to come back. Property destruction. Sexual contact. Gang activity. Name-calling based on identity.</div>
+  <div class="tier-response"><strong>Staff response:</strong> Safety intervention. Treatment team conversation. Possible temporary precautions (sharps, elopement, etc.) &mdash; <em>never as punishment</em>, always as safety measures, reviewed regularly, and ended as soon as it's safe.</div>
+</div>
+
+<div class="subsection-title">How We Respond</div>
+
+<p class="body-text">When you're off the mark, our first question is &ldquo;What happened to you?&rdquo; &mdash; not &ldquo;What's wrong with you?&rdquo; Behavior is communication. We try to understand what you're telling us before we decide what to do next.</p>
+
+<p class="body-text">Redirection always comes before consequence. Staff will give you three prompts before assigning a formal consequence during your first weeks here. As you grow, you'll help decide what consequences make sense for you &mdash; we believe consequences should be logical, restorative, and short. Repair the harm. Replace what was damaged. Reflect on what happened. Move forward.</p>
+
+<p class="body-text">We will <strong>never</strong> use group punishment &mdash; if one youth breaks a rule, the whole group doesn't lose privileges. We will <strong>never</strong> take away family contact, meals, sleep, or education as a consequence. We will <strong>never</strong> use physical restraint or seclusion except in true emergencies, when there is imminent danger, and only for as long as the danger lasts.</p>
+
+<p class="body-text">Consequences expire. Any restriction of privileges ends within 30 days unless it is reviewed and renewed in writing by your treatment team &mdash; with you present and your input recorded.</p>
+
+<div class="for-families">
+  <div class="ff-label">For Families</div>
+  <div class="ff-title">Why We Don't Use Points and Levels</div>
+  <div class="ff-body">
+    The 2014 AACAP and Building Bridges Initiative position papers caution that point-and-level systems can be &ldquo;misguided, ineffective, discriminatory, and potentially illegal&rdquo; when they (a) apply universally rather than individually, (b) restrict family contact as a consequence, or (c) delay discharge. Our On/Near/Off the Mark framework aligns with 10A NCAC 27G .1701(e)(1) requirement for &ldquo;individualized supervision and structure of daily living&rdquo; while avoiding these pitfalls. We tie behavior responses to your child's individualized treatment goals, never restrict family contact as a privilege, and never use level demotion punitively. The Healing Lodge model &mdash; &ldquo;NO CONSEQUENCES SHOULD EVER PLACE A CHILD AT RISK OF INJURY&rdquo; &mdash; is the gold standard we follow.
+  </div>
+</div>
+
+
+<!-- ─── SECTION 8: DAILY LIFE & SCHEDULE ─────────────────────── -->
+<div class="chapter-header page-break">
+  <div class="chapter-tag">Section 5</div>
+  <div class="chapter-title">Daily Life &amp; Schedule</div>
+</div>
+
+<p class="body-text">Structure helps. When you know what's coming next, your nervous system can settle. Our daily schedule is designed to give you rhythm &mdash; wake, meals, school, therapy, activity, rest &mdash; with enough flexibility to meet your individual treatment plan. Here's what a typical weekday looks like.</p>
+
+<table class="schedule-table">
+  <thead>
+    <tr><th>Time</th><th>Activity</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="time">7:00 AM</td><td>Wake &amp; hygiene</td></tr>
+    <tr><td class="time">7:45 AM</td><td>Breakfast (family-style, all together)</td></tr>
+    <tr><td class="time">8:30 AM</td><td>School (on-site classroom or per IEP)</td></tr>
+    <tr><td class="time">12:00 PM</td><td>Lunch</td></tr>
+    <tr><td class="time">1:00 PM</td><td>School continues</td></tr>
+    <tr><td class="time">2:30 PM</td><td>Group therapy or psychosocial rehabilitation</td></tr>
+    <tr><td class="time">3:30 PM</td><td>Structured activity / free time</td></tr>
+    <tr><td class="time">4:30 PM</td><td>Individual therapy or case management (rotating)</td></tr>
+    <tr><td class="time">5:30 PM</td><td>Dinner</td></tr>
+    <tr><td class="time">6:30 PM</td><td>Evening group / life skills / recreation</td></tr>
+    <tr><td class="time">7:30 PM</td><td>Free time / phone calls / visits</td></tr>
+    <tr><td class="time">9:00 PM</td><td>Wind-down / hygiene</td></tr>
+    <tr><td class="time">10:00 PM</td><td>Lights out (awake overnight staff on duty)</td></tr>
+  </tbody>
+</table>
+
+<p class="body-text">You'll notice we have at least <strong>14 hours per week of planned group activities</strong> &mdash; therapy groups, life-skills groups, recreation, community meetings. This is required by state rule (.1701(e)) because structured group time is where a lot of the real work happens: practicing relationships, trying out new skills, learning from each other.</p>
+
+<p class="body-text">Your schedule may look different based on your treatment plan. If you have an IEP (Individualized Education Program), we'll follow it. If your therapist wants you in more (or fewer) groups, we'll adjust. Weekends are different &mdash; more recreation, family visits, religious services, sleep-in.</p>
+
+<p class="body-text">At night, <strong>awake overnight staff</strong> are on duty. They check on you every 15 minutes while you sleep. If you wake up scared, sad, or unable to sleep, you can tell them. That's what they're there for. Our staffing ratio is <strong>2 staff for every 1 to 4 youth, 24 hours a day, 7 days a week, 365 days a year</strong> &mdash; this is required for our license as a Staff-Secure facility, and it means you are never alone.</p>
+
+<div class="for-families">
+  <div class="ff-label">For Families</div>
+  <div class="ff-title">What to Expect on Admission Day</div>
+  <div class="ff-body">
+    Admission typically takes 2-3 hours. You and your child will meet with admissions staff, complete paperwork, receive a tour, and have your child's belongings searched (with your child present, dignity preserved &mdash; <strong>never a strip search</strong>). Your child will be assigned a primary therapist, case manager, and primary staff within the first 24 hours. Family contact information will be collected, and an approved visitor list will be built with your input. The first 72 hours are an orientation period &mdash; your child will have extra staff support while learning the routine. Family therapy is typically scheduled within the first week. See <em>Family Resources</em> (page 14) for what to bring and who to contact.
+  </div>
+</div>
+
+
+<!-- ─── SECTION 9: STAYING SAFE ─────────────────────── -->
+<div class="chapter-header page-break">
+  <div class="chapter-tag">Section 6</div>
+  <div class="chapter-title">Staying Safe &mdash; Supervision, Searches &amp; Contraband</div>
+</div>
+
+<div class="subsection-title">How We Keep You Safe</div>
+
+<p class="body-text">Safety is the foundation. If you don't feel safe, you can't do the work of healing. Our safety model is built on three things: <strong>continuous supervision</strong>, <strong>awake overnight staff</strong>, and a <strong>2:4 staffing ratio</strong> (at least 2 staff for every 1 to 4 youth, 24/7/365).</p>
+
+<p class="body-text">During the day, staff maintain line-of-sight supervision. That means we know where you are at all times &mdash; not because we're spying on you, but because keeping you safe is our job. If you need privacy (in the bathroom, in your room for a few minutes), we'll give you space, but we'll still know you're okay.</p>
+
+<p class="body-text">At night, awake staff check on you every 15 minutes while you sleep. They don't wake you up &mdash; they just make sure you're breathing, safe, and comfortable. If you have a nightmare, feel sick, or just need to talk, you can tell them. They are not there to enforce rules at night. They're there to keep you safe.</p>
+
+<p class="body-text">If you ever feel unsafe &mdash; with a peer, with a staff member, with a visitor, or even just inside yourself &mdash; <strong>tell any staff member immediately</strong>. You will not get in trouble for telling. If you don't feel safe telling staff, you can call Disability Rights NC (1-877-235-4210) or the Joint Commission (1-800-994-6610) from any phone, privately.</p>
+
+<div class="subsection-title">Searches &amp; Contraband</div>
+
+<div class="pull-quote" style="font-size: 15pt; padding: 16px 22px; margin: 12px 0 18px 0;">
+  You will <span style="color: var(--c-terracotta); font-weight: 700; font-style: normal;">never</span> be subjected to a strip search.<br>
+  This is non-negotiable.
+</div>
+
+<p class="body-text">We do searches for safety &mdash; yours and everyone else's. We do them with dignity. We document every search with the date, time, staff involved, reason, items found, and your response. Here's what searches look like:</p>
+
+<ul class="bullet">
+  <li><strong>Admission search.</strong> When you arrive, a same-gender staff member will go through your belongings with you present. We're looking for contraband &mdash; weapons, drugs, lighters, sharp objects, anything unsafe. We'll set aside anything you can't keep and store it securely for you to take when you leave.</li>
+  <li><strong>Room searches.</strong> Sometimes staff will search your room &mdash; usually when there's reasonable suspicion of contraband or a safety concern. We'll tell you why (unless doing so would create a safety risk). Your personal items are handled with care. Anything confiscated is documented.</li>
+  <li><strong>Pat-down searches.</strong> Only when there's a specific safety concern (like reasonable suspicion you're carrying a weapon). Done by a same-gender staff member, in a private setting, with a witness. Documented in detail.</li>
+</ul>
+
+<p class="body-text">The list of items not allowed in the facility (contraband) is in the <em>Family Resources</em> section. The short version: weapons, drugs/alcohol, fire-starting items, sharp objects, medications not in their original container, electronics with cameras, and anything that promotes self-harm or gang affiliation.</p>
+
+<div class="for-families">
+  <div class="ff-label">For Families</div>
+  <div class="ff-title">Searches &mdash; Legal Basis and Our Higher Standard</div>
+  <div class="ff-body">
+    NCGS &sect;122C-54 requires that searches of residents and their belongings be reasonable, dignified, and documented. We meet that standard and exceed it: <strong>strip searches of minors are prohibited in our facility as a trauma-informed policy that goes beyond state minimums.</strong> This policy is adopted from the New Haven (CA) model and is non-negotiable. All searches are logged in a searchable register; the QP (Qualified Professional) reviews search logs weekly. Staff are trained annually on trauma-informed search procedures, including the impact of prior trauma on a youth's experience of being searched.
+  </div>
+</div>
+
+
+<!-- ─── SECTION 10: COMMUNICATION & VISITATION ─────────────────────── -->
+<div class="chapter-header page-break">
+  <div class="chapter-tag">Section 7</div>
+  <div class="chapter-title">Communication &amp; Visitation</div>
+</div>
+
+<p class="body-text">You have the right to stay connected to the people who matter to you. Under North Carolina law (NCGS &sect;122C-52), you have the right to <strong>uncensored communication</strong> by mail and telephone with your family, your attorney, the courts, the Department of Health and Human Services, and Disability Rights NC.</p>
+
+<div class="subsection-title">Phone Calls</div>
+<p class="body-text">You'll have scheduled phone times each day (usually evening). If something urgent comes up &mdash; a family emergency, a court date, a crisis &mdash; you can ask staff to use the phone at any time. Calls with your attorney or Disability Rights NC are <strong>always</strong> allowed, privately, without staff listening in. We maintain an approved contact list with your guardian's input; clinical holds on contact with specific individuals happen only with guardian consent or a court order.</p>
+
+<div class="subsection-title">Mail</div>
+<p class="body-text">You may send and receive mail. Outgoing mail goes out the same day if given to staff before 3 PM. Incoming mail is given to you unopened, <em>except</em> staff may open mail <strong>in your presence</strong> for contraband inspection only. <strong>Reading your mail without your consent is not allowed.</strong> If staff are concerned about something in a letter, they'll talk with you about it &mdash; not read it secretly.</p>
+
+<div class="subsection-title">Visitation</div>
+<p class="body-text">Family visits are encouraged. Approved visitors are listed on your contact list, which your guardian helps build. Visiting hours are typically Saturday and Sunday afternoons, plus a weekday evening. Therapeutic passes and TTVs (therapeutic temporary visits) &mdash; off-campus visits with family as part of treatment &mdash; are scheduled by your treatment team when you're ready.</p>
+
+<div class="subsection-title">Clergy &amp; Legal Counsel</div>
+<p class="body-text">You may see clergy of your choice and your attorney at any reasonable time. We'll provide a private space. These visits are not supervised by staff.</p>
+
+<p class="body-text"><strong>Family contact is a right, not a privilege.</strong> We will never take away phone calls, mail, or visits as a consequence for behavior. We will never tie family contact to &ldquo;phases&rdquo; or &ldquo;levels.&rdquo; If a specific contact needs to be limited for safety (for example, if a court order says no contact with a particular person), that's a clinical decision made with your guardian and your treatment team &mdash; not a punishment.</p>
+
+<div class="for-families">
+  <div class="ff-label">For Families</div>
+  <div class="ff-title">Court Hearings &amp; How to Reach Your Child's Team</div>
+  <div class="ff-body">
+    Under NCGS &sect;122C-224 (Judicial Review of Voluntary Admissions of Minors), a court hearing must be held within 15 days of your child's admission if the placement is involuntary or contested. An attorney will be appointed at no cost to your family. You will be notified of the hearing date and may attend. To reach your child's treatment team, call the main facility line and ask for your child's therapist or case manager by name. For after-hours emergencies, an on-call QP is available 24/7. Alliance Health (our LME/MCO) Member Services can also help with system navigation: 1-800-510-9132.
+  </div>
+</div>
+
+
+<!-- ─── SECTION 11: CONSEQUENCES & REDIRECTION ─────────────────────── -->
+<div class="chapter-header page-break">
+  <div class="chapter-tag">Section 8</div>
+  <div class="chapter-title">Consequences &amp; Redirection</div>
+</div>
+
+<div class="pull-quote" style="font-size: 15pt; padding: 16px 22px; margin: 12px 0 18px 0;">
+  No consequences should ever place a child at risk of injury.
+  <span class="pull-quote-attr">&mdash; Healing Lodge of the Seven Nations</span>
+</div>
+
+<p class="body-text">When you're off the mark, here's how we respond. The ladder goes from gentle to firm &mdash; we always start at the bottom and only move up if we need to.</p>
+
+<ol class="bullet">
+  <li><strong>Verbal redirection.</strong> Staff gives you up to three prompts before assigning a formal consequence. &ldquo;Hey, can you take a breath?&rdquo; &ldquo;Let's try that again.&rdquo; Just a heads-up that you're drifting.</li>
+  <li><strong>&ldquo;Take 5.&rdquo;</strong> You can ask for &mdash; or staff can offer &mdash; a few minutes away from the situation to calm down and reset. Voluntary. Not a punishment. You choose when you're ready to come back.</li>
+  <li><strong>Refocus Time.</strong> Staff-directed brief reflection, up to 10 minutes. A chance to think about what happened and what you'd do differently.</li>
+  <li><strong>Reflection Time.</strong> Up to one hour in a designated area (not your room if it would be locked; never a &ldquo;quiet room&rdquo; used punitively). Time to write, think, or talk with staff about what's going on.</li>
+  <li><strong>Logical consequences.</strong> Repair or replace damaged property. Extra chores. A written reflection (never humiliation like writing &ldquo;I will not talk&rdquo; 500 times). Restitution through allowance or extra chores if something was damaged.</li>
+  <li><strong>Loss of specific privileges.</strong> TV, MP3 player, outings &mdash; implemented progressively (least restrictive first). Any restriction ends within 30 days unless reviewed and renewed in writing, with you present.</li>
+</ol>
+
+<div class="forbidden-callout">
+  <div class="fc-label">Forbidden &mdash; Never Used Here</div>
+  <div class="fc-list">
+    <strong>No cruel or unusual punishment.</strong> No corporal punishment (hitting, spanking, grabbing). No deprivation of food, sleep, clothing, or shelter. No denial of education, religious practice, or family communication. No humiliation, intimidation, or degradation (no public apology as punishment, no &ldquo;quiet room&rdquo; as routine consequence). No group punishment for one youth's behavior. No running laps, push-ups, or physical exercise as punishment. No involuntary seclusion or restraint except in emergencies with imminent danger, physician order, time limits, and treatment-team review.
+  </div>
+</div>
+
+<p class="body-text">If you ever feel a consequence crosses the line into any of these forbidden categories, tell a staff member, file a grievance, or call Disability Rights NC. You will not be retaliated against for speaking up.</p>
+
+<div class="for-families">
+  <div class="ff-label">For Families</div>
+  <div class="ff-title">Our Commitment to Trauma-Informed Response</div>
+  <div class="ff-body">
+    Our approach is modeled on the Healing Lodge of the Seven Nations' explicit statement that &ldquo;no consequences should ever place a child at risk of injury&rdquo; and that the facility &ldquo;does not use physical restraint or seclusion.&rdquo; We align with the NC Division of Health Service Regulation's August 2025 Ukeru pilot program for PRTFs, which trains staff in comfort-based alternatives to restraint and seclusion. All consequences are reviewed weekly by the QP. Staff receive annual training in trauma-informed care, crisis de-escalation, and the prohibitions of NCGS &sect;122C-55.
+  </div>
+</div>
+
+
+<!-- ─── SECTION 12: FAMILY RESOURCES ─────────────────────── -->
+<div class="chapter-header page-break">
+  <div class="chapter-tag">Section 9</div>
+  <div class="chapter-title">Family Resources</div>
+</div>
+
+<div class="subsection-title">What to Bring / Not Bring</div>
+
+<div class="bring-lists">
+  <div class="bring-col bring">
+    <div class="bc-label">+ Please Bring</div>
+    <ul>
+      <li>Comfortable clothes for 7 days</li>
+      <li>Pajamas / sleepwear</li>
+      <li>Underwear &amp; socks (7+ sets)</li>
+      <li>Toiletries (unbreakable)</li>
+      <li>Prescription meds in original container</li>
+      <li>Eyeglasses / contacts + case</li>
+      <li>Religious items (modest)</li>
+      <li>Photos of family / pets</li>
+      <li>Journal or notebook</li>
+      <li>Books (a few favorites)</li>
+      <li>Warm jacket (seasonal)</li>
+      <li>House slippers or slides</li>
+    </ul>
+  </div>
+  <div class="bring-col nobring">
+    <div class="bc-label">&minus; Do Not Bring</div>
+    <ul>
+      <li>Weapons of any kind</li>
+      <li>Drugs, alcohol, paraphernalia</li>
+      <li>Lighters, matches, fire-starters</li>
+      <li>Sharp objects (knives, razors)</li>
+      <li>Valuables (jewelry, cash over $20)</li>
+      <li>Electronics with cameras</li>
+      <li>Smartphones (we provide phone access)</li>
+      <li>Clothing promoting drugs/violence/gangs</li>
+      <li>Clothing with sexual or hate content</li>
+      <li>More than 7 days of clothes (we do laundry)</li>
+      <li>Aerosols (pump bottles OK)</li>
+      <li>Glass containers</li>
+    </ul>
+  </div>
+</div>
+
+<div class="subsection-title">Visiting Hours &amp; What to Expect</div>
+
+<p class="body-text">Visiting hours: <strong>Saturday &amp; Sunday, 1:00&ndash;4:00 PM</strong>, and <strong>Wednesday, 6:00&ndash;7:30 PM</strong>. Other times can be arranged with the treatment team for special circumstances (work schedules, distance, etc.). Visitors must be on the approved contact list &mdash; your guardian helps build this list at admission.</p>
+
+<p class="body-text">Visitors may bring sealed, packaged snacks (no homemade food without prior approval). No contraband items will be allowed past the front desk. Visits happen in the family visiting room &mdash; a private space with comfortable seating. Staff check in periodically but do not supervise the visit directly. Family therapy sessions can be scheduled during visiting hours or at other times &mdash; just ask your child's therapist.</p>
+
+<div class="subsection-title">Who to Contact</div>
+
+<table class="contact-table">
+  <thead>
+    <tr><th>Role</th><th>How to Reach</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="role">Your Child's Therapist</td><td class="number">Main line + extension</td></tr>
+    <tr><td class="role">Case Manager</td><td class="number">Main line + extension</td></tr>
+    <tr><td class="role">Program Director</td><td class="number">Main line + 24-hr cell</td></tr>
+    <tr><td class="role">After-Hours Crisis Line</td><td class="number">Main line, follow prompts</td></tr>
+    <tr><td class="role">Alliance Health Member Services</td><td class="number">1-800-510-9132</td></tr>
+    <tr><td class="role">Disability Rights NC</td><td class="number">1-877-235-4210</td></tr>
+    <tr><td class="role">The Joint Commission</td><td class="number">1-800-994-6610</td></tr>
+    <tr><td class="role">988 Suicide &amp; Crisis Lifeline</td><td class="number">988</td></tr>
+  </tbody>
+</table>
+
+<div class="for-families">
+  <div class="ff-label">For Families</div>
+  <div class="ff-title">Discharge Planning Begins at Admission</div>
+  <div class="ff-body">
+    From day one, your child's treatment team is thinking about what comes next. Discharge planning includes aftercare arrangements (outpatient therapy, medication management, school re-entry), step-down options (intensive in-home, community-based services), and a written transition plan reviewed with you before discharge. Your input is essential &mdash; you know your child best. If you have concerns about discharge timing or aftercare, raise them with your child's therapist or case manager at any time.
+  </div>
+</div>
+
+
+<!-- ─── SECTION 13: QUICK REFERENCE CARD ─────────────────────── -->
+<div class="chapter-header page-break">
+  <div class="chapter-tag">Tear-Out</div>
+  <div class="chapter-title">Quick Reference Card</div>
+</div>
+
+<p class="body-text" style="text-align: center; font-style: italic; color: var(--c-walnut); margin-bottom: 16px;">
+  Keep this near you. Photocopy it. Post it on your wall.
+</p>
+
+<div class="subsection-title">The 5 Cardinal Rules</div>
+
+<div class="rule-card" style="padding: 10px 14px; margin-bottom: 8px;">
+  <div class="num" style="width: 28px; height: 28px; font-size: 14pt;">1</div>
+  <div class="body"><div class="rule-title" style="font-size: 11pt;">No Physical Aggression</div></div>
+</div>
+<div class="rule-card" style="padding: 10px 14px; margin-bottom: 8px;">
+  <div class="num" style="width: 28px; height: 28px; font-size: 14pt;">2</div>
+  <div class="body"><div class="rule-title" style="font-size: 11pt;">No Sexual Contact</div></div>
+</div>
+<div class="rule-card" style="padding: 10px 14px; margin-bottom: 8px;">
+  <div class="num" style="width: 28px; height: 28px; font-size: 14pt;">3</div>
+  <div class="body"><div class="rule-title" style="font-size: 11pt;">No Absconding (Running Away)</div></div>
+</div>
+<div class="rule-card" style="padding: 10px 14px; margin-bottom: 8px;">
+  <div class="num" style="width: 28px; height: 28px; font-size: 14pt;">4</div>
+  <div class="body"><div class="rule-title" style="font-size: 11pt;">No Gang Activity</div></div>
+</div>
+<div class="rule-card" style="padding: 10px 14px; margin-bottom: 14px;">
+  <div class="num" style="width: 28px; height: 28px; font-size: 14pt;">5</div>
+  <div class="body"><div class="rule-title" style="font-size: 11pt;">No Name-Calling Based on Identity</div></div>
+</div>
+
+<div class="hotlines-block">
+  <div class="hb-label">Hotlines &mdash; Call Anytime</div>
+  <div class="hb-grid">
+    <div class="hb-item">
+      <div class="hb-name">Disability Rights NC</div>
+      <div class="hb-num">1-877-235-4210</div>
+    </div>
+    <div class="hb-item">
+      <div class="hb-name">Joint Commission</div>
+      <div class="hb-num">1-800-994-6610</div>
+    </div>
+    <div class="hb-item">
+      <div class="hb-name">988 Crisis Lifeline</div>
+      <div class="hb-num">988</div>
+    </div>
+    <div class="hb-item">
+      <div class="hb-name">NC DHSR</div>
+      <div class="hb-num">1-800-624-3004</div>
+    </div>
+  </div>
+</div>
+
+<div class="subsection-title">Who to Tell If&hellip;</div>
+
+<table class="tell-table">
+  <tr>
+    <td class="situation">I feel unsafe</td>
+    <td class="action"><strong>Tell any staff member immediately.</strong> You will not be in trouble.</td>
+  </tr>
+  <tr>
+    <td class="situation">I want to file a grievance</td>
+    <td class="action">Ask any staff for a form, or write a note and use the locked box.</td>
+  </tr>
+  <tr>
+    <td class="situation">I want to talk to my therapist</td>
+    <td class="action">Tell your primary staff, or write a note and leave it for them.</td>
+  </tr>
+  <tr>
+    <td class="situation">I need to call my family</td>
+    <td class="action">Ask during scheduled phone time, or tell staff anytime for urgent calls.</td>
+  </tr>
+  <tr>
+    <td class="situation">I'm having thoughts of hurting myself</td>
+    <td class="action"><strong>Tell any staff immediately.</strong> You will not be in trouble. We will help.</td>
+  </tr>
+  <tr>
+    <td class="situation">I want to talk to someone outside</td>
+    <td class="action">Disability Rights NC or your attorney. Staff <em>must</em> let you call privately.</td>
+  </tr>
+  <tr>
+    <td class="situation">I think a rule is unfair</td>
+    <td class="action">Tell your treatment team. Bring it up in community meeting. File a grievance.</td>
+  </tr>
+  <tr>
+    <td class="situation">I want to practice my religion</td>
+    <td class="action">Tell staff. We'll arrange services, materials, or clergy visits.</td>
+  </tr>
+</table>
+
+<div class="pull-quote" style="font-size: 14pt; padding: 14px 20px; margin-top: 18px;">
+  You have the right to ask questions.<br>
+  You have the right to say no to anything that feels wrong.<br>
+  You have the right to be safe.
+</div>
+
+
+<!-- ─── SECTION 14: GLOSSARY ─────────────────────── -->
+<div class="chapter-header page-break">
+  <div class="chapter-tag">Reference</div>
+  <div class="chapter-title">Glossary &mdash; Words You'll Hear</div>
+</div>
+
+<div class="glossary">
+  <div class="g-item"><span class="g-term">Cardinal Rule</span> &mdash; One of the five non-negotiable safety rules of our community. See Section 2.</div>
+  <div class="g-item"><span class="g-term">Case Manager</span> &mdash; The staff member who helps coordinate your care, appointments, school, and discharge planning.</div>
+  <div class="g-item"><span class="g-term">Clinical Director</span> &mdash; The person who oversees all therapy and clinical services at the facility.</div>
+  <div class="g-item"><span class="g-term">Contraband</span> &mdash; Items not allowed in the facility (weapons, drugs, lighters, etc.). See Section 6.</div>
+  <div class="g-item"><span class="g-term">DHHS</span> &mdash; NC Department of Health and Human Services. The state agency that oversees our license.</div>
+  <div class="g-item"><span class="g-term">DHSR</span> &mdash; NC Division of Health Service Regulation. The part of DHHS that inspects facilities like ours.</div>
+  <div class="g-item"><span class="g-term">Disability Rights NC</span> &mdash; North Carolina's Protection &amp; Advocacy system. Independent. You can call them anytime: 1-877-235-4210.</div>
+  <div class="g-item"><span class="g-term">Grievance</span> &mdash; A formal complaint. You can file one about anything, without retaliation. See Section 1.</div>
+  <div class="g-item"><span class="g-term">Joint Commission</span> &mdash; An independent accrediting body that inspects hospitals and treatment facilities. You can call them anytime: 1-800-994-6610.</div>
+  <div class="g-item"><span class="g-term">LME/MCO</span> &mdash; Local Management Entity/Managed Care Organization. The regional agency that manages Medicaid-funded mental health services. Ours is Alliance Health.</div>
+  <div class="g-item"><span class="g-term">Milieu</span> &mdash; The living and learning environment of the facility. The &ldquo;community&rdquo; part of treatment.</div>
+  <div class="g-item"><span class="g-term">NCGS</span> &mdash; North Carolina General Statutes. The state laws that govern facilities like ours.</div>
+  <div class="g-item"><span class="g-term">Precautions</span> &mdash; Temporary safety measures (like sharps precautions or elopement precautions) based on specific risks. Therapeutic, not punitive.</div>
+  <div class="g-item"><span class="g-term">Program Director</span> &mdash; The person who runs the day-to-day operations of the facility.</div>
+  <div class="g-item"><span class="g-term">QP</span> &mdash; Qualified Professional. A staff member with the training and credentials to provide clinical oversight.</div>
+  <div class="g-item"><span class="g-term">Refocus Time</span> &mdash; Staff-directed brief reflection period, up to 10 minutes. See Section 8.</div>
+  <div class="g-item"><span class="g-term">Restraint</span> &mdash; Physical holding of a resident. Used only in emergencies with imminent danger. Never a punishment.</div>
+  <div class="g-item"><span class="g-term">Seclusion</span> &mdash; Placing a resident alone in a locked room. Used only in emergencies. Never a punishment.</div>
+  <div class="g-item"><span class="g-term">Strip Search</span> &mdash; A search requiring removal of clothing. <strong>Prohibited here.</strong> Non-negotiable.</div>
+  <div class="g-item"><span class="g-term">Therapeutic Pass</span> &mdash; An approved off-campus visit with family or trusted support, as part of treatment.</div>
+  <div class="g-item"><span class="g-term">TTV</span> &mdash; Therapeutic Temporary Visit. A longer off-campus pass, usually a few hours or overnight, when you're ready.</div>
+  <div class="g-item"><span class="g-term">Treatment Plan</span> &mdash; Your individualized plan of care, written with you and your treatment team. Updated regularly.</div>
+  <div class="g-item"><span class="g-term">Treatment Team</span> &mdash; The group of people responsible for your care: therapist, case manager, psychiatrist, QP, primary staff, you, and your family.</div>
+  <div class="g-item"><span class="g-term">Ukeru</span> &mdash; A trauma-informed alternative to restraint, based on comfort and redirection. We are working toward this model.</div>
+</div>
+
+
+<!-- ─── SECTION 15: ACKNOWLEDGMENT ─────────────────────── -->
+<div class="chapter-header page-break">
+  <div class="chapter-tag">Sign Here</div>
+  <div class="chapter-title">Acknowledgment of Receipt</div>
+</div>
+
+<p class="ack-intro">I/We acknowledge that we have received a copy of the <strong>Well Spring Intervention LLC Resident Handbook</strong> and that staff have reviewed its contents with us, including the 5 Cardinal Rules, resident rights, the grievance procedure, and the prohibition on strip searches.</p>
+
+<p class="ack-intro">We understand that this handbook is also posted in each resident area and that copies are available on request. We understand that we may contact <strong>Disability Rights NC (1-877-235-4210)</strong> or <strong>The Joint Commission (1-800-994-6610)</strong> at any time, independently of facility staff.</p>
+
+<p class="ack-intro">We understand that family contact is a right, not a privilege, and that it will never be used as a consequence for behavior.</p>
+
+<div class="signature-block">
+  <div class="sb-role">Youth</div>
+  <div class="sb-line">
+    <div class="sb-field">
+      <div style="height: 36px;"></div>
+      <div class="sb-field-label">Signature</div>
+    </div>
+    <div class="sb-field">
+      <div style="height: 36px;"></div>
+      <div class="sb-field-label">Printed Name</div>
+    </div>
+    <div class="sb-field">
+      <div style="height: 36px;"></div>
+      <div class="sb-field-label">Date</div>
+    </div>
+  </div>
+</div>
+
+<div class="signature-block">
+  <div class="sb-role">Parent / Legal Guardian</div>
+  <div class="sb-line">
+    <div class="sb-field">
+      <div style="height: 36px;"></div>
+      <div class="sb-field-label">Signature</div>
+    </div>
+    <div class="sb-field">
+      <div style="height: 36px;"></div>
+      <div class="sb-field-label">Printed Name</div>
+    </div>
+    <div class="sb-field">
+      <div style="height: 36px;"></div>
+      <div class="sb-field-label">Relationship</div>
+    </div>
+  </div>
+  <div class="sb-line">
+    <div class="sb-field">
+      <div style="height: 36px;"></div>
+      <div class="sb-field-label">Date</div>
+    </div>
+  </div>
+</div>
+
+<div class="signature-block">
+  <div class="sb-role">Admitting Staff</div>
+  <div class="sb-line">
+    <div class="sb-field">
+      <div style="height: 36px;"></div>
+      <div class="sb-field-label">Signature</div>
+    </div>
+    <div class="sb-field">
+      <div style="height: 36px;"></div>
+      <div class="sb-field-label">Printed Name</div>
+    </div>
+    <div class="sb-field">
+      <div style="height: 36px;"></div>
+      <div class="sb-field-label">Title</div>
+    </div>
+  </div>
+  <div class="sb-line">
+    <div class="sb-field">
+      <div style="height: 36px;"></div>
+      <div class="sb-field-label">Date</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-note">
+  This signed page will be filed in the resident's clinical record. A copy will be provided to the youth and family.<br>
+  Well Spring Intervention LLC &middot; Level III Residential Treatment Facility (Staff-Secure) &middot; www.wellspringintervention.com
+</div>
+
+</div><!-- /main-content -->
+
+</body>
+</html>
