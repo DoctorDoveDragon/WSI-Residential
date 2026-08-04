@@ -1,0 +1,401 @@
+and communicated to all shift staff. The original physical exam report shall be retained in the clinical record per
+§1.6.
+
+6.2 Tuberculosis (TB) Screening.
+Applicable if the facility receives SAPTBG funds for treatment services. Screenings must query: medical
+treatment in the past 3 months; current residence (jail, streets, shelter, etc.); history of TB tests; and physical
+symptoms (night sweats, prolonged cough, shortness of breath, unexplained weight loss). Positive responses require
+referral to the local county health department or medical practitioner for follow-up testing and care. Completed
+screening and follow-up are documented in the service record.
+
+6.3 Medication Management.
+
+Confidential — Internal Use Only
+
+Page 22
+
+Standard Operating Procedure & Operational Manual — Rev. 2.22 (Public Edition)
+
+Well Spring Intervention LLC
+
+All medications are stored in a double-locked cabinet/cart. Controlled substances are counted and documented at
+every shift change. Medications are administered only by RN-delegated staff who have completed NC Medication
+Administration training. Staff follow the "5 Rights" (right youth, right med, right dose, right route, right time) and
+document administration on the MAR immediately (never retrospectively). Medication errors, refusals, and
+adverse reactions are reported to the RN and QP immediately, documented on the MAR, and entered into IRIS as
+required.
+
+6.4 Nutrition.
+Meals follow USDA guidelines. Special diets are accommodated with provider documentation. Menus are posted
+and retained 30 days. Food is never withheld as a consequence. Staff preparing food maintain current food handler
+certifications.
+
+6.5 Infection Control Program.
+The facility shall maintain a written Infection Control Program consistent with CDC guidelines for residential
+congregate-care settings and OSHA Bloodborne Pathogens Standard (29 CFR 1910.1030). The program is overseen
+by the RN (with monthly QP review) and includes the following components:
+(a) Written Infection-Control Plan. A facility-specific plan covering hand hygiene, standard precautions,
+transmission-based precautions, cleaning and disinfection, laundry handling, waste disposal, exposure response,
+outbreak response, and respiratory etiquette. Reviewed and updated annually and after any infection-control
+incident.
+(b) Cleaning & Disinfection Schedules. Written daily, weekly, and monthly cleaning schedules specifying
+each area of the facility (kitchen, bathrooms, bedrooms, common areas, laundry, vehicles), the cleaning agent
+and concentration, the surface-contact time, and the staff member responsible. Schedules are posted in each
+area and the completed checklists are filed monthly in the facility compliance binder.
+(c) Blood / Body Fluid Precautions. Standard Precautions are observed with all youth at all times. OSHA
+Bloodborne Pathogens exposure-control plan on file: engineering controls (sharps containers), work-practice
+controls (no recapping needles), PPE (gloves, gowns, face protection), hepatitis-B vaccination offered to staff
+at no cost, post-exposure prophylaxis protocol available 24/7 via the RN and the local emergency department.
+All blood and body-fluid exposures (staff or youth) are documented on an Incident Report (§8) and IRIS-filed
+within 24 hours.
+(d) Hand Hygiene. Staff and youth perform hand hygiene: before meals and food preparation; after toileting or
+assisting a youth with toileting; after coughing, sneezing, or blowing the nose; before and after glove use; before
+and after medication administration; and after handling soiled laundry or trash. Alcohol-based hand sanitizer
+(60–95% alcohol) is available in every room except where flammable (e.g., kitchens with open flame). Soap
+and running water are used when hands are visibly soiled.
+(e) Outbreak Response. Two or more youth with identical symptoms (gastrointestinal, respiratory, or febrile)
+within 72 hours shall trigger an outbreak response: cohort-affected youth, increase sanitation, notify the County
+Health Department within 24 hours for any reportable communicable disease, and document the outbreak
+response in the facility compliance binder. The QP shall file an IRIS report for any communicable-disease
+outbreak affecting two or more youth.
+(f) Immunization Compliance. Each youth's immunization status shall be verified at admission per state law
+§130A-152 and updated per the CDC immunization schedule. Staff annual influenza vaccination is strongly
+recommended and documented in the personnel file. COVID-19 vaccination status of staff and youth is
+documented per current CDC and DHHS guidance.
+(g) PPE Inventory. The facility maintains a current inventory of exam gloves (multiple sizes), surgical masks,
+N95 respirators (for staff caring for youth with airborne precautions), gowns, eye protection, face shields,
+sharps containers, biohazard bags, and EPA-registered hospital disinfectants. The RN shall audit the inventory
+monthly and replenish before stock falls below a 30-day supply.
+
+Confidential — Internal Use Only
+
+Page 23
+
+Standard Operating Procedure & Operational Manual — Rev. 2.22 (Public Edition)
+
+Well Spring Intervention LLC
+
+(h) Staff Training. All staff complete Bloodborne Pathogens training annually and Infection Control training
+at hire and annually thereafter. The RN conducts the training and documents completion in the personnel file.
+
+7. Education & Vocational Support
+Reference: NC General Statutes (Education of Homeless Children); IDEA; RMDM Chapter 4 · Well Spring Intervention LLC SOP &
+Operational Manual (Doc. WSI-SOP-001, Rev. 2.22, Aug 2026 — Legislation-Free Public Edition) · §7
+
+7.1 Education Coordination.
+The QP serves as Education Liaison for every youth in the program. Within 10 calendar days of admission, the QP
+contacts the Local Education Agency (LEA) — specifically the McKinney-Vento liaison and the EC Director — for
+enrollment, transportation, and service continuity. The QP signs an ROI for school communication, attends all IEP
+meetings, advocates for an aligned Behavioral Intervention Plan (BIP), and tracks daily school attendance. School
+refusal is treated as a clinical issue addressed through the PCP, not as a behavioral violation.
+
+7.2 Vocational Support.
+For youth age 14 and older, the PCP includes vocational and independent-living goals aligned with the transition
+plan. The QP coordinates with Vocational Rehabilitation and community-based employment programs to support
+the youth's transition to adulthood and post-discharge stability.
+
+7.3 Facility-Based School Determination (Level III RTF vs. PRTF).
+A facility-based school is a condition of licensure for Psychiatric Residential Treatment Facilities (PRTFs)
+under 42 CFR 483.350-483.376 and the federal Individuals with Disabilities Education Act (IDEA), but it is not
+required for a Level III Residential Treatment Facility (Staff-Secure) licensed under our staff-secure operating
+standards. This facility is licensed as a Level III RTF (Staff-Secure), not as a PRTF. Accordingly, this facility
+does not operate a facility-based school and is not required to do so under its current license; youth attend public
+school in the community per §7.1, with the facility providing transportation, after-school homework support, and
+IEP coordination.
+Medicaid benefit distinction — CCP 8D-2 (RTS) vs CCP 8D-1 (PRTF). The facility-based-school distinction
+parallels a Medicaid benefit-category distinction that is critical for billing compliance (see §1.2(g) and §10.9). This
+facility enrolls under NC Medicaid Clinical Coverage Policy 8D-2 ("Residential Treatment Services") as a
+Level III (Residential Treatment High) provider; the Medicaid RTS per-diem reimburses only the
+clinical/treatment/milieu component and excludes room and board. A PRTF, by contrast, enrolls under NC
+Medicaid Clinical Coverage Policy 8D-1 ("Psychiatric Residential Treatment Facilities for Children under
+the Age of 21") as an inpatient facility benefit Under our operating standards, Subpart G; the PRTF per-diem
+includes the equivalent of room and board. The two benefit categories are mutually exclusive — a single facility
+cannot bill both 8D-1 and 8D-2 for the same youth on the same day. The QP and Billing Coordinator shall verify at
+admission that the youth's authorization is for CCP 8D-2 Level III RTS (taxonomy 320800000X), not CCP 8D-1
+PRTF.
+If the facility elects to pursue PRTF designation in the future, the facility shall, prior to that designation: (a)
+notify DHSR MHLC and apply for PRTF licensure under 42 CFR 483.350 et seq.; (b) establish a facility-based
+school meeting IDEA, NC State Board of Education, and accreditation standards; (c) employ or contract with
+licensed special-education teachers and a school administrator; (d) enter into a written agreement with the LEA for
+IEP implementation and educational records transfer; (e) document that the facility-based school is necessary
+because the youth's clinical acuity prevents safe participation in community school; (f) update this SOP and the
+Alliance Health provider agreement to reflect the PRTF designation; and (g) update NCTracks enrollment from
+CCP 8D-2 (RTS) to CCP 8D-1 (PRTF) and verify that the PRTF per-diem (including room-and-board-equivalent)
+
+Confidential — Internal Use Only
+
+Page 24
+
+Standard Operating Procedure & Operational Manual — Rev. 2.22 (Public Edition)
+
+Well Spring Intervention LLC
+
+is properly authorized. No youth shall be placed at this facility under a PRTF level of care until DHSR MHLC has
+issued the PRTF license and Alliance Health has authorized PRTF-level billing.
+
+8. Incident Reporting & Response (Rule 108 / IRIS)
+Reference: Well Spring Intervention LLC SOP & Operational Manual (Doc. WSI-SOP-001, Rev. 2.22, Aug 2026 — Legislation-Free Public
+Edition) · §8
+
+8.1 Reportable Incidents.
+The following events are reportable under Rule 108 and must be entered into the Incident Reporting and
+Investigative System (IRIS): death (including suicide attempts resulting in death), serious injury, alleged abuse or
+neglect, sexual abuse allegations, use of physical restraint, AWOL/missing child, medication errors, suicidal ideation
+or self-harm, and any other event meeting the regulatory definition of a reportable incident. When in doubt, staff
+report.
+
+8.2 Reporting Timeframes.
+Staff notify the On-Call QP immediately upon discovery of a reportable incident. The QP enters the IRIS report
+within 24 hours of discovery. Allegations of abuse/neglect and missing child trigger immediate (within 15
+minutes) notification to DSS and law enforcement as appropriate. The guardian is notified within 1 hour of
+incident discovery (unless doing so would compromise an investigation). Verbal notifications are followed by
+written documentation.
+
+8.3 Investigations.
+Internal investigations are initiated within 24 hours and completed within 14 calendar days. Investigations include
+interviews, video review, documentation review, and a written narrative. A Corrective Action Plan (CAP) is
+developed for systemic or individual performance issues and uploaded to IRIS.
+
+8.4 Incident Documentation — Separate Filing.
+The occurrence of an incident shall be recorded in the service notes. The completed incident report shall NOT be
+referenced or filed in the clinical service record. It shall be filed separately in administrative files. All incident
+reports are maintained per the Records Retention and Disposition Schedule.
+
+8.5 Abuse/Neglect/Exploitation Reporting.
+Relevant facts must be documented in the service record, including reports made by the individual and actions
+taken. Reporting duties follow North Carolina mandatory reporting laws for child abuse and disabled adult abuse,
+and our operating standards. The completed incident report is filed separately from the clinical record per our
+records management policy.
+
+9. Facility, Safety, & Environmental Management
+Reference: Well Spring Intervention LLC SOP & Operational Manual (Doc. WSI-SOP-001, Rev. 2.22, Aug 2026 — Legislation-Free Public
+Edition) · §9
+
+9.1 Environment.
+The facility maintains a safe, clean, home-like environment. Maximum occupancy is two youth per bedroom, with
+each youth having individual storage space for personal belongings. Indoor temperatures are maintained between
+68°F and 80°F. Hot water is regulated to ≤120°F to prevent scalding. Daily safety inspections are conducted by the
+DCP; weekly inspections by the QP. Hazards are corrected immediately or escalated to the Executive Director.
+
+9.2 Drills & Inspections.
+
+Confidential — Internal Use Only
+
+Page 25
+
+Standard Operating Procedure & Operational Manual — Rev. 2.22 (Public Edition)
+
+Well Spring Intervention LLC
+
+Monthly fire drills target evacuation under 3 minutes. Quarterly tornado drills use the interior safe room. Smoke
+detectors, fire extinguishers, sprinklers, and CO detectors are inspected monthly (staff) and annually (licensed
+contractors). Inspection records are maintained on the Environmental Safety Log (Form 5) for a minimum of 3
+years.
+
+9.3 Hazardous Materials.
+Cleaning chemicals, sharps, tools, and medications are stored in locked areas. Safety Data Sheets (SDS) are
+maintained and accessible. No weapons are permitted on facility grounds at any time.
+
+9.4 Two-Story & Multi-Level Facility Requirements.
+9.4(a) Applicability & Licensing Notification. This subsection applies to any facility operated by Well Spring
+Intervention LLC with two or more stories above grade, including any basement used for programmatic activities
+and any upper-floor youth bedroom. North Carolina family care / group home licensing rules generally restrict
+licensed structures to no more than two stories above grade when residents are housed above the first floor, and
+require that any resident housed on the second floor have two direct exterior means of egress. The Executive
+Director shall obtain prior written approval from NC DHSR before: (i) relocating youth bedrooms to a previously
+unused upper floor, (ii) increasing licensed capacity on an upper floor, (iii) converting a single-story operation to a
+two-story operation, or (iv) housing non-ambulatory youth on a second floor. Any such change also requires
+notification to the LME/MCO and may trigger a new construction inspection by the DHSR Construction Section.
+The QP shall retain the DHSR approval letter in the facility compliance binder for the duration of the license cycle
+and shall make it available to surveyors on request.
+9.4(b) Means of Egress. Each normally occupied story of the facility shall have at least two remotely located means
+of egress. Every second-floor sleeping room shall be provided with an approved emergency escape and rescue
+opening meeting the dimensions below, operable from the inside without keys, tools, or special knowledge:
+minimum net clear opening of 5.7 sq ft (4.0 sq ft for grade-floor openings); minimum net clear opening height of
+24 inches; minimum net clear opening width of 20 inches; and maximum sill height of 44 inches above the floor.
+The secondary means of egress from a second-floor sleeping room may be satisfied by either (i) a second interior
+enclosed stairway discharging directly to grade, or (ii) an approved chain-style fire-escape ladder stored in each
+second-floor youth bedroom, deployable by staff only (never by youth). Stairways shall have handrails on both sides,
+a minimum 36-inch clear width, maximum 7¾-inch riser height, and minimum 10-inch tread depth for new
+construction. Stairway illumination with battery / emergency-backup lighting shall be installed at both the top and
+the bottom of every interior stair.
+9.4(c) Fire Detection, Suppression & Alarm — Per-Floor Requirements. Smoke detectors shall be installed on
+all levels of the facility, including every sleeping room, outside each separate sleeping area within 21 ft of bedroom
+doors, and at least one detector on every story (basement, first floor, and every upper floor). All smoke detectors
+shall be interconnected so that actuation of one alarms all. Carbon monoxide (CO) detectors shall be installed on
+every floor containing a fuel-burning appliance or attached garage, and within 10 ft of each sleeping room;
+combination smoke/CO detectors may be used to satisfy both requirements in a single device. Automatic fire
+sprinklers are required for all Level III residential treatment facilities under the NC DHSR license condition and
+NFPA 13D/13R. Fire extinguishers (minimum 2A-10BC rating) shall be mounted on each level with a maximum
+travel distance of 75 ft from any point in the facility. All detectors, sprinklers, and extinguishers shall be inspected
+monthly by staff and annually by licensed contractors, with the per-floor results documented on the Environmental
+Safety Log (Form 5).
+9.4(d) Per-Floor Staff Supervision. When youth bedrooms are located on an upper floor, the awake overnight
+DCP shall be positioned to provide line-of-sight OR audible-monitoring coverage of the upper-floor hallway. The
+15-minute room-check requirement (§7) must be physically performed on every floor where youth are sleeping
+
+Confidential — Internal Use Only
+
+Page 26
+
+Standard Operating Procedure & Operational Manual — Rev. 2.22 (Public Edition)
+
+Well Spring Intervention LLC
+
+— a stair-climbed walk-through, not a call-up. Each per-floor walk-through shall be documented on the Night
+Watch Log (Form 1) Per-Floor Walk-Through Certification block. When only one awake overnight staff is on duty
+and youth sleep on multiple floors, the QP shall authorize one of the following: (i) addition of a second awake
+overnight staff member; (ii) relocation of all sleeping youth to the floor staffed by the awake overnight DCP; or (iii)
+approved baby-monitor / intercom coverage of the unstaffed floor with a documented response-time plan not to
+exceed 60 seconds. Stair safety gates shall be installed at both the top and the bottom of any staircase accessible to
+youth under 12 or to youth with documented elopement or suicidality risk; gates shall be locked at night with the key
+held by the awake overnight staff.
+9.4(e) Window Fall Protection. Where any second-floor youth-bedroom window sill is less than 24 inches above
+the finished floor, fall-protection devices (window guards or restrictors limiting the openable width to no more than
+4 inches) shall be installed. Restrictors shall be releasable only by staff key and shall not defeat the emergency
+escape function of the window (i.e., the restrictor must be disengageable from the inside without tools in an
+emergency). Window restrictor function shall be checked monthly and documented on the Environmental Safety
+Log (Form 5) per-floor sub-table.
+9.4(f) Drills — Vertical Evacuation. Monthly fire drills shall include full vertical evacuation from all
+second-floor sleeping rooms to grade — drills that evacuate only the ground floor DO NOT satisfy this requirement.
+Total building evacuation time shall target under 3 minutes (per §9.2), with evacuation time recorded per floor on
+the Form 5 Monthly Fire Drills sub-table. Quarterly tornado drills shall use a shelter on the lowest interior level
+(basement preferred; if no basement, an interior ground-floor room with no exterior walls). A second-floor interior
+bathroom is not an approved tornado shelter. Annual lockdown drills shall secure all exterior doors and windows on
+every floor, including upper-floor windows visible from outside.
+9.4(g) Bedroom Placement Policy. When a two-story home has both ground-floor and upper-floor bedrooms, the
+QP shall assign bedrooms based on acuity, mobility, and elopement risk. Lower-acuity, lower-mobility, or younger
+youth shall be placed on the ground floor. Higher-acuity youth requiring closer staff proximity may be placed on the
+floor staffed by the awake overnight DCP. No youth bedroom shall be located in an attic or in a basement used for
+sleeping purposes. Bedroom placement decisions shall be documented in the youth's PCP and reviewed at each PCP
+revision.
+9.4(h) Posted Evacuation Maps & Signage. Posted floor-plan evacuation maps shall be displayed on each floor
+showing two routes to grade, the designated outdoor meeting point, and the location of fire extinguishers, smoke/CO
+detectors, and fire-escape ladders. Stair hazard signage ("No running on stairs"; "Handrail required") shall be posted
+at the top and bottom of every interior stair. Maps and signage shall be reviewed at each monthly fire drill and
+updated whenever bedroom assignments change.
+
+9.5 Staff-Secure Physical-Plant Measures.
+As a Level III Residential Treatment Facility — Staff Secure for Children and Adolescents under our
+staff-secure operating standards, this facility shall maintain physical-plant and operational measures that provide
+line-of-sight or continuous-auditory supervision of all youth at all times, and that prevent elopement while
+preserving the youth's dignity and rights (per §1.7). Staff-secure measures do NOT include locked seclusion,
+hardware-restricted youth egress, or any building-code "detention and correction" occupancy classification. The
+following staff-secure measures are in place:
+(a) Controlled-Access Entry. All exterior doors are kept locked from the outside. The main entry is equipped
+with a doorbell, video-intercom, and remote-buzz entry; staff visually verify identity before admitting any
+visitor. All other exterior doors are locked from the outside and equipped with exit-only panic hardware on the
+inside that sounds a localized chime when actuated (so staff are immediately alerted to any door opening).
+
+Confidential — Internal Use Only
+
+Page 27
+
+Standard Operating Procedure & Operational Manual — Rev. 2.22 (Public Edition)
+
+Well Spring Intervention LLC
+
+(b) Delayed-Egress Hardware (where permitted). Where local building and fire code permit, exterior exit
+doors serving youth-occupied areas may be equipped with delayed-egress hardware actuating 15-second
+delayed exit with a continuous audible alarm, allowing staff response time to redirect a youth in elopement
+attempt without impeding emergency egress (NFPA 101 §7.2.1.6.1). Delayed-egress hardware is inspected and
+tested monthly by staff and annually by a licensed contractor, with results documented on Form 5.
+(c) Line-of-Sight Supervision. Floor-plan configuration allows line-of-sight from the staff station to all
+common-area corridors and youth hallways; blind spots are covered by convex mirrors or CCTV cameras
+(CCTV covers common areas only — never bedrooms, bathrooms, or toileting areas). CCTV footage is
+retained 30 days and accessed only by the QP, Clinical Director, and Executive Director.
+(d) Window Security. All youth-accessible ground-floor windows are equipped with staff-key-releasable
+restrictors limiting the openable width to 4 inches (per §9.4(e)). Second-floor youth-bedroom windows meet the
+same standard and additionally serve as emergency-escape openings per §9.4(b).
+(e) Perimeter & Outdoor Supervision. The outdoor area is fenced or naturally bounded to a defined
+perimeter, with a single controlled-access point. Outdoor time is supervised at the 2:4 staff ratio at all times;
+one staff member remains within line-of-sight of the access point.
+(f) Visitor Management. All visitors sign a Visitor Log at entry, present photo ID, are screened against the
+youth's authorized-visitor list (maintained in the youth's clinical record and updated by the QP / guardian), and
+are escorted in common areas at all times. Visitors are never permitted in youth bedrooms. Visitor interactions
+are documented on the daily shift note.
+(g) Contraband Search. Youth belongings are searched at admission, upon return from any pass, and upon
+reasonable suspicion per §5.2 BSP and Form 2. Searches are conducted by staff of the same gender as the
+youth, with a second staff witness, in a private area, using the least intrusive method consistent with safety.
+Personal clothing is not removed. Body-cavity searches are prohibited and, if indicated, shall be performed by
+medical personnel at the emergency department per physician order.
+
+9.6 Zoning Compliance.
+Prior to initial operation and at any change of physical location, the Executive Director shall obtain written
+confirmation from the local zoning authority that the proposed use (a Level III RTF serving up to nine youth) is a
+permitted use at the proposed address under the local zoning ordinance. Many NC municipalities classify group
+homes as a permitted residential use in residential districts under the federal Fair Housing Act Amendments (42
+U.S.C. §3604(f)) and the NC Group Homes Act , but local ordinances may impose: (a) a minimum separation
+distance between group homes (commonly 1,000 feet, measured property-line to property-line); (b) a cap on the
+number of unrelated individuals sharing a dwelling; (c) off-street parking minimums (typically one space per staff
+member on the largest shift, plus one space per two youth); and (d) conditional-use permit requirements. The QP
+shall maintain the zoning approval letter and any conditional-use permit in the facility compliance binder, and shall
+report any zoning-related complaint or inquiry from neighbors to the Executive Director within 1 business day. Any
+material change to the facility (e.g., capacity increase, physical expansion, change in license category) requires fresh
+zoning verification before DHSR MHLC will process the license amendment.
+
+9.7 Disaster & Emergency Plan (Fire, Tornado, Hurricane, Power Outage).
+The facility shall maintain a written Disaster & Emergency Plan covering fire, tornado, hurricane, power outage,
+winter-weather event, utility failure (water, sewer, heat, gas), active-shooter / lockdown, bomb threat, and medical
+emergency. The plan shall be reviewed annually by the QP, posted in the staff area, and reviewed with all staff at
+orientation and annually thereafter. Drills shall be conducted per the cadence in §9.2 and §9.4(f).
+9.7(0) Coordination with Local Emergency Management (OEM). The QP shall coordinate the written Disaster
+& Emergency Plan with the local Office of Emergency Management (OEM) for the county in which the facility
+is located (e.g., Wake County Emergency Management, Cumberland County Emergency Services, Durham County
+Emergency Management). Prior to initial licensure and annually thereafter, the QP shall: (a) submit a current copy
+
+Confidential — Internal Use Only
+
+Page 28
+
+Standard Operating Procedure & Operational Manual — Rev. 2.22 (Public Edition)
+
+Well Spring Intervention LLC
+
+of the facility Disaster & Emergency Plan to the local OEM; (b) request and retain written verification from the
+local OEM acknowledging receipt and confirming coordination; (c) confirm the facility's 9-1-1 dispatch address,
+emergency-contact roster, and any special-needs registry enrollment for youth with mobility, sensory, or medical
+vulnerabilities; and (d) confirm the local OEM's role in the event of a community-wide evacuation order. The local
+OEM's written acknowledgment shall be retained in the facility compliance binder and made available to the DHSR
+MHLC Licensure & Training Consultant and surveyors upon request. The North Carolina Emergency Management
+directory is available at https://www.ncdps.gov/our-organization/emergency-management.
+(a) Fire. Evacuate immediately upon alarm. Headcount at the rally point (designated meeting area at the front
+sidewalk, ≥50 ft from the building). Call 911 from the rally point. Do not re-enter until the fire department
+issues all-clear. Monthly drills required (per §9.2).
+(b) Tornado. On a Tornado Watch, alert all staff and review shelter assignments. On a Tornado Warning, move
+all youth to the lowest interior room (basement preferred; if no basement, an interior ground-floor bathroom or
+hallway with no exterior walls). Turtle position against interior walls, away from windows. Bring flashlights,
+weather radio, and youth MARs. Quarterly drills required.
+(c) Hurricane. For facilities in NC counties subject to hurricane risk (all NC counties east of I-95 plus coastal
+counties), the QP shall monitor the National Hurricane Center advisories during the Atlantic hurricane season
+(June 1 – November 30). At Tropical Storm Warning or Hurricane Watch, the QP shall: secure outdoor
+furniture and projectiles; verify generator fuel (if applicable); stock 7-day supply of food, water (1 gallon per
+person per day), medications, batteries, and flashlights; verify youth and staff emergency-contact lists; and
+contact guardians regarding the storm plan. At Hurricane Warning, the QP shall coordinate with the
+LME/MCO and guardian regarding pre-storm evacuation or shelter-in-place decision; if evacuation is ordered,
+transport youth to the designated host facility (identified in the plan) and document the move on the IRIS
+system. After the storm, conduct a facility damage assessment before re-occupancy, document in the
+compliance binder, and notify DHSR MHLC if any structural damage occurred.
+(d) Power Outage. Distribute flashlights (one per staff member plus one per youth bedroom). Verify
+life-safety systems on battery backup (smoke detectors, fire alarm, security chimes). Discard refrigerated food
+per FDA guidance (4-hour rule for refrigerator; 24-48 hours for freezer if door stays closed). If power loss is
+expected to exceed 4 hours OR if indoor temperature drops below 65°F or rises above 80°F, initiate the
+Emergency Relocation Plan. Notify the utility company, document the outage start/end times, and notify the
+QP. Generator backup is recommended (and may be required by local code for facilities serving medically
+fragile youth); if installed, the generator shall be tested monthly under load.
+(e) System Failure (heat, water, sewer, gas). Per Protocol 19: heat loss exceeding 4 hours OR water loss
+exceeding 8 hours OR sewer backup OR gas leak (evacuate immediately and call 911) shall trigger the
+Emergency Relocation Plan to the designated host facility.
+(f) Lockdown (active shooter / external threat). Per Protocol 19: secure all exterior doors and windows, pull
+window blinds, silence phones, hide in the designated safe room away from windows and doors, do not open for
+anyone but law enforcement. Annual lockdown drills required. Staff shall familiarize themselves with the Run /
+Hide / Fight protocol and the facility's designated safe rooms at orientation.
+(g) Emergency Relocation Plan. The written plan identifies a primary and a secondary host facility (typically
+another licensed group home or a hotel with prior arrangement), transportation arrangements (facility vehicle +
+staff vehicles + ambulance for medically fragile youth), medication transport (locked medication box
+transported by the RN or QP), youth-identification packets (photo ID, Medicaid card, allergy / medication list),
+guardian-notification protocol (within 1 hour of relocation decision), and DHSR / LME-MCO notification
+(within 24 hours). The QP shall maintain the host-facility agreement letters in the compliance binder.
+Web sources for §9.4–§9.7 regulatory citations (verified July 2026):
+• our operating standards (NC Administrative Code Title 10A Ch. 27 Subchapter G — Mental
+Health/DD/SA) — http://reports.oah.state.nc.us/ncac/title%2010a%20-%20health%20and%20human%20services/
