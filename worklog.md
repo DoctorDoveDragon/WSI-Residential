@@ -3225,3 +3225,39 @@ Stage Summary:
 - Wordmark font sizes enlarged ~15–40% across all 5 text elements; circular seal/icon images unchanged
 - Persistent sources: /home/z/my-project/scripts/{logo_lockup.html, logo_lockup_residential.html, logo_lockup_transparent.html, logo_lockup_residential_transparent.html, render_logo_lockups.js, render_logo_lockups_transparent.js, make_web_variants.py}
 - Favicons (favicon-16x16.png, favicon-32x32.png, favicon-48x48.png, apple-touch-icon.png, android-chrome-192x192.png, android-chrome-512x512.png, favicon.ico) regenerated unchanged from circular seal source
+
+---
+Task ID: SOP-53
+Agent: main (Super Z)
+Task: Bump all wordmark-side lockup fonts by +4pt (≈+5.33px, rounded to +5px) per user request "text size should increase by 4pts". Circular seal/icon images left untouched.
+
+Work Log:
+- Applied +5px bump to all 5 wordmark text elements in all 4 lockup HTML files (logo_lockup.html, logo_lockup_residential.html, logo_lockup_transparent.html, logo_lockup_residential_transparent.html):
+    .wordmark-main     112px → 117px  (Cormorant Garamond 600 — main title)
+    .wordmark-sub      26px  → 31px   (Inter 500 uppercase — primary subtitle)
+    .wordmark-sub-2    22px  → 27px   (Inter 500 uppercase — service line, 2 lines)
+    .wordmark-tag      22px  → 27px   (Inter italic terracotta — tagline)
+    .wordmark-email    30px  → 35px   (Cormorant Garamond 500 — email)
+  (4pt = 4 × 96/72 = 5.333px; rounded to +5px for clean CSS integers.)
+- Re-rendered all 4 main lockup PNGs via render_logo_lockups.js + render_logo_lockups_transparent.js (2800×875):
+    Well_Spring_Logo_Lockup.png                              485.8 KB  (+4.4 KB vs prior)
+    Well_Spring_Logo_Lockup_Residential.png                  358.4 KB  (+11.1 KB)
+    Well_Spring_Logo_Lockup_Transparent.png                  458.0 KB  (+9.5 KB)
+    Well_Spring_Logo_Lockup_Residential_Transparent.png      435.4 KB  (+13.1 KB)
+- Regenerated 12 web-optimized variants (300/600/1200 wide) via make_web_variants.py LANCZOS downscale.
+- VLM visual QA across 3 representative variants (residential cream, residential transparent, general icon cream):
+    All 3 variants report:
+      title_complete=yes, services_complete=yes, tagline_complete=yes, email_complete=yes,
+      text_cut_off_at_right=no, circular_image_intact=yes / icon_intact=yes
+    No issues found — the larger fonts fit cleanly within the 1792×560 canvas, the 2-line service split remains intact (Outpatient · Case Management · Psychosocial Rehab / Child & Adolescent Day Treatment), and no text wraps unexpectedly.
+
+Stage Summary:
+- Final font sizes (all 4 lockup HTMLs identical):
+    .wordmark-main     117px  (was 112px in SOP-52, was 96px original)
+    .wordmark-sub      31px   (was 26px in SOP-52, was 20px original)
+    .wordmark-sub-2    27px   (was 22px in SOP-52, was 16px original)
+    .wordmark-tag      27px   (was 22px in SOP-52, was 16px original)
+    .wordmark-email    35px   (was 30px in SOP-52, was 22px original)
+- 16 PNG deliverables refreshed in /home/z/my-project/download/ (4 full-res + 12 web variants)
+- Circular seal/icon images untouched — only the wordmark side text was enlarged
+- VLM confirms no text overflow or unexpected wrapping at any of the 3 checked variants
