@@ -58,7 +58,7 @@ def build_part3():
     story.extend(part_divider(
         'PART 3',
         'Customized Forms & Logs',
-        'The following nine forms and logs are the official documentation instruments for '
+        'The following eleven forms and logs are the official documentation instruments for '
         'daily operations. Each form must be completed in ink or in the electronic record '
         'system, signed by the responsible staff member, and filed in the youth\'s chart or '
         'the facility\'s operational binder as indicated. Originals are retained per the '
@@ -68,7 +68,9 @@ def build_part3():
         'all nine forms are interactive AcroForm fillable PDFs — they are printable, '
         'copyable, sharable, editable, and fillable. A Form Properties banner at the top '
         'of each form documents these capabilities, and standalone fillable copies are '
-        'available in the /download/forms/ directory for use outside this manual.',
+        'available in the /download/forms/ directory for use outside this manual. '
+        'Forms 10 and 11 are new in Version 2.23 to address the Licensed Professional '
+        'consultation-log and psychotropic-medication drug-regimen-review requirements.',
     ))
 
     # ── FORM 1 ─────────────────────────────────────────────────────
@@ -697,6 +699,103 @@ def build_part3():
     t9.setStyle(TableStyle(sc9))
     story.append(t9)
 
+    # ── Form 10: Licensed Professional Consultation Log (NEW in v2.23) ──
+    story.extend(_form_banner_and_heading(
+        10, 'Licensed Professional Consultation Log',
+        'Part 3 &middot; Form 10: Licensed Professional Consultation Log',
+        external_ref='Level III Staff-Secure operating standards — Licensed Professional face-to-face clinical consultation (§4.6)',
+        instructions='Document every weekly Licensed Professional face-to-face clinical consultation session per §4.6 (minimum 4 hours per week). '
+                     'One log per facility per week. Maintain in facility compliance binder for the full record-retention period per §1.6. '
+                     'Click any cell to type.',
+    ))
+    story.append(fillable_meta_row([
+        ('Facility:', 200, 'Facility name'),
+        ('Week of (Sun — Sat):', 160, 'Week start date'),
+    ]))
+    story.append(Spacer(1, 4))
+    story.append(Paragraph('<b>Weekly Consultation Sessions</b>', s_form_section))
+
+    f10_header = ['Date', 'Start Time', 'End Time', 'Total Hours', 'Format (In-Person / Telehealth)', 'Attendees', 'Cases Reviewed', 'Recommendations / Follow-Up Actions', 'LP Signature']
+    f10_th = ParagraphStyle('f10th', fontName=BODY_BOLD, fontSize=8, leading=10, textColor=colors.white, alignment=TA_LEFT)
+    f10_data = [[Paragraph(f'<b>{h}</b>', f10_th) for h in f10_header]]
+    for _ in range(8):
+        f10_data.append(_fillable_data_cells(9, default_width=55, height=22, font_size=8))
+    f10_widths = [0.08*AVAIL_W, 0.08*AVAIL_W, 0.08*AVAIL_W, 0.08*AVAIL_W, 0.12*AVAIL_W, 0.14*AVAIL_W, 0.14*AVAIL_W, 0.20*AVAIL_W, 0.08*AVAIL_W]
+    t10 = Table(f10_data, colWidths=f10_widths, hAlign='CENTER', repeatRows=1)
+    sc10 = [
+        ('BACKGROUND', (0, 0), (-1, 0), HEADER_FILL),
+        ('GRID',       (0, 0), (-1, -1), 0.4, BORDER),
+        ('VALIGN',     (0, 0), (-1, -1), 'MIDDLE'),
+        ('LEFTPADDING',  (0, 0), (-1, -1), 3),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 3),
+        ('TOPPADDING',   (0, 0), (-1, -1), 8),
+        ('BOTTOMPADDING',(0, 0), (-1, -1), 8),
+    ]
+    for i in range(1, len(f10_data)):
+        bg = TABLE_ROW_ODD if i % 2 == 1 else TABLE_ROW_EVEN
+        sc10.append(('BACKGROUND', (0, i), (-1, i), bg))
+    t10.setStyle(TableStyle(sc10))
+    story.append(t10)
+    story.append(Spacer(1, 8))
+    story.append(Paragraph(
+        '<b>Weekly Total Face-to-Face Hours:</b> __________ hrs &nbsp;&nbsp; '
+        '<b>Meets 4-hour minimum (§4.6)?</b> ☐ Yes &nbsp; ☐ No (if No, document remediation below) '
+        '<b>QP Signature:</b> ___________________________ <b>Date:</b> __________',
+        s_form_meta
+    ))
+    story.append(Spacer(1, 12))
+
+    # ── Form 11: Psychotropic Medication Drug Regimen Review Log (NEW in v2.23) ──
+    story.extend(_form_banner_and_heading(
+        11, 'Psychotropic Medication Drug Regimen Review Log',
+        'Part 3 &middot; Form 11: Psychotropic Medication Drug Regimen Review Log',
+        external_ref='Level III Staff-Secure operating standards — Psychotropic drug regimen review every 6 months by pharmacist/physician (§6.3(a))',
+        instructions='Document every 6-month psychotropic medication drug regimen review per §6.3(a). '
+                     'One log per youth. Initial review within 30 days of admission; subsequent reviews at least every 6 months thereafter. '
+                     'Maintain in clinical record per §1.6. Click any cell to type.',
+    ))
+    story.append(fillable_meta_row([
+        ('Youth Name:', 200, 'Youth name'),
+        ('Service Record # / MID:', 160, 'Service record number or MID'),
+        ('Date of Birth:', 120, 'Youth date of birth'),
+    ]))
+    story.append(Spacer(1, 4))
+    story.append(fillable_meta_row([
+        ('Prescribing Psychiatrist:', 220, 'Prescribing psychiatrist name'),
+        ('Pharmacy:', 200, 'Pharmacy name and phone'),
+    ]))
+    story.append(Spacer(1, 4))
+    story.append(Paragraph('<b>6-Month Review Tracking</b>', s_form_section))
+
+    f11_header = ['Review Date', 'Reviewer Name', 'Reviewer Credential (PharmD / MD / DO)', 'Medications Reviewed (Name / Dose / Frequency / Indication)', 'Findings (Interactions, Adverse Effects, Lab Monitoring Needed)', 'Recommendations to Prescriber', 'Date Sent to Prescriber', 'Next Review Due (6 months)']
+    f11_th = ParagraphStyle('f11th', fontName=BODY_BOLD, fontSize=8, leading=10, textColor=colors.white, alignment=TA_LEFT)
+    f11_data = [[Paragraph(f'<b>{h}</b>', f11_th) for h in f11_header]]
+    for _ in range(6):
+        f11_data.append(_fillable_data_cells(8, default_width=60, height=28, font_size=8))
+    f11_widths = [0.08*AVAIL_W, 0.10*AVAIL_W, 0.12*AVAIL_W, 0.18*AVAIL_W, 0.16*AVAIL_W, 0.14*AVAIL_W, 0.10*AVAIL_W, 0.12*AVAIL_W]
+    t11 = Table(f11_data, colWidths=f11_widths, hAlign='CENTER', repeatRows=1)
+    sc11 = [
+        ('BACKGROUND', (0, 0), (-1, 0), HEADER_FILL),
+        ('GRID',       (0, 0), (-1, -1), 0.4, BORDER),
+        ('VALIGN',     (0, 0), (-1, -1), 'MIDDLE'),
+        ('LEFTPADDING',  (0, 0), (-1, -1), 3),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 3),
+        ('TOPPADDING',   (0, 0), (-1, -1), 8),
+        ('BOTTOMPADDING',(0, 0), (-1, -1), 8),
+    ]
+    for i in range(1, len(f11_data)):
+        bg = TABLE_ROW_ODD if i % 2 == 1 else TABLE_ROW_EVEN
+        sc11.append(('BACKGROUND', (0, i), (-1, i), bg))
+    t11.setStyle(TableStyle(sc11))
+    story.append(t11)
+    story.append(Spacer(1, 8))
+    story.append(Paragraph(
+        '<b>Initial Review (within 30 days of admission):</b> ☐ Completed &nbsp; ☐ Most-recent prior review obtained '
+        '(date: __________) &nbsp; <b>Reviewer Signature:</b> ___________________________',
+        s_form_meta
+    ))
+    story.append(Spacer(1, 12))
+
     # ── Version History ────────────────────────────────────────────
     story.append(Spacer(1, 18))
     story.append(section_heading(10, 'Version History'))
@@ -769,6 +868,12 @@ def build_part3():
          'Executive Director / QP'],
         ['2.21', 'Aug 2026',
          '<b>.2600 → .1700 CITATION RESOLUTION PATCH.</b> Resolves the open compliance flag raised in v2.20 §1.2(h)(a) regarding whether the operative NC Administrative Code section for a Level III Residential Treatment Facility — Staff Secure for Children or Adolescents is our operating standards ("Reserved for Future Codification" per NC OAH) or our staff-secure operating standards. <b>Resolution: the operative section is our staff-secure operating standards.</b> The user-provided text of <b>our staff-secure operating standards</b>  directly confirms that .1700 is the codified section governing "Residential Treatment Staff Secure for Children or Adolescents." Subsection .1701(a) defines the facility as "a free-standing residential facility that provides intensive, active therapeutic treatment and interventions within a system of care approach" and provides that the facility "shall not be the primary residence of an individual who is not a client of the facility"; .1701(b) defines "staff secure" as requiring that "staff are required to be awake during client sleep hours and supervision shall be continuous as set forth in Rule .1704 of this Section"; .1701(c)–(d) specify the population served (children/adolescents with primary diagnosis of mental illness, emotional disturbance or substance-related disorders; not meeting inpatient criteria; requiring removal from home and treatment in a staff secure setting); .1701(e) requires services to include "individualized supervision and structure of daily living," minimize behaviors related to functional deficits, ensure safety and de-escalate out-of-control behaviors, assist with adaptive functioning, and support step-down to a less intensive setting; .1701(f) requires coordination with other individuals and agencies within the child\'s system of care. <b>All ".2600" citations throughout this Manual have been updated to ".1700"</b> in §1.2 license-category statement, §1.2(e) Initial Licensure Application packet, §1.2(g) cross-reference paragraph, §1.4 QP/QMHP definition references, §2.1 staffing-ratio authority, §3 reference line, §5.5 activities-program authority (now with explicit .1701(e) cross-reference for "individualized supervision and structure of daily living" and acquisition of "social and recreational skills"), §6.1 admission physical-exam timing, §7.3 facility-based school determination, §9.5 staff-secure physical-plant measures, and the §1.2(h)(c) license-category summary. NEW §1.2(g) cross-reference paragraph added before the (i)/(ii)/(iii) bullets — explicitly maps each of the three NC Medicaid RTS taxonomy items to its .1701 rule-text basis: (i) "program setting only" flows from .1701(a) ("free-standing residential facility... shall not be the primary residence of an individual who is not a client"); (ii) "highly structured and highly supervised" flows from .1701(b) (awake overnight + continuous supervision per Rule .1704) and .1701(e)(1) ("individualized supervision and structure of daily living"); (iii) room-and-board exclusion is a Medicaid RTS benefit-category feature under CCP 8D-2 §1.0(c), not a licensure-side rule. §1.2(h)(a) rewritten from OPEN flag to RESOLVED — documents .1701 SCOPE rule text as the resolution basis, requires QP to retain printed copy of .1701 SCOPE in compliance binder, notes that Licensure &amp; Training Consultant written confirmation is no longer necessary for citation-number resolution but still recommended for confirming operational rule subsections (.1702–.1709) at first in-person meeting per §1.2(e). §1.2(h)(c) updated — (a) resolved in v2.21; (b) CCP 8C vs CCP 8D-2 remains OPEN and deferred to v2.22 following Alliance Health / NCTracks enrollment confirmation per §1.9; §1.2(g), §1.9, and §10.9 continue to control in event of inconsistency with legacy "CCP 8C" reference lines. Form 6 Rev. reference updated from 2.20 to 2.21. Cover artwork unchanged (Rev. 2.15 seal). Cover subtitle "Level III Residential Treatment Facility (Staff-Secure)" retained from v2.18.',
+         'Executive Director / QP'],
+        ['2.22', 'Aug 2026',
+         '<b>PUBLIC EDITION (LEGISLATION-FREE).</b> Removes all statutory and regulatory citations (NCGS, NCAC, G.S., 10A NCAC, 122C-XX) from the public-facing manual. Companion compliance master (Doc. WSI-SOP-001-LEG, Rev. 2.21) retains all citations for QA and audit reference. Operational language substituted throughout (e.g., "10A NCAC 27G .1700" → "the Level III Staff-Secure operating standards"; "NCGS §122C-XX" → "the Resident Rights framework"; "LME/MCO" → "the regional managed care organization" where contextually appropriate; "NC DHSR MHLC" → "the state licensing authority"; "HIPAA" → "the federal health-privacy law" where contextually appropriate). Resident Handbook v1.0 published as companion document. Resident Handbook v1.1 signs Welcome Letter as T. Thompson and removes legislation references from sidebars. All operational policies, staffing ratios, clinical requirements, medication management, incident reporting, and resident rights obligations remain unchanged from v2.21.',
+         'Executive Director / QP'],
+        ['2.23', 'Aug 2026',
+         '<b>v2.22 COMPLIANCE AUDIT REMEDIATION.</b> Implements all 22 corrective actions from the SOP Manual v2.22 Compliance Audit against 10A NCAC 27G .1700 + cross-referenced core rules (.0104, .0201–.0210). <b>HIGH severity (3):</b> F-001 — adds new §4.6 Licensed Professional Face-to-Face Clinical Consultation per .1705(a)-(b) (minimum 4 hrs/wk face-to-face consultation by a Licensed Professional) and new Form 10 (Licensed Professional Consultation Log); F-002 — adds new §6.3(a) Psychotropic Medication Drug Regimen Review per .0209(f) (every 6 months by pharmacist or physician) and new Form 11 (Psychotropic Medication Drug Regimen Review Log); F-003 — <b>RESOLVES the open §1.2(h)(b) compliance flag</b> in favor of CCP 8D-2; all legacy "CCP 8C" references in §1.2, §2, §3, §4, §5, §6, and §10 reference lines globally updated to "CCP 8D-2"; §1.2(h)(b) rewritten from OPEN to RESOLVED; §1.2(h)(c) updated to reflect both (a) and (b) now resolved. <b>MEDIUM severity (18):</b> M-007 — adds QP 2-year direct client care experience statement to §1.4(b); F-006/F-007/M-011/M-028/M-029 — adds new §2.2(a) Individualized Supervision Plans for APs and DCPs and expands AP definition to enumerate all four .0104(1) pathways; M-033 — adds age-18, literacy, and criminal-conviction self-disclosure requirements to §2.2; F-009 — adds new §3.6 18th-Birthday Continuation Policy per .1706(e) (up to 6 months or end of school year, whichever is longer); M-025 — adds §3.4(a) 7-day advance written notification for non-emergency discharge; M-026 — adds §3.4(b) pre-discharge CFT meeting; F-008 — adds §3.4(c) 5-business-day post-emergency service-planning meeting per .1708(e); M-031 — adds governing-body policies for client fee assessment, lab test authorization/follow-up, and volunteer services to §1.8; M-032 — adds governing-body minutes permanently maintained statement to §1.8; M-038 — updates §9.2 and Protocol 19 to require quarterly fire AND tornado drills for EACH shift (day, evening, overnight); F-012 — adds §6.3(b) Medication Receipt &amp; Verification (tamper-resistant packaging + label content); M-043 — adds §6.3(c) Medication Storage (locked cabinet 59–86°F, dedicated med fridge 36–46°F, daily temp log on Form 5); F-013 — adds §6.3(d) Medication Disposal Documentation per .0209(d)(1)-(4) (controlled-substance disposal witnessed by 2 staff); F-014 — adds §6.3(e) Medication Education per .0209(g)(1)-(3) (at admission, at each med change, and quarterly thereafter, with developmentally appropriate content and family/guardian education offered). <b>LOW severity (1):</b> F-011 — adds new §1.2(h)(d) Cross-Reference Clarification Note documenting the .1702(a) → .0104(18) vs .0104(21) discrepancy (rule appears to contain a typographical error; Manual applies the .0104(21) "Qualified professional" definition as operative). <b>LEGISLATION STRIPPING (additional):</b> §1.2 license paragraph de-abbreviates "NC DHSR / MHLC / DSS" to "the applicable state mental health authority — not under foster-care licensing"; §3.1 admission criteria replaces "Involuntary Commitment (IVC)" with "acute psychiatric crisis requiring inpatient hospitalization"; §2.1 note replaces ".0103(14)" citation and "DHSR MHLC" with plain-language "state group-home definition" and "state-issued license"; §6.3 replaces "NC Medication Administration training" with "state-approved medication administration training"; §6.3 replaces "IRIS" abbreviation with "state incident-reporting system (IRIS)" on first use. Companion audit report and XLSX crosswalk matrix delivered at /download/WSI_SOP_v2.22_Compliance_Audit_Report.pdf and /download/WSI_SOP_v2.22_Compliance_Audit_Crosswalk.xlsx.',
          'Executive Director / QP'],
     ]
     vh_th = ParagraphStyle('vhth', fontName=BODY_BOLD, fontSize=9, leading=11, textColor=colors.white, alignment=TA_LEFT)

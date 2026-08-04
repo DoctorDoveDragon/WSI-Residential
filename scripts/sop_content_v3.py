@@ -49,18 +49,18 @@ def build_part1():
         'dignity, accountability, and growth.'
     ))
     story.append(para(
-        '<b>1.2 Licensing &amp; Credentialing.</b> The facility operates under a valid NC DHSR '
-        'license as a <b>Level III Residential Treatment Facility — Staff Secure for Children and '
-        'Adolescents</b> under <b>our staff-secure operating standards</b>, issued by the NC Division of Health '
-        'Service Regulation (<b>DHSR</b>), <b>Mental Health Licensure and Certification Section '
-        '(MHLC)</b> — not the Division of Social Services (DSS), which licenses foster-care group '
-        'homes, not behavioral-health treatment facilities. The facility is credentialed as an '
-        'In-Network Provider with <b>Alliance Health</b> (the regional LME/MCO/Tailored Plan '
-        'serving Cumberland, Durham, Johnston, Mecklenburg, Orange and Wake counties). The '
-        'Executive Director maintains the original license on site, posts a current copy in a '
-        'public area of the facility, and renews it prior to expiration. Any change in ownership, '
-        'capacity, population served, or physical location requires prior written approval from '
-        'DHSR MHLC and notification to Alliance Health.'
+        '<b>1.2 Licensing &amp; Credentialing.</b> The facility operates under a valid license '
+        'as a <b>Level III Residential Treatment Facility — Staff Secure for Children and '
+        'Adolescents</b> under <b>our staff-secure operating standards</b>, issued by the '
+        'applicable state mental health authority — <b>not</b> under foster-care licensing, '
+        'and therefore does <b>not</b> operate as a family-home placement. The facility is '
+        'credentialed as an In-Network Provider with <b>Alliance Health</b> (the regional '
+        'managed care organization / Tailored Plan serving Cumberland, Durham, Johnston, '
+        'Mecklenburg, Orange and Wake counties). The Executive Director maintains the original '
+        'license on site, posts a current copy in a public area of the facility, and renews it '
+        'prior to expiration. Any change in ownership, capacity, population served, or physical '
+        'location requires prior written approval from the state licensing authority and '
+        'notification to Alliance Health.'
     ))
     story.append(Paragraph('<b>1.2(a) Accreditation Prerequisite.</b>', s_h2))
     story.append(para(
@@ -113,7 +113,7 @@ def build_part1():
     story.append(para(
         'Separate from the DHSR MHLC license, the facility must complete the <b>Alliance Health '
         'Provider Application</b> to be enrolled in the Alliance Health provider network and to '
-        'bill Medicaid CCP 8C (Residential Level III) per-diem services. The application package '
+        'bill Medicaid CCP 8D-2 (Residential Level III) per-diem services. The application package '
         'includes: (i) completed Provider Application; (ii) completed Self-Assessment Checklist '
         'demonstrating readiness across all our staff-secure operating standards standards; (iii) Mission and '
         'Vision statements; (iv) current DHSR license; (v) accreditation certificate; (vi) '
@@ -316,30 +316,28 @@ def build_part1():
         'the first in-person meeting.'
     ))
     story.append(para(
-        '<b>(b) NC Medicaid "CCP 8C" vs "CCP 8D-2".</b> This Manual currently cites '
-        '<b>NC Medicaid CCP 8C</b> in the reference lines of several SOP sections as the '
-        'Medicaid coverage authority for residential treatment services. A verification '
-        'review against the NC DHHS Division of Health Benefits (NCDHB) clinical coverage '
-        'policy library indicates that <b>CCP 8C is "Outpatient Behavioral Health Services '
-        'Provided by Direct-Enrolled Providers"</b> — a different benefit category that '
-        'does <b>not</b> cover residential treatment services. The correct NC Medicaid '
-        'clinical coverage policy for Residential Treatment Services (Levels I–IV) is '
-        '<b>CCP 8D-2</b>, "Residential Treatment Services" (Amended January 1, 2025), '
-        'available at '
+        '<b>(b) NC Medicaid "CCP 8C" vs "CCP 8D-2" — RESOLVED in v2.23.</b> The open '
+        'question flagged in v2.20 — whether the correct NC Medicaid Clinical Coverage '
+        'Policy for Level III Residential Treatment Services is <b>CCP 8C</b> or <b>CCP '
+        '8D-2</b> — is hereby <b>resolved in favor of CCP 8D-2</b>. The NC Medicaid '
+        'clinical coverage policy library confirms that CCP 8C is "Outpatient Behavioral '
+        'Health Services Provided by Direct-Enrolled Providers" — a different benefit '
+        'category that does <b>not</b> cover residential treatment services. The correct '
+        'NC Medicaid clinical coverage policy for Residential Treatment Services '
+        '(Levels I–IV) is <b>CCP 8D-2</b>, "Residential Treatment Services" (Amended '
+        'January 1, 2025), available at '
         'https://medicaid.ncdhhs.gov/8d-2-residential-treatment-services/download?attachment. '
-        'CCP 8D-1 covers Psychiatric Residential Treatment Facilities (PRTFs) and CCP 8D-'
-        '3/8D-4/8D-5 cover adult ASAM-aligned SUD residential services. The QP and Billing '
-        'Coordinator shall, prior to NCTracks enrollment per §1.9: (1) confirm with '
-        'Alliance Health and NCTracks that the facility is enrolling under CCP 8D-2 '
-        '(Residential Treatment Services — Level III) with taxonomy 320800000X; (2) update '
-        'all "CCP 8C" references in this Manual to "CCP 8D-2" via a v2.21 revision; and '
-        '(3) retain the Alliance Health / NCTracks enrollment-confirmation letters in the '
-        'facility compliance binder. <b>Until that confirmation is obtained, this Manual '
-        'will continue to cite "CCP 8C" in legacy reference lines, and this subsection '
-        'documents the open question.</b> §1.2(g), §1.9, and §10.9 already cite CCP 8D-2 '
-        'as the operative authority for the RTS benefit and the room-and-board exclusion; '
-        'those subsections control in the event of any inconsistency with the legacy '
-        '"CCP 8C" reference lines elsewhere in this Manual.'
+        'CCP 8D-1 covers Psychiatric Residential Treatment Facilities (PRTFs) and CCP '
+        '8D-3/8D-4/8D-5 cover adult ASAM-aligned SUD residential services. '
+        '<b>All legacy "CCP 8C" references in this Manual have been globally updated '
+        'to "CCP 8D-2" in this v2.23 revision</b> — including the reference lines of '
+        '§1.2, §2, §3, §4, §5, §6, and §10, and the §1.2(e) Medicaid billing description. '
+        'The QP shall retain a printed copy of the CCP 8D-2 policy (Amended January 1, '
+        '2025) in the facility compliance binder as documentation of this resolution. '
+        '§1.2(g), §1.9, and §10.9 already cited CCP 8D-2 as the operative authority '
+        'for the RTS benefit and the room-and-board exclusion; with v2.23 the entire '
+        'Manual is now internally consistent on CCP 8D-2. No further action is required '
+        'on this subsection (b).'
     ))
     story.append(para(
         '<b>(c) No operational impact.</b> Nothing in this §1.2(h) changes the facility\'s '
@@ -348,14 +346,22 @@ def build_part1():
         '(90 days prior per §6.1), its resident-rights obligations (the Resident Rights framework '
         'per §1.7), its Medicaid taxonomy (320800000X per §1.9), or its room-and-board '
         'exclusion (per §1.2(g) and §10.9). <b>The .2600 → .1700 citation question '
-        '(subsection (a) above) has been resolved in v2.21;</b> the CCP 8C vs CCP 8D-2 '
-        'citation question (subsection (b) above) remains open and shall be resolved in a '
-        '<b>v2.22 revision</b> entry in the Version History table in Part 3 following '
-        'Alliance Health / NCTracks enrollment confirmation per §1.9. In the interim, '
-        '§1.2(g), §1.9, and §10.9 already cite CCP 8D-2 as the operative authority for '
-        'the RTS benefit and the room-and-board exclusion; those subsections control in '
-        'the event of any inconsistency with the legacy "CCP 8C" reference lines elsewhere '
-        'in this Manual.'
+        '(subsection (a) above) was resolved in v2.21; the CCP 8C → CCP 8D-2 citation '
+        'question (subsection (b) above) is resolved in this v2.23 revision.</b> With both '
+        'citation questions now closed, §1.2(h) is fully resolved and no open compliance '
+        'flags remain in this subsection.'
+    ))
+    story.append(para(
+        '<b>(d) Cross-reference clarification note (compliance binder).</b> The Level III '
+        'Staff-Secure operating standards cross-reference the "Qualified professional" '
+        'definition for the QP credentialing requirements in §1.4(b). The text of that '
+        'rule cross-references subsection .0104(18) "Psychiatrist," which appears to be a '
+        'typographical error in the rule itself — the operative definition is at '
+        '.0104(21) "Qualified professional." This Manual applies the .0104(21) definition '
+        'as the operative QP standard per §1.4(b). The QP shall retain this '
+        'cross-reference clarification note in the facility compliance binder and shall '
+        'confirm the discrepancy with the assigned Licensure &amp; Training Consultant at '
+        'the first in-person meeting per §1.2(e).'
     ))
     story.append(para(
         '<b>1.3 Corporate Compliance.</b> Well Spring Intervention LLC maintains a Corporate '
@@ -451,7 +457,16 @@ def build_part1():
         'Director within one business day; and (d) have all verification documents '
         '(degree, credential, supervised-experience hours, QP training completion) '
         'retained in the personnel file (§2.5). The facility shall verify and document '
-        'which pathway each QP meets at hire and re-verify annually.'
+        'which pathway each QP meets at hire and re-verify annually. <b>In addition to '
+        'the pathway-specific requirements above, the designated facility QP shall have '
+        'at least two (2) years of full-time direct client care experience</b> in the '
+        'delivery of mental health, developmental disabilities, or substance abuse '
+        'services to the population served. The two-year direct-care requirement may be '
+        'satisfied concurrently with the supervised-experience hours documented under '
+        'Pathway 1 or Pathway 2 above; it does not require a separate, additional '
+        'two-year period. The QP shall document satisfaction of this direct-care '
+        'requirement on the QP Credentialing Checklist (retained in the personnel file) '
+        'at hire and re-verify annually.'
     ))
     story.append(Paragraph('<b>1.5 Data Reporting &amp; Consumer Data Warehouse (CDW).</b>', s_h2))
     story.append(para(
@@ -572,6 +587,27 @@ def build_part1():
         '<b>Financial Solvency Documentation</b> — most recent 3 months of bank statements, '
         'most recent filed tax return, and a current balance sheet, sufficient to '
         'demonstrate ongoing financial solvency as required by our operating standards.',
+        '<b>Governing Body Meeting Minutes</b> — permanently maintained per the '
+        'facility records-retention schedule, documenting all governing-body decisions, '
+        'approvals, oversight actions, financial reviews, policy adoptions, and '
+        'corporate-compliance oversight. Minutes shall be signed by the Secretary (or '
+        'designee) and retained in chronological order in the compliance binder; '
+        'electronic copies shall be backed up per the facility disaster-recovery plan.',
+        '<b>Client Fee Assessment Policy</b> — written policy governing the assessment '
+        'of any client fees (sliding-scale, co-pay, or self-pay) including the fee '
+        'schedule, criteria for reduction or waiver, documentation requirements, and '
+        'the staff member authorized to approve adjustments.',
+        '<b>Lab Test Authorization &amp; Follow-Up Policy</b> — written policy governing '
+        'the authorization, ordering, result-tracking, and clinical follow-up of '
+        'laboratory tests ordered for youth (including routine labs, drug screens, '
+        'and provider-ordered diagnostic studies), specifying the responsible provider, '
+        'the result-notification pathway, and the documentation standard in the clinical '
+        'record.',
+        '<b>Volunteer Services Policy</b> — written policy governing the recruitment, '
+        'screening (including background checks per §2.3), orientation, supervision, '
+        'scope of permitted activities, and termination of volunteer services. '
+        'Volunteers shall never have unsupervised contact with youth and shall not be '
+        'counted toward the 2:4 staffing minimum per §2.1.',
     ]))
     story.append(Paragraph('<b>1.9 Medicaid Enrollment &amp; NCTracks (Post-Licensure).</b>', s_h2))
     story.append(para(
@@ -640,7 +676,7 @@ def build_part1():
     # ── SOP 2 ──────────────────────────────────────────────────────
     story.append(section_heading(2, 'Human Resources & Staffing Requirements'))
     story.append(ref_line(
-        'our operating standards & .1700; NC Medicaid CCP 8C; RMDM Chapter 1',
+        'our operating standards & .1700; NC Medicaid CCP 8D-2; RMDM Chapter 1',
         '§2',
     ))
     story.append(para(
@@ -671,18 +707,55 @@ def build_part1():
     ))
     story.append(Spacer(1, 6))
     story.append(para(
-        '<i>Note: NC defines a "Group Home" as a facility serving no more than nine (9) '
-        'children (the Resident Rights framework(14)). The facility shall not exceed its licensed capacity '
-        'as stated on the DHSR MHLC license, which shall not exceed nine children under any '
-        'circumstances.</i>'
+        '<i>Note: The state group-home definition limits a facility of this type to no '
+        'more than nine (9) children. The facility shall not exceed its licensed capacity '
+        'as stated on the state-issued license, which shall not exceed nine children '
+        'under any circumstances.</i>'
     ))
     story.append(Spacer(1, 8))
     story.append(Paragraph('<b>2.2 Staff Qualifications.</b>', s_h2))
+    story.append(para(
+        '<b>General requirements for all staff.</b> All staff must: (a) be at least '
+        '<b>18 years of age</b> at the time of hire; (b) be <b>literate in English</b> '
+        'sufficient to read and understand this Manual, the youth\'s PCP and BSP, '
+        'medication administration records, incident-report forms, and emergency '
+        'procedures; (c) truthfully <b>disclose any criminal conviction history</b> on '
+        'the employment application and consent to the background checks described in '
+        '§2.3; and (d) provide documentation of education, licensure, and any '
+        'credentials claimed on the employment application. Misrepresentation on the '
+        'employment application is grounds for immediate termination.'
+    ))
     story.extend(bullets([
-        '<b>QPs:</b> Meet one of two pathways per §1.4(b) and our operating standards — <b>Pathway 1:</b> master\'s degree in a human services field plus a recognized NC credential (full license, associate/provisional license, certification, or psychiatric nursing credential) plus at least one year of full-time, post-master\'s supervised MH/DD/SA experience; OR <b>Pathway 2:</b> bachelor\'s degree in a human services field plus two years of full-time, pre- or post-bachelor\'s supervised MH/DD/SA experience. Both pathways require NC-DHHS QP training modules prior to independent practice.',
-        '<b>APs:</b> Bachelor\'s in human services with at least one year of relevant experience.',
-        '<b>Direct Care Professionals (DCPs):</b> High school diploma or GED with at least one year of mental health experience.',
+        '<b>QPs:</b> Meet one of two pathways per §1.4(b) and our operating standards — <b>Pathway 1:</b> master\'s degree in a human services field plus a recognized NC credential (full license, associate/provisional license, certification, or psychiatric nursing credential) plus at least one year of full-time, post-master\'s supervised MH/DD/SA experience; OR <b>Pathway 2:</b> bachelor\'s degree in a human services field plus two years of full-time, pre- or post-bachelor\'s supervised MH/DD/SA experience. Both pathways require NC-DHHS QP training modules prior to independent practice. The designated facility QP shall also meet the two-year direct client care experience requirement per §1.4(b).',
+        '<b>APs:</b> Meet one of four pathways per facility policy — <b>(i)</b> bachelor\'s degree in a human services field plus at least one year of relevant MH/DD/SA experience; <b>(ii)</b> registered nurse license plus at least one year of relevant MH/DD/SA experience; <b>(iii)</b> an equivalent state-recognized certification plus at least one year of relevant MH/DD/SA experience; or <b>(iv)</b> a high school diploma or GED plus at least five years of relevant MH/DD/SA experience. APs supervise paraprofessional Direct Care Professionals (DCPs) regarding PCP and BSP implementation per the individualized supervision plan required by §2.2(a).',
+        '<b>Direct Care Professionals (DCPs):</b> High school diploma or GED with at least one year of mental health experience. DCPs work under the supervision of an AP or QP per the individualized supervision plan required by §2.2(a).',
     ]))
+    story.append(Paragraph('<b>2.2(a) Individualized Supervision Plans.</b>', s_h2))
+    story.append(para(
+        'Per the Level III Staff-Secure operating standards, the QP shall develop and '
+        'maintain a <b>written individualized supervision plan</b> for every Associate '
+        'Professional (AP) and Direct Care Professional (DCP) on staff. Each supervision '
+        'plan shall be: (1) developed within 30 days of hire; (2) reviewed and updated '
+        'at least annually and upon any change in role, scope of practice, or supervisor '
+        'assignment; (3) signed by the staff member, the supervising QP (or AP, where '
+        'the DCP is supervised by an AP), and the Clinical Director; and (4) retained '
+        'in the personnel file per §2.5. Each supervision plan shall specify: '
+        '(a) the supervisor\'s name, credential, and availability; (b) the frequency '
+        'and format of supervision (minimum: weekly individual supervision for APs and '
+        'DCPs during the first 90 days of employment, transitioning to at least '
+        'bi-weekly individual supervision thereafter, plus weekly group clinical '
+        'supervision for all direct-care staff); (c) the scope of delegated authority '
+        '(including any limits on independent decision-making, restraint authorization, '
+        'medication administration, or incident reporting); (d) the method for '
+        'documenting supervision sessions (signed supervision log, case-discussion '
+        'notes, and any corrective-action directives); (e) the escalation pathway for '
+        'clinical concerns; and (f) the criteria and process for modifying the '
+        'supervision plan based on performance, clinical incident history, or changes '
+        'in the youth population served. AP supervision plans shall additionally '
+        'document the AP\'s authority to supervise paraprofessional DCPs regarding '
+        'PCP and BSP implementation, including the documentation standard for AP '
+        'review of DCP shift notes and incident reports.'
+    ))
     story.append(Paragraph('<b>2.3 Background Checks (Prior to Unsupervised Contact).</b>', s_h2))
     story.extend(bullets([
         '<b>NC SBI fingerprint criminal background check</b> — must be completed within <b>180 days prior to initial licensure review</b> and re-checked annually thereafter and upon reasonable suspicion.',
@@ -807,7 +880,7 @@ def build_part1():
     # ── SOP 3 ──────────────────────────────────────────────────────
     story.append(section_heading(3, 'Admissions, Discharges, and Transition Planning'))
     story.append(ref_line(
-        'our staff-secure operating standards & .5604; NC Medicaid CCP 8C; RMDM Chapters 2 & 5',
+        'our staff-secure operating standards & .5604; NC Medicaid CCP 8D-2; RMDM Chapters 2 & 5',
         '§3',
     ))
     story.append(para(
@@ -821,8 +894,9 @@ def build_part1():
         'setting</b> (not a family home), with continuous awake supervision per §2.1 and '
         '§9.5, and with the clinical/treatment/milieu component reimbursed by the '
         'Medicaid RTS per-diem while room and board are funded through a non-Medicaid '
-        'source. Exclusions include active psychosis requiring Involuntary Commitment '
-        '(IVC), medical instability, or fire-setting that cannot be safely managed. The '
+        'source. Exclusions include acute psychiatric crisis requiring inpatient '
+        'hospitalization, medical instability, or fire-setting that cannot be safely '
+        'managed. The '
         'QP reviews each referral packet and documents the admission decision, '
         'including verification that an identified non-Medicaid room-and-board funding '
         'source is in place for the youth per §1.2(g)(iii) and §10.9.'
@@ -865,6 +939,52 @@ def build_part1():
         'inventoried, and the discharge summary is provided to the guardian, receiving '
         'provider, and LME/MCO.'
     ))
+    story.append(Paragraph('<b>3.4(a) Advance Written Notification (Non-Emergency Discharge or Transfer).</b>', s_h2))
+    story.append(para(
+        'For any <b>non-emergency</b> discharge or transfer, the QP shall provide '
+        '<b>written advance notification</b> to the youth (in an age-appropriate manner), '
+        'the guardian, the regional managed care organization (LME/MCO) representative, '
+        'and the receiving provider (if known) at least <b>7 calendar days</b> prior to '
+        'the discharge date. The written notification shall include: the discharge date, '
+        'the reason for discharge, the receiving provider (if known), a transition-plan '
+        'summary, the post-discharge appointment schedule (outpatient therapy, '
+        'medication management, primary care), and the emergency contact number for '
+        'post-discharge clinical questions. <b>Emergency discharges</b> (e.g., acute '
+        'psychiatric hospitalization, medical hospitalization, safety-motivated '
+        'transfer) are exempt from the 7-day requirement but shall be documented with '
+        'the emergency basis and provided with as much advance notice as circumstances '
+        'reasonably permit.'
+    ))
+    story.append(Paragraph('<b>3.4(b) Pre-Discharge Care-Coordination Team (CFT) Meeting.</b>', s_h2))
+    story.append(para(
+        'The QP shall convene a <b>pre-discharge care-coordination team (CFT) meeting</b> '
+        'prior to any planned discharge. Meeting attendees shall include, at minimum, '
+        'the youth, the guardian, the regional managed care organization (LME/MCO) '
+        'representative, and the receiving provider (if applicable). The meeting shall '
+        'review discharge readiness, finalize the transition plan, confirm community '
+        'linkages (outpatient therapy, medication management, school enrollment, primary '
+        'care), review medications and any medication-transfer logistics, and document '
+        'attendee signatures on the PCP. For youth transitioning to a lower level of '
+        'care, the CFT shall additionally confirm the step-down provider\'s admission '
+        'date and any trial-home-visit schedule.'
+    ))
+    story.append(Paragraph('<b>3.4(c) Post-Emergency Service-Planning Meeting.</b>', s_h2))
+    story.append(para(
+        'Following any <b>emergency discharge, transfer, or hospitalization</b> (e.g., '
+        'acute psychiatric hospitalization, medical hospitalization, safety-motivated '
+        'transfer, or significant restraint event), the QP shall convene a '
+        '<b>service-planning meeting within 5 business days</b> of the youth\'s return '
+        'to the facility (or within 5 business days of the emergency event if the youth '
+        'does not return). The meeting shall include the youth, the guardian, the '
+        'regional managed care organization (LME/MCO) representative, the prescribing '
+        'provider (if a medication change is indicated), and direct-care staff who '
+        'witnessed the precipitating event. The meeting shall: review the precipitating '
+        'events and any contributing factors; update the PCP and BSP as needed to '
+        'prevent recurrence; adjust the supervision level if clinically indicated; '
+        'identify any staff-training needs; document follow-up actions, responsible '
+        'parties, and completion deadlines; and record attendee signatures on the '
+        'updated PCP.'
+    ))
     story.append(Paragraph('<b>3.5 Administrative Closure.</b>', s_h2))
     story.append(para(
         'When a QP or clinician leaves employment without completing required discharge '
@@ -875,11 +995,38 @@ def build_part1():
         'documentation shall be adjusted back to the payor per 42 CFR 401.305. '
         'Documentation of the administrative closure shall be placed in the service record.'
     ))
+    story.append(Paragraph('<b>3.6 18th-Birthday Continuation Policy.</b>', s_h2))
+    story.append(para(
+        'Per the Level III Staff-Secure operating standards, a youth who turns 18 years '
+        'of age while in placement may <b>continue in the program for up to six (6) '
+        'months, or until the end of the current school year, whichever is longer</b>, '
+        'provided that all of the following conditions are met: (a) the youth '
+        '<b>consents to continued placement in writing</b> as an adult, with informed '
+        'consent documented on the standard admission-consent forms; (b) the guardian '
+        '(or, if guardianship has been legally terminated, the youth alone) and the '
+        'regional managed care organization (LME/MCO) representative <b>approve the '
+        'continuation in writing</b>; (c) the PCP is <b>updated within 14 days of the '
+        '18th birthday</b> to reflect adult-appropriate goals, rights, discharge '
+        'planning, and any changes in consent authority; (d) the youth is <b>informed '
+        'orally and in writing of their adult rights</b>, including the right to request '
+        'discharge at any time, the right to refuse medication (except as otherwise '
+        'provided by law or court order), the right to uncensored communication, and '
+        'the right to file a grievance directly with the LME/MCO or the state '
+        'licensing authority; and (e) the facility <b>confirms that the youth\'s '
+        'Medicaid eligibility and non-Medicaid room-and-board funding source</b> '
+        'continue to cover the extended placement per §1.2(g)(iii) and §10.9. '
+        'If any of these conditions cannot be met, the QP shall initiate transition '
+        'planning to an appropriate adult placement <b>no later than 30 days before '
+        'the youth\'s 18th birthday</b>, with the discharge date set on or before the '
+        '18th birthday. The QP shall document satisfaction of each condition (a)–(e) '
+        'in the clinical record and shall retain the youth\'s written consent and the '
+        'LME/MCO approval letter in the facility compliance binder.'
+    ))
 
     # ── SOP 4 ──────────────────────────────────────────────────────
     story.append(section_heading(4, 'Clinical Services, Assessments & Person-Centered Planning'))
     story.append(ref_line(
-        'our operating standards; NC Medicaid CCP 8C; RMDM Chapter 4',
+        'our operating standards; NC Medicaid CCP 8D-2; RMDM Chapter 4',
         '§4',
     ))
     story.append(Paragraph('<b>4.1 Comprehensive Clinical Assessment (CCA).</b>', s_h2))
@@ -953,6 +1100,38 @@ def build_part1():
         'reporting requirements must be followed. Service authorizations and '
         'reauthorizations are not required to be maintained in the clinical record but '
         'shall be available for audit purposes if requested.'
+    ))
+    story.append(Paragraph('<b>4.6 Licensed Professional Face-to-Face Clinical Consultation.</b>', s_h2))
+    story.append(para(
+        'Per the Level III Staff-Secure operating standards, the facility shall arrange '
+        'for a <b>Licensed Professional to provide at least four (4) hours per week of '
+        'face-to-face clinical consultation</b> with the clinical team. The Licensed '
+        'Professional shall be a <b>clinician licensed by the applicable state licensing '
+        'board to independently provide mental health services</b> (e.g., a licensed '
+        'psychiatrist, psychologist, LCSW, LPC, or LMFT), and may be the facility\'s '
+        'Clinical Director, the QP if the QP holds a full clinical license, or an '
+        'external clinical consultant under contract. The four (4) hours of weekly '
+        'consultation shall be provided in <b>face-to-face</b> format (in-person at the '
+        'facility; telehealth video is acceptable only when in-person consultation is '
+        'not feasible and is documented on the consultation log). The clinical '
+        'consultation shall include, at minimum: (a) <b>review of clinical cases</b>, '
+        'including any youth on psychotropic medication, any youth who has experienced '
+        'a restraint event in the past 14 days, and any youth with a significant '
+        'clinical change since the prior consultation; (b) <b>consultation on '
+        'diagnostic and treatment-planning questions</b>, including differential '
+        'diagnosis, co-occurring disorders, and treatment-resistance; (c) <b>guidance '
+        'on behavioral-support-plan adjustments</b>, including functional-analysis '
+        'findings and replacement-skill targets; (d) <b>review of restrictive-'
+        'intervention use</b> and trauma-informed restraint-reduction strategies; and '
+        '(e) <b>clinical supervision of APs and DCPs</b> as delegated by the QP, '
+        'including case discussion, skill-building, and reflective-practice support. '
+        'Each consultation session shall be documented on the <b>Licensed Professional '
+        'Consultation Log (Form 10)</b>, including: date, start/end time, total '
+        'duration, format (in-person or telehealth), attendees, cases reviewed, '
+        'recommendations made, follow-up actions assigned, and the Licensed '
+        'Professional\'s signature. The QP shall retain all consultation logs in the '
+        'facility compliance binder and shall report weekly consultation-hour totals to '
+        'the Clinical Director at each quarterly compliance report per §1.4(a).'
     ))
 
     # ── SOP 5 ──────────────────────────────────────────────────────
@@ -1088,14 +1267,112 @@ def build_part1():
     ))
     story.append(Paragraph('<b>6.3 Medication Management.</b>', s_h2))
     story.append(para(
-        'All medications are stored in a double-locked cabinet/cart. Controlled substances '
-        'are counted and documented at every shift change. Medications are administered '
-        'only by RN-delegated staff who have completed NC Medication Administration '
-        'training. Staff follow the "5 Rights" (right youth, right med, right dose, '
-        'right route, right time) and document administration on the MAR <b>immediately</b> '
-        '(never retrospectively). Medication errors, refusals, and adverse reactions are '
-        'reported to the RN and QP immediately, documented on the MAR, and entered into '
-        'IRIS as required.'
+        'All medications are stored in a double-locked cabinet/cart per §6.3(c). '
+        'Controlled substances are counted and documented at every shift change. '
+        'Medications are administered only by RN-delegated staff who have completed the '
+        'state-approved medication administration training. Staff follow the "5 Rights" '
+        '(right youth, right med, right dose, right route, right time) and document '
+        'administration on the MAR <b>immediately</b> (never retrospectively). Medication '
+        'errors, refusals, and adverse reactions are reported to the RN and QP '
+        'immediately, documented on the MAR, and entered into the state incident-reporting '
+        'system (IRIS) as required.'
+    ))
+    story.append(Paragraph('<b>6.3(a) Psychotropic Medication Drug Regimen Review.</b>', s_h2))
+    story.append(para(
+        'Per the Level III Staff-Secure operating standards, the facility shall ensure '
+        'that <b>every youth on a psychotropic medication has a drug regimen review '
+        'performed by a pharmacist or physician at least every six (6) months</b>. The '
+        'review shall evaluate: (1) the appropriateness of each medication and dose '
+        'given the youth\'s diagnoses, age, weight, and clinical response; (2) any '
+        'drug-drug interactions, drug-disease contraindications, or duplicate therapies; '
+        '(3) any laboratory monitoring required (e.g., metabolic panel for atypical '
+        'antipsychotics, lithium levels, carbamazepine levels); (4) any adverse drug '
+        'reactions or side effects reported since the prior review; and (5) any '
+        'recommended changes to the medication regimen. The reviewing pharmacist or '
+        'physician shall document the review on the <b>Psychotropic Medication Drug '
+        'Regimen Review Log (Form 11)</b>, including: youth name, date of review, '
+        'medications reviewed (name, dose, frequency, indication), reviewer findings, '
+        'recommendations, and reviewer signature. The QP shall forward the review '
+        'findings to the prescribing psychiatrist within 5 business days, shall '
+        'document the review in the clinical record, and shall track the next-6-month '
+        'review due date on the Form 11 tracking log. A youth admitted on a psychotropic '
+        'medication shall have an initial drug regimen review within 30 days of '
+        'admission (the youth\'s most recent prior review may satisfy this requirement '
+        'if completed within the prior 6 months and a copy is obtained).'
+    ))
+    story.append(Paragraph('<b>6.3(b) Medication Receipt &amp; Verification.</b>', s_h2))
+    story.append(para(
+        'All medications received at the facility — whether from a pharmacy, guardian, '
+        'hospital, or other source — shall be <b>verified by the RN</b> (or '
+        'designated RN-delegated staff) <b>at the time of receipt</b>. Verification '
+        'shall confirm: (a) the medication is in <b>tamper-resistant packaging</b> per '
+        'the state controlled-substances and pharmacy rules; (b) the <b>label contains</b> '
+        'the youth\'s full name, medication name, strength, dose, route, frequency, '
+        'prescribing provider, pharmacy name and phone number, prescription number, fill '
+        'date, and expiration date; (c) the medication <b>matches the prescriber\'s '
+        'order</b> in the youth\'s clinical record; and (d) the medication is <b>not '
+        'expired</b>. Discrepancies shall be reported to the prescribing pharmacy and '
+        'the QP immediately, and the medication shall <b>not</b> be administered until '
+        'the discrepancy is resolved. Receipt of each medication shall be documented on '
+        'the Medication Receipt Log (maintained in the med room), including: date '
+        'received, youth name, medication name, quantity received, lot number, '
+        'expiration date, verifying RN signature, and any discrepancy notes.'
+    ))
+    story.append(Paragraph('<b>6.3(c) Medication Storage.</b>', s_h2))
+    story.append(para(
+        'All medications shall be stored in a <b>double-locked cabinet or cart</b> in a '
+        'secure, climate-controlled area maintained between <b>59°F and 86°F</b>. '
+        'Medications requiring refrigeration shall be stored in a <b>dedicated medication '
+        'refrigerator</b> (not used for food) maintained between <b>36°F and 46°F</b>, '
+        'with the temperature documented on Form 5 (Environmental Safety Log) daily. '
+        'Controlled substances shall be stored in the <b>inner locked compartment</b> of '
+        'the double-locked cabinet, with a count documented at every shift change. Each '
+        'youth\'s medications shall be stored in individually labeled containers. '
+        'Medications shall <b>not</b> be stored in bathrooms, kitchens (except the '
+        'medication refrigerator), or other areas exposed to moisture, heat, or direct '
+        'sunlight. Expired or discontinued medications shall be segregated in a clearly '
+        'labeled "To Be Disposed" container pending disposal per §6.3(d). The RN '
+        'shall audit the medication storage area weekly and document the audit on Form 5.'
+    ))
+    story.append(Paragraph('<b>6.3(d) Medication Disposal Documentation.</b>', s_h2))
+    story.append(para(
+        'Discontinued, expired, or refused medications shall be disposed of in '
+        'accordance with the state controlled-substances act and applicable federal '
+        'medication-disposal rules. For each medication disposal event, the RN (or '
+        'designated RN-delegated staff) shall document on the <b>Medication Disposal '
+        'Log</b> (maintained in the med room): the youth\'s name, medication name, '
+        'strength, quantity disposed, disposal method (e.g., pharmaceutical take-back, '
+        'DEA-authorized collection receptacle, mail-back package), disposal date, '
+        'witness signature, and RN signature. <b>Controlled-substance disposals shall '
+        'be witnessed by a second staff member</b> and the witness signature shall be '
+        'obtained prior to disposal. Medications transferred to the guardian at '
+        'discharge shall be documented on the Medication Transfer Form (with the '
+        'guardian\'s signature) and are <b>not</b> recorded on the Disposal Log. The '
+        'QP shall review the Medication Disposal Log monthly as part of the controlled-'
+        'substance reconciliation audit and shall report any discrepancies to the '
+        'Clinical Director per §1.4(a).'
+    ))
+    story.append(Paragraph('<b>6.3(e) Medication Education.</b>', s_h2))
+    story.append(para(
+        'The QP, RN, and prescribing psychiatrist shall provide <b>ongoing medication '
+        'education</b> to each youth regarding any psychotropic or other medication '
+        'prescribed. Education shall be documented <b>at admission, at each medication '
+        'change, and at least quarterly thereafter</b>. Education shall be '
+        'developmentally appropriate and include: (1) the medication name and purpose; '
+        '(2) the prescribed dose, route, and schedule; (3) expected benefits; (4) common '
+        'and serious side effects, including signs of allergic reaction; (5) '
+        'interactions with food, other medications, and substances; (6) the importance '
+        'of adherence and the risks of abrupt discontinuation; (7) the youth\'s right '
+        'to ask questions and to refuse medication (except as otherwise provided by law '
+        'or court order per §1.7); and (8) what to do if a dose is missed. The '
+        'youth\'s understanding shall be assessed (e.g., teach-back method) and '
+        'documented after each education session. <b>Family/guardian medication '
+        'education</b> shall also be offered at admission, at each medication change, '
+        'and at least quarterly, with the offer and any education provided documented '
+        'in the clinical record. The QP shall track medication-education due dates on '
+        'the youth\'s PCP review calendar and shall report any youth with overdue '
+        'medication education to the Clinical Director at each quarterly compliance '
+        'report per §1.4(a).'
     ))
     story.append(Paragraph('<b>6.4 Nutrition.</b>', s_h2))
     story.append(para(
@@ -1293,11 +1570,19 @@ def build_part1():
     ))
     story.append(Paragraph('<b>9.2 Drills & Inspections.</b>', s_h2))
     story.append(para(
-        'Monthly fire drills target evacuation under 3 minutes. Quarterly tornado drills '
-        'use the interior safe room. Smoke detectors, fire extinguishers, sprinklers, '
-        'and CO detectors are inspected monthly (staff) and annually (licensed '
-        'contractors). Inspection records are maintained on the Environmental Safety Log '
-        '(Form 5) for a minimum of 3 years.'
+        'Per the Level III Staff-Secure operating standards, <b>fire drills shall be '
+        'conducted monthly AND tornado drills shall be conducted quarterly, with each '
+        'drill conducted separately for EACH shift (day, evening, and overnight)</b> — '
+        'i.e., 3 fire drills per month (one per shift) and 3 tornado drills per quarter '
+        '(one per shift). Drills shall target evacuation under 3 minutes for fire drills '
+        'and shall use the lowest interior safe room for tornado drills. Drill '
+        'documentation on Form 5 (Environmental Safety Log) shall include: drill type '
+        '(fire / tornado), shift (day / evening / overnight), date, start time, '
+        'evacuation time (fire drills only), number of youth and staff participating, '
+        'any deficiencies identified, corrective actions taken, and the shift '
+        'supervisor\'s signature. Smoke detectors, fire extinguishers, sprinklers, and '
+        'CO detectors are inspected monthly (staff) and annually (licensed contractors). '
+        'Inspection records are maintained on Form 5 for a minimum of 3 years.'
     ))
     story.append(Paragraph('<b>9.3 Hazardous Materials.</b>', s_h2))
     story.append(para(
@@ -1612,7 +1897,7 @@ def build_part1():
     # ── SOP 10 ─────────────────────────────────────────────────────
     story.append(section_heading(10, 'Medicaid Billing, Documentation Compliance & Record Management'))
     story.append(ref_line(
-        'NC Medicaid CCP 8C; CMS Documentation Guidelines; RMDM Chapter 6; state law Ch. 66 Art. 40 (NC UETA); E-SIGN Act (15 U.S.C. § 7001 et seq.)',
+        'NC Medicaid CCP 8D-2; CMS Documentation Guidelines; RMDM Chapter 6; state law Ch. 66 Art. 40 (NC UETA); E-SIGN Act (15 U.S.C. § 7001 et seq.)',
         '§10',
     ))
     story.append(Paragraph('<b>10.1 Service Notes — General Requirements.</b>', s_h2))
