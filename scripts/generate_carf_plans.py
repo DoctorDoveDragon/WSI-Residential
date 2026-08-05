@@ -65,7 +65,7 @@ from generate_sop import (
 )
 
 # ─── Override title for headers/footers ───────────────────────────────────
-DOC_TITLE_SHORT = 'CARF CYS 2026 Conformance Plans — Rev. 1.0 (Aug 2026)'
+DOC_TITLE_SHORT = 'CARF CYS 2026 Conformance Plans — Rev. 1.1 (Aug 2026)'
 DOC_ORG = 'Well Spring Intervention LLC'
 
 
@@ -96,7 +96,7 @@ OUTPUT_BODY = '/home/z/my-project/scripts/carf_plans_body.pdf'
 
 SELF_REF = (
     'Well Spring Intervention LLC CARF CYS 2026 Conformance Plan Portfolio '
-    '(Doc. WSI-CARF-PLANS-001, Rev. 1.0, Aug 2026)'
+    '(Doc. WSI-CARF-PLANS-001, Rev. 1.1, Aug 2026)'
 )
 
 
@@ -111,7 +111,7 @@ def build():
         title='Well Spring Intervention LLC — CARF CYS 2026 Conformance Plans',
         author='Well Spring Intervention LLC',
         creator='Z.ai',
-        subject='CARF CYS 2026 Inaugural Accreditation Conformance Plan Portfolio (Rev. 1.0)',
+        subject='CARF CYS 2026 Inaugural Accreditation Conformance Plan Portfolio (Rev. 1.1)',
         keywords='CARF, CYS, 2026, Inaugural Accreditation, Conformance Plans, Strategic Plan, '
                  'Stakeholder Input, Legal Compliance, Financial, ERM, Workforce, Accessibility, '
                  'Performance Measurement, Telehealth, Quality Records',
@@ -125,7 +125,7 @@ def build():
     story.append(HRFlowable(width=80, color=ACCENT, thickness=2, spaceBefore=2, spaceAfter=14))
 
     story.append(Paragraph(
-        'This portfolio (Rev. 1.0, August 2026) contains the fifteen written '
+        'This portfolio (Rev. 1.1, August 2026) contains the fifteen written '
         'plans, policies, and procedures referenced in §12.1–§12.19 of the '
         '<b>Well Spring Intervention LLC SOP Manual (Rev. 2.24)</b> required to '
         'demonstrate conformance to the 2026 CARF Child and Youth Services '
@@ -141,9 +141,10 @@ def build():
     ))
     story.append(Spacer(1, 6))
 
-    story.append(Paragraph('<b>Document ID.</b> Doc. WSI-CARF-PLANS-001, Rev. 1.0 (August 2026).', s_body))
+    story.append(Paragraph('<b>Document ID.</b> Doc. WSI-CARF-PLANS-001, Rev. 1.1 (August 2026).', s_body))
     story.append(Paragraph('<b>Population Served.</b> Children &amp; Adolescents — Mental Health / Behavioral Challenges.', s_body))
-    story.append(Paragraph('<b>Service Type.</b> Level 3 Supervised Residential Group Home.', s_body))
+    story.append(Paragraph('<b>Service Type.</b> Level III Residential Treatment Facility (Hardware-Secure) \u2014 10A NCAC 27G .1703.', s_body))
+    story.append(Paragraph('<b>Service Intensity.</b> Level III is the highest-acuity NC residential treatment category, providing 24-hour intensive clinical services for children and adolescents with severe emotional disturbance (SED) whose needs cannot be safely met in a less restrictive (Level I or II) setting. Features include hardware-secure (controlled-egress) physical plant, on-site Licensed Professional coverage 16 hours/day, psychiatrist on-call 24/7, RN on-site or on-call 24/7, 1:4 waking staff-to-resident ratio, daily clinical groups, individual therapy minimum twice weekly, family therapy minimum weekly, and weekly Person-Centered Plan reviews.', s_body))
     story.append(Paragraph('<b>Document Owner.</b> Executive Director &amp; Qualified Professional (QP).', s_body))
     story.append(Paragraph('<b>Companion Documents.</b> SOP Manual v2.24 (Doc. WSI-SOP-001, Rev. 2.24); Resident Handbook (Doc. WSI-RH-001); CARF CYS 2026 Compliance Audit Crosswalk (Doc. WSI-CARF-XW-001).', s_body))
     story.append(Spacer(1, 10))

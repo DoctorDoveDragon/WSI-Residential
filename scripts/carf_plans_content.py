@@ -169,14 +169,21 @@ def build_part1():
         'The organization serves children and adolescents (target age range 6–17) '
         'with a primary diagnosis of mental illness, emotional disturbance, or '
         'substance-related disorder, who do not meet inpatient psychiatric '
-        'criteria but require removal from the home and treatment in a staff-secure '
-        'residential setting. The service array includes: residential care in a '
-        'Level III Staff-Secure facility; clinical services including individual, '
-        'group, and family therapy; psychiatric medication management; behavioral '
-        'support and crisis intervention; educational coordination through the '
-        'local public school system; case management and care coordination with '
-        'the LME/MCO and other system-of-care partners; and structured '
-        'recreational, social, and life-skills programming.'
+        'criteria but require removal from the home and treatment in a Level '
+        'III Residential Treatment Facility (hardware-secure, intensive '
+        'clinical). The service array includes: 24-hour residential treatment '
+        'in a Level III RTF licensed under 10A NCAC 27G .1703; clinical '
+        'services including individual therapy (minimum 2 sessions/week), '
+        'group therapy (daily), family therapy (minimum weekly), and '
+        'comprehensive clinical assessments; psychiatric medication management '
+        'with on-site psychiatric coverage and 24/7 on-call psychiatric '
+        'consultation; behavioral support and crisis intervention with '
+        'line-of-sight supervision capability for high-acuity residents; '
+        'educational coordination through the local public school system or '
+        'facility-based instructional programming; case management and care '
+        'coordination with the LME/MCO and other system-of-care partners; '
+        'and structured recreational, social, and life-skills programming '
+        'integrated into the daily milieu-therapy schedule.'
     ))
     story.append(Paragraph('<b>1.5 Environmental Analysis.</b>', s_h2))
     story.append(para(
@@ -423,10 +430,15 @@ def build_part1():
         'the following categories of legal requirements:'
     ))
     story.extend(bullets([
-        '<b>Licensure.</b> Level III Residential Treatment Facility — Staff '
-        'Secure license issued by the state mental health authority (SOP §1.2); '
-        'renewed prior to expiration; changes in ownership, capacity, population, '
-        'or location require prior written approval.',
+        '<b>Licensure.</b> Level III Residential Treatment Facility '
+        '(Hardware-Secure) license issued by the NC Department of Health and '
+        'Human Services under 10A NCAC 27G .1703 (SOP §1.2); renewed prior '
+        'to expiration; changes in ownership, capacity, population, or '
+        'location require prior written approval. Level III is the highest-'
+        'acuity NC RTF category and authorizes the organization to serve '
+        'children and adolescents with severe emotional disturbance whose '
+        'clinical needs cannot be safely met in a less restrictive (Level I '
+        'or II) residential setting.',
         '<b>Medicaid Provider Enrollment.</b> Enrollment with NCTracks and '
         'Alliance Health; revalidation per CMS schedule; compliance with Medicaid '
         'fraud and abuse laws (False Claims Act, Anti-Kickback Statute, '
@@ -688,7 +700,7 @@ def build_part1():
     rr_header = ['Risk Category', 'Specific Risk', 'Likelihood (1-5)', 'Impact (1-5)', 'Mitigation Action', 'Owner', 'Review Date']
     rr_rows = [
         ['Clinical', 'Suicide attempt / self-harm', '3', '5', 'Columbia suicide-risk screening at admission & weekly; safety plan; line-of-sight supervision as needed; staff training', 'Clinical Director', 'Quarterly'],
-        ['Clinical', 'Elopement from facility', '3', '4', 'Staff-secure physical plant; awake overnight supervision; elopement risk assessment; community-search protocol', 'QP', 'Quarterly'],
+        ['Clinical', 'Elopement from facility', '2', '5', 'Hardware-secure Level III RTF physical plant with controlled-egress doors (key-card / staff-controlled); alarmed perimeter; awake overnight line-of-sight supervision; elopement risk assessment at admission & weekly; community-search protocol; police notification within 30 min', 'QP', 'Quarterly'],
         ['Clinical', 'Restraint-related injury', '2', '5', 'De-escalation training; restraint-avoidance policy; post-incident debriefing (Form 3); quarterly restraint review', 'Clinical Director', 'Quarterly'],
         ['Clinical', 'Medication error', '3', '4', 'Med-pass training; 6-month regimen review (Form 11); med-error reporting; double-check for high-alert meds', 'RN / QP', 'Monthly'],
         ['Operational', 'Staffing shortage', '4', '4', 'Recruitment plan; PRN pool; agency contract backup; sign-on incentive; retention bonuses', 'Executive Director', 'Monthly'],
@@ -1466,17 +1478,21 @@ def build_part1():
         '6–17) with a primary diagnosis of mental illness, emotional '
         'disturbance, or substance-related disorder, who do not meet '
         'inpatient psychiatric criteria but require removal from the home '
-        'and treatment in a staff-secure residential setting. The program '
-        'is designed to serve youth with severe emotional disturbance '
-        '(SED) who require intensive, active therapeutic treatment within '
-        'a system-of-care approach. Admission criteria are documented in '
+        'and treatment in a Level III Residential Treatment Facility '
+        '(hardware-secure, intensive clinical). The program is designed '
+        'to serve youth with severe emotional disturbance (SED) whose '
+        'clinical acuity exceeds what can be safely managed in a less '
+        'restrictive Level I or Level II residential setting, and who '
+        'require intensive, active therapeutic treatment within a '
+        'system-of-care approach. Admission criteria are documented in '
         'SOP §3.1 and the Screening and Access Policy (Plan 12).'
     ))
     story.append(Paragraph('<b>11.3 Service Array.</b>', s_h2))
     story.append(para('The program provides the following services:'))
     story.extend(bullets([
-        '<b>Residential care</b> — 24-hour supervised living in a Level '
-        'III Staff-Secure facility (SOP §9);',
+        '<b>Residential treatment</b> — 24-hour intensive residential '
+        'treatment in a Level III RTF (hardware-secure) licensed under '
+        '10A NCAC 27G .1703 (SOP §9);',
         '<b>Clinical services</b> — individual therapy, group therapy, '
         'family therapy, and clinical assessments (SOP §4);',
         '<b>Psychiatric medication management</b> — psychiatric evaluation, '
@@ -1517,26 +1533,46 @@ def build_part1():
         'Clinical Director, Qualified Professional (QP), Associated '
         'Professionals (APs), Direct Care Professionals (DCPs) on day, '
         'evening, and awake-overnight shifts, House Manager, Registered '
-        'Nurse (RN), and Billing Coordinator. Staffing ratios comply '
-        'with the Level III Staff-Secure operating standards, including '
-        'continuous supervision and awake overnight staff per .1701(b) '
-        'and .1704. The QP provides clinical supervision per §1.4(a) and '
-        '§2.2(a). A Licensed Professional provides minimum 4 hours per '
-        'week face-to-face clinical consultation per §4.6 and Form 10.'
+        'Nurse (RN), and Billing Coordinator. Staffing ratios comply with '
+        'the Level III RTF operating standards under 10A NCAC 27G .1703, '
+        'including a minimum 1:4 direct-care staff-to-resident ratio '
+        'during waking hours (1:3 for high-acuity residents on line-of-'
+        'sight supervision), and a minimum 1:8 ratio overnight with at '
+        'least one awake DCP at all times. A Licensed Professional (LP) '
+        'is on-site a minimum of 16 hours per day, 7 days per week, with '
+        'on-call LP coverage outside those hours. A board-certified '
+        'psychiatrist provides on-site coverage per the medication-'
+        'management schedule and is on call 24/7 for psychiatric '
+        'emergencies. A Registered Nurse (RN) is on-site or on call 24/7 '
+        'for medical and medication-related needs. The QP provides '
+        'clinical supervision per §1.4(a) and §2.2(a). A Licensed '
+        'Professional provides minimum 4 hours per week face-to-face '
+        'clinical consultation per §4.6 and Form 10.'
     ))
     story.append(Paragraph('<b>11.6 Physical Environment.</b>', s_h2))
     story.append(para(
         'The facility is a free-standing residential treatment facility '
-        'designed and licensed as Level III Staff-Secure for children '
-        'and adolescents. Physical-plant requirements are documented in '
-        'SOP §9. The facility includes: resident bedrooms (single or '
-        'double occupancy per licensing standards); communal dining and '
-        'living areas; kitchen and food-storage areas; clinical offices '
-        'and therapy rooms; a quiet room (not used for seclusion); '
-        'medication storage area (double-locked per SOP §6.3(c)); '
-        'laundry facilities; outdoor recreation area; and administrative '
-        'offices. The facility complies with NFPA 101 Life Safety Code, '
-        'ADA accessibility standards, and state fire/building codes.'
+        'designed and licensed as a Level III Residential Treatment '
+        'Facility (Hardware-Secure) under 10A NCAC 27G .1703 for '
+        'children and adolescents. Physical-plant requirements are '
+        'documented in SOP §9. The facility includes: resident bedrooms '
+        '(single or double occupancy per licensing standards); communal '
+        'dining and living areas; kitchen and food-storage areas; '
+        'clinical offices and therapy rooms; a quiet room / de-escalation '
+        'room (not used for seclusion — seclusion is prohibited under '
+        'the organization\'s restraint-and-seclusion-minimization policy '
+        'per SOP §5); medication storage area (double-locked per SOP '
+        '§6.3(c)); laundry facilities; outdoor recreation area with '
+        'controlled-egress perimeter; and administrative offices. '
+        'Hardware-secure features include staff-controlled egress doors '
+        '(key-card or staff-activated release), alarmed perimeter doors '
+        'and windows, 24-hour video monitoring of common areas and '
+        'exterior approaches (not in bedrooms, bathrooms, or therapy '
+        'rooms to protect privacy), and a secured visitor-entry '
+        'vestibule. The facility complies with NFPA 101 Life Safety '
+        'Code, ADA accessibility standards, and state fire/building '
+        'codes, including the hardware-secure facility requirements '
+        'under .1703.'
     ))
     story.append(Paragraph('<b>11.7 Hours of Operation.</b>', s_h2))
     story.append(para(
@@ -1677,8 +1713,12 @@ def build_part1():
         'SOP §3.1. The QP evaluates: (a) age (6–17); (b) primary '
         'diagnosis (mental illness, emotional disturbance, or '
         'substance-related disorder); (c) clinical acuity (does not '
-        'meet inpatient criteria but requires staff-secure residential '
-        'treatment); (d) medical stability (no acute medical condition '
+        'meet inpatient criteria but requires the Level III RTF level '
+        'of care — i.e., hardware-secure, intensive clinical services '
+        'with 24-hour on-site Licensed Professional availability and '
+        'psychiatric on-call, and whose acuity exceeds what can be '
+        'safely managed in a less restrictive Level I or II setting); '
+        '(d) medical stability (no acute medical condition '
         'requiring hospital-level care); (e) behavioral history '
         '(no pattern of sexual aggression requiring a specialized '
         'program); (f) cognitive functioning (IQ ≥ 50, sufficient to '

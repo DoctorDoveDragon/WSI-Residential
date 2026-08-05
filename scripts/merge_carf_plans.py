@@ -37,7 +37,7 @@ def main():
         '/Author':   'Well Spring Intervention LLC',
         '/Creator':  'Z.ai',
         '/Producer': 'http://z.ai',
-        '/Subject':  'CARF CYS 2026 Inaugural Accreditation Conformance Plan Portfolio (Rev. 1.0)',
+        '/Subject':  'CARF CYS 2026 Inaugural Accreditation Conformance Plan Portfolio (Rev. 1.1)',
         '/Keywords': 'CARF, CYS, 2026, Inaugural Accreditation, Conformance Plans, Strategic Plan, '
                      'Stakeholder Input, Legal Compliance, Financial, ERM, Workforce, Accessibility, '
                      'Performance Measurement, Telehealth, Quality Records',
@@ -48,7 +48,7 @@ def main():
 
     size_kb = os.path.getsize(VERSIONED) / 1024
     print(f'Final PDF: {VERSIONED}')
-    print(f'  ({size_kb:.1f} KB, {len(writer.pages)} pages, Rev. 1.0)')
+    print(f'  ({size_kb:.1f} KB, {len(writer.pages)} pages, Rev. 1.1)')
 
 
 if __name__ == '__main__':
