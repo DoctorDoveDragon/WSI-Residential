@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>WSI CARF CYS 2026 Conformance Plans Cover</title>
+<style>
+@page { size: 794px 1123px; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  width: 794px; height: 1123px;
+  background: #2a1f1a;
+  font-family: 'Times New Roman', 'Liberation Serif', serif;
+  color: #f4f4f3;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.poster {
+  position: relative;
+  width: 794px; height: 1123px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(149, 91, 62, 0.18) 0%, transparent 45%),
+    radial-gradient(circle at 80% 80%, rgba(171, 81, 37, 0.12) 0%, transparent 50%),
+    linear-gradient(180deg, #2a1f1a 0%, #3a2c24 100%);
+}
+
+/* ─── Top band ─── */
+.top-band {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  padding: 60px 60px 0 60px;
+  text-align: center;
+}
+.kicker {
+  display: inline-block;
+  font-family: 'Liberation Sans', 'Helvetica', sans-serif;
+  font-size: 11px;
+  letter-spacing: 5px;
+  font-weight: 600;
+  color: #d8a376;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border: 1px solid #6b4d3f;
+  border-radius: 2px;
+  background: rgba(107, 77, 63, 0.18);
+}
+.tagline {
+  margin-top: 16px;
+  font-family: 'Liberation Sans', 'Helvetica', sans-serif;
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: #beb0a9;
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+/* ─── Center seal square ─── */
+.seal-square {
+  position: absolute;
+  top: 230px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 360px;
+  height: 360px;
+  background: #f4f0e8;
+  border-radius: 8px;
+  box-shadow:
+    0 0 0 8px #2a1f1a,
+    0 0 0 9px #6b4d3f,
+    0 30px 60px rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.seal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ─── Title band ─── */
+.title-band {
+  position: absolute;
+  top: 640px;
+  left: 0; right: 0;
+  text-align: center;
+  padding: 0 60px;
+}
+.title-main {
+  font-family: 'Liberation Serif', 'Times New Roman', serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #f4f4f3;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+}
+.title-accent {
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #ab5125;
+  margin: 40px auto 40px auto;
+}
+.subtitle {
+  font-family: 'Liberation Sans', 'Helvetica', sans-serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: #beb0a9;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-top: 24px;
+}
+
+/* ─── Scope pill ─── */
+.scope-pill {
+  position: absolute;
+  top: 850px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 24px;
+  background: rgba(171, 81, 37, 0.22);
+  border: 1px solid #ab5125;
+  border-radius: 100px;
+  font-family: 'Liberation Sans', 'Helvetica', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #f4f4f3;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* ─── Plan count summary ─── */
+.summary {
+  position: absolute;
+  top: 920px;
+  left: 0; right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  padding: 0 60px;
+}
+.summary-item {
+  text-align: center;
+  min-width: 100px;
+}
+.summary-num {
+  font-family: 'Liberation Serif', 'Times New Roman', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #d8a376;
+  line-height: 1;
+}
+.summary-label {
+  margin-top: 6px;
+  font-family: 'Liberation Sans', 'Helvetica', sans-serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #beb0a9;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* ─── Bottom metadata ─── */
+.bottom-meta {
+  position: absolute;
+  bottom: 60px;
+  left: 60px; right: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: 1px solid #6b4d3f;
+  padding-top: 18px;
+}
+.meta-block {
+  font-family: 'Liberation Sans', 'Helvetica', sans-serif;
+}
+.meta-label {
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: #beb0a9;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+.meta-value {
+  font-size: 12px;
+  color: #f4f4f3;
+  font-weight: 500;
+}
+
+/* ─── Doc ID footer ─── */
+.doc-id {
+  position: absolute;
+  bottom: 24px;
+  left: 0; right: 0;
+  text-align: center;
+  font-family: 'Liberation Sans', 'Helvetica', sans-serif;
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: #6b5145;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <div class="top-band">
+    <div class="kicker">CARF · CYS 2026 · Conformance Plans</div>
+    <div class="tagline">Empowerment · Growth · Freedom · Health · Wholeness · Healing</div>
+  </div>
+
+  <div class="seal-square">
+    <img src="/home/z/my-project/download/Well_Spring_Logo_Circular_Seal_Square.png" class="seal-img" alt="Well Spring Intervention LLC Seal">
+  </div>
+
+  <div class="title-band">
+    <div class="title-main">CARF CYS 2026<br>Conformance Plan Portfolio</div>
+    <span class="title-accent"></span>
+    <div class="subtitle">Written Policies · Plans · Procedures</div>
+  </div>
+
+  <div class="scope-pill">Inaugural One-Year Accreditation · 2026 CYS Standards</div>
+
+  <div class="summary">
+    <div class="summary-item">
+      <div class="summary-num">15</div>
+      <div class="summary-label">Written Plans</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-num">38</div>
+      <div class="summary-label">Standards Crosswalk</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-num">25</div>
+      <div class="summary-label">Performance KPIs</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-num">16</div>
+      <div class="summary-label">Risk Categories</div>
+    </div>
+  </div>
+
+  <div class="bottom-meta">
+    <div class="meta-block">
+      <div class="meta-label">Prepared For</div>
+      <div class="meta-value">Well Spring Intervention LLC</div>
+    </div>
+    <div class="meta-block" style="text-align: center;">
+      <div class="meta-label">Effective Date</div>
+      <div class="meta-value">August 2026</div>
+    </div>
+    <div class="meta-block" style="text-align: right;">
+      <div class="meta-label">Document ID</div>
+      <div class="meta-value">WSI-CARF-PLANS-001 · Rev. 1.0</div>
+    </div>
+  </div>
+
+  <div class="doc-id">Confidential — Internal Use Only · Companion to SOP Manual Rev. 2.24</div>
+
+</div>
+</body>
+</html>

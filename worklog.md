@@ -3448,3 +3448,50 @@ Stage Summary:
   * /home/z/my-project/scripts/merge_sop.py — patched (MANUAL_VERSION='2.24')
 - 16 CARF CYS 2026 conformance gaps closed via new §12 framework with 21 subsections and new Form 12
 - Ready for QP/Executive Director review and (if approved) submission to CARF for Inaugural One-Year Accreditation survey. Recommended next steps: (1) QP to develop the written Strategic Plan, Stakeholder Input Plan, Legal Compliance Plan, Financial Plan, Enterprise Risk Register, Workforce Development Plan, Accessibility & Nondiscrimination Plan, Performance Measurement Plan, Program Description, Screening & Access Policy, Quality Records Review Procedure, and Telehealth Policy referenced in §12.1-§12.18; (2) QP to charter the standing Health & Safety Committee per §12.6; (3) QP to develop the written crosswalk to 2026 CYS Standards Manual Sections 3-5 per §12.19; (4) QP to order the full 2026 CYS Standards Manual from www.carf.org/catalog; (5) QP to consult with CARF resource specialist per Step 2 of the 2026 CYS Inaugural Accreditation Guidelines; (6) QP to submit the Inaugural Accreditation survey application via Customer Connect per Step 4 prior to six months of service delivery.
+
+---
+Task ID: SOP-57
+Agent: main (Super Z)
+Task: Produce the fifteen written plans referenced in SOP §12.1–§12.19 of the SOP Manual v2.24 — the underlying policy/plan/procedure artifacts required to demonstrate CARF CYS 2026 Inaugural Accreditation conformance.
+
+Work Log:
+- Identified the 15 plan artifacts required by SOP §12 framework: Strategic Plan (§12.1), Stakeholder Input Plan (§12.2), Legal Compliance Plan (§12.3), Financial Plan (§12.4), Enterprise Risk Management Plan (§12.5), Health & Safety Committee Charter (§12.6), Workforce Development Plan (§12.7), Resident Rights Policy Compilation (§12.8), Accessibility & Nondiscrimination Plan (§12.9), Performance Measurement Plan (§12.10), Program Description (§12.11), Screening and Access Policy (§12.12), Quality Records Review Procedure (§12.17), Telehealth & ICT Service Delivery Policy (§12.18), Sections 3-5 Standards Crosswalk (§12.19).
+- Loaded the pdf skill via Skill(command="pdf"). Read briefs/report.md for ReportLab Report production workflow. Reused the SOP Manual v2.24 palette/typography/helpers via direct import from generate_sop.py for brand consistency (same FreeSerif/NotoSerifSC fonts, same HEADER_FILL #6b4d3f / ACCENT #ab5125 palette, same s_h1/s_h2/s_body/s_bullet/s_callout paragraph styles, same std_table helper).
+- Wrote /home/z/my-project/scripts/carf_plans_content.py (2,181 lines) — content module with build_part1() that produces all 15 plans as one continuous story. Each plan has: section_heading + ref_line + Purpose + Scope + multiple substantive subsections (each ≥150 words) + Responsible Parties + Review Schedule + Approval signature block (4-signature table for Executive Director, Clinical Director, QP, Compliance Officer). Plans 5, 10, and 15 include detailed tables (Enterprise Risk Register with 16 risk rows × 7 cols; Performance Measurement with 25 KPIs × 6 cols; Sections 3-5 Crosswalk with 38 rows × 4 cols).
+- Wrote /home/z/my-project/scripts/generate_carf_plans.py (228 lines) — generation script. Imports helpers from generate_sop.py. Defines custom header/footer (DOC_TITLE_SHORT = 'CARF CYS 2026 Conformance Plans — Rev. 1.0'). Builds About This Portfolio page (15-plan contents list) + auto-TOC + 15 plan chapters via TocDocTemplate.multiBuild.
+- Wrote /home/z/my-project/scripts/carf_plans_cover.html — cover HTML using brand seal (Well_Spring_Logo_Circular_Seal_Square.png) on dark walnut-brown background, with kicker badge, values tagline, hero title "CARF CYS 2026 Conformance Plan Portfolio", subtitle "Written Policies · Plans · Procedures", scope pill (Inaugural One-Year Accreditation · 2026 CYS Standards), 4-item summary block (15 Plans / 38 Standards Crosswalk / 25 Performance KPIs / 16 Risk Categories), and bottom metadata (Prepared For / Effective Date / Document ID).
+- Iteratively fixed cover overlap errors detected by cover_validate.js (4 iterations): title-accent margin 18px → 28px → 40px (cleared text-line gap); scope-pill position 800px → 825px → 850px (cleared subtitle-pill overlap); summary position 870px → 895px → 920px. All cover_validate.js checks pass (0 errors).
+- Fixed helper-function misuse: replaced 9 instances of `story.append(bullets([...]))` with `story.extend(bullets([...]))` (bullets() returns a list, not a single Flowable).
+- Rendered cover via html2poster.js → carf_plans_cover.pdf (5.0 MB, single A4 page).
+- Wrote /home/z/my-project/scripts/merge_carf_plans.py — merges cover + body with A4 mediabox normalization and PDF metadata.
+- Generated final PDF: /home/z/my-project/download/WSI_CARF_CYS_2026_Conformance_Plans.pdf (48 pages, 5.18 MB, Rev. 1.0).
+- Verified via pdftotext extraction: All 15 plan headings present in TOC at expected pages (Plan 1 p.6, Plan 2 p.9, Plan 3 p.11, Plan 4 p.14, Plan 5 p.17, Plan 6 p.20, Plan 7 p.23, Plan 8 p.27, Plan 9 p.30, Plan 10 p.33, Plan 11 p.36, Plan 12 p.39, Plan 13 p.42, Plan 14 p.44, Plan 15 p.47). About This Portfolio contents list shows all 15 plans with §12.x cross-references.
+- Ran pdf_qa.py --skip-cover: 12/12 checks PASS (Title/Author/Creator metadata present, page size consistent, no blank pages, all fonts embedded, no content overflow, content fill ratio adequate, cover full-bleed, margins symmetric, table centering complete, TOC populated). 5 minor warnings on em-dash line-start punctuation (acceptable for prose).
+
+Stage Summary:
+- Final deliverable: /home/z/my-project/download/WSI_CARF_CYS_2026_Conformance_Plans.pdf — 48 pages, 5.18 MB, Rev. 1.0 (August 2026)
+- Contains 15 fully-developed written plans, each with Purpose/Scope/Policy/Procedure/Responsible Parties/Review Schedule/4-signature Approval block:
+    Plan 1 — Strategic Plan (3-year goals, mission/vision/values, environmental analysis, succession planning)
+    Plan 2 — Stakeholder Input Plan (4 input methods, "You Said / We Did" feedback loop, non-retaliation)
+    Plan 3 — Legal Compliance Plan (Compliance Officer designation, Legal Compliance Register, annual review)
+    Plan 4 — Financial Plan (annual budget, capital reserve, internal controls, audit, resident trust funds)
+    Plan 5 — Enterprise Risk Management Plan (16-row Enterprise Risk Register, business-continuity plan)
+    Plan 6 — Health & Safety Committee Charter (6-member standing committee, monthly meetings, 9 written policies)
+    Plan 7 — Workforce Development Plan (recruiting, orientation curriculum, annual training, position descriptions, performance evaluation, succession)
+    Plan 8 — Resident Rights Policy Compilation (11 rights, grievance procedure, audit and trend reporting)
+    Plan 9 — Accessibility & Nondiscrimination Plan (nondiscrimination, language access, reasonable accommodation, physical accessibility)
+    Plan 10 — Performance Measurement Plan (25-KPI table across 7 domains: access, PCP, outcomes, safety, personnel, financial, experience)
+    Plan 11 — Program Description (populations served, service array, philosophy, staffing, physical environment, hours, referral/intake, cultural competency, external coordination, PCP process, discharge/transition, records)
+    Plan 12 — Screening and Access Policy (referral intake, screening criteria, admission decision, waitlist, emergency access, denial appeals, LME/MCO coordination, nondiscrimination, access data tracking)
+    Plan 13 — Quality Records Review Procedure (quarterly Form 8 audits, 10 review criteria, trend analysis, corrective action, retention/confidentiality)
+    Plan 14 — Telehealth & ICT Service Delivery Policy (eligible services, technology platforms, informed consent, training, technology failure procedures, privacy, emergency procedures, documentation, payer coordination)
+    Plan 15 — CARF CYS 2026 Sections 3-5 Standards Crosswalk (38-row crosswalk mapping standards to written policies, with gap-remediation commitment for standards not yet addressed)
+- Each plan includes a 4-signature Approval block (Executive Director, Clinical Director, QP, Compliance Officer) — sign and date to activate as written policy
+- Brand-aligned with SOP Manual v2.24 (same palette, typography, paragraph styles, header/footer pattern)
+- Companion to SOP Manual v2.24 §12 CARF Accreditation Conformance Framework
+- Persistent source scripts:
+    /home/z/my-project/scripts/carf_plans_content.py (2,181 lines) — 15 plan content module
+    /home/z/my-project/scripts/generate_carf_plans.py (228 lines) — body PDF generator
+    /home/z/my-project/scripts/carf_plans_cover.html — cover HTML source
+    /home/z/my-project/scripts/merge_carf_plans.py — cover+body merger
+- Ready for Executive Director / Clinical Director / QP / Compliance Officer review and signature. Recommended next steps: (1) distribute to the four approving officers for review and signature; (2) following approval, post the signed Plans in the compliance binder; (3) QP to begin operational implementation (charter the Health & Safety Committee per Plan 6, develop the Legal Compliance Register per Plan 3, populate the Enterprise Risk Register per Plan 5, build the Performance Measurement data-collection infrastructure per Plan 10); (4) QP to order the full 2026 CYS Standards Manual from carf.org/catalog to complete the Section 3-5 crosswalk per Plan 15; (5) coordinate with CARF resource specialist to schedule the Inaugural Accreditation survey and present this portfolio as primary evidence of organizational readiness.
