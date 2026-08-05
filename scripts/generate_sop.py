@@ -98,7 +98,7 @@ AVAIL_W = PAGE_W - LEFT_M - RIGHT_M  # ~440pt
 # ────────────────────────────────────────────────────────────────────
 SELF_REF = (
     'Well Spring Intervention LLC SOP &amp; Operational Manual '
-    '(Doc. WSI-SOP-001, Rev. 2.23, Aug 2026 — Legislation-Free Public Edition)'
+    '(Doc. WSI-SOP-001, Rev. 2.24, Aug 2026 — Legislation-Free Public Edition)'
 )
 
 # ────────────────────────────────────────────────────────────────────
@@ -603,7 +603,7 @@ def form_usage_banner(form_number=None):
 # ────────────────────────────────────────────────────────────────────
 # Header / footer (drawn via onPage callback)
 # ────────────────────────────────────────────────────────────────────
-DOC_TITLE_SHORT = 'Standard Operating Procedure & Operational Manual — Rev. 2.22 (Public Edition)'
+DOC_TITLE_SHORT = 'Standard Operating Procedure & Operational Manual — Rev. 2.24 (Public Edition)'
 DOC_ORG = 'Well Spring Intervention LLC'
 
 def draw_header_footer(canvas, doc):
@@ -634,7 +634,7 @@ def draw_header_footer(canvas, doc):
 
 # ────────────────────────────────────────────────────────────────────
 # Content builders — Version 2.0 (RMDM-Compliant, July 2026)
-# 11 SOP sections + 21 protocols + 9 forms + version history
+# 12 SOP sections + 22 protocols + 12 forms + version history
 # Content lives in separate modules for maintainability.
 # Imports are deferred to inside build() to avoid circular imports.
 # ────────────────────────────────────────────────────────────────────
@@ -660,7 +660,7 @@ def build():
         title='Well Spring Intervention LLC — SOP & Operational Manual',
         author='Well Spring Intervention LLC',
         creator='Z.ai',
-        subject='Level 3 Supervised Residential Group Home — Standard Operating Procedures (Rev. 2.23 Legislation-Free Public Edition)',
+        subject='Level 3 Supervised Residential Group Home — Standard Operating Procedures (Rev. 2.24 Legislation-Free Public Edition)',
         keywords='SOP, residential group home, Level 3, operations manual, trauma-informed care, RMDM, HIPAA',
     )
 
@@ -675,7 +675,7 @@ def build():
     story.append(HRFlowable(width=80, color=ACCENT, thickness=2, spaceBefore=2, spaceAfter=14))
 
     story.append(Paragraph(
-        'This manual (Rev. 2.23, August 2026) is the official Standard Operating '
+        'This manual (Rev. 2.24, August 2026) is the official Standard Operating '
         'Procedures and Operational Reference for <b>Well Spring Intervention LLC</b>, '
         'a Level 3 Supervised Residential Group Home serving children and '
         'adolescents with mental health and behavioral challenges. It establishes '
@@ -691,7 +691,7 @@ def build():
     story.append(Paragraph('<b>Service Type.</b> Level 3 Supervised Residential Group Home.', s_body))
     story.append(Paragraph('<b>Effective Date.</b> July 2026.', s_body))
     story.append(Paragraph('<b>Document Owner.</b> Executive Director &amp; Qualified Professional (QP).', s_body))
-    story.append(Paragraph('<b>Document ID.</b> Doc. WSI-SOP-001, Rev. 2.23 (Legislation-Free Public Edition). <i>The companion compliance master (Doc. WSI-SOP-001-LEG, Rev. 2.21) retains all statutory and regulatory citations for QA and audit reference.</i>', s_body))
+    story.append(Paragraph('<b>Document ID.</b> Doc. WSI-SOP-001, Rev. 2.24 (Legislation-Free Public Edition). <i>The companion compliance master (Doc. WSI-SOP-001-LEG, Rev. 2.21) retains all statutory and regulatory citations for QA and audit reference.</i>', s_body))
     story.append(Spacer(1, 10))
 
     # Regulatory framework (operational language — legislation retained in compliance master)
@@ -757,18 +757,19 @@ def build():
     story.append(Paragraph('Table of Contents', s_toc_title))
     story.append(HRFlowable(width=80, color=ACCENT, thickness=2, spaceBefore=2, spaceAfter=12))
     story.append(Paragraph(
-        'This manual (Rev. 2.23, August 2026) is organized into three parts and is fully '
+        'This manual (Rev. 2.24, August 2026) is organized into three parts and is fully '
         'compliant with the NCDHHS Records Management and Documentation Manual (RMDM, '
         'Effective July 8, 2025). Part 1 establishes foundational policies and compliance '
-        'obligations across eleven sections, including dedicated chapters on '
+        'obligations across twelve sections, including dedicated chapters on '
         'privacy/confidentiality and an expanded Medicaid documentation section. '
         'Part 2 details twenty-two step-by-step workflows that govern daily operations, '
         'including protocols for service orders/authorizations and record '
-        'management/disclosure accounting. Part 3 provides nine customized forms '
+        'management/disclosure accounting. Part 3 provides twelve customized forms '
         'and logs, including the Full Service Note Template, Comprehensive Clinical '
         'Record Content Checklist, Accounting of Disclosures Log, the Licensed '
-        'Professional Consultation Log (new in v2.23), and the Psychotropic Medication '
-        'Drug Regimen Review Log (new in v2.23). A complete revision history appears '
+        'Professional Consultation Log (new in v2.23), the Psychotropic Medication '
+        'Drug Regimen Review Log (new in v2.23), and the CARF QIP Tracker (new in '
+        'v2.24). A complete revision history appears '
         'in the Version History table at the end of Part 3.',
         s_toc_intro
     ))

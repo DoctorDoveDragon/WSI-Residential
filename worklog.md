@@ -3376,3 +3376,75 @@ Stage Summary:
   * 1 Low: F-011 (.1702(a) cross-reference clarification note)
 - Additional legislation stripping applied per audit strip-flag findings (28 findings catalogued in audit; key replacements applied for §1.2/§3.1/§2.1/§6.3; remaining strip-flag items were already addressed in v2.22 Public Edition)
 - Ready for QP/Executive Director review and (if approved) release to staff. Recommended next steps: (1) QP to review the new §4.6 / §6.3(a) / §3.6 / §2.2(a) policies and the new Form 10 / Form 11 for operational feasibility; (2) QP to contract with a Licensed Professional (internal or external) for the weekly 4-hour face-to-face consultation per §4.6; (3) QP to establish a pharmacy or physician relationship for the 6-month psychotropic drug regimen reviews per §6.3(a); (4) re-run the audit against v2.23 to confirm closure of all 22 findings before next DHSR survey.
+
+---
+Task ID: SOP-56
+Agent: main (Super Z)
+Task: Apply CARF CYS 2026 Inaugural Accreditation conformance fixes to the SOP Manual. User uploaded the "2026 CYS Inaugural Accreditation Guidelines 1.pdf" to /upload/ — audit existing SOP v2.23 against the 2026 CARF Child and Youth Services (CYS) Inaugural Accreditation Guidelines and apply fixes (bump to v2.24).
+
+Work Log:
+- Read /home/z/my-project/upload/2026 CYS Inaugural Accreditation Guidelines 1.pdf via pdftotext (695 lines). Identified applicable standards:
+  * Subsection A (Not Operational) covers: Section 1 ASPIRE to Excellence (1.A Leadership, 1.C Strategic Planning, 1.D Input from Persons Served, 1.E Legal Requirements, 1.F Financial Planning, 1.G Risk Management, 1.H Health & Safety, 1.I Workforce Development, 1.J Rights of Persons Served, 1.K Accessibility, 1.L Performance Management); Section 2 General Program Standards (2.A Program/Service Structure, 2.B Screening & Access, 2.C Individualized Planning, 2.D Transition/Discharge, 2.E Medication Use, 2.F Promoting Nonviolent Practices, 2.G Records of Persons Served, 2.H Quality Records Management, 2.I Service Delivery Using ICT); Sections 3-5 Core Program Standards, Core Residential Program Standards, and Specialty Designation Standards.
+  * Subsection B (Operational) excludes some subparts if service delivery has commenced.
+- Read existing SOP v2.23 source modules to map coverage:
+  * sop_content_v3.py (2245 lines) — SOPs 1-11 (Agency Overview, HR/Staffing, Admissions, Clinical Services, Behavioral Mgmt, Health/Medication, Education, Incident Reporting, Facility/Safety, Medicaid Documentation, Privacy/Records). Existing §1.2(a) Accreditation Prerequisite mentions CARF as one of four accrediting bodies (COA/TJC/CARF/CQL) but does not designate a selected body.
+  * sop_content_v3_part2.py (507 lines) — 22 Protocols including Protocol 22 Daily Workflow Schedules.
+  * sop_content_v3_part3.py (907 lines) — 11 Forms (Forms 1-11) + Version History (24 prior versions).
+  * generate_sop.py (791 lines) — body PDF generator with SELF_REF, subject metadata, About This Manual, TOC, header/footer drawer.
+  * merge_sop.py (101 lines) — cover + body merger with MANUAL_VERSION constant.
+- Identified gaps in SOP v2.23 relative to CARF CYS 2026 standards:
+  * GAP-1: No designated accrediting body in §1.2(a) — CARF must be designated
+  * GAP-2: No written Strategic Plan policy (1.C)
+  * GAP-3: No Stakeholder Input Plan (1.D)
+  * GAP-4: No Legal Compliance Plan / Compliance Officer designation (1.E)
+  * GAP-5: No Financial Plan / capital reserve / internal controls (1.F)
+  * GAP-6: No Enterprise Risk Register / business-continuity plan (1.G)
+  * GAP-7: No standing Health & Safety Committee charter (1.H)
+  * GAP-8: No written Workforce Development Plan / orientation curriculum / annual training plan (1.I)
+  * GAP-9: No Accessibility & Nondiscrimination Plan / language-access plan (1.K)
+  * GAP-10: No Performance Measurement Plan with KPIs (1.L)
+  * GAP-11: No written Program Description / mock chart (2.A)
+  * GAP-12: No written Screening & Access Policy (2.B)
+  * GAP-13: No Quality Records Review Procedure (2.H)
+  * GAP-14: No Telehealth & Technology-Mediated Service Delivery Policy (2.I)
+  * GAP-15: No QIP submission process per 2026 CYS Guidelines Step 9
+  * GAP-16: No §3-5 standards crosswalk
+- Wrote /home/z/my-project/scripts/patch_sop_v224.py (834 lines) — applies 6 surgical patches:
+  * Patch 1: Rewrites §1.2(a) to designate CARF as the selected accrediting body, references the 2026 CYS Inaugural Accreditation Guidelines, documents Inaugural Accreditation pathway eligibility, references §12 framework. (1 location in sop_content_v3.py)
+  * Patch 2: Appends new SOP §12 "CARF Accreditation Conformance Framework" with 21 subsections (§12.0 Purpose & Scope + §12.1-§12.20) covering every applicable standard area: Leadership/Strategic Plan, Stakeholder Input, Legal Compliance, Financial Plan, Enterprise Risk Register, Health & Safety Committee, Workforce Development, Resident Rights, Accessibility/Nondiscrimination, Performance Measurement, Program Description, Screening/Access, Individualized Planning crosswalk, Transition/Discharge crosswalk, Medication Use crosswalk, Promoting Nonviolent crosswalk, Records Management, Telehealth, Sections 3-5 crosswalk, and QIP per Step 9. Each subsection has a substantial paragraph (≥150 words) describing the required written plan/policy/procedure. (1 location in sop_content_v3.py)
+  * Patch 3: Adds new Form 12 "CARF QIP Tracker" — 8-column fillable AcroForm table (Rec # / Survey Report Recommendation / Corrective Action / Responsible Position / Target Date / Evidence of Implementation / Status / Date Closed-Reported to CARF), 10 rows for tracking recommendations, plus Organization/Accreditation Cycle header fields, Survey Exit Date / Notification Date / QIP Due Date fields, QP/Executive Director signature fields, and QIP Approval block + Subsequent Resurvey Window tracking. (1 location in sop_content_v3_part3.py before Version History)
+  * Patch 4: Adds v2.24 row to Version History table summarizing all changes (CARF designation, §12 framework, Form 12, cross-references to existing SOPs). (1 location in sop_content_v3_part3.py)
+  * Patch 5: Bumps version refs in generate_sop.py — SELF_REF (2.23→2.24), subject metadata, About This Manual paragraph, Document ID line, TOC intro, TOC intro section count (eleven→twelve sections), TOC intro forms count (nine→twelve forms + add Form 12 note), comment header (11/21/9→12/22/12), DOC_TITLE_SHORT (Rev. 2.22→Rev. 2.24). (8 patches in generate_sop.py)
+  * Patch 6: Bumps MANUAL_VERSION in merge_sop.py (2.23→2.24) and updates keywords (v2.23 audit remediation → v2.24 CARF CYS accreditation conformance). (2 patches in merge_sop.py)
+- Fixed a syntax error in Form 12 patch (trailing comma in tuple) via direct Edit.
+- Fixed callout() signature mismatch (function takes (label, lines_list) not (label_str,)) by restructuring the SOP §12 cross-reference callout to use list-of-lines form.
+- Regenerated SOP body PDF via `python3 generate_sop.py` → sop_body.pdf (84 body pages, multiBuild for auto-TOC).
+- Merged cover + body via `python3 merge_sop.py` → final PDF: /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.24_Public-Edition.pdf (85 pages, 5.96 MB). LATEST pointer updated.
+- Verified all patches via pdftotext extraction:
+  * §1.2(a) reads "Accreditation Prerequisite & Selected Accrediting Body" and designates CARF / 2026 CYS Standards Manual / Inaugural One-Year Accreditation pathway
+  * §12 "CARF Accreditation Conformance Framework" appears in TOC at page 41
+  * All 21 subsections (§12.0-§12.20) present and well-formed (each ≥150 words)
+  * Form 12 "CARF QIP Tracker" appears in TOC at page 71
+  * Form 12 has all 8 expected table columns + 10 fillable rows + QIP Approval block + Subsequent Resurvey Window tracking
+  * Version History v2.24 row present with full change summary
+  * 134 "Rev. 2.24" references in the final PDF
+  * 0 stale "Rev. 2.22 (Public Edition)" or "Rev. 2.23 (Public Edition)" footer references
+  * All syntax checks pass on patched source files
+
+Stage Summary:
+- Final deliverable: /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.24_Public-Edition.pdf — 85 pages, 5.96 MB, legislation-free Public Edition with full CARF CYS 2026 Inaugural Accreditation conformance framework
+- LATEST pointer: /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_LATEST.pdf (now points to v2.24)
+- v2.23 Public Edition retained at /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.23_Public-Edition.pdf (immutable archive)
+- v2.21 RMDM-Compliant legislated master retained at /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.21_RMDM-Compliant.pdf (compliance/QA reference)
+- Companion audit deliverables retained:
+  * /home/z/my-project/download/WSI_SOP_v2.22_Compliance_Audit_Report.pdf (64 pages, audit findings + revision roadmap)
+  * /home/z/my-project/download/WSI_SOP_v2.22_Compliance_Audit_Crosswalk.xlsx (4 sheets)
+- Source PDF retained at /home/z/my-project/upload/2026 CYS Inaugural Accreditation Guidelines 1.pdf
+- Persistent source scripts:
+  * /home/z/my-project/scripts/patch_sop_v224.py — main patch script (6 surgical patches across 4 files)
+  * /home/z/my-project/scripts/sop_content_v3.py — patched (§1.2(a) rewrite + SOP §12 CARF framework appended)
+  * /home/z/my-project/scripts/sop_content_v3_part3.py — patched (Form 12 + v2.24 version history row)
+  * /home/z/my-project/scripts/generate_sop.py — patched (v2.24 version refs + section/form count updates)
+  * /home/z/my-project/scripts/merge_sop.py — patched (MANUAL_VERSION='2.24')
+- 16 CARF CYS 2026 conformance gaps closed via new §12 framework with 21 subsections and new Form 12
+- Ready for QP/Executive Director review and (if approved) submission to CARF for Inaugural One-Year Accreditation survey. Recommended next steps: (1) QP to develop the written Strategic Plan, Stakeholder Input Plan, Legal Compliance Plan, Financial Plan, Enterprise Risk Register, Workforce Development Plan, Accessibility & Nondiscrimination Plan, Performance Measurement Plan, Program Description, Screening & Access Policy, Quality Records Review Procedure, and Telehealth Policy referenced in §12.1-§12.18; (2) QP to charter the standing Health & Safety Committee per §12.6; (3) QP to develop the written crosswalk to 2026 CYS Standards Manual Sections 3-5 per §12.19; (4) QP to order the full 2026 CYS Standards Manual from www.carf.org/catalog; (5) QP to consult with CARF resource specialist per Step 2 of the 2026 CYS Inaugural Accreditation Guidelines; (6) QP to submit the Inaugural Accreditation survey application via Customer Connect per Step 4 prior to six months of service delivery.

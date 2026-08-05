@@ -1,0 +1,302 @@
+     1→     1→"""
+     2→     2→audit_findings.py — Single source of truth for the Well Spring Intervention
+     3→     3→SOP Manual v2.22 compliance audit against 10A NCAC 27G .1700 + core rules.
+     4→     4→
+     5→     5→Each finding is a dict with:
+     6→     6→  id          — F-001 etc. (gaps) or M-001 etc. (met/exceeds)
+     7→     7→  rule        — Rule subsection citation (e.g. ".1701(a)", ".0209(f)")
+     8→     8→  rule_title  — Short rule title (e.g. "SCOPE — Free-standing facility")
+     9→     9→  rule_text   — Verbatim rule text quoted from 10A NCAC 27G source
+    10→    10→  sop_loc     — SOP Manual v2.22 location (e.g. "§2.1", "Protocol 13")
+    11→    11→  sop_quote   — Quote or paraphrase of what the SOP currently says
+    12→    12→  status      — Met / Met-Exceeds / Partial / Gap / Contradicts / N/A
+    13→    13→  severity    — Critical / High / Medium / Low / Info
+    14→    14→  strip_flag  — Y/N — does this finding involve statutory text to strip from public edition?
+    15→    15→  strip_note  — specific text to strip + plain-language replacement
+    16→    16→  finding     — Detailed finding narrative (≥150 words for High+)
+    17→    17→  remediation — Concrete corrective action with target revision
+    18→    18→
+    19→    19→This module is consumed by:
+    20→    20→  - generate_audit_pdf.py  → audit report PDF (ReportLab)
+    21→    21→  - generate_audit_xlsx.py → crosswalk matrix XLSX (openpyxl)
+    22→    22→"""
+    23→    23→
+    24→    24→# ─── Severity legend ────────────────────────────────────────────────────────
+    25→    25→SEVERITY_LEGEND = {
+    26→    26→    "Critical": "License-blocking, safety risk, or Medicaid fraud exposure. Must be remediated before next survey.",
+    27→    27→    "High":     "Direct rule violation with regulatory or billing impact. Remediate in next revision.",
+    28→    28→    "Medium":   "Partial compliance or documentation gap. Remediate within 1-2 revision cycles.",
+    29→    29→    "Low":      "Clarification or stylistic inconsistency. Remediate opportunistically.",
+    30→    30→    "Info":     "Confirmed compliance or note. No action required.",
+    31→    31→}
+    32→    32→
+    33→    33→STATUS_LEGEND = {
+    34→    34→    "Met":         "SOP addresses the rule fully and accurately.",
+    35→    35→    "Met-Exceeds": "SOP addresses the rule and imposes a stricter standard (defensible).",
+    36→    36→    "Partial":     "SOP addresses the rule but is missing one or more elements.",
+    37→    37→    "Gap":         "SOP does not address the rule.",
+    38→    38→    "Contradicts": "SOP states something inconsistent with the rule (in either direction).",
+    39→    39→    "N/A":         "Rule does not apply to this facility type.",
+    40→    40→}
+    41→    41→
+    42→    42→# ─── Findings ───────────────────────────────────────────────────────────────
+    43→    43→FINDINGS = [
+    44→    44→    # ═══════════════════════════════════════════════════════════════════════
+    45→    45→    # SECTION A — .1700 Residential Treatment Staff Secure
+    46→    46→    # ═══════════════════════════════════════════════════════════════════════
+    47→    47→
+    48→    48→    # .1701 SCOPE
+    49→    49→    dict(
+    50→    50→        id="M-001",
+    51→    51→        rule=".1701(a)",
+    52→    52→        rule_title="SCOPE — Free-standing residential facility, not primary residence",
+    53→    53→        rule_text='"A residential treatment staff secure facility for children or adolescents is one that is a free-standing residential facility that provides intensive, active therapeutic treatment and interventions within a system of care approach. It shall not be the primary residence of an individual who is not a client of the facility."',
+    54→    54→        sop_loc="§1.2(g)(i) — NC Medicaid RTS Taxonomy: Setting Type",
+    55→    55→        sop_quote='The facility is licensed under state mental health law by NC DHSR MHLC — not under state law Chapter 131D by DSS, which licenses foster-care family homes. The facility therefore does not, and cannot, operate as a family-home placement for any youth at any time.',
+    56→    56→        status="Met",
+    57→    57→        severity="Info",
+    58→    58→        strip_flag="Y",
+    59→    59→        strip_note='Strip "NC DHSR MHLC", "state law Chapter 131D", "DSS" citations; replace with "licensed under the applicable state mental health authority — not under foster-care licensing — and therefore does not operate as a family-home placement."',
+    60→    60→        finding=(
+    61→    61→            "The SOP Manual v2.22 correctly characterizes the facility as a free-standing residential treatment facility that is not a family-home placement. "
+    62→    62→            "Section 1.2(g)(i) explicitly cross-references .1701(a) and explains the program-setting-only taxonomy under NC Medicaid Clinical Coverage Policy 8D-2. "
+    63→    63→            "The SOP quote tracks the rule text verbatim in substance, and the operational implementation — admission criteria in §3.1 exclude family-home placements, "
+    64→    64→            "staffing ratios in §2.1 reflect a 24/7 program setting, and discharge planning in §3.4 transitions youth to less-restrictive settings rather than returning them to a primary residence at the facility — "
+    65→    65→            "is consistent with the rule. No corrective action required. The only strip-flag work is removing the statutory citations from the public edition per the user's legislation-stripping directive."
+    66→    66→        ),
+    67→    67→        remediation="No operational change. Strip statutory citations in v2.23 per Section E of the audit report.",
+    68→    68→    ),
+    69→    69→    dict(
+    70→    70→        id="M-002",
+    71→    71→        rule=".1701(b)",
+    72→    72→        rule_title="SCOPE — Staff secure means awake during sleep hours, continuous supervision per .1704",
+    73→    73→        rule_text='"Staff secure means staff are required to be awake during client sleep hours and supervision shall be continuous as set forth in Rule .1704 of this Section."',
+    74→    74→        sop_loc="§2.1 Staffing Ratios — Staff-Secure Level III; Protocol 13; Protocol 22(e) DCP Awake Overnight",
+    75→    75→        sop_quote='Under .1700, this Level III Staff-Secure facility shall maintain a minimum of two (2) staff members on duty and awake at all times for every one to four (1-4) children in residence, on every shift including the overnight shift. … Sleeping is strictly prohibited. 15-minute visual room checks are documented on the Night Watch Log (Form 1).',
+    76→    76→        status="Met-Exceeds",
+    77→    77→        severity="Info",
+    78→    78→        strip_flag="Y",
+    79→    79→        strip_note='Strip ".1700" citation; replace with "Under the Level III Staff-Secure operating standards, this facility shall maintain…"',
+    80→    80→        finding=(
+    81→    81→            "The SOP exceeds the .1701(b) minimum by requiring BOTH overnight staff to be awake for 1-4 youth, whereas .1704(c)(1) only requires ONE of the two present staff to be awake. "
+    82→    82→            "This stricter standard is defensible because it provides redundancy: if one overnight staff becomes incapacitated or distracted, a second awake staff member remains available to respond. "
+    83→    83→            "The continuous-supervision requirement is operationally implemented via 15-minute line-of-sight room checks documented on Form 1 (Shift Change & Awake Night Watch Log), with a Per-Floor Walk-Through Certification sub-table for two-story facilities. "
+    84→    84→            "Protocol 22(e) codifies the awake overnight DCP schedule from 11p-7a with specific time-blocked room-check cadence. No corrective action required."
+    85→    85→        ),
+    86→    86→        remediation="No operational change. Strip statutory citations in v2.23.",
+    87→    87→    ),
+    88→    88→    dict(
+    89→    89→        id="M-003",
+    90→    90→        rule=".1701(c)",
+    91→    91→        rule_title="SCOPE — Population served (children/adolescents with MI/ED/SUD; not inpatient)",
+    92→    92→        rule_text='"The population served shall be children or adolescents who have a primary diagnosis of mental illness, emotional disturbance or substance-related disorders; and may also have co-occurring disorders including developmental disabilities. These children or adolescents shall not meet criteria for inpatient psychiatric services."',
+    93→    93→        sop_loc="§3.1 Admission Criteria; §1.1 Mission Statement",
+    94→    94→        sop_quote='The program serves youth with a primary mental health or behavioral diagnosis requiring supervised living, who are medically stable, and whose clinical needs can be safely met in a Level III Staff-Secure setting. Exclusions include active psychosis requiring Involuntary Commitment (IVC), medical instability, or fire-setting that cannot be safely managed.',
+    95→    95→        status="Met",
+    96→    96→        severity="Info",
+    97→    97→        strip_flag="Y",
+    98→    98→        strip_note='Strip "Involuntary Commitment (IVC)" legal term; replace with "acute psychiatric crisis requiring inpatient hospitalization."',
+    99→    99→        finding=(
+   100→   100→            "Admission criteria in §3.1 directly track .1701(c): primary mental health or behavioral diagnosis, medical stability (proxy for not meeting inpatient criteria), "
+   101→   101→            "and explicit exclusion of active psychosis requiring involuntary commitment. The population-served statement in §1.1 (children and adolescents with mental health and behavioral challenges) "
+   102→   102→            "aligns with the rule. The exclusion list also appropriately addresses fire-setting and medical instability, which are operational safety exclusions rather than rule violations. "
+   103→   103→            "Co-occurring developmental disabilities are not explicitly addressed in §3.1; the QP should consider adding a sentence acknowledging that youth with co-occurring IDD may be admitted "
+   104→   104→            "provided their clinical needs can be met in a Level III Staff-Secure setting, mirroring the rule's permissive language."
+   105→   105→        ),
+   106→   106→        remediation="Optional v2.23 enhancement: add co-occurring IDD acknowledgment sentence to §3.1.",
+   107→   107→    ),
+   108→   108→    dict(
+   109→   109→        id="M-004",
+   110→   110→        rule=".1701(d)",
+   111→   111→        rule_title="SCOPE — Removal from home + staff-secure setting required",
+   112→   112→        rule_text='The children or adolescents served shall require: (1) removal from home to a community-based residential setting in order to facilitate treatment; and (2) treatment in a staff secure setting.',
+   113→   113→        sop_loc="§3.1 Admission Criteria",
+   114→   114→        sop_quote='The program serves youth with a primary mental health or behavioral diagnosis requiring supervised living, who are medically stable, and whose clinical needs can be safely met in a Level III Staff-Secure setting.',
+   115→   115→        status="Met",
+   116→   116→        severity="Info",
+   117→   117→        strip_flag="N",
+   118→   118→        strip_note="No statutory citation to strip; rule-text language is operational.",
+   119→   119→        finding=(
+   120→   120→            "§3.1 implicitly requires both elements: 'requiring supervised living' addresses the removal-from-home requirement, and 'Level III Staff-Secure setting' addresses the staff-secure requirement. "
+   121→   121→            "The QP documents the admission decision in the clinical record per §3.1, including verification that the youth's clinical needs cannot be safely met in a less restrictive setting. "
+   122→   122→            "However, the SOP does not explicitly use the phrase 'removal from home' or 'community-based residential setting' from the rule. To improve audit defensibility, the QP should consider "
+   123→   123→            "adding an explicit admission criterion mirroring the rule's two-prong test, so a surveyor can immediately verify both elements are documented at admission."
+   124→   124→        ),
+   125→   125→        remediation="Optional v2.23 enhancement: add explicit two-prong admission criterion to §3.1 mirroring .1701(d)(1)-(2).",
+   126→   126→    ),
+   127→   127→    dict(
+   128→   128→        id="M-005",
+   129→   129→        rule=".1701(e)",
+   130→   130→        rule_title="SCOPE — Services designed: supervision, behavior minimization, safety, adaptive functioning, step-down",
+   131→   131→        rule_text=(
+   132→   132→            'Services shall be designed to: (1) include individualized supervision and structure of daily living; '
+   133→   133→            '(2) minimize the occurrence of behaviors related to functional deficits; '
+   134→   134→            '(3) ensure safety and deescalate out of control behaviors including frequent crisis management with or without physical restraint; '
+   135→   135→            '(4) assist the child or adolescent in the acquisition of adaptive functioning in self-control, communication, social and recreational skills; and '
+   136→   136→            '(5) support the child or adolescent in gaining the skills needed to step-down to a less intensive treatment setting.'
+   137→   137→        ),
+   138→   138→        sop_loc="§1.1 Mission; §5.5 Activities Program (14 hrs/wk); §5.3 BSP; §4.3 PCP; §3.4 Discharge & Transition",
+   139→   139→        sop_quote='§5.5 provides each youth with a documented activities program of no fewer than 14 hours per week of planned group activities that promote socialization, physical activity, and creative expression. §5.3 BSP includes proactive strategies, replacement skills, de-escalation steps, and crisis responses.',
+   140→   140→        status="Met-Exceeds",
+   141→   141→        severity="Info",
+   142→   142→        strip_flag="Y",
+   143→   143→        strip_note='Strip ".1701(e)" and ".1700" citations from §5.5; replace with "Per the Level III Staff-Secure operating standards…".',
+   144→   144→        finding=(
+   145→   145→            "All five .1701(e) service-design elements are operationalized in the SOP: "
+   146→   146→            "(e)(1) individualized supervision and structure of daily living is implemented via Protocol 22 (Daily Workflow Schedules for All Personnel) and the 2:4 staffing ratio; "
+   147→   147→            "(e)(2) minimizing behaviors related to functional deficits is implemented via §5.2 Behavioral Support Plan based on Functional Behavioral Assessment; "
+   148→   148→            "(e)(3) ensuring safety and de-escalating out-of-control behaviors is implemented via §5.3 Restraint policy, Protocol 4 (Behavioral Crisis & Restraint Protocol), and Protocol 8 (Suicide Risk); "
+   149→   149→            "(e)(4) acquisition of adaptive functioning in self-control, communication, social and recreational skills is implemented via §5.5 Activities Program (14 hrs/wk minimum, exceeding any rule minimum) with explicit activity categories (physical, creative, socialization/life-skills, community integration); "
+   150→   150→            "(e)(5) step-down to less intensive setting is implemented via §3.4 Discharge & Transition (planning initiated at admission, 30-day reviews, trial home visits). "
+   151→   151→            "No corrective action required."
+   152→   152→        ),
+   153→   153→        remediation="No operational change. Strip statutory citations in v2.23.",
+   154→   154→    ),
+   155→   155→    dict(
+   156→   156→        id="M-006",
+   157→   157→        rule=".1701(f)",
+   158→   158→        rule_title="SCOPE — Coordination with system of care",
+   159→   159→        rule_text='"The residential treatment staff secure facility shall coordinate with other individuals and agencies within the child or adolescent\'s system of care."',
+   160→   160→        sop_loc="§1.4 Organizational Structure; §4.3 PCP Development; §7.3 Facility-Based School Determination; Protocol 15 Educational Coordination",
+   161→   161→        sop_quote='§4.3: Within 30 calendar days of admission, the QP facilitates a PCP meeting including the youth, guardian, LME/MCO representative, and other supports identified by the family.',
+   162→   162→        status="Met",
+   163→   163→        severity="Info",
+   164→   164→        strip_flag="Y",
+   165→   165→        strip_note='Strip "LME/MCO" abbreviation; replace with "the regional managed care organization representative."',
+   166→   166→        finding=(
+   167→   167→            "System-of-care coordination is implemented through multiple SOP mechanisms: PCP meetings with guardian, LME/MCO representative, and family-identified supports (§4.3); "
+   168→   168→            "educational coordination with the LEA McKinney-Vento liaison or EC Director (Protocol 15); family engagement and visitation (Protocol 16); "
+   169→   169→            "discharge planning that establishes community linkages (Protocol 17); and DSS notification for abuse allegations (Protocol 3). "
+   170→   170→            "The QP is the designated care-coordination lead per §1.4. No corrective action required."
+   171→   171→        ),
+   172→   172→        remediation="No operational change. Strip statutory abbreviations in v2.23.",
+   173→   173→    ),
+   174→   174→
+   175→   175→    # .1702 QP REQUIREMENTS
+   176→   176→    dict(
+   177→   177→        id="M-007",
+   178→   178→        rule=".1702(a)",
+   179→   179→        rule_title="QP REQUIREMENTS — At least one QP direct care staff + 2 years direct client care experience",
+   180→   180→        rule_text='"Each facility shall utilize at least one direct care staff who meets the requirements of a qualified professional as set forth in 10A NCAC 27G .0104(18). In addition, this qualified professional shall have two years of direct client care experience."',
+   181→   181→        sop_loc="§1.4(b) QP Credentialing Requirements",
+   182→   182→        sop_quote='Pathway 1: master\'s degree in a human services field plus a recognized NC credential plus at least one year of full-time, post-master\'s supervised MH/DD/SA experience. Pathway 2: bachelor\'s degree in a human services field plus two years of full-time, pre- or post-bachelor\'s supervised MH/DD/SA experience.',
+   183→   183→        status="Partial",
+   184→   184→        severity="Medium",
+   185→   185→        strip_flag="Y",
+   186→   186→        strip_note='Strip "10A NCAC 27G .0104(18)" citation (note: rule cross-references .0104(18) "Psychiatrist" but appears to intend .0104(21) "Qualified professional" — see F-011); replace with "meets the qualified professional definition per facility policy." Also strip "NC credential" specifics.',
+   187→   187→        finding=(
+   188→   188→            "The SOP correctly defines the QP pathways per .0104(21), but the rule's cross-reference to .0104(18) is a likely typographical error in the rule itself — .0104(18) is the 'Psychiatrist' definition, not the 'Qualified Professional' definition. "
+   189→   189→            "The substantive QP definition is at .0104(21), which the SOP correctly follows. The SOP's Pathway 1 requires 1 year of post-master's supervised experience, but .1702(a) additionally requires 2 years of direct client care experience "
+   190→   190→            "for the QP serving in the .1702 role. The SOP does not explicitly state the 2-year direct client care experience requirement on top of the .0104(21) pathway requirements. This is a Medium severity gap: a Pathway 1 QP with only 1 year of post-master's experience "
+   191→   191→            "would satisfy .0104(21)(b) but not .1702(a)'s additional 2-year requirement. The QP should add an explicit sentence to §1.4(b) confirming that the designated .1702 QP also has 2 years of direct client care experience."
+   192→   192→        ),
+   193→   193→        remediation="v2.23: Add to §1.4(b) an explicit statement that the designated facility QP also meets the .1702(a) 2-year direct client care experience requirement (in addition to the .0104(21) pathway).",
+   194→   194→    ),
+   195→   195→    dict(
+   196→   196→        id="M-008",
+   197→   197→        rule=".1702(b)-(c)",
+   198→   198→        rule_title="QP REQUIREMENTS — 10 hrs/wk (≤5 beds) or 32 hrs/wk (≥6 beds); 70% during awake hours",
+   199→   199→        rule_text=(
+   200→   200→            '(b) For each facility of five or less beds: (1) the qualified professional specified in Paragraph (a) of this Rule shall perform clinical and administrative responsibilities a minimum of 10 hours each week; and (2) 70% of the time shall occur when children or adolescents are awake and present in the facility. '
+   201→   201→            '(c) For each facility of six or more beds: (1) the qualified professional specified in Paragraph (a) of this Rule shall perform clinical and administrative responsibilities a minimum of 32 hours each week; and (2) 70% of the time shall occur when children or adolescents are awake and present in the facility.'
+   202→   202→        ),
+   203→   203→        sop_loc="§1.4 Organizational Structure; Protocol 22(a) QP Daily Workflow",
+   204→   204→        sop_quote='Protocol 22(a): QP on-site 7:00 AM to 9:30 PM float schedule, on-call 24/7/365. §1.4: An On-Call QP is available 24/7/365 for clinical decision-making.',
+   205→   205→        status="Met-Exceeds",
+   206→   206→        severity="Info",
+   207→   207→        strip_flag="N",
+   208→   208→        strip_note="No statutory citation to strip; this is an operational standard.",
+   209→   209→        finding=(
+   210→   210→            "The facility is licensed for up to 9 youth (per §2.1 note), placing it in the .1702(c) 'six or more beds' category requiring 32 hours of QP time per week with 70% during awake hours. "
+   211→   211→            "Protocol 22(a) shows the QP on-site from 7:00 AM to 9:30 PM (14.5 hours) on weekdays, plus on-call coverage 24/7/365. At 14.5 hrs/day × 5 days = 72.5 hrs/wk on-site, the SOP vastly exceeds the 32-hour minimum. "
+   212→   212→            "All on-site hours occur during awake youth hours (7a-9:30p), exceeding the 70% requirement. The QP also provides clinical services during weekend on-call rotations. "
+   213→   213→            "No corrective action required. The SOP should consider adding an explicit statement that the QP meets/exceeds the 32-hour weekly minimum and 70% awake-hours requirement for documentation clarity."
+   214→   214→        ),
+   215→   215→        remediation="Optional v2.23: add explicit weekly hour and awake-% statement to §1.4 or Protocol 22(a).",
+   216→   216→    ),
+   217→   217→    dict(
+   218→   218→        id="M-009",
+   219→   219→        rule=".1702(d)(1)-(6)",
+   220→   220→        rule_title="QP REQUIREMENTS — Written policies specifying QP clinical/admin responsibilities (6 items)",
+   221→   221→        rule_text=(
+   222→   222→            'The governing body responsible for each facility shall develop and implement written policies that specify the clinical and administrative responsibilities of its qualified professional(s). At a minimum these policies shall include: '
+   223→   223→            '(1) supervision of its associate professional(s) as set forth in Rule .1703 of this Section; '
+   224→   224→            '(2) oversight of emergencies; '
+   225→   225→            '(3) provision of direct psychoeducational services to children or adolescents; '
+   226→   226→            '(4) participation in treatment planning meetings; '
+   227→   227→            '(5) coordination of each child or adolescent\'s treatment plan; and '
+   228→   228→            '(6) provision of basic case management functions.'
+   229→   229→        ),
+   230→   230→        sop_loc="§1.4 Organizational Structure; §1.4(a) QP Compliance Reporting to the Clinical Director",
+   231→   231→        sop_quote='§1.4: The QP is responsible for scheduling clinical services, assessments, PCPs, and day-to-day supervision of APs and DCPs according to the direction of the Clinical Director. §1.4(a): monthly IRIS incident-report status, quarterly audits, ad-hoc breach/complaint/audit reporting.',
+   232→   232→        status="Met",
+   233→   233→        severity="Info",
+   234→   234→        strip_flag="N",
+   235→   235→        strip_note="No statutory citation to strip.",
+   236→   236→        finding=(
+   237→   237→            "All six .1702(d) QP responsibility items are addressed in the SOP: "
+   238→   238→            "(1) supervision of APs is in §1.4 (QP supervises APs and DCPs) and §1.4(a) (quarterly personnel-file audits); "
+   239→   239→            "(2) oversight of emergencies is in §1.4 (On-Call QP 24/7) and Protocol 3 (Incident Response); "
+   240→   240→            "(3) direct psychoeducational services is in Protocol 22(a) (QP clinical block 9a-12p and 1p-3p includes individual therapy, family collateral calls); "
+   241→   241→            "(4) participation in treatment planning meetings is in §4.3 (QP facilitates PCP meeting); "
+   242→   242→            "(5) coordination of each youth's treatment plan is in §1.4 and Protocol 10 (PCP Implementation & Review); "
+   243→   243→            "(6) basic case management functions are in Protocol 15 (Educational Coordination), Protocol 16 (Family Engagement), Protocol 17 (Discharge & Transition). "
+   244→   244→            "No corrective action required."
+   245→   245→        ),
+   246→   246→        remediation="No operational change.",
+   247→   247→    ),
+   248→   248→
+   249→   249→    # .1703 AP REQUIREMENTS
+   250→   250→    dict(
+   251→   251→        id="M-010",
+   252→   252→        rule=".1703(a)",
+   253→   253→        rule_title="AP REQUIREMENTS — At least one full-time AP per .0104(1)",
+   254→   254→        rule_text='"In addition to the qualified professional specified in Rule .1702 of this Section, each facility shall have at least one full-time direct care staff who meets or exceeds the requirements of an associate professional as set forth in 10A NCAC 27G .0104(1)."',
+   255→   255→        sop_loc="§2.2 Staff Qualifications (AP bullet); Protocol 22(b) AP/PP Daily Workflow",
+   256→   256→        sop_quote='§2.2 APs: Bachelor\'s in human services with at least one year of relevant experience. Protocol 22(b): APs and PPs provide direct behavioral-health services under QP supervision per §2.2. They carry a 1:4 youth-supervision ratio on day or evening shift.',
+   257→   257→        status="Met",
+   258→   258→        severity="Info",
+   259→   259→        strip_flag="Y",
+   260→   260→        strip_note='Strip "10A NCAC 27G .0104(1)" citation; replace with "meets the associate professional definition per facility policy."',
+   261→   261→        finding=(
+   262→   262→            "The SOP §2.2 AP definition aligns with .0104(1)(b) (bachelor's degree in human services field with less than two years of post-bachelor's MH/DD/SA experience). "
+   263→   263→            "Protocol 22(b) confirms the AP works full-time (7a-11p rotating schedule, 14.5 hrs/day × 5 days = 72.5 hrs/wk). "
+   264→   264→            "However, the SOP does not explicitly state that the AP position is full-time. To improve audit defensibility, the QP should add 'full-time' to the §2.2 AP bullet. "
+   265→   265→            "The AP supervision requirement (.0104(1)(b) requires QP supervision until 2 years of experience) is partially addressed in §1.4 (QP supervises APs) but the SOP does not explicitly state the supervision-plan requirement."
+   266→   266→        ),
+   267→   267→        remediation="v2.23: Add 'full-time' qualifier to §2.2 AP bullet. Address F-006 (AP individualized supervision plan).",
+   268→   268→    ),
+   269→   269→    dict(
+   270→   270→        id="M-011",
+   271→   271→        rule=".1703(b)(1)-(3)",
+   272→   272→        rule_title="AP REQUIREMENTS — Written policies specifying AP responsibilities (3 items)",
+   273→   273→        rule_text=(
+   274→   274→            'The governing body responsible for each facility shall develop and implement written policies that specify the responsibilities of its associate professional(s). At a minimum these policies shall address the following: '
+   275→   275→            '(1) management of the day to day operations of the facility; '
+   276→   276→            '(2) supervision of paraprofessionals regarding responsibilities related to the implementation of each child or adolescent\'s treatment plan; and '
+   277→   277→            '(3) participation in service planning meetings.'
+   278→   278→        ),
+   279→   279→        sop_loc="§1.4; Protocol 22(b) AP/PP Daily Workflow",
+   280→   280→        sop_quote='Protocol 22(b): APs lead or co-lead skill-building groups, individual check-ins, group therapy, family visitation support, documentation block.',
+   281→   281→        status="Partial",
+   282→   282→        severity="Medium",
+   283→   283→        strip_flag="N",
+   284→   284→        strip_note="No statutory citation to strip.",
+   285→   285→        finding=(
+   286→   286→            "The SOP addresses .1703(b)(1) (day-to-day operations) and .1703(b)(3) (participation in service planning meetings) through Protocol 22(b). "
+   287→   287→            "However, .1703(b)(2) — explicit AP supervision of paraprofessionals regarding treatment-plan implementation — is not clearly stated. "
+   288→   288→            "Protocol 22(b) shows APs leading groups and conducting check-ins, but the supervisory relationship between APs and paraprofessional DCPs is not codified. "
+   289→   289→            "This is a Medium severity gap. The SOP should add an explicit statement that APs supervise paraprofessional DCPs regarding the implementation of each youth's PCP/BSP. "
+   290→   290→            "This gap is related to F-006 (.0203(f) individualized supervision plan for APs) and F-007 (.0204(f) individualized supervision plan for paraprofessionals)."
+   291→   291→        ),
+   292→   292→        remediation="v2.23: Add to §1.4 or §2.2 an explicit statement that APs supervise paraprofessional DCPs regarding PCP/BSP implementation, and add individualized supervision plan requirements per F-006 and F-007.",
+   293→   293→    ),
+   294→   294→
+   295→   295→    # .1704 MINIMUM STAFFING
+   296→   296→    dict(
+   297→   297→        id="M-012",
+   298→   298→        rule=".1704(a)",
+   299→   299→        rule_title="MINIMUM STAFFING — QP available by phone/page; direct care staff within 30 minutes",
+   300→   300→        rule_text='"A qualified professional shall be available by telephone or page. A direct care staff shall be able to reach the facility within 30 minutes at all times."',
+
+[showing lines 1-300 of 1305; use offset=301 with limit to continue reading]

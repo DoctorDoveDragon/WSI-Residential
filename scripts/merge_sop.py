@@ -28,7 +28,7 @@ A4_W, A4_H = 595.28, 841.89
 # ── Version tracking ─────────────────────────────────────────────────
 # Bump this when content materially changes. The versioned filename is
 # derived from this string; it is also embedded in the PDF /Subject.
-MANUAL_VERSION = '2.23'
+MANUAL_VERSION = '2.24'
 MANUAL_VERSION_SUFFIX = 'Public-Edition'   # short descriptor; "" for none
 
 # ── Source / output paths ────────────────────────────────────────────
@@ -80,7 +80,7 @@ def main():
         '/Creator':  'Z.ai',
         '/Producer': 'http://z.ai',
         '/Subject':  subject_str,
-        '/Keywords': 'SOP, residential group home, Level 3, operations manual, trauma-informed care, RMDM, HIPAA, 42 CFR Part 2, E-SIGN, Electronic Signatures, fillable forms, daily workflow schedules, legislation-free public edition, v2.23 audit remediation',
+        '/Keywords': 'SOP, residential group home, Level 3, operations manual, trauma-informed care, RMDM, HIPAA, 42 CFR Part 2, E-SIGN, Electronic Signatures, fillable forms, daily workflow schedules, legislation-free public edition, v2.24 CARF CYS accreditation conformance',
     })
 
     # Write the versioned file

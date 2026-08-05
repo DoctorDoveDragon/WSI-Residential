@@ -796,6 +796,78 @@ def build_part3():
     ))
     story.append(Spacer(1, 12))
 
+    # ── Form 12: CARF QIP Tracker (NEW in v2.24) ──
+    story.extend(_form_banner_and_heading(
+        12, 'CARF QIP Tracker',
+        'Part 3 &middot; Form 12: CARF QIP Tracker',
+        external_ref='2026 CYS Inaugural Accreditation Guidelines Step 9 — Quality Improvement Plan (QIP) due to CARF within 90 days of accreditation notification (§12.20)',
+        instructions='Document each recommendation from the Inaugural Accreditation survey report and the corrective action '
+                     'taken or planned, per §12.20. One row per recommendation. The QP submits the QIP to CARF within 90 days '
+                     'of accreditation notification and updates CARF through Customer Connect as actions are completed. '
+                     'Maintain in the compliance binder for the duration of the accreditation cycle. Click any cell to type.',
+    ))
+    story.append(fillable_meta_row([
+        ('Organization:', 220, 'Well Spring Intervention LLC'),
+        ('Accreditation Cycle:', 200, '2026 CYS Inaugural One-Year'),
+    ]))
+    story.append(Spacer(1, 4))
+    story.append(fillable_meta_row([
+        ('Survey Exit Date:', 160, 'Date of survey exit conference'),
+        ('Accreditation Notification Date:', 220, 'Date CARF notified accreditation decision'),
+        ('QIP Due Date (90 days):', 160, '90 days after notification'),
+    ]))
+    story.append(Spacer(1, 4))
+    story.append(fillable_meta_row([
+        ('QP Name:', 200, 'QP name'),
+        ('Executive Director:', 220, 'Executive Director name'),
+    ]))
+    story.append(Spacer(1, 4))
+    story.append(Paragraph('<b>QIP Action Tracker</b>', s_form_section))
+
+    f12_header = [
+        'Rec #', 'Survey Report Recommendation (verbatim)', 'Corrective Action Taken or Planned',
+        'Responsible Position', 'Target Completion Date', 'Evidence of Implementation at Resurvey',
+        'Status', 'Date Closed / Reported to CARF',
+    ]
+    f12_th = ParagraphStyle('f12th', fontName=BODY_BOLD, fontSize=8, leading=10, textColor=colors.white, alignment=TA_LEFT)
+    f12_data = [[Paragraph(f'<b>{h}</b>', f12_th) for h in f12_header]]
+    for _ in range(10):
+        f12_data.append(_fillable_data_cells(8, default_width=55, height=32, font_size=8))
+    f12_widths = [
+        0.05*AVAIL_W, 0.18*AVAIL_W, 0.18*AVAIL_W, 0.10*AVAIL_W,
+        0.10*AVAIL_W, 0.17*AVAIL_W, 0.08*AVAIL_W, 0.14*AVAIL_W,
+    ]
+    t12 = Table(f12_data, colWidths=f12_widths, hAlign='CENTER', repeatRows=1)
+    sc12 = [
+        ('BACKGROUND', (0, 0), (-1, 0), HEADER_FILL),
+        ('GRID',       (0, 0), (-1, -1), 0.4, BORDER),
+        ('VALIGN',     (0, 0), (-1, -1), 'MIDDLE'),
+        ('LEFTPADDING',  (0, 0), (-1, -1), 3),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 3),
+        ('TOPPADDING',   (0, 0), (-1, -1), 8),
+        ('BOTTOMPADDING',(0, 0), (-1, -1), 8),
+    ]
+    for i in range(1, len(f12_data)):
+        bg = TABLE_ROW_ODD if i % 2 == 1 else TABLE_ROW_EVEN
+        sc12.append(('BACKGROUND', (0, i), (-1, i), bg))
+    t12.setStyle(TableStyle(sc12))
+    story.append(t12)
+    story.append(Spacer(1, 8))
+    story.append(Paragraph(
+        '<b>QIP Approval:</b> Submitted to CARF via Customer Connect on: __________ &nbsp; '
+        '<b>Executive Director Signature:</b> ___________________________ &nbsp; '
+        '<b>Date:</b> __________ &nbsp; <b>QP Signature:</b> ___________________________',
+        s_form_meta
+    ))
+    story.append(Spacer(1, 4))
+    story.append(Paragraph(
+        '<b>Subsequent Resurvey Window (10–11 months after Inaugural survey):</b> __________ &nbsp; '
+        '<b>Subsequent Survey Application Submitted?</b> ☐ Yes &nbsp; ☐ No &nbsp; '
+        '<b>Subsequent Survey Fee Paid (≥50%)?</b> ☐ Yes &nbsp; ☐ No',
+        s_form_meta
+    ))
+    story.append(Spacer(1, 12))
+
     # ── Version History ────────────────────────────────────────────
     story.append(Spacer(1, 18))
     story.append(section_heading(10, 'Version History'))
@@ -874,6 +946,9 @@ def build_part3():
          'Executive Director / QP'],
         ['2.23', 'Aug 2026',
          '<b>v2.22 COMPLIANCE AUDIT REMEDIATION.</b> Implements all 22 corrective actions from the SOP Manual v2.22 Compliance Audit against 10A NCAC 27G .1700 + cross-referenced core rules (.0104, .0201–.0210). <b>HIGH severity (3):</b> F-001 — adds new §4.6 Licensed Professional Face-to-Face Clinical Consultation per .1705(a)-(b) (minimum 4 hrs/wk face-to-face consultation by a Licensed Professional) and new Form 10 (Licensed Professional Consultation Log); F-002 — adds new §6.3(a) Psychotropic Medication Drug Regimen Review per .0209(f) (every 6 months by pharmacist or physician) and new Form 11 (Psychotropic Medication Drug Regimen Review Log); F-003 — <b>RESOLVES the open §1.2(h)(b) compliance flag</b> in favor of CCP 8D-2; all legacy "CCP 8C" references in §1.2, §2, §3, §4, §5, §6, and §10 reference lines globally updated to "CCP 8D-2"; §1.2(h)(b) rewritten from OPEN to RESOLVED; §1.2(h)(c) updated to reflect both (a) and (b) now resolved. <b>MEDIUM severity (18):</b> M-007 — adds QP 2-year direct client care experience statement to §1.4(b); F-006/F-007/M-011/M-028/M-029 — adds new §2.2(a) Individualized Supervision Plans for APs and DCPs and expands AP definition to enumerate all four .0104(1) pathways; M-033 — adds age-18, literacy, and criminal-conviction self-disclosure requirements to §2.2; F-009 — adds new §3.6 18th-Birthday Continuation Policy per .1706(e) (up to 6 months or end of school year, whichever is longer); M-025 — adds §3.4(a) 7-day advance written notification for non-emergency discharge; M-026 — adds §3.4(b) pre-discharge CFT meeting; F-008 — adds §3.4(c) 5-business-day post-emergency service-planning meeting per .1708(e); M-031 — adds governing-body policies for client fee assessment, lab test authorization/follow-up, and volunteer services to §1.8; M-032 — adds governing-body minutes permanently maintained statement to §1.8; M-038 — updates §9.2 and Protocol 19 to require quarterly fire AND tornado drills for EACH shift (day, evening, overnight); F-012 — adds §6.3(b) Medication Receipt &amp; Verification (tamper-resistant packaging + label content); M-043 — adds §6.3(c) Medication Storage (locked cabinet 59–86°F, dedicated med fridge 36–46°F, daily temp log on Form 5); F-013 — adds §6.3(d) Medication Disposal Documentation per .0209(d)(1)-(4) (controlled-substance disposal witnessed by 2 staff); F-014 — adds §6.3(e) Medication Education per .0209(g)(1)-(3) (at admission, at each med change, and quarterly thereafter, with developmentally appropriate content and family/guardian education offered). <b>LOW severity (1):</b> F-011 — adds new §1.2(h)(d) Cross-Reference Clarification Note documenting the .1702(a) → .0104(18) vs .0104(21) discrepancy (rule appears to contain a typographical error; Manual applies the .0104(21) "Qualified professional" definition as operative). <b>LEGISLATION STRIPPING (additional):</b> §1.2 license paragraph de-abbreviates "NC DHSR / MHLC / DSS" to "the applicable state mental health authority — not under foster-care licensing"; §3.1 admission criteria replaces "Involuntary Commitment (IVC)" with "acute psychiatric crisis requiring inpatient hospitalization"; §2.1 note replaces ".0103(14)" citation and "DHSR MHLC" with plain-language "state group-home definition" and "state-issued license"; §6.3 replaces "NC Medication Administration training" with "state-approved medication administration training"; §6.3 replaces "IRIS" abbreviation with "state incident-reporting system (IRIS)" on first use. Companion audit report and XLSX crosswalk matrix delivered at /download/WSI_SOP_v2.22_Compliance_Audit_Report.pdf and /download/WSI_SOP_v2.22_Compliance_Audit_Crosswalk.xlsx.',
+         'Executive Director / QP'],
+        ['2.24', 'Aug 2026',
+         '<b>CARF CYS 2026 INAUGURAL ACCREDITATION CONFORMANCE.</b> Implements conformance to the applicable standards in the <b>2026 CARF Child and Youth Services (CYS) Standards Manual</b> at the time of an <b>Inaugural One-Year Accreditation survey</b>, per the <b>2026 CYS Inaugural Accreditation Guidelines</b> (effective July 1, 2026 – June 30, 2027). §1.2(a) rewritten to designate <b>CARF as the selected accrediting body</b> and to document Inaugural Accreditation pathway eligibility (program will have delivered services for less than six months at the time of the survey); the QP shall document the selected subsection (Subsection A Not Operational or Subsection B Operational) in the compliance binder prior to survey application. <b>NEW SOP §12 CARF Accreditation Conformance Framework</b> added with twenty subsections addressing every applicable standard area in the 2026 CYS Inaugural Accreditation Guidelines: §12.1 ASPIRE to Excellence® Leadership &amp; Strategic Planning (written Strategic Plan, Governing Body charter, succession plan); §12.2 Input from Persons Served and Other Stakeholders (written Stakeholder Input Plan, quarterly surveys, "You Said / We Did" feedback loop, non-retaliation); §12.3 Legal Requirements (written Legal Compliance Plan, Compliance Officer designation, Legal Compliance Register); §12.4 Financial Planning and Management (written Financial Plan, annual operating budget, capital-replacement reserve, internal controls, independent audit); §12.5 Risk Management &amp; Enterprise Risk Register (written Enterprise Risk Management Plan, six risk categories, business-continuity plan); §12.6 Health &amp; Safety Committee (standing committee charter, monthly meetings, written minutes, trend reporting); §12.7 Workforce Development &amp; Management (written Workforce Development Plan, orientation curriculum, annual training plan, position descriptions, performance evaluation, succession plan); §12.8 Rights of Persons Served (ten written resident-rights policies, grievance procedure, quarterly QP audit); §12.9 Accessibility &amp; Nondiscrimination (written Accessibility &amp; Nondiscrimination Plan, language-access plan, reasonable-accommodation policy, annual accessibility review); §12.10 Performance Management &amp; Measurement (written Performance Measurement Plan, seven performance domains, monthly aggregation, quarterly Governing Body reporting); §12.11 Program/Service Structure (written Program Description approved by Governing Body, mock chart maintained); §12.12 Screening and Access to Services (written Screening and Access Policy, access data tracking); §12.13 Individualized Planning (cross-reference to §4.1 PCP policy); §12.14 Transition/Discharge Planning (cross-reference to §3.4 and §3.6); §12.15 Medication Use (cross-reference to §6.3 expanded medication policies); §12.16 Promoting Nonviolent Practices (cross-reference to §5 behavioral support and restraint policies); §12.17 Records of Persons Served &amp; Quality Records Management (written Quality Records Review Procedure, quarterly Form 8 audits, trend reporting); §12.18 Service Delivery Using Information and Communication Technologies (written Telehealth &amp; Technology-Mediated Service Delivery Policy, platform privacy/security compliance, informed consent, fallback procedures); §12.19 Core Program Standards, Core Residential Program Standards, and Specialty Designation Standards (written crosswalk to 2026 CYS Standards Manual Sections 3–5, retained in compliance binder, reviewed at each quarterly QP compliance report); §12.20 Quality Improvement Plan (QIP) — Inaugural Accreditation Condition (QIP due to CARF within 90 days of accreditation notification per 2026 CYS Guidelines Step 9, monitored at each quarterly compliance report, subsequent resurvey window 10–11 months after Inaugural survey). <b>NEW Form 12 (CARF QIP Tracker)</b> added to Part 3 — 8-column fillable tracker (Recommendation, Corrective Action, Responsible Position, Target Date, Evidence of Implementation, Status, Date Closed/Reported to CARF) plus QIP approval signature block and subsequent resurvey tracking fields. Companion CARF CYS 2026 Inaugural Accreditation Guidelines PDF retained at /upload/2026 CYS Inaugural Accreditation Guidelines 1.pdf. All existing SOPs §1–§11, all 22 Protocols, and Forms 1–11 retained unchanged from v2.23 — only §1.2(a) is rewritten and §12 + Form 12 are appended.',
          'Executive Director / QP'],
     ]
     vh_th = ParagraphStyle('vhth', fontName=BODY_BOLD, fontSize=9, leading=11, textColor=colors.white, alignment=TA_LEFT)
