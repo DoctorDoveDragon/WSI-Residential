@@ -1,0 +1,81 @@
+{
+  "research_topic": "Correct NC service code citation for a Staff Secure Group Home serving children/adolescents with SED",
+  "program_operator": "Well Spring Intervention LLC",
+  "location": "Wake County, NC",
+  "accreditation_target": "CARF CYS 2026 Inaugural Accreditation",
+  "date_researched": "2026",
+  "verdict": "SOP Manual v2.24 citation of 10A NCAC 27G .1700 series is CORRECT; CARF Plans v1.2 generic 'Staff Secure Group Home - 10A NCAC 27G' is technically correct but insufficiently specific.",
+
+  "options_evaluated": [
+    {
+      "option": "10A NCAC 27G .1200 series",
+      "actual_title": "PSYCHOSOCIAL REHABILITATION FACILITIES FOR INDIVIDUALS WITH SEVERE AND PERSISTENT MENTAL ILLNESS",
+      "applicability": "NOT APPLICABLE",
+      "rationale": "Section .1200 (.1201 scope, .1202 staff, .1203 operations) applies to psychosocial rehabilitation facilities serving ADULTS with severe and persistent mental illness (SPMI). The .1202 staffing ratio of 'one staff member on-site to each eight or fewer clients' is for psychosocial rehab day/night programs and is NOT applicable to 24-hour staff-secure residential treatment for children with SED. The .1200 series is a day/night facility model, not a 24-hour residential model.",
+      "source_url": "http://reports.oah.state.nc.us/ncac/title%2010a%20-%20health%20and%20human%20services/chapter%2027%20-%20mental%20health,%20community%20facilities%20and%20services/subchapter%20g/subchapter%20g%20rules.html",
+      "cornell_url": "https://www.law.cornell.edu/regulations/north-carolina/10A-N-C-Admin-Code-27G-1201"
+    },
+    {
+      "option": "10A NCAC 27G .1700 series",
+      "actual_title": "RESIDENTIAL TREATMENT STAFF SECURE FOR CHILDREN OR ADOLESCENTS",
+      "applicability": "CORRECT — This is the applicable service code",
+      "rationale": "Section .1700 (.1701 scope, .1702 QP requirements, .1703 associate professional, .1704 minimum staffing, .1705 licensed professional, .1706 operations) is specifically titled 'Residential Treatment Staff Secure for Children or Adolescents.' .1701(b) defines 'staff secure' as 'staff are required to be awake during client sleep hours and supervision shall be continuous as set forth in Rule .1704 of this Section.' Population served per .1701(c) is 'children or adolescents who have a primary diagnosis of mental illness, emotional disturbance or substance-related disorders' — directly matching SED population.",
+      "key_subsections": {
+        ".1701": "SCOPE — defines staff secure facility for children/adolescents with mental illness, emotional disturbance, or substance-related disorders (matches SED population)",
+        ".1701(b)": "DEFINITION of 'staff secure' — awake staff during sleep hours + continuous supervision per .1704",
+        ".1702": "REQUIREMENTS OF QUALIFIED PROFESSIONALS — QP hours (10 hrs/wk for ≤5 beds; 32 hrs/wk for 6+ beds)",
+        ".1703": "REQUIREMENTS FOR ASSOCIATE PROFESSIONALS — at least one full-time associate professional direct care staff",
+        ".1704": "MINIMUM STAFFING REQUIREMENTS — staff-to-resident ratios (waking and sleeping hours)",
+        ".1705": "REQUIREMENTS OF LICENSED PROFESSIONALS — minimum 4 hrs/week face-to-face clinical consultation",
+        ".1706": "OPERATIONS — capacity limit, 24/7 operation, LEA coordination, psychiatric consultation"
+      },
+      "authority": "G.S. 122C-26; 143B-147",
+      "effective_date": "April 3, 2006 (pursuant to E.O. 101, Michael F. Easley, March 27, 2006)",
+      "source_url": "https://www.law.cornell.edu/regulations/north-carolina/10A-N-C-Admin-Code-27G-1701",
+      "source_url_1704": "https://www.law.cornell.edu/regulations/north-carolina/10A-N-C-Admin-Code-27G-1704",
+      "source_url_1706": "https://www.law.cornell.edu/regulations/north-carolina/10A-N-C-Admin-Code-27G-1706"
+    },
+    {
+      "option": "10A NCAC 27G .5600 series",
+      "actual_title": "SUPERVISED LIVING FOR INDIVIDUALS OF ALL DISABILITY GROUPS",
+      "applicability": "NOT APPLICABLE",
+      "rationale": "Section .5600 (.5601 scope) covers supervised living — a 24-hour facility providing residential services in a home environment, primarily for adults with disabilities. Not appropriate for children/adolescents requiring staff-secure behavioral treatment.",
+      "source_url": "https://www.law.cornell.edu/regulations/north-carolina/10A-N-C-Admin-Code-27G-5601"
+    },
+    {
+      "option": "10A NCAC 27G .1500 series (Intensive Residential Treatment for Children and Adolescents who are Emotionally Disturbed or who have a Mental Illness)",
+      "actual_title": "INTENSIVE RESIDENTIAL TREATMENT FOR CHILDREN AND ADOLESCENTS WHO ARE EMOTIONALLY DISTURBED OR WHO HAVE A MENTAL ILLNESS",
+      "applicability": "NOT APPLICABLE — REPEALED",
+      "rationale": "Section .1500 was REPEALED effective May 1, 2007. The .1700 series replaced it for staff-secure children's residential treatment.",
+      "repeal_date": "May 1, 2007"
+    },
+    {
+      "option": "10A NCAC 27G .1900 series (Psychiatric Residential Treatment for Children and Adolescents — PRTF)",
+      "actual_title": "PSYCHIATRIC RESIDENTIAL TREATMENT FOR CHILDREN AND ADOLESCENTS",
+      "applicability": "DISTINCT — Different level of care",
+      "rationale": "Section .1900 covers PRTFs (non-acute inpatient settings) — a HIGHER level of care than staff-secure residential. PRTFs must meet CMS conditions of participation, are accredited per .1901(g), and bill under Medicaid CCP 8D-1. A .1700 staff-secure facility is community-based (not non-acute inpatient), and bills under CCP 8D-2.",
+      "accreditation_required": true,
+      "medicaid_policy": "8D-1"
+    }
+  ],
+
+  "final_determination": {
+    "correct_citation": "10A NCAC 27G .1700 series (specifically .1701 scope, .1704 minimum staffing, .1706 operations)",
+    "correct_subsection_for_staff_secure_definition": ".1701(b)",
+    "correct_subsection_for_staffing_ratios": ".1704(b) [waking] and .1704(c) [sleep hours]",
+    "correct_subsection_for_capacity_limit": ".1706(a)",
+    "license_issuing_authority": "NC Division of Health Service Regulation (DHSR) — Mental Health Licensure and Certification Section (MHLC / MHLCS)",
+    "nc_general_statute_authority": "G.S. 122C-26; 143B-147"
+  },
+
+  "comparison_with_documents": {
+    "sop_manual_v2_24": {
+      "claim": "Level III Residential Treatment Facility (Staff-Secure for Children and Adolescents) under 10A NCAC 27G .1700",
+      "assessment": "CITATION CORRECT. .1700 series is the correct subchapter. The label 'Level III' is a Medicaid level-of-care designation under CCP 8D-2 (separate from the NCAC citation) — that is acceptable as a parallel designation but the NCAC citation itself is .1700 series, not 'Level III'."
+    },
+    "carf_plans_v1_2": {
+      "claim": "Staff Secure Group Home — 10A NCAC 27G (no sub-section specified)",
+      "assessment": "CITATION INCOMPLETE. Should specify 10A NCAC 27G .1700 series (specifically .1701 scope / .1704 staffing / .1706 capacity). The generic '10A NCAC 27G' citation does not identify which of the .1200/.1500(repealed)/.1700/.1900/.5600 series applies, which is critical for an audit."
+    }
+  }
+}

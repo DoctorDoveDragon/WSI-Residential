@@ -1,0 +1,56 @@
+[
+  {
+    "url": "https://taxonomy.nucc.org",
+    "name": "Non-individual",
+    "snippet": "Health Care Provider Taxonomy Code Set. Expand / Collapse All. Non-individual. Residential Treatment Facilities. Substance Abuse Rehabilitation Facility . Read more",
+    "host_name": "taxonomy.nucc.org",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://behavehealth.com",
+    "name": "Mental Illness Community Based Residential Treatment",
+    "snippet": "National provider taxonomy reference for Mental Illness Community Based Residential Treatment Facility (320800000X).",
+    "host_name": "behavehealth.com",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://resdac.org",
+    "name": "Residential Treatment Facility Taxonomy Indicator",
+    "snippet": "the taxonomy code value is one of the following: 320800000X: Community Based Residential Treatment Facility, Mental Illness … 1-844-685-3100",
+    "host_name": "resdac.org",
+    "rank": 2,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://build.fhir.org",
+    "name": "ValueSet: Non-Individual Specialties",
+    "snippet": "320800000X, http://nucc.org/provider-taxonomy, Mental Illness Community Based Residential Treatment Facility . 320900000X, http://nucc.org/provider-taxonomy ... Read more",
+    "host_name": "build.fhir.org",
+    "rank": 3,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.bcbsm.com",
+    "name": "Taxonomy Code Mapping",
+    "snippet": "Psychiatric Residential Treatment Facility . Rural Health Clinics. 261QR1300X ... (Including Community Mental Health Center ). Pharmacy. 333600000X. Pharmacy. Read more",
+    "host_name": "www.bcbsm.com",
+    "rank": 4,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://lakelandcare.com",
+    "name": "Taxonomy Codes No Longer Medicare Eligible",
+    "snippet": "320800000X. Community Based Residential Treatment Facility , Mental Illness Physician and Facility. Mental Illness Community Based Residential Treatment Facility. Read more",
+    "host_name": "lakelandcare.com",
+    "rank": 5,
+    "date": "",
+    "favicon": ""
+  }
+]

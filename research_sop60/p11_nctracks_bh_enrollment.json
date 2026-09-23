@@ -1,0 +1,46 @@
+{
+  "code": 200,
+  "data": {
+    "description": "",
+    "external": {
+      "address": {
+        "https://per.nctracks.com/ncmmisPortal/res/images/icons/favicon.ico": {
+          "type": "image/x-icon"
+        }
+      },
+      "bar": {
+        "https://per.nctracks.com/ncmmisPortal/res/images/icons/favicon.ico": {
+          "type": "image/x-icon"
+        }
+      },
+      "icon": {
+        "https://per.nctracks.com/ncmmisPortal/res/images/icons/favicon.ico": {
+          "type": "image/x-icon"
+        }
+      }
+    },
+    "html": "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\"><head>\n<!-- \nUrlDbgStart:/ncmmisPortal/WEB-INF/jsp/logout.jsp<: >flow=default&deepLink=/provider-enrollment/enrollment-faqs/enrollment-faqs-behavioral-health-providers&version=NO-COOKIE-VERSION:UrlDbgEnd\n-->\n<title>NCTracks - Log Out</title>\n<meta http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\">\n<meta http-equiv=\"Content-Style-Type\" content=\"text/css\">\n<meta http-equiv=\"Content-Script-Type\" content=\"text/javascript\">\n<link rel=\"stylesheet\" type=\"text/css\" href=\"/ncmmisPortal/res/css/static.css\">\n<link rel=\"address bar icon\" type=\"image/x-icon\" href=\"/ncmmisPortal/res/images/icons/favicon.ico\">\n<link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"/ncmmisPortal/res/images/icons/favicon.ico\">\n\n<script nonce=\"OPud4-2cdpQklahFa-H_7ERj\" type=\"text/javascript\" src=\"/ncmmisPortal/res/js/lib/ncmmis.lib.min.js\"></script>\n<script nonce=\"OPud4-2cdpQklahFa-H_7ERj\" type=\"text/javascript\" src=\"/ncmmisPortal/res/js/morphic.min.js\"></script>\n<script nonce=\"OPud4-2cdpQklahFa-H_7ERj\" type=\"text/javascript\" src=\"/ncmmisPortal/res/js/ncmmisSessionMgmt.min.js\"></script>\n<script nonce=\"OPud4-2cdpQklahFa-H_7ERj\" type=\"text/javascript\" src=\"/ncmmisPortal/res/js/ncmmis.portal.min.js\"></script>\n<script nonce=\"OPud4-2cdpQklahFa-H_7ERj\" type=\"text/javascript\" src=\"/ncmmisPortal/res/js/nctracks_init.min.js\"></script>\n<script nonce=\"OPud4-2cdpQklahFa-H_7ERj\" type=\"text/javascript\" src=\"/help/GeneralPublic/index.js\"></script>\n</head>\n<body id=\"logoutPage\">\n\t<div id=\"logoutStatus\"></div>\n\n\n</body></html>",
+    "httpStatus": 200,
+    "httpStatusText": "OK",
+    "metadata": {
+      "lang": "en"
+    },
+    "title": "NCTracks - Log Out",
+    "url": "https://per.nctracks.com/provider-enrollment/enrollment-faqs/enrollment-faqs-behavioral-health-providers",
+    "usage": {
+      "measuredTokens": 0,
+      "outputTokens": 0,
+      "scaledTokens": 488,
+      "tokens": 488
+    }
+  },
+  "meta": {
+    "usage": {
+      "measuredTokens": 0,
+      "outputTokens": 0,
+      "scaledTokens": 488,
+      "tokens": 488
+    }
+  },
+  "status": 20000
+}

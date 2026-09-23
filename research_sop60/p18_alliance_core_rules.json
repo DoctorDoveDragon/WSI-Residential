@@ -1,0 +1,44 @@
+{
+  "code": 200,
+  "data": {
+    "description": "",
+    "html": "",
+    "httpStatus": 200,
+    "httpStatusText": "",
+    "metadata": {
+      "Author": "PEscala",
+      "CreationDate": "D:20070412125635-04'00'",
+      "Creator": "PDFCreator Version 0.9.3",
+      "EncryptFilterName": null,
+      "IsAcroFormPresent": false,
+      "IsCollectionPresent": false,
+      "IsLinearized": false,
+      "IsSignaturesPresent": false,
+      "IsXFAPresent": false,
+      "Keywords": "",
+      "Language": null,
+      "ModDate": "D:20220425022605-04'00'",
+      "PDFFormatVersion": "1.5",
+      "Producer": "GPL Ghostscript 8.54",
+      "Subject": "Guidelines for providers",
+      "Title": "Guidelines for Implementing Core Rules"
+    },
+    "title": "Guidelines for Implementing Core Rules",
+    "url": "https://www.alliancehealthplan.org/document-library/60307",
+    "usage": {
+      "measuredTokens": 0,
+      "outputTokens": 0,
+      "scaledTokens": 0,
+      "tokens": 0
+    }
+  },
+  "meta": {
+    "usage": {
+      "measuredTokens": 0,
+      "outputTokens": 0,
+      "scaledTokens": 0,
+      "tokens": 0
+    }
+  },
+  "status": 20000
+}

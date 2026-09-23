@@ -1,0 +1,65 @@
+[
+  {
+    "url": "https://medicaid.ncdhhs.gov",
+    "name": "Taxonomy Enrollment Requirement Reminders for Claim",
+    "snippet": "Mar 10, 2022 — All levels of taxonomies are visible in NCTracks (I.e. 282N00000X … this is the taxonomy that should be used on claims. Call Center : 800-688- ...",
+    "host_name": "medicaid.ncdhhs.gov",
+    "rank": 0,
+    "date": "Mar 10, 2022",
+    "favicon": ""
+  },
+  {
+    "url": "https://behavehealth.com",
+    "name": "Mental Illness Community Based Residential Treatment",
+    "snippet": "National provider taxonomy reference for Mental Illness Community Based Residential Treatment Facility (320800000X).",
+    "host_name": "behavehealth.com",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://per.nctracks.com",
+    "name": "Behavioral Health Provider Enrollment FAQs",
+    "snippet": "This page includes a list of answers to frequently asked questions (FAQs) regarding behavioral health provider enrollment .",
+    "host_name": "per.nctracks.com",
+    "rank": 2,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://taxonomy.nucc.org",
+    "name": "Non-individual",
+    "snippet": "Non- individual Residential Treatment Facilities Community Based Residential Treatment Facility, Mental Illness Health Care Provider",
+    "host_name": "taxonomy.nucc.org",
+    "rank": 3,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.nctracks.nc.gov",
+    "name": "Some Mental and Behavioral Health Providers Will Need to",
+    "snippet": "Oct 30, 2014 — Providers who serve Health Choice recipients or Medicaid recipients who are younger than age 3. They will be automatically enrolled in NCTracks .",
+    "host_name": "www.nctracks.nc.gov",
+    "rank": 4,
+    "date": "Oct 30, 2014",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.medrxiv.org",
+    "name": "Psychiatric Residential Treatment Facilities for Child",
+    "snippet": "Dec 22, 2022 — Psychiatric residential treatment facilities (PRTFs) are defined by the Centers for Medicaid and Medicare Services as a “non-hospital facility ... Read more",
+    "host_name": "www.medrxiv.org",
+    "rank": 5,
+    "date": "Dec 22, 2022",
+    "favicon": ""
+  },
+  {
+    "url": "https://resdac.org",
+    "name": "Residential Treatment Facility Taxonomy Indicator",
+    "snippet": "... taxonomy code value is one of the following: 320800000X: Community Based Residential Treatment Facility, Mental Illness . 320900000X: Community Based ... Read more",
+    "host_name": "resdac.org",
+    "rank": 6,
+    "date": "",
+    "favicon": ""
+  }
+]

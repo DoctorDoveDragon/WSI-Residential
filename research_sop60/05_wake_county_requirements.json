@@ -1,0 +1,139 @@
+{
+  "research_topic": "Wake County-specific permits, licenses, inspections, and coordination requirements for a staff-secure group home for youth",
+
+  "verdict": "Multiple Wake County and NC state-level permits, inspections, and coordination requirements apply. SOP Manual v2.24 mentions WakeMed coordination which is now INVALIDATED effective July 1, 2026.",
+
+  "wake_county_departments_and_requirements": {
+
+    "wake_county_zoning_and_planning": {
+      "department": "Wake County Planning, Development & Inspections",
+      "website": "https://www.wake.gov/planning-development-inspections",
+      "applicable_rule": "Wake County Unified Development Ordinance (UDO)",
+      "zoning_districts_url": "https://www.wake.gov/planning-development-inspections/zoning-districts",
+      "udo_url": "https://library.municode.com/nc/wake_county/codes/unified_development_ordinance",
+      "requirement": "Conditional Use/Special Use Permit may be required if facility serves 7+ children (NOT a 'family care home' under NCGS 160D-907, which protects only 6-or-fewer-resident family care homes as permitted use in residential districts).",
+      "statutory_reference": "NCGS 160D-705 (Quasi-judicial zoning decisions — Special/Conditional Use Permits)",
+      "family_care_home_threshold": "6 or fewer residents with disabilities — NC Gen Stat 160D-907 / 168-22",
+      "process": "Submit Conditional Use Permit application to Wake County Board of Adjustment (quasi-judicial hearing required)."
+    },
+
+    "wake_county_fire_marshal": {
+      "department": "Wake County Fire Marshal's Office",
+      "website": "https://www.wake.gov/public-safety/fire-marshal",
+      "inspection_request_line": "919-856-6307 (for unincorporated areas of Wake County)",
+      "requirement": "Foster Care or Group Home Inspection Request. Pre-opening fire inspection required before state license is issued; annual fire inspections thereafter.",
+      "applicable_code": "NC Fire Code (2018 edition as adopted by NC Building Code Council) — Section 425 (Residential Care Facility), Section 428 (Licensed Residential Care Facility)",
+      "city_of_raleigh_jurisdiction": "If facility is within Raleigh city limits, contact Raleigh Fire Department Fire Inspections Division instead: https://raleighnc.gov/fire/services/fire-inspections",
+      "city_of_raleigh_contact": "Use Raleigh Fire Department's Fire Request form for Group Home Inspection (Supportive Care)."
+    },
+
+    "wake_county_environmental_services_water_septic": {
+      "department": "Wake County Environmental Services — Water Quality Division",
+      "phone": "(919) 856-7400",
+      "website": "https://www.wake.gov/environmental-services",
+      "well_permit_portal": "https://www.wake.gov/permit",
+      "applicable_when": "If facility is on a private well and/or septic system (not on City of Raleigh / Town municipal water-sewer).",
+      "permit_required": "Approve Existing Well permit (if using existing private well); New Well permit; Septic System permit (if applicable).",
+      "separation_distance": "Well must be at least 50 ft from all septic systems.",
+      "source_url": "https://www.wake.gov/environmental-services/water-quality/wells-and-aquifer-protection"
+    },
+
+    "wake_county_human_services_dss": {
+      "department": "Wake County Health & Human Services — Division of Social Services (DSS)",
+      "address": "220 Swinburne St., Raleigh, NC 27620 (P.O. Box 46833)",
+      "phone": "919-212-7000 (main); 919-212-7990 (CPS Intake)",
+      "state_courier": "51-91-00",
+      "website": "https://www.wake.gov/human-services",
+      "role_for_youth_residential_facilities": "Wake County DSS coordinates child welfare placements and CPS investigations but does NOT license behavioral health group homes (those are licensed by NC DHSR). If Well Spring accepts DSS custody placements, DSS case workers will coordinate.",
+      "children_services_division_phone": "(919) 212-9529 (CPS/Foster reception); (919) 404-3900 (Eastern Regional Center); (919) 431-4000 (Human Services Center at Departure)"
+    },
+
+    "wake_county_ems": {
+      "department": "Wake County Emergency Medical Services",
+      "website": "https://www.wake.gov/public-safety/emergency-medical-services",
+      "coordination_required": "Notify Wake County EMS of facility location, occupancy type, and capacity for emergency medical response planning. Establish emergency transport protocols for psychiatric crises requiring hospital-based intervention."
+    }
+  },
+
+  "nc_state_level_permits_inspections": {
+
+    "nc_office_of_state_fire_marshal_osfm_building_code_section_425": {
+      "department": "NC Office of the State Fire Marshal (OSFM)",
+      "website": "https://www.ncosfm.gov",
+      "applicable_code": "North Carolina Building Code (NCBC) — Section 425 (Residential Care Facility) and Section 428 (Licensed Residential Care Facility)",
+      "ncbc_425_classification": "Group R-4 occupancy (5-16 persons receiving custodial care). For .1700 staff-secure facility with up to 12 children, classified as Group R-4.",
+      "section_425_5_1_two_story_requirement": "The building shall be of one-hour fire-resistant construction, sprinklered with a wet pipe system per NFPA 13D with 30-minute water supply.",
+      "ncbc_425_3_small_residential_care": "Small facilities (5 or fewer adults/children unable to respond/evacuate without assistance) may be classified as single-family residential (Group R-3).",
+      "ncbc_428_licensed_residential_care": "Licensed residential care facilities keeping more than 12 residents trigger Group R-4 with stricter requirements.",
+      "nc_fire_code_url": "https://www.ncosfm.gov",
+      "up_codes_section_428_url": "https://up.codes/code-explorer/building-type/north-carolina/section/428-licensed-residential-care-facility",
+      "dhsr_building_code_classification_url": "https://info.ncdhhs.gov/dhsr/mhlcs/ (NC DHSR MHLCS: Building Code Zoning Classifications — .1700 Residential Treatment Staff Secure = 'Residential – Classification dependent on number & ambulation status')"
+    },
+
+    "nc_dhsr_mhlc_state_license": {
+      "department": "NC Division of Health Service Regulation (DHSR) — Mental Health Licensure and Certification Section (MHLC / MHLCS)",
+      "website": "https://info.ncdhhs.gov/dhsr/mhlcsmain.htm",
+      "applicable_rule": "10A NCAC 27G .1700 series; 10A NCAC 27G .0400 series (general licensure rules)",
+      "letter_of_support_required": "10A NCAC 27G .0406 — An applicant for licensure of a residential facility shall submit with the application a letter of support obtained from the LME/MCO (i.e., Alliance Health for Wake County).",
+      "initial_licensure_packet_url": "https://info.ncdhhs.gov/dhsr/mhlcs/ (Mental Health — Initial Licensure Application Packet)",
+      "initial_license_validity": "Not to exceed 15 months per 10A NCAC 27G .0404."
+    },
+
+    "nc_division_of_social_services_70i_70j_license": {
+      "department": "NC Division of Social Services (DSS) — Regulatory and Licensing Services",
+      "address_for_rccf_licensure": "North Carolina Division of Social Services Regulatory and Licensing Services, 952 Old US Highway 70, Black Mountain, North Carolina 28711",
+      "applicable_rule": "10A NCAC 70I and 10A NCAC 70J (Residential Child-Care Facility rules)",
+      "applicability": "Required IF facility also serves children placed by DSS for foster care/child welfare reasons (separate from behavioral health treatment). NOTE: Per NCDHHS, DSS does NOT license group homes for children needing behavioral mental health treatment services — those are licensed by DHSR only. DSS licenses group homes for foster care only.",
+      "website": "https://www.ncdhhs.gov/divisions/social-services/child-welfare-services/licensing/residential-child-care-facility",
+      "accreditation_required": "Effective August 1, 2011, residential child-care facilities initially licensed after that date must have three-year-or-longer accreditation from COA, TJC, CARF, or CQL before being licensed. (See 07_accreditation_requirement.json)"
+    }
+  },
+
+  "emergency_psychiatric_hospital_coordination_post_july_1_2026": {
+    "wakeMed_status": "OUT-OF-NETWORK with Alliance Health Tailored Plan effective July 1, 2026.",
+    "alternative_in_network_hospitals_for_alliance_tailored_plan_wake_county": [
+      {
+        "hospital": "UNC Rex Hospital",
+        "city": "Raleigh, NC",
+        "services": "Emergency Department, inpatient psychiatric care",
+        "in_network_status": "In-network with Alliance Health Tailored Plan",
+        "phone": "919-784-3100"
+      },
+      {
+        "hospital": "UNC Medical Center / UNC Hospitals",
+        "city": "Chapel Hill, NC",
+        "services": "Emergency psychiatric, inpatient child/adolescent psychiatric unit",
+        "in_network_status": "In-network with Alliance Health Tailored Plan",
+        "phone": "984-974-1000"
+      },
+      {
+        "hospital": "Duke Raleigh Hospital",
+        "city": "Raleigh, NC",
+        "services": "Emergency Department",
+        "in_network_status": "In-network with Alliance Health Tailored Plan (per Duke Health 2026 Accepted Health Insurance Plans)",
+        "phone": "919-954-3400"
+      },
+      {
+        "hospital": "Duke University Hospital",
+        "city": "Durham, NC",
+        "services": "Inpatient psychiatric, including adolescent psychiatric unit",
+        "in_network_status": "In-network with Alliance Health Tailored Plan",
+        "phone": "919-684-8111"
+      }
+    ],
+    "alternative_psychiatric_emergency_resources_in_wake_county": [
+      {
+        "resource": "Alliance Behavioral Healthcare crisis line",
+        "phone": "877-223-4617",
+        "available": "24/7"
+      },
+      {
+        "resource": "WakeBrook Behavioral Health (operated by WakeMed)",
+        "city": "Raleigh, NC",
+        "note": "WakeBrook crisis/assessment services may or may not be covered for Alliance Tailored Plan members post-July 1, 2026 due to WakeMed out-of-network status. Verify with Alliance Health prior to transport.",
+        "alternative": "If WakeBrook is out-of-network, Alliance Tailored Plan members should be routed to UNC Rex Hospital ED or Duke Raleigh Hospital ED for emergency psychiatric evaluation."
+      }
+    ],
+    "sop_manual_v2_24_correction_required": "Replace all references to WakeMed as primary emergency psychiatric admission hospital with UNC Rex Hospital (Raleigh) as primary, with Duke Raleigh Hospital and UNC Medical Center (Chapel Hill) as alternates. Update MOU/agreements accordingly."
+  }
+}

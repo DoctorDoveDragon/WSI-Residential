@@ -54,9 +54,10 @@ def build_part1():
         'Adolescents</b> under <b>our staff-secure operating standards</b>, issued by the '
         'applicable state mental health authority — <b>not</b> under foster-care licensing, '
         'and therefore does <b>not</b> operate as a family-home placement. The facility is '
-        'credentialed as an In-Network Provider with <b>Alliance Health</b> (the regional '
-        'managed care organization / Tailored Plan serving Cumberland, Durham, Johnston, '
-        'Mecklenburg, Orange and Wake counties). The Executive Director maintains the original '
+        'credentialed as an In-Network Provider with <b>Alliance Health Tailored Plan</b> '
+        '(the regional managed care organization / Tailored Plan serving Cumberland, '
+        'Durham, Johnston, Mecklenburg, Orange and Wake counties, post-July 2024 NC S.L. '
+        '2021-135 Tailored Plan transition). The Executive Director maintains the original '
         'license on site, posts a current copy in a public area of the facility, and renews it '
         'prior to expiration. Any change in ownership, capacity, population served, or physical '
         'location requires prior written approval from the state licensing authority and '
@@ -98,7 +99,7 @@ def build_part1():
     story.append(Paragraph('<b>1.2(b) LME/MCO Letter of Support — the Resident Rights framework.1.</b>', s_h2))
     story.append(para(
         'Under the Resident Rights framework.1, the license application to DHSR MHLC must be accompanied by a '
-        '<b>Letter of Support</b> from Alliance Health (the LME/MCO) documenting that additional '
+        '<b>Letter of Support</b> from Alliance Health Tailored Plan (the LME/MCO/Tailored Plan) documenting that additional '
         'residential-treatment capacity is needed within the catchment area. The Executive '
         'Director shall request the Letter of Support from Alliance Health in writing prior to '
         'submitting the license application, attaching a needs-assessment summary, projected '
@@ -125,10 +126,10 @@ def build_part1():
         'bed count, services, or capital structure require a new CON determination prior to '
         'implementation.'
     ))
-    story.append(Paragraph('<b>1.2(d) Alliance Health Provider Network Application.</b>', s_h2))
+    story.append(Paragraph('<b>1.2(d) Alliance Health Tailored Plan Provider Network Application.</b>', s_h2))
     story.append(para(
-        'Separate from the DHSR MHLC license, the facility must complete the <b>Alliance Health '
-        'Provider Application</b> to be enrolled in the Alliance Health provider network and to '
+        'Separate from the DHSR MHLC license, the facility must complete the <b>Alliance Health Tailored '
+        'Plan Provider Application</b> to be enrolled in the Alliance Health Tailored Plan provider network and to '
         'bill Medicaid CCP 8D-2 (Residential Level III) per-diem services. The application package '
         'includes: (i) completed Provider Application; (ii) completed Self-Assessment Checklist '
         'demonstrating readiness across all our staff-secure operating standards standards; (iii) Mission and '
@@ -549,7 +550,7 @@ def build_part1():
         '<b>(b) Posted Notice.</b> A printed "Youth Rights" notice summarizing the above '
         'rights shall be posted in a conspicuous location in the facility common area and '
         'in each youth bedroom, in both English and Spanish, in a font size no smaller '
-        'than 14-point, with the Alliance Health Member &amp; Recipient Rights phone '
+        'than 14-point, with the Alliance Health Tailored Plan Member &amp; Recipient Rights phone '
         'number and the NC DHSR complaint line printed at the bottom. The QP shall review '
         'the posted notice at each monthly fire-drill walk-through and replace any missing, '
         'defaced, or outdated copies within 5 business days.'
@@ -557,7 +558,7 @@ def build_part1():
     story.append(para(
         '<b>(c) Grievance Procedure.</b> A youth, guardian, or staff member may file a '
         'grievance orally or in writing to the QP, the Clinical Director, or directly to '
-        'the Alliance Health Member &amp; Recipient Rights Office. All grievances shall be '
+        'the Alliance Health Tailored Plan Member &amp; Recipient Rights Office. All grievances shall be '
         'documented on Form 9 (Accounting of Disclosures) if protected health information '
         'is involved, and logged in a dedicated <b>Grievance Log</b> maintained by the QP. '
         'The QP shall acknowledge receipt within 1 business day, investigate within 5 '
@@ -594,10 +595,10 @@ def build_part1():
         '$1,000,000 combined single limit for owned, hired, and non-owned vehicles used to '
         'transport youth); (iv) <b>workers\' compensation</b> per NC statutory limits; '
         'and (v) <b>cyber liability</b> covering protected health information (minimum '
-        '$1,000,000) given the EHR/EMR system in use. Alliance Health and DHSR MHLC shall '
+        '$1,000,000) given the EHR/EMR system in use. Alliance Health Tailored Plan and DHSR MHLC shall '
         'be listed as <b>additional insureds</b> on the general-liability and '
         'professional-liability policies. Insurance lapses shall be reported to the QP '
-        'immediately and to Alliance Health within 5 business days.',
+        'immediately and to Alliance Health Tailored Plan within 5 business days.',
         '<b>Facility Lease or Deed</b> — current executed lease (with landlord\'s written '
         'consent to operate a Level III RTF on the premises) or recorded warranty deed.',
         '<b>Financial Solvency Documentation</b> — most recent 3 months of bank statements, '
@@ -723,10 +724,12 @@ def build_part1():
     ))
     story.append(Spacer(1, 6))
     story.append(para(
-        '<i>Note: The state group-home definition limits a facility of this type to no '
-        'more than nine (9) children. The facility shall not exceed its licensed capacity '
-        'as stated on the state-issued license, which shall not exceed nine children '
-        'under any circumstances.</i>'
+        '<i>Note: The Level III RTF Staff-Secure operating standards under 10A NCAC 27G '
+        '.1706(a) limit a facility of this type to no more than twelve (12) children or '
+        'adolescents. The facility\'s elected licensed capacity shall be stated on the '
+        'state-issued license and shall not exceed twelve children under any '
+        'circumstances; the facility may elect a lower licensed capacity (e.g., 6-9 beds) '
+        'as a best-practice census ceiling.</i>'
     ))
     story.append(Spacer(1, 8))
     story.append(Paragraph('<b>2.2 Staff Qualifications.</b>', s_h2))

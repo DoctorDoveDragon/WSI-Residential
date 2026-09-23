@@ -1,0 +1,81 @@
+{
+  "research_topic": "NC Medicaid / NCTracks enrollment pathway and taxonomy code for staff-secure group home",
+
+  "verdict": "SOP Manual v2.24's designation of NCTracks enrollment + Provider Type 2 NPI + taxonomy 320800000X + CCP 8D-2 (Residential Treatment Services) is CORRECT.",
+
+  "nctracks_enrollment_pathway": {
+    "enrollment_portal": "NCTracks Provider Enrollment Portal — https://www.nctracks.com",
+    "behavioral_health_enrollment_faqs": "https://per.nctracks.com/provider-enrollment/enrollment-faqs/enrollment-faqs-behavioral-health-providers",
+    "medicaid_bh_taxonomy_guidance": "https://medicaid.ncdhhs.gov/ — Providers must select a NC Medicaid accepted taxonomy that most closely matches their provider type, classification, or specialization.",
+    "effective_date_of_taxonomy_requirement": "March 10, 2022 (Taxonomy Enrollment Requirement Reminders for Claims)",
+    "enrollment_required_for": "Behavioral health providers serving NC Medicaid members (including Tailored Plan members)."
+  },
+
+  "provider_type_for_staff_secure_rtf": {
+    "provider_type_designation": "Provider Type 2 — NPI (National Provider Identifier) for facilities",
+    "nc_medicaid_provider_type_2_description": "Facility / Organizational provider (NPI Type 2 = Organization).",
+    "ncmedicaid_taxonomy_guidance_url": "https://medicaid.ncdhhs.gov/blog/2022/03/10/taxonomy-enrollment-requirement-reminders-claims"
+  },
+
+  "taxonomy_code_320800000X": {
+    "code": "320800000X",
+    "official_nucc_label": "Community Based Residential Treatment Facility, Mental Illness",
+    "alternate_label": "Mental Illness Community Based Residential Treatment Facility",
+    "code_level": "Top-level (non-individual) — Residential Treatment Facilities",
+    "nucc_url": "https://taxonomy.nucc.org",
+    "behavehealth_reference": "https://behavehealth.com/mental-illness-community-based-residential-treatment/",
+    "resdac_reference": "https://resdac.org/cms-data/variables/residential-treatment-facility-taxonomy-indicator",
+    "alliance_health_acceptance": "Confirmed — Alliance Health Standard Rate Schedule lists 320800000X under 'General Behavioral Health Services' for Community Based Residential Treatment Facility; Mental Illness.",
+    "alliance_url": "https://www.alliancehealthplan.org/document-library/60307",
+    "fhir_value_set_url": "https://build.fhir.org/valueset-organization-type.html"
+  },
+
+  "related_taxonomy_codes_for_reference": {
+    "320700000X": "Residential Treatment Facility, Physical Disabilities",
+    "320800000X": "Community Based Residential Treatment Facility, Mental Illness — USE FOR .1700 staff-secure RTF",
+    "320900000X": "Community Based Residential Treatment Facility, Mental Retardation (I/DD)",
+    "322000000X": "Residential Treatment Facility, Substance Abuse Treatment",
+    "323P00000X": "Psychiatric Residential Treatment Facility (PRTF) for 8D-1 billing — verify with NCTracks"
+  },
+
+  "important_clarification_on_taxonomy_320800000X": {
+    "sop_manual_claim": "320800000X (Residential Treatment Facility, Children)",
+    "actual_nucc_label": "Community Based Residential Treatment Facility, Mental Illness",
+    "is_there_a_children_specific_taxonomy": "NO — NUCC does not maintain a separate taxonomy code for 'Residential Treatment Facility, Children' under mental illness. 320800000X is the broad code for ALL community-based residential mental illness treatment facilities, both adult and child/adolescent. SOP Manual's parenthetical '(Residential Treatment Facility, Children)' is a description, not the official NUCC taxonomy label.",
+    "compliance_status": "COMPLIANT — 320800000X is the correct taxonomy code for both adult and child/adolescent community-based residential mental illness treatment. NCTracks enrollment using 320800000X is appropriate for Well Spring's .1700 staff-secure facility."
+  },
+
+  "medicaid_clinical_coverage_policy_8d_2": {
+    "policy_designation": "8D-2 — Residential Treatment Services",
+    "applicability": "Covers NC Medicaid-funded residential treatment services for children/adolescents (Level II, Level III, Level IV intensity) in non-PRTF community-based residential facilities.",
+    "policy_updates_url": "https://medicaid.ncdhhs.gov/blog/2025/01/24/behavioral-health-clinical-coverage-policy-updates",
+    "policy_list_url": "https://www.partnersbhm.org/providers/clinical-coverage-policies/",
+    "policy_8d_series_for_reference": {
+      "8D-1": "Psychiatric Residential Treatment Facilities for Children under the Age of 21 (PRTF) — applies to .1900 series facilities",
+      "8D-2": "Residential Treatment Services — applies to .1700 staff-secure RTF (Level II/III/IV)",
+      "8D-3": "Clinically Managed Low-Intensity Residential Treatment Services",
+      "8D-4": "Clinically Managed Population Clinical Specific High-Intensity Residential Program"
+    },
+    "level_3_designation": "Level III = 'Residential Treatment High' intensity per CCP 8D-2 (corresponds to .1700 staff-secure facility classification). The SOP Manual's 'Level III (Residential Treatment High)' designation is consistent with NC Medicaid's level-of-care framework.",
+    "asam_alignment_note": "Note: ASAM levels (e.g., 3.5 Clinically Managed High-Intensity Residential Services) are separate from NC Medicaid's Level II/III/IV designation but may be used for clinical necessity determination."
+  },
+
+  "enrollment_steps_for_well_spring": {
+    "step_1": "Obtain NPI Type 2 (Organization) from NPPES — https://nppes.cms.hhs.gov",
+    "step_2": "Obtain NC DHSR Mental Health Licensure (10A NCAC 27G .1700 series) — prerequisite for Medicaid enrollment",
+    "step_3": "Obtain letter of support from Alliance Health (per 10A NCAC 27G .0406) for behavioral health facility licensure",
+    "step_4": "Enroll in NCTracks as Provider Type 2 with taxonomy 320800000X — https://www.nctracks.com",
+    "step 5": "Credential with Alliance Health Tailored Plan (Tailored Plan Provider Network) — https://www.alliancehealthplan.org",
+    "step_6": "Obtain CARF CYS accreditation (state requirement per 10A NCAC 70I if also licensed as Residential Child Care Facility; required by Alliance Health for many service lines)",
+    "step_7": "NC-TOPPS (North Carolina Treatment Outcomes and Program Performance System) registration for outcome reporting — required for any NC Medicaid provider of substance use or mental health services.",
+    "step_8": "Execute service agreement / attestation with Alliance Health for residential treatment services under CCP 8D-2."
+  },
+
+  "nc_topps": {
+    "full_name": "North Carolina Treatment Outcomes and Program Performance System",
+    "purpose": "Mandatory outcomes reporting system for NC DHHS-funded mental health, substance use, and I/DD services providers.",
+    "operator": "NC Department of Health and Human Services (DHHS) — Division of Mental Health, Developmental Disabilities, and Substance Use Services (DMH/DD/SUS)",
+    "applicability": "REQUIRED for all providers billing NC Medicaid for mental health or substance use services — includes staff-secure RTF providers.",
+    "user_note": "SOP Manual user query mentions 'NC-TOPPS / NC Medicaid enrollment' — these are TWO separate but related requirements: NCTracks enrollment is for billing/provider registration; NC-TOPPS is for treatment outcomes reporting. Both apply to Well Spring."
+  }
+}

@@ -1,0 +1,2002 @@
+     1→"""
+     2→carf_plans_content.py — Content module for the WSI CARF CYS 2026 Conformance
+     3→Plan Portfolio.
+     4→
+     5→Produces 15 fully-developed written plans/policies referenced in SOP §12.1–§12.18
+     6→and §12.19 of the Well Spring Intervention LLC SOP Manual v2.24:
+     7→
+     8→  1.  Strategic Plan                              (§12.1)
+     9→  2.  Stakeholder Input Plan                      (§12.2)
+    10→  3.  Legal Compliance Plan                       (§12.3)
+    11→  4.  Financial Plan                              (§12.4)
+    12→  5.  Enterprise Risk Management Plan             (§12.5)
+    13→  6.  Health & Safety Committee Charter           (§12.6)
+    14→  7.  Workforce Development Plan                  (§12.7)
+    15→  8.  Resident Rights Policy Compilation          (§12.8)
+    16→  9.  Accessibility & Nondiscrimination Plan      (§12.9)
+    17→  10. Performance Measurement Plan                (§12.10)
+    18→  11. Program Description                         (§12.11)
+    19→  12. Screening and Access Policy                 (§12.12)
+    20→  13. Quality Records Review Procedure            (§12.17)
+    21→  14. Telehealth & ICT Service Delivery Policy    (§12.18)
+    22→  15. CARF CYS 2026 Sections 3-5 Standards Crosswalk (§12.19)
+    23→
+    24→Each plan is a self-contained written policy with: Purpose, Scope, Policy
+    25→statement, Procedure (numbered steps), Responsible Parties, Review Schedule,
+    26→and Approval signature block.
+    27→
+    28→This module imports helpers/styles from generate_sop to maintain visual
+    29→consistency with the SOP Manual.
+    30→"""
+    31→from generate_sop import (
+    32→    part_divider, section_heading, ref_line, para, bullets, callout,
+    33→    std_table, form_table, signature_line,
+    34→    Paragraph, Spacer, PageBreak, Table, TableStyle, HRFlowable,
+    35→    ParagraphStyle, colors, TA_LEFT, TA_CENTER,
+    36→    BODY_FONT, BODY_BOLD, BODY_ITAL,
+    37→    s_part, s_part_kicker, s_part_intro, s_h1, s_h2, s_body, s_body_just,
+    38→    s_ref, s_bullet, s_callout, s_callout_label,
+    39→    s_form_title, s_form_meta, s_form_instr, s_form_section,
+    40→    s_th, s_th_left, s_td, s_td_c, s_td_b, s_td_sm,
+    41→    HEADER_FILL, BORDER, ACCENT, ACCENT_2, TEXT_PRIMARY, TEXT_MUTED,
+    42→    CARD_BG, TABLE_ROW_ODD, TABLE_ROW_EVEN,
+    43→    AVAIL_W,
+    44→)
+    45→
+    46→
+    47→def _plan_header(plan_num, plan_title, sop_ref):
+    48→    """Standard plan header: section_heading + ref_line + Purpose intro."""
+    49→    story = []
+    50→    story.append(section_heading(plan_num, plan_title))
+    51→    story.append(ref_line(anchor=sop_ref))
+    52→    return story
+    53→
+    54→
+    55→def _approval_block(plan_title):
+    56→    """Standard approval signature block at end of each plan."""
+    57→    story = []
+    58→    story.append(Spacer(1, 12))
+    59→    story.append(Paragraph('<b>Plan Approval</b>', s_h2))
+    60→    story.append(para(
+    61→        f'The undersigned approve this <b>{plan_title}</b> as a written policy of '
+    62→        f'Well Spring Intervention LLC, effective upon the date of the last signature '
+    63→        f'below. This plan shall be reviewed at minimum annually and updated as '
+    64→        f'needed to reflect changes in CARF standards, regulatory requirements, '
+    65→        f'organizational structure, or program design. The QP maintains the signed '
+    66→        f'original in the facility compliance binder and provides a copy to all '
+    67→        f'personnel with implementation responsibilities.'
+    68→    ))
+    69→    story.append(Spacer(1, 8))
+    70→    sig_data = [
+    71→        ['Role', 'Name (Printed)', 'Signature', 'Date'],
+    72→        ['Executive Director', '', '', ''],
+    73→        ['Clinical Director', '', '', ''],
+    74→        ['Qualified Professional (QP)', '', '', ''],
+    75→        ['Compliance Officer', '', '', ''],
+    76→    ]
+    77→    sig_th = ParagraphStyle('sigth', fontName=BODY_BOLD, fontSize=9.5, leading=12,
+    78→                             textColor=colors.white, alignment=TA_LEFT)
+    79→    sig_td = ParagraphStyle('sigtd', fontName=BODY_FONT, fontSize=9.5, leading=12,
+    80→                             textColor=TEXT_PRIMARY, alignment=TA_LEFT)
+    81→    sig_data_p = [[Paragraph(f'<b>{h}</b>', sig_th) for h in sig_data[0]]]
+    82→    for row in sig_data[1:]:
+    83→        sig_data_p.append([Paragraph(c, sig_td) for c in row])
+    84→    t = Table(sig_data_p, colWidths=[0.22*AVAIL_W, 0.28*AVAIL_W, 0.32*AVAIL_W, 0.18*AVAIL_W],
+    85→              hAlign='CENTER', repeatRows=1)
+    86→    t.setStyle(TableStyle([
+    87→        ('BACKGROUND', (0, 0), (-1, 0), HEADER_FILL),
+    88→        ('GRID', (0, 0), (-1, -1), 0.4, BORDER),
+    89→        ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+    90→        ('LEFTPADDING', (0, 0), (-1, -1), 4),
+    91→        ('RIGHTPADDING', (0, 0), (-1, -1), 4),
+    92→        ('TOPPADDING', (0, 0), (-1, -1), 10),
+    93→        ('BOTTOMPADDING', (0, 0), (-1, -1), 10),
+    94→    ]))
+    95→    story.append(t)
+    96→    story.append(Spacer(1, 12))
+    97→    return story
+    98→
+    99→
+   100→def build_part1():
+   101→    """Build all 15 plans as one continuous story."""
+   102→    story = []
+   103→
+   104→    # ── Part divider ───────────────────────────────────────────────
+   105→    story.extend(part_divider(
+   106→        'CARF CYS 2026 CONFORMANCE PLANS',
+   107→        'Written Policies, Plans & Procedures Portfolio',
+   108→        'This portfolio contains the fifteen written plans, policies, and procedures '
+   109→        'referenced in §12.1–§12.19 of the Well Spring Intervention LLC SOP Manual '
+   110→        '(Rev. 2.24) required to demonstrate conformance to the 2026 CARF Child and '
+   111→        'Youth Services (CYS) Standards Manual at the time of an Inaugural One-Year '
+   112→        'Accreditation survey. Each plan is a self-contained written policy with '
+   113→        'purpose, scope, policy statement, procedure, responsible parties, review '
+   114→        'schedule, and approval signature block. Plans are presented in the order '
+   115→        'they are referenced in §12. The QP maintains the signed originals in the '
+   116→        'facility compliance binder and presents this portfolio to CARF surveyors '
+   117→        'as the primary evidence of organizational readiness.',
+   118→    ))
+   119→
+   120→    # ════════════════════════════════════════════════════════════════
+   121→    # PLAN 1 — STRATEGIC PLAN (§12.1)
+   122→    # ════════════════════════════════════════════════════════════════
+   123→    story.extend(_plan_header(1, 'Strategic Plan', '§12.1'))
+   124→    story.append(Paragraph('<b>1.1 Purpose.</b>', s_h2))
+   125→    story.append(para(
+   126→        'The Strategic Plan establishes the long-term direction of Well Spring '
+   127→        'Intervention LLC and demonstrates conformance to CARF CYS Section 1.A '
+   128→        '(Leadership) and Section 1.C (Strategic Planning). It documents the '
+   129→        'organization\'s mission, vision, and values; identifies the populations '
+   130→        'to be served and the services to be provided; analyzes the internal and '
+   131→        'external environment; sets measurable strategic goals over a three-year '
+   132→        'horizon; and assigns responsibility and resources for execution. The '
+   133→        'Strategic Plan is the primary evidence of leadership\'s intentional '
+   134→        'direction of the organization and is presented to the CARF survey team '
+   135→        'at the Inaugural Accreditation survey as the foundational governance '
+   136→        'document.'
+   137→    ))
+   138→    story.append(Paragraph('<b>1.2 Scope.</b>', s_h2))
+   139→    story.append(para(
+   140→        'This plan applies to the entire organization, including the Governing '
+   141→        'Body, Executive Director, Clinical Director, Qualified Professional (QP), '
+   142→        'all direct-care and administrative personnel, contractors, and volunteers. '
+   143→        'It governs strategic decisions related to program design, population '
+   144→        'served, service array, geographic service area, capital development, '
+   145→        'workforce composition, financial structure, and accreditation strategy. '
+   146→        'Tactical and operational decisions are governed by the SOP Manual and '
+   147→        'are not within the scope of this Strategic Plan.'
+   148→    ))
+   149→    story.append(Paragraph('<b>1.3 Mission, Vision &amp; Values.</b>', s_h2))
+   150→    story.append(para(
+   151→        '<b>Mission.</b> Well Spring Intervention LLC provides trauma-informed, '
+   152→        'high-quality supervised living environments for youth with severe '
+   153→        'emotional disturbances (SED), ensuring their safety and clinical growth '
+   154→        'through individualized, evidence-based care.'
+   155→    ))
+   156→    story.append(para(
+   157→        '<b>Vision.</b> Every child served by Well Spring Intervention LLC will '
+   158→        'experience a stable, predictable, and nurturing environment in which '
+   159→        'healing occurs, families are strengthened, and youth transition to less '
+   160→        'restrictive settings with the skills and supports needed to thrive.'
+   161→    ))
+   162→    story.append(para(
+   163→        '<b>Values.</b> Safety · Dignity · Accountability · Growth · Empowerment · '
+   164→        'Freedom · Health · Wholeness · Healing. These values inform every '
+   165→        'personnel decision, clinical intervention, and operational practice.'
+   166→    ))
+   167→    story.append(Paragraph('<b>1.4 Populations &amp; Services.</b>', s_h2))
+   168→    story.append(para(
+   169→        'The organization serves children and adolescents (target age range 6–17) '
+   170→        'with a primary diagnosis of mental illness, emotional disturbance, or '
+   171→        'substance-related disorder, who do not meet inpatient psychiatric '
+   172→        'criteria but require removal from the home and treatment in a '
+   173→        'staff-secure group home setting. The service array includes: '
+   174→        '24-hour supervised residential care in a Staff Secure Group Home '
+   175→        'licensed under 10A NCAC 27G; clinical services including '
+   176→        'individual therapy (minimum weekly), group therapy (multiple times '
+   177→        'per week), family therapy (as clinically indicated, minimum '
+   178→        'biweekly), and clinical assessments; psychiatric medication '
+   179→        'management with psychiatric consultation per the Person-Centered '
+   180→        'Plan schedule and on-call psychiatric consultation for urgent '
+   181→        'clinical concerns; behavioral support and crisis intervention '
+   182→        'with continuous staff supervision; educational coordination '
+   183→        'through the local public school system or facility-based '
+   184→        'instructional programming; case management and care coordination '
+   185→        'with the LME/MCO and other system-of-care partners; and structured '
+   186→        'recreational, social, and life-skills programming integrated into '
+   187→        'the daily activity schedule.'
+   188→    ))
+   189→    story.append(Paragraph('<b>1.5 Environmental Analysis.</b>', s_h2))
+   190→    story.append(para(
+   191→        'The Strategic Plan incorporates an annual environmental analysis '
+   192→        'considering input from persons served (via the Stakeholder Input Plan, '
+   193→        'Plan 2), personnel (via the annual engagement survey), funders (via '
+   194→        'Alliance Health and NCDHHS communications), referral sources (via '
+   195→        'quarterly referral-pattern review), and the community (via the annual '
+   196→        'community advisory convening). The analysis identifies opportunities '
+   197→        '(e.g., emerging Medicaid benefit categories, community partnerships, '
+   198→        'workforce pipeline programs) and threats (e.g., workforce shortages, '
+   199→        'reimbursement rate changes, regulatory shifts, competitive entrants) '
+   200→        'over the three-year horizon.'
+   201→    ))
+   202→    story.append(Paragraph('<b>1.6 Three-Year Strategic Goals (2026–2028).</b>', s_h2))
+   203→    story.append(para(
+   204→        '<b>Goal 1 — Inaugural CARF Accreditation.</b> Achieve CARF Child &amp; '
+   205→        'Youth Services Inaugural One-Year Accreditation by Q1 2027 and '
+   206→        'subsequent full Three-Year Accreditation by Q1 2028. Owner: Executive '
+   207→        'Director. Measure: Accreditation certificate on file; QIP submitted '
+   208→        'within 90 days of notification (Form 12).'
+   209→    ))
+   210→    story.append(para(
+   211→        '<b>Goal 2 — Census Stabilization.</b> Achieve and sustain an average '
+   212→        'daily census of 90% of licensed capacity by Q4 2026, with no more than '
+   213→        '10% of admissions resulting in unplanned discharge within 30 days. '
+   214→        'Owner: Executive Director &amp; QP. Measure: Monthly census report to '
+   215→        'Governing Body; discharge-trend dashboard.'
+   216→    ))
+   217→    story.append(para(
+   218→        '<b>Goal 3 — Workforce Stability.</b> Reduce personnel turnover to below '
+   219→        '25% annually (industry benchmark) by Q4 2027, with 100% of direct-care '
+   220→        'personnel completing the orientation curriculum and annual refresher '
+   221→        'training per Plan 7. Owner: QP. Measure: Quarterly personnel engagement '
+   222→        'survey; monthly turnover report.'
+   223→    ))
+   224→    story.append(para(
+   225→        '<b>Goal 4 — Clinical Outcomes Excellence.</b> Demonstrate measurable '
+   226→        'clinical improvement in 80% of youth served, as measured by validated '
+   227→        'symptom and functioning instruments (e.g., PHQ-A, GAD-7, CAFAS) at '
+   228→        'admission vs. discharge. Owner: Clinical Director. Measure: Quarterly '
+   229→        'outcomes report to Governing Body per Plan 10.'
+   230→    ))
+   231→    story.append(para(
+   232→        '<b>Goal 5 — Financial Sustainability.</b> Maintain a minimum of 60 days '
+   233→        'cash-on-hand, achieve annual independent financial audit with no '
+   234→        'material findings, and sustain operating margins sufficient to fund '
+   235→        'the capital-replacement reserve per Plan 4. Owner: Executive Director. '
+   236→        'Measure: Quarterly financial report to Governing Body.'
+   237→    ))
+   238→    story.append(Paragraph('<b>1.7 Action Plans &amp; Evaluation.</b>', s_h2))
+   239→    story.append(para(
+   240→        'Each strategic goal has a written action plan identifying the responsible '
+   241→        'party, required resources, timeline (quarterly milestones), and '
+   242→        'evaluation method. The QP tracks action-plan progress monthly and '
+   243→        'reports status to the Executive Director. The Governing Body reviews '
+   244→        'progress against the Strategic Plan at each quarterly meeting and '
+   245→        'authorizes revisions as needed. The Strategic Plan is reviewed and '
+   246→        'updated in full at least annually, with the annual revision '
+   247→        'incorporating the year\'s environmental analysis, performance data '
+   248→        '(Plan 10), stakeholder input (Plan 2), and any QIP actions (Plan 12 '
+   249→        'in SOP §12.20).'
+   250→    ))
+   251→    story.append(Paragraph('<b>1.8 Succession Planning.</b>', s_h2))
+   252→    story.append(para(
+   253→        'The Strategic Plan includes a written succession plan for the Executive '
+   254→        'Director, Clinical Director, and QP positions. For each role, the '
+   255→        'succession plan identifies: (a) the position\'s core competencies and '
+   256→        'credentialing requirements; (b) internal candidates and their '
+   257→        'development needs; (c) external recruitment strategy and pipeline; '
+   258→        '(d) interim coverage procedures in the event of sudden vacancy; and '
+   259→        '(e) knowledge-transfer and documentation requirements. The succession '
+   260→        'plan is reviewed annually and following any key leadership change.'
+   261→    ))
+   262→    story.append(Paragraph('<b>1.9 Responsible Parties.</b>', s_h2))
+   263→    story.append(para(
+   264→        '<b>Executive Director</b> — overall accountability for the Strategic '
+   265→        'Plan; chairs the strategic planning process; presents the plan to the '
+   266→        'Governing Body. <b>Governing Body</b> — reviews, approves, and monitors '
+   267→        'the Strategic Plan at each quarterly meeting. <b>QP</b> — coordinates '
+   268→        'data collection, environmental analysis, and progress tracking; '
+   269→        'maintains the Strategic Plan in the compliance binder. <b>Clinical '
+   270→        'Director</b> — provides clinical program input and outcome data. '
+   271→        '<b>Compliance Officer</b> — ensures alignment with CARF, regulatory, '
+   272→        'and accreditation requirements.'
+   273→    ))
+   274→    story.append(Paragraph('<b>1.10 Review Schedule.</b>', s_h2))
+   275→    story.append(para(
+   276→        'Annual full review and revision (due: July 1 of each year, '
+   277→        'synchronized with the CARF standards-manual effective date). Quarterly '
+   278→        'progress reviews at each Governing Body meeting. Ad-hoc revision '
+   279→        'triggered by: significant environmental change, serious incident, '
+   280→        'accreditation finding, regulatory change, or leadership transition.'
+   281→    ))
+   282→    story.extend(_approval_block('Strategic Plan'))
+   283→    story.append(PageBreak())
+   284→
+   285→    # ════════════════════════════════════════════════════════════════
+   286→    # PLAN 2 — STAKEHOLDER INPUT PLAN (§12.2)
+   287→    # ════════════════════════════════════════════════════════════════
+   288→    story.extend(_plan_header(2, 'Stakeholder Input Plan', '§12.2'))
+   289→    story.append(Paragraph('<b>2.1 Purpose.</b>', s_h2))
+   290→    story.append(para(
+   291→        'The Stakeholder Input Plan demonstrates conformance to CARF CYS Section '
+   292→        '1.D by establishing written methods for gathering, analyzing, and acting '
+   293→        'on input from persons served, their families/Legally Responsible Persons '
+   294→        '(LRPs), personnel, referral sources, payers, and the community. The '
+   295→        'plan ensures that the organization\'s strategic direction, program '
+   296→        'design, and service delivery are informed by the voices of those most '
+   297→        'affected by its work, and that the organization communicates back to '
+   298→        'stakeholders how their input was used.'
+   299→    ))
+   300→    story.append(Paragraph('<b>2.2 Scope.</b>', s_h2))
+   301→    story.append(para(
+   302→        'This plan covers all input-gathering activities conducted by the '
+   303→        'organization, including surveys, focus groups, advisory convenings, '
+   304→        'grievance data, complaint logs, and informal feedback channels. It '
+   305→        'applies to all personnel who interact with stakeholders, including '
+   306→        'direct-care staff, clinical staff, the QP, the Executive Director, '
+   307→        'and Governing Body members.'
+   308→    ))
+   309→    story.append(Paragraph('<b>2.3 Input Methods.</b>', s_h2))
+   310→    story.append(para(
+   311→        'The organization uses at least four structured methods for gathering '
+   312→        'stakeholder input:'
+   313→    ))
+   314→    story.extend(bullets([
+   315→        '<b>Quarterly Youth Satisfaction Survey.</b> Developmentally appropriate, '
+   316→        'anonymous, offered in English and the youth\'s preferred language; '
+   317→        'covers safety, respect, food, activities, school, clinical services, '
+   318→        'family contact, and overall satisfaction. Administered by the QP or '
+   319→        'designee; results aggregated by facility and trended quarterly.',
+   320→        '<b>Semi-Annual Family/LRP Feedback Survey.</b> Distributed electronically '
+   321→        'and on paper; covers communication, visitation, treatment planning '
+   322→        'participation, satisfaction with clinical services, and recommendations. '
+   323→        'Results shared with the Clinical Director and the CFT.',
+   324→        '<b>Annual Personnel Engagement Survey.</b> Anonymous; covers supervision, '
+   325→        'training, safety, workload, communication, leadership, and intent to '
+   326→        'remain. Results presented to the Governing Body and inform the '
+   327→        'Workforce Development Plan (Plan 7).',
+   328→        '<b>Annual Community/Stakeholder Advisory Convening.</b> Open invitation '
+   329→        'to LME/MCO representatives, school personnel, DSS, juvenile justice, '
+   330→        'former residents and families (with consent), faith community, and '
+   331→        'neighborhood residents. Facilitated discussion of program strengths, '
+   332→        'gaps, and opportunities; minutes documented and posted.',
+   333→    ]))
+   334→    story.append(Paragraph('<b>2.4 Input Aggregation &amp; Analysis.</b>', s_h2))
+   335→    story.append(para(
+   336→        'The QP aggregates all input data at least quarterly, analyzes for '
+   337→        'themes and trends, and prepares a written summary for the Governing '
+   338→        'Body. The summary identifies: (a) the input methods used; (b) the '
+   339→        'number of respondents per method; (c) the key themes; (d) the actions '
+   340→        'taken or planned in response; and (e) any unresolved issues requiring '
+   341→        'Governing Body direction. Quantitative survey results are presented '
+   342→        'with comparison to prior periods to identify trends.'
+   343→    ))
+   344→    story.append(Paragraph('<b>2.5 "You Said / We Did" Feedback Loop.</b>', s_h2))
+   345→    story.append(para(
+   346→        'The organization communicates back to stakeholders how their input was '
+   347→        'used through visible "You Said / We Did" postings in the facility '
+   348→        'common area (updated monthly), in resident community meetings (weekly), '
+   349→        'in family newsletters (quarterly), and in personnel meetings (monthly). '
+   350→        'This closed-loop feedback is essential to maintaining stakeholder trust '
+   351→        'and demonstrating that input is valued and acted upon.'
+   352→    ))
+   353→    story.append(Paragraph('<b>2.6 Use of Input.</b>', s_h2))
+   354→    story.append(para(
+   355→        'Stakeholder input directly informs: (a) the annual revision of the '
+   356→        'Strategic Plan (Plan 1); (b) the Person-Centered Plan for each youth '
+   357→        '(SOP §4.1); (c) program structure and service array decisions (Plan '
+   358→        '11); (d) the Workforce Development Plan (Plan 7); (e) the Performance '
+   359→        'Measurement Plan (Plan 10); and (f) the Quality Improvement Plan '
+   360→        'submitted to CARF (SOP §12.20, Form 12).'
+   361→    ))
+   362→    story.append(Paragraph('<b>2.7 Non-Retaliation.</b>', s_h2))
+   363→    story.append(para(
+   364→        'The organization prohibits retaliation against any person served, '
+   365→        'family member, LRP, personnel member, or other stakeholder for '
+   366→        'providing input, filing a grievance, or reporting a concern. The '
+   367→        'non-retaliation policy is published in the Resident Handbook, the '
+   368→        'personnel handbook, and posted in the facility. Personnel who '
+   369→        'engage in retaliation are subject to disciplinary action up to and '
+   370→        'including termination. The QP investigates any allegation of '
+   371→        'retaliation within 5 business days.'
+   372→    ))
+   373→    story.append(Paragraph('<b>2.8 Responsible Parties.</b>', s_h2))
+   374→    story.append(para(
+   375→        '<b>QP</b> — overall coordination of input-gathering activities, data '
+   376→        'aggregation, analysis, and reporting. <b>Executive Director</b> — '
+   377→        'convenes the annual community advisory convening; presents input '
+   378→        'summary to Governing Body. <b>Governing Body</b> — reviews input '
+   379→        'summary at each quarterly meeting; directs action. <b>All Personnel</b> '
+   380→        '— encourage stakeholder input, do not retaliate, communicate the '
+   381→        '"You Said / We Did" feedback.'
+   382→    ))
+   383→    story.append(Paragraph('<b>2.9 Review Schedule.</b>', s_h2))
+   384→    story.append(para(
+   385→        'Quarterly review of input data and aggregation. Annual review of the '
+   386→        'Stakeholder Input Plan itself (method effectiveness, response rates, '
+   387→        'representation). Ad-hoc review following any grievance trend, serious '
+   388→        'incident, or significant stakeholder concern.'
+   389→    ))
+   390→    story.extend(_approval_block('Stakeholder Input Plan'))
+   391→    story.append(PageBreak())
+   392→
+   393→    # ════════════════════════════════════════════════════════════════
+   394→    # PLAN 3 — LEGAL COMPLIANCE PLAN (§12.3)
+   395→    # ════════════════════════════════════════════════════════════════
+   396→    story.extend(_plan_header(3, 'Legal Compliance Plan', '§12.3'))
+   397→    story.append(Paragraph('<b>3.1 Purpose.</b>', s_h2))
+   398→    story.append(para(
+   399→        'The Legal Compliance Plan demonstrates conformance to CARF CYS Section '
+   400→        '1.E by establishing a written framework for identifying, monitoring, '
+   401→        'and complying with all applicable federal, state, and local legal '
+   402→        'requirements governing the organization and the program. The plan '
+   403→        'designates a Compliance Officer responsible for monitoring legal '
+   404→        'requirements and coordinating the annual legal-compliance review.'
+   405→    ))
+   406→    story.append(Paragraph('<b>3.2 Scope.</b>', s_h2))
+   407→    story.append(para(
+   408→        'This plan applies to all legal and regulatory requirements applicable '
+   409→        'to the organization\'s operations, including licensure, Medicaid '
+   410→        'provider enrollment, health-care fraud and abuse laws, health-privacy '
+   411→        'law, child-mandated-reporter law, disability-rights law, civil-rights '
+   412→        'law, employment law, and zoning/fire/building/life-safety codes. It '
+   413→        'covers written policies, monitoring activities, response to legal '
+   414→        'inquiries, and reporting of potential violations.'
+   415→    ))
+   416→    story.append(Paragraph('<b>3.3 Compliance Officer Designation.</b>', s_h2))
+   417→    story.append(para(
+   418→        'The Executive Director designates a Compliance Officer (may be the QP) '
+   419→        'responsible for: (a) monitoring changes in legal requirements; (b) '
+   420→        'maintaining the Legal Compliance Register (Section 3.5); (c) '
+   421→        'coordinating the annual legal-compliance review; (d) investigating '
+   422→        'reports of potential violations; (e) reporting identified violations '
+   423→        'to the Governing Body within 5 business days of discovery; and (f) '
+   424→        'coordinating with legal counsel. The Compliance Officer reports '
+   425→        'directly to the Executive Director and has access to the Governing '
+   426→        'Body as needed.'
+   427→    ))
+   428→    story.append(Paragraph('<b>3.4 Applicable Legal Requirements.</b>', s_h2))
+   429→    story.append(para(
+   430→        'The organization maintains written policies addressing compliance with '
+   431→        'the following categories of legal requirements:'
+   432→    ))
+   433→    story.extend(bullets([
+   434→        '<b>Licensure.</b> Staff Secure Group Home license issued by '
+   435→        'the NC Department of Health and Human Services under 10A NCAC 27G '
+   436→        '(SOP §1.2); renewed prior to expiration; changes in ownership, '
+   437→        'capacity, population, or location require prior written approval. '
+   438→        'The Staff Secure Group Home level of care serves children and '
+   439→        'adolescents with serious emotional disturbance who require 24-hour '
+   440→        'supervised residential care with structured clinical services and '
+   441→        'continuous staff supervision, but who do not require the '
+   442→        'intensive, hardware-secure level of care provided in a Level III '
+   443→        'Residential Treatment Facility.',
+   444→        '<b>Medicaid Provider Enrollment.</b> Enrollment with NCTracks and '
+   445→        'Alliance Health; revalidation per CMS schedule; compliance with Medicaid '
+   446→        'fraud and abuse laws (False Claims Act, Anti-Kickback Statute, '
+   447→        'Physician Self-Referral Law) (SOP §10).',
+   448→        '<b>Health Privacy.</b> HIPAA Privacy, Security, and Breach Notification '
+   449→        'Rules; HITECH Act; 42 CFR Part 2 (SUD records confidentiality); state '
+   450→        'law on AIDS/confidential conditions (SOP §11).',
+   451→        '<b>Child Mandated Reporting.</b> State law requiring all personnel to '
+   452→        'report suspected child abuse/neglect to DSS; written reporting '
+   453→        'procedure (SOP §8).',
+   454→        '<b>Disability Rights.</b> Americans with Disabilities Act (ADA) Title '
+   455→        'III; Section 504 of the Rehabilitation Act; state disability-rights '
+   456→        'law (Plan 9).',
+   457→        '<b>Civil Rights.</b> Title VI of the Civil Rights Act; Age '
+   458→        'Discrimination Act; state civil-rights law (Plan 9).',
+   459→        '<b>Employment Law.</b> Fair Labor Standards Act; Family and Medical '
+   460→        'Leave Act; Equal Employment Opportunity laws; OSHA; state employment '
+   461→        'law; workers\' compensation.',
+   462→        '<b>Life-Safety Codes.</b> NFPA 101 Life Safety Code; state fire code; '
+   463→        'building code; zoning ordinance (SOP §9).',
+   464→        '<b>Accreditation.</b> CARF CYS 2026 Standards Manual; 2026 CYS '
+   465→        'Inaugural Accreditation Guidelines (SOP §12).',
+   466→    ]))
+   467→    story.append(Paragraph('<b>3.5 Legal Compliance Register.</b>', s_h2))
+   468→    story.append(para(
+   469→        'The Compliance Officer maintains a written Legal Compliance Register '
+   470→        'listing each applicable legal requirement, the controlling authority, '
+   471→        'the responsible position, the most recent review date, the next review '
+   472→        'due date, and the status. The Register is reviewed monthly by the '
+   473→        'Compliance Officer and presented to the Governing Body at each '
+   474→        'quarterly meeting. The Register is the source-of-truth document for '
+   475→        'all legal compliance activities.'
+   476→    ))
+   477→    story.append(Paragraph('<b>3.6 Annual Legal-Compliance Review.</b>', s_h2))
+   478→    story.append(para(
+   479→        'The Compliance Officer coordinates an annual legal-compliance review, '
+   480→        'engaging legal counsel as needed. The review covers each item in the '
+   481→        'Legal Compliance Register, verifies current compliance, identifies any '
+   482→        'gaps, and documents corrective actions. The written annual review '
+   483→        'report is presented to the Executive Director and the Governing Body, '
+   484→        'with an attestation of compliance signed by the Executive Director and '
+   485→        'Clinical Director.'
+   486→    ))
+   487→    story.append(Paragraph('<b>3.7 Response to Legal Inquiries.</b>', s_h2))
+   488→    story.append(para(
+   489→        'The organization maintains a written procedure for responding to '
+   490→        'subpoenas, court orders, government investigations, and media inquiries. '
+   491→        'The procedure requires: (a) immediate notification of the Executive '
+   492→        'Director and Compliance Officer; (b) notification of legal counsel '
+   493→        'within 24 hours; (c) preservation of all relevant records; (d) '
+   494→        'coordination of any response through legal counsel; (e) documentation '
+   495→        'of the inquiry and response in the compliance binder; and (f) reporting '
+   496→        'to the Governing Body at the next regular meeting (or sooner if '
+   497→        'material).'
+   498→    ))
+   499→    story.append(Paragraph('<b>3.8 Reporting Potential Violations.</b>', s_h2))
+   500→    story.append(para(
+   501→        'Any personnel member who becomes aware of a potential legal violation '
+   502→        'must report it to the Compliance Officer within 24 hours. The '
+   503→        'Compliance Officer investigates each report within 5 business days, '
+   504→        'documents findings, and reports confirmed violations to the Executive '
+   505→        'Director and Governing Body within 5 business days of confirmation. '
+   506→        'The organization does not retaliate against any personnel member for '
+   507→        'good-faith reporting of a potential violation. Personnel may also '
+   508→        'report concerns anonymously through the compliance hotline.'
+   509→    ))
+   510→    story.append(Paragraph('<b>3.9 Responsible Parties.</b>', s_h2))
+   511→    story.append(para(
+   512→        '<b>Executive Director</b> — designates the Compliance Officer; signs '
+   513→        'the annual compliance attestation. <b>Compliance Officer</b> — '
+   514→        'maintains the Legal Compliance Register; coordinates the annual review; '
+   515→        'investigates reports. <b>QP</b> — operational compliance for clinical '
+   516→        'and program requirements. <b>Governing Body</b> — reviews compliance '
+   517→        'reports; ensures corrective action. <b>Legal Counsel</b> — provides '
+   518→        'legal advice; reviews legal inquiries.'
+   519→    ))
+   520→    story.append(Paragraph('<b>3.10 Review Schedule.</b>', s_h2))
+   521→    story.append(para(
+   522→        'Monthly review of the Legal Compliance Register. Annual full '
+   523→        'legal-compliance review with counsel. Ad-hoc review triggered by '
+   524→        'regulatory change, serious incident, or legal inquiry.'
+   525→    ))
+   526→    story.extend(_approval_block('Legal Compliance Plan'))
+   527→    story.append(PageBreak())
+   528→
+   529→    # ════════════════════════════════════════════════════════════════
+   530→    # PLAN 4 — FINANCIAL PLAN (§12.4)
+   531→    # ════════════════════════════════════════════════════════════════
+   532→    story.extend(_plan_header(4, 'Financial Plan', '§12.4'))
+   533→    story.append(Paragraph('<b>4.1 Purpose.</b>', s_h2))
+   534→    story.append(para(
+   535→        'The Financial Plan demonstrates conformance to CARF CYS Section 1.F by '
+   536→        'establishing written policies and procedures for financial planning, '
+   537→        'budgeting, internal controls, audit, billing, and records retention. '
+   538→        'The plan ensures the organization maintains financial sustainability '
+   539→        'sufficient to deliver quality services and meet its obligations to '
+   540→        'persons served, personnel, funders, and the community.'
+   541→    ))
+   542→    story.append(Paragraph('<b>4.2 Scope.</b>', s_h2))
+   543→    story.append(para(
+   544→        'This plan covers all financial activities of the organization, '
+   545→        'including operating budget, capital budget, cash management, resident '
+   546→        'trust funds, billing and collections, payroll, accounts payable, '
+   547→        'procurement, financial reporting, audit, and records retention. It '
+   548→        'applies to the Executive Director, QP, Billing Coordinator, and any '
+   549→        'personnel with financial responsibilities.'
+   550→    ))
+   551→    story.append(Paragraph('<b>4.3 Annual Operating Budget.</b>', s_h2))
+   552→    story.append(para(
+   553→        'The Executive Director prepares an annual operating budget covering '
+   554→        'all revenue sources (Medicaid, room-and-board, grants, charitable '
+   555→        'contributions) and all expense categories (personnel, facility, '
+   556→        'clinical, administrative). The budget is reviewed and approved by '
+   557→        'the Governing Body prior to the start of the fiscal year. Material '
+   558→        'variances (greater than 10% line-item variance) are documented with '
+   559→        'explanation and corrective action. The budget is reviewed at each '
+   560→        'quarterly Governing Body meeting.'
+   561→    ))
+   562→    story.append(Paragraph('<b>4.4 Capital-Replacement Reserve.</b>', s_h2))
+   563→    story.append(para(
+   564→        'The organization maintains a capital-replacement reserve sufficient '
+   565→        'to address expected major repairs and replacements over a rolling '
+   566→        'five-year horizon. The reserve is funded through an annual allocation '
+   567→        'in the operating budget (minimum 3% of operating revenue). The QP '
+   568→        'maintains a written five-year capital-replacement schedule listing '
+   569→        'each major asset, expected useful life, replacement cost, and target '
+   570→        'replacement year. The reserve is held in a separate bank account and '
+   571→        'is used only for capital purposes.'
+   572→    ))
+   573→    story.append(Paragraph('<b>4.5 Internal Controls.</b>', s_h2))
+   574→    story.append(para(
+   575→        'Written internal controls address: (a) segregation of duties between '
+   576→        'the person authorizing payments, the person processing payments, and '
+   577→        'the person reconciling bank statements; (b) authorization thresholds '
+   578→        'for expenditures (e.g., under $500 — QP; $500–$5,000 — Executive '
+   579→        'Director; over $5,000 — Governing Body); (c) monthly bank '
+   580→        'reconciliation by an individual not authorized to sign checks; (d) '
+   581→        'segregation of resident trust funds from operating funds in a '
+   582→        'separate bank account with monthly reconciliation and quarterly '
+   583→        'reporting to each resident and LRP; (e) dual signatures on all '
+   584→        'checks over $1,000; (f) monthly review of expense reports by the '
+   585→        'Executive Director; and (g) annual review of internal controls by '
+   586→        'the auditor.'
+   587→    ))
+   588→    story.append(Paragraph('<b>4.6 Resident Trust Funds.</b>', s_h2))
+   589→    story.append(para(
+   590→        'The organization maintains a written resident trust-fund policy '
+   591→        'addressing: (a) deposits (intake of personal funds at admission, '
+   592→        'receipt of SSI/SSDI benefits, gifts); (b) withdrawals (consistent '
+   593→        'with the youth\'s Person-Centered Plan, with LRP authorization for '
+   594→        'amounts over $50); (c) interest (any interest earned is credited to '
+   595→        'the youth\'s account); (d) quarterly accounting to the youth and '
+   596→        'LRP; (e) reconciliation at discharge with full disbursement of '
+   597→        'remaining funds; and (f) protection from unauthorized access. The '
+   598→        'QP conducts monthly audit of resident trust-fund transactions.'
+   599→    ))
+   600→    story.append(Paragraph('<b>4.7 Independent Financial Audit.</b>', s_h2))
+   601→    story.append(para(
+   602→        'The organization engages an independent certified public accountant '
+   603→        '(CPA) to conduct an annual financial audit (or reviewed financial '
+   604→        'statements for organizations below the audit threshold). The audit '
+   605→        'engagement letter is approved by the Governing Body. The auditor '
+   606→        'issues a written report including the opinion, financial statements, '
+   607→        'and any management-letter findings. The Executive Director prepares '
+   608→        'a written response to any findings, presented to the Governing Body '
+   609→        'within 60 days of receipt. The audit report is retained permanently.'
+   610→    ))
+   611→    story.append(Paragraph('<b>4.8 Billing &amp; Collections.</b>', s_h2))
+   612→    story.append(para(
+   613→        'Written billing and collections policies are maintained consistent '
+   614→        'with SOP §10.9 and Medicaid requirements. The Billing Coordinator '
+   615→        'submits claims within 5 business days of service delivery, monitors '
+   616→        'claim status weekly, follows up on denials within 10 business days, '
+   617→        'and reports monthly to the QP on claim volume, denial rate, and '
+   618→        'aging. The QP coordinates with clinical staff to ensure service '
+   619→        'documentation supports billed claims (SOP §10). Write-offs over '
+   620→        '$500 require Executive Director approval; write-offs over $5,000 '
+   621→        'require Governing Body approval.'
+   622→    ))
+   623→    story.append(Paragraph('<b>4.9 Financial Records Retention.</b>', s_h2))
+   624→    story.append(para(
+   625→        'Financial records are retained per the written records-retention '
+   626→        'schedule, which is consistent with state law, Medicaid requirements, '
+   627→        'and IRS requirements. At minimum: tax returns — permanent; audit '
+   628→        'reports — permanent; bank statements — 7 years; accounts payable '
+   629→        'and accounts receivable — 7 years; payroll records — 7 years; '
+   630→        'resident trust-fund records — 7 years after discharge. Records are '
+   631→        'stored securely with access limited to authorized personnel.'
+   632→    ))
+   633→    story.append(Paragraph('<b>4.10 Financial Reporting.</b>', s_h2))
+   634→    story.append(para(
+   635→        'The Executive Director prepares a quarterly financial report for the '
+   636→        'Governing Body including: (a) balance sheet; (b) income statement '
+   637→        '(actual vs. budget); (c) cash-flow statement; (d) days-cash-on-hand '
+   638→        'calculation; (e) accounts-receivable aging; (f) resident '
+   639→        'trust-fund balance; and (g) capital-replacement reserve balance. '
+   640→        'The report is presented at each quarterly Governing Body meeting '
+   641→        'and retained in the compliance binder.'
+   642→    ))
+   643→    story.append(Paragraph('<b>4.11 Responsible Parties.</b>', s_h2))
+   644→    story.append(para(
+   645→        '<b>Executive Director</b> — overall financial accountability; '
+   646→        'prepares budget; presents to Governing Body. <b>Governing Body</b> — '
+   647→        'approves budget; reviews quarterly financial reports; engages '
+   648→        'auditor. <b>QP</b> — coordinates billing oversight and resident '
+   649→        'trust-fund audit. <b>Billing Coordinator</b> — daily billing '
+   650→        'operations; weekly claim-status monitoring. <b>Compliance Officer</b> '
+   651→        '— ensures internal controls are followed.'
+   652→    ))
+   653→    story.append(Paragraph('<b>4.12 Review Schedule.</b>', s_h2))
+   654→    story.append(para(
+   655→        'Monthly internal financial review (Executive Director + QP). '
+   656→        'Quarterly Governing Body financial review. Annual independent audit. '
+   657→        'Annual full review of the Financial Plan itself.'
+   658→    ))
+   659→    story.extend(_approval_block('Financial Plan'))
+   660→    story.append(PageBreak())
+   661→
+   662→    # ════════════════════════════════════════════════════════════════
+   663→    # PLAN 5 — ENTERPRISE RISK MANAGEMENT PLAN (§12.5)
+   664→    # ════════════════════════════════════════════════════════════════
+   665→    story.extend(_plan_header(5, 'Enterprise Risk Management Plan', '§12.5'))
+   666→    story.append(Paragraph('<b>5.1 Purpose.</b>', s_h2))
+   667→    story.append(para(
+   668→        'The Enterprise Risk Management (ERM) Plan demonstrates conformance to '
+   669→        'CARF CYS Section 1.G by establishing a written framework for '
+   670→        'identifying, assessing, mitigating, and monitoring risks across the '
+   671→        'organization. The plan includes the Enterprise Risk Register, '
+   672→        'business-continuity plan, and the procedures for integrating risk '
+   673→        'management into governance, operations, and incident response.'
+   674→    ))
+   675→    story.append(Paragraph('<b>5.2 Scope.</b>', s_h2))
+   676→    story.append(para(
+   677→        'This plan covers all categories of risk facing the organization, '
+   678→        'including clinical, operational, financial, legal/compliance, '
+   679→        'reputational, and external risks. It applies to the Governing Body, '
+   680→        'Executive Director, Compliance Officer, QP, and all personnel with '
+   681→        'risk-management responsibilities.'
+   682→    ))
+   683→    story.append(Paragraph('<b>5.3 Risk-Management Governance.</b>', s_h2))
+   684→    story.append(para(
+   685→        'The Compliance Officer serves as the risk-management lead, reporting '
+   686→        'directly to the Executive Director with access to the Governing Body '
+   687→        'as needed. The Compliance Officer: (a) maintains the Enterprise Risk '
+   688→        'Register; (b) coordinates the annual risk-management review; '
+   689→        '(c) reviews serious incidents within one business day; (d) trends '
+   690→        'incidents monthly; (e) presents risk-management reports to the '
+   691→        'Governing Body at each quarterly meeting; and (f) coordinates the '
+   692→        'business-continuity plan and annual drill.'
+   693→    ))
+   694→    story.append(Paragraph('<b>5.4 Enterprise Risk Register.</b>', s_h2))
+   695→    story.append(para(
+   696→        'The Enterprise Risk Register identifies at minimum the following '
+   697→        'risk categories, with each risk scored on likelihood (1–5) and '
+   698→        'impact (1–5), and assigned a mitigation action, responsible '
+   699→        'position, and review date:'
+   700→    ))
+   701→    # Risk register table
+   702→    rr_header = ['Risk Category', 'Specific Risk', 'Likelihood (1-5)', 'Impact (1-5)', 'Mitigation Action', 'Owner', 'Review Date']
+   703→    rr_rows = [
+   704→        ['Clinical', 'Suicide attempt / self-harm', '3', '5', 'Columbia suicide-risk screening at admission & weekly; safety plan; line-of-sight supervision as needed; staff training', 'Clinical Director', 'Quarterly'],
+   705→        ['Clinical', 'Elopement from facility', '3', '4', 'Staff-secure group home with continuous staff supervision; awake overnight staff; elopement risk assessment at admission & weekly; staff protocol for missing-resident response; community-search procedure; police notification within 30 min if not located', 'QP', 'Quarterly'],
+   706→        ['Clinical', 'Restraint-related injury', '2', '5', 'De-escalation training; restraint-avoidance policy; post-incident debriefing (Form 3); quarterly restraint review', 'Clinical Director', 'Quarterly'],
+   707→        ['Clinical', 'Medication error', '3', '4', 'Med-pass training; 6-month regimen review (Form 11); med-error reporting; double-check for high-alert meds', 'RN / QP', 'Monthly'],
+   708→        ['Operational', 'Staffing shortage', '4', '4', 'Recruitment plan; PRN pool; agency contract backup; sign-on incentive; retention bonuses', 'Executive Director', 'Monthly'],
+   709→        ['Operational', 'Capacity under-utilization', '3', '3', 'Referral-source relationships; LME/MCO engagement; marketing; admission-decision responsiveness', 'Executive Director', 'Monthly'],
+   710→        ['Operational', 'IT system failure (EHR)', '2', '4', 'Daily off-site backup; paper-fallback procedures (SOP §10.7); 72-hour transcription SLA; vendor support contract', 'QP', 'Quarterly'],
+   711→        ['Financial', 'Medicaid audit finding', '2', '5', 'Monthly service-note audit (Form 8); quarterly QP review; annual external documentation audit; staff training', 'QP', 'Quarterly'],
+   712→        ['Financial', 'Payer-mix concentration', '3', '3', 'Diversification strategy; grant-seeking; charitable fundraising; cost-rate analysis', 'Executive Director', 'Annual'],
+   713→        ['Financial', 'Cash-flow shortfall', '2', '5', '60-day cash reserve; line of credit; monthly cash-flow projection; accelerated billing', 'Executive Director', 'Monthly'],
+   714→        ['Legal/Compliance', 'Privacy breach (PHI)', '2', '5', 'HIPAA training; access controls; encryption; breach-response plan; annual risk assessment', 'Compliance Officer', 'Quarterly'],
+   715→        ['Legal/Compliance', 'Licensing deficiency', '2', '5', 'Mock survey annually; continuous compliance monitoring; corrective-action tracking', 'Compliance Officer', 'Annual'],
+   716→        ['Legal/Compliance', 'Employment claim', '2', '4', 'Personnel policies; EPLI insurance; documentation; supervisory training', 'Executive Director', 'Annual'],
+   717→        ['Reputational', 'Adverse media / community concern', '2', '4', 'Crisis-communication plan; community engagement; transparent incident reporting', 'Executive Director', 'Annual'],
+   718→        ['External', 'Natural disaster (tornado/hurricane)', '2', '5', 'Emergency Operations Plan (Protocol 19); drill per shift quarterly; supply cache; evacuation plan', 'QP', 'Quarterly'],
+   719→        ['External', 'Public-health emergency (pandemic)', '2', '5', 'Infection-control plan (Protocol 18); PPE supply; telehealth capability; visitor screening', 'RN / QP', 'Quarterly'],
+   720→    ]
+   721→    story.append(std_table(rr_header, rr_rows,
+   722→                           col_widths=[0.10*AVAIL_W, 0.16*AVAIL_W, 0.07*AVAIL_W, 0.07*AVAIL_W,
+   723→                                       0.30*AVAIL_W, 0.14*AVAIL_W, 0.10*AVAIL_W],
+   724→                           header_align='left', first_col_left=True, small=True))
+   725→    story.append(Spacer(1, 6))
+   726→    story.append(Paragraph('<b>5.5 Business-Continuity Plan.</b>', s_h2))
+   727→    story.append(para(
+   728→        'The organization maintains a written business-continuity plan '
+   729→        'coordinated with SOP §9 Emergency Operations Plan and Protocol 19. '
+   730→        'The plan addresses: (a) critical functions to be maintained during '
+   731→        'a disruption (resident care, medication administration, clinical '
+   732→        'services, billing); (b) alternate facility arrangements in the event '
+   733→        'the primary facility is uninhabitable; (c) communication procedures '
+   734→        'with personnel, families/LRPs, LME/MCO, and licensing authority; '
+   735→        '(d) IT system recovery procedures (daily off-site backup, vendor '
+   736→        'recovery SLA, paper-fallback); (e) essential-vendor list (pharmacy, '
+   737→        'medical, food, fuel); and (f) annual continuity-plan drill with '
+   738→        'after-action review.'
+   739→    ))
+   740→    story.append(Paragraph('<b>5.6 Incident-Review Integration.</b>', s_h2))
+   741→    story.append(para(
+   742→        'The Compliance Officer reviews every serious incident report (per '
+   743→        'SOP §8 IRIS) within one business day of submission. The review '
+   744→        'identifies any new risks not yet on the Enterprise Risk Register, '
+   745→        'updates likelihood/impact scores for existing risks as warranted, '
+   746→        'and ensures corrective actions are tracked to completion. Serious '
+   747→        'incidents are trended monthly by type, location, shift, and '
+   748→        'personnel. Trends are presented to the Health &amp; Safety Committee '
+   749→        '(Plan 6) and to the Governing Body quarterly.'
+   750→    ))
+   751→    story.append(Paragraph('<b>5.7 Annual Risk-Management Review.</b>', s_h2))
+   752→    story.append(para(
+   753→        'The Compliance Officer coordinates an annual risk-management review '
+   754→        'presented to the Governing Body. The review includes: (a) summary '
+   755→        'of all risks on the Enterprise Risk Register with current scoring '
+   756→        'and mitigation status; (b) analysis of incident trends; (c) review '
+   757→        'of any near-misses; (d) evaluation of mitigation-action '
+   758→        'effectiveness; (e) identification of emerging risks; (f) revision '
+   759→        'of the Register as needed; and (g) recommendations for the coming '
+   760→        'year. The annual review is documented in writing and retained in '
+   761→        'the compliance binder.'
+   762→    ))
+   763→    story.append(Paragraph('<b>5.8 Responsible Parties.</b>', s_h2))
+   764→    story.append(para(
+   765→        '<b>Compliance Officer</b> — risk-management lead; maintains Register; '
+   766→        'coordinates annual review. <b>Executive Director</b> — overall '
+   767→        'accountability; allocates resources to mitigation. <b>Governing Body</b> '
+   768→        '— reviews Register at each quarterly meeting; directs major '
+   769→        'mitigation actions. <b>QP</b> — operational risk management for '
+   770→        'clinical/program risks. <b>RN</b> — clinical/medication risks.'
+   771→    ))
+   772→    story.append(Paragraph('<b>5.9 Review Schedule.</b>', s_h2))
+   773→    story.append(para(
+   774→        'Quarterly review of the Enterprise Risk Register by the Governing '
+   775→        'Body. Annual full risk-management review. Ad-hoc review following '
+   776→        'any serious incident, near-miss, or significant organizational '
+   777→        'change.'
+   778→    ))
+   779→    story.extend(_approval_block('Enterprise Risk Management Plan'))
+   780→    story.append(PageBreak())
+   781→
+   782→    # ════════════════════════════════════════════════════════════════
+   783→    # PLAN 6 — HEALTH & SAFETY COMMITTEE CHARTER (§12.6)
+   784→    # ════════════════════════════════════════════════════════════════
+   785→    story.extend(_plan_header(6, 'Health & Safety Committee Charter', '§12.6'))
+   786→    story.append(Paragraph('<b>6.1 Purpose.</b>', s_h2))
+   787→    story.append(para(
+   788→        'The Health &amp; Safety Committee Charter demonstrates conformance to '
+   789→        'CARF CYS Section 1.H by establishing a standing committee responsible '
+   790→        'for ongoing oversight of health, safety, and environmental conditions '
+   791→        'in the facility. The committee reviews inspections, drills, incidents, '
+   792→        'infection-control surveillance, medication errors, and work-related '
+   793→        'injuries, and recommends corrective action to the Executive Director '
+   794→        'and Governing Body.'
+   795→    ))
+   796→    story.append(Paragraph('<b>6.2 Scope.</b>', s_h2))
+   797→    story.append(para(
+   798→        'The committee\'s scope covers all health and safety matters within '
+   799→        'the facility and during organization-sponsored activities off-site. '
+   800→        'This includes physical-plant safety, environmental health, '
+   801→        'infection control, emergency preparedness, drill scheduling and '
+   802→        'evaluation, incident review, medication-error review, '
+   803→        'workplace-violence prevention, and personnel safety training.'
+   804→    ))
+   805→    story.append(Paragraph('<b>6.3 Committee Composition.</b>', s_h2))
+   806→    story.append(para(
+   807→        'The standing members of the Health &amp; Safety Committee are: '
+   808→        '(a) <b>QP</b> (chair, voting); (b) <b>House Manager</b> (voting); '
+   809→        '(c) <b>Direct Care Professional representative</b> (rotating among '
+   810→        'day/evening/overnight shifts, voting); (d) <b>RN or designee</b> '
+   811→        '(voting); (e) <b>Compliance Officer</b> (non-voting, advisory); '
+   812→        'and (f) <b>Executive Director</b> (ex officio, non-voting). The '
+   813→        'committee may invite additional subject-matter experts (facilities '
+   814→        'manager, IT coordinator, etc.) as needed. Membership is reviewed '
+   815→        'annually.'
+   816→    ))
+   817→    story.append(Paragraph('<b>6.4 Meeting Frequency &amp; Quorum.</b>', s_h2))
+   818→    story.append(para(
+   819→        'The committee meets at least monthly, on the second Tuesday of '
+   820→        'each month at 1:00 PM. Special meetings may be called by the chair '
+   821→        'or any two voting members with at least 48 hours\' notice. Quorum '
+   822→        'is a majority of voting members (3 of 4). Decisions are made by '
+   823→        'consensus where possible; otherwise by majority vote of voting '
+   824→        'members present. The chair does not vote except to break a tie.'
+   825→    ))
+   826→    story.append(Paragraph('<b>6.5 Standing Agenda.</b>', s_h2))
+   827→    story.append(para('Each monthly meeting follows a standing agenda:'))
+   828→    story.extend(bullets([
+   829→        'Review and approval of prior meeting minutes',
+   830→        'Monthly environmental safety inspection results (Form 5)',
+   831→        'Fire, tornado, and lockdown drills per shift (§9.2)',
+   832→        'Incident reports trended by type, location, shift, and personnel (§8)',
+   833→        'Infection-control surveillance (§6.1, Protocol 18)',
+   834→        'Medication-error trends (§6.3)',
+   835→        'Work-related injury trends',
+   836→        'Equipment and physical-plant work orders',
+   837→        'Safety-plan revisions',
+   838→        'Emergency-preparedness plan revisions',
+   839→        'Old business / action-item follow-up',
+   840→        'New business',
+   841→    ]))
+   842→    story.append(Paragraph('<b>6.6 Minutes &amp; Documentation.</b>', s_h2))
+   843→    story.append(para(
+   844→        'The committee maintains written minutes documenting attendance, '
+   845→        'topics reviewed, decisions made, and action items with responsible '
+   846→        'parties and due dates. Minutes are distributed to all committee '
+   847→        'members within 5 business days of the meeting, retained permanently '
+   848→        'in the compliance binder, and made available to CARF surveyors on '
+   849→        'request. Action items are tracked to completion at each subsequent '
+   850→        'meeting.'
+   851→    ))
+   852→    story.append(Paragraph('<b>6.7 Reporting.</b>', s_h2))
+   853→    story.append(para(
+   854→        'The QP (as chair) reports committee activities and trends to the '
+   855→        'Clinical Director at each quarterly compliance report (per SOP '
+   856→        '§1.4(a)) and to the Governing Body at each quarterly meeting. The '
+   857→        'report includes: (a) summary of inspections and drills; (b) '
+   858→        'incident trends; (c) infection-control surveillance; (d) '
+   859→        'medication-error trends; (e) work-related injury trends; (f) '
+   860→        'action-item status; and (g) recommendations for resource allocation '
+   861→        'or policy revision.'
+   862→    ))
+   863→    story.append(Paragraph('<b>6.8 Written Health &amp; Safety Policies.</b>', s_h2))
+   864→    story.append(para(
+   865→        'Written health-and-safety policies are maintained in the facility '
+   866→        'policy library, addressing at minimum:'
+   867→    ))
+   868→    story.extend(bullets([
+   869→        'Emergency response (fire, tornado, lockdown, evacuation, medical emergency)',
+   870→        'Infection control (hand hygiene, PPE, isolation, cleaning/disinfection, surveillance)',
+   871→        'Hazard communication (chemical inventory, SDS, labeling, training)',
+   872→        'Bloodborne pathogens (exposure control plan, Hepatitis B vaccination, post-exposure)',
+   873→        'Workplace violence prevention (warning signs, reporting, response)',
+   874→        'Hot work / environmental safety (facility-specific hazards)',
+   875→        'Food safety (kitchen sanitation, temperature monitoring, allergen control)',
+   876→        'Pool/water safety (if applicable)',
+   877→        'Vehicle and transport safety (if applicable)',
+   878→    ]))
+   879→    story.append(para(
+   880→        'Each policy is reviewed at least annually by the committee, with '
+   881→        'revision as needed to reflect changes in regulation, facility, or '
+   882→        'practice. Personnel are trained on each applicable policy at '
+   883→        'orientation and annually thereafter.'
+   884→    ))
+   885→    story.append(Paragraph('<b>6.9 Responsible Parties.</b>', s_h2))
+   886→    story.append(para(
+   887→        '<b>QP (chair)</b> — convenes meetings; sets agenda; tracks action '
+   888→        'items; reports to Governing Body. <b>House Manager</b> — '
+   889→        'physical-plant inspections; work-order coordination. <b>DCP '
+   890→        'representative</b> — frontline perspective; identifies operational '
+   891→        'safety concerns. <b>RN</b> — infection control; medication safety. '
+   892→        '<b>Compliance Officer</b> — regulatory alignment; risk integration. '
+   893→        '<b>Executive Director</b> — resource allocation; policy approval.'
+   894→    ))
+   895→    story.append(Paragraph('<b>6.10 Review Schedule.</b>', s_h2))
+   896→    story.append(para(
+   897→        'Monthly committee meetings. Annual review of the Charter itself, '
+   898→        'including membership, scope, and effectiveness. Ad-hoc meetings '
+   899→        'following any serious incident, environmental emergency, or '
+   900→        'regulatory inspection.'
+   901→    ))
+   902→    story.extend(_approval_block('Health & Safety Committee Charter'))
+   903→    story.append(PageBreak())
+   904→
+   905→    # ════════════════════════════════════════════════════════════════
+   906→    # PLAN 7 — WORKFORCE DEVELOPMENT PLAN (§12.7)
+   907→    # ════════════════════════════════════════════════════════════════
+   908→    story.extend(_plan_header(7, 'Workforce Development Plan', '§12.7'))
+   909→    story.append(Paragraph('<b>7.1 Purpose.</b>', s_h2))
+   910→    story.append(para(
+   911→        'The Workforce Development Plan demonstrates conformance to CARF CYS '
+   912→        'Section 1.I by establishing written policies for recruiting, hiring, '
+   913→        'orienting, training, supervising, evaluating, and retaining '
+   914→        'personnel. The plan ensures the organization has a qualified, '
+   915→        'competent, and engaged workforce sufficient to deliver quality '
+   916→        'services to the persons served.'
+   917→    ))
+   918→    story.append(Paragraph('<b>7.2 Scope.</b>', s_h2))
+   919→    story.append(para(
+   920→        'This plan covers all personnel of the organization, including '
+   921→        'full-time, part-time, PRN, and temporary personnel; contractors '
+   922→        'with direct contact with persons served; and volunteers and interns. '
+   923→        'It addresses recruiting, hiring, orientation, annual training, '
+   924→        'position descriptions, performance evaluation, supervision, '
+   925→        'personnel records, succession, and engagement.'
+   926→    ))
+   927→    story.append(Paragraph('<b>7.3 Recruiting &amp; Hiring.</b>', s_h2))
+   928→    story.append(para(
+   929→        'The organization maintains a written recruiting and hiring policy '
+   930→        '(SOP §2.2) addressing: (a) position descriptions for every role, '
+   931→        'consistent with SOP §2; (b) posting and recruitment strategy '
+   932→        '(online job boards, professional associations, referral incentives, '
+   933→        'partnerships with local colleges); (c) application review and '
+   934→        'interview procedures, including structured interview questions '
+   935→        'aligned with position competencies; (d) background-check '
+   936→        'requirements per SOP §2.3 (criminal, abuse/neglect registry, '
+   937→        'sex-offender registry, education verification, license verification, '
+   938→        'reference checks); (e) credential verification per SOP §1.4(b) and '
+   939→        '§2.2; (f) offer of employment contingent on satisfactory background '
+   940→        'and credential verification; and (g) written acknowledgment of '
+   941→        'personnel policies (Form 6 — Employee SOP Acknowledgment).'
+   942→    ))
+   943→    story.append(Paragraph('<b>7.4 Orientation Curriculum.</b>', s_h2))
+   944→    story.append(para(
+   945→        'Every new personnel member completes a written orientation '
+   946→        'curriculum prior to working independently with persons served. '
+   947→        'The orientation curriculum covers at minimum:'
+   948→    ))
+   949→    story.extend(bullets([
+   950→        'Mission, vision, and values of the organization',
+   951→        'Person-centered and trauma-informed care principles',
+   952→        'Person-Centered Plan process (SOP §4.1)',
+   953→        'Behavioral support and restraint policies (SOP §5)',
+   954→        'Medication administration policies (SOP §6.3) — for personnel '
+   955→        'who administer medications',
+   956→        'Infection control (SOP §6.1, Protocol 18)',
+   957→        'Incident reporting (SOP §8 — IRIS)',
+   958→        'Privacy and confidentiality (SOP §11 — HIPAA, 42 CFR Part 2)',
+   959→        'Cultural and linguistic competency',
+   960→        'Mandated reporting of suspected child abuse/neglect',
+   961→        'Emergency procedures (fire, tornado, lockdown, evacuation)',
+   962→        'Documentation requirements (SOP §10)',
+   963→        'Resident rights (Plan 8)',
+   964→        'Personnel code of conduct',
+   965→        'Workplace violence prevention',
+   966→        'Bloodborne pathogens / exposure control',
+   967→        'Vehicle and transport safety (if applicable)',
+   968→    ]))
+   969→    story.append(para(
+   970→        'Orientation is conducted by the QP or designee and is documented '
+   971→        'in the personnel file. A new-hire may not work independently with '
+   972→        'persons served until orientation is complete and the QP has '
+   973→        'verified competency.'
+   974→    ))
+   975→    story.append(Paragraph('<b>7.5 Annual Training Plan.</b>', s_h2))
+   976→    story.append(para(
+   977→        'The QP maintains a written annual training plan covering refresher '
+   978→        'training and competency verification for all personnel. The plan '
+   979→        'identifies required training topics, frequency (annual, biennial, '
+   980→        'or as needed), target completion dates, trainers, and documentation '
+   981→        'method. Required annual training includes at minimum: '
+   982→        'trauma-informed care refresher; CPR/First Aid (biennial); '
+   983→        'bloodborne pathogens; HIPAA refresher; mandated reporter refresher; '
+   984→        'crisis prevention/intervention (CPI or equivalent) refresher; '
+   985→        'medication administration refresher (for med-pass personnel); and '
+   986→        'any topic identified through incident trends, performance '
+   987→        'evaluation, or regulatory change. The QP tracks training completion '
+   988→        'in the master training calendar and individual personnel files.'
+   989→    ))
+   990→    story.append(Paragraph('<b>7.6 Position Descriptions.</b>', s_h2))
+   991→    story.append(para(
+   992→        'Written position descriptions are maintained for every role in the '
+   993→        'organization, including: Executive Director, Clinical Director, QP, '
+   994→        'Associated Professional (AP), Direct Care Professional (DCP), House '
+   995→        'Manager, Registered Nurse (RN), Billing Coordinator, Cook/Household '
+   996→        'Manager, and any other role. Each position description includes: '
+   997→        '(a) position title; (b) reports-to; (c) summary of responsibilities; '
+   998→        '(d) essential duties; (e) minimum qualifications (education, '
+   999→        'experience, credentials); (f) physical requirements; (g) working '
+  1000→        'conditions; and (h) acknowledgment signature. Position descriptions '
+  1001→        'are reviewed annually and updated to reflect changes in scope.'
+  1002→    ))
+  1003→    story.append(Paragraph('<b>7.7 Performance Evaluation.</b>', s_h2))
+  1004→    story.append(para(
+  1005→        'Written performance-evaluation policy requires annual performance '
+  1006→        'evaluation for every personnel member, conducted by the supervisor. '
+  1007→        'The evaluation includes: (a) review of position description and '
+  1008→        'essential duties; (b) competency assessment against position-specific '
+  1009→        'criteria; (c) review of training completion; (d) review of any '
+  1010→        'incidents or complaints; (e) self-assessment by the personnel '
+  1011→        'member; (f) supervisor feedback; (g) goals for the coming year; '
+  1012→        'and (h) signatures. New personnel receive a 90-day and 180-day '
+  1013→        'evaluation in addition to the annual cycle. Evaluations are '
+  1014→        'documented in the personnel file.'
+  1015→    ))
+  1016→    story.append(Paragraph('<b>7.8 Supervision.</b>', s_h2))
+  1017→    story.append(para(
+  1018→        'Written supervision policy consistent with SOP §2.2(a) '
+  1019→        'Individualized Supervision Plans. Each AP and DCP has a written '
+  1020→        'individualized supervision plan specifying the frequency and format '
+  1021→        'of supervision (individual, group, on-the-job observation), the '
+  1022→        'supervisor, and the documentation method. The QP supervises clinical '
+  1023→        'staff per the Clinical Director\'s direction. The House Manager '
+  1024→        'supervises DCPs on shift. Supervision is documented in the '
+  1025→        'personnel file with date, topics discussed, and any action items.'
+  1026→    ))
+  1027→    story.append(Paragraph('<b>7.9 Personnel Records.</b>', s_h2))
+  1028→    story.append(para(
+  1029→        'Written personnel-records policy consistent with SOP §2.4. The QP '
+  1030→        'maintains personnel files in a locked cabinet (or secured EHR) '
+  1031→        'with access limited to the personnel member, the supervisor, the '
+  1032→        'QP, the Executive Director, and authorized auditors. Files include '
+  1033→        'at minimum: application, resume, position description acknowledgment, '
+  1034→        'background-check results, credential verification, orientation '
+  1035→        'documentation, training records, performance evaluations, '
+  1036→        'supervision notes, and any disciplinary actions. Personnel files '
+  1037→        'are retained for 7 years after separation.'
+  1038→    ))
+  1039→    story.append(Paragraph('<b>7.10 Volunteer &amp; Intern Management.</b>', s_h2))
+  1040→    story.append(para(
+  1041→        'Written volunteer and intern management policy per SOP §1.8. '
+  1042→        'Volunteers and interns with direct contact with persons served '
+  1043→        'complete a modified orientation, background check, and supervision '
+  1044→        'plan. Volunteers and interns do not administer medications, conduct '
+  1045→        'clinical interventions, or work unsupervised with persons served. '
+  1046→        'A volunteer/intern coordinator (may be the QP) maintains records '
+  1047→        'and schedules.'
+  1048→    ))
+  1049→    story.append(Paragraph('<b>7.11 Continuing Education Support.</b>', s_h2))
+  1050→    story.append(para(
+  1051→        'The organization supports continuing education for personnel '
+  1052→        'through: (a) paid time off for required licensure continuing '
+  1053→        'education; (b) tuition reimbursement for job-related coursework '
+  1054→        '(up to $2,000 per personnel member per year, subject to budget '
+  1055→        'approval); (c) in-service training sessions; (d) access to online '
+  1056→        'training platforms; and (e) conference attendance (with Executive '
+  1057→        'Director approval). Continuing-education completion is documented '
+  1058→        'in the personnel file.'
+  1059→    ))
+  1060→    story.append(Paragraph('<b>7.12 Succession Planning.</b>', s_h2))
+  1061→    story.append(para(
+  1062→        'Written succession plan for the Executive Director, Clinical '
+  1063→        'Director, and QP positions is maintained as part of the Strategic '
+  1064→        'Plan (Plan 1, Section 1.8). For each role, the plan identifies '
+  1065→        'core competencies, internal candidates, external recruitment '
+  1066→        'strategy, interim coverage procedures, and knowledge-transfer '
+  1067→        'requirements. The succession plan is reviewed annually and '
+  1068→        'following any key leadership change.'
+  1069→    ))
+  1070→    story.append(Paragraph('<b>7.13 Workforce Engagement &amp; Recognition.</b>', s_h2))
+  1071→    story.append(para(
+  1072→        'The organization maintains a written workforce engagement and '
+  1073→        'recognition plan including: (a) annual personnel engagement survey '
+  1074→        '(per Plan 2); (b) monthly personnel meetings with structured '
+  1075→        'agenda; (c) peer-recognition program; (d) employee-of-the-quarter '
+  1076→        'award; (e) annual personnel appreciation event; (f) wellness '
+  1077→        'initiatives; and (g) exit interviews to identify retention '
+  1078→        'opportunities. Engagement data is incorporated into the Workforce '
+  1079→        'Development Plan annual revision.'
+  1080→    ))
+  1081→    story.append(Paragraph('<b>7.14 Responsible Parties.</b>', s_h2))
+  1082→    story.append(para(
+  1083→        '<b>QP</b> — overall coordination of workforce development; '
+  1084→        'orientation curriculum; annual training plan; personnel records; '
+  1085→        'supervision of clinical staff. <b>Executive Director</b> — '
+  1086→        'recruiting strategy; succession planning; resource allocation. '
+  1087→        '<b>House Manager</b> — DCP supervision; scheduling. <b>Clinical '
+  1088→        'Director</b> — clinical supervision direction; clinical competency '
+  1089→        'verification. <b>Governing Body</b> — reviews workforce data; '
+  1090→        'approves compensation structure.'
+  1091→    ))
+  1092→    story.append(Paragraph('<b>7.15 Review Schedule.</b>', s_h2))
+  1093→    story.append(para(
+  1094→        'Monthly review of training completion and turnover data. Quarterly '
+  1095→        'review by the Governing Body. Annual full review of the Workforce '
+  1096→        'Development Plan, incorporating engagement survey results and '
+  1097→        'turnover analysis.'
+  1098→    ))
+  1099→    story.extend(_approval_block('Workforce Development Plan'))
+  1100→    story.append(PageBreak())
+  1101→
+  1102→    # ════════════════════════════════════════════════════════════════
+  1103→    # PLAN 8 — RESIDENT RIGHTS POLICY COMPILATION (§12.8)
+  1104→    # ════════════════════════════════════════════════════════════════
+  1105→    story.extend(_plan_header(8, 'Resident Rights Policy Compilation', '§12.8'))
+  1106→    story.append(Paragraph('<b>8.1 Purpose.</b>', s_h2))
+  1107→    story.append(para(
+  1108→        'The Resident Rights Policy Compilation demonstrates conformance to '
+  1109→        'CARF CYS Section 1.J by consolidating the organization\'s written '
+  1110→        'policies on the rights of persons served into a single reference '
+  1111→        'document. The policies are also published in the Resident Handbook '
+  1112→        '(companion document) and in SOP §§3, 5, 6, 8, 9, and 11; this '
+  1113→        'compilation serves as the comprehensive reference for personnel, '
+  1114→        'persons served, families/LRPs, and CARF surveyors.'
+  1115→    ))
+  1116→    story.append(Paragraph('<b>8.2 Scope.</b>', s_h2))
+  1117→    story.append(para(
+  1118→        'This compilation covers all rights of persons served, including '
+  1119→        'dignity, participation in services, confidentiality, access to '
+  1120→        'records, grievance procedures, freedom from unnecessary restraint '
+  1121→        'and seclusion, informed consent, religious freedom, personal-funds '
+  1122→        'management, and advance notification of discharge. It applies to '
+  1123→        'all personnel and to all youth served by the organization.'
+  1124→    ))
+  1125→    story.append(Paragraph('<b>8.3 Statement of Rights.</b>', s_h2))
+  1126→    story.append(para(
+  1127→        'Every youth served by Well Spring Intervention LLC has the right to:'
+  1128→    ))
+  1129→    story.extend(bullets([
+  1130→        '<b>Dignity and respect.</b> Be treated with dignity, respect, and '
+  1131→        'humane care at all times, free from discrimination on the basis of '
+  1132→        'race, color, national origin, religion, sex, gender identity or '
+  1133→        'expression, sexual orientation, age, disability, or any other '
+  1134→        'protected classification.',
+  1135→        '<b>Privacy.</b> Reasonable privacy in personal care, '
+  1136→        'communications, visitation, and personal space; privacy of '
+  1137→        'personal mail and telephone communications (consistent with safety '
+  1138→        'and the Person-Centered Plan).',
+  1139→        '<b>Participation in service planning.</b> Participate in the '
+  1140→        'development and review of the Person-Centered Plan (SOP §4.1); '
+  1141→        'receive a copy of the plan; and refuse services (with documented '
+  1142→        'consequences of refusal).',
+  1143→        '<b>Confidential communication and visitation.</b> Receive and send '
+  1144→        'mail; receive visitors (subject to safety and the Person-Centered '
+  1145→        'Plan); and communicate with family, attorneys, advocates, and '
+  1146→        'clergy.',
+  1147→        '<b>Access to records.</b> Access one\'s own service record per '
+  1148→        'SOP §11.5; receive a copy upon request; and appeal any restriction '
+  1149→        'of access.',
+  1150→        '<b>File a grievance.</b> File a grievance without retaliation; '
+  1151→        'receive a written acknowledgment within 2 business days; receive '
+  1152→        'a written response within 30 calendar days; and appeal to the '
+  1153→        'Executive Director and external advocacy resources.',
+  1154→        '<b>Freedom from unnecessary restraint and seclusion.</b> Be free '
+  1155→        'from restraint and seclusion except as a last-resort safety '
+  1156→        'intervention per SOP §5; receive post-incident debriefing (Form 3); '
+  1157→        'and have restraint use reviewed by the QP and Clinical Director.',
+  1158→        '<b>Informed consent.</b> Give informed consent (or have the LRP '
+  1159→        'give consent) for treatment and medication, with explanation of '
+  1160→        'benefits, risks, alternatives, and the right to refuse.',
+  1161→        '<b>Religious freedom.</b> Exercise religious freedom; receive '
+  1162→        'reasonable accommodation for religious practices; and not have any '
+  1163→        'religious belief imposed.',
+  1164→        '<b>Personal funds management.</b> Have personal funds managed '
+  1165→        'per SOP §1.8 and Plan 4; receive quarterly accounting; and '
+  1166→        'receive full disbursement at discharge.',
+  1167→        '<b>Advance notification of discharge.</b> Receive advance written '
+  1168→        'notification of any discharge or transfer per SOP §3.4(a); '
+  1169→        'participate in transition planning per SOP §3.4 and §3.6; and '
+  1170→        'appeal an involuntary discharge.',
+  1171→    ]))
+  1172→    story.append(Paragraph('<b>8.4 Grievance Procedure.</b>', s_h2))
+  1173→    story.append(para(
+  1174→        'The organization maintains a written grievance procedure. Any '
+  1175→        'youth, family member, LRP, or other stakeholder may file a '
+  1176→        'grievance orally or in writing with any personnel member. The '
+  1177→        'personnel member receiving the grievance documents it on the '
+  1178→        'grievance log and forwards it to the QP within 24 hours. The QP '
+  1179→        '(or designee) acknowledges the grievance in writing within 2 '
+  1180→        'business days, investigates, and provides a written response '
+  1181→        'within 30 calendar days. If the grievant is not satisfied with '
+  1182→        'the response, they may appeal to the Executive Director within '
+  1183→        '10 business days; the Executive Director issues a written decision '
+  1184→        'within 15 business days. The grievant is also informed of external '
+  1185→        'advocacy resources, including the LME/MCO, the state licensing '
+  1186→        'authority, Disability Rights NC, and the CARF complaint process. '
+  1187→        'The QP maintains the grievance log, trends grievances quarterly, '
+  1188→        'and reports to the Governing Body.'
+  1189→    ))
+  1190→    story.append(Paragraph('<b>8.5 Personnel Training.</b>', s_h2))
+  1191→    story.append(para(
+  1192→        'All personnel are trained on resident rights at orientation and '
+  1193→        'annually thereafter. Training covers: (a) the statement of rights; '
+  1194→        '(b) the grievance procedure; (c) the non-retaliation policy; '
+  1195→        '(d) informed consent; (e) freedom from restraint and seclusion; '
+  1196→        '(f) confidentiality; and (g) reporting rights violations. Training '
+  1197→        'completion is documented in the personnel file.'
+  1198→    ))
+  1199→    story.append(Paragraph('<b>8.6 Audit &amp; Trend Reporting.</b>', s_h2))
+  1200→    story.append(para(
+  1201→        'The QP audits the grievance log, restraint log, and rights-related '
+  1202→        'incident reports quarterly. Findings are trended and reported to '
+  1203→        'the Clinical Director, Executive Director, and Governing Body. '
+  1204→        'Trends inform personnel training, supervision, and policy revision. '
+  1205→        'Serious or repeated rights violations are reported to the state '
+  1206→        'licensing authority per regulatory requirements.'
+  1207→    ))
+  1208→    story.append(Paragraph('<b>8.7 Responsible Parties.</b>', s_h2))
+  1209→    story.append(para(
+  1210→        '<b>QP</b> — overall management of resident rights; grievance '
+  1211→        'investigation; quarterly audit. <b>Clinical Director</b> — '
+  1212→        'clinical-care rights; restraint review. <b>All Personnel</b> — '
+  1213→        'respect resident rights; report violations; do not retaliate. '
+  1214→        '<b>Governing Body</b> — reviews trends; ensures corrective action.'
+  1215→    ))
+  1216→    story.append(Paragraph('<b>8.8 Review Schedule.</b>', s_h2))
+  1217→    story.append(para(
+  1218→        'Quarterly audit of grievance log, restraint log, and rights-related '
+  1219→        'incidents. Annual review of the Resident Rights Policy Compilation '
+  1220→        'itself. Ad-hoc review following any serious rights violation or '
+  1221→        'regulatory change.'
+  1222→    ))
+  1223→    story.extend(_approval_block('Resident Rights Policy Compilation'))
+  1224→    story.append(PageBreak())
+  1225→
+  1226→    # ════════════════════════════════════════════════════════════════
+  1227→    # PLAN 9 — ACCESSIBILITY & NONDISCRIMINATION PLAN (§12.9)
+  1228→    # ════════════════════════════════════════════════════════════════
+  1229→    story.extend(_plan_header(9, 'Accessibility & Nondiscrimination Plan', '§12.9'))
+  1230→    story.append(Paragraph('<b>9.1 Purpose.</b>', s_h2))
+  1231→    story.append(para(
+  1232→        'The Accessibility &amp; Nondiscrimination Plan demonstrates '
+  1233→        'conformance to CARF CYS Section 1.K by establishing written '
+  1234→        'policies ensuring that persons served, family members, personnel, '
+  1235→        'and visitors are not subjected to discrimination and that the '
+  1236→        'program is accessible to persons with disabilities and persons '
+  1237→        'with limited English proficiency.'
+  1238→    ))
+  1239→    story.append(Paragraph('<b>9.2 Scope.</b>', s_h2))
+  1240→    story.append(para(
+  1241→        'This plan covers all aspects of the organization\'s operations, '
+  1242→        'including admission, service delivery, employment, facility '
+  1243→        'accessibility, communication, and grievance procedures. It applies '
+  1244→        'to all personnel and to all persons seeking or receiving services.'
+  1245→    ))
+  1246→    story.append(Paragraph('<b>9.3 Nondiscrimination Policy.</b>', s_h2))
+  1247→    story.append(para(
+  1248→        'The organization does not discriminate on the basis of race, color, '
+  1249→        'national origin, religion, sex, gender identity or expression, '
+  1250→        'sexual orientation, age, disability, veteran status, or any other '
+  1251→        'classification protected by applicable federal, state, or local '
+  1252→        'law. This policy applies to admission, treatment, employment, '
+  1253→        'and all other organizational activities. The policy is published '
+  1254→        'in the Resident Handbook, the personnel handbook, on the '
+  1255→        'organization\'s website, and posted in the facility. The '
+  1256→        'Compliance Officer is designated as the Section 504 Coordinator '
+  1257→        'and the Civil Rights Coordinator.'
+  1258→    ))
+  1259→    story.append(Paragraph('<b>9.4 Language Access Plan.</b>', s_h2))
+  1260→    story.append(para(
+  1261→        'The organization maintains a written language access plan '
+  1262→        'providing for: (a) qualified interpreter services at no cost to '
+  1263→        'the youth and family, available within 60 minutes for spoken '
+  1264→        'languages and within 4 hours for sign language; (b) translation '
+  1265→        'of vital documents (intake forms, consent forms, Resident '
+  1266→        'Handbook, discharge summary, grievance procedure) into the '
+  1267→        'languages commonly encountered in the service area (at minimum '
+  1268→        'Spanish); (c) primary-language preference documented in the '
+  1269→        'clinical record; (d) language-assistance need identified at '
+  1270→        'intake; (e) use of qualified interpreters rather than family '
+  1271→        'members or untrained personnel, except in emergencies; (f) '
+  1272→        'tracking of language-assistance utilization for resource planning; '
+  1273→        'and (g) annual review of language-access needs based on census '
+  1274→        'data.'
+  1275→    ))
+  1276→    story.append(Paragraph('<b>9.5 Reasonable Accommodation Policy.</b>', s_h2))
+  1277→    story.append(para(
+  1278→        'The organization provides reasonable accommodation to youth, '
+  1279→        'family members, personnel, and visitors with disabilities, '
+  1280→        'consistent with the ADA and Section 504. Accommodations may '
+  1281→        'include: (a) physical accessibility modifications (ramps, '
+  1282→        'grab bars, accessible bathrooms); (b) communication '
+  1283→        'accommodations (large-print materials, screen readers, captioning, '
+  1284→        'auxiliary aids); (c) programmatic accommodations (modified '
+  1285→        'schedules, modified activities, assistive technology); and '
+  1286→        '(d) dietary accommodations (medical-diagnosis-driven). Requests '
+  1287→        'for accommodation are made to the QP or Compliance Officer, '
+  1288→        'documented in writing, evaluated within 5 business days, and '
+  1289→        'implemented within 15 business days (or sooner if urgently '
+  1290→        'needed). Denials are documented with rationale and appeal rights.'
+  1291→    ))
+  1292→    story.append(Paragraph('<b>9.6 Physical Accessibility.</b>', s_h2))
+  1293→    story.append(para(
+  1294→        'The organization conducts a written accessibility review of the '
+  1295→        'physical facility at least annually, using the ADA Checklist for '
+  1296→        'Existing Facilities. The review identifies barriers and corrective '
+  1297→        'actions, with priority given to barriers affecting program access. '
+  1298→        'The review is documented and maintained in the compliance binder. '
+  1299→        'Any new construction or alteration complies with the ADA Standards '
+  1300→        'for Accessible Design. The QP maintains an accessibility-barrier '
+  1301→        'removal plan with target dates and budget.'
+  1302→    ))
+  1303→    story.append(Paragraph('<b>9.7 Nondiscrimination Grievance Procedure.</b>', s_h2))
+  1304→    story.append(para(
+  1305→        'The organization maintains a written grievance procedure for '
+  1306→        'nondiscrimination complaints, distinct from but coordinated with '
+  1307→        'the resident grievance procedure in Plan 8. The procedure '
+  1308→        'includes: (a) submission of the complaint to the Compliance '
+  1309→        'Officer (Section 504 Coordinator); (b) written acknowledgment '
+  1310→        'within 5 business days; (c) investigation within 30 calendar '
+  1311→        'days; (d) written decision with rationale; (e) appeal to the '
+  1312→        'Executive Director within 10 business days; (f) Executive '
+  1313→        'Director decision within 15 business days; and (g) notice of '
+  1314→        'external appeal rights (OCR, EEOC, state human relations '
+  1315→        'commission). The procedure is published in the Resident Handbook '
+  1316→        'and the personnel handbook.'
+  1317→    ))
+  1318→    story.append(Paragraph('<b>9.8 Personnel Training.</b>', s_h2))
+  1319→    story.append(para(
+  1320→        'All personnel are trained on nondiscrimination, language access, '
+  1321→        'and reasonable accommodation at orientation and annually '
+  1322→        'thereafter. Training covers: (a) the nondiscrimination policy; '
+  1323→        '(b) language-access procedures; (c) reasonable-accommodation '
+  1324→        'procedures; (d) cultural and linguistic competency; '
+  1325→        '(e) the grievance procedure; and (f) the role of the Section 504 '
+  1326→        'Coordinator. Training completion is documented in the personnel '
+  1327→        'file.'
+  1328→    ))
+  1329→    story.append(Paragraph('<b>9.9 Responsible Parties.</b>', s_h2))
+  1330→    story.append(para(
+  1331→        '<b>Compliance Officer</b> — Section 504 Coordinator; Civil Rights '
+  1332→        'Coordinator; investigates grievances. <b>QP</b> — operational '
+  1333→        'implementation; intake screening; accommodation evaluation. '
+  1334→        '<b>Executive Director</b> — resource allocation; appeals. '
+  1335→        '<b>Governing Body</b> — reviews accessibility data; ensures '
+  1336→        'barrier-removal funding.'
+  1337→    ))
+  1338→    story.append(Paragraph('<b>9.10 Review Schedule.</b>', s_h2))
+  1339→    story.append(para(
+  1340→        'Annual review of the Accessibility &amp; Nondiscrimination Plan, '
+  1341→        'including the physical accessibility review, language-access '
+  1342→        'utilization, and grievance trends. Ad-hoc review following any '
+  1343→        'regulatory change, demographic shift, or grievance.'
+  1344→    ))
+  1345→    story.extend(_approval_block('Accessibility & Nondiscrimination Plan'))
+  1346→    story.append(PageBreak())
+  1347→
+  1348→    # ════════════════════════════════════════════════════════════════
+  1349→    # PLAN 10 — PERFORMANCE MEASUREMENT PLAN (§12.10)
+  1350→    # ════════════════════════════════════════════════════════════════
+  1351→    story.extend(_plan_header(10, 'Performance Measurement Plan', '§12.10'))
+  1352→    story.append(Paragraph('<b>10.1 Purpose.</b>', s_h2))
+  1353→    story.append(para(
+  1354→        'The Performance Measurement Plan demonstrates conformance to CARF '
+  1355→        'CYS Section 1.L by establishing the organization\'s performance '
+  1356→        'indicators, data-collection methods, analysis cadence, and '
+  1357→        'reporting structure. The plan ensures the organization collects, '
+  1358→        'analyzes, and acts on data to improve services and outcomes for '
+  1359→        'persons served.'
+  1360→    ))
+  1361→    story.append(Paragraph('<b>10.2 Scope.</b>', s_h2))
+  1362→    story.append(para(
+  1363→        'This plan covers all performance indicators tracked by the '
+  1364→        'organization, organized into seven domains: access; '
+  1365→        'person-centered planning; clinical outcomes; safety; personnel; '
+  1366→        'financial; and person-served experience. It applies to the QP '
+  1367→        '(data aggregation), all personnel (data collection), the '
+  1368→        'Executive Director (resource allocation), and the Governing Body '
+  1369→        '(review and oversight).'
+  1370→    ))
+  1371→    story.append(Paragraph('<b>10.3 Performance Indicators.</b>', s_h2))
+  1372→    story.append(para(
+  1373→        'The organization tracks the following performance indicators, '
+  1374→        'with target values and reporting frequency:'
+  1375→    ))
+  1376→    pm_header = ['Domain', 'Indicator', 'Target', 'Frequency', 'Data Source', 'Owner']
+  1377→    pm_rows = [
+  1378→        ['Access', 'Time from referral to admission decision', '≤ 5 business days', 'Monthly', 'Referral log', 'QP'],
+  1379→        ['Access', 'Time from admission to first clinical contact', '≤ 72 hours', 'Monthly', 'Clinical record', 'Clinical Director'],
+  1380→        ['Access', 'No-show rate for scheduled appointments', '≤ 10%', 'Monthly', 'Scheduling system', 'QP'],
+  1381→        ['PCP', 'PCP completed within required timeframe', '100%', 'Monthly', 'Clinical record audit', 'QP'],
+  1382→        ['PCP', 'PCP reviewed at required intervals', '100%', 'Monthly', 'Clinical record audit', 'QP'],
+  1383→        ['PCP', 'Youth/family participation in PCP meetings', '≥ 90%', 'Quarterly', 'PCP signature page', 'Clinical Director'],
+  1384→        ['Outcomes', 'Symptom improvement (PHQ-A / GAD-7)', '≥ 80% show improvement', 'Quarterly', 'Validated instruments', 'Clinical Director'],
+  1385→        ['Outcomes', 'Functional improvement (CAFAS)', '≥ 70% show improvement', 'Quarterly', 'CAFAS scoring', 'Clinical Director'],
+  1386→        ['Outcomes', 'Restraint frequency', '≤ 0.5 per 1,000 youth-days', 'Monthly', 'Restraint log', 'QP'],
+  1387→        ['Outcomes', 'Elopement frequency', '≤ 0.3 per 1,000 youth-days', 'Monthly', 'Incident reports', 'QP'],
+  1388→        ['Outcomes', 'Incident frequency and severity', 'Trend analysis', 'Monthly', 'IRIS reports', 'Compliance Officer'],
+  1389→        ['Safety', 'Incident-free days', 'Trending upward', 'Monthly', 'IRIS reports', 'Compliance Officer'],
+  1390→        ['Safety', 'Time-to-investigation', '≤ 1 business day', 'Monthly', 'IRIS reports', 'Compliance Officer'],
+  1391→        ['Safety', 'Repeat-incident rate', '≤ 10%', 'Quarterly', 'IRIS reports', 'Compliance Officer'],
+  1392→        ['Safety', 'Medication-error rate', '≤ 1 per 1,000 doses', 'Monthly', 'MAR / med-error log', 'RN'],
+  1393→        ['Personnel', 'Turnover rate (annual)', '≤ 25%', 'Quarterly', 'Personnel records', 'QP'],
+  1394→        ['Personnel', 'Time-to-fill open positions', '≤ 45 days', 'Monthly', 'Recruiting log', 'Executive Director'],
+  1395→        ['Personnel', 'Training completion rate', '100%', 'Monthly', 'Training calendar', 'QP'],
+  1396→        ['Personnel', 'Personnel engagement score', '≥ 4.0 / 5.0', 'Annual', 'Engagement survey', 'Executive Director'],
+  1397→        ['Financial', 'Days cash-on-hand', '≥ 60 days', 'Monthly', 'Financial statements', 'Executive Director'],
+  1398→        ['Financial', 'Medicaid denial rate', '≤ 5%', 'Monthly', 'Billing system', 'Billing Coordinator'],
+  1399→        ['Financial', 'Cost per youth per day', 'Trend analysis', 'Quarterly', 'Financial statements', 'Executive Director'],
+  1400→        ['Experience', 'Youth satisfaction score', '≥ 4.0 / 5.0', 'Quarterly', 'Satisfaction survey', 'QP'],
+  1401→        ['Experience', 'Family/LRP satisfaction score', '≥ 4.0 / 5.0', 'Semi-annual', 'Satisfaction survey', 'QP'],
+  1402→        ['Experience', 'Complaint volume and resolution time', 'Trend analysis', 'Quarterly', 'Grievance log', 'QP'],
+  1403→    ]
+  1404→    story.append(std_table(pm_header, pm_rows,
+  1405→                           col_widths=[0.10*AVAIL_W, 0.30*AVAIL_W, 0.18*AVAIL_W, 0.10*AVAIL_W,
+  1406→                                       0.18*AVAIL_W, 0.14*AVAIL_W],
+  1407→                           header_align='left', first_col_left=True, small=True))
+  1408→    story.append(Spacer(1, 6))
+  1409→    story.append(Paragraph('<b>10.4 Data Collection &amp; Aggregation.</b>', s_h2))
+  1410→    story.append(para(
+  1411→        'Each indicator has a designated data source and owner responsible '
+  1412→        'for data collection. The QP aggregates data monthly, calculates '
+  1413→        'the indicator value, and compares to the target. Data is stored '
+  1414→        'in a master performance-measurement spreadsheet (or EHR analytics '
+  1415→        'module) with monthly time-stamped entries. Data quality is '
+  1416→        'verified quarterly through spot-checks against source records.'
+  1417→    ))
+  1418→    story.append(Paragraph('<b>10.5 Analysis &amp; Reporting.</b>', s_h2))
+  1419→    story.append(para(
+  1420→        'The QP analyzes performance data monthly for trends, identifies '
+  1421→        'indicators that are off-target, and prepares a written quarterly '
+  1422→        'report for the Governing Body. The report includes: (a) current '
+  1423→        'value for each indicator; (b) trend over time (with comparison '
+  1424→        'to prior quarters); (c) indicators that are off-target; (d) '
+  1425→        'analysis of root causes; (e) recommended corrective actions; '
+  1426→        'and (f) status of prior corrective actions. The report is '
+  1427→        'presented at each quarterly Governing Body meeting.'
+  1428→    ))
+  1429→    story.append(Paragraph('<b>10.6 Use of Performance Data.</b>', s_h2))
+  1430→    story.append(para(
+  1431→        'Performance data is used to: (a) inform the annual revision of '
+  1432→        'the Strategic Plan (Plan 1); (b) identify areas for quality '
+  1433→        'improvement (incorporated into the QIP per SOP §12.20); (c) '
+  1434→        'allocate resources (personnel, training, capital); (d) recognize '
+  1435→        'and reinforce positive performance; and (e) demonstrate '
+  1436→        'accountability to stakeholders. Performance data is shared with '
+  1437→        'personnel and with persons served (in developmentally appropriate, '
+  1438→        'aggregated form) at least quarterly through the "You Said / We '
+  1439→        'Did" feedback loop (Plan 2).'
+  1440→    ))
+  1441→    story.append(Paragraph('<b>10.7 Responsible Parties.</b>', s_h2))
+  1442→    story.append(para(
+  1443→        '<b>QP</b> — overall coordination; data aggregation; quarterly '
+  1444→        'report. <b>Clinical Director</b> — clinical outcomes data. '
+  1445→        '<b>Compliance Officer</b> — safety data. <b>RN</b> — medication '
+  1446→        'data. <b>Billing Coordinator</b> — financial data. <b>Executive '
+  1447→        'Director</b> — personnel and overall financial data; resource '
+  1448→        'allocation. <b>Governing Body</b> — reviews quarterly report; '
+  1449→        'directs corrective action.'
+  1450→    ))
+  1451→    story.append(Paragraph('<b>10.8 Review Schedule.</b>', s_h2))
+  1452→    story.append(para(
+  1453→        'Monthly data aggregation. Quarterly analysis and Governing Body '
+  1454→        'report. Annual full review of the Performance Measurement Plan, '
+  1455→        'including indicator selection, target values, and data-collection '
+  1456→        'methods.'
+  1457→    ))
+  1458→    story.extend(_approval_block('Performance Measurement Plan'))
+  1459→    story.append(PageBreak())
+  1460→
+  1461→    # ════════════════════════════════════════════════════════════════
+  1462→    # PLAN 11 — PROGRAM DESCRIPTION (§12.11)
+  1463→    # ════════════════════════════════════════════════════════════════
+  1464→    story.extend(_plan_header(11, 'Program Description', '§12.11'))
+  1465→    story.append(Paragraph('<b>11.1 Purpose.</b>', s_h2))
+  1466→    story.append(para(
+  1467→        'The Program Description demonstrates conformance to CARF CYS '
+  1468→        'Section 2.A by documenting the populations served, the service '
+  1469→        'array, the program philosophy, staffing patterns, physical '
+  1470→        'environment, hours of operation, referral and intake process, '
+  1471→        'cultural and linguistic competency plan, coordination with '
+  1472→        'external systems of care, and the Person-Centered Plan process. '
+  1473→        'The Program Description is approved by the Governing Body and '
+  1474→        'serves as the primary evidence of the organization\'s program '
+  1475→        'design for CARF surveyors.'
+  1476→    ))
+  1477→    story.append(Paragraph('<b>11.2 Populations Served.</b>', s_h2))
+  1478→    story.append(para(
+  1479→        'The program serves children and adolescents (target age range '
+  1480→        '6–17) with a primary diagnosis of mental illness, emotional '
+  1481→        'disturbance, or substance-related disorder, who do not meet '
+  1482→        'inpatient psychiatric criteria but require removal from the home '
+  1483→        'and treatment in a staff-secure group home setting. The program '
+  1484→        'is designed to serve youth with serious emotional disturbance '
+  1485→        'who require 24-hour supervised residential care with structured '
+  1486→        'clinical services and continuous staff supervision, but who do '
+  1487→        'not require the intensive, hardware-secure level of care '
+  1488→        'provided in a Level III Residential Treatment Facility. '
+  1489→        'Admission criteria are documented in SOP §3.1 and the Screening '
+  1490→        'and Access Policy (Plan 12).'
+  1491→    ))
+  1492→    story.append(Paragraph('<b>11.3 Service Array.</b>', s_h2))
+  1493→    story.append(para('The program provides the following services:'))
+  1494→    story.extend(bullets([
+  1495→        '<b>Residential care</b> — 24-hour supervised living in a '
+  1496→        'Staff Secure Group Home licensed under 10A NCAC 27G (SOP §9);',
+  1497→        '<b>Clinical services</b> — individual therapy, group therapy, '
+  1498→        'family therapy, and clinical assessments (SOP §4);',
+  1499→        '<b>Psychiatric medication management</b> — psychiatric evaluation, '
+  1500→        'medication management, 6-month drug-regimen review (SOP §6.3);',
+  1501→        '<b>Behavioral support</b> — behavioral assessment, behavioral '
+  1502→        'support plan, crisis intervention, de-escalation, and (as '
+  1503→        'last-resort) restraint (SOP §5);',
+  1504→        '<b>Educational coordination</b> — coordination with the local '
+  1505→        'public school system, facility-based school programming when '
+  1506→        'needed, IEP coordination (SOP §7);',
+  1507→        '<b>Case management</b> — care coordination with LME/MCO, DSS, '
+  1508→        'juvenile justice, medical home, and other system-of-care '
+  1509→        'partners;',
+  1510→        '<b>Recreational, social, and life-skills programming</b> — '
+  1511→        'structured daily activities, community integration, life-skills '
+  1512→        'curriculum (SOP §5.4);',
+  1513→        '<b>Family engagement</b> — family therapy, family visitation, '
+  1514→        'family education, and transition support.',
+  1515→    ]))
+  1516→    story.append(Paragraph('<b>11.4 Program Philosophy.</b>', s_h2))
+  1517→    story.append(para(
+  1518→        'The program is grounded in trauma-informed care, which recognizes '
+  1519→        'that the vast majority of youth served have experienced '
+  1520→        'significant trauma and that all interactions must be conducted '
+  1521→        'in a manner that promotes safety, trustworthiness, choice, '
+  1522→        'collaboration, and empowerment. The program is also '
+  1523→        'person-centered, meaning that each youth\'s treatment is '
+  1524→        'individualized based on their strengths, needs, goals, and '
+  1525→        'preferences, as documented in the Person-Centered Plan (SOP §4.1). '
+  1526→        'The program is committed to the use of evidence-based and '
+  1527→        'evidence-informed practices, including cognitive-behavioral '
+  1528→        'therapy, trauma-focused CBT, motivational interviewing, and '
+  1529→        'positive behavior support.'
+  1530→    ))
+  1531→    story.append(Paragraph('<b>11.5 Staffing Patterns.</b>', s_h2))
+  1532→    story.append(para(
+  1533→        'The program is staffed per SOP §2, including: Executive Director, '
+  1534→        'Clinical Director, Qualified Professional (QP), Associated '
+  1535→        'Professionals (APs), Direct Care Professionals (DCPs) on day, '
+  1536→        'evening, and awake-overnight shifts, House Manager, Registered '
+  1537→        'Nurse (RN), and Billing Coordinator. Staffing ratios comply with '
+  1538→        'the Staff Secure Group Home operating standards under 10A NCAC '
+  1539→        '27G, including a minimum 1:6 direct-care staff-to-resident ratio '
+  1540→        'during waking hours, and a minimum 1:8 ratio overnight with at '
+  1541→        'least one awake DCP at all times. A Licensed Professional (LP) '
+  1542→        'is on-site during business hours and on call 24/7 for clinical '
+  1543→        'emergencies. A psychiatrist is available for medication-'
+  1544→        'management appointments per the Person-Centered Plan schedule '
+  1545→        'and is on call for urgent psychiatric consultation. A Registered '
+  1546→        'Nurse (RN) is available on-site per the medication-management '
+  1547→        'and health-services schedule and on call for urgent medical '
+  1548→        'needs. The QP provides clinical supervision per §1.4(a) and '
+  1549→        '§2.2(a). A Licensed Professional provides minimum 4 hours per '
+  1550→        'week face-to-face clinical consultation per §4.6 and Form 10.'
+  1551→    ))
+  1552→    story.append(Paragraph('<b>11.6 Physical Environment.</b>', s_h2))
+  1553→    story.append(para(
+  1554→        'The facility is a free-standing residential facility designed '
+  1555→        'and licensed as a Staff Secure Group Home under 10A NCAC 27G '
+  1556→        'for children and adolescents. Physical-plant requirements are '
+  1557→        'documented in SOP §9. The facility includes: resident bedrooms '
+  1558→        '(single or double occupancy per licensing standards); communal '
+  1559→        'dining and living areas; kitchen and food-storage areas; '
+  1560→        'clinical offices and therapy rooms; a quiet room / de-escalation '
+  1561→        'room (not used for seclusion — seclusion is prohibited under '
+  1562→        "the organization's restraint-and-seclusion-minimization policy "
+  1563→        'per SOP §5); medication storage area (double-locked per SOP '
+  1564→        '§6.3(c)); laundry facilities; outdoor recreation area; and '
+  1565→        'administrative offices. Staff-secure features include '
+  1566→        'continuous staff supervision of residents, staff-monitored '
+  1567→        'entry and exit (doors may be locked to elopement risk with '
+  1568→        'staff-controlled release), door and window alarms as '
+  1569→        'appropriate to the resident population, and a controlled '
+  1570→        'visitor-entry process. The facility complies with NFPA 101 '
+  1571→        'Life Safety Code, ADA accessibility standards, and state '
+  1572→        'fire/building codes applicable to staff-secure group homes.'
+  1573→    ))
+  1574→    story.append(Paragraph('<b>11.7 Hours of Operation.</b>', s_h2))
+  1575→    story.append(para(
+  1576→        'The program operates 24 hours per day, 7 days per week, 365 days '
+  1577→        'per year. Clinical services are provided Monday–Friday 8:00 AM '
+  1578→        'to 6:00 PM, with on-call clinical coverage outside those hours. '
+  1579→        'Educational services are provided Monday–Friday during the '
+  1580→        'school year per the local public school calendar. Recreational '
+  1581→        'and life-skills programming is provided daily, including '
+  1582→        'weekends.'
+  1583→    ))
+  1584→    story.append(Paragraph('<b>11.8 Referral &amp; Intake Process.</b>', s_h2))
+  1585→    story.append(para(
+  1586→        'Referrals are accepted from LME/MCOs, DSS, juvenile justice, '
+  1587→        'inpatient psychiatric facilities, families/LRPs, and other '
+  1588→        'system-of-care partners. The referral and intake process is '
+  1589→        'documented in SOP §3 and the Screening and Access Policy '
+  1590→        '(Plan 12). The QP screens each referral against admission '
+  1591→        'criteria, communicates the admission decision within 5 business '
+  1592→        'days, and coordinates intake logistics with the referring party.'
+  1593→    ))
+  1594→    story.append(Paragraph('<b>11.9 Cultural &amp; Linguistic Competency.</b>', s_h2))
+  1595→    story.append(para(
+  1596→        'The program is committed to cultural and linguistic competency, '
+  1597→        'as documented in the Accessibility &amp; Nondiscrimination Plan '
+  1598→        '(Plan 9). Personnel receive annual cultural-competency training. '
+  1599→        'The program collects data on the demographic characteristics '
+  1600→        'of persons served (race, ethnicity, primary language, religion) '
+  1601→        'and uses this data to inform program design and personnel '
+  1602→        'composition. Interpreter services are available at no cost to '
+  1603→        'the youth and family. Vital documents are translated into the '
+  1604→        'languages commonly encountered in the service area.'
+  1605→    ))
+  1606→    story.append(Paragraph('<b>11.10 Coordination with External Systems of Care.</b>', s_h2))
+  1607→    story.append(para(
+  1608→        'The program coordinates with the following external systems of '
+  1609→        'care: (a) <b>LME/MCO</b> (Alliance Health) — authorization, '
+  1610→        'utilization management, care coordination; (b) <b>DSS</b> — '
+  1611→        'custody arrangements, family reunification, visitation; '
+  1612→        '(c) <b>juvenile justice</b> — court-ordered placements, '
+  1613→        'probation coordination; (d) <b>local public school system</b> — '
+  1614→        'educational services, IEP coordination, transition planning; '
+  1615→        '(e) <b>medical home</b> — primary care, dental, vision; '
+  1616→        '(f) <b>psychiatric hospital</b> — inpatient admissions, '
+  1617→        'discharge coordination; and (g) <b>community-based providers</b> '
+  1618→        '— outpatient therapy, case management, peer support, '
+  1619→        'recreational/faith-based activities. Coordination is documented '
+  1620→        'in the Person-Centered Plan and the service record.'
+  1621→    ))
+  1622→    story.append(Paragraph('<b>11.11 Person-Centered Plan Process.</b>', s_h2))
+  1623→    story.append(para(
+  1624→        'Each youth has an individualized Person-Centered Plan developed '
+  1625→        'within required timeframes per SOP §4.1. The PCP is developed '
+  1626→        'by an interdisciplinary team including the youth (as '
+  1627→        'developmentally appropriate), the family/LRP, the QP, the '
+  1628→        'Clinical Director or designee, and other CFT members. The PCP '
+  1629→        'addresses strengths, needs, goals, objectives, services, '
+  1630→        'responsible parties, and review dates. The PCP is reviewed at '
+  1631→        'required intervals and signed by all participants. Progress is '
+  1632→        'documented in the service record per SOP §10.'
+  1633→    ))
+  1634→    story.append(Paragraph('<b>11.12 Discharge &amp; Transition Planning.</b>', s_h2))
+  1635→    story.append(para(
+  1636→        'Transition planning begins at admission, per SOP §3.4 and '
+  1637→        'Plan 14. The youth and family/LRP participate in transition '
+  1638→        'planning. The receiving provider (if any) is identified and '
+  1639→        'engaged. The discharge summary is completed and provided to '
+  1640→        'the youth, family/LRP, and receiving provider. Post-discharge '
+  1641→        'follow-up occurs per Protocol 11. Advance written notification '
+  1642→        'of discharge is provided per §3.4(a). Emergency discharges are '
+  1643→        'followed by the 5-business-day post-emergency service-planning '
+  1644→        'meeting per §3.4(c). The 18th-birthday continuation policy '
+  1645→        'per §3.6 applies.'
+  1646→    ))
+  1647→    story.append(Paragraph('<b>11.13 Records of Persons Served.</b>', s_h2))
+  1648→    story.append(para(
+  1649→        'Records of persons served are maintained per SOP §1.6, §10, '
+  1650→        'and §11, and per the Quality Records Review Procedure (Plan '
+  1651→        '13). Records are retained per §1.6 (12 years post-majority). '
+  1652→        'Confidentiality is maintained per §11. A mock chart containing '
+  1653→        'forms for use with or by persons served is maintained per the '
+  1654→        'CARF CYS General Program Standards note.'
+  1655→    ))
+  1656→    story.append(Paragraph('<b>11.14 Responsible Parties.</b>', s_h2))
+  1657→    story.append(para(
+  1658→        '<b>Clinical Director</b> — overall clinical program; approves '
+  1659→        'Program Description. <b>Executive Director</b> — operational '
+  1660→        'program; resource allocation. <b>QP</b> — daily program '
+  1661→        'operations; intake; PCP coordination. <b>Governing Body</b> — '
+  1662→        'approves Program Description; reviews annually.'
+  1663→    ))
+  1664→    story.append(Paragraph('<b>11.15 Review Schedule.</b>', s_h2))
+  1665→    story.append(para(
+  1666→        'Annual review and update of the Program Description, '
+  1667→        'incorporating any changes in population, service array, '
+  1668→        'staffing, facility, regulatory requirements, or program design. '
+  1669→        'Ad-hoc review following any significant program change.'
+  1670→    ))
+  1671→    story.extend(_approval_block('Program Description'))
+  1672→    story.append(PageBreak())
+  1673→
+  1674→    # ════════════════════════════════════════════════════════════════
+  1675→    # PLAN 12 — SCREENING AND ACCESS POLICY (§12.12)
+  1676→    # ════════════════════════════════════════════════════════════════
+  1677→    story.extend(_plan_header(12, 'Screening and Access Policy', '§12.12'))
+  1678→    story.append(Paragraph('<b>12.1 Purpose.</b>', s_h2))
+  1679→    story.append(para(
+  1680→        'The Screening and Access Policy demonstrates conformance to CARF '
+  1681→        'CYS Section 2.B by establishing written procedures for referral '
+  1682→        'intake, screening, admission decisions, waitlist management, '
+  1683→        'emergency access, denial of admission, and coordination with '
+  1684→        'the LME/MCO access line.'
+  1685→    ))
+  1686→    story.append(Paragraph('<b>12.2 Scope.</b>', s_h2))
+  1687→    story.append(para(
+  1688→        'This policy covers all referrals received by the organization '
+  1689→        'and all admission decisions. It applies to the QP (referral '
+  1690→        'intake and admission decision), the Executive Director (denial '
+  1691→        'appeals), and the Clinical Director (clinical eligibility).'
+  1692→    ))
+  1693→    story.append(Paragraph('<b>12.3 Referral Intake Process.</b>', s_h2))
+  1694→    story.append(para(
+  1695→        'Referrals are accepted from LME/MCOs, DSS, juvenile justice, '
+  1696→        'inpatient psychiatric facilities, families/LRPs, and other '
+  1697→        'system-of-care partners. The QP (or designee) receives each '
+  1698→        'referral, documents it in the referral log within 1 business '
+  1699→        'day, and acknowledges receipt to the referring party within '
+  1700→        '2 business days. The referral packet includes at minimum: '
+  1701→        '(a) youth demographic information; (b) current clinical '
+  1702→        'assessment; (c) current medications; (d) recent hospitalization '
+  1703→        'or treatment history; (e) school information; (f) custody/'
+  1704→        'legal status; (g) insurance/Medicaid information; and (h) '
+  1705→        'reason for referral.'
+  1706→    ))
+  1707→    story.append(Paragraph('<b>12.4 Screening Criteria.</b>', s_h2))
+  1708→    story.append(para(
+  1709→        'Each referral is screened against the admission criteria in '
+  1710→        'SOP §3.1. The QP evaluates: (a) age (6–17); (b) primary '
+  1711→        'diagnosis (mental illness, emotional disturbance, or '
+  1712→        'substance-related disorder); (c) clinical acuity (does not '
+  1713→        'meet inpatient criteria but requires the staff-secure group '
+  1714→        'home level of care — i.e., 24-hour supervised residential '
+  1715→        'care with structured clinical services and continuous staff '
+  1716→        'supervision, and whose needs cannot be safely met in a less '
+  1717→        'restrictive community-based setting); (d) medical stability '
+  1718→        '(no acute medical condition '
+  1719→        'requiring hospital-level care); (e) behavioral history '
+  1720→        '(no pattern of sexual aggression requiring a specialized '
+  1721→        'program); (f) cognitive functioning (IQ ≥ 50, sufficient to '
+  1722→        'benefit from the program); (g) educational needs (can be met '
+  1723→        'through the local public school system or facility-based '
+  1724→        'programming); and (h) bed availability.'
+  1725→    ))
+  1726→    story.append(Paragraph('<b>12.5 Admission Decision.</b>', s_h2))
+  1727→    story.append(para(
+  1728→        'The QP makes the admission decision within 5 business days of '
+  1729→        'receiving the complete referral packet. The decision is one of: '
+  1730→        '(a) admit; (b) deny (with documented reason and appeal rights); '
+  1731→        '(c) defer pending additional information; or (d) waitlist '
+  1732→        '(if no bed is available). The decision is documented in the '
+  1733→        'referral log and communicated to the referring party in writing '
+  1734→        'within 1 business day of the decision. For admissions, the QP '
+  1735→        'coordinates intake logistics (date, time, transportation, '
+  1736→        'orientation) with the referring party.'
+  1737→    ))
+  1738→    story.append(Paragraph('<b>12.6 Waitlist Management.</b>', s_h2))
+  1739→    story.append(para(
+  1740→        'If no bed is available, the youth is placed on the waitlist. '
+  1741→        'The QP maintains the waitlist in writing, ranked by date of '
+  1742→        'admission decision and clinical priority (e.g., youth in '
+  1743→        'inpatient holding, youth in emergency custody). The QP '
+  1744→        'contacts the referring party weekly with waitlist status '
+  1745→        'updates. When a bed becomes available, the QP contacts the '
+  1746→        'next youth on the waitlist, re-confirms continued need, and '
+  1747→        'coordinates intake. The waitlist is reviewed weekly by the QP '
+  1748→        'and monthly by the Executive Director.'
+  1749→    ))
+  1750→    story.append(Paragraph('<b>12.7 Emergency/Crisis Access.</b>', s_h2))
+  1751→    story.append(para(
+  1752→        'For after-hours or emergency referrals, the on-call QP is '
+  1753→        'available 24/7 via the on-call phone. The on-call QP conducts '
+  1754→        'an abbreviated screening, coordinates with the referring party '
+  1755→        '(e.g., emergency department, inpatient unit), and admits '
+  1756→        'pending full screening within 24 hours. If admission is not '
+  1757→        'appropriate, the on-call QP refers the youth to the LME/MCO '
+  1758→        'access line or to the appropriate emergency service.'
+  1759→    ))
+  1760→    story.append(Paragraph('<b>12.8 Denial of Admission.</b>', s_h2))
+  1761→    story.append(para(
+  1762→        'If admission is denied, the QP documents the reason for denial '
+  1763→        'in the referral log and communicates the denial in writing to '
+  1764→        'the referring party within 1 business day. The written denial '
+  1765→        'notice includes: (a) the specific reason for denial; (b) any '
+  1766→        'recommended alternative services or providers; (c) the appeal '
+  1767→        'procedure (written appeal to the Executive Director within '
+  1768→        '10 business days); and (d) external appeal rights (LME/MCO, '
+  1769→        'state licensing authority). The Executive Director reviews '
+  1770→        'appeals within 5 business days and issues a written decision '
+  1771→        'within 10 business days.'
+  1772→    ))
+  1773→    story.append(Paragraph('<b>12.9 Coordination with LME/MCO.</b>', s_h2))
+  1774→    story.append(para(
+  1775→        'The organization coordinates with Alliance Health (LME/MCO) '
+  1776→        'access line for: (a) referrals through the LME/MCO access '
+  1777→        'line; (b) prior authorization for admission; (c) continued '
+  1778→        'stay reviews; (d) discharge planning; and (e) post-discharge '
+  1779→        'service linkage. The QP is the primary point of contact with '
+  1780→        'the LME/MCO. The QP ensures that all required authorizations '
+  1781→        'are obtained prior to admission and maintained throughout the '
+  1782→        'stay.'
+  1783→    ))
+  1784→    story.append(Paragraph('<b>12.10 Nondiscrimination in Access.</b>', s_h2))
+  1785→    story.append(para(
+  1786→        'Admission decisions are made without discrimination on the '
+  1787→        'basis of race, color, national origin, religion, sex, gender '
+  1788→        'identity or expression, sexual orientation, age, disability, '
+  1789→        'or any other classification protected by applicable law (per '
+  1790→        'Plan 9). Decisions are based solely on the youth\'s clinical '
+  1791→        'needs and the program\'s ability to meet those needs safely '
+  1792→        'and effectively.'
+  1793→    ))
+  1794→    story.append(Paragraph('<b>12.11 Access Data Tracking.</b>', s_h2))
+  1795→    story.append(para(
+  1796→        'The QP maintains access data including: (a) number of '
+  1797→        'referrals received (by source); (b) number of admissions; '
+  1798→        '(c) number of denials (by reason); (d) time-to-decision; '
+  1799→        '(e) waitlist size and time-on-waitlist; and (f) demographic '
+  1800→        'characteristics of referrals and admissions. This data is '
+  1801→        'reported to the Governing Body quarterly as part of the '
+  1802→        'Performance Measurement Plan (Plan 10) and is used to identify '
+  1803→        'access disparities or inefficiencies.'
+  1804→    ))
+  1805→    story.append(Paragraph('<b>12.12 Responsible Parties.</b>', s_h2))
+  1806→    story.append(para(
+  1807→        '<b>QP</b> — referral intake; screening; admission decision; '
+  1808→        'waitlist management; LME/MCO coordination. <b>Executive '
+  1809→        'Director</b> — denial appeals; resource allocation. '
+  1810→        '<b>Clinical Director</b> — clinical eligibility consultation. '
+  1811→        '<b>On-call QP</b> — after-hours emergency access. <b>Governing '
+  1812→        'Body</b> — reviews access data quarterly.'
+  1813→    ))
+  1814→    story.append(Paragraph('<b>12.13 Review Schedule.</b>', s_h2))
+  1815→    story.append(para(
+  1816→        'Monthly review of access data by the QP. Quarterly review by '
+  1817→        'the Governing Body. Annual review of the Screening and Access '
+  1818→        'Policy itself, including admission criteria, screening process, '
+  1819→        'and denial trends.'
+  1820→    ))
+  1821→    story.extend(_approval_block('Screening and Access Policy'))
+  1822→    story.append(PageBreak())
+  1823→
+  1824→    # ════════════════════════════════════════════════════════════════
+  1825→    # PLAN 13 — QUALITY RECORDS REVIEW PROCEDURE (§12.17)
+  1826→    # ════════════════════════════════════════════════════════════════
+  1827→    story.extend(_plan_header(13, 'Quality Records Review Procedure', '§12.17'))
+  1828→    story.append(Paragraph('<b>13.1 Purpose.</b>', s_h2))
+  1829→    story.append(para(
+  1830→        'The Quality Records Review Procedure demonstrates conformance to '
+  1831→        'CARF CYS Section 2.G and Section 2.H (Standard 4) by establishing '
+  1832→        'a systematic process for reviewing clinical records for '
+  1833→        'completeness, timeliness, and quality. The procedure ensures '
+  1834→        'that records meet the standards of SOP §1.6, §10, and §11, and '
+  1835→        'that deficiencies are identified, trended, and corrected through '
+  1836→        'personnel feedback, retraining, and policy revision.'
+  1837→    ))
+  1838→    story.append(Paragraph('<b>13.2 Scope.</b>', s_h2))
+  1839→    story.append(para(
+  1840→        'This procedure covers all clinical records maintained by the '
+  1841→        'organization for persons served, including intake documentation, '
+  1842→        'assessments, Person-Centered Plans, service notes, medication '
+  1843→        'records, incident reports, correspondence, and discharge '
+  1844→        'documentation. It applies to the QP (audit lead), the Clinical '
+  1845→        'Director (clinical oversight), and all personnel who create or '
+  1846→        'maintain records.'
+  1847→    ))
+  1848→    story.append(Paragraph('<b>13.3 Review Frequency &amp; Sample.</b>', s_h2))
+  1849→    story.append(para(
+  1850→        'The QP conducts a quarterly records review using the '
+  1851→        'Comprehensive Clinical Record Content Checklist (Form 8). The '
+  1852→        'review includes: (a) 100% of records of youth discharged in the '
+  1853→        'prior quarter; (b) a random 25% sample of active records; and '
+  1854→        '(c) any records flagged for concern (e.g., recent incident, '
+  1855→        'complaint, or extended stay). At minimum, 10 records per quarter '
+  1856→        'are reviewed. The QP documents the sample selection methodology '
+  1857→        'and the records reviewed.'
+  1858→    ))
+  1859→    story.append(Paragraph('<b>13.4 Review Criteria.</b>', s_h2))
+  1860→    story.append(para(
+  1861→        'Each record is reviewed against the Form 8 criteria, including:'
+  1862→    ))
+  1863→    story.extend(bullets([
+  1864→        'Intake documentation complete (consent, release of information, '
+  1865→        'rights acknowledgment, financial responsibility)',
+  1866→        'Assessments completed within required timeframes (clinical, '
+  1867→        'medical, psychiatric, behavioral, educational)',
+  1868→        'Person-Centered Plan completed within required timeframe, '
+  1869→        'signed by all participants, reviewed at required intervals',
+  1870→        'Service notes completed per SOP §10.1–10.4 (timely, complete, '
+  1871→        'authenticated)',
+  1872→        'Medication records complete (MAR, consent, regimen review per '
+  1873→        'Form 11)',
+  1874→        'Incident reports complete and properly documented per SOP §8',
+  1875→        'Correspondence filed and authorized per SOP §11.4',
+  1876→        'Discharge documentation complete (summary, aftercare plan, '
+  1877→        'transferred records)',
+  1878→        'Record retention per SOP §1.6',
+  1879→        'Confidentiality safeguards (locked storage, access controls, '
+  1880→        'disclosure accounting per Form 9)',
+  1881→    ]))
+  1882→    story.append(Paragraph('<b>13.5 Findings Documentation.</b>', s_h2))
+  1883→    story.append(para(
+  1884→        'The QP documents findings on Form 8 for each record reviewed, '
+  1885→        'noting: (a) record identifier; (b) date of review; (c) criteria '
+  1886→        'met; (d) criteria not met (with specific deficiency); (e) '
+  1887→        'responsible personnel member; (f) corrective action required '
+  1888→        '(re-documentation, retraining, etc.); and (g) target completion '
+  1889→        'date. Findings are aggregated quarterly to identify trends by '
+  1890→        'criterion, by personnel member, by shift, and by program '
+  1891→        'component.'
+  1892→    ))
+  1893→    story.append(Paragraph('<b>13.6 Trend Analysis &amp; Reporting.</b>', s_h2))
+  1894→    story.append(para(
+  1895→        'The QP analyzes quarterly findings to identify: (a) most common '
+  1896→        'deficiencies; (b) personnel members or shifts with higher '
+  1897→        'deficiency rates; (c) program components with systemic issues; '
+  1898→        'and (d) improvements from prior quarters. The QP prepares a '
+  1899→        'written quarterly report for the Clinical Director and Governing '
+  1900→        'Body including: (a) number of records reviewed; (b) overall '
+  1901→        'compliance rate; (c) most common deficiencies; (d) trend '
+  1902→        'analysis; (e) corrective actions taken; and (f) recommendations '
+  1903→        'for systemic improvement.'
+  1904→    ))
+  1905→    story.append(Paragraph('<b>13.7 Corrective Action.</b>', s_h2))
+  1906→    story.append(para(
+  1907→        'Deficiencies are addressed through: (a) individual personnel '
+  1908→        'feedback within 5 business days of identification; (b) '
+  1909→        're-documentation by the responsible personnel member within '
+  1910→        '10 business days; (c) retraining for systemic deficiencies; '
+  1911→        '(d) policy revision for systemic issues; and (e) disciplinary '
+  1912→        'action for repeated or willful non-compliance. The QP tracks '
+  1913→        'corrective actions to completion and verifies effectiveness in '
+  1914→        'the subsequent quarter\'s review.'
+  1915→    ))
+  1916→    story.append(Paragraph('<b>13.8 Records Retention &amp; Confidentiality.</b>', s_h2))
+  1917→    story.append(para(
+  1918→        'Records are retained per SOP §1.6 (12 years post-majority). '
+  1919→        'Confidentiality of records is maintained per SOP §11. Records-release '
+  1920→        'accounting is maintained per SOP §11.4 and Form 9. The QP '
+  1921→        'coordinates with the Compliance Officer to ensure that '
+  1922→        'records-release accounting is up-to-date and that any '
+  1923→        'unauthorized access is investigated.'
+  1924→    ))
+  1925→    story.append(Paragraph('<b>13.9 Responsible Parties.</b>', s_h2))
+  1926→    story.append(para(
+  1927→        '<b>QP</b> — audit lead; quarterly review; trend analysis; '
+  1928→        'reporting. <b>Clinical Director</b> — clinical oversight; '
+  1929→        'corrective-action direction. <b>Compliance Officer</b> — '
+  1930→        'confidentiality oversight; records-release accounting. <b>All '
+  1931→        'Personnel</b> — timely and complete documentation; cooperation '
+  1932→        'with audit. <b>Governing Body</b> — reviews quarterly report; '
+  1933→        'ensures corrective action.'
+  1934→    ))
+  1935→    story.append(Paragraph('<b>13.10 Review Schedule.</b>', s_h2))
+  1936→    story.append(para(
+  1937→        'Quarterly records review. Quarterly trend report to the '
+  1938→        'Governing Body. Annual review of the Quality Records Review '
+  1939→        'Procedure itself, including review criteria, sample '
+  1940→        'methodology, and effectiveness.'
+  1941→    ))
+  1942→    story.extend(_approval_block('Quality Records Review Procedure'))
+  1943→    story.append(PageBreak())
+  1944→
+  1945→    # ════════════════════════════════════════════════════════════════
+  1946→    # PLAN 14 — TELEHEALTH & ICT SERVICE DELIVERY POLICY (§12.18)
+  1947→    # ════════════════════════════════════════════════════════════════
+  1948→    story.extend(_plan_header(14, 'Telehealth & ICT Service Delivery Policy', '§12.18'))
+  1949→    story.append(Paragraph('<b>14.1 Purpose.</b>', s_h2))
+  1950→    story.append(para(
+  1951→        'The Telehealth &amp; Information and Communication Technologies '
+  1952→        '(ICT) Service Delivery Policy demonstrates conformance to CARF '
+  1953→        'CYS Section 2.I by establishing written procedures for the '
+  1954→        'delivery of services via telehealth and other '
+  1955→        'technology-mediated platforms. The policy ensures that '
+  1956→        'technology-mediated services are delivered in a manner that '
+  1957→        'protects privacy, ensures informed consent, maintains quality, '
+  1958→        'and provides appropriate fallback when technology fails.'
+  1959→    ))
+  1960→    story.append(Paragraph('<b>14.2 Scope.</b>', s_h2))
+  1961→    story.append(para(
+  1962→        'This policy covers all services delivered via information and '
+  1963→        'communication technologies, including: videoconferencing '
+  1964→        '(individual, family, and group therapy); telephone contact; '
+  1965→        'secure messaging; remote psychiatric medication management; '
+  1966→        'clinical supervision; and care-coordination meetings. It '
+  1967→        'applies to all clinical personnel who deliver technology-mediated '
+  1968→        'services and to the QP (oversight).'
+  1969→    ))
+  1970→    story.append(Paragraph('<b>14.3 Eligible Services.</b>', s_h2))
+  1971→    story.append(para(
+  1972→        'The following services may be delivered via telehealth/ICT, '
+  1973→        'subject to clinical appropriateness and the youth\'s '
+  1974→        'Person-Centered Plan:'
+  1975→    ))
+  1976→    story.extend(bullets([
+  1977→        'Family therapy sessions (especially for geographically distant '
+  1978→        'family members)',
+  1979→        'Psychiatric medication management follow-up (initial '
+  1980→        'evaluation preferably in person)',
+  1981→        'Clinical supervision of APs and DCPs',
+  1982→        'Care-coordination meetings with external providers (LME/MCO, '
+  1983→        'DSS, school, medical home)',
+  1984→        'Individual therapy sessions (when in-person is not feasible '
+  1985→        'or as clinically indicated)',
+  1986→        'Group therapy sessions (limited use, subject to clinical '
+  1987→        'judgment)',
+  1988→    ]))
+  1989→    story.append(Paragraph('<b>14.4 Technology Platforms.</b>', s_h2))
+  1990→    story.append(para(
+  1991→        'The organization uses only HIPAA-compliant, end-to-end encrypted '
+  1992→        'telehealth platforms that have executed Business Associate '
+  1993→        'Agreements (BAAs) with the organization. Approved platforms '
+  1994→        'are listed in the IT inventory and reviewed annually. Personnel '
+  1995→        'may not use consumer-grade videoconferencing (e.g., personal '
+  1996→        'FaceTime, personal Skype) for service delivery. The platform '
+  1997→        'must support: (a) waiting rooms / virtual lobby; (b) multi-'
+  1998→        'factor authentication; (c) session encryption; (d) no '
+  1999→        'recording without explicit consent; and (e) audit logging.'
+  2000→    ))
+
+[showing lines 1-2000 of 2219; use offset=2001 with limit to continue reading]

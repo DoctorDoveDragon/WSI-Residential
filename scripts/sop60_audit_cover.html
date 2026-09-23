@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>WSI SOP v2.24 / CARF Plans v1.2 Operational Audit — Cover</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: 794px 1123px; margin: 0; }
+  html, body { margin: 0; padding: 0; background: #FAF6EE; }
+  .poster {
+    width: 794px;
+    height: 1123px;
+    background: #FAF6EE;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    color: #1F2937;
+  }
+  /* Top accent bar */
+  .top-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 14px;
+    background: #7C2D12;
+  }
+  /* Top metadata band */
+  .meta-top {
+    position: absolute;
+    top: 60px; left: 80px; right: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid #D6CFC0;
+    padding-bottom: 14px;
+  }
+  .meta-top .org {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #7C2D12;
+    letter-spacing: 0.02em;
+  }
+  .meta-top .doc-id {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    color: #6B6457;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  /* Hero zone */
+  .hero {
+    position: absolute;
+    top: 200px;
+    left: 80px;
+    right: 80px;
+  }
+  .kicker {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #7C2D12;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    margin-bottom: 26px;
+  }
+  .accent-rule {
+    width: 60px;
+    height: 3px;
+    background: #7C2D12;
+    margin-bottom: 28px;
+  }
+  .title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 58px;
+    font-weight: 600;
+    color: #1F2937;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    margin: 0 0 24px 0;
+  }
+  .title em {
+    font-style: italic;
+    font-weight: 500;
+    color: #7C2D12;
+  }
+  .subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #4B5563;
+    line-height: 1.45;
+    margin: 0 0 18px 0;
+    max-width: 580px;
+  }
+  .scope-pill {
+    display: inline-block;
+    padding: 6px 14px;
+    background: #7C2D12;
+    color: #FAF6EE;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-top: 12px;
+    border-radius: 2px;
+  }
+  /* Severity summary block */
+  .summary {
+    position: absolute;
+    top: 640px;
+    left: 80px;
+    right: 80px;
+    background: #FFFFFF;
+    border-left: 4px solid #7C2D12;
+    padding: 24px 32px 26px 32px;
+    box-shadow: 0 1px 0 #E5DFD0;
+  }
+  .summary-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    color: #6B6457;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .summary-grid {
+    display: flex;
+    gap: 32px;
+  }
+  .summary-cell {
+    flex: 1;
+  }
+  .summary-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: #7C2D12;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .summary-cell.met .summary-num { color: #166534; }
+  .summary-cell.high .summary-num { color: #991B1B; }
+  .summary-cell.med  .summary-num { color: #B45309; }
+  .summary-cell.strip .summary-num { color: #7C2D12; }
+  .summary-lbl {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    color: #4B5563;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  /* Bottom metadata */
+  .meta-bottom {
+    position: absolute;
+    bottom: 90px;
+    left: 80px;
+    right: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px solid #D6CFC0;
+    padding-top: 18px;
+  }
+  .meta-block {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    color: #4B5563;
+    line-height: 1.6;
+  }
+  .meta-block .lbl {
+    font-weight: 600;
+    color: #6B6457;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 9px;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .meta-block .val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1F2937;
+  }
+  /* Footer */
+  .footer {
+    position: absolute;
+    bottom: 28px;
+    left: 80px;
+    right: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    color: #6B6457;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .footer .seal-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: #7C2D12;
+    letter-spacing: 0.02em;
+    text-transform: none;
+  }
+  /* Decorative geometric accent */
+  .geo {
+    position: absolute;
+    top: 150px;
+    right: 80px;
+    width: 64px;
+    height: 64px;
+    border: 1.5px solid #7C2D12;
+    transform: rotate(45deg);
+    opacity: 0.18;
+  }
+  .geo::after {
+    content: '';
+    position: absolute;
+    top: 14px; left: 14px;
+    width: 32px; height: 32px;
+    background: #7C2D12;
+    opacity: 0.5;
+  }
+</style>
+</head>
+<body>
+<div class="poster">
+  <div class="top-bar"></div>
+
+  <div class="meta-top">
+    <div class="org">Well Spring Intervention LLC</div>
+    <div class="doc-id">Doc. WSI-SOP60-AUDIT-001 · Rev. 1.0</div>
+  </div>
+
+  <div class="geo"></div>
+
+  <div class="hero">
+    <div class="kicker">Internal Operational Audit</div>
+    <div class="accent-rule"></div>
+    <h1 class="title">SOP v2.24 / CARF Plans v1.2<br>Operational <em>Audit Report</em></h1>
+    <p class="subtitle">A full operational audit of the Well Spring Intervention LLC Standard Operating Procedure Manual (Rev. 2.24, August 2026) and CARF CYS 2026 Conformance Plans Portfolio (Rev. 1.2, August 2026), verifying the NC service code citation, staffing ratios against 10A NCAC 27G .1704 codified minimums, facility capacity per .1706(a), Alliance Health Tailored Plan nomenclature, WakeMed out-of-network status effective July 1, 2026, and policy completeness for the CARF CYS 2026 Inaugural Accreditation survey.</p>
+    <div class="scope-pill">Scope · Full Operational Audit</div>
+  </div>
+
+  <div class="summary">
+    <div class="summary-label">Audit Findings at a Glance</div>
+    <div class="summary-grid">
+      <div class="summary-cell high">
+        <div class="summary-num">3</div>
+        <div class="summary-lbl">Critical Severity</div>
+      </div>
+      <div class="summary-cell med">
+        <div class="summary-num">3</div>
+        <div class="summary-lbl">High Severity</div>
+      </div>
+      <div class="summary-cell met">
+        <div class="summary-num">8</div>
+        <div class="summary-lbl">Met / Met-Exceeds</div>
+      </div>
+      <div class="summary-cell strip">
+        <div class="summary-num">15</div>
+        <div class="summary-lbl">Total Findings</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="meta-bottom">
+    <div class="meta-block">
+      <span class="lbl">Prepared For</span>
+      <span class="val">Executive Director &amp; Qualified Professional</span>
+    </div>
+    <div class="meta-block">
+      <span class="lbl">Date</span>
+      <span class="val">August 2026</span>
+    </div>
+    <div class="meta-block">
+      <span class="lbl">Audit Scope</span>
+      <span class="val">Service Code · Staffing · Capacity · Wake County</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Confidential · Internal Compliance Use</span>
+    <span class="seal-mark">Well Spring Intervention</span>
+    <span>SOP-60 Operational Audit · v1.0</span>
+  </div>
+</div>
+</body>
+</html>

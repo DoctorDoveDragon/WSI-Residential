@@ -1,0 +1,88 @@
+{
+  "research_topic": "Minimum staffing ratios under 10A NCAC 27G .1704 for Residential Treatment Staff Secure facility",
+  "verdict": "NEITHER the SOP Manual v2.24 ('2 awake staff per 1-4 youth 24/7') NOR the CARF Plans v1.2 ('1:6 waking / 1:8 overnight') accurately reflects the codified minimums under 10A NCAC 27G .1704. SOP Manual OVERSTAFFS (more restrictive than required); CARF Plans UNDERSTAFF (non-compliant).",
+
+  "codified_text_of_10A_NCAC_27G_.1704": {
+    "title": "10A N.C. Admin. Code 27G .1704 - MINIMUM STAFFING REQUIREMENTS",
+    "authority": "G.S. 122C-26; 143B-147",
+    "effective_date": "April 3, 2006 (pursuant to E.O. 101, Michael F. Easley, March 27, 2006); Eff. July 20, 2019 (without substantive public interest)",
+    "source_url": "https://www.law.cornell.edu/regulations/north-carolina/10A-N-C-Admin-Code-27G-1704",
+
+    "subsection_a": "(a) A qualified professional shall be available by telephone or page. A direct care staff shall be able to reach the facility within 30 minutes at all times.",
+
+    "subsection_b_waking_hours": "(b) The minimum number of direct care staff required when children or adolescents are present and awake is as follows:",
+    "waking_hours_ratios": {
+      "1_to_4_youth": "TWO direct care staff shall be present (one staff:two youth ratio)",
+      "5_to_8_youth": "THREE direct care staff shall be present (one staff:2.7 youth ratio)",
+      "9_to_12_youth": "FOUR direct care staff shall be present (one staff:3 youth ratio)"
+    },
+
+    "subsection_c_sleep_hours": "(c) The minimum number of direct care staff during child or adolescent sleep hours is as follows:",
+    "sleep_hours_ratios": {
+      "1_to_4_youth": "TWO direct care staff shall be present and ONE shall be AWAKE (the other may be asleep)",
+      "5_to_8_youth": "TWO direct care staff shall be present and BOTH shall be AWAKE",
+      "9_to_12_youth": "THREE direct care staff shall be present of which TWO shall be AWAKE and the third MAY be asleep"
+    },
+
+    "subsection_d_individual_needs": "(d) In addition to the minimum number of direct care staff set forth in Paragraphs (a)-(c) of this Rule, more direct care staff shall be required in the facility based on the child or adolescent's individual needs as specified in the treatment plan.",
+
+    "subsection_e_off_site_supervision": "(e) Each facility shall be responsible for ensuring supervision of children or adolescents when they are away from the facility in accordance with the child or adolescent's individual strengths and needs as specified in the treatment plan."
+  },
+
+  "related_rule_1701_b_definition": {
+    "rule": "10A NCAC 27G .1701(b)",
+    "text": "'Staff secure' means staff are required to be awake during client sleep hours and supervision shall be continuous as set forth in Rule .1704 of this Section.",
+    "implication": "AWAKE overnight staff is the defining feature of 'staff secure' status. At least ONE staff must be awake overnight for 1-4 youth; TWO awake for 5-8 youth; TWO awake (third may sleep) for 9-12 youth."
+  },
+
+  "ratio_comparison_table": {
+    "headers": ["Youth Count", "WAKING Hours: Codified Min (.1704(b))", "SLEEP Hours: Codified Min (.1704(c))", "SOP Manual v2.24 claim", "CARF Plans v1.2 claim"],
+    "rows": [
+      ["1-4 youth", "2 staff present (1:2 ratio)", "2 staff present, 1 awake (1 may sleep)", "2 awake staff (matches codified min for waking; OVERSTATED for sleeping)", "1:6 waking / 1:8 overnight — NON-COMPLIANT"],
+      ["5-8 youth", "3 staff present (1:2.7 ratio)", "2 staff present, BOTH awake", "Implied: 2 awake staff for 1-4 youth — does not address 5-8 range", "1:6 waking (≈1.3 staff for 8 youth) — NON-COMPLIANT"],
+      ["9-12 youth", "4 staff present (1:3 ratio)", "3 staff present, 2 awake (3rd may sleep)", "Not addressed by SOP (max cap claimed at 9)", "1:8 overnight (≈1.5 staff for 12 youth) — NON-COMPLIANT"]
+    ]
+  },
+
+  "key_findings": {
+    "sop_manual_v2_24_2_awake_24_7": {
+      "claim": "2:4 minimum (2 awake staff per 1-4 youth 24/7) per .1704",
+      "assessment": "MORE RESTRICTIVE THAN CODED MINIMUM. The actual .1704 rule only requires ONE awake staff for 1-4 youth during sleep hours (the second may sleep). Requiring 2 awake for 1-4 youth is permissible as a programmatic standard (it exceeds the minimum) but citing it as 'the codified minimum' is INCORRECT. CARF auditors familiar with NC rules will note this discrepancy.",
+      "compliance_status": "Compliant (over-provides), but citation error.",
+      "risk": "If cited as 'the minimum', a CARF CYS surveyor comparing to NCAC text will flag the inaccuracy. Recommend SOP Manual language be corrected to: 'Per 10A NCAC 27G .1704(c)(1), 2 direct care staff shall be present during sleep hours for 1-4 youth, with at least 1 awake. Well Spring elects to staff 2 awake staff as a best-practice standard above the minimum.'"
+    },
+    "carf_plans_v1_2_1_6_1_8": {
+      "claim": "1:6 waking / 1:8 overnight ratio",
+      "assessment": "NON-COMPLIANT — BELOW CODED MINIMUM. For 6 youth waking, the rule requires 3 staff (1:2 ratio), not 1 staff per 6 youth. For 8 youth overnight, the rule requires 2 staff BOTH awake (1:4 ratio), not 1 staff per 8 youth.",
+      "compliance_status": "NON-COMPLIANT — must be revised.",
+      "risk": "Operating at 1:6/1:8 would constitute a citable licensure deficiency by DHSR MHLC and would result in CARF CYS survey Conditional/Nonconformity finding. Revising CARF Plans to align with .1704 is mandatory.",
+      "recommended_correction": "Waking: 2 staff for 1-4 youth; 3 staff for 5-8 youth; 4 staff for 9-12 youth. Overnight: 2 staff present (1 awake) for 1-4 youth; 2 staff present (both awake) for 5-8 youth; 3 staff present (2 awake) for 9-12 youth."
+    }
+  },
+
+  "additional_27g_1700_series_staffing_requirements": {
+    "1702_QP_hours": {
+      "rule": "10A NCAC 27G .1702",
+      "requirement_for_5_or_fewer_beds": "Qualified professional shall perform clinical/administrative responsibilities minimum 10 hours/week, with 70% of time occurring when children/adolescents are awake and present in the facility.",
+      "requirement_for_6_or_more_beds": "Qualified professional shall perform clinical/administrative responsibilities minimum 32 hours/week, with 70% of time during awake/present hours.",
+      "source_url": "https://www.law.cornell.edu/regulations/north-carolina/10A-N-C-Admin-Code-27G-1702"
+    },
+    "1703_associate_professional": {
+      "rule": "10A NCAC 27G .1703",
+      "requirement": "Each facility shall have at least one FULL-TIME direct care staff who meets the requirements of an associate professional (per 10A NCAC 27G .0104(1)).",
+      "source_url": "https://www.law.cornell.edu/regulations/north-carolina/10A-N-C-Admin-Code-27G-1703"
+    },
+    "1705_licensed_professional_clinical_consultation": {
+      "rule": "10A NCAC 27G .1705",
+      "requirement": "Face-to-face clinical consultation shall be provided in each facility at least 4 hours/week by a licensed professional (e.g., licensed psychologist, LCSW, LPC, psychiatrist, LCAS).",
+      "source_url": "https://www.law.cornell.edu/regulations/north-carolina/10A-N-C-Admin-Code-27G-1705"
+    },
+    "1704_a_30_minute_response": "A direct care staff shall be able to reach the facility within 30 minutes at all times. A qualified professional shall be available by telephone or page."
+  },
+
+  "1200_series_staffing_irrelevant": {
+    "rule": "10A NCAC 27G .1202",
+    "text": "A minimum of one staff member on-site to each eight or fewer clients in average daily attendance shall be maintained.",
+    "note": "This is for psychosocial rehabilitation facilities (adult day/night programs) and is NOT applicable to 24-hour staff-secure children's residential treatment. The CARF Plans' '1:8' ratio appears to incorrectly import this adult psychosocial rehab standard."
+  }
+}

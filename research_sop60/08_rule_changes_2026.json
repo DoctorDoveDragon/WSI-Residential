@@ -1,0 +1,67 @@
+{
+  "research_topic": "Pending NCAC rule changes affecting staff-secure group homes effective 2026 or later",
+
+  "verdict": "No substantive rule changes to 10A NCAC 27G .1700 series effective 2026 identified. Most recent substantive rule updates for the .1700 series were in 2006 (original effective date) and July 20, 2019 (per G.S. 150B-21.3A periodic review — 'necessary without substantive public interest'). However, several ADJACENT regulatory developments effective 2024-2026 require Well Spring's attention.",
+
+  "27g_1700_series_rule_history": {
+    "authority": "G.S. 122C-26; 143B-147",
+    "original_effective_date": "April 3, 2006 (pursuant to E.O. 101, Michael F. Easley, March 27, 2006)",
+    "2019_review": "Pursuant to G.S. 150B-21.3A, rule is necessary without substantive public interest — Eff. July 20, 2019.",
+    "2026_status": "No pending amendments to .1700 series identified in OAH filings as of late 2026 review."
+  },
+
+  "related_2024_2026_regulatory_developments": {
+
+    "tailored_plan_implementation": {
+      "effective_date": "July 1, 2024",
+      "description": "NC Medicaid transitioned LME/MCOs to Tailored Plans, integrating behavioral health/I/DD/TBI services into Medicaid managed care. Alliance Health became Alliance Health Tailored Plan.",
+      "impact_on_well_spring": "Well Spring must contract with Alliance Health Tailored Plan (not 'Alliance Health LME/MCO' as historical designation). Provider enrollment, claims submission, and prior authorization all flow through Tailored Plan.",
+      "url": "https://medicaid.ncdhhs.gov/blog/2024/07/01/nc-medicaid-tailored-plans-launch"
+    },
+
+    "alliance_health_wakemed_network_termination": {
+      "effective_date": "July 1, 2026",
+      "description": "WakeMed is out-of-network with Alliance Health Tailored Plan effective July 1, 2026. Initiated by Alliance Health.",
+      "impact_on_well_spring": "Emergency psychiatric admissions for Alliance-enrolled youth cannot be routed to WakeMed post-July 1, 2026. Must update emergency transport MOUs to UNC Rex Hospital (Raleigh) and Duke Raleigh Hospital as primary in-network options.",
+      "source_url": "https://www.alliancehealthplan.org/tailored-plan-members/",
+      "wakemed_url": "https://www.wakemed.org/medicaid-managed-care-plans"
+    },
+
+    "medicaid_8d-2_clinical_coverage_policy_updates": {
+      "last_amended": "January 7, 2025 (8D-2 amended — removal of quantitative treatment limits only); January 24, 2025 update announcement.",
+      "description": "NC Medicaid announced Behavioral Health Clinical Coverage Policy Updates including 8D-2 Residential Treatment Services (removal of QTLs only — quantitative treatment limits on duration/frequency of services).",
+      "impact_on_well_spring": "Removal of QTLs allows longer residential treatment stays if clinically indicated, without arbitrary length-of-stay caps. Prior authorization still required.",
+      "source_url": "https://medicaid.ncdhhs.gov/blog/2025/01/24/behavioral-health-clinical-coverage-policy-updates"
+    },
+
+    "ncdhss_prtf_restraint_pilot_program_2025": {
+      "effective_date": "August 6, 2025 (announced)",
+      "description": "NCDHHS launched a Two-Year Pilot Program implementing Ukeru (alternative restraint-de-escalation tool) in Psychiatric Residential Treatment Facilities (PRTFs) for youth. PRTFs only — does NOT directly apply to .1700 staff-secure facilities — but signals state direction toward restraint reduction.",
+      "source_url": "https://www.ncdhhs.gov/news/press-releases/2025/08/06/ncdhhs-launches-two-year-pilot-program-implementing-alternative-restraint-de-escalating-crises-child",
+      "impact_on_well_spring": "Voluntary adoption of restraint-reduction practices (such as Ukeru or similar trauma-informed alternatives) could position Well Spring favorably for CARF CYS 2026 accreditation."
+    },
+
+    "27g_0104_staff_definitions_revisions": {
+      "filing_status": "10A NCAC 27G .0104 STAFF DEFINITIONS — observed October 2023 Mental Health final revised rules filing (per OAH filings).",
+      "description": "Revisions to definitions of qualified professional, associate professional, paraprofessional, licensed clinician, and direct support professional — affects staffing qualifications under .1702/.1703.",
+      "source_url": "https://www.oah.nc.gov/122023-mental-health-final-revised-rules/open",
+      "impact_on_well_spring": "Verify that the QP/AP/paraprofessional staff job descriptions in the SOP Manual align with the current .0104 staff definitions (revised 2023). Particularly: 'Licensed Clinical Addictions Specialist (LCAS)' and 'Direct Support Professional' definitions."
+    },
+
+    "rule_review_cycle_per_gs_150b_21_3a": {
+      "statute": "G.S. 150B-21.3A",
+      "description": "NC Administrative Rules periodic review — all NCAC rules must be reviewed every 5 years. Rules deemed 'necessary without substantive public interest' are continued as-is. The .1700 series was last reviewed July 20, 2019.",
+      "expected_next_review": "Approximately 2024-2025 review cycle — verify with OAH for any 2026 review outcomes.",
+      "oah_url": "https://www.oah.nc.gov/"
+    }
+  },
+
+  "wake_county_ordinance_amendments": {
+    "wake_county_udo_amendment_oa_01_24": {
+      "effective_date": "October 2, 2024",
+      "description": "Unified Development Ordinance Amendment OA-01-24 — Reviewed the residential use group sub-categories (Household Living and Group Living) including group home use provisions.",
+      "source_url": "https://s3.us-west-1.amazonaws.com (Wake County UDO Amendment OA-01-24)",
+      "impact_on_well_spring": "Verify that the facility site's zoning district classification and any required Conditional Use Permit reflect the post-2024 amendment's group living definitions."
+    }
+  }
+}

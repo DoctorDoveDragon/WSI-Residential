@@ -1,0 +1,70 @@
+{
+  "research_topic": "NC DHHS accreditation requirement for residential child-care facilities",
+
+  "verdict": "Accreditation is REQUIRED for residential child-care facilities initially licensed after August 1, 2011 by NC DSS (10A NCAC 70I). For a .1700 staff-secure facility licensed by DHSR (not DSS), accreditation is NOT explicitly required by 27G .1700 itself, BUT it IS required: (a) under .1901(g) for PRTFs; (b) for DSS-licensed facilities that take child welfare placements; and (c) by Alliance Health as a network participation requirement for many behavioral health service lines. CARF CYS 2026 Inaugural Accreditation is the appropriate accrediting body and pathway for Well Spring Intervention LLC.",
+
+  "ncac_70i_accreditation_rule": {
+    "rule": "10A NCAC 70I",
+    "title": "Residential Child-Care Facility rules (administered by NC Division of Social Services)",
+    "key_provision": "Residential child-care facilities initially licensed after August 1, 2011 shall have a three year or longer accreditation from either the Council on Accreditation (COA), the Joint Commission (formerly JCAHO/TJC), the Commission on Accreditation of Rehabilitation Facilities (CARF), or the Council on Quality and Leadership (CQL) before being licensed.",
+    "effective_date": "August 1, 2011",
+    "source_url": "http://ncrules.state.nc.us/",
+    "oah_rule_citation_url": "https://www.oah.nc.gov/ (Social Services Commission RULE CITATION: 10A NCAC 70I)",
+    "dhhs_consumer_page": "https://www.ncdhhs.gov/divisions/social-services/child-welfare-services/licensing/residential-child-care-facility",
+    "applicability_to_well_spring": "Well Spring's staff-secure facility is licensed by DHSR under 10A NCAC 27G .1700 (NOT by DSS under 70I). However, IF Well Spring accepts DSS custody placements (foster care children requiring behavioral treatment), the facility may also need a parallel DSS license as a Residential Child-Care Facility, triggering the 70I accreditation requirement. CARF CYS accreditation satisfies this requirement."
+  },
+
+  "ncac_27g_1901_g_prtf_accreditation_rule": {
+    "rule": "10A NCAC 27G .1901(g)",
+    "text": "The PRTF shall be accredited through one of the following; Joint Commission on Accreditation of Healthcare Organizations; the Commission on Accreditation of Rehabilitation Facilities; the Council on Accreditation or other national accrediting bodies as set forth in the Division of Medical Assistance Clinical Policy Number 8D-1, Psychiatric Residential Treatment Facility, including subsequent amendments and editions.",
+    "applicability_to_well_spring": "Directly applicable ONLY to PRTFs (.1900 series). Well Spring's .1700 staff-secure facility is NOT a PRTF, so .1901(g) does not directly apply. However, it confirms the four acceptable accreditors: TJC, CARF, COA, plus 'other national accrediting bodies' per CCP 8D-1."
+  },
+
+  "accepted_accrediting_bodies": [
+    {
+      "acronym": "COA",
+      "full_name": "Council on Accreditation (now part of Social Current)",
+      "website": "https://coanet.org"
+    },
+    {
+      "acronym": "TJC / JCAHO",
+      "full_name": "The Joint Commission (formerly Joint Commission on Accreditation of Healthcare Organizations)",
+      "website": "https://www.jointcommission.org",
+      "applicable_manual": "Comprehensive Accreditation Manual for Behavioral Health Care"
+    },
+    {
+      "acronym": "CARF",
+      "full_name": "Commission on Accreditation of Rehabilitation Facilities",
+      "website": "https://carf.org",
+      "program_choice_for_well_spring": "CARF Child and Youth Services (CYS) Programs Manual — appropriate for inaugural accreditation of a children's staff-secure group home."
+    },
+    {
+      "acronym": "CQL",
+      "full_name": "Council on Quality and Leadership",
+      "website": "https://c-q-l.org"
+    }
+  ],
+
+  "alliance_health_network_participation_accreditation_requirement": {
+    "requirement": "Alliance Health Tailored Plan provider network agreements typically require accreditation (COA/TJC/CARF/CQL) for residential treatment service providers. Even where not strictly required by NCAC, Alliance Health contract terms may mandate accreditation for participation in the Tailored Plan network.",
+    "verification_url": "https://www.alliancehealthplan.org/providers/",
+    "verification_action": "Well Spring should confirm with Alliance Health Provider Network team that CARF CYS accreditation is acceptable for .1700 staff-secure facility network participation."
+  },
+
+  "carf_cys_program_manual_for_well_spring": {
+    "program_title": "CARF Child and Youth Services (CYS) Programs",
+    "program_url": "https://carf.org/programs/child-youth-services/",
+    "accreditation_cycle": "Three years (consistent with NC DHHS 10A NCAC 70I requirement of 'three year or longer accreditation').",
+    "preparation_year_target": "2026 Inaugural Accreditation — first-time CARF accreditation for Well Spring Intervention LLC.",
+    "inaugural_accreditation_consideration": "Inaugural CARF CYS accreditation requires submission of: (1) Person-Centered Service Plan documentation; (2) policies and procedures aligned with CARF CYS standards; (3) staffing model aligned with applicable state rules (e.g., 10A NCAC 27G .1704); (4) outcomes measurement framework; (5) recent performance improvement activities.",
+    "sop_manual_alignment_required": "The discrepancies identified in this audit (staffing ratios, capacity citation, WakeMed coordination) should be corrected BEFORE the CARF CYS 2026 survey to avoid surveyors flagging inconsistencies between the SOP Manual and codified NC rules."
+  },
+
+  "summary_of_applicable_requirements_for_well_spring_staff_secure_facility": {
+    "directly_required_by_27g_1700": "No explicit accreditation requirement in .1700 series itself.",
+    "required_by_70i_if_dual_licensed": "Yes — if Well Spring also obtains a DSS Residential Child-Care Facility license for child welfare placements.",
+    "required_by_alliance_health_contract": "Likely yes — confirm with Alliance Provider Relations.",
+    "required_for_medicaid_8d_2_billing": "Not federally mandated, but typically required by LME/MCO/Tailored Plan contracts.",
+    "recommended_pathway": "Pursue CARF CYS 2026 Inaugural Accreditation as planned. This will satisfy: (a) Alliance Health network participation; (b) potential future 70I licensure; (c) NC DHHS accreditation expectations for behavioral health residential facilities."
+  }
+}

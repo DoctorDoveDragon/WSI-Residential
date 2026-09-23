@@ -3591,3 +3591,79 @@ Stage Summary:
   /home/z/my-project/scripts/carf_plans_cover.html — patched (scope-pill + Rev 1.2)
   /home/z/my-project/scripts/merge_carf_plans.py — patched (Subject + print message Rev 1.2)
 - Ready for Executive Director / Clinical Director / QP / Compliance Officer review and signature. Recommended next steps: (1) confirm with user that the Staff Secure Group Home designation and 10A NCAC 27G citation are correct; (2) if a specific sub-section citation is needed (e.g., .0600, .0700, .1400, .1700 family), update the About-page Service Type line and Plan 3 §3.4 Licensure bullet accordingly; (3) distribute Rev 1.2 to the four approving officers for review and signature; (4) QP to begin operational implementation per the Stage Summary in SOP-57; (5) QP to order the full 2026 CYS Standards Manual from carf.org/catalog to complete the Section 3-5 crosswalk per Plan 15; (6) coordinate with CARF resource specialist to schedule the Inaugural Accreditation survey.
+
+---
+Task ID: SOP-60
+Agent: main (Super Z)
+Task: Review the staffing ratio against the service code; if errors found, audit the SOP. Confirm coverage of all items required for a fully functioning facility in Wake County NC. Confirm correct policies.
+
+Work Log:
+- Read worklog.md entries for SOP-58 (Level III RTF calibration applied to CARF Plans v1.1) and SOP-59 (reversion to Staff Secure Group Home v1.2). Identified the inconsistency: SOP Manual v2.24 retains the .1700 Level III RTF Staff-Secure calibration while CARF Plans v1.2 was over-corrected to a generic "Staff Secure Group Home — 10A NCAC 27G" (no sub-section).
+- Read carf_plans_content.py §11.5 (Staffing Patterns) and §11.6 (Physical Environment) — confirmed CARF Plans v1.2 contains "1:6 direct-care staff-to-resident ratio during waking hours, and a minimum 1:8 ratio overnight" — well below the codified minimums.
+- Read sop_content_v3.py §2.1 (Staffing Ratios — Staff-Secure Level III) — confirmed SOP Manual v2.24 retains "minimum of two (2) staff members on duty and awake at all times for every one to four (1-4) children in residence" + "Max 9 children" capacity note.
+- Launched research subagent (Task ID: agent-9beec1e3-12b7-45db-b24d-130fd90815c2) to verify the correct NC service code for a "Staff Secure Group Home" serving children/adolescents with SED in Wake County. Subagent performed 25 web-page fetches (Cornell LII codified rule text for .1701-.1706) and 53 web searches. Findings saved to /home/z/my-project/research_sop60/ as 9 JSON topic files + 25 fetched pages + 53 search results.
+- Key research findings:
+  * 10A NCAC 27G .1700 series ("RESIDENTIAL TREATMENT STAFF SECURE FOR CHILDREN OR ADOLESCENTS") is the CORRECT citation — "staff secure" IS the .1701(b) sub-category within .1700; there is no separate "Staff Secure Group Home" license category in NC 10A NCAC 27G. The .1200 series covers Community Residential Facilities for adult psychosocial rehab, not children's SED residential treatment.
+  * Codified .1704 staffing ratios: 2 staff waking per 1-4 youth; 2 staff overnight with 1 awake per .1704(c)(1); 3 staff for 5-8 youth; 4 staff for 9-12 youth.
+  * Codified capacity max is 12 per .1706(a), NOT 9 (SOP v2.24 §2.1 was incorrect).
+  * WakeMed is OUT-OF-NETWORK with Alliance Health Tailored Plan effective July 1, 2026 — invalidates any WakeMed references for emergency psychiatric admissions.
+  * Alliance Health → "Alliance Health Tailored Plan" (post-July 2024 NC S.L. 2021-135 transition).
+  * NCTracks + Type 2 NPI + NUCC taxonomy 320800000X + CCP 8D-2 Level III confirmed correct.
+- Wrote /home/z/my-project/scripts/sop60_findings.py — 15 audit findings (3 Critical, 3 High, 1 Medium, 8 Info) using the same schema as audit_findings.py for compatibility with the existing audit report generator.
+- Wrote /home/z/my-project/scripts/generate_sop60_audit_pdf.py — body PDF generator with TOC + 12 sections (Executive Summary, Audit Scope/Methodology, Findings Matrix, Sections A-G detailed findings, Remediation Plan & Patch Script summary, Audit Sign-Off block).
+- Wrote /home/z/my-project/scripts/sop60_audit_cover.html — adapted from existing audit_cover.html with title "SOP v2.24 / CARF Plans v1.2 Operational Audit Report", Doc ID "WSI-SOP60-AUDIT-001 · Rev. 1.0", scope pill "Full Operational Audit", summary cells (3 Critical / 3 High / 8 Met-Exceeds / 15 Total Findings).
+- Rendered cover via html2poster.js → sop60_audit_cover.pdf (194.6 KB).
+- Generated body PDF via generate_sop60_audit_pdf.py → sop60_audit_body.pdf (116.3 KB).
+- Wrote /home/z/my-project/scripts/merge_sop60_audit.py — cover+body merge with PDF metadata.
+- Final audit report PDF: /home/z/my-project/download/WSI_SOP_v2.24_Operational_Audit_Report.pdf (26 pages, 317.7 KB, Doc. WSI-SOP60-AUDIT-001, Rev. 1.0).
+- Ran pdf_qa.py --skip-cover: 12/12 checks PASS + 11 minor em-dash line-start warnings (acceptable prose style, same as previous SOP audit reports).
+- Wrote /home/z/my-project/scripts/patch_sop_v225.py — single-pass patch script applying 26 surgical edits across 7 source files (carf_plans_content.py, generate_carf_plans.py, carf_plans_cover.html, merge_carf_plans.py, sop_content_v3.py, sop_content_v3_part3.py) in two groups: (Group 1) CARF Plans v1.2 → v1.3 restoration; (Group 2) SOP Manual v2.24 → v2.25 corrections.
+- First patch run: 22/26 patches succeeded; 4 failed due to multi-line string-literal boundary mismatches (Plan 3 §3.4 Licensure bullet missing trailing comma; Plan 12 §12.4 truncated old_str; §1.7 and §1.8 patches spanned non-contiguous lines).
+- Fixed the 4 failed patches in patch_sop_v225.py by (a) including the trailing comma in Plan 3 §3.4 old_str; (b) extending Plan 12 §12.4 old_str to include the next criterion text "); (d) medical stability"; (c) splitting §1.7 into two patches for the two separate "Alliance Health" occurrences (lines 553 and 561); (d) splitting §1.8 into two patches for the two separate "Alliance Health" occurrences (lines 598 and 601).
+- Second patch run: 4 previously-failed patches succeeded (the 22 already-applied patches reported "old_str NOT FOUND" as expected since their old_str no longer exists in the file).
+- Found that the v2.25 Version History entry was duplicated in sop_content_v3_part3.py (applied in both runs because the old_str was the v2.24 PUBLIC EDITION entry, which remained unchanged after the first run). Removed the duplicate via direct Edit tool call and added v2.25 as a properly-formatted new row AFTER the v2.24 row.
+- Verified all syntax via ast.parse on all 9 modified Python files — all OK.
+- Verified stale-reference removal via grep:
+  * carf_plans_content.py: 0 "Staff Secure Group Home" refs; 5 "Level III Residential Treatment Facility"; 6 "Level III RTF"; 5 "27G .1700"; 0 "1:6 direct-care"
+  * generate_carf_plans.py: 5 "Rev. 1.3"; 0 "Rev. 1.2"
+  * carf_plans_cover.html: 1 "Rev. 1.3"; 1 "Level III RTF (Staff-Secure)" scope-pill
+  * sop_content_v3.py: 1 "twelve (12)"; 8 "Alliance Health Tailored Plan" first-references; 0 "Staff Secure Group Home"
+  * sop_content_v3_part3.py: 1 v2.25 Version History entry (no duplication)
+- Regenerated CARF Plans v1.3:
+  * Body PDF via `python3 generate_carf_plans.py` → carf_plans_body.pdf
+  * Cover PDF via `node html2poster.js carf_plans_cover.html --output carf_plans_cover.pdf --width 794px` → carf_plans_cover.pdf (4991.5 KB)
+  * Final PDF via `python3 merge_carf_plans.py` → /home/z/my-project/download/WSI_CARF_CYS_2026_Conformance_Plans.pdf (49 pages, 5188.4 KB, Rev. 1.3)
+- Bumped SOP Manual merge_sop.py MANUAL_VERSION '2.24' → '2.25'.
+- Regenerated SOP Manual v2.25:
+  * Body PDF via `python3 generate_sop.py` → sop_body.pdf
+  * Final PDF via `python3 merge_sop.py` → /home/z/my-project/download/Well_Spring_Intervention_SOP_Manual_v2.25_Public-Edition.pdf (86 pages, 5966.3 KB, Rev. 2.25) + LATEST pointer updated
+- Ran pdf_qa.py on both regenerated PDFs: 12/12 checks PASS each; CARF Plans v1.3 has 5 em-dash warnings; SOP Manual v2.25 has 10 warnings (4 table-centering on pp. 68-71 + 6 em-dash) — all acceptable, same as previous versions.
+- Verified final PDF content via pdftotext:
+  * CARF Plans v1.3: "Rev. 1.3" appears throughout; "Level III Residential Treatment Facility (Staff-Secure for Children and Adolescents) — 10A NCAC" on About page; "Licensure. Level III Residential Treatment Facility (Staff-Secure for Children and Adolescents) license issued" in Plan 3 §3.4; 0 stale "Staff Secure Group Home" references.
+  * SOP Manual v2.25: "Alliance Health Tailored Plan" appears 8 times (§1.2, §1.2(b), §1.2(d), §1.7(a), §1.7(c), §1.8(a), §1.8(b), plus Version History); "twelve (12) children or adolescents" in §2.1 capacity note; v2.25 Version History entry documents all three corrective groups.
+
+Stage Summary:
+- Final deliverables (4 files in /home/z/my-project/download/):
+  1. WSI_SOP_v2.24_Operational_Audit_Report.pdf — 26 pages, 317.7 KB, Doc. WSI-SOP60-AUDIT-001, Rev. 1.0 (the audit report with 15 findings: 3 Critical, 3 High, 1 Medium, 8 Info)
+  2. WSI_CARF_CYS_2026_Conformance_Plans.pdf — 49 pages, 5188.4 KB, Rev. 1.3 (restored .1700 Level III RTF Staff-Secure calibration)
+  3. Well_Spring_Intervention_SOP_Manual_v2.25_Public-Edition.pdf — 86 pages, 5966.3 KB, Rev. 2.25 (capacity 9→12, Alliance Health Tailored Plan rename, v2.25 Version History entry)
+  4. Well_Spring_Intervention_SOP_Manual_LATEST.pdf — pointer to v2.25
+- Persistent source scripts:
+  /home/z/my-project/scripts/sop60_findings.py — 15 audit findings (single source of truth)
+  /home/z/my-project/scripts/generate_sop60_audit_pdf.py — audit report body PDF generator
+  /home/z/my-project/scripts/sop60_audit_cover.html — audit report cover HTML
+  /home/z/my-project/scripts/merge_sop60_audit.py — cover+body merge script
+  /home/z/my-project/scripts/patch_sop_v225.py — 26-patch corrective script (applies to all 7 source files)
+- Critical findings (license-blocking, survey-blocking) — all remediated:
+  * F-S60-001: Service code citation — CARF Plans v1.2 over-corrected; restored .1700/.1701(b) citation in v1.3
+  * F-S60-002: Staffing ratios — CARF Plans v1.2 had non-compliant 1:6/1:8; restored .1704 codified ratios (2 staff waking per 1-4 youth; 2 staff overnight with 1 awake per .1704(c)(1)) in v1.3
+  * F-S60-007: CARF/SOP cross-reference consistency — restored alignment between CARF Plans and SOP Manual
+- High findings (direct rule violation) — all remediated:
+  * F-S60-004: Facility capacity — SOP v2.24 said max 9; corrected to max 12 per .1706(a) with allowance for elected lower capacity
+  * F-S60-006: WakeMed out-of-network — UNC Rex Hospital named as primary in-network destination (Section §8.X Emergency Hospital Coordination deferred to future revision pending QP consultation with Alliance Health Tailored Plan Provider Relations; the v2.25 Version History entry documents the corrective plan)
+  * F-S60-008: Plan 1 §1.4 service-array — restored Level III RTF clinical intensity (individual therapy 2x/wk, daily group therapy, weekly family therapy, on-site psychiatric coverage, 24/7 on-call)
+- Medium finding (partial compliance) — remediated:
+  * F-S60-005: Alliance Health Tailored Plan nomenclature — all 8 first-references updated in SOP Manual v2.25
+- Info findings (confirmed compliance, no action required) — 8 findings documented the SOP Manual's strengths: §2.1 staffing (Met-Exceeds), §4.6 LP Face-to-Face (Met), §3.6 18th-Birthday (Met), §5.5 Activities Program (Met), §3.4(c) Post-Emergency Meeting (Met), §1.2(g) Medicaid RTS Taxonomy (Met), §1.2(a) Accreditation Prerequisite (Met), §1.9 NCTracks Enrollment (Met)
+- 12/12 pdf_qa.py checks PASS on both regenerated PDFs (CARF Plans v1.3 and SOP Manual v2.25), with only cosmetic em-dash and table-centering warnings (same as previous versions).
+- Recommended next steps: (1) Distribute v2.25 SOP Manual + v1.3 CARF Plans + audit report to the Executive Director, Clinical Director, QP, and Compliance Officer for review and signature; (2) Following approval, post the signed documents in the compliance binder; (3) Confirm with NC DHSR MHLC Licensure & Training Consultant at the first in-person meeting that the .1700 Level III RTF Staff-Secure designation and 12-child capacity ceiling are correct; (4) Confirm with Alliance Health Tailored Plan Provider Relations that UNC Rex Hospital (and Duke Raleigh, UNC Medical Center, Duke University Hospital) are in-network for emergency psychiatric admissions and that WakeMed is out-of-network effective July 1, 2026; (5) QP to draft and add the new §8.X Emergency Hospital Coordination subsection to SOP §8 in a future revision (v2.26) once the in-network hospital list is verified; (6) Submit the CARF Inaugural Accreditation survey application with v1.3 Conformance Plans and v2.25 SOP Manual as the primary evidence of organizational readiness; (7) QP to order the full 2026 CYS Standards Manual from carf.org/catalog to complete the Section 3-5 crosswalk per Plan 15.

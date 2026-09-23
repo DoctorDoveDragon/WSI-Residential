@@ -1,0 +1,41 @@
+{
+  "code": 200,
+  "data": {
+    "description": "",
+    "html": "",
+    "httpStatus": 200,
+    "httpStatusText": "OK",
+    "metadata": {
+      "CreationDate": "D:20251120195107-05'00'",
+      "Creator": "Microsoft® Word 2016",
+      "EncryptFilterName": null,
+      "IsAcroFormPresent": false,
+      "IsCollectionPresent": false,
+      "IsLinearized": false,
+      "IsSignaturesPresent": false,
+      "IsXFAPresent": false,
+      "Language": "en-US",
+      "ModDate": "D:20251120195107-05'00'",
+      "PDFFormatVersion": "1.5",
+      "Producer": "Microsoft® Word 2016"
+    },
+    "publishedTime": "Fri, 21 Nov 2025 00:51:07 GMT",
+    "title": "10a%20ncac%2027g%20.1706.pdf",
+    "url": "http://reports.oah.state.nc.us/ncac/title%2010a%20-%20health%20and%20human%20services/chapter%2027%20-%20mental%20health,%20community%20facilities%20and%20services/subchapter%20g/10a%20ncac%2027g%20.1706.pdf",
+    "usage": {
+      "measuredTokens": 0,
+      "outputTokens": 0,
+      "scaledTokens": 0,
+      "tokens": 0
+    }
+  },
+  "meta": {
+    "usage": {
+      "measuredTokens": 0,
+      "outputTokens": 0,
+      "scaledTokens": 0,
+      "tokens": 0
+    }
+  },
+  "status": 20000
+}

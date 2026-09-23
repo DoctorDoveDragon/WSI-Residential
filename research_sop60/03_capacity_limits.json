@@ -1,0 +1,66 @@
+{
+  "research_topic": "Maximum facility capacity for NC staff-secure residential treatment facility for children/adolescents",
+
+  "verdict": "SOP Manual v2.24 claim of 'Max 9 children per state group-home definition' is INCORRECT for a .1700 staff-secure facility. The codified maximum is 12 per 10A NCAC 27G .1706(a). The '9' figure appears to come from a different statute (adult care home / DD adult group home definition), which is inapplicable to children's behavioral health residential facilities.",
+
+  "codified_capacity_limit": {
+    "rule": "10A NCAC 27G .1706(a)",
+    "text": "Each facility shall serve no more than a total of 12 children and adolescents.",
+    "source_url": "https://www.law.cornell.edu/regulations/north-carolina/10A-N-C-Admin-Code-27G-1706",
+    "authority": "G.S. 122C-26; 143B-147",
+    "effective_date": "April 3, 2006 (pursuant to E.O. 101, March 27, 2006)"
+  },
+
+  "general_capacity_rule": {
+    "rule": "10A NCAC 27G .0404",
+    "text": "A facility shall accept no more clients than the number for which it is licensed.",
+    "source_url": "https://www.law.cornell.edu/regulations/north-carolina/10A-N-C-Admin-Code-27G-0404",
+    "note": "The .0404 rule sets the general principle (capacity = number licensed for); .1706(a) caps the absolute maximum at 12 for staff-secure children's facilities."
+  },
+
+  "operations_rule": {
+    "rule": "10A NCAC 27G .1706",
+    "key_subsections": {
+      "1706_a": "Each facility shall serve no more than a total of 12 children and adolescents.",
+      "1706_b": "Family members or other legally responsible persons shall be involved in development of plans to assure a smooth transition to a less restrictive setting.",
+      "1706_c": "The residential treatment staff secure facility shall coordinate with the local education agency (LEA) to ensure the child's educational needs are met as identified in the child's education plan and the treatment plan.",
+      "1706_d": "Psychiatric consultation shall be available as needed for each child or adolescent.",
+      "1706_e": "If an adolescent has his 18th birthday while receiving treatment in the facility, he may remain for six months or until the end of the state fiscal year, whichever is longer.",
+      "1706_f": "Each child or adolescent shall be entitled to age-appropriate personal belongings unless counter-indicated in the treatment plan.",
+      "1706_g": "Each facility shall operate 24 hours per day, seven days a week, and each day of the year."
+    },
+    "source_url": "https://www.law.cornell.edu/regulations/north-carolina/10A-N-C-Admin-Code-27G-1706"
+  },
+
+  "investigation_of_sop_manual_9_cap": {
+    "claim": "Max 9 children per state group-home definition",
+    "investigation": "The number 9 appears in NC DHSR Glossary for 'Group home for developmentally disabled adults' — 'an adult care home which has two to nine developmentally disabled adult residents.' This is an ADULT CARE HOME definition under NCAC 10A 13 (Adult Care Home Licensure), NOT the .1700 children's behavioral health facility.",
+    "alternative_source_check": "NC Gen Stat 122C-3(14) defines 'residential facility' broadly as 'a 24-hour facility that is not a hospital, including a group home.' No numerical cap on group home size in 122C-3 itself.",
+    "zoning_law_check": "NC Gen Stat 160D-907 limits 'family care home' protection (residential zoning permitted use) to 6 or fewer disabled persons. NOT 9.",
+    "conclusion": "The '9' figure in the SOP Manual appears to be a citation error. The correct cap for a .1700 staff-secure children's facility is 12 per .1706(a)."
+  },
+
+  "zoning_threshold_implications": {
+    "6_or_fewer_residents": {
+      "zoning_status": "Deemed 'family care home' under NC Gen Stat 160D-907 / 168-22 — permitted use in ALL residential districts, NO special use permit required.",
+      "ncac_licensure": "Licensed under 10A NCAC 27G .5600 series (Family Care Home) if 6 or fewer; OR .1700 series if licensed as staff-secure RTF.",
+      "building_code": "Group R-3 (typically)"
+    },
+    "7_to_12_residents": {
+      "zoning_status": "NOT a 'family care home' for zoning. Wake County UDO may require Special/Conditional Use Permit (under NCGS 160D-705 quasi-judicial review).",
+      "ncac_licensure": "Licensed under 10A NCAC 27G .1700 series (Staff-Secure RTF) — max 12 per .1706(a).",
+      "building_code": "Group R-4 (Residential Care/Assisted Living) per NC Building Code §425/§428"
+    },
+    "13_or_more_residents": {
+      "zoning_status": "NOT permissible in residential districts without special permit.",
+      "ncac_licensure": "NOT permissible under .1700 staff-secure children's facility (capped at 12). Would require different licensure category.",
+      "building_code": "Group I-2 (Institutional) typically"
+    }
+  },
+
+  "well_spring_recommendation": {
+    "facility_capacity_recommendation": "License for capacity that supports staffing model. For 1-4 youth capacity, minimal staffing tier (2 staff waking/2 present with 1 awake overnight). For 5-8 youth capacity, mid-tier (3 staff waking/2 both awake overnight).",
+    "sop_manual_correction": "Replace 'Max 9 children per state group-home definition' with 'Max 12 children per 10A NCAC 27G .1706(a) for Residential Treatment Staff Secure for Children or Adolescents.'",
+    "carf_plans_correction": "Specify capacity in CARF Plans v1.2 (currently no capacity citation). Recommended: 'Capacity: Up to 12 children/adolescents per 10A NCAC 27G .1706(a); Well Spring elects to license for [N] beds based on facility footprint and staffing tier.'"
+  }
+}

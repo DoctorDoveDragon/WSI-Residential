@@ -1,0 +1,61 @@
+{
+  "research_topic": "Wake County LME/MCO/Tailored Plan confirmation",
+
+  "verdict": "Alliance Health is the CORRECT LME/MCO/Tailored Plan serving Wake County. The SOP Manual v2.24's designation is correct.",
+
+  "alliance_health_overview": {
+    "organization_name": "Alliance Health",
+    "type": "LME/MCO — now operating as Tailored Plan (effective July 1, 2024)",
+    "phone": "800-510-9132 (general); 888-235-4673 (per NCDHHS directory)",
+    "behavioral_health_crisis_line": "877-223-4617",
+    "website": "https://www.alliancehealthplan.org",
+    "tailored_plan_launch": "July 1, 2024 (NC Medicaid managed care transition for behavioral health/I/DD populations)",
+    "ncdhhs_directory_url": "https://www.ncdhhs.gov/divisions/mental-health-developmental-disabilities-and-substance-use-services/lmemco-directory",
+    "drnc_listing_url": "https://disabilityrightsnc.org/resources/north-carolina-lme-mco-tps/"
+  },
+
+  "alliance_health_counties_served": [
+    "Cumberland",
+    "Durham",
+    "Harnett",
+    "Johnston",
+    "Mecklenburg",
+    "Orange",
+    "Wake"
+  ],
+
+  "wake_county_status": {
+    "in_alliance_network": true,
+    "tailored_plan": "Alliance Health Tailored Plan",
+    "physical_clinical_network_note": "WakeMed Raleigh is OUT-OF-NETWORK with Alliance Health Tailored Plan effective July 1, 2026 (see 06_wake_specific_requirements.json for emergency hospital coordination changes)."
+  },
+
+  "other_tailored_plans_for_reference": [
+    {"plan": "Partners Health Management", "counties": ["Burke", "Cabarrus", "Catawba", "Cleveland", "Gaston", "Iredell", "Lincoln", "Rowan", "Surry", "Union", "Yadkin"]},
+    {"plan": "Trillium Health Resources", "counties": ["multiple eastern NC counties — not Wake"]},
+    {"plan": "Vaya Health", "counties": ["western NC counties — not Wake"]}
+  ],
+
+  "comparison_with_documents": {
+    "sop_manual_v2_24": {
+      "claim": "LME/MCO: Alliance Health",
+      "assessment": "CORRECT. Alliance Health is the LME/MCO/Tailored Plan serving Wake County. Designation should be updated to 'Alliance Health Tailored Plan' (since July 1, 2024 transition)."
+    },
+    "carf_plans_v1_2": {
+      "claim": "Not specified in user-provided context.",
+      "assessment": "Should explicitly reference 'Alliance Health Tailored Plan' as the Wake County LME/MCO/Tailored Plan sponsor."
+    }
+  },
+
+  "critical_2026_update": {
+    "wakemed_network_termination": {
+      "effective_date": "July 1, 2026",
+      "status": "WakeMed is OUT-OF-NETWORK with Alliance Health Tailored Plan.",
+      "initiated_by": "Alliance Health (terminated the agreement).",
+      "source_url": "https://www.wakemed.org/medicaid-managed-care-plans",
+      "alliance_url": "https://www.alliancehealthplan.org/tailored-plan-members/",
+      "implication_for_well_spring": "Any Alliance Health Tailored Plan-enrolled child/adolescent receiving services at Well Spring who requires emergency psychiatric hospitalization CANNOT be transferred to WakeMed after July 1, 2026 (out-of-network). Alternative in-network hospitals: UNC Medical Center / UNC Rex Hospital (Raleigh) and Duke Health (Duke Raleigh Hospital / Duke University Hospital) — both remain in-network with Alliance Health Tailored Plan per Duke Health 2026 Accepted Health Insurance Plans list."
+    },
+    "alliance_2024_partnership_with_wakemed_re_cloud_break": "Wake County and Alliance Health had a 2023 partnership with WakeMed to operate a 28-bed inpatient behavioral health facility (announced October 24, 2023). However, this does not extend to general Tailored Plan network status, which terminates July 1, 2026."
+  }
+}
