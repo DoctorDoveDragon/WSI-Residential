@@ -11,7 +11,7 @@ export const DEFAULT_CONTENT = {
   },
   hero: {
     headline: "A well spring is a source that never stops giving.",
-    body: "Steady. Clear. Quietly renewing. That is the kind of care we are — and the kind of home we offer children and adolescents ages 6–17. When a child has given all they have to surviving, we give back twice over: rest, safety, healing, and the simple joy of being a kid again.",
+    body: "Steady. Clear. Quietly renewing. That is the kind of therapeutic care we provide — a licensed, staff-secure home where children and adolescents ages 6–17 receive individual therapy, psychiatric support, and round-the-clock emotional care. When a child has given all they have to surviving, we give back twice over: clinical treatment, safety, healing, and the simple joy of being a kid again.",
     tagline: "Empowerment · Growth · Freedom · Health · Wholeness · Healing",
   },
   footer: {
@@ -28,8 +28,8 @@ export const DEFAULT_CONTENT = {
   ],
   about: {
     heading: "Therapy, in the shape of a home.",
-    body1: "Well Spring Intervention is a licensed, staff-secure Level III residential treatment facility where children and adolescents receive intensive clinical care without leaving the warmth of a real home. Our program brings together individual therapy, psychiatric support, behavioral treatment, and round-the-clock counseling — woven into daily life so healing happens between sessions as much as during them.",
-    body2: "Located in Wake County, North Carolina, we serve young people ages 6–17 who have been placed out of home due to behavioral and mental health needs. Our program is intentionally small — four to six children, one household — so every child receives deeply individualized clinical attention, and every professional and teacher has the time to truly know them.",
+    body1: "Well Spring Intervention is a licensed, staff-secure Level III residential treatment facility where children and adolescents receive intensive clinical care without leaving the warmth of a real home. Our program brings together individual therapy, group therapy, psychiatric medication management, behavioral treatment, and round-the-clock emotional support — woven into daily life so healing happens between sessions as much as during them.",
+    body2: "Located in Wake County, North Carolina, we serve young people ages 6–17 who have been placed out of home due to behavioral and mental health needs. Our program is intentionally small — four to six children, one household — so every child receives deeply individualized clinical attention, and every licensed therapist, psychiatrist, and teacher has the time to truly know them.",
   },
 };
 

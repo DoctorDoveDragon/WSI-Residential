@@ -80,19 +80,23 @@ export default function AdminPage() {
       <div className="flex min-h-screen items-center justify-center bg-background px-4">
         <div className="w-full max-w-md rounded-[2rem] border border-border/70 bg-card p-8 shadow-lg sm:p-10">
           <div className="mb-6 text-center">
-            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-secondary"><Lock className="h-7 w-7 text-[#d05003]" aria-hidden="true" /></div>
-            <h1 className="font-display text-2xl font-semibold">Admin Login</h1>
-            <p className="mt-2 text-sm text-muted-foreground">Well Spring Intervention — content management</p>
+            <img src="/images/logo-seal.png?v=4" alt="Well Spring Intervention seal" className="mx-auto mb-4 h-16 w-16 object-contain" />
+            <h1 className="font-display text-2xl font-semibold">Staff Login</h1>
+            <p className="mt-2 text-sm text-muted-foreground">Edit your website content — phone, email, text, and FAQs.</p>
           </div>
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label htmlFor="admin-password" className="mb-1.5 block text-sm font-semibold">Admin Password</label>
-              <input id="admin-password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter password" autoComplete="current-password" className="h-11 w-full rounded-lg border border-border bg-background px-4 text-sm focus-visible:outline-2 focus-visible:outline-ring" />
+              <label htmlFor="admin-password" className="mb-1.5 block text-sm font-semibold">Password</label>
+              <input id="admin-password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter the staff password" autoComplete="current-password" className="h-11 w-full rounded-lg border border-border bg-background px-4 text-sm focus-visible:outline-2 focus-visible:outline-ring" />
             </div>
             {error && <p className="text-sm font-medium text-destructive" role="alert">{error}</p>}
             <Button type="submit" className="h-11 w-full rounded-full bg-[#d05003] text-[#f5efe7] hover:bg-[#a83802]">Log In<ArrowRight className="ml-1.5 h-4 w-4" aria-hidden="true" /></Button>
           </form>
-          <p className="mt-6 text-center text-xs text-muted-foreground">Default password: <code className="rounded bg-secondary px-1.5 py-0.5">wellspring2024</code></p>
+          <div className="mt-6 rounded-lg bg-secondary/50 p-4 text-center text-xs text-muted-foreground">
+            <p className="font-semibold text-foreground">How to use this page:</p>
+            <p className="mt-1">1. Enter the staff password and click Log In.<br />2. Edit any text fields (phone, email, headlines, FAQs).<br />3. Click &ldquo;Save Changes&rdquo; — updates go live instantly.</p>
+            <p className="mt-2">Default password: <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-[#d05003]">wellspring2024</code></p>
+          </div>
         </div>
       </div>
     );

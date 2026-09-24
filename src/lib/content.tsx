@@ -71,25 +71,25 @@ export const TRUST_ITEMS = [
 ];
 
 export const VALUES = [
-  { icon: ShieldCheck, title: "Safety Comes First", text: "Structured, predictable, and closely supervised — children do their bravest growing when they feel safe.", href: "/resources", cta: "View Staff Resources" },
-  { icon: HeartHandshake, title: "Relationships Heal", text: "Children grow best beside adults who keep showing up. Our professionals and teachers are chosen for warmth as much as skill.", href: "/people", cta: "Meet Our People" },
-  { icon: UsersRound, title: "Families Are Partners", text: "You know your child best. Parents and caregivers stay at the center of every plan — with visits, calls, and a genuine voice in every decision.", href: "/admissions", cta: "For Parents & Caregivers" },
-  { icon: GraduationCap, title: "Growing Toward Graduation", text: "Every school day, every new skill, every brave step builds toward the day a child walks out our door — ready for what comes next.", href: "/growing", cta: "See the Growing Journey" },
+  { icon: ShieldCheck, title: "Safety Comes First", text: "Structured, predictable, and closely supervised — children do their bravest growing when they feel safe. Our environment, routines, and staffing are built around physical and emotional safety, the foundation for every therapeutic intervention.", href: "/resources", cta: "View Staff Resources" },
+  { icon: HeartHandshake, title: "Therapeutic Relationships Heal", text: "Children grow best beside adults who keep showing up. Our licensed clinicians and trained professionals are chosen for warmth as much as skill — building the trusting therapeutic relationships that make real clinical work possible.", href: "/people", cta: "Meet Our People" },
+  { icon: UsersRound, title: "Families Are Partners", text: "You know your child best. Parents and caregivers stay at the center of every treatment plan — with visits, calls, family therapy sessions, and a genuine voice in every clinical decision we make together.", href: "/admissions", cta: "For Parents & Caregivers" },
+  { icon: GraduationCap, title: "Growing Toward Graduation", text: "Every school day, every new coping skill, every brave step builds toward the day a child walks out our door — and across their next graduation stage — emotionally regulated, therapeutically supported, and ready for what comes next.", href: "/growing", cta: "See the Growing Journey" },
 ];
 
 export const PEOPLE_CARDS = [
-  { icon: HeartHandshake, title: "A Professional in Their Corner", text: "Every child has a primary professional who checks in daily, listens hard, and celebrates loudly — an adult whose first job is to believe in them.", href: "/contact", cta: "Reach Out to Us" },
-  { icon: MoonStar, title: "Professionals Around the Clock", text: "Two awake, trained professionals for every one to four children — at breakfast, at homework time, through the night.", href: "/people", cta: "Meet Our People" },
-  { icon: BookOpen, title: "Teachers Who Keep Them Moving", text: "Our education liaison enrolls every child in community school within days, attends every IEP meeting, and our staff sit beside them for homework each evening.", href: "/growing", cta: "See the Growing Journey" },
+  { icon: HeartHandshake, title: "A Therapist in Their Corner", text: "Every child has a primary licensed therapist who checks in daily, listens hard, and celebrates loudly — building the trusting therapeutic relationship that makes real clinical work possible.", href: "/contact", cta: "Reach Out to Us" },
+  { icon: MoonStar, title: "Trained Professionals Around the Clock", text: "Two awake, trained direct care professionals for every one to four children — at breakfast, at homework time, through the night. Emotional support and safety, 24/7.", href: "/people", cta: "Meet Our People" },
+  { icon: BookOpen, title: "Teachers Who Keep Them Moving", text: "Our education liaison enrolls every child in community school within days, attends every IEP meeting, and our staff provide homework support each evening — so credits keep counting, friendships keep growing, and graduations stay on schedule.", href: "/growing", cta: "See the Growing Journey" },
 ];
 
 export const SERVICES = [
-  { icon: MoonStar, title: "24/7 Supervised Living", text: "Awake, trained staff are present around the clock in a calm, home-like residence designed for both safety and everyday comfort.", href: "/services", cta: "Explore Our Program" },
-  { icon: ClipboardList, title: "Individualized Treatment", text: "Every child helps build their own plan with their professional — goals that matter to them.", href: "/admissions", cta: "Start a Referral" },
-  { icon: HeartPulse, title: "Clinical & Behavioral Support", text: "Mental health treatment and positive behavior support are woven into daily routines by adults who know each child well.", href: "/resources", cta: "View Staff Resources" },
-  { icon: Sprout, title: "Life Skills & Independence", text: "From morning routines to cooking, chores, and community outings, children build the practical skills they will carry home.", href: "/growing", cta: "See the Growing Journey" },
-  { icon: UsersRound, title: "Family Engagement", text: "Visits, phone contact, and family-focused work keep parents and caregivers connected and central to their child's treatment.", href: "/admissions", cta: "For Parents & Caregivers" },
-  { icon: GraduationCap, title: "School & Community Ties", text: "We enroll children in community schools, follow each child's education plan, and cheer at every report card and graduation.", href: "/growing", cta: "See the Growing Journey" },
+  { icon: MoonStar, title: "24/7 Supervised Living", text: "Awake, trained staff are present around the clock in a calm, home-like residence designed for both safety and everyday comfort — the stable container where therapeutic work can happen.", href: "/services", cta: "Explore Our Program" },
+  { icon: ClipboardList, title: "Individualized Treatment", text: "Every child builds their own treatment plan with their licensed therapist — clinical goals alongside personal ones, like making a friend, catching up in math, or learning to regulate big emotions.", href: "/admissions", cta: "Start a Referral" },
+  { icon: HeartPulse, title: "Clinical & Behavioral Support", text: "Individual therapy, group therapy, psychiatric medication management, and positive behavior support are woven into daily routines by licensed clinicians who know each child well.", href: "/resources", cta: "View Staff Resources" },
+  { icon: Sprout, title: "Life Skills & Independence", text: "From morning routines to cooking, chores, and community outings, children practice coping skills, self-regulation, and daily living skills they will carry home.", href: "/growing", cta: "See the Growing Journey" },
+  { icon: UsersRound, title: "Family Therapy & Engagement", text: "Visits, phone contact, and family therapy sessions keep parents and caregivers connected and central to their child's treatment — healing happens in families, not just in sessions.", href: "/admissions", cta: "For Parents & Caregivers" },
+  { icon: GraduationCap, title: "School & Community Ties", text: "We enroll children in community schools, follow each child's IEP, coordinate transportation, and provide academic support — because therapeutic growth and educational progress go hand in hand.", href: "/growing", cta: "See the Growing Journey" },
 ];
 
 export const MILESTONES = [
@@ -100,7 +100,7 @@ export const MILESTONES = [
   { title: "Head home ready", text: "Planning for home begins on day one — so when the day comes, the family, the aftercare, and the next chapter are already prepared.", href: "/contact" },
 ];
 
-export const MOMENTS = ["Birthday cakes", "Game nights", "Report-card wins", "Moving-on ceremonies", "Cooking night", "Garden days"];
+export const MOMENTS = ["Birthdays", "Game nights", "Report-card wins", "Moving-on ceremonies", "Cooking night", "Garden days"];
 
 export const BRAND_PROMISES = [
   { icon: Heart, title: "Commitment", text: "Children are held by a steady commitment here — not as a clinical outcome, but as a daily practice. Warmth at the breakfast table, a hand on a shoulder, a professional who remembers the small things. Commitment is the quietest, strongest thing we offer.", href: "/people", cta: "Meet the People Who Show Up" },

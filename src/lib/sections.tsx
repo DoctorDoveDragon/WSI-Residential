@@ -678,6 +678,7 @@ export function Footer() {
             {NAV_LINKS.map((link) => (
               <li key={link.href}><Link href={link.href} className="text-[#f5efe7]/75 transition-colors hover:text-[#e07020] focus-visible:outline-2 focus-visible:outline-[#e07020]/60">{link.label}</Link></li>
             ))}
+            <li><Link href="/admin" className="text-[#f5efe7]/40 transition-colors hover:text-[#e07020] focus-visible:outline-2 focus-visible:outline-[#e07020]/60">Staff Login</Link></li>
           </ul>
         </nav>
       </div>
