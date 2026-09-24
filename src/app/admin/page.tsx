@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useSiteContent, DEFAULT_CONTENT } from "@/lib/content-provider";
 import { ArrowRight, Check, Lock, RefreshCw } from "lucide-react";
@@ -111,7 +112,8 @@ export default function AdminPage() {
       <div className="sticky top-0 z-50 border-b border-border bg-card/95 backdrop-blur-md">
         <div className="mx-auto flex max-w-4xl items-center justify-between px-4 py-3 sm:px-6">
           <div><h1 className="font-display text-lg font-semibold">Content Editor</h1><p className="text-xs text-muted-foreground">Edit your site content — changes go live instantly</p></div>
-          <div className="flex gap-2">
+          <div className="flex items-center gap-2">
+            <Link href="/" className="inline-flex h-9 items-center rounded-full border border-border px-4 text-xs font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground">← View Site</Link>
             <Button type="button" variant="outline" onClick={() => setDraft(JSON.parse(JSON.stringify(DEFAULT_CONTENT)))} className="h-9 rounded-full text-xs">Reset</Button>
             <Button type="button" onClick={handleSave} disabled={saving} className="h-9 rounded-full bg-[#d05003] text-[#f5efe7] hover:bg-[#a83802] disabled:opacity-60">{saving ? "Saving…" : "Save Changes"}<Check className="ml-1.5 h-4 w-4" aria-hidden="true" /></Button>
           </div>
@@ -150,7 +152,8 @@ export default function AdminPage() {
           ))}
           <Button type="button" variant="outline" onClick={addFaq} className="h-9 rounded-full text-xs">+ Add FAQ</Button>
         </Section>
-        <div className="mt-8 flex justify-end gap-2 border-t border-border pt-6">
+        <div className="mt-8 flex flex-col gap-3 border-t border-border pt-6 sm:flex-row sm:justify-between sm:items-center">
+          <Link href="/" className="inline-flex h-11 items-center justify-center rounded-full border border-border px-6 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground">← Back to Website</Link>
           <Button type="button" onClick={handleSave} disabled={saving} className="h-11 rounded-full bg-[#d05003] text-[#f5efe7] hover:bg-[#a83802] disabled:opacity-60">{saving ? "Saving…" : "Save All Changes"}<Check className="ml-1.5 h-4 w-4" aria-hidden="true" /></Button>
         </div>
       </div>
