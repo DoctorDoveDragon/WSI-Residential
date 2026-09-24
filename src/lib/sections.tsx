@@ -20,9 +20,9 @@ export function Header() {
   const pathname = usePathname();
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
-        <Link href="/" className="flex min-h-11 items-center gap-2.5" aria-label="Well Spring Intervention — home">
-          <LogoMark className="h-9 w-9" />
+      <div className="mx-auto flex h-20 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6">
+        <Link href="/" className="flex min-h-11 items-center gap-3" aria-label="Well Spring Intervention — home">
+          <img src="/images/logo-seal.png?v=4" alt="Well Spring Intervention official seal" className="h-14 w-14 shrink-0 object-contain sm:h-16 sm:w-16" />
           <Wordmark />
         </Link>
         <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Main navigation">
@@ -75,17 +75,40 @@ export function Hero() {
     <section id="top" className="relative overflow-hidden" aria-label="Welcome">
       <div className="pointer-events-none absolute -right-40 -top-40 h-[28rem] w-[28rem] rounded-full bg-secondary/70 blur-3xl" aria-hidden="true" />
       <div className="pointer-events-none absolute -bottom-52 -left-40 h-[26rem] w-[26rem] rounded-full bg-accent/30 blur-3xl" aria-hidden="true" />
-      <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 pb-16 pt-12 sm:px-6 md:pb-24 md:pt-20 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
-        <motion.div initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}>
+
+      {/* Prominent seal lockup at the top — higher than the text */}
+      <div className="relative mx-auto max-w-6xl px-4 pt-10 sm:px-6 md:pt-16">
+        <motion.div
+          className="flex flex-col items-center text-center"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <div className="relative flex aspect-square w-full max-w-xs items-center justify-center rounded-[2.4rem] bg-gradient-to-br from-[#f5efe7] via-[#f0e0d0] to-[#e8d4c8] p-8 shadow-xl shadow-foreground/10 sm:max-w-sm sm:p-10">
+            <div className="pointer-events-none absolute inset-6 rounded-full border-2 border-dashed border-[#d05003]/20" aria-hidden="true" />
+            <div className="pointer-events-none absolute inset-10 rounded-full border border-[#d05003]/15" aria-hidden="true" />
+            <div className="pointer-events-none absolute inset-14 rounded-full border border-[#d05003]/10" aria-hidden="true" />
+            <img src="/images/logo-seal.png?v=4" alt="The official Well Spring Intervention circular seal" className="relative z-10 w-full max-w-[16rem] shrink-0 object-contain drop-shadow-md sm:max-w-[18rem]" loading="eager" />
+          </div>
+          <div className="mt-6 text-center">
+            <p className="font-display text-2xl font-semibold tracking-tight text-[#401000] sm:text-3xl">Well Spring <span className="text-[#d05003]">Intervention</span></p>
+            <p className="mt-1.5 text-xs font-semibold uppercase tracking-[0.28em] text-[#604003]/70">Level III Residential Treatment Facility · Staff-Secure</p>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Text content below the seal */}
+      <div className="relative mx-auto max-w-3xl px-4 pb-16 pt-10 sm:px-6 md:pb-24 md:pt-14">
+        <motion.div initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }} className="text-center">
           <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-xs font-medium text-muted-foreground">
             <ShieldCheck className="h-3.5 w-3.5 text-[#d05003]" aria-hidden="true" />
             {BRAND_SERVICES_LINE_1} · {content.contact.location}
           </p>
-          <h1 className="font-display text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
+          <h1 className="font-display text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
             A well spring is a source that <span className="italic text-[#d05003]">never stops giving</span>.
           </h1>
-          <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">{content.hero.body}</p>
-          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+          <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">{content.hero.body}</p>
+          <div className="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2">
             {[{ word: "Steady", gloss: "predictable routines, round-the-clock staff" }, { word: "Clear", gloss: "honest communication, transparent plans" }, { word: "Renewing", gloss: "rest, play, nourishment, growth" }].map((q) => (
               <div key={q.word} className="flex items-baseline gap-2">
                 <span className="font-display text-base font-semibold text-[#d05003]">{q.word}.</span>
@@ -94,7 +117,7 @@ export function Hero() {
             ))}
           </div>
           <p className="mt-5 font-display text-sm font-medium italic text-primary/85 sm:text-base">{content.hero.tagline}</p>
-          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Button asChild size="lg" className="h-12 rounded-full bg-[#d05003] px-7 text-base text-[#f5efe7] hover:bg-[#a83802]">
               <Link href="/admissions">Refer a Child<ArrowRight className="ml-1.5 h-5 w-5" aria-hidden="true" /></Link>
             </Button>
@@ -102,7 +125,7 @@ export function Hero() {
               <Link href="/admissions">I&apos;m a Parent</Link>
             </Button>
           </div>
-          <ul className="mt-8 flex flex-wrap gap-2" aria-label="Key facts">
+          <ul className="mt-8 flex flex-wrap justify-center gap-2" aria-label="Key facts">
             {[{ label: "Ages 6–17", href: "/faq" }, { label: "4–6 Children", href: "/about" }, { label: "Professionals & Teachers Who Care", href: "/people" }, { label: "Trauma-Informed", href: "/promise" }].map((chip) => (
               <li key={chip.label}>
                 <Link href={chip.href} className="inline-flex items-center gap-1 rounded-full bg-secondary px-3.5 py-1.5 text-xs font-semibold text-secondary-foreground transition-all hover:bg-[#d05003] hover:text-[#f5efe7] hover:shadow-sm focus-visible:outline-2 focus-visible:outline-ring">
@@ -111,25 +134,6 @@ export function Hero() {
               </li>
             ))}
           </ul>
-        </motion.div>
-        <motion.div className="relative" initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}>
-          <div className="relative flex aspect-square w-full max-w-md flex-col items-center justify-center mx-auto rounded-[2.4rem] bg-gradient-to-br from-[#f5efe7] via-[#f0e0d0] to-[#e8d4c8] p-8 shadow-xl shadow-foreground/10 sm:p-12">
-            <div className="pointer-events-none absolute inset-6 rounded-full border-2 border-dashed border-[#d05003]/20" aria-hidden="true" />
-            <div className="pointer-events-none absolute inset-10 rounded-full border border-[#d05003]/15" aria-hidden="true" />
-            <div className="pointer-events-none absolute inset-14 rounded-full border border-[#d05003]/10" aria-hidden="true" />
-            <img src="/images/logo-seal.png?v=3" alt="The official Well Spring Intervention circular seal" className="relative z-10 w-full max-w-[20rem] shrink-0 object-contain drop-shadow-md" loading="eager" />
-            <div className="relative z-10 mt-6 text-center">
-              <p className="font-display text-xl font-semibold tracking-tight text-[#401000] sm:text-2xl">Well Spring <span className="text-[#d05003]">Intervention</span></p>
-              <p className="mt-1 text-[0.6rem] font-semibold uppercase tracking-[0.28em] text-[#604003]/70">Level III Residential Treatment</p>
-            </div>
-          </div>
-          <div className="absolute -bottom-6 left-1/2 flex -translate-x-1/2 items-center gap-2.5 rounded-2xl border border-border bg-card px-4 py-2.5 shadow-lg shadow-foreground/10">
-            <ShieldCheck className="h-4 w-4 shrink-0 text-[#d05003]" aria-hidden="true" />
-            <span className="text-xs leading-tight">
-              <span className="block font-semibold">Staff-Secure Level III RTF</span>
-              <span className="block text-muted-foreground">NC 10A NCAC 27G .1700 · DHSR Licensed</span>
-            </span>
-          </div>
         </motion.div>
       </div>
     </section>
@@ -166,7 +170,7 @@ export function AboutSection() {
         <div className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
           <FadeIn className="relative order-2 lg:order-1">
             <div className="relative overflow-hidden rounded-[2rem] border border-border/70 bg-gradient-to-br from-[#401000] to-[#503020] p-8 text-center text-[#f5efe7] shadow-lg shadow-foreground/10 sm:p-12">
-              <img src="/images/logo-seal.png?v=3" alt="The official Well Spring Intervention circular seal" className="mx-auto h-44 w-44 shrink-0 object-contain opacity-95 sm:h-52 sm:w-52" loading="lazy" />
+              <img src="/images/logo-seal.png?v=4" alt="The official Well Spring Intervention circular seal" className="mx-auto h-44 w-44 shrink-0 object-contain opacity-95 sm:h-52 sm:w-52" loading="lazy" />
               <p className="relative mt-6 font-display text-lg font-medium italic leading-relaxed text-[#f5efe7]/90 sm:text-xl">Therapy for children and adolescents, in the shape of a home.</p>
               <p className="relative mt-4 text-xs font-semibold uppercase tracking-[0.18em] text-[#e07020]">Licensed · Staff-Secure · {content.contact.location}</p>
             </div>
@@ -264,7 +268,7 @@ export function PeopleSection() {
         </div>
         <FadeIn className="mt-10">
           <div className="relative overflow-hidden rounded-[2rem] border border-[#d05003]/25 bg-gradient-to-br from-[#401000] to-[#503020] p-8 text-[#f5efe7] sm:p-10">
-            <img src="/images/logo-seal.png?v=3" alt="" aria-hidden="true" className="pointer-events-none absolute -right-12 -bottom-12 h-56 w-56 opacity-10" />
+            <img src="/images/logo-seal.png?v=4" alt="" aria-hidden="true" className="pointer-events-none absolute -right-12 -bottom-12 h-56 w-56 opacity-10" />
             <div className="relative max-w-3xl">
               <p className="font-display text-sm font-semibold uppercase tracking-[0.22em] text-[#e07020]">The therapeutic relationship</p>
               <h3 className="mt-3 font-display text-2xl font-semibold leading-tight sm:text-3xl">Trust is built one ordinary moment at a time.</h3>
@@ -289,7 +293,7 @@ export function CommunitySection() {
         </FadeIn>
         <FadeIn delay={0.1}>
           <div className="relative mt-12 overflow-hidden rounded-[2rem] border border-[#d05003]/25 bg-gradient-to-br from-[#401000] to-[#503020] p-8 text-[#f5efe7] sm:p-10">
-            <img src="/images/logo-seal.png?v=3" alt="" aria-hidden="true" className="pointer-events-none absolute -right-12 -bottom-12 h-56 w-56 opacity-10" />
+            <img src="/images/logo-seal.png?v=4" alt="" aria-hidden="true" className="pointer-events-none absolute -right-12 -bottom-12 h-56 w-56 opacity-10" />
             <div className="relative max-w-3xl">
               <p className="font-display text-sm font-semibold uppercase tracking-[0.22em] text-[#e07020]">Why every child matters</p>
               <p className="mt-4 text-base leading-relaxed text-[#f5efe7]/90 sm:text-lg">The children who come to us are not problems to be solved — they are young people who matter deeply to their families, their schools, their congregations, and their neighborhoods. A child&apos;s absence from home is felt in the seat that is empty at the dinner table, the desk that is quiet at school, the pew that is open on Sunday. We never forget that each child here is someone&apos;s son, someone&apos;s daughter, someone&apos;s grandchild, someone&apos;s friend — and that their return home whole is the hope an entire community is holding. Our job is not to replace that community, but to strengthen the child who will re-enter it.</p>
@@ -355,7 +359,7 @@ export function GrowingSection() {
         <div className="mt-12 grid items-start gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
           <FadeIn className="relative">
             <div className="relative overflow-hidden rounded-[2rem] border border-[#d05003]/25 bg-gradient-to-br from-[#401000] to-[#503020] p-8 text-[#f5efe7] shadow-lg shadow-foreground/5 sm:p-10">
-              <img src="/images/logo-seal.png?v=3" alt="" aria-hidden="true" className="pointer-events-none absolute -right-10 -top-10 h-44 w-44 opacity-10" />
+              <img src="/images/logo-seal.png?v=4" alt="" aria-hidden="true" className="pointer-events-none absolute -right-10 -top-10 h-44 w-44 opacity-10" />
               <p className="relative font-display text-sm font-semibold uppercase tracking-[0.22em] text-[#e07020]">The Treatment Arc</p>
               <h3 className="relative mt-3 font-display text-2xl font-semibold leading-tight sm:text-3xl">Stabilize · Treat · Practice · Transition</h3>
               <p className="relative mt-4 text-sm leading-relaxed text-[#f5efe7]/80 sm:text-base">Every child moves through a clinically supervised arc — from stabilization on arrival, through intensive individualized treatment, to real-world practice and a planned transition home. The goal was never to stay — it&apos;s to leave ready.</p>
@@ -425,7 +429,7 @@ export function AdmissionsSection() {
           </FadeIn>
           <FadeIn delay={0.12}>
             <div id="families" className="relative flex h-full flex-col overflow-hidden rounded-[2rem] border border-border/70 bg-[#401000] p-7 text-[#f5efe7] sm:p-8">
-              <img src="/images/logo-seal.png?v=3" alt="" aria-hidden="true" className="pointer-events-none absolute -right-12 -bottom-12 h-56 w-56 opacity-10" />
+              <img src="/images/logo-seal.png?v=4" alt="" aria-hidden="true" className="pointer-events-none absolute -right-12 -bottom-12 h-56 w-56 opacity-10" />
               <span className="relative mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10"><CheckCircle2 className="h-6 w-6 text-[#e07020]" aria-hidden="true" /></span>
               <h3 className="relative font-display text-2xl font-semibold">For Parents &amp; Caregivers</h3>
               <p className="relative mt-3 text-sm leading-relaxed text-[#f5efe7]/80 sm:text-base">If a residential placement has been recommended for your child, you probably have a hundred questions — and you should ask every single one of them. Call us. Tour the home. Meet the team. There is no obligation, and no question is too small.</p>
@@ -654,7 +658,7 @@ export function Footer() {
         <div className="max-w-sm">
           <div className="flex items-center justify-center gap-3 md:justify-start">
             <span className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-full bg-[#f5efe7]">
-              <img src="/images/logo-seal.png?v=3" alt="Well Spring Intervention official seal" className="h-[4.6rem] w-[4.6rem] object-contain" loading="lazy" />
+              <img src="/images/logo-seal.png?v=4" alt="Well Spring Intervention official seal" className="h-[4.6rem] w-[4.6rem] object-contain" loading="lazy" />
             </span>
             <span className="flex flex-col leading-none text-left">
               <span className="font-display text-lg font-semibold">Well Spring <span className="text-[#e07020]">Intervention</span></span>
