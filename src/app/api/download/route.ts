@@ -1,0 +1,38 @@
+import { NextRequest, NextResponse } from "next/server";
+import { readFileSync } from "fs";
+import path from "path";
+
+const DOCS_DIR = path.join(process.cwd(), "private-docs");
+
+const ALLOWED_DOCS = new Set([
+  "WSI_CARF_CYS_2026_Conformance_Plans.pdf",
+  "WSI_SOP_v2.24_Operational_Audit_Report.pdf",
+  "Well_Spring_Intervention_SOP_Manual_v2.26_Public-Edition.pdf",
+  "WSI_Form_07_Incident_Report.pdf",
+  "WSI_Form_08_Discharge_Planning.pdf",
+  "WSI_Form_11_Individualized_Treatment_Plan.pdf",
+  "WSI_Form_12_Behavior_Intervention_Plan.pdf",
+  "WSI_Form_13_Daily_Progress_Note.pdf",
+  "WSI_Form_14_Shift_Change_Log.pdf",
+  "WSI_Form_15_Medication_Log.pdf",
+  "WSI_Form_16_Emergency_Drill_Log.pdf",
+  "WSI_Form_17_Restraint_Debrief.pdf",
+  "WSI_Form_18_Family_Team_Meeting.pdf",
+  "WSI_Form_19_Staff_Training_Acknowledgment.pdf",
+]);
+
+function getExpectedPassword(): string {
+  return process.env.WSI_DOCS_PASSWORD || "wellspring2024";
+}
+
+export async function GET(request: NextRequest) {
+  const { searchParams } = new URL(request.url);
+  const doc = searchParams.get("doc") || "";
+  const password = searchParams.get("password") || "";
+  if (!ALLOWED_DOCS.has(doc)) return NextResponse.json({ error: "Unknown document." }, { status: 404 });
+  if (!password || password !== getExpectedPassword()) return NextResponse.json({ error: "Invalid or missing password." }, { status: 401 });
+  try {
+    const buffer = readFileSync(path.join(DOCS_DIR, doc));
+    return new NextResponse(buffer, { status: 200, headers: { "Content-Type": "application/pdf", "Content-Disposition": `attachment; filename="${doc}"`, "Content-Length": buffer.length.toString(), "Cache-Control": "no-store" } });
+  } catch { return NextResponse.json({ error: "File could not be read." }, { status: 500 }); }
+}

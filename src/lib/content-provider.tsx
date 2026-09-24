@@ -1,0 +1,89 @@
+"use client";
+
+import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+
+export const DEFAULT_CONTENT = {
+  contact: {
+    phone: "(919) 000-0000",
+    phoneHref: "tel:+19190000000",
+    email: "referral@wellspringintervention.com",
+    location: "Wake County, North Carolina",
+  },
+  hero: {
+    headline: "A well spring is a source that never stops giving.",
+    body: "Steady. Clear. Quietly renewing. That is the kind of care we are — and the kind of home we offer children and adolescents ages 6–17. When a child has given all they have to surviving, we give back twice over: rest, safety, healing, and the simple joy of being a kid again.",
+    tagline: "Empowerment · Growth · Freedom · Health · Wholeness · Healing",
+  },
+  footer: {
+    description: "A licensed staff-secure Level III residential treatment facility serving children ages 6–17 in Wake County, North Carolina — where children heal, grow, and graduate toward the lives they deserve.",
+  },
+  faqs: [
+    { q: "What is a staff-secure Level III residential treatment facility?", a: "Level III residential treatment offers 24-hour care in a structured, home-like setting for children whose behavioral and mental health needs cannot yet be safely met at home or in a less restrictive setting. \"Staff-secure\" means safety is maintained through close supervision by trained staff — not by locked hospital doors." },
+    { q: "Who do you serve?", a: "We serve children and adolescents, ages 6–17, who have been placed out of home due to behavioral and mental health needs." },
+    { q: "How does a placement begin?", a: "Most placements are coordinated through county care coordination (LME/MCOs), departments of social services, and placing agencies. Parents and caregivers are always welcome to call us directly." },
+    { q: "Will my child keep going to school?", a: "Yes. Within days of arrival, our education liaison enrolls your child in a local community school and arranges transportation. We attend every IEP meeting and sit beside them for homework every evening." },
+    { q: "Can families stay involved?", a: "Yes — we believe families are partners, not visitors. Family contact through visits and calls is part of everyday life here, and planning for home begins on day one." },
+    { q: "What happens when it's time to leave?", a: "From day one, your child's team is planning the way home. Before any transition, we hold a family team meeting and put the aftercare plan in writing." },
+    { q: "Where are you located?", a: "Our home is in Wake County, North Carolina. For the safety and privacy of the children in our care, we share our street address during the referral and screening process." },
+  ],
+  about: {
+    heading: "Therapy, in the shape of a home.",
+    body1: "Well Spring Intervention is a licensed, staff-secure Level III residential treatment facility where children and adolescents receive intensive clinical care without leaving the warmth of a real home. Our program brings together individual therapy, psychiatric support, behavioral treatment, and round-the-clock counseling — woven into daily life so healing happens between sessions as much as during them.",
+    body2: "Located in Wake County, North Carolina, we serve young people ages 6–17 who have been placed out of home due to behavioral and mental health needs. Our program is intentionally small — four to six children, one household — so every child receives deeply individualized clinical attention, and every professional and teacher has the time to truly know them.",
+  },
+};
+
+export type SiteContent = typeof DEFAULT_CONTENT;
+
+type ContentContextValue = {
+  content: SiteContent;
+  loading: boolean;
+  refresh: () => void;
+};
+
+const ContentContext = createContext<ContentContextValue>({
+  content: DEFAULT_CONTENT,
+  loading: true,
+  refresh: () => {},
+});
+
+export function ContentProvider({ children }: { children: ReactNode }) {
+  const [content, setContent] = useState<SiteContent>(DEFAULT_CONTENT);
+  const [loading, setLoading] = useState(true);
+
+  async function loadContent() {
+    try {
+      const res = await fetch("/api/content", { cache: "no-store" });
+      if (res.ok) {
+        const data = await res.json();
+        setContent({
+          ...DEFAULT_CONTENT,
+          ...data,
+          contact: { ...DEFAULT_CONTENT.contact, ...(data.contact || {}) },
+          hero: { ...DEFAULT_CONTENT.hero, ...(data.hero || {}) },
+          footer: { ...DEFAULT_CONTENT.footer, ...(data.footer || {}) },
+          about: { ...DEFAULT_CONTENT.about, ...(data.about || {}) },
+          faqs: Array.isArray(data.faqs) && data.faqs.length > 0 ? data.faqs : DEFAULT_CONTENT.faqs,
+        });
+      }
+    } catch {
+      // Fall back to defaults
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    loadContent();
+  }, []);
+
+  return (
+    <ContentContext.Provider value={{ content, loading, refresh: loadContent }}>
+      {children}
+    </ContentContext.Provider>
+  );
+}
+
+export function useSiteContent() {
+  return useContext(ContentContext);
+}
