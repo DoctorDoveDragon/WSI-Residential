@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { createContext, useContext, useState, ReactNode } from "react";
 
 export const DEFAULT_CONTENT = {
   contact: {
@@ -37,48 +37,24 @@ export type SiteContent = typeof DEFAULT_CONTENT;
 
 type ContentContextValue = {
   content: SiteContent;
-  loading: boolean;
-  refresh: () => void;
 };
 
 const ContentContext = createContext<ContentContextValue>({
   content: DEFAULT_CONTENT,
-  loading: true,
-  refresh: () => {},
 });
 
-export function ContentProvider({ children }: { children: ReactNode }) {
-  const [content, setContent] = useState<SiteContent>(DEFAULT_CONTENT);
-  const [loading, setLoading] = useState(true);
-
-  async function loadContent() {
-    try {
-      const res = await fetch(`/api/content?t=${Date.now()}`, { cache: "no-store" });
-      if (res.ok) {
-        const data = await res.json();
-        setContent({
-          ...DEFAULT_CONTENT,
-          ...data,
-          contact: { ...DEFAULT_CONTENT.contact, ...(data.contact || {}) },
-          hero: { ...DEFAULT_CONTENT.hero, ...(data.hero || {}) },
-          footer: { ...DEFAULT_CONTENT.footer, ...(data.footer || {}) },
-          about: { ...DEFAULT_CONTENT.about, ...(data.about || {}) },
-          faqs: Array.isArray(data.faqs) && data.faqs.length > 0 ? data.faqs : DEFAULT_CONTENT.faqs,
-        });
-      }
-    } catch {
-      // Fall back to defaults
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  useEffect(() => {
-    loadContent();
-  }, []);
+export function ContentProvider({
+  children,
+  initialContent,
+}: {
+  children: ReactNode;
+  initialContent?: SiteContent;
+}) {
+  // Use the server-provided content as initial state (no client-side fetch needed)
+  const content = initialContent || DEFAULT_CONTENT;
 
   return (
-    <ContentContext.Provider value={{ content, loading, refresh: loadContent }}>
+    <ContentContext.Provider value={{ content }}>
       {children}
     </ContentContext.Provider>
   );

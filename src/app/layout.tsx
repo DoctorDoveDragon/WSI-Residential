@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { Inter, Lora } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
-import { ContentProvider } from "@/lib/content-provider";
+import { ContentProvider, DEFAULT_CONTENT, SiteContent } from "@/lib/content-provider";
+import { readFileSync } from "fs";
+import path from "path";
 
-// Force all pages to be dynamically rendered (not statically prerendered)
-// This ensures admin edits to /api/content show up on the live site immediately
+// Force all pages to be dynamically rendered (reads content file on each request)
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
@@ -21,6 +22,32 @@ const lora = Lora({
   weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
 });
+
+function getContent(): SiteContent {
+  try {
+    const possiblePaths = [
+      path.join(process.cwd(), "data", "site-content.json"),
+      path.join(process.cwd(), ".next", "standalone", "data", "site-content.json"),
+      "/app/data/site-content.json",
+    ];
+    for (const p of possiblePaths) {
+      try {
+        const raw = readFileSync(p, "utf-8");
+        const data = JSON.parse(raw);
+        return {
+          ...DEFAULT_CONTENT,
+          ...data,
+          contact: { ...DEFAULT_CONTENT.contact, ...(data.contact || {}) },
+          hero: { ...DEFAULT_CONTENT.hero, ...(data.hero || {}) },
+          footer: { ...DEFAULT_CONTENT.footer, ...(data.footer || {}) },
+          about: { ...DEFAULT_CONTENT.about, ...(data.about || {}) },
+          faqs: Array.isArray(data.faqs) && data.faqs.length > 0 ? data.faqs : DEFAULT_CONTENT.faqs,
+        } as SiteContent;
+      } catch { continue; }
+    }
+  } catch { /* use defaults */ }
+  return DEFAULT_CONTENT;
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://wellspringintervention.com"),
@@ -64,12 +91,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Read content from the file system on EVERY request (server-side)
+  const content = getContent();
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body
         className={`${inter.variable} ${lora.variable} antialiased bg-background text-foreground`}
       >
-        <ContentProvider>
+        <ContentProvider initialContent={content}>
           {children}
         </ContentProvider>
         <Toaster />

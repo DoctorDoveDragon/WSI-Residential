@@ -7,45 +7,25 @@
   },
   "hero": {
     "headline": "A well spring is a source that never stops giving.",
-    "body": "Steady. Clear. Quietly renewing. That is the kind of therapeutic care we provide — a licensed, staff-secure home where children and adolescents ages 6–17 receive individual therapy, psychiatric support, and round-the-clock emotional care. When a child has given all they have to surviving, we give back twice over: clinical treatment, safety, healing, and the simple joy of being a kid again.",
+    "body": "Steady. Clear. Quietly renewing. That is the kind of therapeutic care we provide.",
     "tagline": "Empowerment · Growth · Freedom · Health · Wholeness · Healing"
   },
   "footer": {
-    "description": "A licensed staff-secure Level III residential treatment facility serving children ages 6–17 in Wake County, North Carolina — where children heal, grow, and graduate toward the lives they deserve."
+    "description": "A licensed staff-secure Level III residential treatment facility serving children ages 6–17 in Wake County, North Carolina."
   },
   "faqs": [
     {
       "q": "What is a staff-secure Level III residential treatment facility?",
-      "a": "Level III residential treatment offers 24-hour care in a structured, home-like setting for children whose behavioral and mental health needs cannot yet be safely met at home or in a less restrictive setting. \"Staff-secure\" means safety is maintained through close supervision by trained staff — not by locked hospital doors."
+      "a": "Level III residential treatment offers 24-hour care in a structured, home-like setting."
     },
     {
       "q": "Who do you serve?",
-      "a": "We serve children and adolescents, ages 6–17, who have been placed out of home due to behavioral and mental health needs."
-    },
-    {
-      "q": "How does a placement begin?",
-      "a": "Most placements are coordinated through county care coordination (LME/MCOs), departments of social services, and placing agencies. Parents and caregivers are always welcome to call us directly."
-    },
-    {
-      "q": "Will my child keep going to school?",
-      "a": "Yes. Within days of arrival, our education liaison enrolls your child in a local community school and arranges transportation. We attend every IEP meeting and sit beside them for homework every evening."
-    },
-    {
-      "q": "Can families stay involved?",
-      "a": "Yes — we believe families are partners, not visitors. Family contact through visits and calls is part of everyday life here, and planning for home begins on day one."
-    },
-    {
-      "q": "What happens when it's time to leave?",
-      "a": "From day one, your child's team is planning the way home. Before any transition, we hold a family team meeting and put the aftercare plan in writing."
-    },
-    {
-      "q": "Where are you located?",
-      "a": "Our home is in Wake County, North Carolina. For the safety and privacy of the children in our care, we share our street address during the referral and screening process."
+      "a": "We serve children and adolescents, ages 6–17."
     }
   ],
   "about": {
     "heading": "Therapy, in the shape of a home.",
-    "body1": "Well Spring Intervention is a licensed, staff-secure Level III residential treatment facility where children and adolescents receive intensive clinical care without leaving the warmth of a real home. Our program brings together individual therapy, group therapy, psychiatric medication management, behavioral treatment, and round-the-clock emotional support — woven into daily life so healing happens between sessions as much as during them.",
-    "body2": "Located in Wake County, North Carolina, we serve young people ages 6–17 who have been placed out of home due to behavioral and mental health needs. Our program is intentionally small — four to six children, one household — so every child receives deeply individualized clinical attention, and every licensed therapist, psychiatrist, and teacher has the time to truly know them."
+    "body1": "Well Spring Intervention is a licensed, staff-secure Level III residential treatment facility.",
+    "body2": "Located in Wake County, North Carolina, we serve young people ages 6–17."
   }
 }
