@@ -4,6 +4,11 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { ContentProvider } from "@/lib/content-provider";
 
+// Force all pages to be dynamically rendered (not statically prerendered)
+// This ensures admin edits to /api/content show up on the live site immediately
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 const inter = Inter({
   variable: "--font-geist-sans",
   subsets: ["latin"],
