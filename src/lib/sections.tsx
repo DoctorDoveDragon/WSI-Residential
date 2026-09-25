@@ -105,7 +105,13 @@ export function Hero() {
             {BRAND_SERVICES_LINE_1} · {content.contact.location}
           </p>
           <h1 className="font-display text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
-            A well spring is a source that <span className="italic text-[#d05003]">never stops giving</span>.
+            {content.hero.headline.includes("never stops giving") ? (
+              <>
+                A well spring is a source that <span className="italic text-[#d05003]">never stops giving</span>.
+              </>
+            ) : (
+              content.hero.headline
+            )}
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">{content.hero.body}</p>
           <div className="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2">
