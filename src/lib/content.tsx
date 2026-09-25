@@ -47,8 +47,18 @@ export const PUBLIC_FORMS = [
 
 /* Password-gated internal documents */
 export const PDFS = [
+  // Program documents (pending audit before professional use)
+  { file: "Well_Spring_Intervention_SOP_Manual_v2.26_Public-Edition.pdf", label: "SOP Manual v2.26 (Pending Audit)" },
+  { file: "Well_Spring_Resident_Handbook_v1.1.pdf", label: "Resident Handbook v1.1 (Pending Audit)" },
+  { file: "WSI_CARF_CYS_2026_Conformance_Plans.pdf", label: "CARF CYS 2026 Conformance Plans (Pending Audit)" },
+  { file: "WSI_SOP_v2.22_Compliance_Audit_Report.pdf", label: "Compliance Audit Report (v2.22)" },
+  { file: "WSI_SOP_v2.22_Compliance_Audit_Crosswalk.xlsx", label: "Compliance Audit Crosswalk (v2.22)" },
+  { file: "WSI_SOP_v2.24_Operational_Audit_Report.pdf", label: "Operational Audit Report (v2.24)" },
+  // Internal forms
   { file: "WSI_Form_07_Incident_Report.pdf", label: "F07 · Incident Report" },
   { file: "WSI_Form_08_Discharge_Planning.pdf", label: "F08 · Discharge Planning" },
+  { file: "WSI_Form_09_Release_of_Information.pdf", label: "F09 · Release of Information" },
+  { file: "WSI_Form_10_Resident_Rights.pdf", label: "F10 · Resident Rights" },
   { file: "WSI_Form_11_Individualized_Treatment_Plan.pdf", label: "F11 · Individualized Treatment Plan" },
   { file: "WSI_Form_12_Behavior_Intervention_Plan.pdf", label: "F12 · Behavioral Intervention Plan" },
   { file: "WSI_Form_13_Daily_Progress_Note.pdf", label: "F13 · Daily Progress Note" },
@@ -58,9 +68,7 @@ export const PDFS = [
   { file: "WSI_Form_17_Restraint_Debrief.pdf", label: "F17 · Restraint & Debriefing Checklist" },
   { file: "WSI_Form_18_Family_Team_Meeting.pdf", label: "F18 · Family Team (CFT) Meeting Notes" },
   { file: "WSI_Form_19_Staff_Training_Acknowledgment.pdf", label: "F19 · Staff SOP & Training Record" },
-  { file: "Well_Spring_Intervention_SOP_Manual_v2.26_Public-Edition.pdf", label: "SOP Manual v2.26" },
-  { file: "WSI_CARF_CYS_2026_Conformance_Plans.pdf", label: "CARF CYS 2026 Plans" },
-  { file: "WSI_SOP_v2.24_Operational_Audit_Report.pdf", label: "Operational Audit Report" },
+  { file: "WSI_Form_20_Grievance.pdf", label: "F20 · Grievance / Complaint Form" },
 ];
 
 export const TRUST_ITEMS = [
