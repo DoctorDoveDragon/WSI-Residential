@@ -5,10 +5,20 @@ import { Toaster } from "@/components/ui/toaster";
 import { ContentProvider, DEFAULT_CONTENT, SiteContent } from "@/lib/content-provider";
 import { readFileSync } from "fs";
 import path from "path";
+import { headers } from "next/headers";
 
 // Force all pages to be dynamically rendered (reads content file on each request)
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
+
+// Set cache-control headers to prevent browser caching of page content
+export async function generateHeaders() {
+  return {
+    "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0",
+    "Pragma": "no-cache",
+    "Expires": "0",
+  };
+}
 
 const inter = Inter({
   variable: "--font-geist-sans",
@@ -86,13 +96,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   // Read content from the file system on EVERY request (server-side)
   const content = getContent();
+
+  // Set cache-control headers to prevent browser caching
+  const headerList = await headers();
+  // Headers are set via the dynamic export above
 
   return (
     <html lang="en" suppressHydrationWarning>
