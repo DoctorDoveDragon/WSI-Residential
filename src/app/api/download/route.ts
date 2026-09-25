@@ -32,6 +32,14 @@ function getExpectedPassword(): string {
   return process.env.WSI_DOCS_PASSWORD || "wellspring2024";
 }
 
+function getContentType(filename: string): string {
+  if (filename.endsWith(".xlsx")) return "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+  if (filename.endsWith(".pdf")) return "application/pdf";
+  return "application/octet-stream";
+}
+
+export const dynamic = "force-dynamic";
+
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const doc = searchParams.get("doc") || "";
@@ -40,6 +48,16 @@ export async function GET(request: NextRequest) {
   if (!password || password !== getExpectedPassword()) return NextResponse.json({ error: "Invalid or missing password." }, { status: 401 });
   try {
     const buffer = readFileSync(path.join(DOCS_DIR, doc));
-    return new NextResponse(buffer, { status: 200, headers: { "Content-Type": "application/pdf", "Content-Disposition": `attachment; filename="${doc}"`, "Content-Length": buffer.length.toString(), "Cache-Control": "no-store" } });
-  } catch { return NextResponse.json({ error: "File could not be read." }, { status: 500 }); }
+    return new NextResponse(buffer, {
+      status: 200,
+      headers: {
+        "Content-Type": getContentType(doc),
+        "Content-Disposition": `attachment; filename="${doc}"`,
+        "Content-Length": buffer.length.toString(),
+        "Cache-Control": "no-store",
+      },
+    });
+  } catch {
+    return NextResponse.json({ error: "File could not be read." }, { status: 500 });
+  }
 }
