@@ -38,7 +38,7 @@ export function Header() {
         </nav>
         <div className="hidden lg:block">
           <Button asChild className="h-11 rounded-full px-5">
-            <Link href="/admissions">Refer a Child<ArrowRight className="ml-1 h-4 w-4" aria-hidden="true" /></Link>
+            <Link href="/refer">Refer a Child<ArrowRight className="ml-1 h-4 w-4" aria-hidden="true" /></Link>
           </Button>
         </div>
         <button type="button" className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-foreground transition-colors hover:bg-secondary lg:hidden focus-visible:outline-2 focus-visible:outline-ring"
@@ -59,7 +59,7 @@ export function Header() {
               );
             })}
             <Button asChild className="mt-3 h-11 w-full rounded-full">
-              <Link href="/admissions" onClick={() => setOpen(false)}>Refer a Child<ArrowRight className="ml-1 h-4 w-4" aria-hidden="true" /></Link>
+              <Link href="/refer" onClick={() => setOpen(false)}>Refer a Child<ArrowRight className="ml-1 h-4 w-4" aria-hidden="true" /></Link>
             </Button>
           </nav>
         </div>
@@ -119,7 +119,7 @@ export function Hero() {
           <p className="mt-5 font-display text-sm font-medium italic text-primary/85 sm:text-base">{content.hero.tagline}</p>
           <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Button asChild size="lg" className="h-12 rounded-full bg-[#d05003] px-7 text-base text-[#f5efe7] hover:bg-[#a83802]">
-              <Link href="/admissions">Refer a Child<ArrowRight className="ml-1.5 h-5 w-5" aria-hidden="true" /></Link>
+              <Link href="/refer">Refer a Child<ArrowRight className="ml-1.5 h-5 w-5" aria-hidden="true" /></Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="h-12 rounded-full border-[#d05003]/30 px-7 text-base hover:bg-secondary hover:text-[#d05003]">
               <Link href="/admissions">I&apos;m a Parent</Link>
@@ -423,7 +423,7 @@ export function AdmissionsSection() {
                 ))}
               </ol>
               <div className="mt-auto pt-7">
-                <Button asChild className="h-11 rounded-full px-6"><Link href="/contact">Start a Referral<ArrowRight className="ml-1.5 h-4 w-4" aria-hidden="true" /></Link></Button>
+                <Button asChild className="h-11 rounded-full px-6"><Link href="/refer">Start a Referral<ArrowRight className="ml-1.5 h-4 w-4" aria-hidden="true" /></Link></Button>
               </div>
             </div>
           </FadeIn>
