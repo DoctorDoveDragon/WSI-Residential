@@ -14,13 +14,34 @@
     "description": "A licensed staff-secure Level III residential treatment facility serving children ages 6–17 in Wake County, North Carolina — where children heal, grow, and graduate toward the lives they deserve."
   },
   "faqs": [
-    { "q": "What is a staff-secure Level III residential treatment facility?", "a": "Level III residential treatment offers 24-hour care in a structured, home-like setting for children whose behavioral and mental health needs cannot yet be safely met at home or in a less restrictive setting. \"Staff-secure\" means safety is maintained through close supervision by trained staff — not by locked hospital doors." },
-    { "q": "Who do you serve?", "a": "We serve children and adolescents, ages 6–17, who have been placed out of home due to behavioral and mental health needs." },
-    { "q": "How does a placement begin?", "a": "Most placements are coordinated through county care coordination (LME/MCOs), departments of social services, and placing agencies. Parents and caregivers are always welcome to call us directly." },
-    { "q": "Will my child keep going to school?", "a": "Yes. Within days of arrival, our education liaison enrolls your child in a local community school and arranges transportation. We attend every IEP meeting and sit beside them for homework every evening." },
-    { "q": "Can families stay involved?", "a": "Yes — we believe families are partners, not visitors. Family contact through visits and calls is part of everyday life here, and planning for home begins on day one." },
-    { "q": "What happens when it's time to leave?", "a": "From day one, your child's team is planning the way home. Before any transition, we hold a family team meeting and put the aftercare plan in writing." },
-    { "q": "Where are you located?", "a": "Our home is in Wake County, North Carolina. For the safety and privacy of the children in our care, we share our street address during the referral and screening process." }
+    {
+      "q": "What is a staff-secure Level III residential treatment facility?",
+      "a": "Level III residential treatment offers 24-hour care in a structured, home-like setting for children whose behavioral and mental health needs cannot yet be safely met at home or in a less restrictive setting. \"Staff-secure\" means safety is maintained through close supervision by trained staff — not by locked hospital doors."
+    },
+    {
+      "q": "Who do you serve?",
+      "a": "We serve children and adolescents, ages 6–17, who have been placed out of home due to behavioral and mental health needs."
+    },
+    {
+      "q": "How does a placement begin?",
+      "a": "Most placements are coordinated through county care coordination (LME/MCOs), departments of social services, and placing agencies. Parents and caregivers are always welcome to call us directly."
+    },
+    {
+      "q": "Will my child keep going to school?",
+      "a": "Yes. Within days of arrival, our education liaison enrolls your child in a local community school and arranges transportation. We attend every IEP meeting and sit beside them for homework every evening."
+    },
+    {
+      "q": "Can families stay involved?",
+      "a": "Yes — we believe families are partners, not visitors. Family contact through visits and calls is part of everyday life here, and planning for home begins on day one."
+    },
+    {
+      "q": "What happens when it's time to leave?",
+      "a": "From day one, your child's team is planning the way home. Before any transition, we hold a family team meeting and put the aftercare plan in writing."
+    },
+    {
+      "q": "Where are you located?",
+      "a": "Our home is in Wake County, North Carolina. For the safety and privacy of the children in our care, we share our street address during the referral and screening process."
+    }
   ],
   "about": {
     "heading": "Therapy, in the shape of a home.",

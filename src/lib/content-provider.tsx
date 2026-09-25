@@ -53,7 +53,7 @@ export function ContentProvider({ children }: { children: ReactNode }) {
 
   async function loadContent() {
     try {
-      const res = await fetch("/api/content", { cache: "no-store" });
+      const res = await fetch(`/api/content?t=${Date.now()}`, { cache: "no-store" });
       if (res.ok) {
         const data = await res.json();
         setContent({

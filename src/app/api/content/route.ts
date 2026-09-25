@@ -2,6 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { readFileSync, writeFileSync } from "fs";
 import path from "path";
 
+// Force dynamic rendering — never cache this route
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 const CONTENT_FILE = path.join(process.cwd(), "data", "site-content.json");
 
 function getExpectedPassword(): string {
