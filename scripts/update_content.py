@@ -1,4 +1,6 @@
-{
+import json
+
+content = {
   "contact": {
     "phone": "(919) 000-0000",
     "phoneHref": "tel:+19190000000",
@@ -69,3 +71,8 @@
     "body2": "Located in Wake County, North Carolina, we serve young people ages 6–17 who have been placed out of home due to behavioral and mental health needs. Our program is intentionally small — four to six children, one household — so every child receives deeply individualized clinical attention, and every licensed therapist, psychiatrist, and teacher has the time to truly know them. We are not an institution. We are a home where therapy lives in the ordinary moments — at the breakfast table, on the walk to school, over homework, and at bedtime — as much as in the therapy room."
   }
 }
+
+with open('data/site-content.json', 'w') as f:
+    json.dump(content, f, indent=2, ensure_ascii=False)
+print("Content updated")
+PY
