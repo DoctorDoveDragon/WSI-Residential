@@ -59,44 +59,20 @@ export async function POST(request: NextRequest) {
     // Save the full referral (with PHI) to the server
     const id = saveReferral(body);
 
-    // Add a summary (NO PHI) to the index
+    // Add ONLY the submission ID and timestamp to the index — NO PHI
+    // (child name, referrer name, agency are all PHI in the context of
+    // a behavioral health referral)
     const summary = {
       id,
       submittedAt: new Date().toISOString(),
-      referrerName: body.referrerName || "Unknown",
-      agency: body.agency || "N/A",
-      childName: body.childName || "Unknown", // Name only, no diagnoses/meds
     };
     const referrals = getReferrals();
     referrals.unshift(summary);
     saveReferralIndex(referrals);
 
-    // Optionally send a notification email (NO PHI in the email)
-    const smtpHost = process.env.SMTP_HOST;
-    if (smtpHost) {
-      const { default: nodemailer } = await import("nodemailer");
-      const smtpUser = process.env.SMTP_USER;
-      const smtpPass = process.env.SMTP_PASS;
-      const smtpPort = process.env.SMTP_PORT || "587";
-      const targetEmail = process.env.REFERRAL_EMAIL || "referral@wellspringintervention.com";
-
-      if (smtpUser && smtpPass) {
-        const transporter = nodemailer.createTransport({
-          host: smtpHost,
-          port: parseInt(smtpPort),
-          secure: parseInt(smtpPort) === 465,
-          auth: { user: smtpUser, pass: smtpPass },
-        });
-
-        await transporter.sendMail({
-          from: `"Well Spring Website" <${smtpUser}>`,
-          to: targetEmail,
-          subject: `New Referral Received — ${body.childName || "Unknown"} from ${body.agency || "Unknown Agency"}`,
-          text: `A new referral has been submitted.\n\nReferrer: ${body.referrerName || "Unknown"}\nAgency: ${body.agency || "N/A"}\nSubmitted: ${new Date().toISOString()}\n\nTo view the full referral (including clinical information), log in to the admin panel at https://wellspringintervention.com/admin\n\nDo NOT reply to this email with any patient information.`,
-          replyTo: body.referrerEmail || undefined,
-        });
-      }
-    }
+    // NO email notification — all referral data (including child's name)
+    // is PHI and stays on the server behind the password gate.
+    // Staff must check the admin panel at /admin to view new referrals.
 
     return NextResponse.json({ ok: true, id });
   } catch (err) {

@@ -11,9 +11,6 @@ type ContentState = typeof DEFAULT_CONTENT;
 type ReferralSummary = {
   id: string;
   submittedAt: string;
-  referrerName: string;
-  agency: string;
-  childName: string;
 };
 
 export default function AdminPage() {
@@ -228,11 +225,10 @@ export default function AdminPage() {
                   className="flex w-full items-center justify-between rounded-xl border border-border bg-background p-4 text-left transition-colors hover:bg-secondary/50 focus-visible:outline-2 focus-visible:outline-ring"
                 >
                   <div>
-                    <p className="font-semibold text-foreground">{r.childName || "Unknown Child"}</p>
-                    <p className="text-sm text-muted-foreground">From: {r.referrerName || "Unknown"} · {r.agency || "N/A"}</p>
+                    <p className="font-semibold text-foreground">New Referral</p>
+                    <p className="text-sm text-muted-foreground">{new Date(r.submittedAt).toLocaleString()}</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-xs text-muted-foreground">{new Date(r.submittedAt).toLocaleDateString()}</p>
                     <p className="text-xs font-medium text-[#d05003]">View →</p>
                   </div>
                 </button>
