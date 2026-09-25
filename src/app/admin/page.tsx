@@ -4,9 +4,17 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useSiteContent, DEFAULT_CONTENT } from "@/lib/content-provider";
-import { ArrowRight, Check, Lock, RefreshCw } from "lucide-react";
+import { ArrowRight, Check, FileText, Lock, RefreshCw } from "lucide-react";
 
 type ContentState = typeof DEFAULT_CONTENT;
+
+type ReferralSummary = {
+  id: string;
+  submittedAt: string;
+  referrerName: string;
+  agency: string;
+  childName: string;
+};
 
 export default function AdminPage() {
   const { content, loading, refresh } = useSiteContent();
@@ -16,6 +24,32 @@ export default function AdminPage() {
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [referrals, setReferrals] = useState<ReferralSummary[]>([]);
+  const [viewingReferral, setViewingReferral] = useState<Record<string, string> | null>(null);
+
+  async function loadReferrals() {
+    try {
+      const res = await fetch(`/api/refer?password=${encodeURIComponent(password)}`, { cache: "no-store" });
+      if (res.ok) {
+        const data = await res.json();
+        setReferrals(data.referrals || []);
+      }
+    } catch { /* ignore */ }
+  }
+
+  async function viewReferral(id: string) {
+    try {
+      const res = await fetch(`/api/refer?password=${encodeURIComponent(password)}&id=${id}`, { cache: "no-store" });
+      if (res.ok) {
+        const data = await res.json();
+        setViewingReferral(data);
+      }
+    } catch { /* ignore */ }
+  }
+
+  useEffect(() => {
+    if (authed) loadReferrals();
+  }, [authed]);
 
   useEffect(() => {
     if (content && !draft) setDraft(JSON.parse(JSON.stringify(content)));
@@ -152,6 +186,61 @@ export default function AdminPage() {
           ))}
           <Button type="button" variant="outline" onClick={addFaq} className="h-9 rounded-full text-xs">+ Add FAQ</Button>
         </Section>
+
+        {/* Secure Referrals */}
+        <section className="mb-8 rounded-2xl border border-[#d05003]/30 bg-card p-6 sm:p-8">
+          <div className="mb-5 flex items-center gap-3">
+            <FileText className="h-6 w-6 text-[#d05003]" aria-hidden="true" />
+            <div>
+              <h2 className="font-display text-xl font-semibold tracking-tight text-[#401000]">Secure Referrals</h2>
+              <p className="text-xs text-muted-foreground">Online referral submissions from the /refer form. Contains PHI — view behind password only.</p>
+            </div>
+          </div>
+
+          {viewingReferral ? (
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <h3 className="font-display text-lg font-semibold">Referral: {viewingReferral.childName || "Unknown"}</h3>
+                <Button type="button" variant="outline" onClick={() => setViewingReferral(null)} className="h-9 rounded-full text-xs">← Back to List</Button>
+              </div>
+              <div className="rounded-xl border border-border bg-background p-6">
+                <dl className="grid gap-4 sm:grid-cols-2">
+                  {Object.entries(viewingReferral)
+                    .filter(([key]) => key !== "id")
+                    .map(([key, val]) => (
+                      <div key={key} className={val && String(val).length > 60 ? "sm:col-span-2" : ""}>
+                        <dt className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{key.replace(/([A-Z])/g, " $1").replace(/^./, (c) => c.toUpperCase())}</dt>
+                        <dd className="mt-1 text-sm leading-relaxed text-foreground">{String(val || "—")}</dd>
+                      </div>
+                    ))}
+                </dl>
+              </div>
+            </div>
+          ) : referrals.length === 0 ? (
+            <p className="text-sm text-muted-foreground">No referrals submitted yet.</p>
+          ) : (
+            <div className="space-y-3">
+              {referrals.map((r) => (
+                <button
+                  key={r.id}
+                  type="button"
+                  onClick={() => viewReferral(r.id)}
+                  className="flex w-full items-center justify-between rounded-xl border border-border bg-background p-4 text-left transition-colors hover:bg-secondary/50 focus-visible:outline-2 focus-visible:outline-ring"
+                >
+                  <div>
+                    <p className="font-semibold text-foreground">{r.childName || "Unknown Child"}</p>
+                    <p className="text-sm text-muted-foreground">From: {r.referrerName || "Unknown"} · {r.agency || "N/A"}</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-xs text-muted-foreground">{new Date(r.submittedAt).toLocaleDateString()}</p>
+                    <p className="text-xs font-medium text-[#d05003]">View →</p>
+                  </div>
+                </button>
+              ))}
+            </div>
+          )}
+        </section>
+
         <div className="mt-8 flex flex-col gap-3 border-t border-border pt-6 sm:flex-row sm:justify-between sm:items-center">
           <Link href="/" className="inline-flex h-11 items-center justify-center rounded-full border border-border px-6 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground">← Back to Website</Link>
           <Button type="button" onClick={handleSave} disabled={saving} className="h-11 rounded-full bg-[#d05003] text-[#f5efe7] hover:bg-[#a83802] disabled:opacity-60">{saving ? "Saving…" : "Save All Changes"}<Check className="ml-1.5 h-4 w-4" aria-hidden="true" /></Button>
