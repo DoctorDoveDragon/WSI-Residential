@@ -2,10 +2,10 @@ import { defineRailway, preserve, project, service } from "railway/iac";
 
 export default defineRailway(() => {
   const web = service("web", {
-    start: "cd .next/standalone && node server.js",
-    build: "npm run build",
+    start: "node server.js",
     replicas: { "us-east4-eqdc4a": 1 },
-    env: { PORT: "3000", HOSTNAME: "0.0.0.0", NODE_ENV: "production" },
+    domains: ["wellspringintervention.com", "www.wellspringintervention.com"],
+    env: { HOSTNAME: preserve(), NODE_ENV: preserve(), PORT: preserve(), REFERRAL_EMAIL: preserve(), WSI_ADMIN_PASSWORD: preserve(), WSI_DOCS_PASSWORD: preserve() },
   });
 
   return project("WSI", {

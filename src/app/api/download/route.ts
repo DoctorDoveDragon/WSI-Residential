@@ -1,12 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { readFileSync } from "fs";
+import { readFileSync, existsSync } from "fs";
 import path from "path";
 
-// Force Node.js runtime (not Edge) and dynamic rendering
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
-
-const DOCS_DIR = path.join(process.cwd(), "private-docs");
 
 const ALLOWED_DOCS = new Set([
   "WSI_CARF_CYS_2026_Conformance_Plans.pdf",
@@ -42,6 +39,19 @@ function getContentType(filename: string): string {
   return "application/octet-stream";
 }
 
+function findFile(filename: string): string | null {
+  const possiblePaths = [
+    path.join(process.cwd(), "private-docs", filename),
+    path.join(process.cwd(), ".next", "standalone", "private-docs", filename),
+    path.join("/app", "private-docs", filename),
+    path.join("/app", ".next", "standalone", "private-docs", filename),
+  ];
+  for (const p of possiblePaths) {
+    if (existsSync(p)) return p;
+  }
+  return null;
+}
+
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const doc = searchParams.get("doc") || "";
@@ -49,7 +59,9 @@ export async function GET(request: NextRequest) {
   if (!ALLOWED_DOCS.has(doc)) return NextResponse.json({ error: "Unknown document." }, { status: 404 });
   if (!password || password !== getExpectedPassword()) return NextResponse.json({ error: "Invalid or missing password." }, { status: 401 });
   try {
-    const buffer = readFileSync(path.join(DOCS_DIR, doc));
+    const filePath = findFile(doc);
+    if (!filePath) return NextResponse.json({ error: "File not found on server.", searched: [process.cwd()] }, { status: 404 });
+    const buffer = readFileSync(filePath);
     return new NextResponse(buffer, {
       status: 200,
       headers: {
@@ -59,7 +71,7 @@ export async function GET(request: NextRequest) {
         "Cache-Control": "no-store",
       },
     });
-  } catch {
+  } catch (err) {
     return NextResponse.json({ error: "File could not be read." }, { status: 500 });
   }
 }
