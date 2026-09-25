@@ -598,7 +598,7 @@ export function StaffBand() {
     setError(null);
     setDownloading(label);
     try {
-      const res = await fetch(`/api/download?doc=${encodeURIComponent(file)}&password=${encodeURIComponent(password)}`);
+      const res = await fetch(`/api/docs?doc=${encodeURIComponent(file)}&password=${encodeURIComponent(password)}`);
       if (!res.ok) {
         if (res.status === 401) { setError("Session expired. Please re-enter the password."); setAuthed(false); }
         else setError(`Could not download ${label}.`);
