@@ -57,11 +57,21 @@ export default function AdminPage() {
     setError(null);
     if (!password.trim()) { setError("Please enter the admin password."); return; }
     try {
-      const res = await fetch("/api/content", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ password, verify: true }) });
-      if (res.ok) setAuthed(true);
-      else if (res.status === 401) setError("Incorrect password.");
-      else setError("Login failed.");
-    } catch { setError("Network error."); }
+      const res = await fetch("/api/content", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password, verify: true }),
+      });
+      if (res.ok) {
+        setAuthed(true);
+      } else if (res.status === 401) {
+        setError("Incorrect password.");
+      } else {
+        setError("Login failed. Status: " + res.status);
+      }
+    } catch (err) {
+      setError("Network error: " + (err instanceof Error ? err.message : "Unknown"));
+    }
   }
 
   function updateField(path: string, value: string) {
@@ -99,12 +109,27 @@ export default function AdminPage() {
     if (!draft) return;
     setSaving(true); setError(null); setMessage(null);
     try {
-      const res = await fetch("/api/content", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ password, content: draft }) });
-      if (res.ok) { setMessage("Saved! Changes are now live."); refresh(); }
-      else if (res.status === 401) { setError("Session expired. Reload and log in again."); setAuthed(false); }
-      else setError("Save failed.");
-    } catch { setError("Network error."); }
-    finally { setSaving(false); }
+      const res = await fetch("/api/content", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password, content: draft }),
+      });
+      if (res.ok) {
+        const result = await res.json();
+        setMessage("Saved! Changes are now live on the site.");
+        refresh();
+      } else if (res.status === 401) {
+        setError("Session expired. Please reload and log in again.");
+        setAuthed(false);
+      } else {
+        const text = await res.text();
+        setError("Save failed (status " + res.status + "): " + text.substring(0, 100));
+      }
+    } catch (err) {
+      setError("Network error: " + (err instanceof Error ? err.message : "Unknown"));
+    } finally {
+      setSaving(false);
+    }
   }
 
   if (!authed) {
