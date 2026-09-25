@@ -2,6 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { readFileSync } from "fs";
 import path from "path";
 
+// Force Node.js runtime (not Edge) and dynamic rendering
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 const DOCS_DIR = path.join(process.cwd(), "private-docs");
 
 const ALLOWED_DOCS = new Set([
@@ -37,8 +41,6 @@ function getContentType(filename: string): string {
   if (filename.endsWith(".pdf")) return "application/pdf";
   return "application/octet-stream";
 }
-
-export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
